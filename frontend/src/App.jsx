@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 import "./App.css";
 import Home from "./pages/home";
 import AboutUs from "./pages/aboutus";
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/aboutUs" element={<AboutUs />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
