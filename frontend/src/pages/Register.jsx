@@ -88,7 +88,7 @@ const LoginCover = () => {
       console.log(dataToSend);
 
       axios
-        .post("https://3.139.67.124:8080/api/users/register", dataToSend)
+        .post("http://localhost:8080/api/users/register", dataToSend)
         .then((response) => {
           const {
             user,
