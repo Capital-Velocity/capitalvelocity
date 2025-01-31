@@ -1,0 +1,192 @@
+import FormControl from "@mui/material/FormControl";
+import Grid from "@mui/material/Grid";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import { Divider } from "../../../node_modules/@mui/material/index";
+import Container from "../../screens/Container";
+import CheckoutSteps from "./CheckoutSteps3";
+
+function SoftPull({ formData, setFormData, fieldErrors }) {
+  const [selectedOption, setSelectedOption] = useState("");
+  const dateOptions = Array.from({ length: 31 }, (_, index) => index + 1); // Generate an array from 1 to 31
+  const startYear = 1930;
+  const endYear = 2023;
+
+  const yearOptions = Array.from(
+    { length: endYear - startYear + 1 },
+    (_, index) => startYear + index
+  );
+  const dateOptions2 = Array.from({ length: 12 }, (_, index) => index + 1); // Generate an array from 1 to 31
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    setFormData({
+      ...formData,
+      armsLength: event.target.value,
+    });
+  };
+  return (
+    <div>
+      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          Soft Pull Credit Check
+        </Typography>
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Don't worry, this is a soft credit pull and won't impact your credit.
+          The soft pull is required to participate in the program.
+        </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Grid container spacing={2}>
+          <Grid item sm={4}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Date of Birth (Month)
+              </Typography>
+
+              <Select
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                value={formData.birthMonth || ""}
+                error={fieldErrors.birthMonth}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.birthMonth}</span>}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    birthMonth: e.target.value,
+                  })
+                }
+              >
+                {dateOptions2.map((date) => (
+                  <MenuItem key={date} value={date.toString()}>
+                    {date}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={4}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Date of Birth (Date)
+              </Typography>
+              <Select
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                error={fieldErrors.birthDate}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.birthDate}</span>}
+                value={formData.birthDate || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    birthDate: e.target.value,
+                  })
+                }
+              >
+                {dateOptions.map((date) => (
+                  <MenuItem key={date} value={date.toString()}>
+                    {date}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={4}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Date of Birth (Year)
+              </Typography>
+              <Select
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                error={fieldErrors.birthYear}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.birthYear}</span>}
+                value={formData.birthYear || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    birthYear: e.target.value,
+                  })
+                }
+              >
+                {yearOptions.map((year) => (
+                  <MenuItem key={year} value={year.toString()}>
+                    {year}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Social Security
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.socialSecurity || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      socialSecurity: e.target.value.slice(0, 9),
+                    })
+                  }
+                  type="number"
+                  error={fieldErrors.socialSecurity}
+                  style={{ backgroundColor: "white" }}
+                  helperText={<span>{fieldErrors.socialSecurity}</span>}
+                  variant="outlined"
+                  fullWidth
+
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6} style={{ marginTop: 20 }}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                This is for verifying credit. Your personal information will be
+                protected with bank-level security.
+              </Typography>
+            </FormControl>
+          </Grid>
+
+          <Grid item sm={12} style={{ marginTop: 20 }}>
+            <label
+              style={{
+                fontSize: 15,
+                fontWeight: 100,
+                color: "grey",
+                textDecoration: "underline",
+              }}
+            >
+              USER CERTIFICATION
+            </label>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                By clicking the ‘I agree’ button below, you acknowledge that you
+                have read and agree to the Credit Gathering Authorization as
+                either the individual whose credit will be pulled, or as an
+                authorized representative of that individual, and that the
+                credit report can be shared with Recipients as further defined
+                in the Credit Gathering Authorization.
+              </Typography>
+            </FormControl>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
+}
+
+export default SoftPull;

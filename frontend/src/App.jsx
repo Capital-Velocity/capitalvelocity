@@ -18,6 +18,7 @@ import FixandFlipCalc from "./Calculators/FixandFlipCalc";
 import Login from "./pages/Login";
 import UserDashHome from "./pages/UserDashHome";
 import UserDashFileUpload from "./pages/UserDashFileUpload";
+import LoanForm from "./pages/LoanForm";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
         <Route path="/userDash" element={<UserDashHome />} />
         <Route path="/userDashFile" element={<UserDashFileUpload />} />
+        <Route path="/loan-form-realestate" element={<LoanForm />}></Route>
       </Routes>
       <Footer />
     </Router>
