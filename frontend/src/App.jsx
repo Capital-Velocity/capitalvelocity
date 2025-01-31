@@ -13,6 +13,8 @@ import Home from "./pages/home";
 import AboutUs from "./pages/aboutus";
 import Landing from "./pages/landing";
 import Register from "./pages/Register";
+import DsciCalculator from "./Calculators/DsciCalculator";
+import FixandFlipCalc from "./Calculators/FixandFlipCalc";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/DsciCalculator" element={<DsciCalculator />} />
+        <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
       </Routes>
       <Footer />
     </Router>
