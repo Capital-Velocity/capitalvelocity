@@ -16,6 +16,8 @@ import Register from "./pages/Register";
 import DsciCalculator from "./Calculators/DsciCalculator";
 import FixandFlipCalc from "./Calculators/FixandFlipCalc";
 import Login from "./pages/Login";
+import UserDashHome from "./pages/UserDashHome";
+import UserDashFileUpload from "./pages/UserDashFileUpload";
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
+        <Route path="/userDash" element={<UserDashHome />} />
+        <Route path="/userDashFile" element={<UserDashFileUpload />} />
       </Routes>
       <Footer />
     </Router>

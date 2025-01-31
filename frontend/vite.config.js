@@ -8,4 +8,11 @@ export default defineConfig({
   optimizeDeps: {
     include: ["hoist-non-react-statics"],
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        // Additional SCSS options if using SCSS
+      },
+    },
+  },
 });
