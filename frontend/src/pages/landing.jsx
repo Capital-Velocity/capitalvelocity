@@ -1,0 +1,366 @@
+import React, { useState, useEffect } from "react";
+import Categories2 from "../components/Categories2";
+import Footer2 from "../components/Footer2";
+import lendio1 from "../Images/tree.png";
+import Lendio from "./Lendio";
+import HomeIcon from "@mui/icons-material/Home";
+import { Card } from "@mui/material";
+import MultifamilyBridgeIcon from "@mui/icons-material/ApartmentOutlined";
+import {
+  FormControl,
+  OutlinedInput,
+  InputAdornment,
+  Button,
+} from "@mui/material";
+import { Link } from "@mui/material";
+import Cookies from "js-cookie";
+import { Grid, Box, Typography } from "@mui/material";
+import Container from "../screens/Container";
+const mock = [
+  {
+    title: "Real Estate Loans",
+    icon: <HomeIcon />,
+    value: "FixFlip",
+    link: "/loan-form-realestate",
+  },
+
+  {
+    title: "Business Loans",
+    icon: <MultifamilyBridgeIcon />,
+    value: "MultifamilyBridge",
+    link: "https://bit.ly/3zyS4xt",
+  },
+];
+
+const mockUnauthentic = [
+  {
+    title: "Real Estate Loans",
+    icon: <HomeIcon />,
+    value: "FixFlip",
+    link: "/register",
+  },
+
+  {
+    title: "Business Loans",
+    icon: <MultifamilyBridgeIcon />,
+    value: "MultifamilyBridge",
+    link: "https://bit.ly/3zyS4xt",
+  },
+];
+function Landing() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [authenticated, setAuthenticated] = useState(false);
+  const firstnameCookie = Cookies.get("firstName");
+  useEffect(() => {
+    const emailCookie = Cookies.get("email");
+    if (emailCookie) {
+      setAuthenticated(true);
+    }
+    // Check the window width when the component mounts and on window resize
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 960); // Adjust the threshold as needed
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Initial check when the component mounts
+    handleResize();
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <div>
+      {!isMobile && ( // Render HomeHero3 only on non-mobile screens
+        <div>
+          <Lendio />
+          <div
+            style={{
+              marginTop: 4,
+              backgroundColor: "#c5dfee",
+              paddingLeft: 200,
+              paddingRight: 200,
+              paddingTop: 0,
+              marginBottom: 10,
+              height: 400,
+            }}
+          >
+            <div>
+              <Grid container spacing={2}>
+                <Grid item sm={8} xs={12}>
+                  <Typography variant="h4" sx={{ color: "black" }}>
+                    Your One Stop Shop for <br></br>
+                    <strong style={{ fontSize: 40 }}>Business</strong> and{" "}
+                    <strong style={{ fontSize: 40 }}>Real Estate loans.</strong>
+                  </Typography>
+
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "black", marginTop: 2 }}
+                  >
+                    See if your{" "}
+                    <strong style={{ fontSize: 26 }}>REAL ESTATE </strong>is
+                    eligible for{" "}
+                    <strong style={{ fontSize: 26 }}>financing.</strong>
+                  </Typography>
+                  <FormControl sx={{ width: "20ch" }} variant="outlined">
+                    <OutlinedInput
+                      style={{ backgroundColor: "white", height: "50px" }}
+                      place
+                      id="outlined-adornment-weight"
+                      startAdornment={
+                        <InputAdornment position="start">$</InputAdornment>
+                      }
+                      aria-describedby="outlined-weight-helper-text"
+                    />
+                  </FormControl>
+                  {firstnameCookie ? (
+                    <Button
+                      href="/loan-form-realestate"
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#498dd6",
+                        borderRadius: "30px",
+                        marginLeft: "10px",
+                        marginTop: "5px",
+                      }}
+                      size="small"
+                    >
+                      Check Eligibility
+                    </Button>
+                  ) : (
+                    <Button
+                      href="/register"
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#498dd6",
+                        borderRadius: "30px",
+                        marginLeft: "10px",
+                        marginTop: "5px",
+                      }}
+                      size="small"
+                    >
+                      Check Eligibility
+                    </Button>
+                  )}
+                </Grid>
+                <Grid item sm={4} xs={12} style={{ paddingTop: 0 }}>
+                  <img
+                    src={lendio1}
+                    alt="Your Image Alt Text"
+                    style={{
+                      paddingTop: 0,
+                      width: "400px",
+                    }}
+                  />
+                </Grid>
+              </Grid>
+            </div>
+          </div>
+          <div>
+            <Categories2 />
+          </div>
+        </div>
+      )}
+      {isMobile && ( // Render Categories2 only on mobile screens
+        <div style={{ marginBottom: 2, marginTop: 10 }}>
+          <Lendio />
+          {authenticated ? ( // Conditional rendering based on authentication
+            // Render your routes here
+            <Box style={{ marginTop: 10 }}>
+              <Typography
+                variant="h4"
+                align={"center"}
+                data-aos={"fade-up"}
+                gutterBottom
+                sx={{
+                  fontWeight: 300,
+                  color: "black",
+                  marginTop: 10,
+                }}
+              >
+                Choose what's right for you
+              </Typography>
+              <Typography
+                align={"center"}
+                color={"text.secondary"}
+                data-aos={"fade-up"}
+                style={{ marginBottom: 22 }}
+              >
+                Find the financing solution that fits your real estate and
+                business needs and your wallet. Secure your loan today.
+              </Typography>
+              <Container style={{ marginTop: "-50px" }}>
+                <Grid container spacing={2}>
+                  {mock.map((item, i) => (
+                    <Grid item xs={6} md={6} key={i}>
+                      <Link href={item.link} style={{ textDecoration: "none" }}>
+                        <Box
+                          display={"block"}
+                          width={1}
+                          height={1}
+                          sx={{
+                            backgroundColor: "#498dd6",
+                            textDecoration: "none",
+                            transition: "all .2s ease-in-out",
+                            "&:hover": {
+                              transform: "translateY(-4px)",
+                            },
+                          }}
+                        >
+                          <Box
+                            component={Card}
+                            padding={2}
+                            width={1}
+                            height={1}
+                            borderRadius={2}
+                            bgcolor={"#498dd6"}
+                            data-aos={"fade-up"}
+                            data-aos-delay={i * 100}
+                            data-aos-offset={100}
+                            data-aos-duration={600}
+                          >
+                            <Box
+                              position={"relative"}
+                              display={"flex"}
+                              justifyContent={"center"}
+                            >
+                              <Box
+                                sx={{
+                                  color: "white",
+                                  bottom: 0,
+                                }}
+                              >
+                                {item.icon}
+                              </Box>
+                            </Box>
+                            <Typography
+                              variant={"subtitle1"}
+                              align={"center"}
+                              style={{ textDecoration: "none", color: "white" }}
+                              sx={{
+                                fontWeight: 500,
+                                marginTop: 2,
+                                textDecoration: "none",
+                              }}
+                            >
+                              {item.title}
+                            </Typography>
+                          </Box>
+                        </Box>
+                      </Link>
+                    </Grid>
+                  ))}
+                </Grid>
+              </Container>
+            </Box>
+          ) : (
+            // Render login screen or redirect here
+            <div>
+              <Box>
+                <Container>
+                  <Typography
+                    variant="h4"
+                    align={"center"}
+                    data-aos={"fade-up"}
+                    gutterBottom
+                    sx={{
+                      marginTop: 10,
+                      fontWeight: 300,
+                      color: "black",
+                    }}
+                  >
+                    Choose what's right for you
+                  </Typography>
+                  <Typography
+                    align={"center"}
+                    color={"text.secondary"}
+                    data-aos={"fade-up"}
+                    style={{ marginBottom: 22 }}
+                  >
+                    Find the financing solution that fits your real estate and
+                    business needs and your wallet. Secure your loan today.
+                  </Typography>
+                  <Grid container spacing={2}>
+                    {mockUnauthentic.map((item, i) => (
+                      <Grid item xs={6} md={6} key={i}>
+                        <Link
+                          href={item.link}
+                          style={{ textDecoration: "none" }}
+                        >
+                          <Box
+                            display={"block"}
+                            width={1}
+                            height={1}
+                            sx={{
+                              textDecoration: "none",
+                              transition: "all .2s ease-in-out",
+                              "&:hover": {
+                                transform: "translateY(-4px)",
+                              },
+                            }}
+                          >
+                            <Box
+                              component={Card}
+                              padding={2}
+                              width={1}
+                              height={1}
+                              borderRadius={2}
+                              bgcolor={"#498dd6"}
+                              data-aos={"fade-up"}
+                              data-aos-delay={i * 100}
+                              data-aos-offset={100}
+                              data-aos-duration={600}
+                            >
+                              <Box
+                                position={"relative"}
+                                display={"flex"}
+                                justifyContent={"center"}
+                              >
+                                <Box
+                                  sx={{
+                                    color: "white",
+                                    bottom: 0,
+                                  }}
+                                >
+                                  {item.icon}
+                                </Box>
+                              </Box>
+                              <Typography
+                                variant={"subtitle1"}
+                                align={"center"}
+                                style={{
+                                  textDecoration: "none",
+                                  color: "white",
+                                }}
+                                sx={{
+                                  fontWeight: 500,
+                                  marginTop: 2,
+                                  textDecoration: "none",
+                                }}
+                              >
+                                {item.title}
+                              </Typography>
+                            </Box>
+                          </Box>
+                        </Link>
+                      </Grid>
+                    ))}
+                  </Grid>
+                  {/* Render login form or redirection */}
+                </Container>
+              </Box>
+            </div>
+          )}
+        </div>
+      )}
+      <Footer2 />
+    </div>
+  );
+}
+
+export default Landing;

@@ -10,13 +10,14 @@ import Footer from "./components/footer";
 import "./App.css";
 import Home from "./pages/home";
 import AboutUs from "./pages/aboutus";
+import Landing from "./pages/landing";
 
 function App() {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/aboutUs" element={<AboutUs />} />
       </Routes>
       <Footer />
