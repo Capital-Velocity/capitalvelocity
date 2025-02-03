@@ -1,38 +1,35 @@
-import myImg from "../assets/cvlogo.png";
 import { Link, useLocation } from "react-router-dom";
+import myImg from "../assets/cvlogo.png";
 // import { useLogout } from "../hooks/useLogout";
 // import { useAuthContext } from "../hooks/useAuthContext";
 
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 // import axios from "axios";
+import MenuIcon from "@mui/icons-material/Menu";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import Cookies from "js-cookie";
+import { Avatar, Button } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
 
 const pages = ["About Us", "Explore", "My Grants", "Contact Us"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navbar() {
   const location = useLocation();
-
-  console.log("path: ", location.pathname);
-
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   //   const { logout } = useLogout();
   //   const { user } = useAuthContext();
   const [hasAdmin, setHasAdmin] = useState(false); // Default to false
+  const [initial, setInitial] = useState("");
 
   //   const checkResearchPackage = async (email) => {
   //     try {
@@ -75,6 +72,45 @@ function Navbar() {
     setHasAdmin(false);
     logout();
   };
+
+  const handleSignOutClick = () => {
+    console.log("clicked");
+    const cookieNames = Object.keys(Cookies.get());
+    Cookies.remove("token");
+    Cookies.remove("email");
+    Cookies.remove("lastName");
+    Cookies.remove("firstName");
+    Cookies.remove("isAdmin");
+    window.location.href = "/";
+  };
+
+  const firstnameCookie = Cookies.get("firstName");
+  useEffect(() => {
+    // Check if the 'resFirst' cookie exists
+    const resFirstCookie = Cookies.get("firstName");
+    const isAdminCookie = Cookies.get("isAdmin");
+
+    if (isAdminCookie === "true") {
+      setIsAdmin(true);
+    }
+    if (resFirstCookie) {
+      // If the cookie exists, set the initial from the cookie
+      setInitial(resFirstCookie.charAt(0).toUpperCase());
+    } else {
+      // If the cookie does not exist, set an empty string as the initial
+      setInitial("");
+    }
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <AppBar position="" sx={{ bgcolor: "white" }}>
@@ -214,6 +250,64 @@ function Navbar() {
                 </Link>
               </Box>
             )} */}
+            <Box
+              sx={{
+                flexGrow: 0,
+                display: "flex",
+                alignItems: "center",
+                gap: 1,
+              }}
+            >
+              {firstnameCookie ? (
+                <>
+                  <Link
+                    to="#"
+                    onClick={handleSignOutClick}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#498dd6",
+                        borderRadius: "30px",
+                      }}
+                    >
+                      Sign Out
+                    </Button>
+                  </Link>
+                  <Link
+                    to="/userDash"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Avatar
+                      style={{ backgroundColor: "#498dd6", cursor: "pointer" }}
+                    >
+                      {initial ? initial : <PersonIcon />}
+                    </Avatar>
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Button
+                      variant="contained"
+                      style={{
+                        backgroundColor: "#498dd6",
+                        borderRadius: "30px",
+                      }}
+                    >
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Avatar style={{ backgroundColor: "#498dd6" }}>
+                    {initial ? initial : <PersonIcon />}
+                  </Avatar>
+                </>
+              )}
+            </Box>
           </Box>
         </Toolbar>
 
@@ -223,12 +317,12 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/aboutUs"
+          location.pathname === "/DsciCalculator"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/aboutUs"
+            href="/DsciCalculator"
           >
             <div class="css-0">
               <svg
@@ -247,17 +341,17 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Calculators</span>
+            <span class="mt-1 leading-none">DSCR Calculator</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/discover"
+          location.pathname === "/FixandFlipCalc"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/discover"
+            href="/FixandFlipCalc"
           >
             <div class="css-0">
               <svg
@@ -276,17 +370,17 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Loans</span>
+            <span class="mt-1 leading-none">Flip and Switch Calculator</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/memberships"
+          location.pathname === "/loan-form-business-loans"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/memberships"
+            href="/loan-form-business-loans"
           >
             <div class="css-0">
               <svg
@@ -305,21 +399,18 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Project Epic 99</span>
+            <span class="mt-1 leading-none">Business Loans</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/myGrants"
+          location.pathname === "/loan-form-realestate"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/myGrants"
+            href="/loan-form-realestate"
           >
-            <span class="min-w-[17px] items-center justify-center bg-alert-red-100 p-1 text-center text-[8px] font-semibold uppercase tracking-wider text-white absolute w-[18px] h-[18px] right-[18px] top-[14px] rounded-full border-[4px] border-white">
-              {" "}
-            </span>
             <div class="css-0">
               <svg
                 width="28"
@@ -339,17 +430,17 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Why Capital Velocity?</span>
+            <span class="mt-1 leading-none">Real Estate Loans</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/dashboard"
+          location.pathname === "/project99"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/dashboard"
+            href="/project99"
           >
             <div class="css-0">
               <svg
@@ -410,21 +501,16 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Partner</span>
+            <span class="mt-1 leading-none">Project Epic 99</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/contact"
-            ? "border-gray-600"
-            : "border-gray-300"
+          location.pathname === "/WhyUs" ? "border-gray-600" : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/contact"
+            href="/WhyUs"
           >
-            <span class="min-w-[17px] items-center justify-center bg-alert-red-100 p-1 text-center text-[8px] font-semibold uppercase tracking-wider text-white absolute w-[18px] h-[18px] right-[18px] top-[14px] rounded-full border-[4px] border-white">
-              {" "}
-            </span>
             <div class="css-0">
               <svg
                 width="28"
@@ -467,17 +553,17 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Company</span>
+            <span class="mt-1 leading-none">Why Capital Velocity?</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/messages"
+          location.pathname === "/becomePartner"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/messages"
+            href="/becomePartner"
           >
             <div class="css-0">
               <svg
@@ -533,7 +619,7 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Contact Us</span>
+            <span class="mt-1 leading-none">Partner</span>
           </a>
           {/* <button class="whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-100 disabled:bg-primary-180 py-2 relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out hover:border-gray-300 hover:bg-transparent hover:text-neutral-900 border-transparent text-neutral-700">
             <span class="absolute right-[-3px] top-[18px] min-w-[17px] items-center justify-center rounded p-1 text-center text-[8px] font-semibold uppercase tracking-wider text-white bg-secondary-700">
@@ -589,13 +675,13 @@ function Navbar() {
             <span class="mt-1 leading-none">AI Website</span>
           </button> */}
 
-          {/* <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out hover:border-gray-300 hover:bg-transparent hover:text-neutral-900 text-neutral-700 ${
-              location.pathname === "/affiliateDashboard"
-                ? "border-gray-600"
-                : ""
-            }`}
-            href="/affiliateDashboard"
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
+        ${
+          location.pathname === "/about" ? "border-gray-600" : "border-gray-300"
+        } 
+        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            href="/about"
           >
             <div className="css-0">
               <svg
@@ -644,94 +730,96 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span className="mt-1 leading-none">Affiliate Marketing</span>
-          </a> */}
+            <span className="mt-1 leading-none">Company</span>
+          </a>
 
-          {/* {hasAdmin && (
-            <a
-              className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out hover:border-gray-300 hover:bg-transparent hover:text-neutral-900 text-neutral-700 ${
-                location.pathname === "/editgrant" ? "border-gray-600" : ""
-              }`}
-              href="/editgrant"
-            >
-              <div className="css-0">
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 25 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect
-                    x="12.5"
-                    y="17.252"
-                    width="3.00125"
-                    height="3.75156"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></rect>
-                  <rect
-                    x="15.5"
-                    y="13.001"
-                    width="3.00125"
-                    height="8.00333"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></rect>
-                  <path
-                    d="M20.5032 9.99901V4.99693C20.5032 3.8919 19.6074 2.99609 18.5023 2.99609H5.49693C4.3919 2.99609 3.49609 3.8919 3.49609 4.99693V17.0019C3.49609 18.107 4.3919 19.0028 5.49693 19.0028H9.49859"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M9.74805 10.9992H12.4992"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M9.74805 7.12326H16.5009"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M6.6213 11.1243C6.69037 11.1243 6.74635 11.0683 6.74635 10.9992C6.74635 10.9302 6.69037 10.8742 6.6213 10.8742C6.55224 10.8742 6.49625 10.9302 6.49625 10.9992C6.49625 11.0683 6.55224 11.1243 6.6213 11.1243"
-                    stroke="currentColor"
-                    strokeWidth="1.75"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <path
-                    d="M6.6213 7.24831C6.69037 7.24831 6.74635 7.19232 6.74635 7.12326C6.74635 7.05419 6.69037 6.9982 6.6213 6.9982C6.55224 6.9982 6.49625 7.05419 6.49625 7.12326C6.49625 7.19232 6.55224 7.24831 6.6213 7.24831"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></path>
-                  <rect
-                    x="18.502"
-                    y="15.252"
-                    width="3.00125"
-                    height="5.7524"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  ></rect>
-                </svg>
-              </div>
-              <span className="mt-1 leading-none">Admin Tasks</span>
-            </a>
-          )} */}
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
+        ${
+          location.pathname === "/contactUs"
+            ? "border-gray-600"
+            : "border-gray-300"
+        } 
+        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            href="/contactUs"
+          >
+            <div className="css-0">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 25 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <rect
+                  x="12.5"
+                  y="17.252"
+                  width="3.00125"
+                  height="3.75156"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></rect>
+                <rect
+                  x="15.5"
+                  y="13.001"
+                  width="3.00125"
+                  height="8.00333"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></rect>
+                <path
+                  d="M20.5032 9.99901V4.99693C20.5032 3.8919 19.6074 2.99609 18.5023 2.99609H5.49693C4.3919 2.99609 3.49609 3.8919 3.49609 4.99693V17.0019C3.49609 18.107 4.3919 19.0028 5.49693 19.0028H9.49859"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M9.74805 10.9992H12.4992"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M9.74805 7.12326H16.5009"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M6.6213 11.1243C6.69037 11.1243 6.74635 11.0683 6.74635 10.9992C6.74635 10.9302 6.69037 10.8742 6.6213 10.8742C6.55224 10.8742 6.49625 10.9302 6.49625 10.9992C6.49625 11.0683 6.55224 11.1243 6.6213 11.1243"
+                  stroke="currentColor"
+                  strokeWidth="1.75"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <path
+                  d="M6.6213 7.24831C6.69037 7.24831 6.74635 7.19232 6.74635 7.12326C6.74635 7.05419 6.69037 6.9982 6.6213 6.9982C6.55224 6.9982 6.49625 7.05419 6.49625 7.12326C6.49625 7.19232 6.55224 7.24831 6.6213 7.24831"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></path>
+                <rect
+                  x="18.502"
+                  y="15.252"
+                  width="3.00125"
+                  height="5.7524"
+                  stroke="currentColor"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                ></rect>
+              </svg>
+            </div>
+            <span className="mt-1 leading-none">Contact Us</span>
+          </a>
         </div>
       </Container>
     </AppBar>

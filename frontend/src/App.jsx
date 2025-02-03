@@ -22,13 +22,14 @@ import Login from "./pages/Login";
 import UserDashHome from "./pages/UserDashHome";
 import UserDashFileUpload from "./pages/UserDashFileUpload";
 import LoanForm from "./pages/LoanForm";
+import LoanForm2 from "./pages/LoanForm2";
 import Project99 from "./pages/Project99";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <LegacyNavbar />
+      {/* <LegacyNavbar /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
@@ -43,6 +44,7 @@ function App() {
         <Route path="/userDash" element={<UserDashHome />} />
         <Route path="/userDashFile" element={<UserDashFileUpload />} />
         <Route path="/loan-form-realestate" element={<LoanForm />}></Route>
+        <Route path="/loan-form-business-loans" element={<LoanForm2 />}></Route>
       </Routes>
       <Footer />
     </Router>
