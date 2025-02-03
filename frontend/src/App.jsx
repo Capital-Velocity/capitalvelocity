@@ -12,6 +12,7 @@ import "./App.css";
 import Home from "./pages/home";
 import WhyUs from "./pages/WhyUs";
 import About from "./pages/About";
+import ContactUs from "./pages/ContactUs";
 import Landing from "./pages/landing";
 import Register from "./pages/Register";
 import DsciCalculator from "./Calculators/DsciCalculator";
@@ -30,6 +31,7 @@ function App() {
         <Route path="/" element={<Landing />} />
         <Route path="/WhyUs" element={<WhyUs />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/contactUs" element={<ContactUs />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
