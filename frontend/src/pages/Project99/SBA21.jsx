@@ -1,38 +1,24 @@
-import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
-import Container from "../../screens/Container";
-import Typography from "@mui/material/Typography";
-import CheckoutSteps from "./CheckoutSteps3";
-import Radio from "@mui/material/Radio";
-import {
-  Table,
-  Paper,
-  TableContainer,
-  TableRow,
-  TableCell,
-  Button,
-  TableBody,
-  Box,
-  Modal,
-  IconButton,
-  TableHead,
-} from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import RadioGroup from "@mui/material/RadioGroup";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import dayjs from "dayjs";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import FormLabel from "@mui/material/FormLabel";
-import Slider from "@mui/material/Slider";
 import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  Box,
+  Button,
+  IconButton,
+  Modal,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import Grid from "@mui/material/Grid";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import React, { useState } from "react";
+import Container from "../../screens/Container";
+import CheckoutSteps from "./CheckoutSteps3";
 
 function SBA21({ formData, setFormData }) {
   const [selectedProperties, setSelectedProperties] = useState([]);

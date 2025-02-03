@@ -1,15 +1,13 @@
-import React, { useState } from "react";
 import { Container, Grid, Paper, Typography } from "@mui/material";
-import { useDropzone } from "react-dropzone";
-import axios from "axios";
-import Cookies from "js-cookie";
-import CryptoJS from "crypto-js";
-import CheckoutSteps from "./CheckoutSteps3";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
-import UserDashFileUpload from "../../pages/UserDashFileUpload";
+import axios from "axios";
+import Cookies from "js-cookie";
+import React, { useState } from "react";
+import { useDropzone } from "react-dropzone";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CheckoutSteps from "./CheckoutSteps3";
 function SBA26() {
   const [selectedFile, setSelectedFile] = useState(null);
 

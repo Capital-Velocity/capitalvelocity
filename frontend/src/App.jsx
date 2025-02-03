@@ -22,6 +22,7 @@ import Login from "./pages/Login";
 import UserDashHome from "./pages/UserDashHome";
 import UserDashFileUpload from "./pages/UserDashFileUpload";
 import LoanForm from "./pages/LoanForm";
+import Project99 from "./pages/Project99";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
         <Route path="/WhyUs" element={<WhyUs />}></Route>
         <Route path="/about" element={<About />}></Route>
+        <Route path="/project99" element={<Project99 />}></Route>
         <Route path="/contactUs" element={<ContactUs />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
