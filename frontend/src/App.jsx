@@ -10,7 +10,8 @@ import LegacyNavbar from "./components/navbar";
 import Footer from "./components/footer";
 import "./App.css";
 import Home from "./pages/home";
-import AboutUs from "./pages/aboutus";
+import WhyUs from "./pages/WhyUs";
+
 import Landing from "./pages/landing";
 import Register from "./pages/Register";
 import DsciCalculator from "./Calculators/DsciCalculator";
@@ -23,11 +24,11 @@ import LoanForm from "./pages/LoanForm";
 function App() {
   return (
     <Router>
-      {/* <Navbar /> */}
+      <Navbar />
       <LegacyNavbar />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
+        <Route path="/WhyUs" element={<WhyUs />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
