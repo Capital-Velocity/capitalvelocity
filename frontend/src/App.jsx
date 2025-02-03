@@ -24,8 +24,11 @@ import UserDashFileUpload from "./pages/UserDashFileUpload";
 import LoanForm from "./pages/LoanForm";
 import LoanForm2 from "./pages/LoanForm2";
 import Project99 from "./pages/Project99";
+import Cookies from "js-cookie";
 
 function App() {
+  const firstnameCookie = Cookies.get("firstName");
+
   return (
     <Router>
       <Navbar />
@@ -35,16 +38,49 @@ function App() {
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
         <Route path="/WhyUs" element={<WhyUs />}></Route>
         <Route path="/about" element={<About />}></Route>
-        <Route path="/project99" element={<Project99 />}></Route>
         <Route path="/contactUs" element={<ContactUs />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
-        <Route path="/userDash" element={<UserDashHome />} />
-        <Route path="/userDashFile" element={<UserDashFileUpload />} />
-        <Route path="/loan-form-realestate" element={<LoanForm />}></Route>
-        <Route path="/loan-form-business-loans" element={<LoanForm2 />}></Route>
+        <Route
+          path="/userDash"
+          element={
+            firstnameCookie ? (
+              <UserDashHome />
+            ) : (
+              <Navigate to="/login"></Navigate>
+            )
+          }
+        />{" "}
+        <Route
+          path="/userDashFile"
+          element={
+            firstnameCookie ? (
+              <UserDashFileUpload />
+            ) : (
+              <Navigate to="/login"></Navigate>
+            )
+          }
+        />{" "}
+        <Route
+          path="/loan-form-realestate"
+          element={
+            firstnameCookie ? <LoanForm /> : <Navigate to="/login"></Navigate>
+          }
+        />{" "}
+        <Route
+          path="/loan-form-business-loans"
+          element={
+            firstnameCookie ? <LoanForm2 /> : <Navigate to="/login"></Navigate>
+          }
+        />{" "}
+        <Route
+          path="/project99"
+          element={
+            firstnameCookie ? <Project99 /> : <Navigate to="/login"></Navigate>
+          }
+        />{" "}
       </Routes>
       <Footer />
     </Router>
