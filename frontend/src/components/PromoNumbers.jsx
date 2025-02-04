@@ -1,91 +1,68 @@
-import Box from "@mui/material/Box";
-import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Grid";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
-import VisibilitySensor from "react-visibility-sensor";
 
-const mock = [
+const stats = [
+  { id: 1, name: "funded through our partners", value: 12, suffix: "+BILLION" },
+  { id: 2, name: "lenders in our network", value: 100, suffix: "+" },
   {
-    title: 12,
-    subtitle: "funded through our partners",
-    suffix: "+BILLION",
-  },
-  {
-    title: 100,
-    subtitle: "lenders in our network",
-    suffix: "+",
-  },
-  {
-    title: 370000,
-    subtitle: "loans funded through our partners",
+    id: 3,
+    name: "loans funded through our partners",
+    value: 370000,
     suffix: "+",
   },
 ];
 
-const PromoNumbers = () => {
-  const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up("md"), {
-    defaultMatches: true,
-  });
-
+const AnimatedStats = () => {
   const [viewPortEntered, setViewPortEntered] = useState(false);
-  const setViewPortVisibility = (isVisible) => {
-    if (viewPortEntered) {
-      return;
+
+  useEffect(() => {
+    // IntersectionObserver to detect when the component enters the viewport
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setViewPortEntered(true);
+          observer.disconnect(); // stop observing after first intersection
+        }
+      },
+      { threshold: 0.5 } // trigger when 50% of the element is in the viewport
+    );
+
+    // Targeting the section to observe
+    const section = document.getElementById("stats-section");
+    if (section) {
+      observer.observe(section);
     }
 
-    setViewPortEntered(isVisible);
-  };
+    return () => observer.disconnect(); // Cleanup observer on component unmount
+  }, []);
 
   return (
-    <Box style={{ backgroundColor: "#c0dced" }}>
-      <div style={{ padding: 3, backgroundColor: "#c0dced" }}>
-        <CardContent style={{ backgroundColor: "#c0dced" }}>
-          <Box marginY={4}>
-            <Grid container spacing={2}>
-              {mock.map((item, i) => (
-                <Grid key={i} item xs={12} md={4}>
-                  <Typography
-                    variant="h3"
-                    align={"center"}
-                    style={{ color: "black" }}
-                    gutterBottom
-                  >
-                    <Box fontWeight={600}>
-                      <VisibilitySensor
-                        onChange={(isVisible) =>
-                          setViewPortVisibility(isVisible)
-                        }
-                        delayedCall
-                      >
-                        <CountUp
-                          duration={2}
-                          end={viewPortEntered ? item.title : 0}
-                          start={0}
-                          suffix={item.suffix}
-                        />
-                      </VisibilitySensor>
-                    </Box>
-                  </Typography>
-                  <Typography
-                    color="text.secondary"
-                    align={"center"}
-                    component="p"
-                  >
-                    {item.subtitle}
-                  </Typography>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </CardContent>
+    <div className="bg-blue-100 py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl
+          id="stats-section"
+          className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3"
+        >
+          {stats.map((stat) => (
+            <div
+              key={stat.id}
+              className="mx-auto flex max-w-xs flex-col gap-y-4"
+            >
+              <dt className="text-base/7 text-gray-600">{stat.name}</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+                <CountUp
+                  start={0}
+                  end={viewPortEntered ? stat.value : 0}
+                  duration={2}
+                  suffix={stat.suffix}
+                />
+              </dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </Box>
+    </div>
   );
 };
 
-export default PromoNumbers;
+export default AnimatedStats;

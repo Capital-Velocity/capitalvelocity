@@ -21,6 +21,8 @@ import { Link } from "@mui/material";
 import Cookies from "js-cookie";
 import { Grid, Box, Typography } from "@mui/material";
 import Container from "../screens/Container";
+import PromoNumbers from "../components/PromoNumbers";
+
 const mock = [
   {
     title: "Fix and Flip",
@@ -138,91 +140,8 @@ function Landing() {
     <div>
       {!isMobile && ( // Render HomeHero3 only on non-mobile screens
         <div>
-          <Lendio />
-          <div
-            style={{
-              marginTop: 4,
-              backgroundColor: "#c5dfee",
-              paddingLeft: 200,
-              paddingRight: 200,
-              paddingTop: 0,
-              marginBottom: 10,
-              height: 400,
-            }}
-          >
-            <div>
-              <Grid container spacing={2}>
-                <Grid item sm={8} xs={12}>
-                  <Typography variant="h4" sx={{ color: "black" }}>
-                    Your One Stop Shop for <br></br>
-                    <strong style={{ fontSize: 40 }}>Business</strong> and{" "}
-                    <strong style={{ fontSize: 40 }}>Real Estate loans.</strong>
-                  </Typography>
-
-                  <Typography
-                    variant="body1"
-                    sx={{ color: "black", marginTop: 2 }}
-                  >
-                    See if your{" "}
-                    <strong style={{ fontSize: 26 }}>REAL ESTATE </strong>is
-                    eligible for{" "}
-                    <strong style={{ fontSize: 26 }}>financing.</strong>
-                  </Typography>
-                  <FormControl sx={{ width: "20ch" }} variant="outlined">
-                    <OutlinedInput
-                      style={{ backgroundColor: "white", height: "50px" }}
-                      place
-                      id="outlined-adornment-weight"
-                      startAdornment={
-                        <InputAdornment position="start">$</InputAdornment>
-                      }
-                      aria-describedby="outlined-weight-helper-text"
-                    />
-                  </FormControl>
-                  {firstnameCookie ? (
-                    <Button
-                      href="/loan-form-realestate"
-                      variant="contained"
-                      style={{
-                        backgroundColor: "#498dd6",
-                        borderRadius: "30px",
-                        marginLeft: "10px",
-                        marginTop: "5px",
-                      }}
-                      size="small"
-                    >
-                      Check Eligibility
-                    </Button>
-                  ) : (
-                    <Button
-                      href="/register"
-                      variant="contained"
-                      style={{
-                        backgroundColor: "#498dd6",
-                        borderRadius: "30px",
-                        marginLeft: "10px",
-                        marginTop: "5px",
-                      }}
-                      size="small"
-                    >
-                      Check Eligibility
-                    </Button>
-                  )}
-                </Grid>
-                <Grid item sm={4} xs={12} style={{ paddingTop: 0 }}>
-                  <img
-                    src={lendio1}
-                    alt="Your Image Alt Text"
-                    style={{
-                      paddingTop: 0,
-                      width: "400px",
-                    }}
-                  />
-                </Grid>
-              </Grid>
-            </div>
-          </div>
           <div>
+            <PromoNumbers />
             <Categories2 />
           </div>
         </div>
