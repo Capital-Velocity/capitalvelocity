@@ -185,11 +185,10 @@ const Categories2 = () => {
   }, []); // Empty dependency array means this effect runs once on component mount
 
   return (
-    <div>
+    <div className="bg-blue-100 pt-6">
       <Box>
-        {authenticated ? ( // Conditional rendering based on authentication
-          // Render your routes here
-          <Box>
+        <Box>
+          <Container>
             <Typography
               ref={headingRef}
               className={` fade-in ${
@@ -197,8 +196,10 @@ const Categories2 = () => {
               }`}
               variant="h4"
               align={"center"}
+              data-aos={"fade-up"}
               gutterBottom
               sx={{
+                marginTop: -8,
                 fontWeight: 300,
                 color: "black",
               }}
@@ -206,6 +207,12 @@ const Categories2 = () => {
               Choose what's right for you
             </Typography>
             <Typography
+              ref={paragraphRef}
+              className={` fade-in ${
+                isParagraphVisible
+                  ? "fade-in-show paragraph-fade-in-show"
+                  : "fade-in-hide"
+              }`}
               align={"center"}
               color={"text.secondary"}
               data-aos={"fade-up"}
@@ -214,179 +221,78 @@ const Categories2 = () => {
               Find the financing solution that fits your real estate and
               business needs and your wallet. Secure your loan today.
             </Typography>
-            <Container style={{ marginTop: "-50px" }}>
-              <Grid container spacing={2}>
-                {mock.map((item, i) => (
-                  <Grid item xs={6} md={6} key={i}>
-                    <Link href={item.link} style={{ textDecoration: "none" }}>
+            <Grid
+              ref={paragraphRef}
+              className={` fade-in ${
+                isParagraphVisible
+                  ? "fade-in-show paragraph-fade-in-show-extra"
+                  : "fade-in-hide"
+              }`}
+              container
+              spacing={2}
+            >
+              {mock.map((item, i) => (
+                <Grid item xs={6} md={6} key={i}>
+                  <Link href={item.link} style={{ textDecoration: "none" }}>
+                    <Box
+                      display={"block"}
+                      width={1}
+                      height={1}
+                      sx={{
+                        textDecoration: "none",
+                        transition: "all .2s ease-in-out",
+                        "&:hover": {
+                          transform: "translateY(-4px)",
+                        },
+                      }}
+                    >
                       <Box
-                        display={"block"}
+                        component={Card}
+                        padding={2}
                         width={1}
                         height={1}
-                        sx={{
-                          backgroundColor: "#498dd6",
-                          textDecoration: "none",
-                          transition: "all .2s ease-in-out",
-                          "&:hover": {
-                            transform: "translateY(-4px)",
-                          },
-                        }}
+                        borderRadius={2}
+                        bgcolor={"#498dd6"}
+                        data-aos={"fade-up"}
+                        data-aos-delay={i * 100}
+                        data-aos-offset={100}
+                        data-aos-duration={600}
                       >
                         <Box
-                          component={Card}
-                          padding={2}
-                          width={1}
-                          height={1}
-                          borderRadius={2}
-                          bgcolor={"#498dd6"}
-                          data-aos={"fade-up"}
-                          data-aos-delay={i * 100}
-                          data-aos-offset={100}
-                          data-aos-duration={600}
+                          position={"relative"}
+                          display={"flex"}
+                          justifyContent={"center"}
                         >
                           <Box
-                            position={"relative"}
-                            display={"flex"}
-                            justifyContent={"center"}
-                          >
-                            <Box
-                              sx={{
-                                color: "white",
-                                bottom: 0,
-                              }}
-                            >
-                              {item.icon}
-                            </Box>
-                          </Box>
-                          <Typography
-                            variant={"subtitle1"}
-                            align={"center"}
-                            style={{ textDecoration: "none", color: "white" }}
                             sx={{
-                              fontWeight: 500,
-                              marginTop: 2,
-                              textDecoration: "none",
+                              color: "white",
+                              bottom: 0,
                             }}
                           >
-                            {item.title}
-                          </Typography>
+                            {item.icon}
+                          </Box>
                         </Box>
-                      </Box>
-                    </Link>
-                  </Grid>
-                ))}
-              </Grid>
-            </Container>
-          </Box>
-        ) : (
-          // Render login screen or redirect here
-          <Box>
-            <Container>
-              <Typography
-                ref={headingRef}
-                className={` fade-in ${
-                  isHeadingVisible ? "fade-in-show" : "fade-in-hide"
-                }`}
-                variant="h4"
-                align={"center"}
-                data-aos={"fade-up"}
-                gutterBottom
-                sx={{
-                  marginTop: -8,
-                  fontWeight: 300,
-                  color: "black",
-                }}
-              >
-                Choose what's right for you
-              </Typography>
-              <Typography
-                ref={paragraphRef}
-                className={` fade-in ${
-                  isParagraphVisible
-                    ? "fade-in-show paragraph-fade-in-show"
-                    : "fade-in-hide"
-                }`}
-                align={"center"}
-                color={"text.secondary"}
-                data-aos={"fade-up"}
-                style={{ marginBottom: 22 }}
-              >
-                Find the financing solution that fits your real estate and
-                business needs and your wallet. Secure your loan today.
-              </Typography>
-              <Grid
-                ref={paragraphRef}
-                className={` fade-in ${
-                  isParagraphVisible
-                    ? "fade-in-show paragraph-fade-in-show-extra"
-                    : "fade-in-hide"
-                }`}
-                container
-                spacing={2}
-              >
-                {mockUnauthentic.map((item, i) => (
-                  <Grid item xs={6} md={6} key={i}>
-                    <Link href={item.link} style={{ textDecoration: "none" }}>
-                      <Box
-                        display={"block"}
-                        width={1}
-                        height={1}
-                        sx={{
-                          textDecoration: "none",
-                          transition: "all .2s ease-in-out",
-                          "&:hover": {
-                            transform: "translateY(-4px)",
-                          },
-                        }}
-                      >
-                        <Box
-                          component={Card}
-                          padding={2}
-                          width={1}
-                          height={1}
-                          borderRadius={2}
-                          bgcolor={"#498dd6"}
-                          data-aos={"fade-up"}
-                          data-aos-delay={i * 100}
-                          data-aos-offset={100}
-                          data-aos-duration={600}
+                        <Typography
+                          variant={"subtitle1"}
+                          align={"center"}
+                          style={{ textDecoration: "none", color: "white" }}
+                          sx={{
+                            fontWeight: 500,
+                            marginTop: 2,
+                            textDecoration: "none",
+                          }}
                         >
-                          <Box
-                            position={"relative"}
-                            display={"flex"}
-                            justifyContent={"center"}
-                          >
-                            <Box
-                              sx={{
-                                color: "white",
-                                bottom: 0,
-                              }}
-                            >
-                              {item.icon}
-                            </Box>
-                          </Box>
-                          <Typography
-                            variant={"subtitle1"}
-                            align={"center"}
-                            style={{ textDecoration: "none", color: "white" }}
-                            sx={{
-                              fontWeight: 500,
-                              marginTop: 2,
-                              textDecoration: "none",
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
-                        </Box>
+                          {item.title}
+                        </Typography>
                       </Box>
-                    </Link>
-                  </Grid>
-                ))}
-              </Grid>
-              {/* Render login form or redirection */}
-            </Container>
-          </Box>
-        )}
+                    </Box>
+                  </Link>
+                </Grid>
+              ))}
+            </Grid>
+            {/* Render login form or redirection */}
+          </Container>
+        </Box>
       </Box>
     </div>
   );
