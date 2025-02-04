@@ -87,22 +87,14 @@ function LoanMatching() {
         >
           <Container>
             <Box>
-              <Typography
+              <p
                 ref={headingRef}
-                className={` fade-in ${
+                className={`text-center text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl fade-in ${
                   isHeadingVisible ? "fade-in-show" : "fade-in-hide"
                 }`}
-                variant="h4"
-                align={"center"}
-                gutterBottom
-                sx={{
-                  color: "black",
-                  fontWeight: 300,
-                  marginTop: theme.spacing(0),
-                }}
               >
                 How Our Loan Matching Process Works.
-              </Typography>
+              </p>
             </Box>
           </Container>
         </Box>

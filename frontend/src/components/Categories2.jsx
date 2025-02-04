@@ -189,38 +189,26 @@ const Categories2 = () => {
       <Box>
         <Box>
           <Container>
-            <Typography
+            <p
               ref={headingRef}
-              className={` fade-in ${
+              className={`text-center text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl fade-in ${
                 isHeadingVisible ? "fade-in-show" : "fade-in-hide"
               }`}
-              variant="h4"
-              align={"center"}
-              data-aos={"fade-up"}
-              gutterBottom
-              sx={{
-                marginTop: -8,
-                fontWeight: 300,
-                color: "black",
-              }}
             >
               Choose what's right for you
-            </Typography>
-            <Typography
+            </p>
+            <p
               ref={paragraphRef}
-              className={` fade-in ${
+              className={`text-center mt-6 mb-6 text-lg/8 text-gray-600 fade-in ${
                 isParagraphVisible
                   ? "fade-in-show paragraph-fade-in-show"
                   : "fade-in-hide"
               }`}
-              align={"center"}
-              color={"text.secondary"}
-              data-aos={"fade-up"}
-              style={{ marginBottom: 22 }}
             >
               Find the financing solution that fits your real estate and
               business needs and your wallet. Secure your loan today.
-            </Typography>
+            </p>
+
             <Grid
               ref={paragraphRef}
               className={` fade-in ${

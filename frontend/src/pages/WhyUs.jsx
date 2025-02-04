@@ -59,22 +59,15 @@ function WhyUs() {
               isHeadingVisible ? "fade-in-show" : "fade-in-hide"
             }`}
           > */}
-            <Typography
+
+            <p
               ref={headingRef}
-              className={` fade-in ${
+              className={`text-center text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl fade-in ${
                 isHeadingVisible ? "fade-in-show" : "fade-in-hide"
               }`}
-              variant="h4"
-              align={"center"}
-              gutterBottom
-              sx={{
-                color: "black",
-                fontWeight: 300,
-                marginTop: theme.spacing(1),
-              }}
             >
               Why Capital Velocity?
-            </Typography>
+            </p>
 
             <Grid container spacing={2} style={{ marginTop: "30px" }}>
               <Grid item sm={6} style={{ marginTop: "50px" }}>
