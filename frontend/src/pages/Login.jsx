@@ -127,14 +127,14 @@ const LoginCover = () => {
                       Login
                     </Typography>
 
-                    <Typography
+                    {/* <Typography
                       variant="h4"
                       sx={{
                         fontWeight: 700,
                       }}
                     >
                       Welcome back
-                    </Typography>
+                    </Typography> */}
                     <Typography color="text.secondary">
                       Login to manage your account.
                     </Typography>
