@@ -59,7 +59,7 @@ function LoanMatching() {
                 sx={{
                   color: "black",
                   fontWeight: 300,
-                  marginTop: theme.spacing(1),
+                  marginTop: theme.spacing(0),
                 }}
               >
                 How Our Loan Matching Process Works.

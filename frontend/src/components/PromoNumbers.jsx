@@ -1,68 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import CountUp from "react-countup";
 
 const stats = [
-  { id: 1, name: "funded through our partners", value: 12, suffix: "+BILLION" },
-  { id: 2, name: "lenders in our network", value: 100, suffix: "+" },
-  {
-    id: 3,
-    name: "loans funded through our partners",
-    value: 370000,
-    suffix: "+",
-  },
+  { label: "Funded through our partners", value: 12, suffix: "+Billion" },
+  { label: "Lenders in our network", value: 100, suffix: "+" },
+  { label: "Loans funded through our partners", value: 370000, suffix: "+" },
 ];
 
-const AnimatedStats = () => {
+const MissionSection = () => {
   const [viewPortEntered, setViewPortEntered] = useState(false);
+  const statsRef = useRef(null);
 
   useEffect(() => {
-    // IntersectionObserver to detect when the component enters the viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setViewPortEntered(true);
-          observer.disconnect(); // stop observing after first intersection
+          setViewPortEntered(true); // Trigger CountUp when the section becomes visible
+          observer.disconnect(); // Disconnect observer once it's triggered
         }
       },
-      { threshold: 0.5 } // trigger when 50% of the element is in the viewport
+      {
+        threshold: 0.5, // Trigger when 50% of the section is visible
+      }
     );
 
-    // Targeting the section to observe
-    const section = document.getElementById("stats-section");
-    if (section) {
-      observer.observe(section);
+    if (statsRef.current) {
+      observer.observe(statsRef.current); // Start observing the stats section
     }
 
-    return () => observer.disconnect(); // Cleanup observer on component unmount
+    return () => {
+      if (statsRef.current) {
+        observer.unobserve(statsRef.current); // Clean up the observer
+      }
+    };
   }, []);
 
   return (
-    <div className="bg-blue-100 py-24 sm:py-32">
+    <div className="bg-blue-100 py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <dl
-          id="stats-section"
-          className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3"
-        >
-          {stats.map((stat) => (
-            <div
-              key={stat.id}
-              className="mx-auto flex max-w-xs flex-col gap-y-4"
-            >
-              <dt className="text-base/7 text-gray-600">{stat.name}</dt>
-              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                <CountUp
-                  start={0}
-                  end={viewPortEntered ? stat.value : 0}
-                  duration={2}
-                  suffix={stat.suffix}
-                />
-              </dd>
+        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
+          <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+            It takes a little money to make a big difference.{" "}
+          </h2>
+          <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
+            <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
+              <p className="text-xl/8 text-gray-600">
+                Banks are turning down 8 out of 10 small business loan
+                applications. That means a lot of people have to give up on
+                their dreams because they don't have the money they need to
+                start or growth their business and/or start or complete their
+                real estate project.
+              </p>
+              <p className="mt-10 max-w-xl text-base/7 text-gray-700">
+                Capital Velocity is changing that. We're helping small business
+                owners and real estate entrepreneurs get the loans they need to
+                turn their ideas into reality. We're backing their ambition so
+                they can be the builders of American dreams.
+              </p>
+              <p className="mt-10 max-w-xl text-base/7 text-gray-700">
+                A strong, successful America starts with small businesses.
+              </p>
             </div>
-          ))}
-        </dl>
+            <div
+              ref={statsRef} // Ref to target the section for IntersectionObserver
+              className="lg:flex lg:flex-auto lg:justify-center"
+            >
+              <dl className="w-64 space-y-8 xl:w-80">
+                {stats.map((stat) => (
+                  <div
+                    key={stat.label}
+                    className="flex flex-col-reverse gap-y-4"
+                  >
+                    <dt className="text-base/7 text-gray-600">{stat.label}</dt>
+                    <dd className="text-5xl font-semibold tracking-tight text-gray-900">
+                      <CountUp
+                        start={0}
+                        end={viewPortEntered ? stat.value : 0}
+                        duration={2}
+                        suffix={stat.suffix}
+                      />
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AnimatedStats;
+export default MissionSection;

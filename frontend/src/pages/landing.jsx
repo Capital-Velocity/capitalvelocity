@@ -22,6 +22,7 @@ import Cookies from "js-cookie";
 import { Grid, Box, Typography } from "@mui/material";
 import Container from "../screens/Container";
 import PromoNumbers from "../components/PromoNumbers";
+import WhyUs from "./WhyUs";
 
 const mock = [
   {
@@ -142,6 +143,7 @@ function Landing() {
         <div>
           <div>
             <PromoNumbers />
+            <WhyUs />
             <Categories2 />
           </div>
         </div>
