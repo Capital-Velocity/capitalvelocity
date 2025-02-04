@@ -118,7 +118,7 @@ export default function CalculatorHero() {
         ref={featuresRef}
         className={`mx-auto mt-16 max-w-7xl px-6 sm:mt-20 md:mt-24 lg:px-8 ${
           isFeaturesVisible
-            ? "fade-in-show paragraph-fade-in-show-extra"
+            ? "fade-in-show paragraph-fade-in-show"
             : "fade-in-hide"
         }`}
       >
