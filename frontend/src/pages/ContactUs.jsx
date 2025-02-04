@@ -95,7 +95,7 @@ const ContactUs = () => {
     <div>
       <ToastContainer />
 
-      <Box minHeight={"100vh"} display={"flex"} marginTop={-13}>
+      <Box minHeight={"100vh"} display={"flex"} marginTop={0}>
         <Box flex={"1 1 30%"} maxWidth={"30%"} maxHeight={"100vh"} top={0}>
           <Box
             display={"flex"}
