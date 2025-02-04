@@ -118,7 +118,7 @@ const FixandFlipCalc = () => {
     <div>
       <Box style={{ backgroundColor: "#498dd6" }}>
         <ToastContainer />
-        <Grid container spacing={2}>
+        <Grid container spacing={0}>
           <Grid item sm={6}>
             <Typography
               variant="button"
