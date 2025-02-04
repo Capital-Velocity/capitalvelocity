@@ -20,7 +20,7 @@ const features = [
   {
     name: "Fix and Flip",
     description:
-      "How much does it cost to flip a house? How much money do I need to start flipping properties? What kind of profit can I make on a fix-and-flip? If you don’t have the answers yet, you’re not alone. The key to a successful project is understanding the complete cost breakdown. Beyond just the purchase price and rehab expenses, it’s vital to account for every detail of the project. Our Fix and Flip Calculator helps you do exactly that by calculating your ARV (After Repair Value), estimating potential profit, and providing insight into your hard money loan terms. With a clear understanding of costs and projected returns, you can identify and mitigate potential risks before they arise. Start planning your next successful fix-and-flip today with our free, easy-to-use calculator.",
+      "How much does it cost to flip a house, and what kind of profit can you make? Understanding the full cost breakdown is crucial to a successful project. Our Fix and Flip Calculator helps by estimating your ARV (After Repair Value), potential profit, and hard money loan terms. With this clear insight into costs and projected returns, you can make more informed decisions and reduce risks. Start planning your next fix-and-flip with our easy-to-use calculator!",
     href: "/FixandFlipCalc",
     icon: LockClosedIcon,
   },
