@@ -39,7 +39,7 @@ dotenv.config();
 
 const app = express();
 
-const file = fs.readFileSync("./CF54528929BDA81AA0E01E6F582FB9B6.txt");
+const file = fs.readFileSync("./CA998AD09433FF13233BE933E665A870.txt");
 const key = fs.readFileSync("private.key");
 const cert = fs.readFileSync("certificate.crt");
 
@@ -56,9 +56,9 @@ mongoose.connect(
 );
 
 app.get(
-  "/.well-known/pki-validation/CF54528929BDA81AA0E01E6F582FB9B6.txt",
+  "/.well-known/pki-validation/CA998AD09433FF13233BE933E665A870.txt",
   (req, res) => {
-    res.sendFile("/home/ubuntu/server/CF54528929BDA81AA0E01E6F582FB9B6.txt");
+    res.sendFile("/home/ubuntu/server/CA998AD09433FF13233BE933E665A870.txt");
   }
 );
 app.use("/api/users", userRouter);
@@ -77,12 +77,18 @@ app.use("/api/project99", project99Router);
 app.use("/api/s3", s3UploadRouter);
 const __dirname = path.resolve();
 
-const port = process.env.PORT || 8080;
+// const port = process.env.PORT || 4000;
 //const port = process.env.PORT || 3001;
-const httpServer = http.createServer(cred, app);
 
-httpServer.listen(port, () => {
-  console.log(`Serve at https://localhost:${port}`);
+// const httpServer = http.createServer(cred, app);
+// httpServer.listen(port, () => {
+//   console.log(`Serve at https://localhost:${port}`);
+// });
+
+// // https server, used in production
+const httpServer = https.createServer(cred, app);
+httpServer.listen(4000, () => {
+  console.log(`Server is running on port ${4000}`);
 });
 
 // SEND THE RESET PASSWORD
