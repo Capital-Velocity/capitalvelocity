@@ -77,7 +77,7 @@ const MissionSection = () => {
               isHeadingVisible ? "fade-in-show" : "fade-in-hide"
             }`}
           >
-            <span className="">
+            <span className="text-4xl">
               It takes a little money to make a big difference.{" "}
             </span>{" "}
           </h2>
@@ -100,7 +100,7 @@ const MissionSection = () => {
               {/* <p className="mt-10 max-w-xl text-base/7 text-gray-700"> */}
               <p
                 ref={paragraphRef}
-                className={`mt-10 max-w-xl text-base/7 text-gray-700 ${
+                className={`mt-10 max-w-xl text-xl/8 text-gray-700 ${
                   isParagraphVisible
                     ? "fade-in-show paragraph-fade-in-show-extra"
                     : "fade-in-hide"
