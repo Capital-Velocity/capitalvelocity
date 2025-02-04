@@ -25,6 +25,8 @@ import LoanForm from "./pages/LoanForm";
 import LoanForm2 from "./pages/LoanForm2";
 import Project99 from "./pages/Project99";
 import Cookies from "js-cookie";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsofUse from "./pages/TermsofUse";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -43,6 +45,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
+        <Route path="/termsofUse" element={<TermsofUse />}></Route>
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
         <Route
           path="/userDash"
           element={

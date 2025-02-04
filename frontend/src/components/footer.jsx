@@ -1,12 +1,14 @@
 const navigation = {
   main: [
-    { name: "Calculators", href: "/aboutUs" },
-    { name: "Loans", href: "/discover" },
-    { name: "Project Epic 99", href: "/memberships" },
-    { name: "Why Capital Velocity?", href: "/mygrants" },
-    { name: "Partner", href: "/dashboard" },
-    { name: "Company", href: "/contact" },
-    { name: "Contact Us", href: "/messages" },
+    { name: "DSCR Calculator", href: "/DsciCalculator" },
+    { name: "Flip and Switch Calculator", href: "/FixandFlipCalc" },
+    { name: "Business Loans", href: "/loan-form-business-loans" },
+    { name: "Real Estate Loans", href: "/loan-form-realestate" },
+    { name: "Project Epic 99", href: "/project99" },
+    { name: "Why Capital Velocity?", href: "/WhyUs" },
+    { name: "Partner", href: "/becomePartner" },
+    { name: "Company", href: "/about" },
+    { name: "Contact Us", href: "/contactUs" },
   ],
   social: [
     {
@@ -105,6 +107,19 @@ export default function Footer() {
         </div>
         <p className="mt-10 text-center text-sm/6 text-gray-600">
           &copy; 2025 Capital Velocity, Inc. All rights reserved.
+          <a
+            href="/termsofUse"
+            className="ml-1 text-gray-600 hover:text-gray-900"
+          >
+            Terms and Conditions
+          </a>
+          <span className="mx-1">|</span>
+          <a
+            href="/privacyPolicy"
+            className="text-gray-600 hover:text-gray-900"
+          >
+            Privacy Policy
+          </a>
         </p>
       </div>
     </footer>

@@ -419,7 +419,7 @@ function Landing() {
           )}
         </div>
       )}
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 }
