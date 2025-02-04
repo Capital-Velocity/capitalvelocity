@@ -50,9 +50,9 @@ function WhyUs() {
   }, []);
   return (
     <div>
-      <div style={{ backgroundColor: "#c0dced" }}>
-        <Container style={{ backgroundColor: "#c0dced" }}>
-          <Box style={{ backgroundColor: "#c0dced" }}>
+      <div className="bg-blue-100" style={{}}>
+        <Container style={{}}>
+          <Box style={{}}>
             {/* <h2
             ref={headingRef}
             className={`text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-6xl fade-in ${
