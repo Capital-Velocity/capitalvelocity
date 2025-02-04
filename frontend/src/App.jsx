@@ -51,7 +51,7 @@ function App() {
             firstnameCookie ? (
               <UserDashHome />
             ) : (
-              <Navigate to="/login"></Navigate>
+              <Navigate to="/register"></Navigate>
             )
           }
         />{" "}
@@ -61,26 +61,38 @@ function App() {
             firstnameCookie ? (
               <UserDashFileUpload />
             ) : (
-              <Navigate to="/login"></Navigate>
+              <Navigate to="/register"></Navigate>
             )
           }
         />{" "}
         <Route
           path="/loan-form-realestate"
           element={
-            firstnameCookie ? <LoanForm /> : <Navigate to="/login"></Navigate>
+            firstnameCookie ? (
+              <LoanForm />
+            ) : (
+              <Navigate to="/register"></Navigate>
+            )
           }
         />{" "}
         <Route
           path="/loan-form-business-loans"
           element={
-            firstnameCookie ? <LoanForm2 /> : <Navigate to="/login"></Navigate>
+            firstnameCookie ? (
+              <LoanForm2 />
+            ) : (
+              <Navigate to="/register"></Navigate>
+            )
           }
         />{" "}
         <Route
           path="/project99"
           element={
-            firstnameCookie ? <Project99 /> : <Navigate to="/login"></Navigate>
+            firstnameCookie ? (
+              <Project99 />
+            ) : (
+              <Navigate to="/register"></Navigate>
+            )
           }
         />{" "}
       </Routes>

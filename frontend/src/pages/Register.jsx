@@ -203,16 +203,17 @@ const LoginCover = () => {
                       Register AN Account
                     </Typography>
 
-                    <Typography
+                    {/* <Typography
                       variant="h4"
                       sx={{
                         fontWeight: 700,
                       }}
                     >
                       Welcome back
-                    </Typography>
+                    </Typography> */}
                     <Typography color="text.secondary">
-                      Register to manage your loan applications.
+                      Create a free account to unlock exclusive access to all
+                      our features and start enjoying the full experience today!
                     </Typography>
                     {isValidReferral && (
                       <p style={{ color: "darkgreen" }}>
