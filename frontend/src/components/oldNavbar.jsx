@@ -347,6 +347,37 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
+          location.pathname === "/loan-form-realestate"
+            ? "border-gray-600"
+            : "border-gray-300"
+        } 
+        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            href="/loan-form-realestate"
+          >
+            <div class="css-0">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 16 23"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M9.07917 1.66675V9.59308L14.517 9.60475L6.43667 21.4826V13.5562L1 13.5446L9.07917 1.66675Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+            <span class="mt-1 leading-none">Real Estate Loans</span>
+          </a>
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
+        ${
           location.pathname === "/DsciCalculator"
             ? "border-gray-600"
             : "border-gray-300"
@@ -400,7 +431,7 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Flip and Switch Calculator</span>
+            <span class="mt-1 leading-none">Fix and Flip Calculator</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
@@ -431,37 +462,7 @@ function Navbar() {
             </div>
             <span class="mt-1 leading-none">Business Loans</span>
           </a>
-          <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/loan-form-realestate"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/loan-form-realestate"
-          >
-            <div class="css-0">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 16 23"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M9.07917 1.66675V9.59308L14.517 9.60475L6.43667 21.4826V13.5562L1 13.5446L9.07917 1.66675Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-              </svg>
-            </div>
-            <span class="mt-1 leading-none">Real Estate Loans</span>
-          </a>
+
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
@@ -533,7 +534,7 @@ function Navbar() {
             </div>
             <span class="mt-1 leading-none">Project Epic 99</span>
           </a>
-          <a
+          {/* <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
           location.pathname === "/WhyUs" ? "border-gray-600" : "border-gray-300"
@@ -584,7 +585,7 @@ function Navbar() {
               </svg>
             </div>
             <span class="mt-1 leading-none">Why Capital Velocity?</span>
-          </a>
+          </a> */}
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
@@ -705,7 +706,7 @@ function Navbar() {
             <span class="mt-1 leading-none">AI Website</span>
           </button> */}
 
-          <a
+          {/* <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
           location.pathname === "/about" ? "border-gray-600" : "border-gray-300"
@@ -761,7 +762,7 @@ function Navbar() {
               </svg>
             </div>
             <span className="mt-1 leading-none">Company</span>
-          </a>
+          </a> */}
 
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
