@@ -5,7 +5,12 @@ import lendio1 from "../Images/tree.png";
 import Lendio from "./Lendio";
 import HomeIcon from "@mui/icons-material/Home";
 import { Card } from "@mui/material";
+import FixAndFlipIcon from "@mui/icons-material/BuildOutlined";
 import MultifamilyBridgeIcon from "@mui/icons-material/ApartmentOutlined";
+import GroundUpIcon from "@mui/icons-material/ConstructionOutlined";
+import StabilizedBridgeIcon from "@mui/icons-material/ViewComfyOutlined";
+import HouseSidingIcon from "@mui/icons-material/HouseSiding";
+import SinglePropertyIcon from "@mui/icons-material/HouseOutlined";
 import {
   FormControl,
   OutlinedInput,
@@ -18,33 +23,89 @@ import { Grid, Box, Typography } from "@mui/material";
 import Container from "../screens/Container";
 const mock = [
   {
-    title: "Real Estate Loans",
-    icon: <HomeIcon />,
+    title: "Fix and Flip",
+    icon: <FixAndFlipIcon />,
     value: "FixFlip",
-    link: "/loan-form-realestate",
+    link: "/loan-form-realestate?type=FixFlip",
   },
 
   {
-    title: "Business Loans",
+    title: "Ground Up",
+    icon: <GroundUpIcon />,
+    value: "GroundUp",
+    link: "/loan-form-realestate?type=GroundUp",
+  },
+
+  {
+    title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
-    link: "https://bit.ly/3zyS4xt",
+    link: "/loan-form-realestate?type=MultifamilyBridge",
+  },
+
+  {
+    title: "Stabilized Bridge",
+    icon: <StabilizedBridgeIcon />,
+    value: "StabilizedBridge",
+    link: "/loan-form-realestate?type=StabilizedBridge",
+  },
+
+  {
+    title: "Rental Portfolios",
+    icon: <HouseSidingIcon />,
+    value: "RentalPortfolios",
+    link: "/loan-form-realestate?type=RentalPortfolios",
+  },
+
+  {
+    title: "Single Property",
+    icon: <SinglePropertyIcon />,
+    value: "SingleProperty",
+    link: "/loan-form-realestate?type=SingleProperty",
   },
 ];
 
 const mockUnauthentic = [
   {
-    title: "Real Estate Loans",
-    icon: <HomeIcon />,
+    title: "Fix and Flip",
+    icon: <FixAndFlipIcon />,
     value: "FixFlip",
     link: "/register",
   },
 
   {
-    title: "Business Loans",
+    title: "Ground Up",
+    icon: <GroundUpIcon />,
+    value: "GroundUp",
+    link: "/register",
+  },
+
+  {
+    title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
-    link: "https://bit.ly/3zyS4xt",
+    link: "/register",
+  },
+
+  {
+    title: "Stabilized Bridge",
+    icon: <StabilizedBridgeIcon />,
+    value: "StabilizedBridge",
+    link: "/register",
+  },
+
+  {
+    title: "Rental Portfolios",
+    icon: <HouseSidingIcon />,
+    value: "RentalPortfolios",
+    link: "/register",
+  },
+
+  {
+    title: "Single Property",
+    icon: <SinglePropertyIcon />,
+    value: "SingleProperty",
+    link: "/register",
   },
 ];
 function Landing() {

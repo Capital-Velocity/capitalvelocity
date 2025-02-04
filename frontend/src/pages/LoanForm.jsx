@@ -69,6 +69,8 @@ import LoanTerms2New from "../components/Loan Form/LoanTerms2New";
 import LoanTerms3New from "../components/Loan Form/LoanTerms3New";
 import SBA26 from "./Project99/SBA26";
 import SBA27 from "./Project99/SBA27";
+import { useLocation } from "react-router-dom";
+
 const selectionData = [
   { title: "Fix and Flip", icon: <FixAndFlipIcon />, value: "FixFlip" },
 
@@ -212,6 +214,9 @@ const LoanForm = () => {
   const [token, setToken] = useState("");
   const [jwt, setJWT] = useState("");
   const [cookieEmailFound, setCookieEmailFound] = useState(false);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const loanType = queryParams.get("type"); // Extracting "type" from URL
 
   const handleOptionChange = (value) => {
     const option = value;
@@ -236,6 +241,12 @@ const LoanForm = () => {
   const handleButtonClick = (value) => {
     setSkipToSubmit(true);
   };
+
+  useEffect(() => {
+    if (loanType) {
+      setSelectedOption(loanType); // Set the loan type based on query param
+    }
+  }, [loanType]);
 
   const validateStep = (stepName) => {
     const errors = {};
