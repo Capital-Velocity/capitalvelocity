@@ -23,6 +23,7 @@ import { Grid, Box, Typography } from "@mui/material";
 import Container from "../screens/Container";
 import PromoNumbers from "../components/PromoNumbers";
 import WhyUs from "./WhyUs";
+import Hero from "../components/Hero";
 
 const mock = [
   {
@@ -142,6 +143,7 @@ function Landing() {
       {!isMobile && ( // Render HomeHero3 only on non-mobile screens
         <div>
           <div>
+            <Hero />
             <PromoNumbers />
             <WhyUs />
             <Categories2 />
