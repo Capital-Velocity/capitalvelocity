@@ -9,6 +9,16 @@ export default function Example() {
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
 
+  const handleScrollToBottom = (event) => {
+    event.preventDefault(); // Prevent default anchor behavior
+
+    // Scroll to the bottom of the page
+    window.scrollTo({
+      top: document.documentElement.scrollHeight, // Scroll to the bottom
+      behavior: "smooth", // Smooth scroll animation
+    });
+  };
+
   useEffect(() => {
     const handleIntersection = (entries, observer, setVisibility) => {
       const entry = entries[0];
@@ -71,24 +81,23 @@ export default function Example() {
               </p>
             </div>
             <div>
-              <a href="/opportunities/">
-                <button
-                  ref={paragraphRef}
-                  className={`flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br 
-      focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 
-      shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
-       rounded-md px-3 h-10 text-center fade-in font-semibold
-      ${
-        isParagraphVisible
-          ? "fade-in-show paragraph-fade-in-show-extra"
-          : "fade-in-hide"
-      }`}
-                  style={{ fontSize: "14px" }} // Directly applying 8px font size
-                  type="button"
-                >
-                  Explore Our Loans
-                </button>
-              </a>
+              <button
+                ref={paragraphRef}
+                onClick={handleScrollToBottom} // Attach scroll handler
+                className={`flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
+        shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
+        rounded-md px-3 h-10 text-center fade-in font-semibold
+        ${
+          isParagraphVisible
+            ? "fade-in-show paragraph-fade-in-show-extra"
+            : "fade-in-hide"
+        }`}
+                style={{ fontSize: "14px" }} // Apply font size
+                type="button"
+              >
+                Explore Our Loans
+              </button>
             </div>
           </div>
         </div>

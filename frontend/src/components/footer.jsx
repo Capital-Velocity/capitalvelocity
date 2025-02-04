@@ -1,13 +1,11 @@
 const navigation = {
   main: [
-    { name: "DSCR Calculator", href: "/DsciCalculator" },
-    { name: "Flip and Switch Calculator", href: "/FixandFlipCalc" },
-    { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Real Estate Loans", href: "/loan-form-realestate" },
+    { name: "DSCR Calculator", href: "/DsciCalculator" },
+    { name: "Fix and Flip Calculator", href: "/FixandFlipCalc" },
+    { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Project Epic 99", href: "/project99" },
-    { name: "Why Capital Velocity?", href: "/WhyUs" },
     { name: "Partner", href: "/becomePartner" },
-    { name: "Company", href: "/about" },
     { name: "Contact Us", href: "/contactUs" },
   ],
   social: [
