@@ -5,6 +5,37 @@
 @tailwind components;
 @tailwind utilities; */
 
+@layer utilities {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .fade-in-show {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .fade-in-hide {
+    opacity: 0;
+    transform: translateY(10px); /* Optional: Adds a slight movement */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+  }
+
+  /* Add a delay for the paragraph */
+.paragraph-fade-in-show {
+  transition-delay: 0.5s; /* Adjust the delay as needed */
+}
+
+  /* Add a delay for the paragraph */
+  .paragraph-fade-in-show-extra {
+    transition-delay: 1.0s; /* Adjust the delay as needed */
+  }
+
+}
+
 body {
   margin: 0;
   min-height: 100vh;
