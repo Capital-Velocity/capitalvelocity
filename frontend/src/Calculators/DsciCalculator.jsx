@@ -106,7 +106,10 @@ const DsciCalculator = () => {
     e.preventDefault();
     // Example Axios POST request
     axios
-      .post("https://3.139.67.124:8080/api/calculatorContact/contact", formData)
+      .post(
+        "https://52.165.80.134:4000/api/calculatorContact/contact",
+        formData
+      )
       .then((response) => {
         toast.success("Thank you we have received your details");
         setShowModal(false);

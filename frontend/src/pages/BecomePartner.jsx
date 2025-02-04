@@ -57,7 +57,10 @@ const BecomePartner = () => {
       };
       console.log(dataToSend);
       axios
-        .post("https://3.139.67.124:8080/api/referrals/addReferral", dataToSend)
+        .post(
+          "https://52.165.80.134:4000/api/referrals/addReferral",
+          dataToSend
+        )
         .then((response) => {
           console.log(response);
           window.location.href = "/partner-success";

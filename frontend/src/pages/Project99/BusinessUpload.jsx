@@ -33,7 +33,7 @@ function BusinessUpload({ formData, setFormData, fieldErrors }) {
         const modifiedFileName = email + "_" + file.name;
         formData.append("file", file, modifiedFileName);
         console.log(modifiedFileName);
-        await axios.post("https://3.139.67.124:8080/api/s3/upload", formData, {
+        await axios.post("https://52.165.80.134:4000/api/s3/upload", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

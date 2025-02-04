@@ -33,7 +33,7 @@ const LoginCover = () => {
     // Make an API request to check if the referral code exists in the database
     axios
       .get(
-        `https://3.139.67.124:8080/api/referrals/check-referral-code/${referralCode}`
+        `https://52.165.80.134:4000/api/referrals/check-referral-code/${referralCode}`
       )
       .then((response) => {
         console.log(response);
@@ -88,7 +88,7 @@ const LoginCover = () => {
       console.log(dataToSend);
 
       axios
-        .post("http://localhost:8080/api/users/register", dataToSend)
+        .post("https://52.165.80.134:4000/api/users/register", dataToSend)
         .then((response) => {
           const {
             user,

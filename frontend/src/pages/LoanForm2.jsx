@@ -334,7 +334,7 @@ const LoanForm2 = () => {
     const firtsName = Cookies.get("firstName");
     const lastName = Cookies.get("lastName");
     axios
-      .post("https://3.139.67.124:8080/api/users/checkToken", {
+      .post("https://52.165.80.134:4000/api/users/checkToken", {
         email: email,
       })
       .then((response) => {
@@ -721,7 +721,7 @@ const LoanForm2 = () => {
     formData.userEmail = email;
     let apiUrl = "";
     if (forms.SBA) {
-      apiUrl = "https://3.139.67.124:8080/api/sba"; // Replace with your actual API endpoint URL
+      apiUrl = "https://52.165.80.134:4000/api/sba"; // Replace with your actual API endpoint URL
     }
     console.log(formData);
     // Handle form submission here

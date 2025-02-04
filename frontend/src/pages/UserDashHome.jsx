@@ -615,7 +615,7 @@ function UserDashHome(props) {
 
         try {
           const response = await axios.post(
-            `https://3.139.67.124:8080/search/${userEmailFromCookie}`
+            `https://52.165.80.134:4000/search/${userEmailFromCookie}`
           );
           console.log(response);
           setMatchingEntries(response.data.matchingEntries);

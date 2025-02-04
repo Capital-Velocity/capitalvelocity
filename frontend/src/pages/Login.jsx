@@ -43,7 +43,7 @@ const LoginCover = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:8080/api/users/login", {
+      .post("https://52.165.80.134:4000/api/users/login", {
         email: email,
         password: password,
       })
