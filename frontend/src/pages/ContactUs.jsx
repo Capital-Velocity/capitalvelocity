@@ -262,7 +262,7 @@ const ContactUs = () => {
           </Box>
         </Box>
       </Box>
-      <Footer2 />
+      {/* <Footer2 /> */}
       <Button
         sx={stickyPhoneButton}
         variant="contained"

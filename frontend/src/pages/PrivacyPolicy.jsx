@@ -1183,7 +1183,7 @@ function PrivacyPolicy() {
           </Typography>
         </Box>
       </Container>
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 }

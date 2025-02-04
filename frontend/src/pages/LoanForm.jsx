@@ -1459,7 +1459,7 @@ const LoanForm = () => {
         )}
         <ToastContainer />
       </div>
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 };

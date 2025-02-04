@@ -151,7 +151,7 @@ function WhyUs() {
       </div>
       <LoanMatching />
       <Divider style={{ color: "grey" }} />
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 }

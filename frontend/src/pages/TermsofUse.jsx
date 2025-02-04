@@ -860,7 +860,7 @@ function TermsofUse() {
           11 shall survive any termination of this Agreement.
         </Typography>
       </Container>
-      <Footer2 />
+      {/* <Footer2 /> */}
     </div>
   );
 }

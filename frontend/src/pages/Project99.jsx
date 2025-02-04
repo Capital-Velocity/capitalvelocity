@@ -812,7 +812,7 @@ const Project99 = () => {
       )}
 
       {/* Render the footer only once */}
-      <Footer2 />
+      {/* <Footer2 /> */}
       <ToastContainer />
     </div>
   );
