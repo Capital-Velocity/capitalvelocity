@@ -11,14 +11,59 @@ import Footer2 from "../components/Footer2";
 import LoanMatching from "../components/LoanMatching";
 import phone33 from "../Images/phone33.png";
 import Container from "../screens/Container";
+import { useState, useEffect, useRef } from "react";
+
 function WhyUs() {
   const theme = useTheme();
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [isParagraphVisible, setIsParagraphVisible] = useState(false);
+
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+
+  useEffect(() => {
+    const handleIntersection = (entries, observer, setVisibility) => {
+      const entry = entries[0];
+      setVisibility(entry.isIntersecting);
+    };
+
+    const headingObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, headingObserver, setIsHeadingVisible),
+      { threshold: 0.8 } // Trigger when 20% of the element is visible
+    );
+
+    const paragraphObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, paragraphObserver, setIsParagraphVisible),
+      { threshold: 0.8 }
+    );
+
+    if (headingRef.current) headingObserver.observe(headingRef.current);
+    if (paragraphRef.current) paragraphObserver.observe(paragraphRef.current);
+
+    return () => {
+      if (headingRef.current) headingObserver.unobserve(headingRef.current);
+      if (paragraphRef.current)
+        paragraphObserver.unobserve(paragraphRef.current);
+    };
+  }, []);
   return (
     <div>
       <div style={{ backgroundColor: "#c0dced" }}>
         <Container style={{ backgroundColor: "#c0dced" }}>
           <Box style={{ backgroundColor: "#c0dced" }}>
+            {/* <h2
+            ref={headingRef}
+            className={`text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-6xl fade-in ${
+              isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+            }`}
+          > */}
             <Typography
+              ref={headingRef}
+              className={` fade-in ${
+                isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+              }`}
               variant="h4"
               align={"center"}
               gutterBottom
@@ -40,22 +85,44 @@ function WhyUs() {
                     flexWrap: "wrap",
                   }}
                 >
-                  <ChecklistRtlIcon
-                    style={{ fontSize: "70px", color: "#498dd6" }}
-                  />
-                  <Typography
-                    variant="h5"
-                    align={"center"}
-                    gutterBottom
-                    sx={{
-                      color: "black",
-                      fontWeight: 600,
-                      marginTop: theme.spacing(1),
-                    }}
+                  <div
+                    ref={paragraphRef}
+                    className={`text-xl/8 text-gray-600 fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show"
+                        : "fade-in-hide"
+                    }`}
+                    style={{ display: "flex", alignItems: "center" }} // Flexbox to align items on the same line
                   >
-                    A Short Application Process
-                  </Typography>
+                    <ChecklistRtlIcon
+                      style={{
+                        fontSize: "70px",
+                        color: "#498dd6",
+                        marginRight: "10px",
+                      }} // Added margin to space out icon and text
+                    />
+
+                    <Typography
+                      variant="h5"
+                      align={"left"} // Align text to the left to make it consistent with the icon
+                      gutterBottom
+                      sx={{
+                        color: "black",
+                        fontWeight: 600,
+                        marginTop: theme.spacing(1),
+                      }}
+                    >
+                      A Short Application Process
+                    </Typography>
+                  </div>
+
                   <Typography
+                    ref={paragraphRef}
+                    className={`fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show"
+                        : "fade-in-hide"
+                    }`}
                     variant="p"
                     gutterBottom
                     sx={{
@@ -77,22 +144,38 @@ function WhyUs() {
                     flexWrap: "wrap",
                   }}
                 >
-                  <HandshakeIcon
-                    style={{ fontSize: "70px", color: "#498dd6" }}
-                  />
-                  <Typography
-                    variant="h5"
-                    align={"center"}
-                    gutterBottom
-                    sx={{
-                      color: "black",
-                      fontWeight: 600,
-                      marginTop: theme.spacing(1),
-                    }}
+                  <div
+                    ref={paragraphRef}
+                    className={`text-xl/8 text-gray-600 fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show-extra"
+                        : "fade-in-hide"
+                    }`}
+                    style={{ display: "flex", alignItems: "center" }} // Flexbox to align items on the same line
                   >
-                    Ongoing Support
-                  </Typography>
+                    <HandshakeIcon
+                      style={{ fontSize: "70px", color: "#498dd6" }}
+                    />
+                    <Typography
+                      variant="h5"
+                      align={"center"}
+                      gutterBottom
+                      sx={{
+                        color: "black",
+                        fontWeight: 600,
+                        marginTop: theme.spacing(1),
+                      }}
+                    >
+                      Ongoing Support
+                    </Typography>
+                  </div>
                   <Typography
+                    ref={paragraphRef}
+                    className={` fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show-extra"
+                        : "fade-in-hide"
+                    }`}
                     variant="p"
                     gutterBottom
                     sx={{
@@ -112,22 +195,38 @@ function WhyUs() {
                     flexWrap: "wrap",
                   }}
                 >
-                  <CheckCircleOutlineIcon
-                    style={{ fontSize: "70px", color: "#498dd6" }}
-                  />
-                  <Typography
-                    variant="h5"
-                    align={"center"}
-                    gutterBottom
-                    sx={{
-                      color: "black",
-                      fontWeight: 600,
-                      marginTop: theme.spacing(1),
-                    }}
+                  <div
+                    ref={paragraphRef}
+                    className={`text-xl/8 text-gray-600 fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show-extra-large"
+                        : "fade-in-hide"
+                    }`}
+                    style={{ display: "flex", alignItems: "center" }} // Flexbox to align items on the same line
                   >
-                    A Robust Lender Network
-                  </Typography>
+                    <CheckCircleOutlineIcon
+                      style={{ fontSize: "70px", color: "#498dd6" }}
+                    />
+                    <Typography
+                      variant="h5"
+                      align={"center"}
+                      gutterBottom
+                      sx={{
+                        color: "black",
+                        fontWeight: 600,
+                        marginTop: theme.spacing(1),
+                      }}
+                    >
+                      A Robust Lender Network
+                    </Typography>
+                  </div>
                   <Typography
+                    ref={paragraphRef}
+                    className={` fade-in ${
+                      isParagraphVisible
+                        ? "fade-in-show paragraph-fade-in-show-extra-large"
+                        : "fade-in-hide"
+                    }`}
                     variant="p"
                     gutterBottom
                     sx={{

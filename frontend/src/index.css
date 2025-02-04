@@ -34,6 +34,11 @@
     transition-delay: 1.0s; /* Adjust the delay as needed */
   }
 
+  /* Add a delay for the paragraph */
+  .paragraph-fade-in-show-extra-large {
+    transition-delay: 1.5s; /* Adjust the delay as needed */
+  }
+
 }
 
 body {

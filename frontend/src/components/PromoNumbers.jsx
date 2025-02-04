@@ -91,11 +91,11 @@ const MissionSection = () => {
                     : "fade-in-hide"
                 }`}
               >
-                Banks are turning down 8 out of 10 small business loan
-                applications. That means a lot of people have to give up on
-                their dreams because they don't have the money they need to
-                start or growth their business and/or start or complete their
-                real estate project.
+                Many small business loan applications are being rejected, with 8
+                out of 10 being turned down. As a result, countless individuals
+                are forced to abandon their dreams because they lack the funding
+                necessary to launch or grow their businesses or to start or
+                complete their real estate projects.
               </p>
               {/* <p className="mt-10 max-w-xl text-base/7 text-gray-700"> */}
               <p

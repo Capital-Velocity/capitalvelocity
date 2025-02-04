@@ -8,6 +8,8 @@ import Stepper from "@mui/material/Stepper";
 import { useTheme } from "@mui/material/styles";
 import React from "react";
 import Container from "../screens/Container";
+import { useState, useEffect, useRef } from "react";
+
 const stepStyle = {
   "& .Mui-active": {
     "&.MuiStepIcon-root": {
@@ -37,6 +39,39 @@ const steps = [
 ];
 function LoanMatching() {
   const theme = useTheme();
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [isParagraphVisible, setIsParagraphVisible] = useState(false);
+
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+
+  useEffect(() => {
+    const handleIntersection = (entries, observer, setVisibility) => {
+      const entry = entries[0];
+      setVisibility(entry.isIntersecting);
+    };
+
+    const headingObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, headingObserver, setIsHeadingVisible),
+      { threshold: 0.8 } // Trigger when 20% of the element is visible
+    );
+
+    const paragraphObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, paragraphObserver, setIsParagraphVisible),
+      { threshold: 0.8 }
+    );
+
+    if (headingRef.current) headingObserver.observe(headingRef.current);
+    if (paragraphRef.current) paragraphObserver.observe(paragraphRef.current);
+
+    return () => {
+      if (headingRef.current) headingObserver.unobserve(headingRef.current);
+      if (paragraphRef.current)
+        paragraphObserver.unobserve(paragraphRef.current);
+    };
+  }, []);
   return (
     <div>
       <Box
@@ -53,6 +88,10 @@ function LoanMatching() {
           <Container>
             <Box>
               <Typography
+                ref={headingRef}
+                className={` fade-in ${
+                  isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+                }`}
                 variant="h4"
                 align={"center"}
                 gutterBottom
@@ -84,7 +123,7 @@ function LoanMatching() {
               }}
             />
           </Grid>
-          <Grid item sm={6} style={{ marginTop: "50px" }}>
+          <Grid item sm={6} style={{ marginTop: "" }}>
             <Stepper orientation="vertical" sx={stepStyle}>
               {steps.map((step, index) => (
                 <Step active={true} key={step.label}>

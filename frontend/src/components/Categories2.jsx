@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -134,6 +134,12 @@ const mockUnauthentic = [
 const Categories2 = () => {
   const theme = useTheme();
 
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [isParagraphVisible, setIsParagraphVisible] = useState(false);
+
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+
   // Define a state variable to track authentication
   const [authenticated, setAuthenticated] = useState(false);
 
@@ -150,6 +156,32 @@ const Categories2 = () => {
       // For example, you can use React Router's history.push('/login') to redirect
       // or simply navigate to the login screen.
     }
+
+    const handleIntersection = (entries, observer, setVisibility) => {
+      const entry = entries[0];
+      setVisibility(entry.isIntersecting);
+    };
+
+    const headingObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, headingObserver, setIsHeadingVisible),
+      { threshold: 0.8 } // Trigger when 20% of the element is visible
+    );
+
+    const paragraphObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, paragraphObserver, setIsParagraphVisible),
+      { threshold: 0.8 }
+    );
+
+    if (headingRef.current) headingObserver.observe(headingRef.current);
+    if (paragraphRef.current) paragraphObserver.observe(paragraphRef.current);
+
+    return () => {
+      if (headingRef.current) headingObserver.unobserve(headingRef.current);
+      if (paragraphRef.current)
+        paragraphObserver.unobserve(paragraphRef.current);
+    };
   }, []); // Empty dependency array means this effect runs once on component mount
 
   return (
@@ -159,9 +191,12 @@ const Categories2 = () => {
           // Render your routes here
           <Box>
             <Typography
+              ref={headingRef}
+              className={` fade-in ${
+                isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+              }`}
               variant="h4"
               align={"center"}
-              data-aos={"fade-up"}
               gutterBottom
               sx={{
                 fontWeight: 300,
@@ -248,6 +283,10 @@ const Categories2 = () => {
           <Box>
             <Container>
               <Typography
+                ref={headingRef}
+                className={` fade-in ${
+                  isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+                }`}
                 variant="h4"
                 align={"center"}
                 data-aos={"fade-up"}
@@ -261,6 +300,12 @@ const Categories2 = () => {
                 Choose what's right for you
               </Typography>
               <Typography
+                ref={paragraphRef}
+                className={` fade-in ${
+                  isParagraphVisible
+                    ? "fade-in-show paragraph-fade-in-show"
+                    : "fade-in-hide"
+                }`}
                 align={"center"}
                 color={"text.secondary"}
                 data-aos={"fade-up"}
@@ -269,7 +314,16 @@ const Categories2 = () => {
                 Find the financing solution that fits your real estate and
                 business needs and your wallet. Secure your loan today.
               </Typography>
-              <Grid container spacing={2}>
+              <Grid
+                ref={paragraphRef}
+                className={` fade-in ${
+                  isParagraphVisible
+                    ? "fade-in-show paragraph-fade-in-show-extra"
+                    : "fade-in-hide"
+                }`}
+                container
+                spacing={2}
+              >
                 {mockUnauthentic.map((item, i) => (
                   <Grid item xs={6} md={6} key={i}>
                     <Link href={item.link} style={{ textDecoration: "none" }}>
