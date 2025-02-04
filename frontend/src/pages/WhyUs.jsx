@@ -248,7 +248,7 @@ function WhyUs() {
           </Box>
         </Container>
       </div>
-      <LoanMatching />
+
       {/* <Divider style={{ color: "grey" }} /> */}
       {/* <Footer2 /> */}
     </div>

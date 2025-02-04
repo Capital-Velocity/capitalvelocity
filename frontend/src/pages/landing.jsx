@@ -24,6 +24,8 @@ import Container from "../screens/Container";
 import PromoNumbers from "../components/PromoNumbers";
 import WhyUs from "./WhyUs";
 import Hero from "../components/Hero";
+import CalculatorHero from "../components/CalculatorHero";
+import LoanMatching from "../components/LoanMatching";
 
 const mock = [
   {
@@ -145,7 +147,9 @@ function Landing() {
           <div>
             <Hero />
             <PromoNumbers />
+            <LoanMatching />
             <WhyUs />
+            <CalculatorHero />
             <Categories2 />
           </div>
         </div>
