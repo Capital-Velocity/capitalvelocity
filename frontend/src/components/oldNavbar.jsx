@@ -124,7 +124,7 @@ function Navbar() {
             }}
           >
             <Link to="/">
-              <img src={myImg} className="h-[75px] w-[125px]" />
+              <img src={myImg} className="pt-2 h-[75px] w-[125px] scale-175" />
             </Link>
           </Box>
 
