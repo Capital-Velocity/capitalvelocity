@@ -20,9 +20,7 @@ function About() {
         <Story style={{ marginTop: "10px" }} />
       </Container>
       <Box style={{ backgroundColor: "#F6F5F3" }}>
-        <Container>
-          <Categories />
-        </Container>
+        <Container>{/* <Categories /> */}</Container>
       </Box>
 
       <Divider style={{ color: "grey" }} />
