@@ -28,6 +28,8 @@ import Cookies from "js-cookie";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsofUse from "./pages/TermsofUse";
 
+import Contact from "./pages/Contact";
+
 function App() {
   const firstnameCookie = Cookies.get("firstName");
 
@@ -38,7 +40,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
-        <Route path="/contactUs" element={<ContactUs />}></Route>
+        <Route path="/contactUs" element={<Contact />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
