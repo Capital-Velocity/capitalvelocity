@@ -161,32 +161,62 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/aboutUs">
-                  <Typography sx={{ textAlign: "center" }}>About Us</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/discover">
-                  <Typography sx={{ textAlign: "center" }}>Explore</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/myGrants">
+                <Link to="/DsciCalculator">
                   <Typography sx={{ textAlign: "center" }}>
-                    My Grants
+                    DSCR Calculator
                   </Typography>
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/dashboard">
+                <Link to="/FixandFlipCalc">
                   <Typography sx={{ textAlign: "center" }}>
-                    Dashboard
+                    Flip and Switch Calculator
                   </Typography>
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/contact">
-                  <Typography sx={{ textAlign: "center" }}>Contact</Typography>
+                <Link to="/loan-form-business-loans">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Business Loans
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/loan-form-realestate">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Real Estate Loans
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/project99">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Project Epic 99
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/WhyUs">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Why Capital Velocity?
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/becomePartner">
+                  <Typography sx={{ textAlign: "center" }}>Partner</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/about">
+                  <Typography sx={{ textAlign: "center" }}>Company</Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/contactUs">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Contact Us
+                  </Typography>
                 </Link>
               </MenuItem>
             </Menu>
