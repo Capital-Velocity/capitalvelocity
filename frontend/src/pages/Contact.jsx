@@ -90,9 +90,7 @@ export default function Contact() {
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="createOrgProfile">
-                      Create Organization Profile
-                    </label>
+                    <label htmlFor="createOrgProfile">DSCR Calculator</label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
@@ -104,7 +102,7 @@ export default function Contact() {
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
                     <label htmlFor="researchPackagePayment">
-                      Research Package Payment
+                      Fix and Flip Calculator
                     </label>
                   </div>
                   <div className="flex gap-x-2.5">
@@ -116,7 +114,7 @@ export default function Contact() {
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="letterOfIntent">Letter Of Intent</label>
+                    <label htmlFor="letterOfIntent">Project Epic 99</label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
@@ -127,9 +125,7 @@ export default function Contact() {
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="proposalDevelopment">
-                      Proposal Development
-                    </label>
+                    <label htmlFor="proposalDevelopment">Affiliate</label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
@@ -141,7 +137,7 @@ export default function Contact() {
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
                     <label htmlFor="grantExpertPayment">
-                      Grant Expert Payment
+                      Fix and Flip Loan
                     </label>
                   </div>
                   <div className="flex gap-x-2.5">
@@ -153,7 +149,7 @@ export default function Contact() {
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="grantExpertTasks">Grant Expert Tasks</label>
+                    <label htmlFor="grantExpertTasks">Ground Up Loan</label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
@@ -164,7 +160,51 @@ export default function Contact() {
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="submission">Submission</label>
+                    <label htmlFor="submission">Multifamily Bridge Loan</label>
+                  </div>
+                  <div className="flex gap-x-2.5">
+                    <input
+                      defaultValue="Submission"
+                      id="submission"
+                      name="feature"
+                      type="radio"
+                      onChange={handleFeatureChange}
+                      className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
+                    />
+                    <label htmlFor="submission">Stabilized Bridge Loan</label>
+                  </div>
+                  <div className="flex gap-x-2.5">
+                    <input
+                      defaultValue="Submission"
+                      id="submission"
+                      name="feature"
+                      type="radio"
+                      onChange={handleFeatureChange}
+                      className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
+                    />
+                    <label htmlFor="submission">Rental Portfolio Loan</label>
+                  </div>
+                  <div className="flex gap-x-2.5">
+                    <input
+                      defaultValue="Submission"
+                      id="submission"
+                      name="feature"
+                      type="radio"
+                      onChange={handleFeatureChange}
+                      className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
+                    />
+                    <label htmlFor="submission">Single Property Loan</label>
+                  </div>
+                  <div className="flex gap-x-2.5">
+                    <input
+                      defaultValue="Submission"
+                      id="submission"
+                      name="feature"
+                      type="radio"
+                      onChange={handleFeatureChange}
+                      className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
+                    />
+                    <label htmlFor="submission">SBA Loan</label>
                   </div>
                 </div>
               </fieldset>
