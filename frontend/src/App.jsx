@@ -29,6 +29,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsofUse from "./pages/TermsofUse";
 
 import Contact from "./pages/Contact";
+import FixandFlipCalc2 from "./Calculators/newCalc";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -45,6 +46,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
+        <Route path="/test" element={<FixandFlipCalc2 />} />
         <Route path="/termsofUse" element={<TermsofUse />}></Route>
         <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
         <Route
