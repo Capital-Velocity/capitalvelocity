@@ -300,7 +300,7 @@ const DsciCalculator = () => {
   };
 
   return (
-    <div style={{ marginBottom: 30 }}>
+    <div className="pt-12" style={{ marginBottom: 30 }}>
       <ToastContainer />
       <Container>
         <Typography

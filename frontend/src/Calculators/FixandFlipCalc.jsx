@@ -132,7 +132,7 @@ const FixandFlipCalc = () => {
   }));
 
   return (
-    <div style={{ marginBottom: 30 }}>
+    <div className="pt-12" style={{ marginBottom: 30 }}>
       <ToastContainer />
       <Container>
         <Typography
@@ -153,7 +153,7 @@ const FixandFlipCalc = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Purchase Price{" "}
+                    Purchase Price ($){" "}
                     <Tooltip
                       title="How much you pay for a property. For single family and multi-family homes, the purchase price includes the property itself and the land the property is on."
                       arrow
@@ -185,7 +185,7 @@ const FixandFlipCalc = () => {
                   component="div"
                   sx={{ display: "inline-flex", alignItems: "center" }}
                 >
-                  Rehab Cost{" "}
+                  Rehab Cost ($){" "}
                   <Tooltip
                     title="Costs associated with renovating the property. Rehab costs should include both cost of materials and labor."
                     arrow
@@ -285,7 +285,7 @@ const FixandFlipCalc = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Loan Amount{" "}
+                    Loan Amount ($){" "}
                     <Tooltip
                       title="The amount of money you need to borrow from a lender to renovate the property."
                       arrow
@@ -317,7 +317,7 @@ const FixandFlipCalc = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    After Repair Value
+                    After Repair Value ($)
                     <Tooltip
                       title="The estimated value of the property after repair."
                       arrow
