@@ -1,33 +1,27 @@
-import { useState } from "react";
+import Cookies from "js-cookie";
 import {
+  Navigate,
+  Route,
   BrowserRouter as Router,
   Routes,
-  Route,
-  Navigate,
 } from "react-router-dom";
-import Navbar from "./components/oldNavbar";
-import LegacyNavbar from "./components/navbar";
-import Footer from "./components/footer";
 import "./App.css";
-import Home from "./pages/home";
-import WhyUs from "./pages/WhyUs";
-import About from "./pages/About";
-import ContactUs from "./pages/ContactUs";
-import BecomePartner from "./pages/BecomePartner";
-import Landing from "./pages/landing";
-import Register from "./pages/Register";
 import DsciCalculator from "./Calculators/DsciCalculator";
 import FixandFlipCalc from "./Calculators/FixandFlipCalc";
-import Login from "./pages/Login";
-import UserDashHome from "./pages/UserDashHome";
-import UserDashFileUpload from "./pages/UserDashFileUpload";
+import Footer from "./components/footer";
+import Navbar from "./components/oldNavbar";
+import BecomePartner from "./pages/BecomePartner";
+import Contact from "./pages/Contact";
+import Landing from "./pages/landing";
 import LoanForm from "./pages/LoanForm";
 import LoanForm2 from "./pages/LoanForm2";
-import Project99 from "./pages/Project99";
-import Cookies from "js-cookie";
+import Login from "./pages/Login";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Project99 from "./pages/Project99";
+import Register from "./pages/Register";
 import TermsofUse from "./pages/TermsofUse";
-import Contact from "./pages/Contact";
+import UserDashFileUpload from "./pages/UserDashFileUpload";
+import UserDashHome from "./pages/UserDashHome";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
