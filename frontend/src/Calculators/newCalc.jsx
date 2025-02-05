@@ -14,6 +14,8 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
+import InfoIcon from "@mui/icons-material/Info";
 
 const FixandFlipCalc2 = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -146,7 +148,28 @@ const FixandFlipCalc2 = () => {
             <Grid container spacing={2}>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Purchase Price</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Purchase Price{" "}
+                    <Tooltip
+                      title="How much you pay for a property. For single family and multi-family homes, the purchase price includes the property itself and the land the property is on."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>
                   <TextField
                     fullWidth
                     type="number"
@@ -157,7 +180,28 @@ const FixandFlipCalc2 = () => {
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
-                <Typography color="grey">Rehab Cost</Typography>
+                <Typography
+                  color="grey"
+                  component="div"
+                  sx={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  Rehab Cost{" "}
+                  <Tooltip
+                    title="Costs associated with renovating the property. Rehab costs should include both cost of materials and labor."
+                    arrow
+                    placement="top"
+                  >
+                    <InfoIcon
+                      className="cursor-pointer"
+                      sx={{
+                        fontSize: 18,
+                        color: "gray",
+                        marginLeft: 1,
+                        verticalAlign: "middle",
+                      }} // Align icon vertically
+                    />
+                  </Tooltip>
+                </Typography>
                 <FormControl fullWidth>
                   <TextField
                     type="number"
@@ -169,14 +213,62 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Interest Rate</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Interest Rate* (%){" "}
+                    <Tooltip
+                      title={
+                        <span>
+                          * Subject to change daily
+                          <br />
+                          <br />
+                          The interest rate associated with borrowing money to
+                          fix and flip a property.
+                        </span>
+                      }
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField fullWidth value={interestRate} disabled />
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">
-                    Anticipated Length of Project
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Estimated Length of Project (mo.){" "}
+                    <Tooltip
+                      title="The number of months you anticipate your house flip to take until complete."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
                   </Typography>
                   <TextField
                     disabled
@@ -188,7 +280,28 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Loan Amount</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Loan Amount{" "}
+                    <Tooltip
+                      title="The amount of money you need to borrow from a lender to renovate the property."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>
                   <TextField
                     type="number"
                     fullWidth
@@ -199,7 +312,28 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">After Repair Value</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    After Repair Value
+                    <Tooltip
+                      title="The estimated value of the property after repair."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>
                   <TextField
                     fullWidth
                     type="number"
@@ -213,9 +347,33 @@ const FixandFlipCalc2 = () => {
 
               <Grid item sm={12}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Monthly Interest Payment
+                    <Tooltip
+                      title="The portion of the annual or semi-annual property taxes that accrue each month."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
+
                   <Typography
                     className="text-center"
                     gutterBottom
@@ -227,8 +385,31 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Monthly Property Taxes
+                    <Tooltip
+                      title="The amount of property insurance due monthly. Note: House flippers typically need an unoccupied property insurance policy, which is different than a homeowner’s policy."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
 
                   <Slider
@@ -247,8 +428,39 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Monthly Insurance
+                    <Tooltip
+                      title={
+                        <span>
+                          The amount of property insurance due monthly. <br />
+                          <br />
+                          <strong>Note:</strong> House flippers typically need
+                          an unoccupied property insurance policy, which is
+                          different than a homeowner’s policy.
+                        </span>
+                      }
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
                   <Slider
                     value={monthlyInsurance}
@@ -266,8 +478,31 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Monthly Utility Bills
+                    <Tooltip
+                      title="Utility expenses like water, electric, gas, and oil, due monthly."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
                   <Slider
                     value={monthlyUtilityBills}
@@ -285,8 +520,31 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Other Monthly Expenses
+                    <Tooltip
+                      title="Any other recurring monthly expenses you expect to incur throughout the project."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
                   <Slider
                     value={otherMonthlyExpenses}
@@ -304,8 +562,31 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Realtor Fee
+                    <Tooltip
+                      title="All of the fees associated with the realtor."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
                   <Slider
                     value={costOfSales}
@@ -323,8 +604,31 @@ const FixandFlipCalc2 = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
                     Closing Cost
+                    <Tooltip
+                      title="All of the fees associated with the closing."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
                   <Slider
                     value={closingCost}
