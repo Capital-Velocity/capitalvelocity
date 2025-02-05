@@ -1,30 +1,19 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import FormControl from "@mui/material/FormControl";
 import {
-  TextField,
-  Grid,
-  Typography,
-  Slider,
-  Select,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
   Box,
-  Container,
-  Modal,
   Button,
+  Container,
+  Grid,
+  Modal,
+  Slider,
+  TextField,
+  Typography,
 } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
-
-// OLD CALC VARIABLES
-
-import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
-import MenuItem from "@mui/material/MenuItem";
-import InputAdornment from "@mui/material/InputAdornment";
-
-//
+import { styled } from "@mui/material/styles";
 
 const FixandFlipCalc2 = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -132,8 +121,6 @@ const FixandFlipCalc2 = () => {
     marginTop: 10,
   };
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// OLD CALC VARIABLES
-
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -141,245 +128,6 @@ const FixandFlipCalc2 = () => {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
-
-  // Sample
-  const [displayMonthlyIncomePayment, setdisplayMonthlyIncomePayment] =
-    useState(0);
-  const [totalProfitAnually, setTotalProfitAnnually] = useState(0);
-  const [displayMonthly, setDisplayMonthly] = useState(0);
-  const [displayTotalInterest, setDisplayTotalInterest] = useState(0);
-  const [displayTotalPayment, setDisplayTotalPayment] = useState(0);
-  const [totalProfit, setTotalProfit] = useState(0);
-  const [principalInterestData, setPrincipalInterestData] = useState([]);
-  const [loanSubtype, setLoanSubtype] = useState("");
-  const [estimatedValue, setEstimatedValue] = useState("");
-  const [ltv, setLtv] = useState("");
-  const [totalOperatingYearly, setTotalOepratingYearly] = useState(0);
-  const [totalOperating2Digits, setTotalOperating2Digits] = useState(0);
-  const [monthlyMortagePayment, setMonthlyMortagePayment] = useState("");
-  const [selectedCreditScore, setSelectedCreditScore] = useState("");
-  const [amortizingPeriod] = useState(30);
-  const [grossAnualincome, setGrossAnualincome] = useState(0);
-  const [totalOperatingExpenses, setTotalOperatingExpenses] = useState(0);
-  const [loanTerm, setLoanTerm] = useState(30);
-  const [monthlyRent, setMonthlyRent] = useState("");
-  const [formDone, setformDone] = useState("");
-  const [dscrValue, setDscrValue] = useState(0);
-  const [chartData, setChartData] = useState([]);
-  const [monthlyMarketRent, setMonthlyMarketRent] = useState("");
-  // This is for the graph
-  const [monthlyPayment, setmonthlyPayment] = useState("");
-  const [totalPayment, settotalPayment] = useState("");
-  const [interest, settotalInterest] = useState("");
-
-  const [annualGrossRent, setAnnualGrossRent] = useState("");
-  const [annualTaxes, setAnnualTaxes] = useState("");
-  const [annualInsurance, setAnnualInsurance] = useState("");
-  const [annualHoa, setAnnualHoa] = useState("");
-
-  useEffect(() => {
-    calculateLoanAmount();
-  }, [ltv, estimatedValue]);
-
-  useEffect(() => {
-    if (selectedCreditScore > 740) {
-      setLtv("80");
-    } else if (selectedCreditScore >= 720 && selectedCreditScore <= 739) {
-      setLtv("75");
-    } else if (selectedCreditScore >= 700 && selectedCreditScore <= 719) {
-      setLtv("75");
-    } else if (selectedCreditScore >= 680 && selectedCreditScore <= 699) {
-      setLtv("70");
-    } else if (selectedCreditScore >= 660 && selectedCreditScore <= 679) {
-      setLtv("65");
-    } else {
-      setLtv("");
-    }
-  }, [selectedCreditScore]);
-
-  useEffect(() => {
-    setAnnualGrossRent((parseFloat(monthlyRent) || 0) * 12);
-  }, [monthlyRent]);
-
-  const calculateLoanAmount = () => {
-    const ltvPercentage = parseFloat(ltv) / 100;
-    const estimatedValueFloat = parseFloat(estimatedValue);
-    if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
-      setLoanAmount((ltvPercentage * estimatedValueFloat).toFixed(2));
-    } else {
-      setLoanAmount("");
-    }
-  };
-
-  const handleCreditScoreChange = (e) => {
-    setSelectedCreditScore(e.target.value);
-  };
-
-  const calculateGrossAnnualIncome = () => {
-    return (parseFloat(monthlyRent) || 0) * 12;
-  };
-
-  const calculateAnnualMarketIncome = () => {
-    return (parseFloat(monthlyMarketRent) || 0) * 12;
-  };
-
-  const calculateTotalOperatingExpenses = () => {
-    return (
-      (parseFloat(annualInsurance) || 0) +
-      (parseFloat(annualHoa) || 0) +
-      (parseFloat(annualTaxes) || 0).toFixed(2)
-    );
-  };
-
-  const calculateIOPeriodDebtService = () => {
-    const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-    return parseFloat(loanAmount) * rate || 0;
-  };
-
-  const calculateDSCR = () => {
-    const income = calculateGrossAnnualIncome();
-    const debt = calculateTotalOperatingExpenses();
-
-    return income / debt;
-  };
-  const calculateAmortizingDebtService = () => {
-    const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-    const n = parseFloat(amortizingPeriod) * 12; // Convert years to months
-    if (rate === 0) {
-      return parseFloat(loanAmount) / n || 0; // Handling case where interest rate is zero
-    }
-    return (parseFloat(loanAmount) * rate) / (1 - Math.pow(1 + rate, -n)) || 0;
-  };
-
-  const calculateIOPITIA = () => {
-    const ioDebtService = calculateIOPeriodDebtService();
-    const operatingExpenses = calculateTotalOperatingExpenses();
-    const grossIncome = calculateGrossAnnualIncome();
-    return grossIncome > 0
-      ? (ioDebtService + operatingExpenses) / grossIncome
-      : 0;
-  };
-
-  const formatNumber = (num) => {
-    if (isNaN(num)) return "0";
-
-    // 1. Round the number to two decimal places
-    let roundedNumber = Math.round(num * 100) / 100;
-
-    // 2. Convert the number to a string
-    let parts = roundedNumber.toString().split(".");
-
-    // 3. Add commas to the integer part (thousands separator)
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-    // 4. Ensure there are always two decimal places
-    if (parts[1]) {
-      parts[1] = parts[1].padEnd(2, "0"); // If decimal part exists, pad it to 2 digits
-    } else {
-      parts[1] = "00"; // If no decimal part, add ".00"
-    }
-
-    return parts.join(".");
-  };
-
-  const calculateLoan = () => {
-    const fields = {
-      loanAmount,
-      monthlyRent,
-      annualTaxes,
-      annualInsurance,
-      annualHoa,
-      estimatedValue,
-    };
-
-    // Check if any fields are empty or zero
-    const emptyFields = Object.keys(fields).filter(
-      (key) => !fields[key] || fields[key] === 0
-    );
-
-    if (emptyFields.length > 0) {
-      // Show a toast error message if any fields are empty or zero
-      toast.error(
-        `Please fill in all required fields: ${emptyFields.join(", ")}`
-      );
-      // Optional: Set border color to red for empty fields (if needed)
-      emptyFields.forEach((field) => {
-        // Example: Assuming you have a way to get the input field by its name or id
-        // document.getElementById(field).style.borderColor = 'red';
-      });
-      return; // Exit the function to prevent further execution
-    }
-    console.log(loanAmount);
-    console.log(interestRate);
-    console.log(loanTerm);
-    setdisplayMonthlyIncomePayment(formatNumber(monthlyRent));
-    const loanAmountFloat = loanAmount;
-    const interestRateFloat = interestRate / 100;
-    const termMonths = loanTerm * 12;
-
-    const monthlyInterestRate = interestRateFloat / 12;
-    console.log("This is the monthly interest" + monthlyInterestRate);
-    console.log("This is the terms Months" + termMonths);
-    // Calculate monthly payment
-    const monthlyPayment =
-      (loanAmountFloat *
-        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termMonths))) /
-      (Math.pow(1 + monthlyInterestRate, termMonths) - 1);
-    setDisplayMonthly(formatNumber(monthlyPayment));
-
-    const totalPayment = monthlyPayment * termMonths;
-    console.log("This is the total payment" + totalPayment);
-
-    const totalInterest = totalPayment - loanAmountFloat;
-    console.log("This is the total interest" + totalInterest);
-
-    // Prepare data for the pie chart
-    const data = [
-      ["Category", "Amount"],
-      ["Principal", totalPayment], // Fixed: Use loanAmountFloat for Principal
-      ["Interest", totalInterest],
-    ];
-
-    console.log(data);
-    setChartData(data);
-    setmonthlyPayment(monthlyPayment);
-    settotalInterest(totalInterest);
-    setDisplayTotalInterest(formatNumber(totalInterest));
-    settotalPayment(totalPayment);
-    setDisplayTotalPayment(formatNumber(totalPayment));
-    console.log(chartData);
-
-    // Now we need to calculate the PITTA.
-    const monthlyTax = annualTaxes / 12;
-    const monthlyInsurance = annualInsurance / 12;
-    const monthlyHOA = annualHoa / 12;
-
-    const paymentIntrestTaxesInsurance =
-      parseFloat(monthlyPayment) +
-      parseFloat(monthlyTax) +
-      parseFloat(monthlyInsurance) +
-      parseFloat(monthlyHOA);
-    const yearlyCost =
-      parseFloat(monthlyPayment * 12) +
-      parseFloat(annualTaxes) +
-      parseFloat(annualInsurance) +
-      parseFloat(annualHoa);
-
-    const dscr = monthlyRent / paymentIntrestTaxesInsurance;
-
-    setDscrValue(dscr.toFixed(2));
-    setTotalOperatingExpenses(formatNumber(paymentIntrestTaxesInsurance));
-    setTotalOepratingYearly(formatNumber(yearlyCost));
-    const monthlyPaymentValue = monthlyRent * 12;
-    // set the gross annual
-    setGrossAnualincome(formatNumber(monthlyPaymentValue));
-    const totalProfit = monthlyRent - paymentIntrestTaxesInsurance;
-    setTotalProfit(formatNumber(totalProfit));
-    const convertYearly = totalProfit * 12;
-    setTotalProfitAnnually(formatNumber(convertYearly));
-  };
-
-  //////////
 
   return (
     <div style={{ marginBottom: 30 }}>
