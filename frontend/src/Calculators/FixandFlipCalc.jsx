@@ -7,7 +7,9 @@ import {
   Modal,
   Slider,
   TextField,
+  Select,
   Typography,
+  MenuItem,
 } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import Paper from "@mui/material/Paper";
@@ -16,6 +18,7 @@ import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import InputAdornment from "@mui/material/InputAdornment";
 
 const FixandFlipCalc = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -31,10 +34,10 @@ const FixandFlipCalc = () => {
   const [otherMonthlyExpenses, setOtherMonthlyExpenses] = useState(0);
   const [costOfSales, setCostOfSales] = useState(1);
 
-  const [closingCost, setClosingCost] = useState(5);
+  const [closingCost, setClosingCost] = useState(1);
   const [showModal, setShowModal] = useState(false);
 
-  const [experienceLevel, setExperienceLevel] = useState(2);
+  const [experienceLevel, setExperienceLevel] = useState(90);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -43,39 +46,98 @@ const FixandFlipCalc = () => {
   });
 
   useEffect(() => {
-    setLoanAmount(purchasePrice + rehabCost);
-  }, [purchasePrice, rehabCost]);
+    setLoanAmount(calculateLoanAmount());
+  }, [purchasePrice, rehabCost, experienceLevel]);
 
-  const calculateMonthlyInterest = () => {
-    if (
-      purchasePrice <= 0 ||
-      rehabCost <= 0 ||
-      purchasePrice + rehabCost <= 0
-    ) {
-      return 0; // Return 0 if any input is invalid
-    }
-    const loanAmount = purchasePrice + rehabCost; // Total loan amount
-    const monthlyInterestRate = interestRate / 100 / 12; // Monthly interest rate
-    const totalPayments = projectLength * 12; // Total number of monthly payments (years * 12)
+  useEffect(() => {
+    setMonthlyInterestPayment(calculateMonthlyInterestPayment());
+  }, [loanAmount, experienceLevel, interestRate]);
 
-    console.log(monthlyInterestRate);
-    // Monthly payment formula
-    const monthlyPayment = loanAmount * monthlyInterestRate;
-
-    return monthlyPayment.toFixed(2); // Return the result rounded to 2 decimal places
-  };
   const marks = [
-    { value: 0, label: "New" },
-    { value: 1, label: "Beginner" },
-    { value: 2, label: "Intermediate" },
-    { value: 3, label: "Advanced" },
-    { value: 4, label: "Experienced" },
+    { value: 70, label: "New" },
+    { value: 75, label: "Beginner" },
+    { value: 80, label: "Intermediate" },
+    { value: 85, label: "Advanced" },
+    { value: 90, label: "Experienced" },
   ];
-  const calculateAnticipatedProfit = () => {
-    const totalCost = calculateTotalCost();
-    const anticipatedProfit = afterRepairValue - totalCost;
-    return anticipatedProfit;
+
+  // const [values, setValues] = useState({
+  //   purchasePrice: "",
+  //   rehabCost: "",
+  //   interestRate: "",
+  //   projectLength: "",
+  //   afterRepairValue: "",
+  //   monthlyTaxes: "",
+  //   monthlyInsurance: "",
+  //   monthlyUtilities: "",
+  //   otherMonthlyExpenses: "",
+  //   realtorFee: "",
+  //   closingCost: "",
+  //   ltv: "",
+  // });
+
+  // const handleChange = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
+
+  const calculateLoanAmount = () => {
+    return (
+      (parseFloat(purchasePrice) || 0) *
+        ((parseFloat(experienceLevel) || 0) / 100) +
+      (parseFloat(rehabCost) || 0)
+    ).toFixed(2);
   };
+
+  const calculateDownPayment = () => {
+    return (
+      (parseFloat(purchasePrice) || 0) -
+      (parseFloat(purchasePrice) || 0) *
+        ((parseFloat(experienceLevel) || 0) / 100)
+    ).toFixed(2);
+  };
+
+  const calculateCostsAndProfit = () => {
+    const totalMonthlyCosts =
+      (parseFloat(monthlyPropertyTaxes) || 0) +
+      (parseFloat(monthlyInsurance) || 0) +
+      (parseFloat(monthlyUtilityBills) || 0) +
+      (parseFloat(otherMonthlyExpenses) || 0);
+
+    const totalHoldingCost =
+      totalMonthlyCosts * (parseFloat(projectLength) || 0);
+    const totalInvestment =
+      (parseFloat(purchasePrice) || 0) +
+      (parseFloat(rehabCost) || 0) +
+      totalHoldingCost;
+
+    const sellingCosts =
+      ((parseFloat(costOfSales) || 0) / 100) *
+        (parseFloat(afterRepairValue) || 0) +
+      ((parseFloat(closingCost) || 0) / 100) *
+        (parseFloat(afterRepairValue) || 0);
+
+    const totalCost = totalInvestment + sellingCosts;
+    const anticipatedProfit = (parseFloat(afterRepairValue) || 0) - totalCost;
+    const profitPercentage = ((anticipatedProfit / totalCost) * 100).toFixed(2);
+
+    return {
+      totalCost: totalCost.toFixed(2),
+      anticipatedProfit: anticipatedProfit.toFixed(2),
+      profitPercentage,
+    };
+  };
+
+  const calculateMonthlyInterestPayment = () => {
+    const loanAmountValue = parseFloat(calculateLoanAmount()) || 0;
+    const interestRatePercentage = (parseFloat(interestRate) || 0) / 100;
+    return ((loanAmount * interestRatePercentage) / 12).toFixed(2);
+  };
+
+  const { totalCost, anticipatedProfit, profitPercentage } =
+    calculateCostsAndProfit();
+  // setLoanAmount(calculateLoanAmount());
+  const downPayment = calculateDownPayment();
+  // setMonthlyInterestPayment(calculateMonthlyInterestPayment());
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,29 +158,6 @@ const FixandFlipCalc = () => {
       });
   };
 
-  const calculateTotalCost = () => {
-    const closingCostTotal = loanAmount * (closingCost / 100);
-    const realtorFee = loanAmount * (costOfSales / 100);
-    const monthsToYears = projectLength;
-    const intrestAtRate = (interestRate / 100) * loanAmount;
-    const intrestOverYears = intrestAtRate * projectLength;
-    console.log(intrestOverYears);
-
-    const totalCost =
-      closingCostTotal +
-      intrestOverYears +
-      realtorFee +
-      purchasePrice +
-      rehabCost;
-    //monthlyPropertyTaxes * monthsToYears +
-    //monthlyInsurance * monthsToYears +
-    //monthlyUtilityBills * monthsToYears +
-    return totalCost.toFixed(2);
-  };
-
-  const totalCost = calculateTotalCost();
-  const anticipatedProfit = calculateAnticipatedProfit();
-  const profitPercentage = ((anticipatedProfit / totalCost) * 100).toFixed(2);
   const isDeal = profitPercentage >= 10;
   const profitBoxStyle = {
     backgroundColor: isDeal ? "green" : "#f44336",
@@ -178,6 +217,11 @@ const FixandFlipCalc = () => {
                     style={{ backgroundColor: "white" }}
                     value={purchasePrice}
                     onChange={(e) => setPurchasePrice(parseInt(e.target.value))}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -210,6 +254,11 @@ const FixandFlipCalc = () => {
                     fullWidth
                     value={rehabCost}
                     onChange={(e) => setRehabCost(parseInt(e.target.value))}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -244,8 +293,21 @@ const FixandFlipCalc = () => {
                         }} // Align icon vertically
                       />
                     </Tooltip>
-                  </Typography>{" "}
-                  <TextField fullWidth value={interestRate} disabled />
+                  </Typography>
+                  <Select
+                    value={interestRate}
+                    onChange={(e) => setInterestRate(e.target.value)}
+                    displayEmpty
+                    aria-labelledby="interest-rate-dropdown"
+                  >
+                    <MenuItem value={6}>6%</MenuItem>
+                    <MenuItem value={7}>7%</MenuItem>
+                    <MenuItem value={8}>8%</MenuItem>
+                    <MenuItem value={9}>9%</MenuItem>
+                    <MenuItem value={10}>10%</MenuItem>
+                    <MenuItem value={11}>11%</MenuItem>
+                    <MenuItem value={12}>12%</MenuItem>
+                  </Select>
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -272,12 +334,15 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <TextField
-                    disabled
-                    fullWidth
-                    value={projectLength} // Displaying in years
+                  <Select
+                    value={projectLength}
                     onChange={(e) => setProjectLength(e.target.value)}
-                  />
+                    displayEmpty
+                    aria-labelledby="project-length-dropdown"
+                  >
+                    <MenuItem value={12}>12 Months</MenuItem>
+                    <MenuItem value={18}>18 Months</MenuItem>
+                  </Select>
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -305,9 +370,17 @@ const FixandFlipCalc = () => {
                     </Tooltip>
                   </Typography>
                   <TextField
-                    type="number"
+                    type="text" // Change type to "text" to allow formatted string
                     fullWidth
-                    value={loanAmount}
+                    value={`${Number(loanAmount).toLocaleString("en-US", {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    })}`}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                     disabled
                   />
                 </FormControl>
@@ -343,6 +416,11 @@ const FixandFlipCalc = () => {
                     onChange={(e) =>
                       setAfterRepairValue(parseInt(e.target.value))
                     }
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -381,7 +459,7 @@ const FixandFlipCalc = () => {
                     gutterBottom
                     style={{ color: "black", fontSize: 20, marginTop: 5 }}
                   >
-                    ${calculateMonthlyInterest()}
+                    ${monthlyInterestPayment}
                   </Typography>
                 </FormControl>
               </Grid>
@@ -590,18 +668,30 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <Slider
+                  <Select
                     value={costOfSales}
-                    min={0}
-                    max={20}
-                    step={1}
-                    onChange={(e, value) => setCostOfSales(value)}
-                    valueLabelDisplay="auto"
-                  />
+                    onChange={(e) => setCostOfSales(e.target.value)}
+                    displayEmpty
+                    aria-labelledby="realtor-fee-dropdown"
+                  >
+                    <MenuItem value={0}>0%</MenuItem>
+                    <MenuItem value={0.5}>0.5%</MenuItem>
+                    <MenuItem value={1.0}>1.0%</MenuItem>
+                    <MenuItem value={1.5}>1.5%</MenuItem>
+                    <MenuItem value={2.0}>2.0%</MenuItem>
+                    <MenuItem value={2.5}>2.5%</MenuItem>
+                    <MenuItem value={3.0}>3.0%</MenuItem>
+                    <MenuItem value={3.5}>3.5%</MenuItem>
+                    <MenuItem value={4.0}>4.0%</MenuItem>
+                    <MenuItem value={4.5}>4.5%</MenuItem>
+                    <MenuItem value={5.0}>5.0%</MenuItem>
+                    <MenuItem value={5.5}>5.5%</MenuItem>
+                    <MenuItem value={6.0}>6.0%</MenuItem>
+                  </Select>
 
-                  <Typography className="text-center" color="grey">
+                  {/* <Typography className="text-center" color="grey">
                     Selected: <strong>{costOfSales}%</strong>
-                  </Typography>
+                  </Typography> */}
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -632,35 +722,40 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <Slider
+                  <Select
                     value={closingCost}
-                    min={0}
-                    max={10}
-                    step={1}
-                    onChange={(e, value) => setClosingCost(value)}
-                    valueLabelDisplay="auto"
-                  />
+                    onChange={(e) => setClosingCost(e.target.value)}
+                    displayEmpty
+                    aria-labelledby="closing-cost-dropdown"
+                  >
+                    <MenuItem value={0.25}>0.25%</MenuItem>
+                    <MenuItem value={0.5}>0.5%</MenuItem>
+                    <MenuItem value={0.75}>0.75%</MenuItem>
+                    <MenuItem value={1.0}>1.0%</MenuItem>
+                  </Select>
 
-                  <Typography className="text-center" color="grey">
+                  {/* <Typography className="text-center" color="grey">
                     Selected: <strong>{closingCost}%</strong>
-                  </Typography>
+                  </Typography> */}
                 </FormControl>
               </Grid>
-              <Grid item sm={11}>
+              <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography className="text-center" color="grey">
                     Buyer Experience
                   </Typography>
-                  <Slider
+                  <Select
                     value={experienceLevel}
-                    min={0}
-                    max={4}
-                    step={1}
-                    marks={marks}
-                    onChange={(e, value) => setExperienceLevel(value)}
-                    valueLabelDisplay="auto"
-                    aria-labelledby="experience-slider"
-                  />
+                    onChange={(e) => setExperienceLevel(e.target.value)}
+                    displayEmpty
+                    aria-labelledby="experience-dropdown"
+                  >
+                    <MenuItem value={70}>New - 70%</MenuItem>
+                    <MenuItem value={75}>Beginner - 75%</MenuItem>
+                    <MenuItem value={80}>Intermediate - 80%</MenuItem>
+                    <MenuItem value={85}>Advanced - 85%</MenuItem>
+                    <MenuItem value={90}>Experienced - 90%</MenuItem>
+                  </Select>
                 </FormControl>
               </Grid>
             </Grid>

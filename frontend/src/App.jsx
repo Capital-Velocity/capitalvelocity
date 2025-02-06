@@ -23,8 +23,6 @@ import TermsofUse from "./pages/TermsofUse";
 import UserDashFileUpload from "./pages/UserDashFileUpload";
 import UserDashHome from "./pages/UserDashHome";
 
-import FixAndFlipCalculator from "./Calculators/newCalc";
-
 function App() {
   const firstnameCookie = Cookies.get("firstName");
 
@@ -40,7 +38,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
-        <Route path="/test" element={<FixAndFlipCalculator />} />
         <Route path="/termsofUse" element={<TermsofUse />}></Route>
         <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
         <Route
