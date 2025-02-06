@@ -87,6 +87,7 @@ import SBA25 from "./Project99/SBA25";
 import SBA26 from "./Project99/SBA26";
 import SBA9 from "./Project99/SBA9";
 import SoftPull from "./Project99/SoftPull";
+import { useNavigate } from "react-router-dom";
 
 const selectionData = [
   { title: "Fix and Flip", icon: <FixAndFlipIcon />, value: "FixFlip" },
@@ -297,13 +298,34 @@ const LoanForm2 = () => {
   const [token, setToken] = useState("");
   const [jwt, setJWT] = useState("");
   const [cookieEmailFound, setCookieEmailFound] = useState(false);
+  const navigate = useNavigate(); // useNavigate hook for React Router v6
+
+  const firstnameCookie = Cookies.get("firstName");
 
   const handleOptionChange = (value) => {
     const option = value;
-    setSelectedOption(option);
-    const token = Cookies.get("token");
-    const email = Cookies.get("email");
+    // setSelectedOption(option);
+    // const token = Cookies.get("token");
+    // const email = Cookies.get("email");
     setFormData({});
+
+    if (!firstnameCookie) {
+      // If the user is not logged in, redirect to the /register page
+      navigate("/register"); // Redirect to /register using navigate
+    } else {
+      // If logged in, proceed with the option selection
+      setSelectedOption(option);
+    }
+  };
+
+  const handleNavigateLendio = () => {
+    if (!firstnameCookie) {
+      // If the user is not logged in, redirect to the /register page
+      navigate("/register"); // Redirect to /register using navigate
+    } else {
+      // If logged in, navigate to /lendio
+      navigate("/lendio");
+    }
   };
 
   // Function to go back a step
@@ -1085,114 +1107,91 @@ const LoanForm2 = () => {
           <Divider style={{ color: "grey", marginBottom: "10px" }} />
           <Grid container spacing={2}>
             <Grid item sm={6}>
-              {cookieEmailFound ? (
-                // Render this content when the cookie email is found
-                <>
-                  <Typography
-                    variant="h4"
-                    style={{ color: "#498dd6" }}
-                    gutterBottom
-                  >
-                    Business Loans
-                  </Typography>
+              {/* // Render this content when the cookie email is found */}
+              <>
+                <Typography
+                  variant="h4"
+                  style={{ color: "#498dd6" }}
+                  gutterBottom
+                >
+                  Business Loans
+                </Typography>
 
-                  <Grid container spacing={2}>
-                    <Grid item sm={6}>
-                      <Link href="/lendio">
-                        <Button
-                          style={{
-                            marginBottom: "10px",
-                            width: "200px",
-                            color: "grey",
-                            border: "1px solid grey",
-                            height: "100px",
-                            borderRadius: "8px",
-                          }}
-                          variant={"outlined"}
-                          //onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
-                          //onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
-                          sx={{
-                            "&:hover": {
-                              backgroundColor: "#498dd6",
-                            },
-                          }}
-                        >
-                          <div
-                            style={{
-                              fontSize: "60px",
-                              color: "grey",
-                              marginBottom: "8px",
-                              display: "flex",
-                              justifyContent: "center",
-                              alignItems: "center",
-                              width: "50px",
-                              height: "50px",
-                            }}
-                          >
-                            <CreditScoreIcon />
-                          </div>
-                          <div style={{ fontWeight: "bold" }}>
-                            Small Business Loan
-                          </div>
-                        </Button>
-                      </Link>
-                    </Grid>
-                    <Grid item sm={6}>
-                      <Button
+                <Grid container spacing={2}>
+                  <Grid item sm={6}>
+                    <Button
+                      style={{
+                        marginBottom: "10px",
+                        width: "200px",
+                        color: "grey",
+                        border: "1px solid grey",
+                        height: "100px",
+                        borderRadius: "8px",
+                      }}
+                      variant={"outlined"}
+                      onClick={handleNavigateLendio} // Handle navigation on button click
+                      sx={{
+                        "&:hover": {
+                          backgroundColor: "#498dd6",
+                        },
+                      }}
+                    >
+                      <div
                         style={{
-                          marginBottom: "10px",
-                          width: "300px",
+                          fontSize: "60px",
                           color: "grey",
-                          border: "1px solid grey",
-                          height: "100px",
-                          borderRadius: "8px",
-                        }}
-                        onClick={() => handleOptionChange("SBA")}
-                        variant={"outlined"}
-                        onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
-                        onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
-                        sx={{
-                          "&:hover": {
-                            backgroundColor: "#498dd6",
-                          },
+                          marginBottom: "8px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: "50px",
+                          height: "50px",
                         }}
                       >
-                        <div
-                          style={{
-                            fontSize: "60px",
-                            color: "grey",
-                            marginBottom: "8px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "50px",
-                            height: "50px",
-                          }}
-                        >
-                          <CreditScoreIcon />
-                        </div>
-                        <div style={{ fontWeight: "bold" }}>SBA</div>
-                      </Button>
-                    </Grid>
-                    <Grid item sm={6}>
-                      <Box
-                        component={"img"}
-                        src={project99}
-                        width={1}
-                        sx={{
-                          filter:
-                            theme.palette.mode === "dark"
-                              ? "brightness(0.8)"
-                              : "none",
-                        }}
-                      />
-                    </Grid>
+                        <CreditScoreIcon />
+                      </div>
+                      <div style={{ fontWeight: "bold" }}>
+                        Small Business Loan
+                      </div>
+                    </Button>
                   </Grid>
-                </>
-              ) : (
-                // Render this content when the cookie email is not found
-                // You can customize this content as needed
-                <>
+                  <Grid item sm={6}>
+                    <Button
+                      style={{
+                        marginBottom: "10px",
+                        width: "300px",
+                        color: "grey",
+                        border: "1px solid grey",
+                        height: "100px",
+                        borderRadius: "8px",
+                      }}
+                      onClick={() => handleOptionChange("SBA")}
+                      variant={"outlined"}
+                      onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
+                      onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
+                      sx={{
+                        "&:hover": {
+                          backgroundColor: "#498dd6",
+                        },
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "60px",
+                          color: "grey",
+                          marginBottom: "8px",
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                          width: "50px",
+                          height: "50px",
+                        }}
+                      >
+                        <CreditScoreIcon />
+                      </div>
+                      <div style={{ fontWeight: "bold" }}>SBA</div>
+                    </Button>
+                  </Grid>
                   <Grid item sm={6}>
                     <Box
                       component={"img"}
@@ -1206,8 +1205,8 @@ const LoanForm2 = () => {
                       }}
                     />
                   </Grid>
-                </>
-              )}
+                </Grid>
+              </>
             </Grid>
           </Grid>
         </Container>

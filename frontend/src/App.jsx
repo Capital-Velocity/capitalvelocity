@@ -71,7 +71,8 @@ function App() {
             )
           }
         />{" "} */}
-        <Route
+        <Route path="/loan-form-business-loans" element={<LoanForm2 />}></Route>
+        {/* <Route
           path="/loan-form-business-loans"
           element={
             firstnameCookie ? (
@@ -80,7 +81,7 @@ function App() {
               <Navigate to="/register"></Navigate>
             )
           }
-        />{" "}
+        />{" "} */}
         <Route
           path="/project99"
           element={
