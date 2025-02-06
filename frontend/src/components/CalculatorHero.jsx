@@ -11,9 +11,9 @@ import { useState, useEffect, useRef } from "react";
 
 const features = [
   {
-    name: "Debt Service Coverage Ratio (DSCR)",
+    name: "Rental Debt Service Coverage Ratio (DSCR)",
     description:
-      "Do you need to assess the financial health of a rental property quickly and accurately? Our DSCR Calculator provides you with a fast and reliable way to determine whether a property can cover its debt obligations. By analyzing rental income against your property’s debt service, you can make informed decisions on investment opportunities. Whether you're a seasoned investor or just getting started, our tool helps you evaluate potential risks and returns with ease. Try it now and take control of your real estate investments!",
+      "Do you need to assess the financial health of a rental property quickly and accurately? Our Rental DSCR Calculator provides you with a fast and reliable way to determine whether a property can cover its debt obligations. By analyzing rental income against your property’s debt service, you can make informed decisions on investment opportunities. Whether you're a seasoned investor or just getting started, our tool helps you evaluate potential risks and returns with ease. Try it now and take control of your real estate investments!",
     href: "/DsciCalculator",
     icon: CloudArrowUpIcon,
   },

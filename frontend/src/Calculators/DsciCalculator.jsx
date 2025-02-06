@@ -309,7 +309,7 @@ const DsciCalculator = () => {
           gutterBottom
           style={{ color: "#498dd6", fontSize: 24 }}
         >
-          DSCR Calculator
+          Rental DSCR Calculator
         </Typography>
         <Grid container spacing={2}>
           <Grid item sm={6}>

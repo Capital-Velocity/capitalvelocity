@@ -401,7 +401,7 @@ function Navbar() {
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">DSCR Calculator</span>
+            <span class="mt-1 leading-none">Rental DSCR Calculator</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 

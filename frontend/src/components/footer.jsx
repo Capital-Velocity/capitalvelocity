@@ -1,7 +1,7 @@
 const navigation = {
   main: [
     { name: "Real Estate Loans", href: "/loan-form-realestate" },
-    { name: "DSCR Calculator", href: "/DsciCalculator" },
+    { name: "Rental DSCR Calculator", href: "/DsciCalculator" },
     { name: "Fix and Flip Calculator", href: "/FixandFlipCalc" },
     { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Project Epic 99", href: "/project99" },
