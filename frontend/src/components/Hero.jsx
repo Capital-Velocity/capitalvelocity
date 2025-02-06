@@ -1,5 +1,6 @@
 import glacierParkImg from "../assets/glacier-park.jpg";
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -80,24 +81,40 @@ export default function Example() {
                 Discover, Invest, and Grow.
               </p>
             </div>
-            <div>
+            <div
+              ref={paragraphRef}
+              className={`flex gap-4 fade-in
+                              ${
+                                isParagraphVisible
+                                  ? "fade-in-show paragraph-fade-in-show-extra"
+                                  : "fade-in-hide"
+                              }`}
+            >
               <button
-                ref={paragraphRef}
                 onClick={handleScrollToBottom} // Attach scroll handler
                 className={`flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
-        focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
-        shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
-        rounded-md px-3 h-10 text-center fade-in font-semibold
-        ${
-          isParagraphVisible
-            ? "fade-in-show paragraph-fade-in-show-extra"
-            : "fade-in-hide"
-        }`}
+      focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
+      shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
+      rounded-md px-3 h-10 text-center font-semibold
+      }`}
                 style={{ fontSize: "14px" }} // Apply font size
                 type="button"
               >
-                Explore Our Loans
+                Explore Real Estate Loans
               </button>
+
+              <Link to="/loan-form-business-loans">
+                <button
+                  className="flex items-center justify-center text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br
+      focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
+      shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 
+      rounded-md px-3 h-10 text-center font-semibold"
+                  style={{ fontSize: "14px" }} // Apply font size
+                  type="button"
+                >
+                  Explore Business Loans
+                </button>
+              </Link>
             </div>
           </div>
         </div>
