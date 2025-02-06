@@ -23,6 +23,7 @@ import {
 } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
 import Tooltip from "@mui/material/Tooltip";
+import Divider from "@mui/material/Divider";
 
 // Register ChartJS components
 // ChartJS.register(ArcElement, Tooltip, Legend);
@@ -313,6 +314,28 @@ const DsciCalculator = () => {
         >
           Rental DSCR Calculator
         </Typography>
+
+        <Typography
+          variant="body1"
+          display="block"
+          gutterBottom
+          style={{ color: "grey", fontSize: 14 }}
+        >
+          Maximize Your Investment Potential with Our Rental DSCR Calculator{" "}
+          <br />
+          <br /> At Capital Velocity, we empower real estate investors with the
+          financial tools needed to scale their portfolios. Our Rental DSCR
+          (Debt Service Coverage Ratio) Calculator helps you assess whether your
+          property generates enough income to cover its loan payments—giving you
+          the confidence to secure financing and maximize returns. <br />
+          <br /> Lenders prioritize DSCR when approving real estate investment
+          loans. A higher DSCR means better loan terms, more purchasing power,
+          and increased profitability. Use our DSCR Calculator to evaluate your
+          next rental investment and take the next step toward financial growth.
+          Invest smarter. Grow faster. Try our Rental DSCR Calculator today!
+        </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <Typography
