@@ -538,7 +538,7 @@ const DsciCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item sm={6}>
+              <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
@@ -748,7 +748,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
