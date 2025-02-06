@@ -6,7 +6,7 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { useTheme } from "@mui/material/styles";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Confetti from "react-confetti";
 import congrats from "../Images/congrats.png";
 import project99 from "../Images/project99.png";
@@ -88,20 +88,19 @@ import SBA26 from "./Project99/SBA26";
 import SBA9 from "./Project99/SBA9";
 import SoftPull from "./Project99/SoftPull";
 import { useNavigate } from "react-router-dom";
+import Card from "@mui/material/Card";
 
 const selectionData = [
-  { title: "Fix and Flip", icon: <FixAndFlipIcon />, value: "FixFlip" },
-
   {
-    title: "Multifamily Bridge",
-    icon: <MultifamilyBridgeIcon />,
-    value: "MultifamilyBridge",
+    title: "Small Business Loan",
+    icon: <CreditScoreIcon />,
+    value: "Lendio(PLACEHOLDER)",
   },
 
   {
-    title: "Rental Portfolios",
-    icon: <HouseSidingIcon />,
-    value: "RentalPortfolios",
+    title: "SBA",
+    icon: <CreditScoreIcon />,
+    value: "SBA",
   },
 ];
 const selectionData2 = [
@@ -299,6 +298,50 @@ const LoanForm2 = () => {
   const [jwt, setJWT] = useState("");
   const [cookieEmailFound, setCookieEmailFound] = useState(false);
   const navigate = useNavigate(); // useNavigate hook for React Router v6
+
+  const [isHeadingVisible, setIsHeadingVisible] = useState(false);
+  const [isParagraphVisible, setIsParagraphVisible] = useState(false);
+  const [isFeaturesVisible, setIsFeaturesVisible] = useState(false);
+
+  const headingRef = useRef(null);
+  const paragraphRef = useRef(null);
+  const featuresRef = useRef(null); // New ref for features
+
+  useEffect(() => {
+    const handleIntersection = (entries, observer, setVisibility) => {
+      const entry = entries[0];
+      setVisibility(entry.isIntersecting);
+    };
+
+    const headingObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, headingObserver, setIsHeadingVisible),
+      { threshold: 0.2 } // Trigger when 50% of the element is visible
+    );
+
+    const paragraphObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, paragraphObserver, setIsParagraphVisible),
+      { threshold: 0.2 }
+    );
+
+    const featuresObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, featuresObserver, setIsFeaturesVisible),
+      { threshold: 0.1 } // Trigger when 50% of the element is visible
+    );
+
+    if (headingRef.current) headingObserver.observe(headingRef.current);
+    if (paragraphRef.current) paragraphObserver.observe(paragraphRef.current);
+    if (featuresRef.current) featuresObserver.observe(featuresRef.current);
+
+    return () => {
+      if (headingRef.current) headingObserver.unobserve(headingRef.current);
+      if (paragraphRef.current)
+        paragraphObserver.unobserve(paragraphRef.current);
+      if (featuresRef.current) featuresObserver.unobserve(featuresRef.current);
+    };
+  }, []);
 
   const firstnameCookie = Cookies.get("firstName");
 
@@ -1099,25 +1142,123 @@ const LoanForm2 = () => {
   const renderForm = () => {
     if (selectedOption === "") {
       return (
-        <Container style={{ backgroundColor: "#c0dced" }}>
-          <Typography variant="h4" color="black" gutterBottom>
-            Apply for Business Loans
-          </Typography>
+        <div>
+          <Container style={{ backgroundColor: "#c0dced" }}>
+            <Typography
+              ref={headingRef}
+              className={`text-center fade-in ${
+                isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+              }`}
+              variant="h4"
+              color="black"
+              gutterBottom
+            >
+              Business Loans
+            </Typography>
 
-          <Divider style={{ color: "grey", marginBottom: "10px" }} />
-          <Grid container spacing={2}>
-            <Grid item sm={6}>
-              {/* // Render this content when the cookie email is found */}
-              <>
-                <Typography
-                  variant="h4"
-                  style={{ color: "#498dd6" }}
-                  gutterBottom
-                >
-                  Business Loans
-                </Typography>
+            <Divider style={{ color: "grey", marginBottom: "10px" }} />
+            <Grid container spacing={2}>
+              <Grid item sm={12}>
+                {/* // Render this content when the cookie email is found */}
+                <>
+                  <Grid container spacing={2}>
+                    <Grid item sm={12}>
+                      <Box style={{}}>
+                        <Box marginBottom={4}>
+                          <Typography
+                            align={"center"}
+                            color={"text.secondary"}
+                            data-aos={"fade-up"}
+                            ref={paragraphRef}
+                            className={` ${
+                              isParagraphVisible
+                                ? "fade-in-show paragraph-fade-in-show"
+                                : "fade-in-hide"
+                            }`}
+                          >
+                            Find the financing solution that fits your business
+                            needs and your wallet. Secure your loan today.
+                          </Typography>
+                        </Box>
+                        <Box>
+                          <Container style={{ marginTop: "-50px" }}>
+                            <Grid
+                              ref={featuresRef}
+                              className={` ${
+                                isFeaturesVisible
+                                  ? "fade-in-show paragraph-fade-in-show-extra"
+                                  : "fade-in-hide"
+                              }`}
+                              container
+                              spacing={2}
+                            >
+                              {selectionData.map((item, i) => (
+                                <Grid item xs={4} md={4} key={i}>
+                                  <Box
+                                    display={"block"}
+                                    width={1}
+                                    height={1}
+                                    sx={{
+                                      textDecoration: "none",
+                                      transition: "all .2s ease-in-out",
+                                      "&:hover": {
+                                        transform: "translateY(-4px)",
+                                      },
+                                    }}
+                                    onClick={() =>
+                                      handleOptionChange(item.value)
+                                    }
+                                  >
+                                    <Box
+                                      component={Card}
+                                      padding={2}
+                                      width={1}
+                                      height={1}
+                                      borderRadius={2}
+                                      bgcolor={"alternate.main"}
+                                      data-aos={"fade-up"}
+                                      data-aos-delay={i * 100}
+                                      data-aos-offset={100}
+                                      data-aos-duration={600}
+                                    >
+                                      <Box
+                                        position={"relative"}
+                                        display={"flex"}
+                                        justifyContent={"center"}
+                                      >
+                                        <Box
+                                          sx={{
+                                            color: "#498dd6",
 
-                <Grid container spacing={2}>
+                                            bottom: 0,
+                                          }}
+                                        >
+                                          {item.icon}
+                                        </Box>
+                                      </Box>
+                                      <Typography
+                                        variant={"subtitle1"}
+                                        align={"center"}
+                                        style={{ textDecoration: "none" }}
+                                        sx={{
+                                          fontWeight: 500,
+                                          marginTop: 2,
+                                          textDecoration: "none",
+                                        }}
+                                      >
+                                        {item.title}
+                                      </Typography>
+                                    </Box>
+                                  </Box>
+                                </Grid>
+                              ))}
+                            </Grid>
+                          </Container>
+                        </Box>
+                      </Box>
+                    </Grid>
+                  </Grid>
+                  {/* <Grid container spacing={2}>
                   <Grid item sm={6}>
                     <Button
                       style={{
@@ -1205,11 +1346,25 @@ const LoanForm2 = () => {
                       }}
                     />
                   </Grid>
-                </Grid>
-              </>
+                </Grid> */}
+                </>
+              </Grid>
             </Grid>
-          </Grid>
-        </Container>
+          </Container>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={project99}
+              className="text-center"
+              style={{ width: "25%" }}
+            />
+          </div>
+        </div>
       );
     }
 
