@@ -342,8 +342,7 @@ function Navbar() {
         </Toolbar>
 
         <hr />
-
-        <div class="hidden justify-center space-x-12 bg-white px-12 md:flex">
+        <div class="justify-center space-x-12 bg-white px-12 md:flex">
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${

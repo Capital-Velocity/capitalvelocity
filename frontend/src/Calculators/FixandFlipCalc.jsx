@@ -20,19 +20,21 @@ import { ToastContainer, toast } from "react-toastify";
 const FixandFlipCalc = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
   const [rehabCost, setRehabCost] = useState(0);
-  const [closingCost, setClosingCost] = useState(5);
-  const [showModal, setShowModal] = useState(false);
   const [interestRate, setInterestRate] = useState(12);
   const [projectLength, setProjectLength] = useState(12); // 30 years in months
   const [loanAmount, setLoanAmount] = useState(0);
+  const [afterRepairValue, setAfterRepairValue] = useState(0);
   const [monthlyInterestPayment, setMonthlyInterestPayment] = useState(0);
   const [monthlyPropertyTaxes, setMonthlyPropertyTaxes] = useState(50);
   const [monthlyInsurance, setMonthlyInsurance] = useState(20);
   const [monthlyUtilityBills, setMonthlyUtilityBills] = useState(50);
   const [otherMonthlyExpenses, setOtherMonthlyExpenses] = useState(0);
   const [costOfSales, setCostOfSales] = useState(1);
+
+  const [closingCost, setClosingCost] = useState(5);
+  const [showModal, setShowModal] = useState(false);
+
   const [experienceLevel, setExperienceLevel] = useState(2);
-  const [afterRepairValue, setAfterRepairValue] = useState(0);
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
