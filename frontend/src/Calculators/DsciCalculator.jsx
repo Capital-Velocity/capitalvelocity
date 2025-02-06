@@ -7,7 +7,7 @@ import { ToastContainer, toast } from "react-toastify";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import axios from "axios";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement, Legend } from "chart.js";
 import {
   Typography,
   Grid,
@@ -21,9 +21,11 @@ import {
   Button,
   Box,
 } from "@mui/material";
+import InfoIcon from "@mui/icons-material/Info";
+import Tooltip from "@mui/material/Tooltip";
 
 // Register ChartJS components
-ChartJS.register(ArcElement, Tooltip, Legend);
+// ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DsciCalculator = () => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -324,7 +326,28 @@ const DsciCalculator = () => {
             <Grid container spacing={2}>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Loan Subtype</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Loan Subtype ($){" "}
+                    <Tooltip
+                      title="The type of loan you're applying for (e.g., Single Property, 2 to 4 Units). This helps define the repayment structure and the interest rate over time."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <Select
                     value={loanSubtype}
                     onChange={(e) => setLoanSubtype(e.target.value)}
@@ -338,7 +361,28 @@ const DsciCalculator = () => {
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
-                <Typography color="grey">Estimated As-Is Value</Typography>
+                <Typography
+                  color="grey"
+                  component="div"
+                  sx={{ display: "inline-flex", alignItems: "center" }}
+                >
+                  Estimated As-Is Value ($){" "}
+                  <Tooltip
+                    title="The current market value of the property in its existing condition, before any renovations or improvements are made."
+                    arrow
+                    placement="top"
+                  >
+                    <InfoIcon
+                      className="cursor-pointer"
+                      sx={{
+                        fontSize: 18,
+                        color: "gray",
+                        marginLeft: 1,
+                        verticalAlign: "middle",
+                      }} // Align icon vertically
+                    />
+                  </Tooltip>
+                </Typography>{" "}
                 <FormControl fullWidth>
                   <TextField
                     value={estimatedValue}
@@ -354,7 +398,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Credit Score</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Credit Score{" "}
+                    <Tooltip
+                      title="A numerical representation of your creditworthiness based on your credit history. It affects the interest rate and terms of your loan."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <Select
                     value={selectedCreditScore}
                     onChange={handleCreditScoreChange}
@@ -370,7 +435,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">LTV Percentage</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    LTV Percentage (%){" "}
+                    <Tooltip
+                      title="The ratio of the loan amount to the appraised value of the property, expressed as a percentage. A higher LTV percentage indicates higher risk for lenders."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={ltv}
                     disabled
@@ -385,9 +471,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">
-                    Note Interest Rate <bold>(rates change daily)</bold>
-                  </Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Interest Rate (%){" "}
+                    <Tooltip
+                      title="The percentage of the loan amount charged by the lender for borrowing money, typically expressed as an annual percentage rate (APR). This rate impacts monthly payments and the total loan cost."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={7}
                     disabled
@@ -402,9 +507,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">
-                    Fully Amortizing Period (Years)
-                  </Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Fully Amortizing Period (Years){" "}
+                    <Tooltip
+                      title="The time period over which the loan is fully paid off, including both principal and interest, with equal payments made throughout the term."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     disabled
                     value={30}
@@ -416,11 +540,37 @@ const DsciCalculator = () => {
 
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Loan Amount</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Loan Amount ($){" "}
+                    <Tooltip
+                      title="The total amount of money borrowed for the property purchase, which is typically based on the LTV and the estimated property value."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     onChange={(e) => setLoanAmount(e.target.value)}
                     value={loanAmount}
                     variant="outlined"
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -446,7 +596,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Monthly Rent</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly Rent ($){" "}
+                    <Tooltip
+                      title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={monthlyRent}
                     onChange={(e) => setMonthlyRent(e.target.value)}
@@ -461,7 +632,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Annual Gross Rent</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Annual Gross Rent ($){" "}
+                    <Tooltip
+                      title="The total rental income generated by the property in a year, calculated as the sum of the monthly rent multiplied by 12."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     disabled
                     value={annualGrossRent}
@@ -486,7 +678,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Annual Taxes</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Annual Taxes ($){" "}
+                    <Tooltip
+                      title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={annualTaxes}
                     onChange={(e) => setAnnualTaxes(e.target.value)}
@@ -501,7 +714,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Annual Insurance</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Annual Insurance ($){" "}
+                    <Tooltip
+                      title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={annualInsurance}
                     onChange={(e) => setAnnualInsurance(e.target.value)}
@@ -516,7 +750,28 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Annual HOA Fees</Typography>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Annual HOA Fees ($){" "}
+                    <Tooltip
+                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
                   <TextField
                     value={annualHoa}
                     onChange={(e) => setAnnualHoa(e.target.value)}
@@ -529,7 +784,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item sm={12}>
                 <Button
                   variant="contained"
                   color="primary"
