@@ -38,7 +38,7 @@ const mock = [
   },
 
   {
-    title: "Stabilized Bridge",
+    title: "Cashed Out Refinance",
     icon: <StabilizedBridgeIcon />,
     value: "StabilizedBridge",
     link: "/loan-form-realestate?type=StabilizedBridge",
