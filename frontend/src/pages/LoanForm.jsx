@@ -69,7 +69,9 @@ import LoanTerms2New from "../components/Loan Form/LoanTerms2New";
 import LoanTerms3New from "../components/Loan Form/LoanTerms3New";
 import SBA26 from "./Project99/SBA26";
 import SBA27 from "./Project99/SBA27";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+const firstnameCookie = Cookies.get("firstName");
 
 const selectionData = [
   { title: "Fix and Flip", icon: <FixAndFlipIcon />, value: "FixFlip" },
@@ -217,12 +219,21 @@ const LoanForm = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const loanType = queryParams.get("type"); // Extracting "type" from URL
+  const navigate = useNavigate(); // useNavigate hook for React Router v6
 
   const handleOptionChange = (value) => {
     const option = value;
     console.log(option);
-    setSelectedOption(option);
+    // setSelectedOption(option);
     setFormData({});
+
+    if (!firstnameCookie) {
+      // If the user is not logged in, redirect to the /register page
+      navigate("/register"); // Redirect to /register using navigate
+    } else {
+      // If logged in, proceed with the option selection
+      setSelectedOption(value);
+    }
   };
 
   // Function to go back a step

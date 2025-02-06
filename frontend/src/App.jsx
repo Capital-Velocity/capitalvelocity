@@ -60,7 +60,8 @@ function App() {
             )
           }
         />{" "}
-        <Route
+        <Route path="/loan-form-realestate" element={<LoanForm />}></Route>
+        {/* <Route
           path="/loan-form-realestate"
           element={
             firstnameCookie ? (
@@ -69,7 +70,7 @@ function App() {
               <Navigate to="/register"></Navigate>
             )
           }
-        />{" "}
+        />{" "} */}
         <Route
           path="/loan-form-business-loans"
           element={
