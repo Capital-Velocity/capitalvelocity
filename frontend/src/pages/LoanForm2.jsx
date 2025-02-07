@@ -91,19 +91,23 @@ import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import InfoIcon from "@mui/icons-material/Info";
 import Tooltip from "@mui/material/Tooltip";
-
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { green } from "@mui/material/colors";
 const selectionData = [
   {
     title: "Small Business Loan",
     icon: <CreditScoreIcon />,
     value: "https://go.mypartner.io/business-financing/?ref=0014x00001SWeI4AAL",
     tooltip: "Financing options for small businesses.",
+    checks: ["Confirmed Eligibility", "Low Interest Rates"],
   },
   {
     title: "SBA",
     icon: <CreditScoreIcon />,
     value: "SBA",
     tooltip: "Small Business Administration-backed loan programs.",
+    checks: ["Government Backed", "Longer Terms Available"],
   },
 ];
 const selectionData2 = [
@@ -1259,7 +1263,50 @@ const LoanForm2 = () => {
                                         >
                                           {item.title}
                                         </Typography>
-                                        <Tooltip title={item.tooltip} arrow>
+                                        <Tooltip
+                                          title={
+                                            <Box>
+                                              <Typography variant="body2">
+                                                {item.tooltip}
+                                              </Typography>
+                                              {item.checks.map(
+                                                (check, index) => (
+                                                  <FormControlLabel
+                                                    key={index}
+                                                    control={
+                                                      <Checkbox
+                                                        defaultChecked
+                                                        sx={{
+                                                          color: green[400],
+                                                          "&.Mui-checked": {
+                                                            color: green[400],
+                                                          },
+                                                          transform:
+                                                            "scale(0.9)", // Make it 50% larger
+                                                        }}
+                                                      />
+                                                    }
+                                                    label={
+                                                      <Typography
+                                                        sx={{
+                                                          fontSize: "0.875rem",
+                                                        }}
+                                                      >
+                                                        {check}
+                                                      </Typography>
+                                                    }
+                                                    sx={{
+                                                      marginLeft: "-4px", // Move text closer to checkbox
+                                                      display: "flex", // Ensure checkbox and text are side by side
+                                                      alignItems: "center", // Keep everything vertically centered
+                                                    }}
+                                                  />
+                                                )
+                                              )}
+                                            </Box>
+                                          }
+                                          arrow
+                                        >
                                           <InfoIcon
                                             sx={{
                                               fontSize: 18,
