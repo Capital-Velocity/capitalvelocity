@@ -469,9 +469,9 @@ const FixandFlipCalc = () => {
                     color="grey"
                     component="div"
                     sx={{
-                      display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
                     }}
                   >
                     Monthly Property Taxes
@@ -492,18 +492,17 @@ const FixandFlipCalc = () => {
                     </Tooltip>
                   </Typography>
 
-                  <Slider
+                  <TextField
+                    fullWidth
+                    type="number"
                     value={monthlyPropertyTaxes}
-                    min={50}
-                    max={1000}
-                    step={1}
-                    onChange={(e, value) => setMonthlyPropertyTaxes(value)}
-                    valueLabelDisplay="auto"
+                    onChange={(e) => setMonthlyPropertyTaxes(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
-
-                  <Typography className="text-center" color="grey">
-                    Selected: <strong>${monthlyPropertyTaxes}</strong>
-                  </Typography>
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -542,18 +541,18 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <Slider
-                    value={monthlyInsurance}
-                    min={20}
-                    max={250}
-                    step={1}
-                    onChange={(e, value) => setMonthlyInsurance(value)}
-                    valueLabelDisplay="auto"
-                  />
 
-                  <Typography className="text-center" color="grey">
-                    Selected: <strong>${monthlyInsurance}</strong>
-                  </Typography>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={monthlyInsurance}
+                    onChange={(e) => setMonthlyInsurance(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -584,18 +583,18 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <Slider
-                    value={monthlyUtilityBills}
-                    min={50}
-                    max={500}
-                    step={1}
-                    onChange={(e, value) => setMonthlyUtilityBills(value)}
-                    valueLabelDisplay="auto"
-                  />
 
-                  <Typography className="text-center" color="grey">
-                    Selected: <strong>${monthlyUtilityBills}</strong>
-                  </Typography>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={monthlyUtilityBills}
+                    onChange={(e) => setMonthlyUtilityBills(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
@@ -626,18 +625,18 @@ const FixandFlipCalc = () => {
                       />
                     </Tooltip>
                   </Typography>
-                  <Slider
-                    value={otherMonthlyExpenses}
-                    min={0}
-                    max={2000}
-                    step={1}
-                    onChange={(e, value) => setOtherMonthlyExpenses(value)}
-                    valueLabelDisplay="auto"
-                  />
 
-                  <Typography className="text-center" color="grey">
-                    Selected: <strong>${otherMonthlyExpenses}</strong>
-                  </Typography>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={otherMonthlyExpenses}
+                    onChange={(e) => setOtherMonthlyExpenses(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
