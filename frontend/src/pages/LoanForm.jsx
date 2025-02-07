@@ -93,7 +93,7 @@ const selectionData = [
   { title: "Ground Up", icon: <GroundUpIcon />, value: "GroundUp" },
 
   {
-    title: "Stabilized Bridge",
+    title: "Cashed Out Refinance",
     icon: <StabilizedBridgeIcon />,
     value: "StabilizedBridge",
   },
