@@ -72,35 +72,47 @@ import SBA27 from "./Project99/SBA27";
 import { useLocation, useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
 import project99 from "../Images/project99.png";
+import InfoIcon from "@mui/icons-material/Info";
+import Tooltip from "@mui/material/Tooltip";
 
 const firstnameCookie = Cookies.get("firstName");
 
 const selectionData = [
-  { title: "Fix and Flip", icon: <FixAndFlipIcon />, value: "FixFlip" },
-
+  {
+    title: "Fix and Flip",
+    icon: <FixAndFlipIcon />,
+    value: "FixFlip",
+    tooltip: "Short-term financing for purchasing and renovating properties.",
+  },
   {
     title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
+    tooltip: "Interim financing for multifamily property acquisitions.",
   },
-
   {
     title: "Rental Portfolios",
     icon: <HouseSidingIcon />,
     value: "RentalPortfolios",
+    tooltip: "Long-term loans for multiple rental properties.",
   },
-
-  { title: "Ground Up", icon: <GroundUpIcon />, value: "GroundUp" },
-
+  {
+    title: "Ground Up",
+    icon: <GroundUpIcon />,
+    value: "GroundUp",
+    tooltip: "Financing for new construction projects from the ground up.",
+  },
   {
     title: "Cashed Out Refinance",
     icon: <StabilizedBridgeIcon />,
     value: "StabilizedBridge",
+    tooltip: "Refinancing to pull out cash from existing properties.",
   },
   {
     title: "Single Property",
     icon: <SinglePropertyIcon />,
     value: "SingleProperty",
+    tooltip: "Loans for individual real estate investments.",
   },
 ];
 const selectionData2 = [
@@ -1337,25 +1349,40 @@ const LoanForm = () => {
                                   <Box
                                     sx={{
                                       color: "#498dd6",
-
                                       bottom: 0,
                                     }}
                                   >
                                     {item.icon}
                                   </Box>
                                 </Box>
-                                <Typography
-                                  variant={"subtitle1"}
-                                  align={"center"}
-                                  style={{ textDecoration: "none" }}
-                                  sx={{
-                                    fontWeight: 500,
-                                    marginTop: 2,
-                                    textDecoration: "none",
-                                  }}
+
+                                {/* Title and Tooltip in a Flexbox */}
+                                <Box
+                                  display="flex"
+                                  alignItems="center"
+                                  justifyContent="center"
+                                  mt={2}
                                 >
-                                  {item.title}
-                                </Typography>
+                                  <Typography
+                                    variant={"subtitle1"}
+                                    sx={{
+                                      fontWeight: 500,
+                                      textDecoration: "none",
+                                    }}
+                                  >
+                                    {item.title}
+                                  </Typography>
+                                  <Tooltip title={item.tooltip} arrow>
+                                    <InfoIcon
+                                      sx={{
+                                        fontSize: 18,
+                                        color: "grey",
+                                        marginLeft: 0.5,
+                                        cursor: "pointer",
+                                      }}
+                                    />
+                                  </Tooltip>
+                                </Box>
                               </Box>
                             </Box>
                           </Grid>
