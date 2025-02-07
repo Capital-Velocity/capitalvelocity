@@ -89,18 +89,21 @@ import SBA9 from "./Project99/SBA9";
 import SoftPull from "./Project99/SoftPull";
 import { useNavigate } from "react-router-dom";
 import Card from "@mui/material/Card";
+import InfoIcon from "@mui/icons-material/Info";
+import Tooltip from "@mui/material/Tooltip";
 
 const selectionData = [
   {
     title: "Small Business Loan",
     icon: <CreditScoreIcon />,
-    value: "https://go.mypartner.io/business-financing/?ref=0014x00001SWeI4AAL", // Store URL directly
+    value: "https://go.mypartner.io/business-financing/?ref=0014x00001SWeI4AAL",
+    tooltip: "Financing options for small businesses.",
   },
-
   {
     title: "SBA",
     icon: <CreditScoreIcon />,
     value: "SBA",
+    tooltip: "Small Business Administration-backed loan programs.",
   },
 ];
 const selectionData2 = [
@@ -1240,18 +1243,33 @@ const LoanForm2 = () => {
                                           {item.icon}
                                         </Box>
                                       </Box>
-                                      <Typography
-                                        variant={"subtitle1"}
-                                        align={"center"}
-                                        style={{ textDecoration: "none" }}
-                                        sx={{
-                                          fontWeight: 500,
-                                          marginTop: 2,
-                                          textDecoration: "none",
-                                        }}
+                                      {/* Title and Tooltip in a Flexbox */}
+                                      <Box
+                                        display="flex"
+                                        alignItems="center"
+                                        justifyContent="center"
+                                        mt={2}
                                       >
-                                        {item.title}
-                                      </Typography>
+                                        <Typography
+                                          variant={"subtitle1"}
+                                          sx={{
+                                            fontWeight: 500,
+                                            textDecoration: "none",
+                                          }}
+                                        >
+                                          {item.title}
+                                        </Typography>
+                                        <Tooltip title={item.tooltip} arrow>
+                                          <InfoIcon
+                                            sx={{
+                                              fontSize: 18,
+                                              color: "grey",
+                                              marginLeft: 0.5,
+                                              cursor: "pointer",
+                                            }}
+                                          />
+                                        </Tooltip>
+                                      </Box>
                                     </Box>
                                   </Box>
                                 </Grid>
