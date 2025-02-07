@@ -19,6 +19,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import InputAdornment from "@mui/material/InputAdornment";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 const FixandFlipCalc = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -44,6 +46,9 @@ const FixandFlipCalc = () => {
     email: "",
     phone: "",
   });
+
+  const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     setLoanAmount(calculateLoanAmount());
@@ -159,6 +164,18 @@ const FixandFlipCalc = () => {
   };
 
   const isDeal = profitPercentage >= 10;
+
+  useEffect(() => {
+    if (!prevIsDeal && isDeal) {
+      // Trigger confetti when switching from "Not a deal" to "It's a deal!"
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000); // Hide confetti after 3 seconds
+    }
+    setPrevIsDeal(isDeal);
+  }, [isDeal]);
+
+  const [showConfetti, setShowConfetti] = useState(false);
+
   const profitBoxStyle = {
     backgroundColor: isDeal ? "green" : "#f44336",
     marginTop: 10,
@@ -174,6 +191,18 @@ const FixandFlipCalc = () => {
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={250} // Decent amount of confetti
+          tweenDuration={5} // Smooth fall animation
+          decay={0.9} // Ensures confetti falls off-screen
+          run={showConfetti} // Ensures confetti doesn't regenerate
+          recycle={false} // Stops confetti from looping
+        />
+      )}
+
       <ToastContainer />
       <Container>
         <Typography
