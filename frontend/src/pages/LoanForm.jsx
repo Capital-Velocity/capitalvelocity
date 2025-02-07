@@ -74,6 +74,9 @@ import Card from "@mui/material/Card";
 import project99 from "../Images/project99.png";
 import InfoIcon from "@mui/icons-material/Info";
 import Tooltip from "@mui/material/Tooltip";
+import Checkbox from "@mui/material/Checkbox";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { green } from "@mui/material/colors";
 
 const firstnameCookie = Cookies.get("firstName");
 
@@ -83,36 +86,42 @@ const selectionData = [
     icon: <FixAndFlipIcon />,
     value: "FixFlip",
     tooltip: "Short-term financing for purchasing and renovating properties.",
+    checks: ["Fast Approval", "Short-Term Loan"],
   },
   {
     title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
     tooltip: "Interim financing for multifamily property acquisitions.",
+    checks: ["Flexible Terms", "Low Interest Rates"],
   },
   {
     title: "Rental Portfolios",
     icon: <HouseSidingIcon />,
     value: "RentalPortfolios",
     tooltip: "Long-term loans for multiple rental properties.",
+    checks: ["Portfolio Financing", "Fixed or Adjustable Rates"],
   },
   {
     title: "Ground Up",
     icon: <GroundUpIcon />,
     value: "GroundUp",
     tooltip: "Financing for new construction projects from the ground up.",
+    checks: ["Construction Loans", "Phased Disbursement"],
   },
   {
     title: "Cashed Out Refinance",
     icon: <StabilizedBridgeIcon />,
     value: "StabilizedBridge",
     tooltip: "Refinancing to pull out cash from existing properties.",
+    checks: ["Cash-Out Options", "Equity-Based Loans"],
   },
   {
     title: "Single Property",
     icon: <SinglePropertyIcon />,
     value: "SingleProperty",
     tooltip: "Loans for individual real estate investments.",
+    checks: ["Individual Financing", "No Portfolio Required"],
   },
 ];
 const selectionData2 = [
@@ -1346,12 +1355,7 @@ const LoanForm = () => {
                                   display={"flex"}
                                   justifyContent={"center"}
                                 >
-                                  <Box
-                                    sx={{
-                                      color: "#498dd6",
-                                      bottom: 0,
-                                    }}
-                                  >
+                                  <Box sx={{ color: "#498dd6", bottom: 0 }}>
                                     {item.icon}
                                   </Box>
                                 </Box>
@@ -1372,7 +1376,47 @@ const LoanForm = () => {
                                   >
                                     {item.title}
                                   </Typography>
-                                  <Tooltip title={item.tooltip} arrow>
+                                  <Tooltip
+                                    title={
+                                      <Box>
+                                        <Typography variant="body2">
+                                          {item.tooltip}
+                                        </Typography>
+                                        {item.checks.map((check, index) => (
+                                          <FormControlLabel
+                                            key={index}
+                                            control={
+                                              <Checkbox
+                                                defaultChecked
+                                                sx={{
+                                                  color: green[400],
+                                                  "&.Mui-checked": {
+                                                    color: green[400],
+                                                  },
+                                                  transform: "scale(0.9)", // Make it 50% larger
+                                                }}
+                                              />
+                                            }
+                                            label={
+                                              <Typography
+                                                sx={{
+                                                  fontSize: "0.875rem",
+                                                }}
+                                              >
+                                                {check}
+                                              </Typography>
+                                            }
+                                            sx={{
+                                              marginLeft: "-4px", // Move text closer to checkbox
+                                              display: "flex", // Ensure checkbox and text are side by side
+                                              alignItems: "center", // Keep everything vertically centered
+                                            }}
+                                          />
+                                        ))}
+                                      </Box>
+                                    }
+                                    arrow
+                                  >
                                     <InfoIcon
                                       sx={{
                                         fontSize: 18,
