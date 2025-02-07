@@ -94,7 +94,7 @@ const selectionData = [
   {
     title: "Small Business Loan",
     icon: <CreditScoreIcon />,
-    value: "Lendio(PLACEHOLDER)",
+    value: "https://go.mypartner.io/business-financing/?ref=0014x00001SWeI4AAL", // Store URL directly
   },
 
   {
@@ -352,12 +352,16 @@ const LoanForm2 = () => {
     // const email = Cookies.get("email");
     setFormData({});
 
-    if (!firstnameCookie) {
-      // If the user is not logged in, redirect to the /register page
-      navigate("/register"); // Redirect to /register using navigate
+    if (value.startsWith("http")) {
+      window.open(value, "_blank"); // Opens the URL
     } else {
-      // If logged in, proceed with the option selection
-      setSelectedOption(option);
+      if (!firstnameCookie) {
+        // If the user is not logged in, redirect to the /register page
+        navigate("/register"); // Redirect to /register using navigate
+      } else {
+        // If logged in, proceed with the option selection
+        setSelectedOption(option);
+      }
     }
   };
 
