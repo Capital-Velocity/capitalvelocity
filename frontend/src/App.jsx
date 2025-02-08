@@ -23,6 +23,7 @@ import TermsofUse from "./pages/TermsofUse";
 import UserDashFileUpload from "./pages/UserDashFileUpload";
 import UserDashHome from "./pages/UserDashHome";
 import Lendio from "./pages/Lendio";
+import ROKForm from "./pages/ROKForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -33,6 +34,7 @@ function App() {
       {/* <LegacyNavbar /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
+        <Route path="/test" element={<ROKForm />} />
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
         <Route path="/contactUs" element={<Contact />}></Route>
         <Route path="/register" element={<Register />} />
