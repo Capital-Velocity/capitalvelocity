@@ -74,7 +74,7 @@ export default function Checkout(props) {
 
       // Send email data to backend via Axios (replace the URL with your backend URL)
       const response = await axios.post(
-        "http://your-backend-url/send-email",
+        "https://52.165.80.134:4000/api/emailRouter/send-confirm",
         emailData
       );
 

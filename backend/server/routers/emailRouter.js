@@ -7,10 +7,16 @@ import dotenv from "dotenv";
 import User from "../models/userModel.js";
 const emailRouter = express.Router();
 dotenv.config();
-// SEND THE RESET PASSWORD
+// // SEND THE RESET PASSWORD
+// Old mailgun apikey and domain?
+// const mg = mailgun({
+//   apiKey: "032768b8a73ea019211af5bbf29108ef-3750a53b-d022c855",
+//   domain: "sandbox9bc8b50531c149729c9abf507ba74ca6.mailgun.org",
+// });
+
 const mg = mailgun({
-  apiKey: "032768b8a73ea019211af5bbf29108ef-3750a53b-d022c855",
-  domain: "sandbox9bc8b50531c149729c9abf507ba74ca6.mailgun.org",
+  apiKey: "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379",
+  domain: "capitalvelocity.com",
 });
 
 emailRouter.post("/forgotPassword", async (req, res, next) => {
@@ -133,6 +139,151 @@ emailRouter.get("/reset-password/:id/:token", async (req, res) => {
     `);
   console.log(user.email);
   console.log(user.password);
+});
+
+// Contact form submission route
+emailRouter.post("/send-confirm", (req, res) => {
+  const { addressData, paymentData } = req.body;
+
+  const emailData = {
+    from: `info@capitalvelocity.com`,
+    to: addressData.email || "default@example.com", // You can use a default email if none is provided
+    subject: "Thank You for Your Application!",
+    html: `
+      <!DOCTYPE html>
+      <html lang="en">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Application Confirmation</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              margin: 0;
+              padding: 0;
+              background-color: #f4f4f4;
+              color: #333;
+            }
+            .email-container {
+              max-width: 600px;
+              margin: 20px auto;
+              background: #fff;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+            .header {
+              text-align: center;
+              margin-bottom: 20px;
+            }
+            .content {
+              margin-bottom: 30px;
+            }
+            .button {
+              display: inline-block;
+              padding: 12px 20px;
+              background-color: #04ca31;
+              color: #fff;
+              text-decoration: none;
+              font-weight: bold;
+              border-radius: 4px;
+              text-align: center;
+            }
+            .social-icons {
+              text-align: center;
+              margin: 20px 0;
+            }
+            .social-icons img {
+              width: 30px;
+              margin: 0 10px;
+              cursor: pointer;
+            }
+            .footer {
+              text-align: center;
+              font-size: 12px;
+              color: #666;
+            }
+          </style>
+        </head>
+        <body>
+
+          <div class="email-container">
+            <div class="header">
+              <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Transaction Room Logo" style="width: 300px; display: block; margin: 0 auto;">
+              <h2>Thank You for Your Application!</h2>
+            </div>
+            <div class="content">
+              <p>We’ve received your application and truly appreciate your interest.</p>
+              <p>Our team will review your application and get back to you as soon as possible.</p>
+              
+              <!-- Address Details Section -->
+              <h3>Contact Information</h3>
+              <p><strong>First Name:</strong> ${
+                addressData.firstName || "Not Provided"
+              }</p>
+              <p><strong>Last Name:</strong> ${
+                addressData.lastName || "Not Provided"
+              }</p>
+              <p><strong>Business Name:</strong> ${
+                addressData.businessName || "Not Provided"
+              }</p>
+              <p><strong>Email:</strong> ${
+                addressData.email || "Not Provided"
+              }</p>
+              <p><strong>Business Phone:</strong> ${
+                addressData.businessPhone || "Not Provided"
+              }</p>
+              <p><strong>Mobile Phone:</strong> ${
+                addressData.mobilePhone || "Not Provided"
+              }</p>
+
+              <!-- Payment Details Section -->
+              <h3>Details & Financials</h3>
+              <p><strong>Credit Score:</strong> ${
+                paymentData.creditScore || "Not Provided"
+              }</p>
+              <p><strong>Industry:</strong> ${
+                paymentData.industry || "Not Provided"
+              }</p>
+              <p><strong>Time In Business:</strong> ${
+                paymentData.timeInBusiness || "xxxx-xxxx-xxxx-xxxx"
+              }</p>
+              <p><strong>Annual Sales:</strong> ${
+                paymentData.annualSales || "MM/YYYY"
+              }</p>
+              <p><strong>Product:</strong> ${
+                paymentData.product || "MM/YYYY"
+              }</p>
+
+              <div style="text-align: center; margin-top: 20px;">
+                <a href="https://www.capitalvelocity.com/" class="button">Explore Our Website</a>
+              </div>
+            </div>
+            <div class="social-icons">
+              <a href="https://facebook.com/Andrew-Cartwright-188861491183022" target="_blank"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook"></a>
+              <a href="https://twitter.com" target="_blank"><img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png&color=000000" alt="Twitter X"></a>
+              <a href="https://www.linkedin.com/company/dragons-and-angels/about/" target="_blank"><img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"></a>
+              <a href="https://www.youtube.com/@andrewcartwright" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"></a>
+            </div>
+            <div class="footer">
+              <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" style="width: 200px; display: block; margin: 0 auto;">
+              <p>© 2025 Capital Velocity</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `,
+  };
+
+  mg.messages().send(emailData, (error, body) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      return res.status(500).json({ error: "Failed to send message" });
+    }
+    console.log("Email sent:", body);
+    res.status(200).json({ message: "Message sent successfully!" });
+  });
 });
 
 export default emailRouter;
