@@ -87,11 +87,6 @@ const FixandFlipCalc = () => {
   }, [purchasePrice, rehabCost, experienceLevel]);
 
   const calculateCarryingCosts = () => {
-    const cleanMonthlyPropertyTaxes = monthlyPropertyTaxes.replace(/,/g, "");
-    const cleanMonthlyInsurance = monthlyInsurance.replace(/,/g, "");
-    const cleanMonthlyUtilityBills = monthlyUtilityBills.replace(/,/g, "");
-    const cleanOtherMonthlyExpenses = otherMonthlyExpenses.replace(/,/g, "");
-
     const monthlyInterestRate = parseFloat(interestRate) / 100 / 12; // Convert annual interest rate to monthly
     const interestCost =
       (monthlyInterestRate * parseFloat(loanAmount) || 0) *
@@ -99,10 +94,10 @@ const FixandFlipCalc = () => {
 
     return (
       interestCost +
-      (parseFloat(cleanMonthlyPropertyTaxes) || 0) * parseFloat(projectLength) +
-      (parseFloat(cleanMonthlyInsurance) || 0) * parseFloat(projectLength) +
-      (parseFloat(cleanMonthlyUtilityBills) || 0) * parseFloat(projectLength) +
-      (parseFloat(cleanOtherMonthlyExpenses) || 0) * parseFloat(projectLength)
+      (parseFloat(monthlyPropertyTaxes) || 0) * parseFloat(projectLength) +
+      (parseFloat(monthlyInsurance) || 0) * parseFloat(projectLength) +
+      (parseFloat(monthlyUtilityBills) || 0) * parseFloat(projectLength) +
+      (parseFloat(otherMonthlyExpenses) || 0) * parseFloat(projectLength)
     ).toFixed(2);
   };
 
@@ -122,7 +117,7 @@ const FixandFlipCalc = () => {
   const calculateTotalCashInDeal = () => {
     return (
       parseFloat(calculateCarryingCosts()) +
-      parseFloat(calculateClosingCosts()) * 2 +
+      parseFloat(calculateClosingCosts()) +
       parseFloat(costOfSales || 0)
     ).toFixed(2);
   };
@@ -165,14 +160,14 @@ const FixandFlipCalc = () => {
     const result =
       (parseFloat(cleanPurchasePrice) || 0) + (parseFloat(cleanRehabCost) || 0);
 
-    console.log("result: ", result);
+    // console.log("result: ", result);
 
     return result.toFixed(2);
   };
 
   const calculateDownPayment = () => {
-    console.log("pprice:", purchasePrice);
-    console.log("elevel:", experienceLevel);
+    // console.log("pprice:", purchasePrice);
+    // console.log("elevel:", experienceLevel);
 
     const cleanPurchasePrice = String(purchasePrice).replace(/,/g, "");
 
@@ -184,16 +179,11 @@ const FixandFlipCalc = () => {
   };
 
   const calculateCostsAndProfit = () => {
-    const cleanMonthlyPropertyTaxes = monthlyPropertyTaxes.replace(/,/g, "");
-    const cleanMonthlyInsurance = monthlyInsurance.replace(/,/g, "");
-    const cleanMonthlyUtilityBills = monthlyUtilityBills.replace(/,/g, "");
-    const cleanOtherMonthlyExpenses = otherMonthlyExpenses.replace(/,/g, "");
-
     const totalMonthlyCosts =
-      (parseFloat(cleanMonthlyPropertyTaxes) || 0) +
-      (parseFloat(cleanMonthlyInsurance) || 0) +
-      (parseFloat(cleanMonthlyUtilityBills) || 0) +
-      (parseFloat(cleanOtherMonthlyExpenses) || 0);
+      (parseFloat(monthlyPropertyTaxes) || 0) +
+      (parseFloat(monthlyInsurance) || 0) +
+      (parseFloat(monthlyUtilityBills) || 0) +
+      (parseFloat(otherMonthlyExpenses) || 0);
 
     const totalHoldingCost =
       totalMonthlyCosts * (parseFloat(projectLength) || 0);
@@ -683,16 +673,9 @@ const FixandFlipCalc = () => {
 
                   <TextField
                     fullWidth
-                    type="text"
+                    type="number"
                     value={monthlyPropertyTaxes}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyPropertyTaxes(value); // Set the formatted value with commas
-                    }}
+                    onChange={(e) => setMonthlyPropertyTaxes(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -755,16 +738,9 @@ const FixandFlipCalc = () => {
 
                   <TextField
                     fullWidth
-                    type="text"
+                    type="number"
                     value={monthlyInsurance}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyInsurance(value); // Set the formatted value with commas
-                    }}
+                    onChange={(e) => setMonthlyInsurance(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -819,16 +795,9 @@ const FixandFlipCalc = () => {
 
                   <TextField
                     fullWidth
-                    type="text"
+                    type="number"
                     value={monthlyUtilityBills}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyUtilityBills(value); // Set the formatted value with commas
-                    }}
+                    onChange={(e) => setMonthlyUtilityBills(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -858,9 +827,9 @@ const FixandFlipCalc = () => {
                     color="grey"
                     component="div"
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Other Monthly Expenses
@@ -883,23 +852,16 @@ const FixandFlipCalc = () => {
 
                   <TextField
                     fullWidth
-                    type="text" // Change to "text" to allow comma formatting
+                    type="number"
                     value={otherMonthlyExpenses}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setOtherMonthlyExpenses(value); // Set the formatted value with commas
-                    }}
+                    onChange={(e) => setOtherMonthlyExpenses(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
                     sx={{
-                      "& input[type='text']": {
+                      "& input[type='number']": {
                         "-webkit-appearance": "none",
                         "-moz-appearance": "textfield",
                         appearance: "none",
