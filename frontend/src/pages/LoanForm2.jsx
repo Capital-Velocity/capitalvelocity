@@ -102,7 +102,11 @@ const selectionData = [
     icon: <CreditScoreIcon />,
     value: "https://go.mypartner.io/business-financing/?ref=0014x00001SWeI4AAL",
     tooltip: "Financing options for small businesses.",
-    checks: ["Confirmed Eligibility", "Low Interest Rates"],
+    checks: [
+      "$10,000 - $5 million",
+      "6 Months to 10 Year Terms",
+      "No Hard Credit Pull",
+    ],
   },
   {
     title: "SBA",
