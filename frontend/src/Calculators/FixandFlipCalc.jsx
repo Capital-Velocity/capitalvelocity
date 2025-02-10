@@ -203,7 +203,14 @@ const FixandFlipCalc = () => {
       ((parseFloat(closingCost) || 0) / 100) *
         (parseFloat(cleanAfterRepairValue) || 0);
 
-    const totalCost = totalInvestment + sellingCosts;
+    const realtorFeeCalc = calculateLoanAmount() * (costOfSales / 100);
+    const closingCostCalc = calculateClosingCosts();
+    const totalCost =
+      parseFloat(cleanPurchasePrice) +
+      parseFloat(cleanRehabCost) +
+      parseFloat(closingCostCalc) +
+      parseFloat(realtorFeeCalc);
+
     const anticipatedProfit =
       (parseFloat(cleanAfterRepairValue) || 0) - totalCost;
     const profitPercentage = ((anticipatedProfit / totalCost) * 100).toFixed(2);
