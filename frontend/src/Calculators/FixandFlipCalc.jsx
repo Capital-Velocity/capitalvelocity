@@ -87,9 +87,7 @@ const FixandFlipCalc = () => {
 
   const calculateLoanAmount = () => {
     return (
-      (parseFloat(purchasePrice) || 0) *
-        ((parseFloat(experienceLevel) || 0) / 100) +
-      (parseFloat(rehabCost) || 0)
+      (parseFloat(purchasePrice) || 0) + (parseFloat(rehabCost) || 0)
     ).toFixed(2);
   };
 
