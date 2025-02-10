@@ -1052,12 +1052,12 @@ const FixandFlipCalc = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        Closing Costs
+                        Carrying Costs
                       </Typography>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        ${Number(closingCosts).toLocaleString()}
+                        ${Number(carryingCosts).toLocaleString()}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -1065,12 +1065,12 @@ const FixandFlipCalc = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        Carrying Costs
+                        Closing Costs
                       </Typography>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        ${Number(carryingCosts).toLocaleString()}
+                        ${Number(closingCosts).toLocaleString()}
                       </Typography>
                     </Grid>
                   </Grid>
