@@ -51,6 +51,29 @@ const FixandFlipCalc = () => {
   const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
   const { width, height } = useWindowSize();
 
+  const [closingCosts, setClosingCosts] = useState(0);
+  const [carryingCosts, setCarryingCosts] = useState(0);
+  const [borrowerEquityNeeded, setBorrowerEquityNeeded] = useState(0);
+  const [totalCashInDeal, setTotalCashInDeal] = useState(0);
+
+  useEffect(() => {
+    setClosingCosts(calculateClosingCosts());
+    setCarryingCosts(calculateCarryingCosts());
+    setBorrowerEquityNeeded(calculateBorrowerEquityNeeded());
+    setTotalCashInDeal(calculateTotalCashInDeal());
+  }, [
+    loanAmount,
+    closingCost,
+    downPaymentListed,
+    projectLength,
+    interestRate,
+    monthlyPropertyTaxes,
+    monthlyInsurance,
+    monthlyUtilityBills,
+    otherMonthlyExpenses,
+    costOfSales,
+  ]);
+
   useEffect(() => {
     setLoanAmount(calculateLoanAmount());
   }, [purchasePrice, rehabCost, experienceLevel]);
@@ -62,6 +85,42 @@ const FixandFlipCalc = () => {
   useEffect(() => {
     setDownPaymentListed(calculateDownPayment());
   }, [purchasePrice, rehabCost, experienceLevel]);
+
+  const calculateCarryingCosts = () => {
+    const monthlyInterestRate = parseFloat(interestRate) / 100 / 12; // Convert annual interest rate to monthly
+    const interestCost =
+      (monthlyInterestRate * parseFloat(loanAmount) || 0) *
+      parseFloat(projectLength);
+
+    return (
+      interestCost +
+      (parseFloat(monthlyPropertyTaxes) || 0) * parseFloat(projectLength) +
+      (parseFloat(monthlyInsurance) || 0) * parseFloat(projectLength) +
+      (parseFloat(monthlyUtilityBills) || 0) * parseFloat(projectLength) +
+      (parseFloat(otherMonthlyExpenses) || 0) * parseFloat(projectLength)
+    ).toFixed(2);
+  };
+
+  const calculateClosingCosts = () => {
+    return (
+      parseFloat(loanAmount) * 0.02 +
+      parseFloat(loanAmount) * parseFloat(closingCost || 0)
+    ).toFixed(2);
+  };
+
+  const calculateBorrowerEquityNeeded = () => {
+    return (
+      parseFloat(downPaymentListed || 0) + parseFloat(calculateClosingCosts())
+    ).toFixed(2);
+  };
+
+  const calculateTotalCashInDeal = () => {
+    return (
+      parseFloat(calculateCarryingCosts()) +
+      parseFloat(calculateClosingCosts()) * 2 +
+      parseFloat(costOfSales || 0)
+    ).toFixed(2);
+  };
 
   const marks = [
     { value: 70, label: "New" },
@@ -943,6 +1002,58 @@ const FixandFlipCalc = () => {
             <Item>
               <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
                 <Container>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Closing Costs
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${closingCosts}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Carrying Costs
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${carryingCosts}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Borrower Equity Needed
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${borrowerEquityNeeded}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Total Cash in Deal When Exit
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${totalCashInDeal}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="h5" color="white" gutterBottom>
