@@ -1214,7 +1214,7 @@ const LoanForm2 = () => {
                           <Container style={{ marginTop: "-50px" }}>
                             <Grid
                               ref={featuresRef}
-                              className={` ${
+                              className={`${
                                 isFeaturesVisible
                                   ? "fade-in-show paragraph-fade-in-show-extra"
                                   : "fade-in-hide"
@@ -1259,18 +1259,18 @@ const LoanForm2 = () => {
                                         <Box
                                           sx={{
                                             color: "#498dd6",
-
                                             bottom: 0,
                                           }}
                                         >
                                           {item.icon}
                                         </Box>
                                       </Box>
-                                      {/* Title and Tooltip in a Flexbox */}
+
+                                      {/* Title and Description */}
                                       <Box
                                         display="flex"
+                                        flexDirection="column"
                                         alignItems="center"
-                                        justifyContent="center"
                                         mt={2}
                                       >
                                         <Typography
@@ -1282,59 +1282,44 @@ const LoanForm2 = () => {
                                         >
                                           {item.title}
                                         </Typography>
-                                        <Tooltip
-                                          title={
-                                            <Box>
-                                              <Typography variant="body2">
-                                                {item.tooltip}
-                                              </Typography>
-                                              {item.checks.map(
-                                                (check, index) => (
-                                                  <FormControlLabel
-                                                    key={index}
-                                                    control={
-                                                      <Checkbox
-                                                        defaultChecked
-                                                        sx={{
-                                                          color: green[400],
-                                                          "&.Mui-checked": {
-                                                            color: green[400],
-                                                          },
-                                                          transform:
-                                                            "scale(0.9)", // Make it 50% larger
-                                                        }}
-                                                      />
-                                                    }
-                                                    label={
-                                                      <Typography
-                                                        sx={{
-                                                          fontSize: "0.875rem",
-                                                        }}
-                                                      >
-                                                        {check}
-                                                      </Typography>
-                                                    }
-                                                    sx={{
-                                                      marginLeft: "-4px", // Move text closer to checkbox
-                                                      display: "flex", // Ensure checkbox and text are side by side
-                                                      alignItems: "center", // Keep everything vertically centered
-                                                    }}
-                                                  />
-                                                )
-                                              )}
-                                            </Box>
-                                          }
-                                          arrow
+
+                                        {/* Divider between title and tooltip */}
+                                        <Divider sx={{ width: "90%", my: 1 }} />
+
+                                        <Typography
+                                          variant="body2"
+                                          sx={{ textAlign: "center" }}
                                         >
-                                          <InfoIcon
-                                            sx={{
-                                              fontSize: 18,
-                                              color: "grey",
-                                              marginLeft: 0.5,
-                                              cursor: "pointer",
-                                            }}
-                                          />
-                                        </Tooltip>
+                                          {item.tooltip}
+                                        </Typography>
+
+                                        {/* Render Checkmarks */}
+                                        <Box sx={{ mt: 1 }}>
+                                          {item.checks.map((check, index) => (
+                                            <Box
+                                              key={index}
+                                              display="flex"
+                                              alignItems="center"
+                                              mb={1}
+                                            >
+                                              <Checkbox
+                                                defaultChecked
+                                                sx={{
+                                                  color: green[400],
+                                                  "&.Mui-checked": {
+                                                    color: green[400],
+                                                  },
+                                                  transform: "scale(0.9)", // Make it 50% larger
+                                                }}
+                                              />
+                                              <Typography
+                                                sx={{ fontSize: "0.875rem" }}
+                                              >
+                                                {check}
+                                              </Typography>
+                                            </Box>
+                                          ))}
+                                        </Box>
                                       </Box>
                                     </Box>
                                   </Box>
