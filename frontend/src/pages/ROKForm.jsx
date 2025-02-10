@@ -16,7 +16,7 @@ function ROKForm() {
     };
 
     const headingObserver = new IntersectionObserver(handleIntersection, {
-      threshold: 0.8,
+      threshold: 0.1,
     });
 
     if (headingRef.current) headingObserver.observe(headingRef.current);
