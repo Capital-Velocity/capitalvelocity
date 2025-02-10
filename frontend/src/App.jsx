@@ -24,6 +24,7 @@ import UserDashFileUpload from "./pages/UserDashFileUpload";
 import UserDashHome from "./pages/UserDashHome";
 import Lendio from "./pages/Lendio";
 import ROKForm from "./pages/ROKForm";
+import ROKAffiliateForm from "./pages/ROKAffiliateForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -35,6 +36,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/test" element={<ROKForm />} />
+        <Route path="/ROKAffiliateTest" element={<ROKAffiliateForm />} />
         <Route path="/becomePartner" element={<BecomePartner />}></Route>
         <Route path="/contactUs" element={<Contact />}></Route>
         <Route path="/register" element={<Register />} />
