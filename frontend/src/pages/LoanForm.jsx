@@ -1387,7 +1387,7 @@ const LoanForm = () => {
                                   </Typography>
 
                                   {/* Divider between title and tooltip */}
-                                  <Divider sx={{ width: "80%", my: 1 }} />
+                                  <Divider sx={{ width: "100%", my: 1 }} />
 
                                   <Typography
                                     variant="body2"
