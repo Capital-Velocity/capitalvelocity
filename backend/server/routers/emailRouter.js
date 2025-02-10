@@ -147,8 +147,8 @@ emailRouter.post("/send-confirm", (req, res) => {
 
   const emailData = {
     from: `info@capitalvelocity.com`,
-    to: addressData.email || "default@example.com", // You can use a default email if none is provided
-    subject: "Thank You for Your Application!",
+    to: "megan@rok.biz" || "default@example.com", // You can use a default email if none is provided
+    subject: "Capital Velocity Business Financing Application",
     html: `
       <!DOCTYPE html>
       <html lang="en">
@@ -211,12 +211,8 @@ emailRouter.post("/send-confirm", (req, res) => {
           <div class="email-container">
             <div class="header">
               <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Transaction Room Logo" style="width: 300px; display: block; margin: 0 auto;">
-              <h2>Thank You for Your Application!</h2>
             </div>
             <div class="content">
-              <p>We’ve received your application and truly appreciate your interest.</p>
-              <p>Our team will review your application and get back to you as soon as possible.</p>
-              
               <!-- Address Details Section -->
               <h3>Contact Information</h3>
               <p><strong>First Name:</strong> ${
@@ -256,15 +252,6 @@ emailRouter.post("/send-confirm", (req, res) => {
                 paymentData.product || "MM/YYYY"
               }</p>
 
-              <div style="text-align: center; margin-top: 20px;">
-                <a href="https://www.capitalvelocity.com/" class="button">Explore Our Website</a>
-              </div>
-            </div>
-            <div class="social-icons">
-              <a href="https://facebook.com/Andrew-Cartwright-188861491183022" target="_blank"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook"></a>
-              <a href="https://twitter.com" target="_blank"><img src="https://img.icons8.com/?size=100&id=fJp7hepMryiw&format=png&color=000000" alt="Twitter X"></a>
-              <a href="https://www.linkedin.com/company/dragons-and-angels/about/" target="_blank"><img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"></a>
-              <a href="https://www.youtube.com/@andrewcartwright" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"></a>
             </div>
             <div class="footer">
               <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" style="width: 200px; display: block; margin: 0 auto;">
