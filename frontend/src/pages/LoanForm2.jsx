@@ -113,7 +113,11 @@ const selectionData = [
     icon: <CreditScoreIcon />,
     value: "SBA",
     tooltip: "Small Business Administration-backed loan programs.",
-    checks: ["Government Backed", "Longer Terms Available"],
+    checks: [
+      "Government Backed",
+      "Longer Terms Available",
+      "Lower Interest Rates",
+    ],
   },
 ];
 const selectionData2 = [

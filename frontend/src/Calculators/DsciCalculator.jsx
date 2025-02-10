@@ -105,6 +105,20 @@ const DsciCalculator = () => {
     setAnnualGrossRent((parseFloat(monthlyRent) || 0) * 12);
   }, [monthlyRent]);
 
+  // Trigger live calculation when inputs change
+  useEffect(() => {
+    calculateLoan(); // Recalculate when any of the relevant values change
+  }, [
+    loanAmount,
+    monthlyRent,
+    annualTaxes,
+    annualInsurance,
+    annualHoa,
+    selectedCreditScore,
+    loanSubtype,
+    estimatedValue,
+  ]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Example Axios POST request
@@ -222,9 +236,9 @@ const DsciCalculator = () => {
 
     if (emptyFields.length > 0) {
       // Show a toast error message if any fields are empty or zero
-      toast.error(
-        `Please fill in all required fields: ${emptyFields.join(", ")}`
-      );
+      // toast.error(
+      //   `Please fill in all required fields: ${emptyFields.join(", ")}`
+      // );
       // Optional: Set border color to red for empty fields (if needed)
       emptyFields.forEach((field) => {
         // Example: Assuming you have a way to get the input field by its name or id
@@ -232,17 +246,17 @@ const DsciCalculator = () => {
       });
       return; // Exit the function to prevent further execution
     }
-    console.log(loanAmount);
-    console.log(interestRate);
-    console.log(loanTerm);
+    // console.log(loanAmount);
+    // console.log(interestRate);
+    // console.log(loanTerm);
     setdisplayMonthlyIncomePayment(formatNumber(monthlyRent));
     const loanAmountFloat = loanAmount;
     const interestRateFloat = interestRate / 100;
     const termMonths = loanTerm * 12;
 
     const monthlyInterestRate = interestRateFloat / 12;
-    console.log("This is the monthly interest" + monthlyInterestRate);
-    console.log("This is the terms Months" + termMonths);
+    // console.log("This is the monthly interest" + monthlyInterestRate);
+    // console.log("This is the terms Months" + termMonths);
     // Calculate monthly payment
     const monthlyPayment =
       (loanAmountFloat *
@@ -251,10 +265,10 @@ const DsciCalculator = () => {
     setDisplayMonthly(formatNumber(monthlyPayment));
 
     const totalPayment = monthlyPayment * termMonths;
-    console.log("This is the total payment" + totalPayment);
+    // console.log("This is the total payment" + totalPayment);
 
     const totalInterest = totalPayment - loanAmountFloat;
-    console.log("This is the total interest" + totalInterest);
+    // console.log("This is the total interest" + totalInterest);
 
     // Prepare data for the pie chart
     const data = [
@@ -263,14 +277,14 @@ const DsciCalculator = () => {
       ["Interest", totalInterest],
     ];
 
-    console.log(data);
+    // console.log(data);
     setChartData(data);
     setmonthlyPayment(monthlyPayment);
     settotalInterest(totalInterest);
     setDisplayTotalInterest(formatNumber(totalInterest));
     settotalPayment(totalPayment);
     setDisplayTotalPayment(formatNumber(totalPayment));
-    console.log(chartData);
+    // console.log(chartData);
 
     // Now we need to calculate the PITTA.
     const monthlyTax = annualTaxes / 12;
@@ -807,7 +821,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              {/* <Grid item sm={12}>
                 <Button
                   variant="contained"
                   color="primary"
@@ -821,7 +835,7 @@ const DsciCalculator = () => {
                 >
                   Calculate DSCR
                 </Button>
-              </Grid>
+              </Grid> */}
             </Grid>
           </Grid>
           <Grid item sm={6}>
@@ -871,8 +885,6 @@ const DsciCalculator = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>Total Profit Monthly: ${totalProfit}</Typography>
-                </AccordionDetails>
-                <AccordionDetails>
                   <Typography>
                     Total Profit Annual: ${totalProfitAnually}
                   </Typography>
@@ -913,18 +925,7 @@ const DsciCalculator = () => {
                       Total Interest $: {displayTotalInterest}
                     </Typography>
                   )}
-                  {/*
-                  <Typography>
-                    IO Period PITIA DSCR: {calculateIOPITIA().toFixed(2)}
-                  </Typography>
-                  */}
-                  {/* 
-                  <Typography>
-                    Fully Amortizing Debt Service: $
-                    {calculateAmortizingDebtService().toFixed(2)}
-                  </Typography>
-                  */}
-                  {chartData && chartData.length > 0 ? (
+                  {/* {chartData && chartData.length > 0 ? (
                     <Chart
                       chartType="PieChart"
                       width="100%"
@@ -938,12 +939,7 @@ const DsciCalculator = () => {
                     />
                   ) : (
                     <div>Click Calculate Loan to see results...</div> // You can replace this with a spinner or placeholder if you prefer
-                  )}
-                  {/* <Typography>
-                    Fully Amortizing PITIA DSCR:{" "}
-                    {calculateAmortizingPITIA().toFixed(2)}
-                  </Typography> */}
-
+                  )} */}
                   <Button
                     variant="contained"
                     onClick={() => setShowModal(true)}
@@ -962,90 +958,6 @@ const DsciCalculator = () => {
         </Grid>
         <Container></Container>
       </Container>
-      <Modal
-        open={showModal}
-        onClose={() => setShowModal(false)}
-        aria-labelledby="contact-us-modal"
-        aria-describedby="contact-us-modal"
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: 400,
-            bgcolor: "background.paper",
-            boxShadow: 24,
-            p: 4,
-          }}
-        >
-          <Typography variant="h6" gutterBottom>
-            Contact Us
-          </Typography>
-          <form onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="First Name"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.firstName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, firstName: e.target.value })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  label="Last Name"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.lastName}
-                  onChange={(e) =>
-                    setFormData({ ...formData, lastName: e.target.value })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Email"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.email}
-                  onChange={(e) =>
-                    setFormData({ ...formData, email: e.target.value })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Phone"
-                  variant="outlined"
-                  fullWidth
-                  value={formData.phone}
-                  onChange={(e) =>
-                    setFormData({ ...formData, phone: e.target.value })
-                  }
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <Button
-                  type="submit"
-                  style={{
-                    backgroundColor: "#498dd6",
-                    borderRadius: "30px",
-                    color: "white",
-                  }}
-                  fullWidth
-                >
-                  Submit
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
-        </Box>
-      </Modal>
     </div>
   );
 };

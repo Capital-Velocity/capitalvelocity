@@ -86,44 +86,53 @@ const selectionData = [
     icon: <FixAndFlipIcon />,
     value: "FixFlip",
     tooltip: "Short-term financing for purchasing and renovating properties.",
-    checks: ["Fast Approval", "Short-Term Loan"],
+    checks: ["Fast Approval", "Short-Term Loan", "No Prepayment Penalties"],
   },
   {
     title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
     tooltip: "Interim financing for multifamily property acquisitions.",
-    checks: ["Flexible Terms", "Low Interest Rates"],
+    checks: ["Flexible Terms", "Low Interest Rates", "Fast Funding"],
   },
   {
     title: "Rental Portfolios",
     icon: <HouseSidingIcon />,
     value: "RentalPortfolios",
     tooltip: "Long-term loans for multiple rental properties.",
-    checks: ["Portfolio Financing", "Fixed or Adjustable Rates"],
+    checks: [
+      "Portfolio Financing",
+      "Fixed or Adjustable Rates",
+      "Tax-Deductible Interest",
+    ],
   },
   {
     title: "Ground Up",
     icon: <GroundUpIcon />,
     value: "GroundUp",
     tooltip: "Financing for new construction projects from the ground up.",
-    checks: ["Construction Loans", "Phased Disbursement"],
+    checks: [
+      "Construction Loans",
+      "Phased Disbursement",
+      "Flexible Repayment Options",
+    ],
   },
   {
     title: "Cashed Out Refinance",
     icon: <StabilizedBridgeIcon />,
     value: "StabilizedBridge",
     tooltip: "Refinancing to pull out cash from existing properties.",
-    checks: ["Cash-Out Options", "Equity-Based Loans"],
+    checks: ["Cash-Out Options", "Equity-Based Loans", "Debt Consolidation"],
   },
   {
     title: "Single Property",
     icon: <SinglePropertyIcon />,
     value: "SingleProperty",
     tooltip: "Loans for individual real estate investments.",
-    checks: ["Individual Financing", "No Portfolio Required"],
+    checks: ["Individual Financing", "No Portfolio Required", "Quick Approval"],
   },
 ];
+
 const selectionData2 = [
   { title: "Ground Up", icon: <GroundUpIcon />, value: "GroundUp" },
 
