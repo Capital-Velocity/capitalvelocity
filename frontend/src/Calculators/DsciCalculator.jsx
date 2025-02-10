@@ -906,53 +906,6 @@ const DsciCalculator = () => {
                   {dscrValue > 1.1 ? "It's go time!" : "DSCR is too low."}
                 </Typography>
               </Paper>
-              <Accordion expanded>
-                <AccordionSummary>
-                  <Typography variant="h6">Loan Debt Service</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  {/* */}
-                  {monthlyPayment && (
-                    <Typography>Monthly Payment $: {displayMonthly}</Typography>
-                  )}
-                  {totalPayment && (
-                    <Typography>
-                      Total Payment $: {displayTotalPayment}
-                    </Typography>
-                  )}
-                  {interest && (
-                    <Typography>
-                      Total Interest $: {displayTotalInterest}
-                    </Typography>
-                  )}
-                  {/* {chartData && chartData.length > 0 ? (
-                    <Chart
-                      chartType="PieChart"
-                      width="100%"
-                      height="400px"
-                      data={chartData}
-                      options={{
-                        title: "Loan Breakdown",
-                        pieHole: 0.4,
-                        is3D: false,
-                      }}
-                    />
-                  ) : (
-                    <div>Click Calculate Loan to see results...</div> // You can replace this with a spinner or placeholder if you prefer
-                  )} */}
-                  <Button
-                    variant="contained"
-                    onClick={() => setShowModal(true)}
-                    style={{
-                      backgroundColor: "#498dd6",
-                      borderRadius: "30px",
-                      marginTop: "10px",
-                    }}
-                  >
-                    Contact Us
-                  </Button>
-                </AccordionDetails>
-              </Accordion>
             </Item>
           </Grid>
         </Grid>
