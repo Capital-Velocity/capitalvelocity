@@ -27,7 +27,7 @@ const mock = [
   {
     title: "SBA",
     icon: <CreditScoreIcon />,
-    value: "GroundUp",
+    value: "SBA",
     link: "/loan-form-business-loans?type=SBA",
   },
 ];
@@ -112,9 +112,9 @@ const BusinessCategories = () => {
                 isHeadingVisible ? "fade-in-show" : "fade-in-hide"
               }`}
             >
-              Business Loans
+              Business Loans <br /> <br />
             </p>
-            <p
+            {/* <p
               ref={paragraphRef}
               className={`text-center mt-6 mb-6 text-lg/8 text-gray-600 fade-in ${
                 isParagraphVisible
@@ -124,7 +124,7 @@ const BusinessCategories = () => {
             >
               Find the financing solution that fits your real estate and
               business needs and your wallet. Secure your loan today.
-            </p>
+            </p> */}
 
             <Grid
               ref={paragraphRef}

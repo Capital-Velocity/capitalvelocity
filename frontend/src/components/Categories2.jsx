@@ -195,7 +195,7 @@ const Categories2 = () => {
                 isHeadingVisible ? "fade-in-show" : "fade-in-hide"
               }`}
             >
-              Choose what's right for you
+              Real Estate Loans
             </p>
             <p
               ref={paragraphRef}
