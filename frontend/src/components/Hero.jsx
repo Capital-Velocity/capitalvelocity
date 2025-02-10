@@ -90,18 +90,19 @@ export default function Example() {
                                   : "fade-in-hide"
                               }`}
             >
-              <button
-                onClick={handleScrollToBottom} // Attach scroll handler
-                className={`flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
+              <Link to="/loan-form-realestate">
+                <button
+                  className={`flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
       focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
       shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
       rounded-md px-3 h-10 text-center font-semibold
       }`}
-                style={{ fontSize: "14px" }} // Apply font size
-                type="button"
-              >
-                Explore Real Estate Loans
-              </button>
+                  style={{ fontSize: "14px" }} // Apply font size
+                  type="button"
+                >
+                  Explore Real Estate Loans
+                </button>
+              </Link>
 
               <Link to="/loan-form-business-loans">
                 <button
