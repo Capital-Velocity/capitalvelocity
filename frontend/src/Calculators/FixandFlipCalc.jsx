@@ -573,61 +573,6 @@ const FixandFlipCalc = () => {
                   <Typography
                     color="grey"
                     component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    After Repair Value ($)
-                    <Tooltip
-                      title="The estimated value of the property after repair."
-                      arrow
-                      placement="top"
-                    >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>
-                  <TextField
-                    fullWidth
-                    type="number"
-                    value={afterRepairValue}
-                    onChange={(e) =>
-                      setAfterRepairValue(parseInt(e.target.value))
-                    }
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    sx={{
-                      "& input[type='number']": {
-                        "-webkit-appearance": "none",
-                        "-moz-appearance": "textfield",
-                        appearance: "none",
-                      },
-                      "& input::-webkit-outer-spin-button": {
-                        appearance: "none",
-                        margin: 0,
-                      },
-                      "& input::-webkit-inner-spin-button": {
-                        appearance: "none",
-                        margin: 0,
-                      },
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item sm={12}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="grey"
-                    component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
                       alignItems: "center", // Vertically align text and icon
@@ -994,6 +939,60 @@ const FixandFlipCalc = () => {
                   {/* <Typography className="text-center" color="grey">
                     Selected: <strong>{closingCost}%</strong>
                   </Typography> */}
+                </FormControl>
+              </Grid>
+              <Grid item sm={12}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    After Repair Value ($)
+                    <Tooltip
+                      title="The estimated value of the property after repair."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    type="number"
+                    value={afterRepairValue}
+                    onChange={(e) =>
+                      setAfterRepairValue(parseInt(e.target.value))
+                    }
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
+                  />
                 </FormControl>
               </Grid>
             </Grid>
