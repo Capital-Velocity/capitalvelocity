@@ -22,7 +22,10 @@ import AppTheme from "../shared-theme/AppTheme";
 import ColorModeIconDropdown from "../shared-theme/ColorModeIconDropdown";
 import axios from "axios";
 import Checkbox from "@mui/material/Checkbox";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { green } from "@mui/material/colors";
+import trustPilotPic from "../assets/trustpilot.png";
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -136,44 +139,65 @@ export default function Checkout(props) {
             <Typography
               variant="h5" // Larger heading for "Small Business Loan"
               style={{ color: "grey", fontWeight: "bold" }}
+              gutterBottom
             >
-              Small Business Loan <br /> Online Application <br />
+              Small Business Loan
             </Typography>
             <Typography variant="body1" style={{ color: "grey", fontSize: 14 }}>
+              Our Small Business Loan is designed to help entrepreneurs and
+              business owners access the capital they need to grow and succeed.
+              Whether you're expanding operations, purchasing equipment, or
+              managing cash flow, we offer fast and flexible financing
+              solutions. With same-day funding available and loan amounts
+              ranging from $10,000 to $5 million, you can secure the funds you
+              need with terms from 6 months to 10 years. Apply online today and
+              take the next step toward your business goals.
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{ color: "grey", fontSize: 14, marginTop: "10px" }}
+            >
               <Checkbox
                 defaultChecked
+                icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
                 sx={{
-                  color: green[400],
-                  "&.Mui-checked": {
-                    color: green[400],
-                  },
                   transform: "scale(1.0)", // Keep checkbox size
                 }}
               />
               Same Day Funding <br />
               <Checkbox
                 defaultChecked
+                icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
                 sx={{
-                  color: green[400],
-                  "&.Mui-checked": {
-                    color: green[400],
-                  },
                   transform: "scale(1.0)", // Keep checkbox size
                 }}
               />
               $10,000 - $5 million <br />{" "}
               <Checkbox
                 defaultChecked
+                icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
                 sx={{
-                  color: green[400],
-                  "&.Mui-checked": {
-                    color: green[400],
-                  },
                   transform: "scale(1.0)", // Keep checkbox size
                 }}
               />
               6 Months to 10 Year Terms
             </Typography>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <img
+                src={trustPilotPic}
+                alt="TrustPilot"
+                style={{ width: "262px", height: "43px" }}
+              />
+            </div>
           </Box>
         </Grid>
         <Grid

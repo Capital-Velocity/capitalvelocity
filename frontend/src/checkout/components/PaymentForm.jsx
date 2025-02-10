@@ -405,12 +405,12 @@ export default function PaymentForm({ paymentData, setPaymentData }) {
         </Select>
       </FormGrid>
 
-      <FormGrid size={{ xs: 12 }}>
+      {/* <FormGrid size={{ xs: 12 }}>
         <FormControlLabel
           control={<Checkbox name="saveAddress" value="yes" />}
           label="By checking this checkbox I agree to the terms of use, privacy policy as well as receiving SMS, email and phone communication."
         />
-      </FormGrid>
+      </FormGrid> */}
 
       {/* <FormGrid size={{ xs: 6 }}>
         <FormLabel htmlFor="zip" required>
