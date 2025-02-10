@@ -103,8 +103,8 @@ const FixandFlipCalc = () => {
 
   const calculateClosingCosts = () => {
     return (
-      parseFloat(loanAmount) * 0.02 +
-      parseFloat(loanAmount) * parseFloat(closingCost || 0)
+      parseFloat(loanAmount) * 0.02 + // 2,200
+      parseFloat(loanAmount) * parseFloat(closingCost / 100 || 0)
     ).toFixed(2);
   };
 
