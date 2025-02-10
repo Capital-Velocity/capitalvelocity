@@ -35,6 +35,7 @@ const FixandFlipCalc = () => {
   const [monthlyUtilityBills, setMonthlyUtilityBills] = useState(50);
   const [otherMonthlyExpenses, setOtherMonthlyExpenses] = useState(0);
   const [costOfSales, setCostOfSales] = useState(1);
+  const [downPaymentListed, setDownPaymentListed] = useState(0);
 
   const [closingCost, setClosingCost] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -57,6 +58,10 @@ const FixandFlipCalc = () => {
   useEffect(() => {
     setMonthlyInterestPayment(calculateMonthlyInterestPayment());
   }, [loanAmount, experienceLevel, interestRate]);
+
+  useEffect(() => {
+    setDownPaymentListed(calculateDownPayment());
+  }, [purchasePrice, rehabCost, experienceLevel]);
 
   const marks = [
     { value: 70, label: "New" },
@@ -372,6 +377,25 @@ const FixandFlipCalc = () => {
                   </Select>
                 </FormControl>
               </Grid>
+              <Grid item sm={12}>
+                <FormControl fullWidth>
+                  <Typography className="text-center" color="grey">
+                    Buyer Experience
+                  </Typography>
+                  <Select
+                    value={experienceLevel}
+                    onChange={(e) => setExperienceLevel(e.target.value)}
+                    displayEmpty
+                    aria-labelledby="experience-dropdown"
+                  >
+                    <MenuItem value={70}>New - 70%</MenuItem>
+                    <MenuItem value={75}>Beginner - 75%</MenuItem>
+                    <MenuItem value={80}>Intermediate - 80%</MenuItem>
+                    <MenuItem value={85}>Advanced - 85%</MenuItem>
+                    <MenuItem value={90}>Experienced - 90%</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
@@ -413,6 +437,49 @@ const FixandFlipCalc = () => {
                 </FormControl>
               </Grid>
               <Grid item sm={6}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Down Payment ($){" "}
+                    <Tooltip
+                      title="The amount of money you need to borrow from a lender to renovate the property."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    type="text" // Change type to "text" to allow formatted string
+                    fullWidth
+                    value={`${Number(downPaymentListed).toLocaleString(
+                      "en-US",
+                      {
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      }
+                    )}`}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                    disabled
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
@@ -763,25 +830,6 @@ const FixandFlipCalc = () => {
                   {/* <Typography className="text-center" color="grey">
                     Selected: <strong>{closingCost}%</strong>
                   </Typography> */}
-                </FormControl>
-              </Grid>
-              <Grid item sm={12}>
-                <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
-                    Buyer Experience
-                  </Typography>
-                  <Select
-                    value={experienceLevel}
-                    onChange={(e) => setExperienceLevel(e.target.value)}
-                    displayEmpty
-                    aria-labelledby="experience-dropdown"
-                  >
-                    <MenuItem value={70}>New - 70%</MenuItem>
-                    <MenuItem value={75}>Beginner - 75%</MenuItem>
-                    <MenuItem value={80}>Intermediate - 80%</MenuItem>
-                    <MenuItem value={85}>Advanced - 85%</MenuItem>
-                    <MenuItem value={90}>Experienced - 90%</MenuItem>
-                  </Select>
                 </FormControl>
               </Grid>
             </Grid>
