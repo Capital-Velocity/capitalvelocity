@@ -254,6 +254,21 @@ const FixandFlipCalc = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -290,6 +305,21 @@ const FixandFlipCalc = () => {
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
                       ),
+                    }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
                     }}
                   />
                 </FormControl>
@@ -515,6 +545,21 @@ const FixandFlipCalc = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -596,6 +641,21 @@ const FixandFlipCalc = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -646,6 +706,21 @@ const FixandFlipCalc = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -688,6 +763,21 @@ const FixandFlipCalc = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -729,6 +819,21 @@ const FixandFlipCalc = () => {
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
                       ),
+                    }}
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
                     }}
                   />
                 </FormControl>
