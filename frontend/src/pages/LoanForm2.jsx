@@ -94,6 +94,8 @@ import Tooltip from "@mui/material/Tooltip";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { green } from "@mui/material/colors";
+import { useLocation } from "react-router-dom";
+
 const selectionData = [
   {
     title: "Small Business Loan",
@@ -305,6 +307,15 @@ const LoanForm2 = () => {
   const [jwt, setJWT] = useState("");
   const [cookieEmailFound, setCookieEmailFound] = useState(false);
   const navigate = useNavigate(); // useNavigate hook for React Router v6
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const loanType = queryParams.get("type"); // Extracting "type" from URL
+
+  useEffect(() => {
+    if (loanType) {
+      setSelectedOption(loanType); // Set the loan type based on query param
+    }
+  }, [loanType]);
 
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [isParagraphVisible, setIsParagraphVisible] = useState(false);
