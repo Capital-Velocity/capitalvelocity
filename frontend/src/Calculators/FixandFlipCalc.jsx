@@ -21,6 +21,7 @@ import { ToastContainer, toast } from "react-toastify";
 import InputAdornment from "@mui/material/InputAdornment";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import Divider from "@mui/material/Divider";
 
 const FixandFlipCalc = () => {
   const [purchasePrice, setPurchasePrice] = useState(0);
@@ -327,6 +328,30 @@ const FixandFlipCalc = () => {
         >
           Fix and Flip Calculator
         </Typography>
+        <Typography
+          variant="body1"
+          display="block"
+          gutterBottom
+          style={{ color: "grey", fontSize: 14 }}
+        >
+          Fix and Flip Calculator – Maximize Your Real Estate Profits
+          <br />
+          <br /> Thinking about flipping a property? Our Fix and Flip Calculator
+          helps you make smarter investment decisions by providing a detailed
+          breakdown of your costs, potential profit, and return on investment.
+          <br />
+          <br /> ✅ Estimate Total Investment – Factor in purchase price, rehab
+          costs, and holding expenses.
+          <br /> ✅ Calculate Profitability – Get a clear projection of your
+          anticipated returns.
+          <br /> ✅ Plan Smarter – Adjust key financial inputs to see how
+          different scenarios impact your bottom line.
+          <br />
+          <br /> Take the guesswork out of real estate investing. Use our Fix
+          and Flip Calculator today and maximize your next deal!
+        </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <Grid container spacing={2}>

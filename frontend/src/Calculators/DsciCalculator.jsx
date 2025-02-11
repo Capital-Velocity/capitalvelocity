@@ -401,18 +401,22 @@ const DsciCalculator = () => {
           gutterBottom
           style={{ color: "grey", fontSize: 14 }}
         >
-          Maximize Your Investment Potential with Our Rental DSCR Calculator{" "}
+          Rental DSCR Calculator – Unlock Smarter Real Estate Investments <br />
+          <br /> At Capital Velocity, we provide real estate investors with the
+          tools they need to scale their portfolios with confidence. Our Rental
+          DSCR (Debt Service Coverage Ratio) Calculator helps you determine if
+          your rental property generates enough income to cover loan
+          payments—ensuring you make informed investment decisions.
           <br />
-          <br /> At Capital Velocity, we empower real estate investors with the
-          financial tools needed to scale their portfolios. Our Rental DSCR
-          (Debt Service Coverage Ratio) Calculator helps you assess whether your
-          property generates enough income to cover its loan payments—giving you
-          the confidence to secure financing and maximize returns. <br />
-          <br /> Lenders prioritize DSCR when approving real estate investment
-          loans. A higher DSCR means better loan terms, more purchasing power,
-          and increased profitability. Use our DSCR Calculator to evaluate your
-          next rental investment and take the next step toward financial growth.
-          Invest smarter. Grow faster. Try our Rental DSCR Calculator today!
+          <br /> 💰 Secure Better Financing – Lenders use DSCR to assess loan
+          eligibility and terms.
+          <br /> 📈 Maximize Profitability – A strong DSCR means more purchasing
+          power and better returns.
+          <br /> 🔍 Evaluate Investments Instantly – Quickly analyze potential
+          rental properties before you buy.
+          <br />
+          <br /> Make data-driven decisions and grow your portfolio with
+          confidence. Try our Rental DSCR Calculator today!
         </Typography>
         <Divider style={{ color: "grey", marginBottom: 10 }} />
 
