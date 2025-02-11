@@ -366,8 +366,8 @@ const DsciCalculator = () => {
 
     // dscr = NOI / TDS
 
-    console.log("noi: ", netOperatingIncome);
-    console.log("ip: ", monthlyInterestPaymentDisplay);
+    // console.log("noi: ", netOperatingIncome);
+    // console.log("ip: ", monthlyInterestPaymentDisplay);
 
     const dscr =
       parseFloat(netOperatingIncome) /
