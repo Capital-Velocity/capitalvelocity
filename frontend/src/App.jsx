@@ -13,8 +13,8 @@ import Navbar from "./components/oldNavbar";
 import BecomePartner from "./pages/BecomePartner";
 import Contact from "./pages/Contact";
 import Landing from "./pages/landing";
-import LoanForm from "./pages/LoanForm";
-import LoanForm2 from "./pages/LoanForm2";
+// import LoanForm from "../components/LoanForm";
+// import LoanForm2 from "../components/LoanForm2";
 import Login from "./pages/Login";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Project99 from "./pages/Project99";
@@ -25,6 +25,8 @@ import UserDashHome from "./pages/UserDashHome";
 import Lendio from "./pages/Lendio";
 import ROKForm from "./pages/ROKForm";
 import ROKAffiliateForm from "./pages/ROKAffiliateForm";
+import RealEstateLoan from "./pages/RealEstateLoan";
+import BusinessLoan from "./pages/BusinessLoan";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -66,7 +68,10 @@ function App() {
             )
           }
         />{" "}
-        <Route path="/loan-form-realestate" element={<LoanForm />}></Route>
+        <Route
+          path="/loan-form-realestate"
+          element={<RealEstateLoan />}
+        ></Route>
         {/* <Route
           path="/loan-form-realestate"
           element={
@@ -77,7 +82,10 @@ function App() {
             )
           }
         />{" "} */}
-        <Route path="/loan-form-business-loans" element={<LoanForm2 />}></Route>
+        <Route
+          path="/loan-form-business-loans"
+          element={<BusinessLoan />}
+        ></Route>
         {/* <Route
           path="/loan-form-business-loans"
           element={

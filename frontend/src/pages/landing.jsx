@@ -27,8 +27,8 @@ import Hero from "../components/Hero";
 import CalculatorHero from "../components/CalculatorHero";
 import LoanMatching from "../components/LoanMatching";
 import BusinessCategories from "../components/BusinessCategories";
-import LoanForm from "./LoanForm";
-import LoanForm2 from "./LoanForm2";
+import LoanForm from "../components/LoanForm";
+import LoanForm2 from "../components/LoanForm2";
 
 const mock = [
   {
