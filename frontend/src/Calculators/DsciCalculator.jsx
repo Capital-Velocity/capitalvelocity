@@ -136,6 +136,7 @@ const DsciCalculator = () => {
     calculateLoan(); // Recalculate when any of the relevant values change
     setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
     setNetOperatingIncome(calculateNetOperatingIncome());
+    setDscrValue(calculateDSCR());
   }, [
     loanAmount,
     monthlyRent,
@@ -369,11 +370,11 @@ const DsciCalculator = () => {
     // console.log("noi: ", netOperatingIncome);
     // console.log("ip: ", monthlyInterestPaymentDisplay);
 
-    const dscr =
-      parseFloat(netOperatingIncome) /
-      parseFloat(monthlyInterestPaymentDisplay);
+    // const dscr =
+    //   parseFloat(netOperatingIncome) /
+    //   parseFloat(monthlyInterestPaymentDisplay);
 
-    setDscrValue(dscr.toFixed(2));
+    // setDscrValue(dscr.toFixed(2));
 
     const totalOperatingExpensesMonthly =
       cleanMonthlyTaxes +
@@ -392,6 +393,64 @@ const DsciCalculator = () => {
     setTotalProfit(formatNumber(totalProfit));
     const convertYearly = totalProfit * 12;
     setTotalProfitAnnually(formatNumber(convertYearly));
+  };
+
+  const calculateDSCR = () => {
+    if (!loanAmount || !interestRate || !amortizingPeriod) {
+      console.error("Missing required loan parameters.");
+      return null;
+    }
+
+    // Convert interest rate from percentage if needed
+    let correctedInterestRate =
+      interestRate > 1 ? interestRate / 100 : interestRate;
+    let monthlyInterestRate = correctedInterestRate / 12;
+
+    let totalPayments = amortizingPeriod * 12;
+
+    const cleanLoanAmount = Number(String(loanAmount).replace(/,/g, ""));
+    if (isNaN(cleanLoanAmount) || cleanLoanAmount <= 0) {
+      console.error("Invalid loan amount:", loanAmount);
+      return null;
+    }
+
+    let monthlyLoanPayment =
+      (cleanLoanAmount *
+        monthlyInterestRate *
+        Math.pow(1 + monthlyInterestRate, totalPayments)) /
+      (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+
+    if (isNaN(monthlyLoanPayment) || monthlyLoanPayment <= 0) {
+      console.error("Invalid monthly loan payment:", monthlyLoanPayment);
+      return null;
+    }
+
+    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, "")) || 0;
+    const cleanMonthlyTaxes =
+      Number(String(monthlyTaxes).replace(/,/g, "")) || 0;
+    const cleanMonthlyInsurances =
+      Number(String(monthlyInsurances).replace(/,/g, "")) || 0;
+    const cleanMonthlyHOAFee =
+      Number(String(monthlyHOAFee).replace(/,/g, "")) || 0;
+    const cleanMonthlyOtherExpenses =
+      Number(String(monthlyOtherExpenses).replace(/,/g, "")) || 0;
+
+    let noi =
+      cleanMonthlyRent -
+      (cleanMonthlyTaxes +
+        cleanMonthlyInsurances +
+        cleanMonthlyHOAFee +
+        cleanMonthlyOtherExpenses);
+
+    let dscr = noi / monthlyLoanPayment;
+
+    // console.log("Loan Amount:", cleanLoanAmount);
+    // console.log("Interest Rate:", correctedInterestRate);
+    // console.log("Monthly Loan Payment:", monthlyLoanPayment.toFixed(2));
+    // console.log("NOI:", noi.toFixed(2));
+    // console.log("DSCR:", dscr.toFixed(2));
+
+    return dscr.toFixed(2);
   };
 
   const calculateMonthlyPayment = () => {
