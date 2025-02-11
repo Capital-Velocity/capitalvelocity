@@ -115,10 +115,26 @@ const FixandFlipCalc = () => {
   };
 
   const calculateTotalCashInDeal = () => {
+    // console.log("ccost: ", calculateCarryingCosts()); // Expected: 15800
+    // console.log("clocost: ", calculateClosingCosts()); // Expected: 3300
+
+    // console.log("after repair value: ", afterRepairValue); // Logs incorrectly as "200,000"
+    // console.log("realtor fee (%): ", costOfSales); // Expected: 1
+
+    // afterRepairValue is passed in as a string (e.g: 100,000. We need to remove commas and other things and convert to a number before performing any math on it.)
+    //  Convert afterRepairValue to a number, removing commas if necessary
+    const safeAfterRepairValue =
+      parseFloat(afterRepairValue.toString().replace(/,/g, "")) || 0;
+    const safeCostOfSales = parseFloat(costOfSales) || 0;
+
+    const realtorFeeTotalCashCalc =
+      safeAfterRepairValue * (safeCostOfSales / 100);
+    // console.log("Realtor Fee Calculation: ", realtorFeeTotalCashCalc); // Should be 200000 * 0.01 = 2000
+
     return (
       parseFloat(calculateCarryingCosts()) +
       parseFloat(calculateClosingCosts()) +
-      parseFloat(costOfSales || 0)
+      realtorFeeTotalCashCalc
     ).toFixed(2);
   };
 
