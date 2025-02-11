@@ -362,7 +362,16 @@ const DsciCalculator = () => {
     //   parseFloat(cleanMonthlyOtherExpenses * 12) +
     //   parseFloat(cleanMonthlyHOAFee * 12);
 
-    const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
+    // const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
+
+    // dscr = NOI / TDS
+
+    console.log("noi: ", netOperatingIncome);
+    console.log("ip: ", monthlyInterestPaymentDisplay);
+
+    const dscr =
+      parseFloat(netOperatingIncome) /
+      parseFloat(monthlyInterestPaymentDisplay);
 
     setDscrValue(dscr.toFixed(2));
 
@@ -1195,8 +1204,29 @@ const DsciCalculator = () => {
                 <Container>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
+                      <Typography variant="h6" color="white">
+                        DSCR: {dscrValue}{" "}
+                      </Typography>
+
                       <Typography variant="h2" color="white" gutterBottom>
-                        "It's not a deal."
+                        {dscrValue >= 1.25
+                          ? "It's go time!"
+                          : "DSCR is too low."}{" "}
+                        <Tooltip
+                          title="A DSCR score below 1.1 is considered very weak and suggests that a company owes more money to creditors (per year) than it generates in cash per year. Most commercial banks and equipment finance firms want to see a minimum of 1.25x but strongly prefer something closer to 2x or more."
+                          arrow
+                          placement="top"
+                        >
+                          <InfoIcon
+                            className="cursor-pointer"
+                            sx={{
+                              fontSize: 18,
+                              color: "",
+                              marginBottom: 0.5,
+                              verticalAlign: "middle",
+                            }} // Align icon vertically
+                          />
+                        </Tooltip>
                       </Typography>
                     </Grid>
 
