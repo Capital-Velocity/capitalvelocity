@@ -1016,7 +1016,7 @@ const DsciCalculator = () => {
               >
                 <Typography variant="h6">DSCR: {dscrValue}</Typography>
                 <Typography>
-                  {dscrValue > 1.1 ? "It's go time!" : "DSCR is too low."}
+                  {dscrValue >= 1.25 ? "It's go time!" : "DSCR is too low."}
                 </Typography>
               </Paper>
             </Item>
