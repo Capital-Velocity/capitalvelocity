@@ -1014,9 +1014,24 @@ const DsciCalculator = () => {
                   textAlign: "center",
                 }}
               >
-                <Typography variant="h6">DSCR: {dscrValue}</Typography>
+                <Typography variant="h6">DSCR: {dscrValue} </Typography>
                 <Typography>
-                  {dscrValue >= 1.25 ? "It's go time!" : "DSCR is too low."}
+                  {dscrValue >= 1.25 ? "It's go time!" : "DSCR is too low."}{" "}
+                  <Tooltip
+                    title="Anything less than 1x (or 1:1) is considered very weak and suggests that a company owes more money to creditors (per year) than it generates in cash per year. Most commercial banks and equipment finance firms want to see a minimum of 1.25x but strongly prefer something closer to 2x or more."
+                    arrow
+                    placement="top"
+                  >
+                    <InfoIcon
+                      className="cursor-pointer"
+                      sx={{
+                        fontSize: 18,
+                        color: "",
+                        marginBottom: 0.5,
+                        verticalAlign: "middle",
+                      }} // Align icon vertically
+                    />
+                  </Tooltip>
                 </Typography>
               </Paper>
             </Item>
