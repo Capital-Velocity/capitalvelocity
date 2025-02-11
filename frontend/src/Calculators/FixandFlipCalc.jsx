@@ -1145,7 +1145,7 @@ const FixandFlipCalc = () => {
                       </Typography>
                     </Grid>
                     <Grid item xs={12}>
-                      <Typography variant="h6" color="white" gutterBottom>
+                      <Typography variant="h2" color="white" gutterBottom>
                         {isDeal ? "It's a deal!" : "It's not a deal."}
                       </Typography>
                     </Grid>
