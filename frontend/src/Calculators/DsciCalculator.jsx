@@ -846,11 +846,11 @@ const DsciCalculator = () => {
                 </AccordionSummary>
                 <AccordionDetails>
                   <Typography>
-                    Gross Annual Income: $ {grossAnualincome}
+                    Monthly Income: $ {displayMonthlyIncomePayment}
                   </Typography>
 
                   <Typography>
-                    Monthly Income: $ {displayMonthlyIncomePayment}
+                    Gross Annual Income: $ {grossAnualincome}
                   </Typography>
 
                   {/*}
