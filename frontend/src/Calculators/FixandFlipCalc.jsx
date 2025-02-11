@@ -24,17 +24,17 @@ import { useWindowSize } from "react-use";
 import Divider from "@mui/material/Divider";
 
 const FixandFlipCalc = () => {
-  const [purchasePrice, setPurchasePrice] = useState(0);
-  const [rehabCost, setRehabCost] = useState(0);
+  const [purchasePrice, setPurchasePrice] = useState("");
+  const [rehabCost, setRehabCost] = useState("");
   const [interestRate, setInterestRate] = useState(12);
   const [projectLength, setProjectLength] = useState(12); // 30 years in months
   const [loanAmount, setLoanAmount] = useState(0);
   const [afterRepairValue, setAfterRepairValue] = useState(0);
   const [monthlyInterestPayment, setMonthlyInterestPayment] = useState(0);
-  const [monthlyPropertyTaxes, setMonthlyPropertyTaxes] = useState(50);
-  const [monthlyInsurance, setMonthlyInsurance] = useState(20);
-  const [monthlyUtilityBills, setMonthlyUtilityBills] = useState(50);
-  const [otherMonthlyExpenses, setOtherMonthlyExpenses] = useState(0);
+  const [monthlyPropertyTaxes, setMonthlyPropertyTaxes] = useState("");
+  const [monthlyInsurance, setMonthlyInsurance] = useState("");
+  const [monthlyUtilityBills, setMonthlyUtilityBills] = useState("");
+  const [otherMonthlyExpenses, setOtherMonthlyExpenses] = useState("");
   const [costOfSales, setCostOfSales] = useState(1);
   const [downPaymentListed, setDownPaymentListed] = useState(0);
 
