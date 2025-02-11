@@ -87,6 +87,7 @@ const DsciCalculator = () => {
   const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
   const [monthlyInterestPaymentDisplay, setMonthlyInterestPaymentDisplay] =
     useState("");
+  const [netOperatingIncome, setNetOperatingIncome] = useState("");
 
   useEffect(() => {
     calculateLoanAmount();
@@ -134,6 +135,7 @@ const DsciCalculator = () => {
   useEffect(() => {
     calculateLoan(); // Recalculate when any of the relevant values change
     setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
+    setNetOperatingIncome(calculateNetOperatingIncome());
   }, [
     loanAmount,
     monthlyRent,
@@ -176,6 +178,16 @@ const DsciCalculator = () => {
     } else {
       setLoanAmount("");
     }
+  };
+
+  const calculateNetOperatingIncome = () => {
+    const cleanMonthlyIncomePayment = Number(
+      String(displayMonthlyIncomePayment).replace(/,/g, "")
+    );
+
+    return (
+      parseFloat(cleanMonthlyIncomePayment) - parseFloat(totalOperatingExpenses)
+    );
   };
 
   const handleCreditScoreChange = (e) => {
@@ -395,6 +407,11 @@ const DsciCalculator = () => {
   // const loanTerm = 30; // Example: 30-year loan
 
   // console.log("Monthly Payment: $", calculateMonthlyPayment(loanAmount, interestRate, loanTerm));
+
+  const profitBoxStyle = {
+    backgroundColor: isDeal ? "green" : "#f44336",
+    marginTop: 10,
+  };
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
@@ -1132,87 +1149,88 @@ const DsciCalculator = () => {
           </Grid>
           <Grid item sm={6}>
             <Item>
-              <Accordion expanded>
-                <AccordionSummary>
-                  <Typography variant="h6">Income</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Monthly Income: $ {displayMonthlyIncomePayment}
-                  </Typography>
+              <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
+                <Container>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Monthly Income
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        {displayMonthlyIncomePayment.toLocaleString()}
+                      </Typography>
+                    </Grid>
+                  </Grid>
 
-                  <Typography>
-                    Gross Annual Income: $ {grossAnualincome}
-                  </Typography>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Monthly Operating Expenses
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${totalOperatingExpenses.toLocaleString()}
+                      </Typography>
+                    </Grid>
+                  </Grid>
 
-                  {/*}
-                  <Typography>
-                    Annual Market Income: $
-                    {calculateAnnualMarketIncome().toFixed(2)}
-                  </Typography>
-                  */}
-                  {/* 
-                  <Typography>
-                    Annual Gross Rent: ${parseFloat(annualGrossRent).toFixed(2)}
-                  </Typography>
-                  */}
-                </AccordionDetails>
-              </Accordion>
-              <Accordion expanded>
-                <AccordionSummary>
-                  <Typography variant="h6">Total Operating Expenses</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>
-                    Total Operating Expenses Monthly: ${totalOperatingExpenses}
-                  </Typography>
-                  <Typography>
-                    Total Operating Expenses Annual: ${totalOperatingYearly}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Accordion expanded>
-                <AccordionSummary>
-                  <Typography variant="h6">Total Profit Monthly</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <Typography>Total Profit Monthly: ${totalProfit}</Typography>
-                  <Typography>
-                    Total Profit Annual: ${totalProfitAnually}
-                  </Typography>
-                </AccordionDetails>
-              </Accordion>
-              <Paper
-                variant="outlined"
-                square
-                style={{
-                  marginTop: 10,
-                  padding: 10,
-                  backgroundColor: dscrValue > 1.1 ? "green" : "#f44336", // Corrected line
-                  color: "#fff",
-                  textAlign: "center",
-                }}
-              >
-                <Typography variant="h6">DSCR: {dscrValue} </Typography>
-                <Typography>
-                  {dscrValue >= 1.25 ? "It's go time!" : "DSCR is too low."}{" "}
-                  <Tooltip
-                    title="Anything less than 1x (or 1:1) is considered very weak and suggests that a company owes more money to creditors (per year) than it generates in cash per year. Most commercial banks and equipment finance firms want to see a minimum of 1.25x but strongly prefer something closer to 2x or more."
-                    arrow
-                    placement="top"
-                  >
-                    <InfoIcon
-                      className="cursor-pointer"
-                      sx={{
-                        fontSize: 18,
-                        color: "",
-                        marginBottom: 0.5,
-                        verticalAlign: "middle",
-                      }} // Align icon vertically
-                    />
-                  </Tooltip>
-                </Typography>
-              </Paper>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Net Operating Income
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        ${Number(netOperatingIncome).toLocaleString()}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+                </Container>
+              </Box>
+              <Box style={profitBoxStyle}>
+                <Container>
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <Typography variant="h2" color="white" gutterBottom>
+                        "It's not a deal."
+                      </Typography>
+                    </Grid>
+
+                    <Grid item xs={12} style={{ marginBottom: 10 }}>
+                      <Button
+                        variant="contained"
+                        onClick={() => setShowModal(true)}
+                        style={{
+                          backgroundColor: "#498dd6",
+                          borderRadius: "30px",
+                          marginTop: "10px",
+                        }}
+                      >
+                        Contact Us
+                      </Button>
+                    </Grid>
+
+                    {/* <Grid item xs={6} style={{ marginBottom: 10 }}>
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => setShowModal(true)}
+                        style={{
+                          width: "56%",
+                          height: "80%",
+                          marginTop: "10px",
+                        }}
+                      >
+                        Contact Us
+                      </Button>
+                    </Grid> */}
+                  </Grid>
+                </Container>
+              </Box>
             </Item>
           </Grid>
         </Grid>
