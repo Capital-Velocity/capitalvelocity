@@ -123,7 +123,11 @@ const DsciCalculator = () => {
   }, [selectedCreditScore]);
 
   useEffect(() => {
-    setAnnualGrossRent((parseFloat(monthlyRent) || 0) * 12);
+    const cleanMonthlyRentInUseEffect = Number(
+      String(monthlyRent).replace(/,/g, "")
+    );
+
+    setAnnualGrossRent((parseFloat(cleanMonthlyRentInUseEffect) || 0) * 12);
   }, [monthlyRent]);
 
   // Trigger live calculation when inputs change
@@ -163,9 +167,12 @@ const DsciCalculator = () => {
 
   const calculateLoanAmount = () => {
     const ltvPercentage = parseFloat(ltv) / 100;
-    const estimatedValueFloat = parseFloat(estimatedValue);
+
+    const cleanestimatedValue = String(estimatedValue).replace(/,/g, "");
+
+    const estimatedValueFloat = parseFloat(cleanestimatedValue);
     if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
-      setLoanAmount((ltvPercentage * estimatedValueFloat).toFixed(2));
+      setLoanAmount(ltvPercentage * estimatedValueFloat);
     } else {
       setLoanAmount("");
     }
@@ -175,51 +182,51 @@ const DsciCalculator = () => {
     setSelectedCreditScore(e.target.value);
   };
 
-  const calculateGrossAnnualIncome = () => {
-    return (parseFloat(monthlyRent) || 0) * 12;
-  };
+  // const calculateGrossAnnualIncome = () => {
+  //   return (parseFloat(monthlyRent) || 0) * 12;
+  // };
 
-  const calculateAnnualMarketIncome = () => {
-    return (parseFloat(monthlyMarketRent) || 0) * 12;
-  };
+  // const calculateAnnualMarketIncome = () => {
+  //   return (parseFloat(monthlyMarketRent) || 0) * 12;
+  // };
 
-  const calculateTotalOperatingExpenses = () => {
-    return (
-      (parseFloat(monthlyInsurances * 12) || 0) +
-      (parseFloat(monthlyHOAFee * 12) || 0) +
-      (parseFloat(monthlyOtherExpenses * 12) || 0) +
-      (parseFloat(monthlyTaxes * 12) || 0).toFixed(2)
-    );
-  };
+  // const calculateTotalOperatingExpenses = () => {
+  //   return (
+  //     (parseFloat(monthlyInsurances * 12) || 0) +
+  //     (parseFloat(monthlyHOAFee * 12) || 0) +
+  //     (parseFloat(monthlyOtherExpenses * 12) || 0) +
+  //     (parseFloat(monthlyTaxes * 12) || 0).toFixed(2)
+  //   );
+  // };
 
-  const calculateIOPeriodDebtService = () => {
-    const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-    return parseFloat(loanAmount) * rate || 0;
-  };
+  // const calculateIOPeriodDebtService = () => {
+  //   const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
+  //   return parseFloat(loanAmount) * rate || 0;
+  // };
 
-  const calculateDSCR = () => {
-    const income = calculateGrossAnnualIncome();
-    const debt = calculateTotalOperatingExpenses();
+  // const calculateDSCR = () => {
+  //   const income = calculateGrossAnnualIncome();
+  //   const debt = calculateTotalOperatingExpenses();
 
-    return income / debt;
-  };
-  const calculateAmortizingDebtService = () => {
-    const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-    const n = parseFloat(amortizingPeriod) * 12; // Convert years to months
-    if (rate === 0) {
-      return parseFloat(loanAmount) / n || 0; // Handling case where interest rate is zero
-    }
-    return (parseFloat(loanAmount) * rate) / (1 - Math.pow(1 + rate, -n)) || 0;
-  };
+  //   return income / debt;
+  // };
+  // const calculateAmortizingDebtService = () => {
+  //   const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
+  //   const n = parseFloat(amortizingPeriod) * 12; // Convert years to months
+  //   if (rate === 0) {
+  //     return parseFloat(loanAmount) / n || 0; // Handling case where interest rate is zero
+  //   }
+  //   return (parseFloat(loanAmount) * rate) / (1 - Math.pow(1 + rate, -n)) || 0;
+  // };
 
-  const calculateIOPITIA = () => {
-    const ioDebtService = calculateIOPeriodDebtService();
-    const operatingExpenses = calculateTotalOperatingExpenses();
-    const grossIncome = calculateGrossAnnualIncome();
-    return grossIncome > 0
-      ? (ioDebtService + operatingExpenses) / grossIncome
-      : 0;
-  };
+  // const calculateIOPITIA = () => {
+  //   const ioDebtService = calculateIOPeriodDebtService();
+  //   const operatingExpenses = calculateTotalOperatingExpenses();
+  //   const grossIncome = calculateGrossAnnualIncome();
+  //   return grossIncome > 0
+  //     ? (ioDebtService + operatingExpenses) / grossIncome
+  //     : 0;
+  // };
 
   const formatNumber = (num) => {
     if (isNaN(num)) return "0";
@@ -253,7 +260,6 @@ const DsciCalculator = () => {
       monthlyOtherExpenses,
       estimatedValue,
     };
-
     // Check if any fields are empty or zero
     const emptyFields = Object.keys(fields).filter(
       (key) => !fields[key] || fields[key] === 0
@@ -274,7 +280,18 @@ const DsciCalculator = () => {
     // console.log(loanAmount);
     // console.log(interestRate);
     // console.log(loanTerm);
-    setdisplayMonthlyIncomePayment(formatNumber(monthlyRent));
+    // console.log("loanAmount here: ", monthlyRent);
+    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
+    const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
+    const cleanMonthlyInsurances = Number(
+      String(monthlyInsurances).replace(/,/g, "")
+    );
+    const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
+    const cleanMonthlyOtherExpenses = Number(
+      String(monthlyOtherExpenses).replace(/,/g, "")
+    );
+
+    setdisplayMonthlyIncomePayment(formatNumber(cleanMonthlyRent));
     const loanAmountFloat = loanAmount;
     const interestRateFloat = interestRate / 100;
     const termMonths = loanTerm * 12;
@@ -313,10 +330,10 @@ const DsciCalculator = () => {
 
     // Now we need to calculate the PITTA.
     ///// if converted to monthlyTaxes, take away the / 12.
-    const monthlyTax = monthlyTaxes;
-    const monthlyInsurance = monthlyInsurances;
-    const monthlyHOA = monthlyHOAFee;
-    const monthlyExpenses = monthlyOtherExpenses;
+    const monthlyTax = cleanMonthlyTaxes;
+    const monthlyInsurance = cleanMonthlyInsurances;
+    const monthlyHOA = cleanMonthlyHOAFee;
+    const monthlyExpenses = cleanMonthlyOtherExpenses;
 
     const paymentIntrestTaxesInsurance =
       parseFloat(monthlyPayment) +
@@ -328,20 +345,20 @@ const DsciCalculator = () => {
     // if converted to monthlyTaxes, multiply by 12.
     const yearlyCost =
       parseFloat(monthlyPayment * 12) +
-      parseFloat(monthlyTaxes * 12) +
-      parseFloat(monthlyInsurances * 12) +
-      parseFloat(monthlyExpenses * 12) +
-      parseFloat(monthlyHOAFee * 12);
+      parseFloat(cleanMonthlyTaxes * 12) +
+      parseFloat(cleanMonthlyInsurances * 12) +
+      parseFloat(cleanMonthlyOtherExpenses * 12) +
+      parseFloat(cleanMonthlyHOAFee * 12);
 
-    const dscr = monthlyRent / paymentIntrestTaxesInsurance;
+    const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
 
     setDscrValue(dscr.toFixed(2));
     setTotalOperatingExpenses(formatNumber(paymentIntrestTaxesInsurance));
     setTotalOepratingYearly(formatNumber(yearlyCost));
-    const monthlyPaymentValue = monthlyRent * 12;
+    const monthlyPaymentValue = cleanMonthlyRent * 12;
     // set the gross annual
     setGrossAnualincome(formatNumber(monthlyPaymentValue));
-    const totalProfit = monthlyRent - paymentIntrestTaxesInsurance;
+    const totalProfit = cleanMonthlyRent - paymentIntrestTaxesInsurance;
     setTotalProfit(formatNumber(totalProfit));
     const convertYearly = totalProfit * 12;
     setTotalProfitAnnually(formatNumber(convertYearly));
@@ -491,7 +508,7 @@ const DsciCalculator = () => {
                   </Tooltip>
                 </Typography>{" "}
                 <FormControl fullWidth>
-                  <TextField
+                  {/* <TextField
                     value={estimatedValue}
                     onChange={(e) => setEstimatedValue(e.target.value)}
                     InputProps={{
@@ -500,6 +517,25 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={estimatedValue}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setEstimatedValue(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -669,7 +705,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     onChange={(e) => setLoanAmount(e.target.value)}
                     value={loanAmount}
                     variant="outlined"
@@ -678,6 +714,17 @@ const DsciCalculator = () => {
                         <InputAdornment position="start">$</InputAdornment>
                       ),
                     }}
+                  /> */}
+                  <TextField
+                    type="text" // Change type to "text" to allow formatted string
+                    fullWidth
+                    value={`${Number(loanAmount).toLocaleString("en-US", {})}`}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                    disabled
                   />
                 </FormControl>
               </Grid>
@@ -765,7 +812,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     value={monthlyRent}
                     onChange={(e) => setMonthlyRent(e.target.value)}
                     InputProps={{
@@ -774,6 +821,24 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyRent}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyRent(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -847,7 +912,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     value={monthlyTaxes}
                     onChange={(e) => setmonthlyTaxes(e.target.value)}
                     InputProps={{
@@ -856,6 +921,24 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyTaxes}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setmonthlyTaxes(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -883,7 +966,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     value={monthlyInsurances}
                     onChange={(e) => setmonthlyInsurances(e.target.value)}
                     InputProps={{
@@ -892,6 +975,24 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyInsurances}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setmonthlyInsurances(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -919,7 +1020,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     value={monthlyHOAFee}
                     onChange={(e) => setmonthlyHOAFee(e.target.value)}
                     InputProps={{
@@ -928,6 +1029,24 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyHOAFee}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setmonthlyHOAFee(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
@@ -955,7 +1074,7 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  <TextField
+                  {/* <TextField
                     value={monthlyOtherExpenses}
                     onChange={(e) => setMonthlyOtherExpenses(e.target.value)}
                     InputProps={{
@@ -964,6 +1083,24 @@ const DsciCalculator = () => {
                       ),
                     }}
                     variant="outlined"
+                  /> */}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyOtherExpenses}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyOtherExpenses(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
                   />
                 </FormControl>
               </Grid>
