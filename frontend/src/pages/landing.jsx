@@ -27,6 +27,8 @@ import Hero from "../components/Hero";
 import CalculatorHero from "../components/CalculatorHero";
 import LoanMatching from "../components/LoanMatching";
 import BusinessCategories from "../components/BusinessCategories";
+import LoanForm from "./LoanForm";
+import LoanForm2 from "./LoanForm2";
 
 const mock = [
   {
@@ -151,8 +153,10 @@ function Landing() {
             <LoanMatching />
             <WhyUs />
             <CalculatorHero />
-            <Categories2 />
-            <BusinessCategories />
+            <LoanForm />
+            <LoanForm2 />
+            {/* <Categories2 />
+            <BusinessCategories /> */}
           </div>
         </div>
       )}

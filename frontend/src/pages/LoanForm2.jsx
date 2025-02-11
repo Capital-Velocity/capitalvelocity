@@ -1433,11 +1433,11 @@ const LoanForm2 = () => {
               alignItems: "center",
             }}
           >
-            <img
+            {/* <img
               src={project99}
               className="text-center"
               style={{ width: "25%" }}
-            />
+            /> */}
           </div>
         </div>
       );
