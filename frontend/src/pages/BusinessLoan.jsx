@@ -3,7 +3,7 @@ import project99 from "../Images/project99.png";
 
 function BusinessLoan() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#c0dced" }}>
       <LoanForm2 />
       <div
         style={{

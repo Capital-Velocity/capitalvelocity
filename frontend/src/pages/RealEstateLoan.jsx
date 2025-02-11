@@ -1,9 +1,10 @@
 import LoanForm from "../components/LoanForm";
 import project99 from "../Images/project99.png";
+import Container from "../screens/Container";
 
 function RealEstateLoan() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#c0dced" }}>
       <LoanForm />
       <div
         style={{
