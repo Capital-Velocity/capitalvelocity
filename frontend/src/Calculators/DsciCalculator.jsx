@@ -342,19 +342,28 @@ const DsciCalculator = () => {
       parseFloat(monthlyExpenses) +
       parseFloat(monthlyHOA);
 
-    // if converted to monthlyTaxes, multiply by 12.
-    const yearlyCost =
-      parseFloat(monthlyPayment * 12) +
-      parseFloat(cleanMonthlyTaxes * 12) +
-      parseFloat(cleanMonthlyInsurances * 12) +
-      parseFloat(cleanMonthlyOtherExpenses * 12) +
-      parseFloat(cleanMonthlyHOAFee * 12);
+    // // if converted to monthlyTaxes, multiply by 12.
+    // const yearlyCost =
+    //   parseFloat(monthlyPayment * 12) +
+    //   parseFloat(cleanMonthlyTaxes * 12) +
+    //   parseFloat(cleanMonthlyInsurances * 12) +
+    //   parseFloat(cleanMonthlyOtherExpenses * 12) +
+    //   parseFloat(cleanMonthlyHOAFee * 12);
 
     const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
 
     setDscrValue(dscr.toFixed(2));
-    setTotalOperatingExpenses(formatNumber(paymentIntrestTaxesInsurance));
-    setTotalOepratingYearly(formatNumber(yearlyCost));
+
+    const totalOperatingExpensesMonthly =
+      cleanMonthlyTaxes +
+      cleanMonthlyInsurances +
+      cleanMonthlyOtherExpenses +
+      cleanMonthlyHOAFee;
+
+    // console.log("final: ", myTest);
+
+    setTotalOperatingExpenses(formatNumber(totalOperatingExpensesMonthly));
+    setTotalOepratingYearly(formatNumber(totalOperatingExpensesMonthly * 12));
     const monthlyPaymentValue = cleanMonthlyRent * 12;
     // set the gross annual
     setGrossAnualincome(formatNumber(monthlyPaymentValue));

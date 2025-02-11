@@ -147,7 +147,7 @@ emailRouter.post("/send-confirm", (req, res) => {
 
   const emailData = {
     from: `info@capitalvelocity.com`,
-    to: "megan@rok.biz" || "default@example.com", // You can use a default email if none is provided
+    to: "hbavrvxu@mailparser.io" || "default@example.com", // You can use a default email if none is provided
     subject: "Capital Velocity Business Financing Application",
     html: `
       <!DOCTYPE html>
