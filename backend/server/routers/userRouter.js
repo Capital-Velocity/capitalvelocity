@@ -151,12 +151,68 @@ userRouter.post(
   })
 );
 
-// Register route
+// // Register route (without the email check)
+// userRouter.post(
+//   "/register",
+//   expressAsyncHandler(async (req, res) => {
+//     try {
+//       const { firstName, lastName, phone, email, password } = req.body;
+//       const hashedPassword = bcrypt.hashSync(password, 8);
+
+//       const user = new User({
+//         firstName,
+//         lastName,
+//         phone,
+//         email,
+//         password: hashedPassword,
+//       });
+
+//       const createdUser = await user.save();
+//       const accessTokenObject = await getAccessToken();
+//       const lendioJWTObject = await getLendioJWT(
+//         user.email,
+//         accessTokenObject.accessToken
+//       );
+
+//       user.accessLendioToken = accessTokenObject.accessToken;
+//       user.accessLendioTokenExpires = accessTokenObject.accessTokenExpir;
+//       user.lendioJWT = lendioJWTObject.lendioJWT;
+//       user.lendioJWTExpires = lendioJWTObject.lendioJWTExpiresIn;
+
+//       await user.save();
+
+//       const responseData = {
+//         resFirst: createdUser.firstName,
+//         resEmail: createdUser.email,
+//         resID: createdUser._id,
+//         lendioJWT: user.lendioJWT,
+//         lendioJwtExpiresIn: user.lendioJWTExpires,
+//       };
+
+//       res.json(responseData);
+//     } catch (error) {
+//       console.error(error);
+//       res
+//         .status(500)
+//         .json({ message: "Error registering user. Try again later." });
+//     }
+//   })
+// );
+
 userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
     try {
       const { firstName, lastName, phone, email, password } = req.body;
+
+      // Check if the user already exists
+      const existingUser = await User.findOne({ email });
+      if (existingUser) {
+        return res
+          .status(400)
+          .json({ message: "Email is already registered." });
+      }
+
       const hashedPassword = bcrypt.hashSync(password, 8);
 
       const user = new User({
