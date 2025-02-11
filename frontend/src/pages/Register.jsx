@@ -74,8 +74,7 @@ const LoginCover = () => {
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm Password is required"),
     }),
-    onSubmit: (values) => {
-      // Send a POST request with form data to a server endpoint
+    onSubmit: async (values, { setSubmitting, setErrors }) => {
       const dataToSend = {
         firstName: values.firstName,
         lastName: values.lastName,
@@ -83,35 +82,54 @@ const LoginCover = () => {
         email: values.email,
         password: values.password,
         referralCode: validCode,
-        // Add more fields you want to include here
       };
-      console.log(dataToSend);
 
-      axios
-        .post("https://52.165.80.134:4000/api/users/register", dataToSend)
-        .then((response) => {
-          const {
-            user,
-            resFirst,
-            resLast,
-            resEmail,
-            resID,
-            resAdmin,
-            lendioJWT,
-            lendioJwtExpiresIn,
-          } = response.data;
+      try {
+        const response = await axios.post(
+          "https://52.165.80.134:4000/api/users/register",
+          dataToSend
+        );
 
-          // Save the token and user data as cookies
+        const {
+          resFirst,
+          resLast,
+          resEmail,
+          resID,
+          resAdmin,
+          lendioJWT,
+          lendioJwtExpiresIn,
+        } = response.data;
 
-          Cookies.set("firstName", resFirst);
-          Cookies.set("lastName", resLast);
-          Cookies.set("email", resEmail);
-          Cookies.set("_id", resID);
-          Cookies.set("isAdmin", resAdmin);
-          Cookies.set("JWT", lendioJWT);
-          Cookies.set("JWT_exp", lendioJwtExpiresIn);
-          window.location.href = "/loan-form-realestate";
-        });
+        // Save the token and user data as cookies
+        Cookies.set("firstName", resFirst);
+        Cookies.set("lastName", resLast);
+        Cookies.set("email", resEmail);
+        Cookies.set("_id", resID);
+        Cookies.set("isAdmin", resAdmin);
+        Cookies.set("JWT", lendioJWT);
+        Cookies.set("JWT_exp", lendioJwtExpiresIn);
+
+        window.location.href = "/loan-form-realestate";
+      } catch (error) {
+        if (error.response && error.response.data) {
+          const errorMessage = error.response.data.message;
+
+          // Check for the specific email already registered error message
+          if (errorMessage === "Email is already registered.") {
+            toast.error(
+              "The email address is already registered. Please visit the login page to access your account."
+            );
+          } else {
+            toast.error(errorMessage || "An error occurred.");
+          }
+
+          setErrors({ email: errorMessage });
+        } else {
+          toast.error("Something went wrong. Please try again.");
+        }
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
   const [showPassword, setShowPassword] = useState(false);
