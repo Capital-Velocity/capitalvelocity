@@ -907,7 +907,7 @@ const DsciCalculator = () => {
                   >
                     Monthly Other Expenses ($){" "}
                     <Tooltip
-                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                      title="The fees paid for various other expenses required."
                       arrow
                       placement="top"
                     >
