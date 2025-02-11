@@ -135,7 +135,7 @@ const DsciCalculator = () => {
   useEffect(() => {
     calculateLoan(); // Recalculate when any of the relevant values change
     setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
-    setNetOperatingIncome(calculateNetOperatingIncome());
+    // setNetOperatingIncome(calculateNetOperatingIncome());
     setDscrValue(calculateDSCR());
   }, [
     loanAmount,
@@ -425,16 +425,47 @@ const DsciCalculator = () => {
       return null;
     }
 
-    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, "")) || 0;
-    const cleanMonthlyTaxes =
-      Number(String(monthlyTaxes).replace(/,/g, "")) || 0;
-    const cleanMonthlyInsurances =
-      Number(String(monthlyInsurances).replace(/,/g, "")) || 0;
-    const cleanMonthlyHOAFee =
-      Number(String(monthlyHOAFee).replace(/,/g, "")) || 0;
-    const cleanMonthlyOtherExpenses =
-      Number(String(monthlyOtherExpenses).replace(/,/g, "")) || 0;
+    // Check if required fields are missing
+    if (
+      monthlyRent === undefined ||
+      monthlyTaxes === undefined ||
+      monthlyInsurances === undefined ||
+      monthlyHOAFee === undefined ||
+      monthlyOtherExpenses === undefined ||
+      monthlyRent === "" ||
+      monthlyTaxes === "" ||
+      monthlyInsurances === "" ||
+      monthlyHOAFee === "" ||
+      monthlyOtherExpenses === ""
+    ) {
+      console.warn("Waiting for all required expense fields to be entered.");
+      return "";
+    }
 
+    // Parse inputs and ensure they are numbers
+    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
+    const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
+    const cleanMonthlyInsurances = Number(
+      String(monthlyInsurances).replace(/,/g, "")
+    );
+    const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
+    const cleanMonthlyOtherExpenses = Number(
+      String(monthlyOtherExpenses).replace(/,/g, "")
+    );
+
+    // Ensure all parsed values are valid numbers
+    if (
+      isNaN(cleanMonthlyRent) ||
+      isNaN(cleanMonthlyTaxes) ||
+      isNaN(cleanMonthlyInsurances) ||
+      isNaN(cleanMonthlyHOAFee) ||
+      isNaN(cleanMonthlyOtherExpenses)
+    ) {
+      console.warn("Invalid input detected. Waiting for valid values.");
+      return "";
+    }
+
+    // Calculate Net Operating Income (NOI)
     let noi =
       cleanMonthlyRent -
       (cleanMonthlyTaxes +
@@ -442,13 +473,16 @@ const DsciCalculator = () => {
         cleanMonthlyHOAFee +
         cleanMonthlyOtherExpenses);
 
+    setNetOperatingIncome(noi);
+
+    // Calculate DSCR
     let dscr = noi / monthlyLoanPayment;
 
-    // console.log("Loan Amount:", cleanLoanAmount);
-    // console.log("Interest Rate:", correctedInterestRate);
-    // console.log("Monthly Loan Payment:", monthlyLoanPayment.toFixed(2));
-    // console.log("NOI:", noi.toFixed(2));
-    // console.log("DSCR:", dscr.toFixed(2));
+    // Ensure DSCR is valid
+    if (isNaN(dscr) || dscr < 0) {
+      console.warn("Invalid DSCR calculation.");
+      return "";
+    }
 
     return dscr.toFixed(2);
   };
@@ -1227,7 +1261,11 @@ const DsciCalculator = () => {
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        {displayMonthlyIncomePayment.toLocaleString()}
+                        $
+                        {displayMonthlyIncomePayment.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -1240,7 +1278,11 @@ const DsciCalculator = () => {
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        ${totalOperatingExpenses.toLocaleString()}
+                        $
+                        {totalOperatingExpenses.toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -1253,7 +1295,11 @@ const DsciCalculator = () => {
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        ${Number(netOperatingIncome).toLocaleString()}
+                        $
+                        {Number(netOperatingIncome).toLocaleString(undefined, {
+                          minimumFractionDigits: 2,
+                          maximumFractionDigits: 2,
+                        })}
                       </Typography>
                     </Grid>
                   </Grid>
