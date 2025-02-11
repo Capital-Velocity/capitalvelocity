@@ -708,7 +708,7 @@ const DsciCalculator = () => {
                   Income
                 </Typography>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
@@ -744,7 +744,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              {/* <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
@@ -779,7 +779,7 @@ const DsciCalculator = () => {
                     variant="outlined"
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
               <Grid item sm={12}>
                 <Typography
                   variant="button"
