@@ -332,7 +332,7 @@ const FixandFlipCalc = () => {
           variant="body1"
           display="block"
           gutterBottom
-          style={{ color: "grey", fontSize: 14 }}
+          style={{ color: "black", fontSize: 14 }}
         >
           Fix and Flip Calculator – Maximize Your Real Estate Profits
           <br />
@@ -358,7 +358,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -410,7 +410,7 @@ const FixandFlipCalc = () => {
               </Grid>
               <Grid item sm={6}>
                 <Typography
-                  color="grey"
+                  color="black"
                   component="div"
                   sx={{ display: "inline-flex", alignItems: "center" }}
                 >
@@ -470,7 +470,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -518,7 +518,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -552,7 +552,7 @@ const FixandFlipCalc = () => {
               </Grid>
               <Grid item sm={12}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="grey">
+                  <Typography className="text-center" color="black">
                     Buyer Experience
                   </Typography>
                   <Select
@@ -572,7 +572,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -612,7 +612,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -655,7 +655,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -693,7 +693,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex",
@@ -750,7 +750,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -815,7 +815,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -872,7 +872,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -929,7 +929,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -975,7 +975,7 @@ const FixandFlipCalc = () => {
                     <MenuItem value={6.0}>6.0%</MenuItem>
                   </Select>
 
-                  {/* <Typography className="text-center" color="grey">
+                  {/* <Typography className="text-center" color="black">
                     Selected: <strong>{costOfSales}%</strong>
                   </Typography> */}
                 </FormControl>
@@ -983,7 +983,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -1020,7 +1020,7 @@ const FixandFlipCalc = () => {
                     <MenuItem value={1.0}>1.0%</MenuItem>
                   </Select>
 
-                  {/* <Typography className="text-center" color="grey">
+                  {/* <Typography className="text-center" color="black">
                     Selected: <strong>{closingCost}%</strong>
                   </Typography> */}
                 </FormControl>
@@ -1028,7 +1028,7 @@ const FixandFlipCalc = () => {
               <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >

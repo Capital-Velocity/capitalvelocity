@@ -425,7 +425,7 @@ const DsciCalculator = () => {
           variant="body1"
           display="block"
           gutterBottom
-          style={{ color: "grey", fontSize: 14 }}
+          style={{ color: "black", fontSize: 14 }}
         >
           Rental DSCR Calculator – Unlock Smarter Real Estate Investments <br />
           <br /> At Capital Velocity, we provide real estate investors with the
@@ -444,7 +444,7 @@ const DsciCalculator = () => {
           <br /> Make data-driven decisions and grow your portfolio with
           confidence. Try our Rental DSCR Calculator today!
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item sm={6}>
@@ -452,7 +452,7 @@ const DsciCalculator = () => {
               variant="button"
               display="block"
               gutterBottom
-              style={{ color: "grey", fontSize: 16 }}
+              style={{ color: "black", fontSize: 16 }}
             >
               Loan Values
             </Typography>
@@ -460,7 +460,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -495,7 +495,7 @@ const DsciCalculator = () => {
               </Grid>
               <Grid item sm={6}>
                 <Typography
-                  color="grey"
+                  color="black"
                   component="div"
                   sx={{ display: "inline-flex", alignItems: "center" }}
                 >
@@ -551,7 +551,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -588,7 +588,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -624,7 +624,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -660,7 +660,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -693,7 +693,7 @@ const DsciCalculator = () => {
               <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -741,7 +741,7 @@ const DsciCalculator = () => {
               <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
@@ -779,7 +779,7 @@ const DsciCalculator = () => {
 
               {/* <Grid item sm={6}>
                 <FormControl fullWidth>
-                  <Typography color="grey">Monthly Mortage Payment</Typography>
+                  <Typography color="black">Monthly Mortage Payment</Typography>
                   <TextField
                     onChange={(e) => setMonthlyMortagePayment(e.target.value)}
                     variant="outlined"
@@ -792,7 +792,7 @@ const DsciCalculator = () => {
                   variant="button"
                   display="block"
                   gutterBottom
-                  style={{ color: "grey", fontSize: 16, marginTop: 10 }}
+                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
                 >
                   Income
                 </Typography>
@@ -800,7 +800,7 @@ const DsciCalculator = () => {
               <Grid item sm={12}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -854,7 +854,7 @@ const DsciCalculator = () => {
               {/* <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -892,7 +892,7 @@ const DsciCalculator = () => {
                   variant="button"
                   display="block"
                   gutterBottom
-                  style={{ color: "grey", fontSize: 16, marginTop: 10 }}
+                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
                 >
                   Expenses
                 </Typography>
@@ -900,7 +900,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -954,7 +954,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -1008,7 +1008,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
@@ -1062,7 +1062,7 @@ const DsciCalculator = () => {
               <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
-                    color="grey"
+                    color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
