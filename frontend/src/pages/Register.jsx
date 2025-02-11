@@ -379,7 +379,7 @@ const LoginCover = () => {
                           <Box marginBottom={{ xs: 1, sm: 0 }}>
                             <Typography variant={"subtitle2"}>
                               <Link to="/login">
-                                Already have an account ? Login
+                                Already have an account? <strong>LOGIN</strong>
                               </Link>
                             </Typography>
                           </Box>
