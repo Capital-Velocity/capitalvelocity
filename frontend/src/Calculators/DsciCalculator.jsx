@@ -70,16 +70,18 @@ const DsciCalculator = () => {
   const [interest, settotalInterest] = useState("");
 
   const [annualGrossRent, setAnnualGrossRent] = useState("");
-  const [annualTaxes, setAnnualTaxes] = useState("");
-  const [annualInsurance, setAnnualInsurance] = useState("");
+  const [monthlyTaxes, setmonthlyTaxes] = useState("");
+  const [monthlyInsurances, setmonthlyInsurances] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [annualHoa, setAnnualHoa] = useState("");
+  const [monthlyHOAFee, setmonthlyHOAFee] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
     email: "",
     phone: "",
   });
+
+  const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
 
   useEffect(() => {
     calculateLoanAmount();
@@ -111,9 +113,10 @@ const DsciCalculator = () => {
   }, [
     loanAmount,
     monthlyRent,
-    annualTaxes,
-    annualInsurance,
-    annualHoa,
+    monthlyTaxes,
+    monthlyInsurances,
+    monthlyHOAFee,
+    monthlyOtherExpenses,
     selectedCreditScore,
     loanSubtype,
     estimatedValue,
@@ -162,9 +165,10 @@ const DsciCalculator = () => {
 
   const calculateTotalOperatingExpenses = () => {
     return (
-      (parseFloat(annualInsurance) || 0) +
-      (parseFloat(annualHoa) || 0) +
-      (parseFloat(annualTaxes) || 0).toFixed(2)
+      (parseFloat(monthlyInsurances * 12) || 0) +
+      (parseFloat(monthlyHOAFee * 12) || 0) +
+      (parseFloat(monthlyOtherExpenses * 12) || 0) +
+      (parseFloat(monthlyTaxes * 12) || 0).toFixed(2)
     );
   };
 
@@ -223,9 +227,10 @@ const DsciCalculator = () => {
     const fields = {
       loanAmount,
       monthlyRent,
-      annualTaxes,
-      annualInsurance,
-      annualHoa,
+      monthlyTaxes,
+      monthlyInsurances,
+      monthlyHOAFee,
+      monthlyOtherExpenses,
       estimatedValue,
     };
 
@@ -287,20 +292,26 @@ const DsciCalculator = () => {
     // console.log(chartData);
 
     // Now we need to calculate the PITTA.
-    const monthlyTax = annualTaxes / 12;
-    const monthlyInsurance = annualInsurance / 12;
-    const monthlyHOA = annualHoa / 12;
+    ///// if converted to monthlyTaxes, take away the / 12.
+    const monthlyTax = monthlyTaxes;
+    const monthlyInsurance = monthlyInsurances;
+    const monthlyHOA = monthlyHOAFee;
+    const monthlyExpenses = monthlyOtherExpenses;
 
     const paymentIntrestTaxesInsurance =
       parseFloat(monthlyPayment) +
       parseFloat(monthlyTax) +
       parseFloat(monthlyInsurance) +
+      parseFloat(monthlyExpenses) +
       parseFloat(monthlyHOA);
+
+    // if converted to monthlyTaxes, multiply by 12.
     const yearlyCost =
       parseFloat(monthlyPayment * 12) +
-      parseFloat(annualTaxes) +
-      parseFloat(annualInsurance) +
-      parseFloat(annualHoa);
+      parseFloat(monthlyTaxes * 12) +
+      parseFloat(monthlyInsurances * 12) +
+      parseFloat(monthlyExpenses * 12) +
+      parseFloat(monthlyHOAFee * 12);
 
     const dscr = monthlyRent / paymentIntrestTaxesInsurance;
 
@@ -720,7 +731,7 @@ const DsciCalculator = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Annual Taxes ($){" "}
+                    Monthly Taxes ($){" "}
                     <Tooltip
                       title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
                       arrow
@@ -738,8 +749,8 @@ const DsciCalculator = () => {
                     </Tooltip>
                   </Typography>{" "}
                   <TextField
-                    value={annualTaxes}
-                    onChange={(e) => setAnnualTaxes(e.target.value)}
+                    value={monthlyTaxes}
+                    onChange={(e) => setmonthlyTaxes(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -756,7 +767,7 @@ const DsciCalculator = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Annual Insurance ($){" "}
+                    Monthly Insurance ($){" "}
                     <Tooltip
                       title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
                       arrow
@@ -774,8 +785,8 @@ const DsciCalculator = () => {
                     </Tooltip>
                   </Typography>{" "}
                   <TextField
-                    value={annualInsurance}
-                    onChange={(e) => setAnnualInsurance(e.target.value)}
+                    value={monthlyInsurances}
+                    onChange={(e) => setmonthlyInsurances(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -785,14 +796,14 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="grey"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Annual HOA Fees ($){" "}
+                    Monthly HOA Fees ($){" "}
                     <Tooltip
                       title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
                       arrow
@@ -810,8 +821,44 @@ const DsciCalculator = () => {
                     </Tooltip>
                   </Typography>{" "}
                   <TextField
-                    value={annualHoa}
-                    onChange={(e) => setAnnualHoa(e.target.value)}
+                    value={monthlyHOAFee}
+                    onChange={(e) => setmonthlyHOAFee(e.target.value)}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                    variant="outlined"
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item sm={6}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly Other Expenses ($){" "}
+                    <Tooltip
+                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
+                  <TextField
+                    value={monthlyOtherExpenses}
+                    onChange={(e) => setMonthlyOtherExpenses(e.target.value)}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
