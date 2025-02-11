@@ -82,6 +82,8 @@ const DsciCalculator = () => {
   });
 
   const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
+  const [monthlyInterestPaymentDisplay, setMonthlyInterestPaymentDisplay] =
+    useState("");
 
   useEffect(() => {
     calculateLoanAmount();
@@ -110,6 +112,7 @@ const DsciCalculator = () => {
   // Trigger live calculation when inputs change
   useEffect(() => {
     calculateLoan(); // Recalculate when any of the relevant values change
+    setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
   }, [
     loanAmount,
     monthlyRent,
@@ -326,6 +329,29 @@ const DsciCalculator = () => {
     const convertYearly = totalProfit * 12;
     setTotalProfitAnnually(formatNumber(convertYearly));
   };
+
+  const calculateMonthlyPayment = () => {
+    if (!loanAmount || loanAmount <= 0) return 0; // Ensure a valid loan amount
+
+    const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0; // Remove commas if present
+    const monthlyRate = interestRate / 100 / 12; // Convert annual rate to monthly decimal
+    const numPayments = loanTerm * 12; // Convert years to months
+
+    if (monthlyRate === 0) return (principal / numPayments).toFixed(2); // Handle zero-interest cases
+
+    // Mortgage formula: P * (r / (1 - (1 + r) ^ -n))
+    const monthlyPayment =
+      principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments)));
+
+    return monthlyPayment.toFixed(2);
+  };
+
+  // // Example usage:
+  // const loanAmount = 500000; // Example: $500,000 loan
+  // const interestRate = 8; // Example: 8% annual interest rate
+  // const loanTerm = 30; // Example: 30-year loan
+
+  // console.log("Monthly Payment: $", calculateMonthlyPayment(loanAmount, interestRate, loanTerm));
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
@@ -622,6 +648,46 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
+
+              <Grid item sm={12}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="grey"
+                    component="div"
+                    sx={{
+                      display: "flex", // Use flexbox to align the content
+                      alignItems: "center", // Vertically align text and icon
+                      justifyContent: "center", // Center both horizontally
+                    }}
+                  >
+                    Monthly Interest Payment
+                    <Tooltip
+                      title="The portion of the annual or semi-annual property taxes that accrue each month."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
+
+                  <Typography
+                    className="text-center"
+                    gutterBottom
+                    style={{ color: "black", fontSize: 20, marginTop: 5 }}
+                  >
+                    ${monthlyInterestPaymentDisplay}
+                  </Typography>
+                </FormControl>
+              </Grid>
+
               {/* <Grid item sm={6}>
                 <FormControl fullWidth>
                   <Typography color="grey">Monthly Mortage Payment</Typography>
