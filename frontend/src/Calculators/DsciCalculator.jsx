@@ -24,6 +24,8 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import Tooltip from "@mui/material/Tooltip";
 import Divider from "@mui/material/Divider";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 // Register ChartJS components
 // ChartJS.register(ArcElement, Tooltip, Legend);
@@ -68,6 +70,7 @@ const DsciCalculator = () => {
   const [monthlyPayment, setmonthlyPayment] = useState("");
   const [totalPayment, settotalPayment] = useState("");
   const [interest, settotalInterest] = useState("");
+  const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
 
   const [annualGrossRent, setAnnualGrossRent] = useState("");
   const [monthlyTaxes, setmonthlyTaxes] = useState("");
@@ -88,6 +91,20 @@ const DsciCalculator = () => {
   useEffect(() => {
     calculateLoanAmount();
   }, [ltv, estimatedValue]);
+
+  const isDeal = dscrValue >= 1.25;
+
+  useEffect(() => {
+    if (!prevIsDeal && isDeal) {
+      // Trigger confetti when switching from "Not a deal" to "It's a deal!"
+      setShowConfetti(true);
+      setTimeout(() => setShowConfetti(false), 5000); // Hide confetti after 3 seconds
+    }
+    setPrevIsDeal(isDeal);
+  }, [isDeal]);
+
+  const [showConfetti, setShowConfetti] = useState(false);
+  const { width, height } = useWindowSize();
 
   useEffect(() => {
     if (selectedCreditScore > 740) {
@@ -355,6 +372,18 @@ const DsciCalculator = () => {
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={250} // Decent amount of confetti
+          tweenDuration={5} // Smooth fall animation
+          decay={0.9} // Ensures confetti falls off-screen
+          run={showConfetti} // Ensures confetti doesn't regenerate
+          recycle={false} // Stops confetti from looping
+        />
+      )}
+
       <ToastContainer />
       <Container>
         <Typography
