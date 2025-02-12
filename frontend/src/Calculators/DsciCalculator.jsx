@@ -566,7 +566,7 @@ const DsciCalculator = () => {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <Typography
               variant="button"
               display="block"
@@ -576,7 +576,7 @@ const DsciCalculator = () => {
               Loan Values
             </Typography>
             <Grid container spacing={2}>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -612,7 +612,7 @@ const DsciCalculator = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <Typography
                   color="black"
                   component="div"
@@ -636,17 +636,6 @@ const DsciCalculator = () => {
                   </Tooltip>
                 </Typography>{" "}
                 <FormControl fullWidth>
-                  {/* <TextField
-                    value={estimatedValue}
-                    onChange={(e) => setEstimatedValue(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
-
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -667,7 +656,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -704,7 +693,7 @@ const DsciCalculator = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -740,7 +729,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -776,7 +765,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -809,7 +798,7 @@ const DsciCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -833,16 +822,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    onChange={(e) => setLoanAmount(e.target.value)}
-                    value={loanAmount}
-                    variant="outlined"
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  /> */}
                   <TextField
                     type="text" // Change type to "text" to allow formatted string
                     fullWidth
@@ -857,7 +836,7 @@ const DsciCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -895,18 +874,7 @@ const DsciCalculator = () => {
                   </Typography>
                 </FormControl>
               </Grid>
-
-              {/* <Grid item sm={6}>
-                <FormControl fullWidth>
-                  <Typography color="black">Monthly Mortage Payment</Typography>
-                  <TextField
-                    onChange={(e) => setMonthlyMortagePayment(e.target.value)}
-                    variant="outlined"
-                  />
-                </FormControl>
-              </Grid>*/}
-
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <Typography
                   variant="button"
                   display="block"
@@ -916,7 +884,7 @@ const DsciCalculator = () => {
                   Income
                 </Typography>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -940,16 +908,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    value={monthlyRent}
-                    onChange={(e) => setMonthlyRent(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -970,42 +928,6 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              {/* <Grid item sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Annual Gross Rent ($){" "}
-                    <Tooltip
-                      title="The total rental income generated by the property in a year, calculated as the sum of the monthly rent multiplied by 12."
-                      arrow
-                      placement="top"
-                    >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    disabled
-                    value={annualGrossRent}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  />
-                </FormControl>
-              </Grid> */}
               <Grid item sm={12}>
                 <Typography
                   variant="button"
@@ -1016,7 +938,7 @@ const DsciCalculator = () => {
                   Expenses
                 </Typography>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1040,16 +962,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    value={monthlyTaxes}
-                    onChange={(e) => setmonthlyTaxes(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -1070,7 +982,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1094,16 +1006,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    value={monthlyInsurances}
-                    onChange={(e) => setmonthlyInsurances(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -1124,7 +1026,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1148,16 +1050,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    value={monthlyHOAFee}
-                    onChange={(e) => setmonthlyHOAFee(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -1178,7 +1070,7 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1202,16 +1094,6 @@ const DsciCalculator = () => {
                       />
                     </Tooltip>
                   </Typography>{" "}
-                  {/* <TextField
-                    value={monthlyOtherExpenses}
-                    onChange={(e) => setMonthlyOtherExpenses(e.target.value)}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  /> */}
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -1232,24 +1114,9 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              {/* <Grid item sm={12}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={calculateLoan}
-                  style={{
-                    fontSize: "18px",
-                    width: "100%",
-                    height: "100%",
-                    marginBottom: "20px",
-                  }}
-                >
-                  Calculate DSCR
-                </Button>
-              </Grid> */}
             </Grid>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <Item>
               <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
                 <Container>
@@ -1348,21 +1215,6 @@ const DsciCalculator = () => {
                         Contact Us
                       </Button>
                     </Grid>
-
-                    {/* <Grid item xs={6} style={{ marginBottom: 10 }}>
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => setShowModal(true)}
-                        style={{
-                          width: "56%",
-                          height: "80%",
-                          marginTop: "10px",
-                        }}
-                      >
-                        Contact Us
-                      </Button>
-                    </Grid> */}
                   </Grid>
                 </Container>
               </Box>
