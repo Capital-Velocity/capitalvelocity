@@ -1189,18 +1189,17 @@ const LoanForm2 = () => {
             <Divider style={{ color: "grey", marginBottom: "10px" }} />
             <Grid container spacing={2}>
               <Grid item sm={12}>
-                {/* // Render this content when the cookie email is found */}
                 <>
                   <Grid container spacing={2}>
                     <Grid item sm={12}>
-                      <Box style={{}}>
+                      <Box>
                         <Box marginBottom={4}>
                           <Typography
                             align={"center"}
                             color={"text.secondary"}
                             data-aos={"fade-up"}
                             ref={paragraphRef}
-                            className={` ${
+                            className={`${
                               isParagraphVisible
                                 ? "fade-in-show paragraph-fade-in-show"
                                 : "fade-in-hide"
@@ -1223,7 +1222,7 @@ const LoanForm2 = () => {
                               spacing={2}
                             >
                               {selectionData.map((item, i) => (
-                                <Grid item xs={4} md={4} key={i}>
+                                <Grid item xs={12} sm={6} md={4} key={i}>
                                   <Box
                                     display={"block"}
                                     width={1}
@@ -1257,10 +1256,7 @@ const LoanForm2 = () => {
                                         justifyContent={"center"}
                                       >
                                         <Box
-                                          sx={{
-                                            color: "#498dd6",
-                                            bottom: 0,
-                                          }}
+                                          sx={{ color: "#498dd6", bottom: 0 }}
                                         >
                                           {item.icon}
                                         </Box>
@@ -1283,7 +1279,6 @@ const LoanForm2 = () => {
                                           {item.title}
                                         </Typography>
 
-                                        {/* Divider between title and tooltip */}
                                         <Divider
                                           sx={{ width: "100%", my: 1 }}
                                         />
@@ -1295,7 +1290,6 @@ const LoanForm2 = () => {
                                           {item.tooltip}
                                         </Typography>
 
-                                        {/* Render Checkmarks */}
                                         <Box sx={{ mt: 1 }}>
                                           {item.checks.map((check, index) => (
                                             <Box
@@ -1311,7 +1305,7 @@ const LoanForm2 = () => {
                                                   "&.Mui-checked": {
                                                     color: green[400],
                                                   },
-                                                  transform: "scale(0.9)", // Make it 50% larger
+                                                  transform: "scale(0.9)",
                                                 }}
                                               />
                                               <Typography
@@ -1333,95 +1327,6 @@ const LoanForm2 = () => {
                       </Box>
                     </Grid>
                   </Grid>
-                  {/* <Grid container spacing={2}>
-                  <Grid item sm={6}>
-                    <Button
-                      style={{
-                        marginBottom: "10px",
-                        width: "200px",
-                        color: "grey",
-                        border: "1px solid grey",
-                        height: "100px",
-                        borderRadius: "8px",
-                      }}
-                      variant={"outlined"}
-                      onClick={handleNavigateLendio} // Handle navigation on button click
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "#498dd6",
-                        },
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: "60px",
-                          color: "grey",
-                          marginBottom: "8px",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: "50px",
-                          height: "50px",
-                        }}
-                      >
-                        <CreditScoreIcon />
-                      </div>
-                      <div style={{ fontWeight: "bold" }}>
-                        Small Business Loan
-                      </div>
-                    </Button>
-                  </Grid>
-                  <Grid item sm={6}>
-                    <Button
-                      style={{
-                        marginBottom: "10px",
-                        width: "300px",
-                        color: "grey",
-                        border: "1px solid grey",
-                        height: "100px",
-                        borderRadius: "8px",
-                      }}
-                      onClick={() => handleOptionChange("SBA")}
-                      variant={"outlined"}
-                      onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
-                      onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
-                      sx={{
-                        "&:hover": {
-                          backgroundColor: "#498dd6",
-                        },
-                      }}
-                    >
-                      <div
-                        style={{
-                          fontSize: "60px",
-                          color: "grey",
-                          marginBottom: "8px",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          width: "50px",
-                          height: "50px",
-                        }}
-                      >
-                        <CreditScoreIcon />
-                      </div>
-                      <div style={{ fontWeight: "bold" }}>SBA</div>
-                    </Button>
-                  </Grid>
-                  <Grid item sm={6}>
-                    <Box
-                      component={"img"}
-                      src={project99}
-                      width={1}
-                      sx={{
-                        filter:
-                          theme.palette.mode === "dark"
-                            ? "brightness(0.8)"
-                            : "none",
-                      }}
-                    />
-                  </Grid>
-                </Grid> */}
                 </>
               </Grid>
             </Grid>

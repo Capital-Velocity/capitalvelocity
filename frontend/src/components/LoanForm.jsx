@@ -1301,16 +1301,17 @@ const LoanForm = () => {
             </Typography>
 
             <Divider style={{ marginBottom: "10px" }} />
+
             <Grid container spacing={2}>
-              <Grid item sm={12}>
-                <Box style={{}}>
+              <Grid item xs={12}>
+                <Box>
                   <Box marginBottom={4}>
                     <Typography
                       align={"center"}
                       color={"text.secondary"}
                       data-aos={"fade-up"}
                       ref={paragraphRef}
-                      className={` ${
+                      className={`${
                         isParagraphVisible
                           ? "fade-in-show paragraph-fade-in-show"
                           : "fade-in-hide"
@@ -1333,7 +1334,7 @@ const LoanForm = () => {
                         spacing={2}
                       >
                         {selectionData.map((item, i) => (
-                          <Grid item xs={4} md={4} key={i}>
+                          <Grid item xs={12} md={4} key={i}>
                             <Box
                               display={"block"}
                               width={1}
@@ -1412,7 +1413,7 @@ const LoanForm = () => {
                                             "&.Mui-checked": {
                                               color: green[400],
                                             },
-                                            transform: "scale(0.9)", // Make it 50% larger
+                                            transform: "scale(0.9)",
                                           }}
                                         />
                                         <Typography
@@ -1432,94 +1433,10 @@ const LoanForm = () => {
                     </Container>
                   </Box>
                 </Box>
-
-                {/* <Grid container spacing={2}>
-                <Grid item sm={6}>
-                  {selectionData.map((item, index) => (
-                    <Grid item sm={2} key={index}>
-                      <Button
-                        style={{
-                          marginBottom: "10px",
-                          width: "200px",
-                          color: "grey",
-                          border: "1px solid grey",
-                          height: "100px",
-                          borderRadius: "8px",
-                        }}
-                        variant={"outlined"}
-                        onClick={() => handleOptionChange(item.value)}
-                        //onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
-                        //onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
-                        sx={{
-                          "&:hover": {
-                            backgroundColor: "#498dd6",
-                          },
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontSize: "60px",
-                            color: "grey",
-                            marginBottom: "8px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "50px",
-                            height: "50px",
-                          }}
-                        >
-                          {item.icon}
-                        </div>
-                        <div style={{ fontWeight: "bold" }}>{item.title}</div>
-                      </Button>
-                    </Grid>
-                  ))}
-                </Grid>
-                <Grid item sm={6}>
-                  {selectionData2.map((item, index) => (
-                    <Grid item sm={2} key={index}>
-                      <Button
-                        style={{
-                          marginBottom: "10px",
-                          width: "200px",
-                          color: "grey",
-                          border: "1px solid grey",
-                          height: "100px",
-                          borderRadius: "8px",
-                        }}
-                        variant={"outlined"}
-                        onClick={() => handleOptionChange(item.value)}
-                        //onMouseEnter={(e) => (e.target.style.color = "white")} // Change text color on hover
-                        //onMouseLeave={(e) => (e.target.style.color = "grey")} // Restore text color when not hovering
-                        sx={{
-                          "&:hover": {
-                            backgroundColor: "#498dd6",
-                          },
-                        }}
-                      >
-                        <div
-                          style={{
-                            fontSize: "60px",
-                            color: "grey",
-                            marginBottom: "8px",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "50px",
-                            height: "50px",
-                          }}
-                        >
-                          {item.icon}
-                        </div>
-                        <div style={{ fontWeight: "bold" }}>{item.title}</div>
-                      </Button>
-                    </Grid>
-                  ))}
-                </Grid>
-              </Grid> */}
               </Grid>
             </Grid>
           </Container>
+
           <div
             style={{
               display: "flex",
