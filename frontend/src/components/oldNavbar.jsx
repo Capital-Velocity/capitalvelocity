@@ -161,16 +161,23 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
+                <Link to="/loan-form-realestate">
+                  <Typography sx={{ textAlign: "center" }}>
+                    Real Estate Loans
+                  </Typography>
+                </Link>
+              </MenuItem>
+              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/DsciCalculator">
                   <Typography sx={{ textAlign: "center" }}>
-                    DSCR Calculator
+                    Rental DSCR Calculator
                   </Typography>
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/FixandFlipCalc">
                   <Typography sx={{ textAlign: "center" }}>
-                    Flip and Switch Calculator
+                    Fix and Flip Calculator
                   </Typography>
                 </Link>
               </MenuItem>
@@ -182,13 +189,6 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/loan-form-realestate">
-                  <Typography sx={{ textAlign: "center" }}>
-                    Real Estate Loans
-                  </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/project99">
                   <Typography sx={{ textAlign: "center" }}>
                     Project Epic 99
@@ -196,20 +196,8 @@ function Navbar() {
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/WhyUs">
-                  <Typography sx={{ textAlign: "center" }}>
-                    Why Capital Velocity?
-                  </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
                 <Link to="/becomePartner">
                   <Typography sx={{ textAlign: "center" }}>Partner</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/about">
-                  <Typography sx={{ textAlign: "center" }}>Company</Typography>
                 </Link>
               </MenuItem>
               <MenuItem onClick={handleCloseNavMenu}>
