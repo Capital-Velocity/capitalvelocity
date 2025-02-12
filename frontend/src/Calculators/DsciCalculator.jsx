@@ -26,11 +26,14 @@ import Tooltip from "@mui/material/Tooltip";
 import Divider from "@mui/material/Divider";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import Cookies from "js-cookie";
 
 // Register ChartJS components
 // ChartJS.register(ArcElement, Tooltip, Legend);
 
 const DsciCalculator = () => {
+  const firstnameCookie = Cookies.get("firstName");
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -1205,14 +1208,21 @@ const DsciCalculator = () => {
                     <Grid item xs={12} style={{ marginBottom: 10 }}>
                       <Button
                         variant="contained"
-                        onClick={() => setShowModal(true)}
+                        onClick={() => {
+                          if (firstnameCookie) {
+                            window.location.href =
+                              "/loan-form-realestate?type=RentalPortfolios";
+                          } else {
+                            window.location.href = "/register";
+                          }
+                        }}
                         style={{
                           backgroundColor: "#498dd6",
                           borderRadius: "30px",
                           marginTop: "10px",
                         }}
                       >
-                        Contact Us
+                        Apply Now
                       </Button>
                     </Grid>
                   </Grid>
