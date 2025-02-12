@@ -352,9 +352,9 @@ const FixandFlipCalc = () => {
         <Divider style={{ color: "grey", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <Grid container spacing={2}>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -407,7 +407,7 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <Typography
                   color="black"
                   component="div"
@@ -466,7 +466,7 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -514,7 +514,7 @@ const FixandFlipCalc = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -549,11 +549,9 @@ const FixandFlipCalc = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography className="text-center" color="black">
-                    Buyer Experience
-                  </Typography>
+                  <Typography color="black">Buyer Experience</Typography>
                   <Select
                     value={experienceLevel}
                     onChange={(e) => setExperienceLevel(e.target.value)}
@@ -568,7 +566,7 @@ const FixandFlipCalc = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -608,7 +606,7 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -651,7 +649,7 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -689,15 +687,13 @@ const FixandFlipCalc = () => {
                   </Typography>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
                     }}
                   >
                     Monthly Property Taxes
@@ -746,15 +742,13 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Monthly Insurance
@@ -811,15 +805,13 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Monthly Utility Bills
@@ -868,15 +860,13 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Other Monthly Expenses
@@ -925,15 +915,13 @@ const FixandFlipCalc = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Realtor Fee
@@ -979,15 +967,13 @@ const FixandFlipCalc = () => {
                   </Typography> */}
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
-                      alignItems: "center", // Vertically align text and icon
-                      justifyContent: "center", // Center both horizontally
                     }}
                   >
                     Closing Cost
@@ -1024,7 +1010,7 @@ const FixandFlipCalc = () => {
                   </Typography> */}
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1085,7 +1071,7 @@ const FixandFlipCalc = () => {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <Item>
               <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
                 <Container>
