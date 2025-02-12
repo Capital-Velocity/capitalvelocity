@@ -22,8 +22,11 @@ import InputAdornment from "@mui/material/InputAdornment";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import Divider from "@mui/material/Divider";
+import Cookies from "js-cookie";
 
 const FixandFlipCalc = () => {
+  const firstnameCookie = Cookies.get("firstName");
+
   const [purchasePrice, setPurchasePrice] = useState("");
   const [rehabCost, setRehabCost] = useState("");
   const [interestRate, setInterestRate] = useState(12);
@@ -1169,14 +1172,21 @@ const FixandFlipCalc = () => {
                     <Grid item xs={12} style={{ marginBottom: 10 }}>
                       <Button
                         variant="contained"
-                        onClick={() => setShowModal(true)}
+                        onClick={() => {
+                          if (firstnameCookie) {
+                            window.location.href =
+                              "/loan-form-realestate?type=FixFlip";
+                          } else {
+                            window.location.href = "/register";
+                          }
+                        }}
                         style={{
                           backgroundColor: "#498dd6",
                           borderRadius: "30px",
                           marginTop: "10px",
                         }}
                       >
-                        Contact Us
+                        Apply Now
                       </Button>
                     </Grid>
 
