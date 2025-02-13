@@ -364,7 +364,11 @@ export default function Checkout(props) {
                 variant="body1"
                 style={{ color: "grey", fontSize: 14 }}
               >
-                Short-term financing for purchasing and renovating properties.
+                Fix and flip loans are short-term financing solutions tailored
+                for real estate investors. These loans offer the capital needed
+                to purchase a property and fund necessary renovations. The
+                objective is straightforward: acquire a property, renovate it,
+                and sell it for a profit.
               </Typography>
               <Typography
                 variant="body1"
