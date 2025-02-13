@@ -28,7 +28,7 @@ const selectionData = [
     value: "FixFlip",
     tooltip: "Short-term financing for purchasing and renovating properties.",
     checks: ["Fast Approval", "Short-Term Loan", "No Prepayment Penalties"],
-    link: "/loan-form-realestate?type=FixFlip",
+    link: "/loan-form-realestate-fixandflip",
   },
   {
     title: "Multifamily Bridge",

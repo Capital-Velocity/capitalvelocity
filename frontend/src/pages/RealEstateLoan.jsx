@@ -1,3 +1,4 @@
+import Categories2 from "../components/Categories2";
 import LoanForm from "../components/LoanForm";
 import project99 from "../Images/project99.png";
 import Container from "../screens/Container";
@@ -5,7 +6,7 @@ import Container from "../screens/Container";
 function RealEstateLoan() {
   return (
     <div style={{ backgroundColor: "#c0dced" }}>
-      <LoanForm />
+      <Categories2 />
       <div
         style={{
           display: "flex",
