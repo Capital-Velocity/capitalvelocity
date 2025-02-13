@@ -9,6 +9,7 @@ import "react-phone-number-input/style.css";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider } from "@mui/material";
+import FormHelperText from "@mui/material/FormHelperText";
 
 function BorrowerStep({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -127,11 +128,12 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
           <Grid item sm={6}>
-            <FormControl fullWidth>
+            <FormControl fullWidth error={!!fieldErrors.borrowerCitizenship}>
+              {" "}
+              {/* Pass the error prop here */}
               <Typography type="p" color="grey">
-                Borrower's Citizenship Status{" "}
+                Borrower's Citizenship Status
               </Typography>
-
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.borrowerCitizenship || ""}
@@ -141,9 +143,6 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                     borrowerCitizenship: e.target.value,
                   })
                 }
-                error={fieldErrors.borrowerCitizenship}
-                style={{ backgroundColor: "white" }}
-                helperText={<span>{fieldErrors.borrowerCitizenship}</span>}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
               >
@@ -156,6 +155,12 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                 </MenuItem>
                 <MenuItem value={"Foreign National"}>Foreign National</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.borrowerCitizenship && (
+                <FormHelperText>
+                  {fieldErrors.borrowerCitizenship}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item sm={6}>
