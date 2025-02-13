@@ -14,63 +14,71 @@ import GroundUpIcon from "@mui/icons-material/ConstructionOutlined";
 import StabilizedBridgeIcon from "@mui/icons-material/ViewComfyOutlined";
 import HouseSidingIcon from "@mui/icons-material/HouseSiding";
 import SinglePropertyIcon from "@mui/icons-material/HouseOutlined";
+import Divider from "@mui/material/Divider";
+import Checkbox from "@mui/material/Checkbox";
+import { green } from "@mui/material/colors";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const mock = [
+const firstnameCookie = Cookies.get("firstName");
+
+const selectionData = [
   {
     title: "Fix and Flip",
     icon: <FixAndFlipIcon />,
     value: "FixFlip",
+    tooltip: "Short-term financing for purchasing and renovating properties.",
+    checks: ["Fast Approval", "Short-Term Loan", "No Prepayment Penalties"],
     link: "/loan-form-realestate?type=FixFlip",
   },
-
-  {
-    title: "Ground Up",
-    icon: <GroundUpIcon />,
-    value: "GroundUp",
-    link: "/loan-form-realestate?type=GroundUp",
-  },
-
   {
     title: "Multifamily Bridge",
     icon: <MultifamilyBridgeIcon />,
     value: "MultifamilyBridge",
-    link: "/loan-form-realestate?type=MultifamilyBridge",
+    tooltip: "Interim financing for multifamily property acquisitions.",
+    checks: ["Flexible Terms", "Low Interest Rates", "Fast Funding"],
+    link: "/loan-form-realestate?type=GroundUp",
   },
-
-  {
-    title: "Cashed Out Refinance",
-    icon: <StabilizedBridgeIcon />,
-    value: "StabilizedBridge",
-    link: "/loan-form-realestate?type=StabilizedBridge",
-  },
-
   {
     title: "Rental Portfolios",
     icon: <HouseSidingIcon />,
     value: "RentalPortfolios",
+    tooltip: "Long-term loans for multiple rental properties.",
+    checks: [
+      "Portfolio Financing",
+      "Fixed or Adjustable Rates",
+      "Tax-Deductible Interest",
+    ],
     link: "/loan-form-realestate?type=RentalPortfolios",
+  },
+  {
+    title: "Ground Up",
+    icon: <GroundUpIcon />,
+    value: "GroundUp",
+    tooltip: "Financing for new construction projects from the ground up.",
+    checks: [
+      "Construction Loans",
+      "Phased Disbursement",
+      "Flexible Repayment Options",
+    ],
+    link: "/loan-form-realestate?type=StabilizedBridge",
+  },
+  {
+    title: "Cashed Out Refinance",
+    icon: <StabilizedBridgeIcon />,
+    value: "StabilizedBridge",
+    tooltip: "Refinancing to pull out cash from existing properties.",
+    checks: ["Cash-Out Options", "Equity-Based Loans", "Debt Consolidation"],
+    link: "/loan-form-realestate?type=StabilizedBridge",
   },
 
   {
     title: "Single Property",
     icon: <SinglePropertyIcon />,
     value: "SingleProperty",
+    tooltip: "Loans for individual real estate investments.",
+    checks: ["Individual Financing", "No Portfolio Required", "Quick Approval"],
     link: "/loan-form-realestate?type=SingleProperty",
   },
-
-  // {
-  //   title: "Real Estate Loans",
-  //   icon: <HomeIcon />,
-  //   value: "FixFlip",
-  //   link: "/loan-form-realestate?type=FixFlip", // Adding query parameter
-  // },
-
-  // {
-  //   title: "Business Loans",
-  //   icon: <MultifamilyBridgeIcon />,
-  //   value: "MultifamilyBridge",
-  //   link: "https://bit.ly/3zyS4xt",
-  // },
 ];
 
 const mockUnauthentic = [
@@ -133,12 +141,15 @@ const mockUnauthentic = [
 
 const Categories2 = () => {
   const theme = useTheme();
+  const navigate = useNavigate(); // useNavigate hook for React Router v6
 
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [isParagraphVisible, setIsParagraphVisible] = useState(false);
+  const [isFeaturesVisible, setIsFeaturesVisible] = useState(false);
 
   const headingRef = useRef(null);
   const paragraphRef = useRef(null);
+  const featuresRef = useRef(null); // New ref for features
 
   // Define a state variable to track authentication
   const [authenticated, setAuthenticated] = useState(false);
@@ -165,123 +176,194 @@ const Categories2 = () => {
     const headingObserver = new IntersectionObserver(
       (entries) =>
         handleIntersection(entries, headingObserver, setIsHeadingVisible),
-      { threshold: 0.8 } // Trigger when 20% of the element is visible
+      { threshold: 0.2 } // Trigger when 50% of the element is visible
     );
 
     const paragraphObserver = new IntersectionObserver(
       (entries) =>
         handleIntersection(entries, paragraphObserver, setIsParagraphVisible),
-      { threshold: 0.8 }
+      { threshold: 0.2 }
+    );
+
+    const featuresObserver = new IntersectionObserver(
+      (entries) =>
+        handleIntersection(entries, featuresObserver, setIsFeaturesVisible),
+      { threshold: 0.1 } // Trigger when 50% of the element is visible
     );
 
     if (headingRef.current) headingObserver.observe(headingRef.current);
     if (paragraphRef.current) paragraphObserver.observe(paragraphRef.current);
+    if (featuresRef.current) featuresObserver.observe(featuresRef.current);
 
     return () => {
       if (headingRef.current) headingObserver.unobserve(headingRef.current);
       if (paragraphRef.current)
         paragraphObserver.unobserve(paragraphRef.current);
+      if (featuresRef.current) featuresObserver.unobserve(featuresRef.current);
     };
   }, []); // Empty dependency array means this effect runs once on component mount
 
-  return (
-    <div className="bg-blue-100 pt-6">
-      <Box>
-        <Box>
-          <Container>
-            <p
-              ref={headingRef}
-              className={`text-center text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-5xl fade-in ${
-                isHeadingVisible ? "fade-in-show" : "fade-in-hide"
-              }`}
-            >
-              Real Estate Loans
-            </p>
-            <p
-              ref={paragraphRef}
-              className={`text-center mt-6 mb-6 text-lg/8 text-gray-600 fade-in ${
-                isParagraphVisible
-                  ? "fade-in-show paragraph-fade-in-show"
-                  : "fade-in-hide"
-              }`}
-            >
-              Find the financing solution that fits your real estate and
-              business needs and your wallet. Secure your loan today.
-            </p>
+  const handleOptionChange = (item) => {
+    // console.log(item.value);
 
-            <Grid
-              ref={paragraphRef}
-              className={` fade-in ${
-                isParagraphVisible
-                  ? "fade-in-show paragraph-fade-in-show-extra"
-                  : "fade-in-hide"
-              }`}
-              container
-              spacing={2}
-            >
-              {mock.map((item, i) => (
-                <Grid item xs={6} md={6} key={i}>
-                  <Link href={item.link} style={{ textDecoration: "none" }}>
-                    <Box
-                      display={"block"}
-                      width={1}
-                      height={1}
-                      sx={{
-                        textDecoration: "none",
-                        transition: "all .2s ease-in-out",
-                        "&:hover": {
-                          transform: "translateY(-4px)",
-                        },
-                      }}
-                    >
-                      <Box
-                        component={Card}
-                        padding={2}
-                        width={1}
-                        height={1}
-                        borderRadius={2}
-                        bgcolor={"#498dd6"}
-                        data-aos={"fade-up"}
-                        data-aos-delay={i * 100}
-                        data-aos-offset={100}
-                        data-aos-duration={600}
-                      >
+    if (!firstnameCookie) {
+      // If the user is not logged in, redirect to the /register page
+      navigate("/register");
+    } else {
+      // If logged in, proceed with the option selection
+      navigate(item.link);
+    }
+  };
+
+  return (
+    <div className="" style={{ backgroundColor: "#c0dced" }}>
+      <Container style={{ backgroundColor: "#c0dced" }}>
+        <Typography
+          ref={headingRef}
+          className={`text-center fade-in ${
+            isHeadingVisible ? "fade-in-show" : "fade-in-hide"
+          }`}
+          variant="h4"
+          color="black"
+          gutterBottom
+        >
+          Real Estate Loans
+        </Typography>
+
+        <Divider style={{ marginBottom: "10px" }} />
+
+        <Grid container spacing={2}>
+          <Grid item xs={12}>
+            <Box>
+              <Box marginBottom={4}>
+                <Typography
+                  align={"center"}
+                  color={"text.secondary"}
+                  data-aos={"fade-up"}
+                  ref={paragraphRef}
+                  className={`${
+                    isParagraphVisible
+                      ? "fade-in-show paragraph-fade-in-show"
+                      : "fade-in-hide"
+                  }`}
+                >
+                  Find the financing solution that fits your real estate needs
+                  and your wallet. Secure your loan today.
+                </Typography>
+              </Box>
+              <Box>
+                <Container style={{ marginTop: "-50px" }}>
+                  <Grid
+                    ref={featuresRef}
+                    className={`${
+                      isFeaturesVisible
+                        ? "fade-in-show paragraph-fade-in-show-extra"
+                        : "fade-in-hide"
+                    }`}
+                    container
+                    spacing={2}
+                  >
+                    {selectionData.map((item, i) => (
+                      <Grid item xs={12} md={4} key={i}>
                         <Box
-                          position={"relative"}
-                          display={"flex"}
-                          justifyContent={"center"}
+                          display={"block"}
+                          width={1}
+                          height={1}
+                          sx={{
+                            textDecoration: "none",
+                            transition: "all .2s ease-in-out",
+                            "&:hover": {
+                              transform: "translateY(-4px)",
+                            },
+                          }}
+                          onClick={() => handleOptionChange(item)}
                         >
                           <Box
-                            sx={{
-                              color: "white",
-                              bottom: 0,
-                            }}
+                            component={Card}
+                            padding={2}
+                            width={1}
+                            height={1}
+                            borderRadius={2}
+                            bgcolor={"alternate.main"}
+                            data-aos={"fade-up"}
+                            data-aos-delay={i * 100}
+                            data-aos-offset={100}
+                            data-aos-duration={600}
                           >
-                            {item.icon}
+                            <Box
+                              position={"relative"}
+                              display={"flex"}
+                              justifyContent={"center"}
+                            >
+                              <Box sx={{ color: "#498dd6", bottom: 0 }}>
+                                {item.icon}
+                              </Box>
+                            </Box>
+
+                            {/* Title and Description with Divider */}
+                            <Box
+                              display="flex"
+                              flexDirection="column"
+                              alignItems="center"
+                              mt={2}
+                            >
+                              <Typography
+                                variant={"subtitle1"}
+                                sx={{
+                                  fontWeight: 500,
+                                  textDecoration: "none",
+                                }}
+                              >
+                                {item.title}
+                              </Typography>
+
+                              {/* Divider between title and tooltip */}
+                              <Divider sx={{ width: "100%", my: 1 }} />
+
+                              <Typography
+                                variant="body2"
+                                sx={{ textAlign: "center" }}
+                              >
+                                {item.tooltip}
+                              </Typography>
+
+                              {/* Render Checkmarks */}
+                              <Box sx={{ mt: 1 }}>
+                                {item.checks.map((check, index) => (
+                                  <Box
+                                    key={index}
+                                    display="flex"
+                                    alignItems="center"
+                                    mb={1}
+                                  >
+                                    <Checkbox
+                                      defaultChecked
+                                      sx={{
+                                        color: green[400],
+                                        "&.Mui-checked": {
+                                          color: green[400],
+                                        },
+                                        transform: "scale(0.9)",
+                                      }}
+                                    />
+                                    <Typography sx={{ fontSize: "0.875rem" }}>
+                                      {check}
+                                    </Typography>
+                                  </Box>
+                                ))}
+                              </Box>
+                            </Box>
                           </Box>
                         </Box>
-                        <Typography
-                          variant={"subtitle1"}
-                          align={"center"}
-                          style={{ textDecoration: "none", color: "white" }}
-                          sx={{
-                            fontWeight: 500,
-                            marginTop: 2,
-                            textDecoration: "none",
-                          }}
-                        >
-                          {item.title}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Link>
-                </Grid>
-              ))}
-            </Grid>
-            {/* Render login form or redirection */}
-          </Container>
-        </Box>
-      </Box>
+                      </Grid>
+                    ))}
+                  </Grid>
+                </Container>
+              </Box>
+            </Box>
+          </Grid>
+        </Grid>
+      </Container>
     </div>
   );
 };

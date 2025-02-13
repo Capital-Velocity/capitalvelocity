@@ -151,10 +151,11 @@ function Landing() {
         <LoanMatching />
         <WhyUs />
         <CalculatorHero />
-        <LoanForm />
+        {/* <LoanForm /> */}
+        <Categories2 />
         <LoanForm2 />
-        {/* <Categories2 />
-      <BusinessCategories /> */}
+
+        {/* <BusinessCategories /> */}
       </div>
     </div>
   );
