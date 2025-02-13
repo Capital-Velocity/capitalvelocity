@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
 
 function LoanTerms({ formData, setFormData, fieldErrors }) {
   const [sliderValue, setSliderValue] = React.useState(1);
@@ -62,7 +63,8 @@ function LoanTerms({ formData, setFormData, fieldErrors }) {
 
   const calculateTotal = () => initialLoanAmount + constructionHoldback;
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
@@ -71,6 +73,8 @@ function LoanTerms({ formData, setFormData, fieldErrors }) {
         <Typography variant="subtitle1" color="grey" gutterBottom>
           Let's do some math here with the loan terms and pricing
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={8}>
             {/* This is for the textFields*/}

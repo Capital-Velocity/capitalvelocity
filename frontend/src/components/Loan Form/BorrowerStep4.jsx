@@ -7,6 +7,8 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import FormControl from "@mui/material/FormControl";
+import { Divider } from "@mui/material";
 
 function BorrowerStep4({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -18,13 +20,36 @@ function BorrowerStep4({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
-      <CheckoutSteps step1></CheckoutSteps>
-
+    <div style={{ width: "100%" }}>
+      {" "}
+      <CheckoutSteps step1 />
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
         </Typography>
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Please review the borrowers of this loan
+        </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
+        <Grid container spacing={2}>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+        </Grid>
         <label
           style={{
             fontSize: 15,

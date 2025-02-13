@@ -854,24 +854,24 @@ const LoanForm = () => {
     let apiUrl = "";
     // set the form
     if (selectedOption == "FixFlip") {
-      apiUrl = "https://52.165.80.134:4000/api/fixandFlip/addFixandFlip";
+      apiUrl = "https://52.165.80.134test:4000/api/fixandFlip/addFixandFlip";
     }
     if (selectedOption == "GroundUp") {
-      apiUrl = "https://52.165.80.134:4000/api/groundUp/addGroundUp";
+      apiUrl = "https://52.165.80.134test:4000/api/groundUp/addGroundUp";
     }
     if (selectedOption == "MultifamilyBridge") {
-      apiUrl = "https://52.165.80.134:4000/api/multifam/addMultiFam";
+      apiUrl = "https://52.165.80.134test:4000/api/multifam/addMultiFam";
     }
     if (selectedOption == "RentalPortfolios") {
-      apiUrl = "https://52.165.80.134:4000/api/rental/addRentalGroup";
+      apiUrl = "https://52.165.80.134test:4000/api/rental/addRentalGroup";
     }
     if (selectedOption == "SingleProperty") {
       apiUrl =
-        "https://52.165.80.134:4000/api/singleProperty/addSingleProperty";
+        "https://52.165.80.134test:4000/api/singleProperty/addSingleProperty";
     }
     if (selectedOption == "StabilizedBridge") {
       apiUrl =
-        "https://52.165.80.134:4000/api/stabilizedBridge/addStabilizedBridge";
+        "https://52.165.80.134test:4000/api/stabilizedBridge/addStabilizedBridge";
     }
     console.log(apiUrl);
     // Handle form submission here

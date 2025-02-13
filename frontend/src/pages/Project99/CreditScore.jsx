@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "./CheckoutSteps3";
+import { Divider } from "@mui/material";
 
 function CreditScore({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -17,9 +18,9 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Tell Us More About You
@@ -28,6 +29,8 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
           Don't worry, this is a soft credit pull and won't impact your credit.
           The soft pull is required to participate in the program.
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={4}>
             <FormControl fullWidth>

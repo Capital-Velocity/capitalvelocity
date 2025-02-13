@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
 
 function PropertyInformation({ formData, setFormData, fieldErrors }) {
   const [inputValue, setInputValue] = useState("");
@@ -14,7 +15,8 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
   const [loading, setLoading] = useState(false);
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
@@ -25,6 +27,8 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
           the loan will be repaid. Remember we do NOT lend on borrower occupied
           properties.
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>

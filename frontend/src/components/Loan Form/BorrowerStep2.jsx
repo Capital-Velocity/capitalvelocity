@@ -6,6 +6,9 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import { Divider } from "@mui/material";
 
 function BorrowerStep2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -16,9 +19,9 @@ function BorrowerStep2({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
@@ -26,13 +29,33 @@ function BorrowerStep2({ formData, setFormData, fieldErrors }) {
         <Typography variant="subtitle1" color="grey" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+
           <Grid item sm={6}>
             <label
               style={{
                 fontSize: 15,
                 fontWeight: 300,
                 color: fieldErrors.guranteeLoan ? "red" : "grey",
+                width: "100%",
               }}
             >
               Will this borrower be personally guaranteeing this loan?

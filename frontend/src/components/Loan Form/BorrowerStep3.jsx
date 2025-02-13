@@ -4,6 +4,9 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import FormControl from "@mui/material/FormControl";
+import TextField from "@mui/material/TextField";
+import { Divider } from "@mui/material";
 
 function valuetext(value) {
   return `${value}°C`;
@@ -23,7 +26,7 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
     { value: 2 },
     { value: 3 },
     { value: 4 },
-    { value: 5, label: "Seasoned Investor" },
+    { value: 5, label: "Seasoned" },
   ];
 
   const handleSliderChange = (event, newValue) => {
@@ -69,9 +72,9 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
@@ -79,12 +82,30 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
         <Typography variant="subtitle1" color="grey" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6} style={{ visibility: "hidden" }}>
+            {" "}
+            <FormControl fullWidth>
+              <Grid item sm={12}>
+                <TextField fullWidth />
+              </Grid>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
               How experienced with investing is the borrower?
             </label>
-            <div style={{ width: 400 }}>
+            <div style={{ width: "100%" }}>
               <Slider
                 value={sliderValue}
                 onChange={handleSliderChange}
@@ -93,15 +114,15 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
                 step={1}
                 marks={marks}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6" }}
+                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
               Please rank the borrower's experience as a real estate investor
             </label>
-            <div style={{ width: 400 }}>
+            <div style={{ width: "100%" }}>
               <Slider
                 value={sliderValue2}
                 onChange={handleSliderChange2}
@@ -110,7 +131,7 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
                 step={1}
                 marks={percentageMarks}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6" }}
+                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>

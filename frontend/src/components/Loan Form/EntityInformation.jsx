@@ -11,6 +11,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
 
 function EntityInformation({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -21,9 +22,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Entity Information
@@ -32,6 +33,8 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           Please choose one existing entity or enter the information about the
           new borrowing entity.<br></br>
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <label
           style={{
             fontSize: 15,

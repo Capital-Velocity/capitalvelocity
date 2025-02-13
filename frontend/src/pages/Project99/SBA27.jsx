@@ -8,15 +8,18 @@ import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CheckoutSteps from "./CheckoutSteps3";
+
 function SBA27() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+
   const onDrop = (acceptedFiles) => {
     setSelectedFile(acceptedFiles[0]);
   };
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   const dropzoneStyle = {
     border: "2px dashed grey",
@@ -24,6 +27,7 @@ function SBA27() {
     textAlign: "center",
     cursor: "pointer",
   };
+
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -44,24 +48,38 @@ function SBA27() {
       toast.error("Error uploading file");
     }
   };
+
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
+      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <ToastContainer />
-      <CheckoutSteps step1 step2 step3 />
-      <Container>
+      {/* <CheckoutSteps step1 step2 step3 /> */}
+      <Container className="mt-20">
         <Typography variant="h4" color="black" gutterBottom>
-          Uploading Documents Personal Files
+          Uploading Documents
         </Typography>
 
-        <Typography variant="p" style={{ fontWeight: "bold" }}>
-          Please Upload the following documents : Business tax returns from the
-          most recent three years (if applicable),Year of business bank
-          statement (if applicable), Most recent Business and projected balance
-          sheets (if applicable),Business Income statement and cash flow
-          statement (if applicable),Schedule of business debts (if applicable)
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Please upload the following documents (if applicable):
+          <br />
+          - Business tax returns for the most recent three years
+          <br />
+          - The most recent year's business bank statement
+          <br />
+          - Current and projected business balance sheets
+          <br />
+          - Business income statement and cash flow statement
+          <br />- Schedule of business debts
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
 
-        <Grid container spacing={2}>
+        {/* Centering the Grid Container */}
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center" // This will center the content horizontally
+        >
           <Grid item xs={12} md={6}>
             <Paper
               elevation={3}

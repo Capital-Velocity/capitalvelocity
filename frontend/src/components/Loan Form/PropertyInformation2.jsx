@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
 
 function PropertyInformation2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -20,9 +21,9 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Property Information
@@ -32,38 +33,9 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
           the loan will be repaid. Remember we do NOT lend on borrower occupied
           properties.
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
-          <Grid item sm={6}>
-            <FormControl fullWidth>
-              <InputLabel
-                style={{ fontSize: 15, fontWeight: 100 }}
-                id="demo-simple-select-label"
-              >
-                Purchase or Refinance{" "}
-              </InputLabel>
-              <Select
-                style={{ width: "500px", backgroundColor: "white" }}
-                InputLabelProps={{
-                  style: {
-                    fontSize: 15,
-                    fontWeight: 100,
-                  },
-                }}
-                value={formData.purchaseorRefinance || ""}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    purchaseorRefinance: e.target.value,
-                  })
-                }
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-              >
-                <MenuItem value={"Purchase"}>Purchase</MenuItem>
-                <MenuItem value={"Refinance"}>Refinance</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
           <Grid item sm={6}>
             <label
               style={{
@@ -100,6 +72,37 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
                 label="No"
               />
             </RadioGroup>
+          </Grid>
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <InputLabel
+                style={{ fontSize: 15, fontWeight: 100 }}
+                id="demo-simple-select-label"
+              >
+                Purchase or Refinance{" "}
+              </InputLabel>
+              <Select
+                style={{ width: "500px", backgroundColor: "white" }}
+                InputLabelProps={{
+                  style: {
+                    fontSize: 15,
+                    fontWeight: 100,
+                  },
+                }}
+                value={formData.purchaseorRefinance || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchaseorRefinance: e.target.value,
+                  })
+                }
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem value={"Purchase"}>Purchase</MenuItem>
+                <MenuItem value={"Refinance"}>Refinance</MenuItem>
+              </Select>
+            </FormControl>
           </Grid>
         </Grid>
       </Container>

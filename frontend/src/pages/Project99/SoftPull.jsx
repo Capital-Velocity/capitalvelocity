@@ -28,9 +28,9 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Soft Pull Credit Check
@@ -174,7 +174,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
             </label>
             <FormControl fullWidth>
               <Typography type="p" color="grey">
-                By clicking the ‘I agree’ button below, you acknowledge that you
+                By clicking the ‘Next’ button below, you acknowledge that you
                 have read and agree to the Credit Gathering Authorization as
                 either the individual whose credit will be pulled, or as an
                 authorized representative of that individual, and that the

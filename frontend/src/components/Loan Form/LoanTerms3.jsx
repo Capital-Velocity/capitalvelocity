@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import CheckoutSteps from "../../pages/Project99/CheckoutSteps3";
 import Container from "../../screens/Container";
+import { Divider } from "@mui/material";
 
 function LoanTerms3({ formData, setFormData }) {
   const [interestRate, setInterestRate] = useState(10.74);
@@ -47,12 +48,14 @@ function LoanTerms3({ formData, setFormData }) {
   }
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Vendor and Closing Options
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item sm={6}>

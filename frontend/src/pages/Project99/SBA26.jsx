@@ -8,15 +8,18 @@ import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CheckoutSteps from "./CheckoutSteps3";
+
 function SBA26() {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
     setSelectedFile(e.target.files[0]);
   };
+
   const onDrop = (acceptedFiles) => {
     setSelectedFile(acceptedFiles[0]);
   };
+
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   const dropzoneStyle = {
     border: "2px dashed grey",
@@ -24,6 +27,7 @@ function SBA26() {
     textAlign: "center",
     cursor: "pointer",
   };
+
   const handleUpload = async () => {
     try {
       const formData = new FormData();
@@ -44,21 +48,32 @@ function SBA26() {
       toast.error("Error uploading file");
     }
   };
+
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
+      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
       <ToastContainer />
-      <CheckoutSteps step1 step2 step3 />
-      <Container>
+      <Container className="mt-20">
         <Typography variant="h4" color="black" gutterBottom>
-          Uploading Documents Personal Files
+          Uploading Documents
         </Typography>
 
-        <Typography variant="h6" style={{ fontWeight: "bold" }}>
-          Please Upload Personal tax returns from the most recent three years
-          and a Year of personal bank statement
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Please upload the following documents:
+          <br />
+          - Personal tax returns for the most recent three years
+          <br />- The most recent year's personal bank statement
         </Typography>
 
-        <Grid container spacing={2}>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+
+        {/* Centering the Grid Container */}
+        <Grid
+          container
+          spacing={2}
+          justifyContent="center" // This will center the content horizontally
+        >
           <Grid item xs={12} md={6}>
             <Paper
               elevation={3}

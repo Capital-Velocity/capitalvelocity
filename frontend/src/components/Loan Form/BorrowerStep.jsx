@@ -8,6 +8,7 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
 
 function BorrowerStep({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -19,9 +20,9 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
+      {" "}
       <CheckoutSteps step1></CheckoutSteps>
-
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
@@ -29,6 +30,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
         <Typography variant="subtitle1" color="grey" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
