@@ -155,58 +155,79 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/">
+              <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>Home</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/loan-form-realestate">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/loan-form-realestate"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Real Estate Loans
                   </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/DsciCalculator">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/DsciCalculator"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Rental DSCR Calculator
                   </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/FixandFlipCalc">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/FixandFlipCalc"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Fix and Flip Calculator
                   </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/loan-form-business-loans">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/loan-form-business-loans"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Business Loans
                   </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/project99">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/project99"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Project Epic 99
                   </Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/becomePartner">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/becomePartner"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>Partner</Typography>
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleCloseNavMenu}>
-                <Link to="/contactUs">
+                </MenuItem>
+              </Link>
+              <Link
+                to="/contactUs"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
                     Contact Us
                   </Typography>
-                </Link>
-              </MenuItem>
+                </MenuItem>
+              </Link>
             </Menu>
           </Box>
 
