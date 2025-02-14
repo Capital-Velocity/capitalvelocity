@@ -1,10 +1,11 @@
-import Cookies from "js-cookie";
 import {
-  Navigate,
-  Route,
   BrowserRouter as Router,
   Routes,
+  Route,
+  Navigate,
+  useLocation,
 } from "react-router-dom";
+import Cookies from "js-cookie";
 import "./App.css";
 import DsciCalculator from "./Calculators/DsciCalculator";
 import FixandFlipCalc from "./Calculators/FixandFlipCalc";
@@ -13,8 +14,6 @@ import Navbar from "./components/oldNavbar";
 import BecomePartner from "./pages/BecomePartner";
 import Contact from "./pages/Contact";
 import Landing from "./pages/landing";
-// import LoanForm from "../components/LoanForm";
-// import LoanForm2 from "../components/LoanForm2";
 import Login from "./pages/Login";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Project99 from "./pages/Project99";
@@ -35,92 +34,68 @@ function App() {
   return (
     <Router>
       <Navbar />
-      {/* <LegacyNavbar /> */}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/test" element={<ROKForm />} />
         <Route path="/ROKAffiliateTest" element={<ROKAffiliateForm />} />
-        <Route path="/becomePartner" element={<BecomePartner />}></Route>
-        <Route path="/contactUs" element={<Contact />}></Route>
+        <Route path="/becomePartner" element={<BecomePartner />} />
+        <Route path="/contactUs" element={<Contact />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/lendio" element={<Lendio />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
-        <Route path="/termsofUse" element={<TermsofUse />}></Route>
-        <Route path="/privacyPolicy" element={<PrivacyPolicy />}></Route>
+        <Route path="/termsofUse" element={<TermsofUse />} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         <Route
           path="/userDash"
           element={
-            firstnameCookie ? (
-              <UserDashHome />
-            ) : (
-              <Navigate to="/register"></Navigate>
-            )
+            firstnameCookie ? <UserDashHome /> : <Navigate to="/register" />
           }
-        />{" "}
+        />
         <Route
           path="/userDashFile"
           element={
             firstnameCookie ? (
               <UserDashFileUpload />
             ) : (
-              <Navigate to="/register"></Navigate>
+              <Navigate to="/register" />
             )
           }
-        />{" "}
-        <Route
-          path="/loan-form-realestate"
-          element={<RealEstateLoan />}
-        ></Route>
-        {/* <Route
-          path="/loan-form-realestate"
-          element={
-            firstnameCookie ? (
-              <LoanForm />
-            ) : (
-              <Navigate to="/register"></Navigate>
-            )
-          }
-        />{" "} */}
-        <Route
-          path="/loan-form-business-loans"
-          element={<BusinessLoan />}
-        ></Route>
-        {/* <Route
-          path="/loan-form-business-loans"
-          element={
-            firstnameCookie ? (
-              <LoanForm2 />
-            ) : (
-              <Navigate to="/register"></Navigate>
-            )
-          }
-        />{" "} */}
+        />
+        <Route path="/loan-form-realestate" element={<RealEstateLoan />} />
+        <Route path="/loan-form-business-loans" element={<BusinessLoan />} />
         <Route
           path="/project99"
           element={
-            firstnameCookie ? (
-              <Project99 />
-            ) : (
-              <Navigate to="/register"></Navigate>
-            )
+            firstnameCookie ? <Project99 /> : <Navigate to="/register" />
           }
-        />{" "}
+        />
         <Route
           path="/loan-form-realestate-fixandflip"
           element={
             firstnameCookie ? (
               <FixAndFlipNewForm />
             ) : (
-              <Navigate to="/register"></Navigate>
+              <Navigate to="/register" />
             )
           }
-        />{" "}
+        />
       </Routes>
-      <Footer />
+
+      {/* Wrap Footer in a component that uses useLocation() */}
+      <FooterWrapper />
     </Router>
   );
+}
+
+// ✅ Create a separate FooterWrapper component inside the Router
+function FooterWrapper() {
+  const location = useLocation(); // Now it's inside a descendant of <Router>
+
+  return location.pathname !== "/loan-form-realestate-fixandflip" ? (
+    <Footer />
+  ) : null;
 }
 
 export default App;
