@@ -33,7 +33,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
           <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
-                Home Address
+                Property Address
               </Typography>
               <Grid item sm={12}>
                 {" "}
