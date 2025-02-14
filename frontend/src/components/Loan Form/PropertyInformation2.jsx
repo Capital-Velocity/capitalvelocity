@@ -45,6 +45,7 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              style={{ justifyContent: "center" }} // Centers radio buttons horizontally
             >
               <FormControlLabel
                 style={{ color: "black" }}
