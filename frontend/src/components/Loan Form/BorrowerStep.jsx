@@ -296,6 +296,38 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                   label="No"
                 />
               </RadioGroup>
+              <div style={{ marginTop: 20, width: "100%" }}>
+                {formData.bestTerms === "No" && (
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      {" "}
+                      {/* Change sm={6} to xs={12} */}
+                      <Typography type="p" color="black">
+                        Please describe:
+                      </Typography>
+                      <TextField
+                        fullWidth
+                        style={{
+                          marginTop: 10,
+                          backgroundColor: "white",
+                        }}
+                        value={formData.armsLengthDescription || ""}
+                        size="large"
+                        InputLabelProps={{
+                          style: { fontSize: 15, fontWeight: 100 },
+                        }}
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            armsLengthDescription: e.target.value,
+                          })
+                        }
+                        variant="outlined"
+                      />
+                    </Grid>
+                  </Grid>
+                )}
+              </div>
               {fieldErrors.bestTerms && (
                 <FormHelperText>{fieldErrors.bestTerms}</FormHelperText>
               )}
