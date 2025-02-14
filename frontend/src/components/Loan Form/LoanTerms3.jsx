@@ -47,9 +47,6 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
                   LaRocca Hornik Rosen & Greenberg LLP
                 </MenuItem>
                 <MenuItem value={"Geraci Law Firm"}>Geraci Law Firm</MenuItem>
-                <MenuItem value={"Foreclosure Auction"}>
-                  Geraci Law Firm
-                </MenuItem>
                 <MenuItem value={"Law Office of Lawrence Andelsman"}>
                   Law Office of Lawrence Andelsman
                 </MenuItem>
