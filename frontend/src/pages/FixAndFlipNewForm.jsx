@@ -33,9 +33,7 @@ function FixAndFlipNewForm() {
     <div
       ref={headingRef}
       key={componentKey} // 👈 Ensures React re-renders on refresh
-      className={`text-center fade-in ${
-        isHeadingVisible ? "fade-in-show" : "fade-in-hide"
-      }`}
+      className={`text-center`}
     >
       <Checkout />
     </div>
