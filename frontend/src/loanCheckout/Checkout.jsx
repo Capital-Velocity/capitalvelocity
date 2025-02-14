@@ -54,6 +54,7 @@ export default function Checkout(props) {
   const [paymentData, setPaymentData] = React.useState({});
   const [formData, setFormData] = useState({});
   const [fieldErrors, setFieldErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
 
   const steps = [
     "a",
@@ -215,6 +216,7 @@ export default function Checkout(props) {
   };
 
   const handleApplyNow = async () => {
+    setIsSubmitting(true); // Disable button while submitting
     const userEmail = Cookies.get("email");
     formData.userEmail = userEmail;
     try {
@@ -235,6 +237,7 @@ export default function Checkout(props) {
     } catch (error) {
       console.error("Error sending email:", error);
       alert("Failed to send email. Please try again.");
+      setIsSubmitting(false); // Disable button while submitting
     }
   };
 
@@ -604,8 +607,13 @@ export default function Checkout(props) {
                       : handleNext
                   }
                   sx={{ width: { xs: "100%", sm: "fit-content" } }}
+                  disabled={isSubmitting} // Disable button when submitting
                 >
-                  {activeStep === steps.length - 1 ? "Apply Now" : "Next"}
+                  {isSubmitting
+                    ? "Submitting..."
+                    : activeStep === steps.length - 1
+                    ? "Apply Now"
+                    : "Next"}
                 </Button>
               </Box>
             </React.Fragment>
