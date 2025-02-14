@@ -62,8 +62,8 @@ function SBA26() {
         <Typography variant="subtitle1" color="grey" gutterBottom>
           Please upload the following documents:
           <br />
-          - Personal tax returns for the most recent three years
-          <br />- The most recent year's personal bank statement
+          - Purchase Contract
+          <br />- Company Corporate Documentation
         </Typography>
 
         <Divider style={{ color: "grey", marginBottom: 10 }} />
