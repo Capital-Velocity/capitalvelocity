@@ -32,7 +32,7 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "grey", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={4}>
+          <Grid item sm={12} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="grey">
                 Personal Credit Score
@@ -49,7 +49,7 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 error={fieldErrors.creditScore}
-                style={{ width: 500, backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 helperText={<span>{fieldErrors.creditScore}</span>}
               >
                 <MenuItem value={"499 Below"}>499 Below</MenuItem>
