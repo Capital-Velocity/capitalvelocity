@@ -125,33 +125,44 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="grey">
                 Social Security
               </Typography>
-              <Grid item sm={12}>
-                {" "}
-                <TextField
-                  value={formData.socialSecurity || ""}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      socialSecurity: e.target.value.slice(0, 9),
-                    })
-                  }
-                  type="number"
-                  error={fieldErrors.socialSecurity}
-                  style={{ backgroundColor: "white" }}
-                  helperText={<span>{fieldErrors.socialSecurity}</span>}
-                  variant="outlined"
-                  fullWidth
+              <TextField
+                value={formData.socialSecurity || ""}
+                onChange={(e) => {
+                  let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                  value = value.slice(0, 9); // Ensure max 9 digits
 
-                  // Add more props as needed
-                />
-              </Grid>
+                  // Apply formatting (XXX-XX-XXXX)
+                  if (value.length > 5) {
+                    value = `${value.slice(0, 3)}-${value.slice(
+                      3,
+                      5
+                    )}-${value.slice(5)}`;
+                  } else if (value.length > 3) {
+                    value = `${value.slice(0, 3)}-${value.slice(3)}`;
+                  }
+
+                  setFormData({
+                    ...formData,
+                    socialSecurity: value,
+                  });
+                }}
+                inputProps={{
+                  maxLength: 11, // Prevents entering extra characters due to dashes
+                }}
+                error={fieldErrors.socialSecurity}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.socialSecurity}</span>}
+                variant="outlined"
+                fullWidth
+              />
             </FormControl>
           </Grid>
+
           <Grid item sm={6} style={{ marginTop: 20 }}>
             <FormControl fullWidth>
               <Typography type="p" color="grey">
