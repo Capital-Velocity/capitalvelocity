@@ -51,7 +51,7 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What is the renovation budget?
@@ -60,7 +60,7 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
                 error={fieldErrors.renovationBudget}
                 helperText={<span>{fieldErrors.renovationBudget}</span>}
                 style={{
-                  width: "500px",
+                  width: "100%", // Use 100% width for responsiveness
                   marginTop: 8,
                   backgroundColor: "white",
                 }}
@@ -75,6 +75,7 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
               />
             </FormControl>
           </Grid>
+
           <Grid item sm={6}>
             <label
               style={{
@@ -113,13 +114,8 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
               <FormHelperText error>{fieldErrors.isCondominium}</FormHelperText>
             )}
           </Grid>
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-              }}
-            >
+          <Grid item xs={12} sm={6}>
+            <label style={{ fontSize: 15, fontWeight: 300 }}>
               Please describe the renovation
             </label>
             <Autocomplete
@@ -141,7 +137,10 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
                   {option.title}
                 </li>
               )}
-              style={{ width: 500, backgroundColor: "white" }}
+              style={{
+                width: "100%", // Make it responsive by using 100% width
+                backgroundColor: "white",
+              }}
               renderInput={(params) => (
                 <TextField
                   error={fieldErrors.renovationDescript}
