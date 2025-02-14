@@ -87,24 +87,24 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 1:
-        return (
-          <BorrowerStep3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
-        return (
-          <BorrowerStep4
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
+      // case 1:
+      //   return (
+      //     <BorrowerStep3
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 2:
+      //   return (
+      //     <BorrowerStep4
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
 
-      case 3:
+      case 1:
         return (
           <EntityInformation
             formData={formData}
@@ -112,7 +112,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 4:
+      case 2:
         return (
           <PropertyInformation
             formData={formData}
@@ -120,7 +120,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 3:
         return (
           <PropertyInformation2
             formData={formData}
@@ -128,7 +128,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 4:
         return (
           <PropertyInformation3
             formData={formData}
@@ -136,7 +136,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 5:
         return (
           <PropertyInformation4
             formData={formData}
@@ -144,7 +144,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 6:
         return (
           <PropertyInformation5
             formData={formData}
@@ -152,7 +152,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 7:
         return (
           <LoanTerms
             formData={formData}
@@ -168,7 +168,7 @@ export default function Checkout(props) {
       //       fieldErrors={fieldErrors}
       //     />
       //   );
-      case 10:
+      case 8:
         return (
           <LoanTerms3
             formData={formData}
@@ -176,7 +176,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 11:
+      case 9:
         return (
           <CreditScore
             formData={formData}
@@ -184,7 +184,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 12:
+      case 10:
         return (
           <SoftPull
             formData={formData}
@@ -192,7 +192,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 13:
+      case 11:
         return (
           <SBA26
             formData={formData}
@@ -206,7 +206,7 @@ export default function Checkout(props) {
   }
 
   const handleNext = () => {
-    // console.log(formData);
+    console.log(formData);
 
     // Validate current step
     if (validateStep(activeStep)) {
@@ -267,19 +267,22 @@ export default function Checkout(props) {
       if (!formData.borrowerCitizenship) {
         errors.borrowerCitizenship = "Citizenship status is required";
       }
-    }
-
-    // Step 1: No Validation Needed
-
-    // Step 2:
-    if (step === 2) {
       if (!formData.bestTerms) {
         errors.bestTerms = "Arms length description is required";
       }
     }
 
+    // Step 1: No Validation Needed
+
+    // // Step 2:
+    // if (step === 2) {
+    //   if (!formData.bestTerms) {
+    //     errors.bestTerms = "Arms length description is required";
+    //   }
+    // }
+
     // Step 3:
-    if (step === 3) {
+    if (step === 1) {
       if (!formData.borrowingEntityInformation) {
         errors.borrowingEntityInformation =
           "Borrowing entity information is required";
@@ -287,7 +290,7 @@ export default function Checkout(props) {
     }
 
     // Step 4:
-    if (step === 4) {
+    if (step === 2) {
       if (!formData.homeAddress) {
         errors.homeAddress = "Address is required";
       }
@@ -306,7 +309,7 @@ export default function Checkout(props) {
     }
 
     // Step 5:
-    if (step === 5) {
+    if (step === 3) {
       if (!formData.authorizedSignatory) {
         errors.authorizedSignatory = "Authorized signatory is required";
       }
@@ -316,7 +319,7 @@ export default function Checkout(props) {
     }
 
     // Step 6:
-    if (step === 6) {
+    if (step === 4) {
       if (!formData.propertyPurchasePrice) {
         errors.propertyPurchasePrice = "Property purchase price is required";
       }
@@ -326,7 +329,7 @@ export default function Checkout(props) {
     }
 
     // Step 7:
-    if (step === 7) {
+    if (step === 5) {
       if (!formData.renovationBudget) {
         errors.renovationBudget = "Renovation budget is required";
       }
@@ -336,7 +339,7 @@ export default function Checkout(props) {
     }
 
     // Step 8:
-    if (step === 8) {
+    if (step === 6) {
       if (!formData.afterRepairValue) {
         errors.afterRepairValue = "After repair value is required";
       }
@@ -348,7 +351,7 @@ export default function Checkout(props) {
     // Step 9: Fix and Flip Calculator, nothing required here
 
     // Step 10:
-    if (step === 10) {
+    if (step === 7) {
       if (!formData.preferredClosingAttorney) {
         errors.preferredClosingAttorney = "Closing attorney is required";
       }
@@ -364,14 +367,14 @@ export default function Checkout(props) {
     }
 
     // Step 11:
-    if (step === 11) {
+    if (step === 8) {
       if (!formData.creditScore) {
         errors.creditScore = "Credit score is required";
       }
     }
 
     // Step 12:
-    if (step === 12) {
+    if (step === 9) {
       if (!formData.birthMonth) {
         errors.birthMonth = "Birth month is required";
       }

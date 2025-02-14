@@ -10,9 +10,66 @@ import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider } from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
+import Slider from "@mui/material/Slider";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Radio from "@mui/material/Radio";
 
 function BorrowerStep({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
+  const [sliderValue, setSliderValue] = useState(1);
+  const [sliderValue2, setSliderValue2] = useState(1);
+
+  const marks = [
+    { value: 1, label: "Newbie" },
+    { value: 2 },
+    { value: 3 },
+    { value: 4 },
+    { value: 5, label: "Seasoned" },
+  ];
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+    setFormData({
+      ...formData,
+      personallyGuranteeing: newValue,
+    });
+  };
+
+  const handleSliderChange2 = (event, newValue) => {
+    setSliderValue2(newValue);
+    setFormData({
+      ...formData,
+      experienceWithRealEstate: newValue,
+    });
+  };
+
+  const percentageMarks = [
+    { value: 0, label: "0%" },
+    { value: 25, label: "25%" },
+    { value: 50, label: "50%" },
+    { value: 75, label: "75%" },
+    { value: 100, label: "100%" },
+  ];
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setFormData({
+      ...formData,
+      borrowingEntityOwned: newValue,
+    });
+  };
+
+  const handleChange2 = (event, newValue) => {
+    setValue(newValue);
+    setFormData({
+      ...formData,
+      borrowingEntityOwned: newValue,
+    });
+  };
+
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
     setFormData({
@@ -127,10 +184,8 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
               />
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={!!fieldErrors.borrowerCitizenship}>
-              {" "}
-              {/* Pass the error prop here */}
               <Typography type="p" color="black">
                 Borrower's Citizenship Status
               </Typography>
@@ -155,7 +210,6 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                 </MenuItem>
                 <MenuItem value={"Foreign National"}>Foreign National</MenuItem>
               </Select>
-              {/* FormHelperText to display the error message */}
               {fieldErrors.borrowerCitizenship && (
                 <FormHelperText>
                   {fieldErrors.borrowerCitizenship}
@@ -163,7 +217,92 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              How experienced with investing is the borrower?
+            </label>
+            <div style={{ width: "100%" }}>
+              <Slider
+                value={sliderValue}
+                onChange={handleSliderChange}
+                min={1}
+                max={5}
+                step={1}
+                marks={marks}
+                valueLabelDisplay="auto"
+                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+              />
+            </div>
+          </Grid>
+          <Grid item xs={12}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              Please rank the borrower's experience as a real estate investor
+            </label>
+            <div style={{ width: "100%" }}>
+              <Slider
+                value={sliderValue2}
+                onChange={handleSliderChange2}
+                min={0}
+                max={100}
+                step={1}
+                marks={percentageMarks}
+                valueLabelDisplay="auto"
+                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+              />
+            </div>
+          </Grid>
+
+          <Grid item xs={12} sx={{ mt: 2 }}>
+            <label
+              style={{
+                fontSize: 15,
+                fontWeight: 300,
+              }}
+            >
+              Is this an arm’s length transaction, where the buyer and seller
+              act independently and in their own best interests, negotiating for
+              the most favorable terms without any special relationship
+              influencing the deal?
+            </label>
+
+            <FormControl
+              fullWidth
+              error={!!fieldErrors.bestTerms}
+              style={{ display: "flex", alignItems: "center" }}
+            >
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="bestTerms" // Name should match the key in formData
+                value={formData.bestTerms || ""} // Ensure the selected value is controlled
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    bestTerms: e.target.value, // Correctly update formData
+                  })
+                }
+              >
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="Yes"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="No"
+                  control={<Radio />}
+                  label="No"
+                />
+              </RadioGroup>
+              {fieldErrors.bestTerms && (
+                <FormHelperText>{fieldErrors.bestTerms}</FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          {/* <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Social Security Number
@@ -197,7 +336,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                 fullWidth
               />
             </FormControl>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </div>
