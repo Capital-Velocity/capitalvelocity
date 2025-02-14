@@ -513,14 +513,11 @@ export default function Checkout(props) {
                   justifyContent: "space-between",
                 }}
               >
-                <div>
+                {/* <div>
                   <Typography variant="subtitle2" gutterBottom>
-                    Selected products
+                    Fix and Flip Loan
                   </Typography>
-                  <Typography variant="body1">
-                    {activeStep >= 2 ? "$144.97" : "$134.98"}
-                  </Typography>
-                </div>
+                </div> */}
                 <InfoMobile
                   totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"}
                 />
@@ -537,7 +534,7 @@ export default function Checkout(props) {
                 gap: { xs: 5, md: "none" },
               }}
             >
-              <Stepper
+              {/* <Stepper
                 id="mobile-stepper"
                 activeStep={activeStep}
                 alternativeLabel
@@ -561,7 +558,7 @@ export default function Checkout(props) {
                     </StepLabel>
                   </Step>
                 ))}
-              </Stepper>
+              </Stepper> */}
               {activeStep === steps.length ? (
                 <Stack spacing={2} useFlexGap>
                   <Typography variant="h1">📦</Typography>
