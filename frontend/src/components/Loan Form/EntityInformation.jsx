@@ -76,9 +76,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
         </RadioGroup>
         {formData.borrowingEntityInformation === "Yes" && (
           <Grid container spacing={2}>
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={12}>
               <TextField
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.entityName || ""}
                 size="large"
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -89,7 +89,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 variant="outlined"
               />
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={12}>
               <FormControl fullWidth>
                 <InputLabel
                   style={{
@@ -102,7 +102,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                   Entity Type{" "}
                 </InputLabel>
                 <Select
-                  style={{ width: "500px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                   value={formData.entityType || ""}
                   onChange={(e) =>
@@ -119,12 +119,12 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={12}>
               <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
                 Date of Incorporation
               </label>
               <TextField
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.dateofIncorp || ""}
                 InputLabelProps={{
                   style: {
@@ -141,9 +141,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 variant="outlined"
               />
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={12}>
               <TextField
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.contactLastName || ""}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 onChange={(e) =>
@@ -154,9 +154,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 variant="outlined"
               />
             </Grid>
-            <Grid item sm={6}>
+            <Grid item sm={6} xs={12}>
               <TextField
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ width: "100%", backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.entityAddress || ""}
                 onChange={(e) =>
