@@ -80,7 +80,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
   return (
     <div style={{ width: "100%" }}>
       {" "}
-      <CheckoutSteps step1></CheckoutSteps>
+      {/* <CheckoutSteps step1></CheckoutSteps> */}
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information

@@ -466,10 +466,10 @@ export default function Checkout(props) {
 
       <ToastContainer />
 
-      <CssBaseline enableColorScheme />
+      {/* <CssBaseline enableColorScheme />
       <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
         <ColorModeIconDropdown />
-      </Box>
+      </Box> */}
 
       <Box>
         <Grid

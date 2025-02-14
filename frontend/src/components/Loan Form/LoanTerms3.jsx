@@ -15,7 +15,7 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
 
   return (
     <div style={{ width: "100%" }}>
-      <CheckoutSteps step1 step2 step3 step4 />
+      {/* <CheckoutSteps step1 step2 step3 step4 /> */}
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Vendor and Closing Options

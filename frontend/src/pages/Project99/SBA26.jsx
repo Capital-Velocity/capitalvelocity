@@ -52,7 +52,7 @@ function SBA26() {
   return (
     <div style={{ width: "100%" }}>
       {" "}
-      <CheckoutSteps step1 step2 step3 step4></CheckoutSteps>
+      {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps> */}
       <ToastContainer />
       <Container className="mt-20">
         <Typography variant="h4" color="black" gutterBottom>
