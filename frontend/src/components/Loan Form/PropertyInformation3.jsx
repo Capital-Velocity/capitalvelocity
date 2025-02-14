@@ -102,7 +102,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 How did the wholesaler source the property?
@@ -138,14 +138,13 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Private Sale"}>Private Sale</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
-              {/* FormHelperText to display the error message */}
               {fieldErrors.wholesalerSource && (
                 <FormHelperText error>
                   {fieldErrors.wholesalerSource}
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
           {/* <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">

@@ -324,9 +324,6 @@ export default function Checkout(props) {
       if (!formData.propertySource) {
         errors.propertySource = "Property source is required";
       }
-      if (!formData.wholesalerSource) {
-        errors.wholesalerSource = "Wholesaler source is required";
-      }
     }
 
     // Step 7:
