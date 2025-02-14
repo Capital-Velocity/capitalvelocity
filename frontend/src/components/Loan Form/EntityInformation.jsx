@@ -47,6 +47,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
+          style={{ justifyContent: "center" }}
         >
           <FormControlLabel
             style={{ color: "black" }}
