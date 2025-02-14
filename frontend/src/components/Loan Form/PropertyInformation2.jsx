@@ -37,14 +37,10 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
 
         <Grid container spacing={2}>
           <Grid item sm={12}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 100,
-              }}
-            >
+            <Typography type="p" color="black">
               Is the borrower authorized signatory?
-            </label>
+            </Typography>
+
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
@@ -79,12 +75,9 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth style={{ minWidth: "", padding: "" }}>
-              <InputLabel
-                style={{ fontSize: 15, fontWeight: 100 }}
-                id="demo-simple-select-label"
-              >
+              <Typography type="p" color="black">
                 Purchase or Refinance
-              </InputLabel>
+              </Typography>
               <Select
                 style={{
                   backgroundColor: "white",

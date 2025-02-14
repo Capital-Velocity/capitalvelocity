@@ -22,7 +22,7 @@ function SBA26() {
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
   const dropzoneStyle = {
-    border: "2px dashed grey",
+    border: "2px dashed black",
     padding: "20px",
     textAlign: "center",
     cursor: "pointer",
@@ -59,14 +59,16 @@ function SBA26() {
           Uploading Documents
         </Typography>
 
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="h6" color="black" gutterBottom>
           Please upload the following documents:
-          <br />
+        </Typography>
+
+        <Typography variant="subtitle1" color="black" gutterBottom>
           - Purchase Contract
           <br />- Company Corporate Documentation
         </Typography>
 
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         {/* Centering the Grid Container */}
         <Grid
@@ -80,7 +82,7 @@ function SBA26() {
               style={{ padding: "20px", marginBottom: "20px" }}
             >
               <Box component="main">
-                <Typography variant="h4" style={{ color: "grey" }}>
+                <Typography variant="h4" style={{ color: "black" }}>
                   Upload Documents
                 </Typography>
 

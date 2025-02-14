@@ -25,16 +25,16 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Tell Us More About You
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Don't worry, this is a soft credit pull and won't impact your credit.
           The soft pull is required to participate in the program.
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item sm={12} xs={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Personal Credit Score
               </Typography>
               <Select

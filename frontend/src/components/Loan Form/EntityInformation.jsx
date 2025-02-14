@@ -29,11 +29,11 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Entity Information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please choose one existing entity or enter the information about the
           new borrowing entity.<br></br>
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <label
           style={{
@@ -82,6 +82,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
         {formData.borrowingEntityInformation === "Yes" && (
           <Grid container spacing={2}>
             <Grid item sm={6} xs={12}>
+              <Typography type="p" color="black">
+                Entity Name
+              </Typography>
               <TextField
                 style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.entityName || ""}
@@ -90,22 +93,14 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 onChange={(e) =>
                   setFormData({ ...formData, entityName: e.target.value })
                 }
-                label="Entity Name"
                 variant="outlined"
               />
             </Grid>
             <Grid item sm={6} xs={12}>
               <FormControl fullWidth>
-                <InputLabel
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 100,
-                    backgroundColor: "white",
-                  }}
-                  id="demo-simple-select-label"
-                >
-                  Entity Type{" "}
-                </InputLabel>
+                <Typography type="p" color="black">
+                  Entity Type
+                </Typography>
                 <Select
                   style={{ backgroundColor: "white" }}
                   InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -125,9 +120,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
               </FormControl>
             </Grid>
             <Grid item sm={6} xs={12}>
-              <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+              <Typography type="p" color="black">
                 Date of Incorporation
-              </label>
+              </Typography>
               <TextField
                 style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.dateofIncorp || ""}
@@ -147,6 +142,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
               />
             </Grid>
             <Grid item sm={6} xs={12}>
+              <Typography type="p" color="black">
+                Contact Last Name
+              </Typography>
               <TextField
                 style={{ width: "100%", backgroundColor: "white" }}
                 value={formData.contactLastName || ""}
@@ -155,11 +153,13 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                   setFormData({ ...formData, contactLastName: e.target.value })
                 }
                 id="outlined-basic"
-                label="Contact Last Name"
                 variant="outlined"
               />
             </Grid>
             <Grid item sm={6} xs={12}>
+              <Typography type="p" color="black">
+                Entity Address
+              </Typography>
               <TextField
                 style={{ width: "100%", backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -168,7 +168,6 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                   setFormData({ ...formData, entityAddress: e.target.value })
                 }
                 id="outlined-basic"
-                label="Entity Address"
                 variant="outlined"
               />
             </Grid>

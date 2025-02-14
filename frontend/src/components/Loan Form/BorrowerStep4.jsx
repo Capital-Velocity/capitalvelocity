@@ -27,7 +27,7 @@ function BorrowerStep4({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
         <Divider style={{ color: "grey", marginBottom: 10 }} />
@@ -93,24 +93,28 @@ function BorrowerStep4({ formData, setFormData, fieldErrors }) {
         <div style={{ marginTop: 20 }}>
           {formData.bestTerms === "Yes" && (
             <Grid container spacing={2}>
-              <TextField
-                style={{
-                  width: "500px",
-                  marginTop: 10,
-                  backgroundColor: "white",
-                }}
-                value={formData.armsLengthDescription || ""}
-                size="large"
-                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    armsLengthDescription: e.target.value,
-                  })
-                }
-                label="Please describe"
-                variant="outlined"
-              />
+              <Grid item sm={6}>
+                <Typography type="p" color="black">
+                  Please describe:
+                </Typography>
+                <TextField
+                  style={{
+                    width: "500px",
+                    marginTop: 10,
+                    backgroundColor: "white",
+                  }}
+                  value={formData.armsLengthDescription || ""}
+                  size="large"
+                  InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      armsLengthDescription: e.target.value,
+                    })
+                  }
+                  variant="outlined"
+                />
+              </Grid>
             </Grid>
           )}
         </div>

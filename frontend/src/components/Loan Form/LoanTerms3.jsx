@@ -26,9 +26,9 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
           {/* Preferred Closing Attorney */}
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <InputLabel id="closing-attorney-label">
-                Preferred Closing Attorney *
-              </InputLabel>
+              <Typography type="p" color="black">
+                Preferred Closing Attorney
+              </Typography>
               <Select
                 labelId="closing-attorney-label"
                 value={formData.preferredClosingAttorney || ""}
@@ -76,7 +76,9 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
           {/* Preferred Closing Date */}
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <Typography color="grey">Preferred Closing Date</Typography>
+              <Typography type="p" color="black">
+                Preferred Closing Date
+              </Typography>{" "}
               <TextField
                 value={formData.closingDate || ""}
                 onChange={(e) =>
@@ -97,9 +99,9 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
           {/* Preferred Insurance Company */}
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <InputLabel id="insurance-company-label">
-                Preferred Insurance Company *
-              </InputLabel>
+              <Typography type="p" color="black">
+                Preferred Insurance Company
+              </Typography>
               <Select
                 labelId="insurance-company-label"
                 value={formData.insuranceCompany || ""}
@@ -122,10 +124,10 @@ function LoanTerms3({ formData, setFormData, fieldErrors }) {
 
           {/* Preferred Title Company */}
           <Grid item xs={12} sm={6}>
-            <FormControl fullWidth sx={{ mt: { xs: 2, sm: 4 } }}>
-              <InputLabel id="title-company-label">
+            <FormControl fullWidth sx={{}}>
+              <Typography type="p" color="black">
                 Preferred Title Company
-              </InputLabel>
+              </Typography>
               <Select
                 labelId="title-company-label"
                 value={formData.titleCompany || ""}

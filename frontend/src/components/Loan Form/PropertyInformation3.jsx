@@ -28,17 +28,17 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Property Information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please add a property and tell us how the property was sourced and how
           the loan will be repaid. Remember we do NOT lend on borrower occupied
           properties.
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Property Purchase Price
               </Typography>
               <TextField
@@ -61,7 +61,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 How is the property being sourced?
               </Typography>
 
@@ -104,7 +104,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 How did the wholesaler source the property?
               </Typography>
 
@@ -148,7 +148,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
           </Grid>
           {/* <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 How much did the wholesaler pay for the property?
               </Typography>
               <TextField
@@ -171,7 +171,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
               style={{
                 fontSize: 15,
                 fontWeight: 300,
-                color: fieldErrors.transactionArmslength ? "red" : "grey",
+                color: fieldErrors.transactionArmslength ? "red" : "black",
               }}
             >
               Is the transaction arm’s length where buyer and seller are trying

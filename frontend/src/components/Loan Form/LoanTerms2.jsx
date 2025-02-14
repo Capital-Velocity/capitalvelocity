@@ -81,10 +81,10 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Loan Terms
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Let's do some math here with the loan terms and pricing
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
@@ -95,7 +95,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
             <Grid container spacing={5}>
               <Grid item xs={12} sm={12}>
                 <FormControl style={{ minWidth: "100%" }}>
-                  <Typography variant="subtitle1" color="grey" gutterBottom>
+                  <Typography variant="subtitle1" color="black" gutterBottom>
                     Interest Rates
                   </Typography>
 
@@ -121,13 +121,13 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Typography variant="subtitle1" color="grey" gutterBottom>
+                <Typography variant="subtitle1" color="black" gutterBottom>
                   Points*
                 </Typography>
                 <FormControl component="fieldset">
                   <RadioGroup
                     row
-                    style={{ fontSize: 15, fontWeight: 100, color: "grey" }}
+                    style={{ fontSize: 15, fontWeight: 100, color: "black" }}
                     aria-label="radio-selection"
                     name="radio-selection"
                     value={formData.percentageOrAmount || selectedOption}
@@ -173,13 +173,13 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
               <Grid item xs={12} sm={12}>
-                <Typography variant="subtitle1" color="grey" gutterBottom>
+                <Typography variant="subtitle1" color="black" gutterBottom>
                   Broker Points *
                 </Typography>
                 <FormControl component="fieldset">
                   <RadioGroup
                     row
-                    style={{ fontSize: 15, fontWeight: 100, color: "grey" }}
+                    style={{ fontSize: 15, fontWeight: 100, color: "black" }}
                     aria-label="radio-selection"
                     name="radio-selection"
                     value={formData.percentageOrAmount2 || selectedOption2}
@@ -231,7 +231,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
               Interest Mechanics
             </Typography>
             <FormControl fullWidth style={{ marginTop: 32 }}>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Term (Duration) *
               </Typography>
 
@@ -256,7 +256,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
             <FormControl fullWidth style={{ marginTop: 32 }}>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Interest Accrual Method *
               </Typography>
               <Select
@@ -282,7 +282,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
             <FormControl fullWidth style={{ marginTop: 32 }}>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Interest Accrual Term *
               </Typography>
 

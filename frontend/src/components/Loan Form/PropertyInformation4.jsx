@@ -43,17 +43,17 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Property Information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please add a property and tell us how the property was sourced and how
           the loan will be repaid. Remember we do NOT lend on borrower occupied
           properties.
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 What is the renovation budget?
               </Typography>
               <TextField

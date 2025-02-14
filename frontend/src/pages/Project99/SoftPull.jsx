@@ -38,15 +38,15 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Soft Pull Credit Check
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Don't worry, this is a soft credit pull and won't impact your credit.
           The soft pull is required to participate in the program.
         </Typography>
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
         <Grid container spacing={2}>
           <Grid item sm={4}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Date of Birth (Month)
               </Typography>
 
@@ -77,7 +77,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={4}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Date of Birth (Date)
               </Typography>
               <Select
@@ -109,7 +109,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={4}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Date of Birth (Year)
               </Typography>
               <Select
@@ -142,7 +142,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
 
           <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Social Security
               </Typography>
               <TextField
@@ -180,7 +180,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
 
           <Grid item sm={6} style={{ marginTop: 20 }}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 This is for verifying credit. Your personal information will be
                 protected with bank-level security.
               </Typography>
@@ -192,14 +192,14 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
               style={{
                 fontSize: 15,
                 fontWeight: 100,
-                color: "grey",
+                color: "black",
                 textDecoration: "underline",
               }}
             >
               USER CERTIFICATION
             </label>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 By clicking the ‘Next’ button below, you acknowledge that you
                 have read and agree to the Credit Gathering Authorization as
                 either the individual whose credit will be pulled, or as an

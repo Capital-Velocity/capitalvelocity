@@ -28,14 +28,14 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
         <Divider style={{ color: "grey", marginBottom: 10 }} />
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 First Name
               </Typography>
               <Grid item sm={12}>
@@ -62,7 +62,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
 
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Last Name
               </Typography>
               <TextField
@@ -84,7 +84,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Email
               </Typography>
               <TextField
@@ -106,7 +106,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Phone
               </Typography>
               <TextField
@@ -131,7 +131,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
             <FormControl fullWidth error={!!fieldErrors.borrowerCitizenship}>
               {" "}
               {/* Pass the error prop here */}
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Borrower's Citizenship Status
               </Typography>
               <Select
@@ -165,7 +165,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Social Security Number
               </Typography>
               <TextField

@@ -79,7 +79,7 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           Borrower information
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
         </Typography>
         <Divider style={{ color: "grey", marginBottom: 10 }} />
@@ -102,7 +102,7 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
           </Grid>
 
           <Grid item xs={12}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               How experienced with investing is the borrower?
             </label>
             <div style={{ width: "100%" }}>
@@ -119,7 +119,7 @@ function BorrowerStep3({ formData, setFormData, fieldErrors }) {
             </div>
           </Grid>
           <Grid item xs={12}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               Please rank the borrower's experience as a real estate investor
             </label>
             <div style={{ width: "100%" }}>
