@@ -55,11 +55,17 @@ function BorrowerStep4({ formData, setFormData, fieldErrors }) {
             fontWeight: 300,
           }}
         >
-          Is the transaction arm’s length where buyer and seller are trying to
-          get the best terms for their respective sides? *
+          Is this an arm’s length transaction, where the buyer and seller act
+          independently and in their own best interests, negotiating for the
+          most favorable terms without any special relationship influencing the
+          deal?
         </label>
 
-        <FormControl fullWidth error={!!fieldErrors.bestTerms}>
+        <FormControl
+          fullWidth
+          error={!!fieldErrors.bestTerms}
+          style={{ display: "flex", alignItems: "center" }}
+        >
           {" "}
           {/* Error prop here */}
           <RadioGroup
