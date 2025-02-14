@@ -86,21 +86,13 @@ export default function Checkout(props) {
         );
       case 1:
         return (
-          <BorrowerStep2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
-        return (
           <BorrowerStep3
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-      case 3:
+      case 2:
         return (
           <BorrowerStep4
             formData={formData}
@@ -109,7 +101,7 @@ export default function Checkout(props) {
           />
         );
 
-      case 4:
+      case 3:
         return (
           <EntityInformation
             formData={formData}
@@ -117,7 +109,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 4:
         return (
           <PropertyInformation
             formData={formData}
@@ -125,7 +117,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 5:
         return (
           <PropertyInformation2
             formData={formData}
@@ -133,7 +125,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 6:
         return (
           <PropertyInformation3
             formData={formData}
@@ -141,7 +133,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 7:
         return (
           <PropertyInformation4
             formData={formData}
@@ -149,7 +141,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 8:
         return (
           <PropertyInformation5
             formData={formData}
@@ -157,7 +149,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 10:
+      case 9:
         return (
           <LoanTerms
             formData={formData}
@@ -165,7 +157,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 11:
+      case 10:
         return (
           <LoanTerms2
             formData={formData}
@@ -173,7 +165,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 12:
+      case 11:
         return (
           <LoanTerms3
             formData={formData}
@@ -181,7 +173,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 13:
+      case 12:
         return (
           <CreditScore
             formData={formData}
@@ -189,7 +181,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 14:
+      case 13:
         return (
           <SoftPull
             formData={formData}
@@ -197,7 +189,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 15:
+      case 14:
         return (
           <SBA26
             formData={formData}
@@ -205,7 +197,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 16:
+      case 15:
         return (
           <SBA27
             formData={formData}
