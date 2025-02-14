@@ -6,8 +6,8 @@ import Container from "../screens/Container";
 function RealEstateLoan() {
   return (
     <div style={{ backgroundColor: "#c0dced" }}>
-      {/* <Categories2 /> */}
-      <LoanForm />
+      <Categories2 />
+      {/* <LoanForm /> */}
       <div
         style={{
           display: "flex",

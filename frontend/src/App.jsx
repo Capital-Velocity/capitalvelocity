@@ -27,6 +27,7 @@ import ROKAffiliateForm from "./pages/ROKAffiliateForm";
 import RealEstateLoan from "./pages/RealEstateLoan";
 import BusinessLoan from "./pages/BusinessLoan";
 import FixAndFlipNewForm from "./pages/FixAndFlipNewForm";
+import LoanForm from "./components/LoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -36,7 +37,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/test" element={<ROKForm />} />
+        <Route path="/test" element={<LoanForm />} />
         <Route path="/ROKAffiliateTest" element={<ROKAffiliateForm />} />
         <Route path="/becomePartner" element={<BecomePartner />} />
         <Route path="/contactUs" element={<Contact />} />
