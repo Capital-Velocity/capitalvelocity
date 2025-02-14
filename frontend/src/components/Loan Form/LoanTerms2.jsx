@@ -87,14 +87,14 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "grey", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <Typography variant="h5" color="black" gutterBottom>
               Pricing
             </Typography>
             {/* This is for the textFields*/}
             <Grid container spacing={5}>
-              <Grid item sm={12}>
-                <FormControl style={{ width: 500 }}>
+              <Grid item xs={12} sm={12}>
+                <FormControl style={{ minWidth: "100%" }}>
                   <Typography variant="subtitle1" color="grey" gutterBottom>
                     Interest Rates
                   </Typography>
@@ -114,11 +114,11 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={12}>
                 <Typography variant="subtitle1" color="grey" gutterBottom>
                   Points*
                 </Typography>
-                <FormControl style={{ width: 500 }} component="fieldset">
+                <FormControl component="fieldset">
                   <RadioGroup
                     row
                     style={{ fontSize: 15, fontWeight: 100, color: "grey" }}
@@ -140,7 +140,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={12}>
                 {" "}
                 <TextField
                   error={fieldErrors.points}
@@ -152,7 +152,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                       points: e.target.value,
                     })
                   }
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   type="number"
                   variant="outlined"
                   fullWidth
@@ -166,11 +166,11 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                   // Add more props as needed
                 />
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={12}>
                 <Typography variant="subtitle1" color="grey" gutterBottom>
                   Broker Points *
                 </Typography>
-                <FormControl style={{ width: 500 }} component="fieldset">
+                <FormControl component="fieldset">
                   <RadioGroup
                     row
                     style={{ fontSize: 15, fontWeight: 100, color: "grey" }}
@@ -192,7 +192,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12} sm={12}>
                 {" "}
                 <TextField
                   error={fieldErrors.brokerPoints}
@@ -204,7 +204,7 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                       brokerPoints: e.target.value,
                     })
                   }
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   type="number"
                   variant="outlined"
                   fullWidth
