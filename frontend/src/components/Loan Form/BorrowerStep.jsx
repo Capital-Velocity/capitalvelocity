@@ -170,20 +170,32 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
               </Typography>
               <TextField
                 value={formData.borrowerSocialSecurity || ""}
-                onChange={(e) =>
+                onChange={(e) => {
+                  let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+                  value = value.slice(0, 9); // Restrict to 9 digits
+
+                  // Apply formatting
+                  if (value.length > 5) {
+                    value = `${value.slice(0, 3)}-${value.slice(
+                      3,
+                      5
+                    )}-${value.slice(5)}`;
+                  } else if (value.length > 3) {
+                    value = `${value.slice(0, 3)}-${value.slice(3)}`;
+                  }
+
                   setFormData({
                     ...formData,
-                    borrowerSocialSecurity: e.target.value.slice(0, 9),
-                  })
-                }
+                    borrowerSocialSecurity: value,
+                  });
+                }}
                 required
-                type="number"
                 error={fieldErrors.borrowerSocialSecurity}
                 style={{ backgroundColor: "white" }}
                 helperText={<span>{fieldErrors.borrowerSocialSecurity}</span>}
                 variant="outlined"
                 fullWidth
-              ></TextField>
+              />
             </FormControl>
           </Grid>
         </Grid>
