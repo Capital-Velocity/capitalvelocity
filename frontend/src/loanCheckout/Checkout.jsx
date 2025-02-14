@@ -71,8 +71,6 @@ export default function Checkout(props) {
     "c",
     "d",
     "e",
-    ,
-    "a",
   ];
   function getStepContent(step) {
     switch (step) {
