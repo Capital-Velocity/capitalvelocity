@@ -315,7 +315,7 @@ const LoginCover = () => {
             </Box>
           </Box>
         </Container>
-        <ShortFooter />
+        {/* <ShortFooter /> */}
       </Box>
     </div>
   );

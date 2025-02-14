@@ -443,7 +443,7 @@ const BecomePartner = () => {
             </Box>
           </Box>
         </Container>
-        <ShortFooter />
+        {/* <ShortFooter /> */}
       </Box>
     </div>
   );

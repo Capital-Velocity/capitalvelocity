@@ -230,8 +230,10 @@ const LoginCover = () => {
                       Welcome back
                     </Typography> */}
                     <Typography color="text.secondary">
-                      Create a free account to unlock exclusive access to all
-                      our features and start enjoying the full experience today!
+                      Create a free account now—your essential first step toward
+                      securing the funding you need. Unlock exclusive features
+                      and take control of your financial future. Next, complete
+                      your loan application in just a few easy steps!
                     </Typography>
                     {isValidReferral && (
                       <p style={{ color: "darkgreen" }}>
@@ -242,7 +244,7 @@ const LoginCover = () => {
                   </Box>
                   <form onSubmit={formik.handleSubmit}>
                     <Grid container spacing={4}>
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="First Name"
                           variant="outlined"
@@ -262,7 +264,7 @@ const LoginCover = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="Last Name"
                           variant="outlined"
@@ -283,7 +285,7 @@ const LoginCover = () => {
                         />
                       </Grid>
 
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="Phone"
                           variant="outlined"
@@ -302,7 +304,7 @@ const LoginCover = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="Email"
                           variant="outlined"
@@ -322,7 +324,7 @@ const LoginCover = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="Password"
                           variant="outlined"
@@ -343,7 +345,7 @@ const LoginCover = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item sm={6} xs={12}>
                         <TextField
                           label="Confirm Password"
                           variant="outlined"
@@ -474,7 +476,7 @@ const LoginCover = () => {
             </Box>
           </Box>
         </Container>
-        <ShortFooter />
+        {/* <ShortFooter /> */}
       </Box>
     </div>
   );
