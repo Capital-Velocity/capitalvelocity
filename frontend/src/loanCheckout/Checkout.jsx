@@ -45,6 +45,9 @@ import CreditScore from "../pages/Project99/CreditScore";
 import SoftPull from "../pages/Project99/SoftPull";
 import SBA26 from "../pages/Project99/SBA26";
 import SBA27 from "../pages/Project99/SBA27";
+import { ToastContainer, toast } from "react-toastify";
+import Confetti from "react-confetti";
+import { useWindowSize } from "react-use";
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -55,6 +58,8 @@ export default function Checkout(props) {
   const [formData, setFormData] = useState({});
   const [fieldErrors, setFieldErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
+  const [showConfetti, setShowConfetti] = useState(false);
+  const { width, height } = useWindowSize();
 
   const steps = [
     "a",
@@ -208,7 +213,7 @@ export default function Checkout(props) {
     if (validateStep(activeStep)) {
       setActiveStep(activeStep + 1);
     } else {
-      alert("Please fill out the required fields before proceeding.");
+      toast.error("Please fill out the required fields before proceeding.");
     }
   };
   const handleBack = () => {
@@ -231,7 +236,9 @@ export default function Checkout(props) {
       );
 
       if (response.status === 200) {
-        alert("Email sent successfully!");
+        toast.success("Thank you, we have received your application.");
+        setShowConfetti(true);
+        setTimeout(() => setShowConfetti(false), 5000); // Hide confetti after 3 seconds
         console.log("Response from server:", response.data);
       }
     } catch (error) {
@@ -437,6 +444,20 @@ export default function Checkout(props) {
   // };
   return (
     <AppTheme {...props}>
+      {showConfetti && (
+        <Confetti
+          width={width}
+          height={height}
+          numberOfPieces={250} // Decent amount of confetti
+          tweenDuration={5} // Smooth fall animation
+          decay={0.9} // Ensures confetti falls off-screen
+          run={showConfetti} // Ensures confetti doesn't regenerate
+          recycle={false} // Stops confetti from looping
+        />
+      )}
+
+      <ToastContainer />
+
       <CssBaseline enableColorScheme />
       <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
         <ColorModeIconDropdown />
