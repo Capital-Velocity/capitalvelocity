@@ -61,7 +61,16 @@ export default function Checkout(props) {
   const [showConfetti, setShowConfetti] = useState(false);
   const { width, height } = useWindowSize();
 
-  const steps = ["a", "b", "c", "d", "e", "a", "b"];
+  // Stepper labels
+  const steps = [
+    "Borrower Information",
+    "Entity Information",
+    "Property Information",
+    "Fix and Flip Calculator",
+    "Vendor and Closing Options",
+    "Soft Credit Pull",
+    "Upload & Submit",
+  ];
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -195,13 +204,17 @@ export default function Checkout(props) {
 
     // Validate current step
     if (validateStep(activeStep)) {
-      setActiveStep(activeStep + 1);
+      if (activeStep < steps.length - 1) {
+        setActiveStep((prevStep) => prevStep + 1);
+      }
     } else {
       toast.error("Please fill out the required fields before proceeding.");
     }
   };
   const handleBack = () => {
-    setActiveStep(activeStep - 1);
+    if (activeStep > 0) {
+      setActiveStep((prevStep) => prevStep - 1);
+    }
   };
 
   const handleApplyNow = async () => {
@@ -407,6 +420,15 @@ export default function Checkout(props) {
     return Object.keys(errors).length === 0;
   };
 
+  // Step navigation when clicking a step label
+  const handleStepClick = (index) => {
+    if (index > activeStep && !validateStep(activeStep)) {
+      toast.error("Please fill out the required fields before proceeding.");
+      return;
+    }
+    setActiveStep(index);
+  };
+
   // // Trigger for the "Apply Now" button
   // const handleApplyNow = async () => {
   //   try {
@@ -448,6 +470,7 @@ export default function Checkout(props) {
       <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
         <ColorModeIconDropdown />
       </Box>
+
       <Box>
         <Grid
           container
@@ -566,6 +589,38 @@ export default function Checkout(props) {
             }}
           >
             <React.Fragment>
+              <Stepper
+                activeStep={activeStep}
+                alternativeLabel
+                sx={{
+                  width: "100%", // Ensures full width
+                  display: "flex", // Ensures proper alignment
+                  justifyContent: "center", // Centers step labels
+                  "& .MuiStep-root": {
+                    flex: 1, // Ensures steps take equal space
+                  },
+                }}
+              >
+                {steps.map((label, index) => (
+                  <Step key={label} onClick={() => handleStepClick(index)}>
+                    <StepLabel
+                      sx={{
+                        cursor: "pointer", // Ensures all steps show a clickable cursor
+                        pointerEvents: "auto", // Enables clicking on all steps (even gray ones)
+                        "& .MuiStepLabel-label": {
+                          cursor: "pointer", // Fixes label text not changing to pointer
+                        },
+                        "& .MuiStepIcon-root": {
+                          cursor: "pointer", // Ensures icon also shows a pointer
+                        },
+                      }}
+                    >
+                      {label}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper>
+
               {getStepContent(activeStep)}
               <Box
                 sx={[
