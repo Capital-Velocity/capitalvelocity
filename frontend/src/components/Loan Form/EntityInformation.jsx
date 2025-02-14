@@ -41,7 +41,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
             fontWeight: 300,
           }}
         >
-          Do You Have The Borrowing Entity Information?
+          Do you have the Borrowing Entity Information?
         </label>
         <RadioGroup
           row
@@ -75,7 +75,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           />
         </RadioGroup>
         {fieldErrors.borrowingEntityInformation && (
-          <FormHelperText error>
+          <FormHelperText error style={{ textAlign: "center" }}>
             {fieldErrors.borrowingEntityInformation}
           </FormHelperText>
         )}

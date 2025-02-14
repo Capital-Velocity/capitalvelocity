@@ -90,6 +90,7 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
               name="row-radio-buttons-group"
+              style={{ justifyContent: "center" }} // Centers radio buttons horizontally
             >
               <FormControlLabel
                 style={{ color: "black" }}
@@ -111,7 +112,9 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
               />
             </RadioGroup>
             {fieldErrors.isCondominium && (
-              <FormHelperText error>{fieldErrors.isCondominium}</FormHelperText>
+              <FormHelperText error style={{ textAlign: "center" }}>
+                {fieldErrors.isCondominium}
+              </FormHelperText>
             )}
           </Grid>
           <Grid item xs={12} sm={6}>

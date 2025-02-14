@@ -69,7 +69,7 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
               />
             </RadioGroup>
             {fieldErrors.authorizedSignatory && (
-              <FormHelperText error>
+              <FormHelperText error style={{ textAlign: "center" }}>
                 {fieldErrors.authorizedSignatory}
               </FormHelperText>
             )}
