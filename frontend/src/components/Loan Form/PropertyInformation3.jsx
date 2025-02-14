@@ -134,7 +134,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          {/* <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="grey">
                 How much did the wholesaler pay for the property?
@@ -153,8 +153,8 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 variant="outlined"
               />
             </FormControl>
-          </Grid>
-          <Grid item sm={6}>
+          </Grid> */}
+          {/* <Grid item sm={6}>
             <label
               style={{
                 fontSize: 15,
@@ -193,9 +193,9 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 label="No"
               />
             </RadioGroup>
-          </Grid>
+          </Grid> */}
 
-          {formData.transactionArmslength === "Yes" && (
+          {/* {formData.transactionArmslength === "Yes" && (
             <Grid item sm={6}>
               <TextField
                 style={{ width: "500px", backgroundColor: "white" }}
@@ -212,7 +212,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 variant="outlined"
               />
             </Grid>
-          )}
+          )} */}
         </Grid>
       </Container>
     </div>
