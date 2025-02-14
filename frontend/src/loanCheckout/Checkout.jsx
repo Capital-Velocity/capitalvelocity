@@ -61,22 +61,7 @@ export default function Checkout(props) {
   const [showConfetti, setShowConfetti] = useState(false);
   const { width, height } = useWindowSize();
 
-  const steps = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "a",
-    "b",
-    "c",
-    "d",
-  ];
+  const steps = ["a", "b", "c", "d", "e", "a", "b"];
   function getStepContent(step) {
     switch (step) {
       case 0:
@@ -120,39 +105,39 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
+      // case 3:
+      //   return (
+      //     <PropertyInformation2
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 3:
+      //   return (
+      //     <PropertyInformation3
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 4:
+      //   return (
+      //     <PropertyInformation4
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 5:
+      //   return (
+      //     <PropertyInformation5
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 3:
-        return (
-          <PropertyInformation2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
-        return (
-          <PropertyInformation3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 5:
-        return (
-          <PropertyInformation4
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 6:
-        return (
-          <PropertyInformation5
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 7:
         return (
           <LoanTerms
             formData={formData}
@@ -168,7 +153,7 @@ export default function Checkout(props) {
       //       fieldErrors={fieldErrors}
       //     />
       //   );
-      case 8:
+      case 4:
         return (
           <LoanTerms3
             formData={formData}
@@ -176,15 +161,15 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
-        return (
-          <CreditScore
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 10:
+      // case 5:
+      //   return (
+      //     <CreditScore
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      case 5:
         return (
           <SoftPull
             formData={formData}
@@ -192,7 +177,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 11:
+      case 6:
         return (
           <SBA26
             formData={formData}
@@ -306,52 +291,76 @@ export default function Checkout(props) {
       if (!formData.propertyType) {
         errors.propertyType = "Property type is required";
       }
-    }
-
-    // Step 5:
-    if (step === 3) {
       if (!formData.authorizedSignatory) {
         errors.authorizedSignatory = "Authorized signatory is required";
       }
       if (!formData.purchaseorRefinance) {
         errors.purchaseorRefinance = "Purchase or Refinance is required";
       }
-    }
-
-    // Step 6:
-    if (step === 4) {
-      if (!formData.propertyPurchasePrice) {
-        errors.propertyPurchasePrice = "Property purchase price is required";
-      }
+      // if (!formData.propertyPurchasePrice) {
+      //   errors.propertyPurchasePrice = "Property purchase price is required";
+      // }
       if (!formData.propertySource) {
         errors.propertySource = "Property source is required";
       }
-    }
-
-    // Step 7:
-    if (step === 5) {
-      if (!formData.renovationBudget) {
-        errors.renovationBudget = "Renovation budget is required";
-      }
+      // if (!formData.renovationBudget) {
+      //   errors.renovationBudget = "Renovation budget is required";
+      // }
       if (!formData.isCondominium) {
         errors.isCondominium = "Condominium option is required";
       }
-    }
-
-    // Step 8:
-    if (step === 6) {
-      if (!formData.afterRepairValue) {
-        errors.afterRepairValue = "After repair value is required";
-      }
+      // if (!formData.afterRepairValue) {
+      //   errors.afterRepairValue = "After repair value is required";
+      // }
       if (!formData.exitStrategry) {
         errors.exitStrategry = "Exit strategy is required";
       }
     }
 
+    // // Step 5:
+    // if (step === 3) {
+    //   if (!formData.authorizedSignatory) {
+    //     errors.authorizedSignatory = "Authorized signatory is required";
+    //   }
+    //   if (!formData.purchaseorRefinance) {
+    //     errors.purchaseorRefinance = "Purchase or Refinance is required";
+    //   }
+    // }
+
+    // // Step 6:
+    // if (step === 3) {
+    //   if (!formData.propertyPurchasePrice) {
+    //     errors.propertyPurchasePrice = "Property purchase price is required";
+    //   }
+    //   if (!formData.propertySource) {
+    //     errors.propertySource = "Property source is required";
+    //   }
+    // }
+
+    // Step 7:
+    // if (step === 4) {
+    //   if (!formData.renovationBudget) {
+    //     errors.renovationBudget = "Renovation budget is required";
+    //   }
+    //   if (!formData.isCondominium) {
+    //     errors.isCondominium = "Condominium option is required";
+    //   }
+    // }
+
+    // // Step 8:
+    // if (step === 5) {
+    //   if (!formData.afterRepairValue) {
+    //     errors.afterRepairValue = "After repair value is required";
+    //   }
+    //   if (!formData.exitStrategry) {
+    //     errors.exitStrategry = "Exit strategy is required";
+    //   }
+    // }
+
     // Step 9: Fix and Flip Calculator, nothing required here
 
     // Step 10:
-    if (step === 7) {
+    if (step === 4) {
       if (!formData.preferredClosingAttorney) {
         errors.preferredClosingAttorney = "Closing attorney is required";
       }
@@ -366,15 +375,15 @@ export default function Checkout(props) {
       }
     }
 
-    // Step 11:
-    if (step === 8) {
-      if (!formData.creditScore) {
-        errors.creditScore = "Credit score is required";
-      }
-    }
+    // // Step 11:
+    // if (step === 5) {
+    //   if (!formData.creditScore) {
+    //     errors.creditScore = "Credit score is required";
+    //   }
+    // }
 
     // Step 12:
-    if (step === 9) {
+    if (step === 5) {
       if (!formData.birthMonth) {
         errors.birthMonth = "Birth month is required";
       }
