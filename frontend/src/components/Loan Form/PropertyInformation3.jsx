@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function PropertyInformation3({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -94,6 +94,12 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Private Sale"}>Private Sale</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.propertySource && (
+                <FormHelperText error>
+                  {fieldErrors.propertySource}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item sm={6}>
@@ -132,6 +138,12 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Private Sale"}>Private Sale</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.wholesalerSource && (
+                <FormHelperText error>
+                  {fieldErrors.wholesalerSource}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           {/* <Grid item sm={6}>

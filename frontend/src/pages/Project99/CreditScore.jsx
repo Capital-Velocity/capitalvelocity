@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "./CheckoutSteps3";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function CreditScore({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("");
@@ -59,6 +59,10 @@ function CreditScore({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"689-719"}> 689-719</MenuItem>
                 <MenuItem value={"720 OR ABOVE"}> 720 OR ABOVE</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.creditScore && (
+                <FormHelperText error>{fieldErrors.creditScore}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>

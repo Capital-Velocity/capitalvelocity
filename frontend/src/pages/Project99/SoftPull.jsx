@@ -5,7 +5,10 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
-import { Divider } from "../../../node_modules/@mui/material/index";
+import {
+  Divider,
+  FormHelperText,
+} from "../../../node_modules/@mui/material/index";
 import Container from "../../screens/Container";
 import CheckoutSteps from "./CheckoutSteps3";
 
@@ -66,6 +69,10 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
                   </MenuItem>
                 ))}
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.birthMonth && (
+                <FormHelperText error>{fieldErrors.birthMonth}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item sm={4}>
@@ -94,6 +101,10 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
                   </MenuItem>
                 ))}
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.birthDate && (
+                <FormHelperText error>{fieldErrors.birthDate}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item sm={4}>
@@ -122,6 +133,10 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
                   </MenuItem>
                 ))}
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.birthYear && (
+                <FormHelperText error>{fieldErrors.birthYear}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
 

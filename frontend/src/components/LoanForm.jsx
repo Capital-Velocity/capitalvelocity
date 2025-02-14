@@ -411,14 +411,14 @@ const LoanForm = () => {
       }
     }
 
-    if (stepName === "Loan Terms") {
-      if (!formData.initialLoanAmount) {
-        errors.initialLoanAmount = "Required ";
-      }
-      if (!formData.constructionHoldback) {
-        errors.constructionHoldback = "Required ";
-      }
-    }
+    // if (stepName === "Loan Terms") {
+    //   if (!formData.initialLoanAmount) {
+    //     errors.initialLoanAmount = "Required ";
+    //   }
+    //   if (!formData.constructionHoldback) {
+    //     errors.constructionHoldback = "Required ";
+    //   }
+    // }
 
     if (stepName === "Property Information3") {
       if (!formData.propertyPurchasePrice) {
@@ -430,12 +430,12 @@ const LoanForm = () => {
       if (!formData.wholesalerSource) {
         errors.wholesalerSource = "Required ";
       }
-      if (!formData.wholesalerPay) {
-        errors.wholesalerPay = "Required ";
-      }
-      if (!formData.transactionArmslength) {
-        errors.transactionArmslength = "Required ";
-      }
+      // if (!formData.wholesalerPay) {
+      //   errors.wholesalerPay = "Required ";
+      // }
+      // if (!formData.transactionArmslength) {
+      //   errors.transactionArmslength = "Required ";
+      // }
     }
     if (stepName === "Loan Terms2") {
       if (!formData.interestRate) {

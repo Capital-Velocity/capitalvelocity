@@ -8,9 +8,9 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import CheckoutSteps from "../../pages/Project99/CheckoutSteps3";
 import Container from "../../screens/Container";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
-function LoanTerms3({ formData, setFormData }) {
+function LoanTerms3({ formData, setFormData, fieldErrors }) {
   const [interestRate, setInterestRate] = useState(10.74);
 
   return (
@@ -64,6 +64,12 @@ function LoanTerms3({ formData, setFormData }) {
                 </MenuItem>
                 <MenuItem value={"MLS"}>Michele R. Messian P.C.</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.preferredClosingAttorney && (
+                <FormHelperText error>
+                  {fieldErrors.preferredClosingAttorney}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
 
@@ -82,6 +88,10 @@ function LoanTerms3({ formData, setFormData }) {
                 sx={{ backgroundColor: "white" }}
               />
             </FormControl>
+            {/* FormHelperText to display the error message */}
+            {fieldErrors.closingDate && (
+              <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
+            )}
           </Grid>
 
           {/* Preferred Insurance Company */}
@@ -101,6 +111,12 @@ function LoanTerms3({ formData, setFormData }) {
                 <MenuItem value={"Elmsure"}>Elmsure</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.insuranceCompany && (
+                <FormHelperText error>
+                  {fieldErrors.insuranceCompany}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
 
@@ -121,6 +137,12 @@ function LoanTerms3({ formData, setFormData }) {
                 <MenuItem value={"None"}>None</MenuItem>
                 <MenuItem value={"Other"}>Other</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.titleCompany && (
+                <FormHelperText error>
+                  {fieldErrors.titleCompany}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>

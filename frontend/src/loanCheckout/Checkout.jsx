@@ -260,6 +260,148 @@ export default function Checkout(props) {
       }
     }
 
+    // Step 1: No Validation Needed
+
+    // Step 2:
+    if (step === 2) {
+      if (!formData.bestTerms) {
+        errors.bestTerms = "Arms length description is required";
+      }
+    }
+
+    // Step 3:
+    if (step === 3) {
+      if (!formData.borrowingEntityInformation) {
+        errors.borrowingEntityInformation =
+          "Borrowing entity information is required";
+      }
+    }
+
+    // Step 4:
+    if (step === 4) {
+      if (!formData.homeAddress) {
+        errors.homeAddress = "Address is required";
+      }
+      if (!formData.addressCity) {
+        errors.addressCity = "City is required";
+      }
+      if (!formData.addressZip) {
+        errors.addressZip = "Zipcode is required";
+      }
+      if (!formData.addressState) {
+        errors.addressState = "State is required";
+      }
+      if (!formData.propertyType) {
+        errors.propertyType = "Property type is required";
+      }
+    }
+
+    // Step 5:
+    if (step === 5) {
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Authorized signatory is required";
+      }
+      if (!formData.purchaseorRefinance) {
+        errors.purchaseorRefinance = "Purchase or Refinance is required";
+      }
+    }
+
+    // Step 6:
+    if (step === 6) {
+      if (!formData.propertyPurchasePrice) {
+        errors.propertyPurchasePrice = "Property purchase price is required";
+      }
+      if (!formData.propertySource) {
+        errors.propertySource = "Property source is required";
+      }
+      if (!formData.wholesalerSource) {
+        errors.wholesalerSource = "Wholesaler source is required";
+      }
+    }
+
+    // Step 7:
+    if (step === 7) {
+      if (!formData.renovationBudget) {
+        errors.renovationBudget = "Renovation budget is required";
+      }
+      if (!formData.isCondominium) {
+        errors.isCondominium = "Condominium option is required";
+      }
+    }
+
+    // Step 8:
+    if (step === 8) {
+      if (!formData.afterRepairValue) {
+        errors.afterRepairValue = "After repair value is required";
+      }
+      if (!formData.exitStrategry) {
+        errors.exitStrategry = "Exit strategy is required";
+      }
+    }
+
+    // Step 9: Fix and Flip Calculator, nothing required here
+
+    // Step 10:
+    if (step === 10) {
+      if (!formData.interestRate) {
+        errors.interestRate = "Interest rate is required";
+      }
+      if (!formData.points) {
+        errors.points = "Points value is required";
+      }
+      if (!formData.brokerPoints) {
+        errors.brokerPoints = "Broker points value is required";
+      }
+      if (!formData.termMonths) {
+        errors.termMonths = "Term is required";
+      }
+      if (!formData.intrestMethod) {
+        errors.intrestMethod = "Interest accrual method is required";
+      }
+      if (!formData.interestTerm) {
+        errors.interestTerm = "Interest accrual term is required";
+      }
+    }
+
+    // Step 11:
+    if (step === 11) {
+      if (!formData.preferredClosingAttorney) {
+        errors.preferredClosingAttorney = "Closing attorney is required";
+      }
+      if (!formData.closingDate) {
+        errors.closingDate = "Closing date is required";
+      }
+      if (!formData.insuranceCompany) {
+        errors.insuranceCompany = "Insurance company is required";
+      }
+      if (!formData.titleCompany) {
+        errors.titleCompany = "Title company is required";
+      }
+    }
+
+    // Step 12:
+    if (step === 12) {
+      if (!formData.creditScore) {
+        errors.creditScore = "Credit score is required";
+      }
+    }
+
+    // Step 13:
+    if (step === 13) {
+      if (!formData.birthMonth) {
+        errors.birthMonth = "Birth month is required";
+      }
+      if (!formData.birthDate) {
+        errors.birthDate = "Birth date is required";
+      }
+      if (!formData.birthYear) {
+        errors.birthYear = "Birth year is required";
+      }
+      if (!formData.socialSecurity) {
+        errors.socialSecurity = "SSN number is required";
+      }
+    }
+
     // Add more validations for other steps as needed
 
     // Update the fieldErrors state

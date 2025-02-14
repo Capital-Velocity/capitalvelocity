@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function EntityInformation({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -39,7 +39,6 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           style={{
             fontSize: 15,
             fontWeight: 300,
-            color: fieldErrors.borrowingEntityInformation ? "red" : "grey",
           }}
         >
           Do You Have The Borrowing Entity Information?
@@ -74,6 +73,12 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
             label="No"
           />
         </RadioGroup>
+        {fieldErrors.borrowingEntityInformation && (
+          <FormHelperText error>
+            {fieldErrors.borrowingEntityInformation}
+          </FormHelperText>
+        )}
+
         {formData.borrowingEntityInformation === "Yes" && (
           <Grid container spacing={2}>
             <Grid item sm={6} xs={12}>

@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function PropertyInformation2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -41,7 +41,6 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
               style={{
                 fontSize: 15,
                 fontWeight: 100,
-                color: fieldErrors.authorizedSignatory ? "red" : "grey",
               }}
             >
               Is the borrower authorized signatory?
@@ -72,6 +71,11 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.authorizedSignatory && (
+              <FormHelperText error>
+                {fieldErrors.authorizedSignatory}
+              </FormHelperText>
+            )}
           </Grid>
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth style={{ minWidth: "", padding: "" }}>
@@ -100,6 +104,12 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Purchase"}>Purchase</MenuItem>
                 <MenuItem value={"Refinance"}>Refinance</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.purchaseorRefinance && (
+                <FormHelperText error>
+                  {fieldErrors.purchaseorRefinance}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>

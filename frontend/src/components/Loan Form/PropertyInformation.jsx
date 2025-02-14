@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function PropertyInformation({ formData, setFormData, fieldErrors }) {
   const [inputValue, setInputValue] = useState("");
@@ -168,6 +168,12 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
                   Warrantable Condominium
                 </MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.propertyType && (
+                <FormHelperText error>
+                  {fieldErrors.propertyType}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>

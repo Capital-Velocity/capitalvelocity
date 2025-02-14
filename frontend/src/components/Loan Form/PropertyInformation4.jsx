@@ -12,7 +12,7 @@ import Typography from "@mui/material/Typography";
 import React from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function PropertyInformation4({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -80,7 +80,6 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
               style={{
                 fontSize: 15,
                 fontWeight: 300,
-                color: fieldErrors.isCondominium ? "red" : "grey",
               }}
             >
               Is the property being converted to Condominiums? *
@@ -110,13 +109,15 @@ function PropertyInformation4({ formData, setFormData, fieldErrors }) {
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.isCondominium && (
+              <FormHelperText error>{fieldErrors.isCondominium}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <label
               style={{
                 fontSize: 15,
                 fontWeight: 300,
-                color: fieldErrors.isCondominium ? "red" : "grey",
               }}
             >
               Please describe the renovation

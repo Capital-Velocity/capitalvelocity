@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import { Divider, FormHelperText } from "@mui/material";
 
 function LoanTerms2({ formData, setFormData, fieldErrors }) {
   const [interestRate, setInterestRate] = useState(10.74);
@@ -112,6 +112,12 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                       </MenuItem>
                     ))}
                   </Select>
+                  {/* FormHelperText to display the error message */}
+                  {fieldErrors.interestRate && (
+                    <FormHelperText error>
+                      {fieldErrors.interestRate}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={12}>
@@ -244,6 +250,10 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"12 months"}>12 months</MenuItem>
                 <MenuItem value={"18 months"}>18 months</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.termMonths && (
+                <FormHelperText error>{fieldErrors.termMonths}</FormHelperText>
+              )}
             </FormControl>
             <FormControl fullWidth style={{ marginTop: 32 }}>
               <Typography type="p" color="grey">
@@ -264,6 +274,12 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"As disbursed"}>As disbursed</MenuItem>
                 <MenuItem value={"Full Boat"}>Full Boat</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.intrestMethod && (
+                <FormHelperText error>
+                  {fieldErrors.intrestMethod}
+                </FormHelperText>
+              )}
             </FormControl>
             <FormControl fullWidth style={{ marginTop: 32 }}>
               <Typography type="p" color="grey">
@@ -281,6 +297,12 @@ function LoanTerms2({ formData, setFormData, fieldErrors }) {
               >
                 {renderMenuItems()}
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.intrestMethod && (
+                <FormHelperText error>
+                  {fieldErrors.intrestMethod}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>
