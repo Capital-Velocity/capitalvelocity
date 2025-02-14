@@ -161,15 +161,15 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
+      // case 10:
+      //   return (
+      //     <LoanTerms2
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 10:
-        return (
-          <LoanTerms2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 11:
         return (
           <LoanTerms3
             formData={formData}
@@ -177,7 +177,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 12:
+      case 11:
         return (
           <CreditScore
             formData={formData}
@@ -185,7 +185,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 13:
+      case 12:
         return (
           <SoftPull
             formData={formData}
@@ -193,7 +193,7 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 14:
+      case 13:
         return (
           <SBA26
             formData={formData}
@@ -350,28 +350,6 @@ export default function Checkout(props) {
 
     // Step 10:
     if (step === 10) {
-      if (!formData.interestRate) {
-        errors.interestRate = "Interest rate is required";
-      }
-      if (!formData.points) {
-        errors.points = "Points value is required";
-      }
-      if (!formData.brokerPoints) {
-        errors.brokerPoints = "Broker points value is required";
-      }
-      if (!formData.termMonths) {
-        errors.termMonths = "Term is required";
-      }
-      if (!formData.intrestMethod) {
-        errors.intrestMethod = "Interest accrual method is required";
-      }
-      if (!formData.interestTerm) {
-        errors.interestTerm = "Interest accrual term is required";
-      }
-    }
-
-    // Step 11:
-    if (step === 11) {
       if (!formData.preferredClosingAttorney) {
         errors.preferredClosingAttorney = "Closing attorney is required";
       }
@@ -386,15 +364,15 @@ export default function Checkout(props) {
       }
     }
 
-    // Step 12:
-    if (step === 12) {
+    // Step 11:
+    if (step === 11) {
       if (!formData.creditScore) {
         errors.creditScore = "Credit score is required";
       }
     }
 
-    // Step 13:
-    if (step === 13) {
+    // Step 12:
+    if (step === 12) {
       if (!formData.birthMonth) {
         errors.birthMonth = "Birth month is required";
       }
