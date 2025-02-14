@@ -36,7 +36,7 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "grey", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item sm={12}>
             <label
               style={{
                 fontSize: 15,
@@ -73,21 +73,19 @@ function PropertyInformation2({ formData, setFormData, fieldErrors }) {
               />
             </RadioGroup>
           </Grid>
-          <Grid item sm={6}>
-            <FormControl fullWidth>
+          <Grid item xs={12} sm={12}>
+            <FormControl fullWidth style={{ minWidth: "", padding: "" }}>
               <InputLabel
                 style={{ fontSize: 15, fontWeight: 100 }}
                 id="demo-simple-select-label"
               >
-                Purchase or Refinance{" "}
+                Purchase or Refinance
               </InputLabel>
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
-                InputLabelProps={{
-                  style: {
-                    fontSize: 15,
-                    fontWeight: 100,
-                  },
+                style={{
+                  backgroundColor: "white",
+                  minHeight: "50px", // Increases height for better touch support
+                  fontSize: "16px", // Ensures readable text
                 }}
                 value={formData.purchaseorRefinance || ""}
                 onChange={(e) =>
