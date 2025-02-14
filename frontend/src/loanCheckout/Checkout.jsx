@@ -197,14 +197,6 @@ export default function Checkout(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 15:
-        return (
-          <SBA27
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
       default:
         throw new Error("Unknown step");
     }
