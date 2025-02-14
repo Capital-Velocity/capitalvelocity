@@ -36,7 +36,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Property Purchase Price
@@ -59,7 +59,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
               />
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 How is the property being sourced?
@@ -102,7 +102,7 @@ function PropertyInformation3({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 How did the wholesaler source the property?

@@ -93,13 +93,13 @@ function BorrowerStep4({ formData, setFormData, fieldErrors }) {
         <div style={{ marginTop: 20 }}>
           {formData.bestTerms === "Yes" && (
             <Grid container spacing={2}>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <Typography type="p" color="black">
                   Please describe:
                 </Typography>
                 <TextField
                   style={{
-                    width: "500px",
+                    width: "100%", // Use 100% width for responsiveness
                     marginTop: 10,
                     backgroundColor: "white",
                   }}
