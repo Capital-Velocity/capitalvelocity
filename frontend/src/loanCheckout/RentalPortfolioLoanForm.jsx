@@ -35,6 +35,13 @@ import SBA26 from "../pages/Project99/SBA26";
 import SoftPull from "../pages/Project99/SoftPull";
 import AppTheme from "../shared-theme/AppTheme";
 import InfoMobile from "./components/InfoMobile";
+import RentalLoanPrice from "../components/Loan Form/RentalLoanPrice";
+import RentalLoanPrice2 from "../components/Loan Form/RentalLoanPrice2";
+import RentalLoanPrice3 from "../components/Loan Form/RentalLoanPrice3";
+import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
+import BorrowerStep from "../components/Loan Form/BorrowerStep";
+import BorrowerStep3 from "../components/Loan Form/BorrowerStep3";
+import LoanTerms2 from "../components/Loan Form/LoanTerms2";
 
 export default function RentalPortfolioLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -51,54 +58,31 @@ export default function RentalPortfolioLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "Borrower Information",
+    "RentalLoanPrice",
+    "RentalLoanPrice2",
+    "RentalLoanPrice3",
+    "LoanPricerSummary",
+    "BorrowerInfromation",
+    "Borrower Infromation3",
     "Entity Information",
-    "Property Information",
-    "Add New Property",
-    "Renovation Details",
-    "Other Details",
-    "Fix and Flip Calculator",
-    "Vendor and Closing Options",
-    "Soft Credit Pull",
-    "Upload & Submit",
+    "Loan Terms2",
+    "Loan Terms3",
+    "SoftPull",
+    "SBA26",
   ];
   function getStepContent(step) {
     switch (step) {
       case 0:
         return (
-          <MultiFamBorrowerStep
+          <RentalLoanPrice
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-      //   case 1:
-      //     return (
-      //       <BorrowerStep2
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
-      //   case 2:
-      //     return (
-      //       <MultiFamBorrowerStep2
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
-      //   case 3:
-      //     return (
-      //       <MultiFamBorrowerStep3
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
       case 1:
         return (
-          <EntityInformation
+          <RentalLoanPrice2
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -106,23 +90,15 @@ export default function RentalPortfolioLoanForm(props) {
         );
       case 2:
         return (
-          <PropertyInformation
+          <RentalLoanPrice3
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-      //   case 3:
-      //     return (
-      //       <MultiFamProperty
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
       case 3:
         return (
-          <MultiFamProperty2
+          <LoanPricerSummary
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -130,7 +106,7 @@ export default function RentalPortfolioLoanForm(props) {
         );
       case 4:
         return (
-          <RenovationDetails
+          <BorrowerStep
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -138,7 +114,7 @@ export default function RentalPortfolioLoanForm(props) {
         );
       case 5:
         return (
-          <MultiFamDetails
+          <BorrowerStep3
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -146,21 +122,21 @@ export default function RentalPortfolioLoanForm(props) {
         );
       case 6:
         return (
-          <FixandFlipCalcLoan
+          <EntityInformation
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-      //   case 7:
-      //     return (
-      //       <LoanTerms2
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
       case 7:
+        return (
+          <LoanTerms2
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 8:
         return (
           <LoanTerms3
             formData={formData}
@@ -168,15 +144,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      //   case 13:
-      //     return (
-      //       <CreditScore
-      //         formData={formData}
-      //         setFormData={setFormData}
-      //         fieldErrors={fieldErrors}
-      //       />
-      //     );
-      case 8:
+      case 9:
         return (
           <SoftPull
             formData={formData}
@@ -184,7 +152,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 10:
         return (
           <SBA26
             formData={formData}
@@ -246,175 +214,175 @@ export default function RentalPortfolioLoanForm(props) {
   const validateStep = (step) => {
     const errors = {};
 
-    // Step 0: BorrowerStep validation example
-    if (step === 0) {
-      if (!formData.firstName) {
-        errors.firstName = "First Name is required";
-      }
-      if (!formData.lastName) {
-        errors.lastName = "Last Name is required";
-      }
-      if (!formData.borrowerEmail) {
-        errors.borrowerEmail = "Email is required";
-      }
-      if (!formData.phoneNumber) {
-        errors.phoneNumber = "Phone Number is required";
-      }
-      if (!formData.borrowerCitizenshipStatus) {
-        errors.borrowerCitizenshipStatus = "Citizenship status is required";
-      }
-      if (!formData.liquidity) {
-        errors.liquidity = "Liquidity amount is required";
-      }
-      if (!formData.guranteeLoan) {
-        errors.guranteeLoan = "Required";
-      }
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Required";
-      }
-    }
+    // // Step 0: BorrowerStep validation example
+    // if (step === 0) {
+    //   if (!formData.firstName) {
+    //     errors.firstName = "First Name is required";
+    //   }
+    //   if (!formData.lastName) {
+    //     errors.lastName = "Last Name is required";
+    //   }
+    //   if (!formData.borrowerEmail) {
+    //     errors.borrowerEmail = "Email is required";
+    //   }
+    //   if (!formData.phoneNumber) {
+    //     errors.phoneNumber = "Phone Number is required";
+    //   }
+    //   if (!formData.borrowerCitizenshipStatus) {
+    //     errors.borrowerCitizenshipStatus = "Citizenship status is required";
+    //   }
+    //   if (!formData.liquidity) {
+    //     errors.liquidity = "Liquidity amount is required";
+    //   }
+    //   if (!formData.guranteeLoan) {
+    //     errors.guranteeLoan = "Required";
+    //   }
+    //   if (!formData.authorizedSignatory) {
+    //     errors.authorizedSignatory = "Required";
+    //   }
+    // }
 
-    // Step 0: BorrowerStep validation example
-    if (step === 1) {
-      if (!formData.borrowingEntityInformation) {
-        errors.borrowingEntityInformation = "Required ";
-      }
-    }
+    // // Step 0: BorrowerStep validation example
+    // if (step === 1) {
+    //   if (!formData.borrowingEntityInformation) {
+    //     errors.borrowingEntityInformation = "Required ";
+    //   }
+    // }
 
-    if (step === 2) {
-      if (!formData.homeAddress) {
-        errors.homeAddress = "Address is required";
-      }
-      if (!formData.addressCity) {
-        errors.addressCity = "City is required";
-      }
-      if (!formData.addressZip) {
-        errors.addressZip = "Zipcode is required";
-      }
-      if (!formData.addressState) {
-        errors.addressState = "State is required";
-      }
-      if (!formData.propertyType) {
-        errors.propertyType = "Property type is required";
-      }
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Authorized signatory is required";
-      }
-      if (!formData.purchaseorRefinance) {
-        errors.purchaseorRefinance = "Purchase or Refinance is required";
-      }
-      // if (!formData.propertyPurchasePrice) {
-      //   errors.propertyPurchasePrice = "Property purchase price is required";
-      // }
-      if (!formData.propertySource) {
-        errors.propertySource = "Property source is required";
-      }
-      // if (!formData.renovationBudget) {
-      //   errors.renovationBudget = "Renovation budget is required";
-      // }
-      if (!formData.isCondominium) {
-        errors.isCondominium = "Condominium option is required";
-      }
-      // if (!formData.afterRepairValue) {
-      //   errors.afterRepairValue = "After repair value is required";
-      // }
-      if (!formData.exitStrategry) {
-        errors.exitStrategry = "Exit strategy is required";
-      }
-    }
+    // if (step === 2) {
+    //   if (!formData.homeAddress) {
+    //     errors.homeAddress = "Address is required";
+    //   }
+    //   if (!formData.addressCity) {
+    //     errors.addressCity = "City is required";
+    //   }
+    //   if (!formData.addressZip) {
+    //     errors.addressZip = "Zipcode is required";
+    //   }
+    //   if (!formData.addressState) {
+    //     errors.addressState = "State is required";
+    //   }
+    //   if (!formData.propertyType) {
+    //     errors.propertyType = "Property type is required";
+    //   }
+    //   if (!formData.authorizedSignatory) {
+    //     errors.authorizedSignatory = "Authorized signatory is required";
+    //   }
+    //   if (!formData.purchaseorRefinance) {
+    //     errors.purchaseorRefinance = "Purchase or Refinance is required";
+    //   }
+    //   // if (!formData.propertyPurchasePrice) {
+    //   //   errors.propertyPurchasePrice = "Property purchase price is required";
+    //   // }
+    //   if (!formData.propertySource) {
+    //     errors.propertySource = "Property source is required";
+    //   }
+    //   // if (!formData.renovationBudget) {
+    //   //   errors.renovationBudget = "Renovation budget is required";
+    //   // }
+    //   if (!formData.isCondominium) {
+    //     errors.isCondominium = "Condominium option is required";
+    //   }
+    //   // if (!formData.afterRepairValue) {
+    //   //   errors.afterRepairValue = "After repair value is required";
+    //   // }
+    //   if (!formData.exitStrategry) {
+    //     errors.exitStrategry = "Exit strategy is required";
+    //   }
+    // }
 
-    if (step === 3) {
-      if (!formData.cashOut) {
-        errors.cashOut = "Required";
-      }
-      if (!formData.debt) {
-        errors.debt = "Required";
-      }
-      if (!formData.purchaseDate) {
-        errors.purchaseDate = "Required";
-      }
-    }
+    // if (step === 3) {
+    //   if (!formData.cashOut) {
+    //     errors.cashOut = "Required";
+    //   }
+    //   if (!formData.debt) {
+    //     errors.debt = "Required";
+    //   }
+    //   if (!formData.purchaseDate) {
+    //     errors.purchaseDate = "Required";
+    //   }
+    // }
 
-    if (step === 4) {
-      if (!formData.investedCapital) {
-        errors.investedCapital = "Required";
-      }
-      if (!formData.completedCapex) {
-        errors.completedCapex = "Required";
-      }
-    }
+    // if (step === 4) {
+    //   if (!formData.investedCapital) {
+    //     errors.investedCapital = "Required";
+    //   }
+    //   if (!formData.completedCapex) {
+    //     errors.completedCapex = "Required";
+    //   }
+    // }
 
-    if (step === 5) {
-      if (!formData.asIsValue) {
-        errors.asIsValue = "Required";
-      }
-      if (!formData.exitStrat) {
-        errors.exitStrat = "Required";
-      }
-      if (!formData.background) {
-        errors.background = "Required";
-      }
-      if (!formData.redFlags) {
-        errors.redFlags = "Required";
-      }
-    }
+    // if (step === 5) {
+    //   if (!formData.asIsValue) {
+    //     errors.asIsValue = "Required";
+    //   }
+    //   if (!formData.exitStrat) {
+    //     errors.exitStrat = "Required";
+    //   }
+    //   if (!formData.background) {
+    //     errors.background = "Required";
+    //   }
+    //   if (!formData.redFlags) {
+    //     errors.redFlags = "Required";
+    //   }
+    // }
 
-    if (step === 6) {
-      if (!formData.propertyPurchasePrice) {
-        errors.propertyPurchasePrice = "Purchase price is required";
-      }
-      if (!formData.afterRepairValue) {
-        errors.afterRepairValue = "After repair value is required";
-      }
-      if (!formData.propertyRehabCost) {
-        errors.propertyRehabCost = "Rehab cost is required";
-      }
-      if (!formData.propertyMonthlyPropertyTaxes) {
-        errors.propertyMonthlyPropertyTaxes =
-          "Monthly property taxes are required";
-      }
-      if (!formData.propertyMonthlyInsurance) {
-        errors.propertyMonthlyInsurance = "Monthly insurance is required";
-      }
-      if (!formData.propertyMonthlyUtilityBills) {
-        errors.propertyMonthlyUtilityBills =
-          "Monthly utility bills are required";
-      }
-      if (!formData.propertyOtherMonthlyExpenses) {
-        errors.propertyOtherMonthlyExpenses =
-          "Other monthly expenses are required";
-      }
-    }
+    // if (step === 6) {
+    //   if (!formData.propertyPurchasePrice) {
+    //     errors.propertyPurchasePrice = "Purchase price is required";
+    //   }
+    //   if (!formData.afterRepairValue) {
+    //     errors.afterRepairValue = "After repair value is required";
+    //   }
+    //   if (!formData.propertyRehabCost) {
+    //     errors.propertyRehabCost = "Rehab cost is required";
+    //   }
+    //   if (!formData.propertyMonthlyPropertyTaxes) {
+    //     errors.propertyMonthlyPropertyTaxes =
+    //       "Monthly property taxes are required";
+    //   }
+    //   if (!formData.propertyMonthlyInsurance) {
+    //     errors.propertyMonthlyInsurance = "Monthly insurance is required";
+    //   }
+    //   if (!formData.propertyMonthlyUtilityBills) {
+    //     errors.propertyMonthlyUtilityBills =
+    //       "Monthly utility bills are required";
+    //   }
+    //   if (!formData.propertyOtherMonthlyExpenses) {
+    //     errors.propertyOtherMonthlyExpenses =
+    //       "Other monthly expenses are required";
+    //   }
+    // }
 
-    if (step === 7) {
-      if (!formData.preferredClosingAttorney) {
-        errors.preferredClosingAttorney = "Closing attorney is required";
-      }
-      if (!formData.closingDate) {
-        errors.closingDate = "Closing date is required";
-      }
-      if (!formData.insuranceCompany) {
-        errors.insuranceCompany = "Insurance company is required";
-      }
-      if (!formData.titleCompany) {
-        errors.titleCompany = "Title company is required";
-      }
-    }
+    // if (step === 7) {
+    //   if (!formData.preferredClosingAttorney) {
+    //     errors.preferredClosingAttorney = "Closing attorney is required";
+    //   }
+    //   if (!formData.closingDate) {
+    //     errors.closingDate = "Closing date is required";
+    //   }
+    //   if (!formData.insuranceCompany) {
+    //     errors.insuranceCompany = "Insurance company is required";
+    //   }
+    //   if (!formData.titleCompany) {
+    //     errors.titleCompany = "Title company is required";
+    //   }
+    // }
 
-    if (step === 8) {
-      if (!formData.birthMonth) {
-        errors.birthMonth = "Birth month is required";
-      }
-      if (!formData.birthDate) {
-        errors.birthDate = "Birth date is required";
-      }
-      if (!formData.birthYear) {
-        errors.birthYear = "Birth year is required";
-      }
-      if (!formData.socialSecurity) {
-        errors.socialSecurity = "SSN number is required";
-      }
-    }
+    // if (step === 8) {
+    //   if (!formData.birthMonth) {
+    //     errors.birthMonth = "Birth month is required";
+    //   }
+    //   if (!formData.birthDate) {
+    //     errors.birthDate = "Birth date is required";
+    //   }
+    //   if (!formData.birthYear) {
+    //     errors.birthYear = "Birth year is required";
+    //   }
+    //   if (!formData.socialSecurity) {
+    //     errors.socialSecurity = "SSN number is required";
+    //   }
+    // }
 
     // Add more validations for other steps as needed
 
@@ -520,7 +488,7 @@ export default function RentalPortfolioLoanForm(props) {
                 style={{ color: "grey", fontWeight: "bold" }}
                 gutterBottom
               >
-                Multifamily Bridge Loan
+                Rental Portfolio Loan
               </Typography>
               <Typography
                 variant="body1"

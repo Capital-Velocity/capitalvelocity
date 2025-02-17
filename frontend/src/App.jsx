@@ -29,6 +29,7 @@ import BusinessLoan from "./pages/BusinessLoan";
 import FixAndFlipNewForm from "./pages/FixAndFlipNewForm";
 import LoanForm from "./components/LoanForm";
 import MultiFamilyBridgeNewLoanForm from "./pages/MultiFamilyBridgeNewLoanForm";
+import RentalPortfolioNewLoanForm from "./pages/RentalPortfolioNewLoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -97,7 +98,7 @@ function App() {
           path="/loan-form-realestate-rentalportfolio"
           element={
             firstnameCookie ? (
-              <MultiFamilyBridgeNewLoanForm />
+              <RentalPortfolioNewLoanForm />
             ) : (
               <Navigate to="/register" />
             )
