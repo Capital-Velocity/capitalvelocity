@@ -27,7 +27,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          Add New property
+          Add New Property
         </Typography>
         {/* <Typography variant="subtitle1" color="black" gutterBottom>
           Purchase Information

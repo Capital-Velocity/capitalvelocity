@@ -362,7 +362,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               />
             </div>
           </Grid>
-          <Grid item xs={12} sx={{ mt: 2 }}>
+          <Grid item xs={12} sx={{}}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               Borrower Credit Score
             </label>
@@ -379,7 +379,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               />
             </div>
           </Grid>
-          <Grid item xs={12} sx={{ mt: 2 }}>
+          <Grid item xs={12} sx={{}}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               What percentage of the borrowing entity does this borrower own?
             </label>

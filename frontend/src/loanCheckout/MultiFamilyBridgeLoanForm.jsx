@@ -571,8 +571,12 @@ export default function MultiFamilyBridgeLoanForm(props) {
                 variant="body1"
                 style={{ color: "grey", fontSize: 14 }}
               >
-                PLACEHOLDER: Please replace with real multifamily bridge loan
-                description
+                Acquiring a multifamily property often requires quick and
+                flexible financing solutions to secure the deal before long-term
+                funding is arranged. Our interim financing options provide fast
+                access to capital, allowing investors to close on properties
+                efficiently while structuring their long-term financial
+                strategy.
               </Typography>
               <Typography
                 variant="body1"
