@@ -8,6 +8,9 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import InputAdornment from "@mui/material/InputAdornment";
+import { Box } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+
 function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
   const [selectedOption2, setSelectedOption2] = useState("no");
@@ -18,82 +21,94 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
     });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       {/* <CheckoutSteps step1 step2 step3></CheckoutSteps> */}
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
           Add new property
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Purchase information
         </Typography>
         <Grid container spacing={2}>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+          <Grid item sm={6} sx={{ textAlign: "center" }}>
+            <label
+              style={{
+                fontSize: 15,
+                fontWeight: 100,
+                color: "black",
+                display: "block",
+              }}
+            >
               Are you looking for cash-out? *
             </label>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.cashOut === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("cashOut", "Yes")}
-                error={fieldErrors.cashOut}
-                helperText={<span>{fieldErrors.cashOut}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "Yes" when selected
-                checked={formData.cashOut === "No"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("cashOut", "No")}
-                error={fieldErrors.cashOut}
-                helperText={<span>{fieldErrors.cashOut}</span>}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="Yes"
+                  checked={formData.cashOut === "Yes"}
+                  onChange={() => handleOptionChange("cashOut", "Yes")}
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="No"
+                  checked={formData.cashOut === "No"}
+                  onChange={() => handleOptionChange("cashOut", "No")}
+                  control={<Radio />}
+                  label="No"
+                />
+              </RadioGroup>
+            </Box>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+
+          <Grid item sm={6} sx={{ textAlign: "center" }}>
+            <label
+              style={{
+                fontSize: 15,
+                fontWeight: 100,
+                color: "black",
+                display: "block",
+              }}
+            >
               Is there any debt? *
             </label>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.debt === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("debt", "Yes")}
-                error={fieldErrors.debt}
-                helperText={<span>{fieldErrors.debt}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "Yes" when selected
-                checked={formData.debt === "No"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("debt", "No")}
-                error={fieldErrors.debt}
-                helperText={<span>{fieldErrors.debt}</span>}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="row-radio-buttons-group"
+              >
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="Yes"
+                  checked={formData.debt === "Yes"}
+                  onChange={() => handleOptionChange("debt", "Yes")}
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="No"
+                  checked={formData.debt === "No"}
+                  onChange={() => handleOptionChange("debt", "No")}
+                  control={<Radio />}
+                  label="No"
+                />
+              </RadioGroup>
+            </Box>
           </Grid>
+
           {formData.debt === "Yes" && (
             <Grid item sm={6} style={{ marginBottom: 10 }}>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 How much Debt is there?
               </Typography>
               <TextField
@@ -372,53 +387,64 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
             </Grid>
           )}
         </Grid>
-        <Grid container spacing>
-          <Grid item sm={6}>
-            {" "}
-            <Typography type="p" color="grey">
-              Purchase Date
-            </Typography>
-            <TextField
-              value={formData.purchaseDate || ""}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  purchaseDate: e.target.value,
-                })
-              }
-              style={{ width: 500, backgroundColor: "white" }}
-              type="date"
-              variant="outlined"
-              error={fieldErrors.purchaseDate}
-              fullWidth
-            />
+        <Grid container spacing={2}>
+          {/* Preferred Closing Date */}
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Purchase Date
+              </Typography>{" "}
+              <TextField
+                value={formData.purchaseDate || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchaseDate: e.target.value,
+                  })
+                }
+                style={{ backgroundColor: "white" }}
+                type="date"
+                variant="outlined"
+                error={fieldErrors.purchaseDate}
+                fullWidth
+              />
+            </FormControl>
+            {/* FormHelperText to display the error message */}
+            {/* {fieldErrors.closingDate && (
+              <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
+            )} */}
           </Grid>
-          <Grid item sm={6}>
-            {" "}
-            <Typography type="p" color="grey">
-              What was the Purchase Price of the Property?
-            </Typography>
-            <TextField
-              value={formData.purchasePrice || ""}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  purchasePrice: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              style={{ width: 500, backgroundColor: "white" }}
-              error={fieldErrors.purchasePrice}
-              type="number"
-              label=" "
-              fullWidth
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                What was the Purchase Price of the Property?
+              </Typography>{" "}
+              <TextField
+                value={formData.purchasePrice || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchasePrice: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                style={{ backgroundColor: "white" }}
+                error={fieldErrors.purchasePrice}
+                type="number"
+                label=" "
+                fullWidth
 
-              // Add more props as needed
-            />
+                // Add more props as needed
+              />
+            </FormControl>
+            {/* FormHelperText to display the error message */}
+            {/* {fieldErrors.closingDate && (
+              <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
+            )} */}
           </Grid>
         </Grid>
       </Container>
