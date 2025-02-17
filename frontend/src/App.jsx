@@ -28,6 +28,7 @@ import RealEstateLoan from "./pages/RealEstateLoan";
 import BusinessLoan from "./pages/BusinessLoan";
 import FixAndFlipNewForm from "./pages/FixAndFlipNewForm";
 import LoanForm from "./components/LoanForm";
+import MultiFamilyBridgeNewLoanForm from "./pages/MultiFamilyBridgeNewLoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -82,6 +83,16 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-realestate-multifamily"
+          element={
+            firstnameCookie ? (
+              <MultiFamilyBridgeNewLoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -94,7 +105,8 @@ function App() {
 function FooterWrapper() {
   const location = useLocation(); // Now it's inside a descendant of <Router>
 
-  return location.pathname !== "/loan-form-realestate-fixandflip" ? (
+  return location.pathname !== "/loan-form-realestate-fixandflip" &&
+    location.pathname !== "/loan-form-realestate-multifamily" ? (
     <Footer />
   ) : null;
 }

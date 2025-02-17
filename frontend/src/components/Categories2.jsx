@@ -36,7 +36,7 @@ const selectionData = [
     value: "MultifamilyBridge",
     tooltip: "Interim financing for multifamily property acquisitions.",
     checks: ["Flexible Terms", "Low Interest Rates", "Fast Funding"],
-    link: "/loan-form-realestate?type=GroundUp",
+    link: "/loan-form-realestate-multifamily",
   },
   {
     title: "Rental Portfolios",

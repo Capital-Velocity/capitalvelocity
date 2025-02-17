@@ -392,10 +392,10 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                     fullWidth
                     type="text"
                     style={{ backgroundColor: "white" }}
-                    value={formData.propertyPurchasePrice || purchasePrice}
-                    error={fieldErrors.propertyPurchasePrice}
+                    value={formData?.propertyPurchasePrice || purchasePrice}
+                    error={fieldErrors?.propertyPurchasePrice}
                     helperText={
-                      <span>{fieldErrors.propertyPurchasePrice}</span>
+                      <span>{fieldErrors?.propertyPurchasePrice}</span>
                     }
                     onChange={handlePriceChange}
                     InputProps={{
@@ -448,9 +448,9 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={formData.propertyRehabCost || rehabCost}
-                    error={fieldErrors.propertyRehabCost}
-                    helperText={<span>{fieldErrors.propertyRehabCost}</span>}
+                    value={formData?.propertyRehabCost || rehabCost}
+                    error={fieldErrors?.propertyRehabCost}
+                    helperText={<span>{fieldErrors?.propertyRehabCost}</span>}
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -738,12 +738,12 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                     fullWidth
                     type="number"
                     value={
-                      formData.propertyMonthlyPropertyTaxes ||
+                      formData?.propertyMonthlyPropertyTaxes ||
                       monthlyPropertyTaxes
                     }
-                    error={fieldErrors.propertyMonthlyPropertyTaxes}
+                    error={fieldErrors?.propertyMonthlyPropertyTaxes}
                     helperText={
-                      <span>{fieldErrors.propertyMonthlyPropertyTaxes}</span>
+                      <span>{fieldErrors?.propertyMonthlyPropertyTaxes}</span>
                     }
                     onChange={(e) => {
                       setMonthlyPropertyTaxes(e.target.value);
@@ -814,11 +814,11 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                     fullWidth
                     type="number"
                     value={
-                      formData.propertyMonthlyInsurance || monthlyInsurance
+                      formData?.propertyMonthlyInsurance || monthlyInsurance
                     }
-                    error={fieldErrors.propertyMonthlyInsurance}
+                    error={fieldErrors?.propertyMonthlyInsurance}
                     helperText={
-                      <span>{fieldErrors.propertyMonthlyInsurance}</span>
+                      <span>{fieldErrors?.propertyMonthlyInsurance}</span>
                     }
                     onChange={(e) => {
                       setMonthlyInsurance(e.target.value);
@@ -881,12 +881,12 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                     fullWidth
                     type="number"
                     value={
-                      formData.propertyMonthlyUtilityBills ||
+                      formData?.propertyMonthlyUtilityBills ||
                       monthlyUtilityBills
                     }
-                    error={fieldErrors.propertyMonthlyUtilityBills}
+                    error={fieldErrors?.propertyMonthlyUtilityBills}
                     helperText={
-                      <span>{fieldErrors.propertyMonthlyUtilityBills}</span>
+                      <span>{fieldErrors?.propertyMonthlyUtilityBills}</span>
                     }
                     onChange={(e) => {
                       setMonthlyUtilityBills(e.target.value);
@@ -949,12 +949,12 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                     fullWidth
                     type="number"
                     value={
-                      formData.propertyOtherMonthlyExpenses ||
+                      formData?.propertyOtherMonthlyExpenses ||
                       otherMonthlyExpenses
                     }
-                    error={fieldErrors.propertyOtherMonthlyExpenses}
+                    error={fieldErrors?.propertyOtherMonthlyExpenses}
                     helperText={
-                      <span>{fieldErrors.propertyOtherMonthlyExpenses}</span>
+                      <span>{fieldErrors?.propertyOtherMonthlyExpenses}</span>
                     }
                     onChange={(e) => {
                       setOtherMonthlyExpenses(e.target.value);
@@ -1108,9 +1108,9 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                   <TextField
                     fullWidth
                     type="text" // Ensure it's text for comma formatting
-                    value={formData.afterRepairValue || afterRepairValue || ""}
-                    error={fieldErrors.afterRepairValue}
-                    helperText={<span>{fieldErrors.afterRepairValue}</span>}
+                    value={formData?.afterRepairValue || afterRepairValue || ""}
+                    error={fieldErrors?.afterRepairValue}
+                    helperText={<span>{fieldErrors?.afterRepairValue}</span>}
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -1286,7 +1286,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
         </Grid>
         <Container></Container>
       </Container>
-      <Modal
+      {/* <Modal
         open={showModal}
         onClose={() => setShowModal(false)}
         aria-labelledby="contact-us-modal"
@@ -1369,7 +1369,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
             </Grid>
           </form>
         </Box>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };
