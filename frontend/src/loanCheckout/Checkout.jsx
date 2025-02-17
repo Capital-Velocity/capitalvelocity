@@ -48,9 +48,12 @@ import SBA27 from "../pages/Project99/SBA27";
 import { ToastContainer, toast } from "react-toastify";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import { useMediaQuery } from "@mui/material";
+import StepButton from "@mui/material/StepButton";
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
+  const isSmallScreen = useMediaQuery("(max-width:600px)");
 
   // State to store form data
   const [addressData, setAddressData] = React.useState({});
@@ -591,14 +594,15 @@ export default function Checkout(props) {
             <React.Fragment>
               <Stepper
                 activeStep={activeStep}
-                alternativeLabel
+                orientation={isSmallScreen ? "vertical" : "horizontal"} // Switch to vertical for small screens
                 sx={{
-                  width: "100%", // Ensures full width
-                  display: "flex", // Ensures proper alignment
-                  justifyContent: "center", // Centers step labels
-                  "& .MuiStep-root": {
-                    flex: 1, // Ensures steps take equal space
-                  },
+                  // width: "100%", // Ensures full width
+                  // display: "flex", // Ensures proper alignment
+                  // "& .MuiStep-root": {
+                  //   flex: 1, // Ensures steps take equal space
+                  // },
+                  flexDirection: isSmallScreen ? "column" : "row", // Adjust direction
+                  alignItems: "center",
                 }}
               >
                 {steps.map((label, index) => (
