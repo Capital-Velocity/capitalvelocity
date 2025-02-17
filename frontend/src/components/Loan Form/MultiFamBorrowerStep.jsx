@@ -286,21 +286,24 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="guranteeLoan" // Name should match the key in formData
+                value={formData.guranteeLoan || ""} // Ensure the selected value is controlled
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    guranteeLoan: e.target.value, // Correctly update formData
+                  })
+                }
               >
                 <FormControlLabel
                   style={{ color: "black" }}
                   value="Yes"
-                  checked={formData.guranteeLoan === "Yes"}
-                  onChange={() => handleOptionChange("guranteeLoan", "Yes")}
                   control={<Radio />}
                   label="Yes"
                 />
                 <FormControlLabel
                   style={{ color: "black" }}
                   value="No"
-                  checked={formData.guranteeLoan === "No"}
-                  onChange={() => handleOptionChange("guranteeLoan", "No")}
                   control={<Radio />}
                   label="No"
                 />
@@ -322,21 +325,24 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               <RadioGroup
                 row
                 aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+                name="authorizedSign" // Name should match the key in formData
+                value={formData.authorizedSign || ""} // Ensure the selected value is controlled
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    authorizedSign: e.target.value, // Correctly update formData
+                  })
+                }
               >
                 <FormControlLabel
                   style={{ color: "black" }}
                   value="Yes"
-                  checked={formData.authorizedSign === "Yes"}
-                  onChange={() => handleOptionChange("authorizedSign", "Yes")}
                   control={<Radio />}
                   label="Yes"
                 />
                 <FormControlLabel
                   style={{ color: "black" }}
                   value="No"
-                  checked={formData.authorizedSign === "No"}
-                  onChange={() => handleOptionChange("authorizedSign", "No")}
                   control={<Radio />}
                   label="No"
                 />
