@@ -341,12 +341,12 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="authorizedSign" // Name should match the key in formData
-                  value={formData.authorizedSign || ""} // Ensure the selected value is controlled
+                  name="authorizedSignatory" // Name should match the key in formData
+                  value={formData.authorizedSignatory || ""} // Ensure the selected value is controlled
                   onChange={(e) =>
                     setFormData({
                       ...formData,
-                      authorizedSign: e.target.value, // Correctly update formData
+                      authorizedSignatory: e.target.value, // Correctly update formData
                     })
                   }
                 >
@@ -364,8 +364,10 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
                   />
                 </RadioGroup>
               </Box>
-              {fieldErrors?.authorizedSign && (
-                <FormHelperText>{fieldErrors.authorizedSign}</FormHelperText>
+              {fieldErrors?.authorizedSignatory && (
+                <FormHelperText>
+                  {fieldErrors.authorizedSignatory}
+                </FormHelperText>
               )}
             </FormControl>
           </Grid>

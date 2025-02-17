@@ -293,8 +293,8 @@ export default function MultiFamilyBridgeLoanForm(props) {
       if (!formData.guranteeLoan) {
         errors.guranteeLoan = "Required";
       }
-      if (!formData.authorizedSign) {
-        errors.authorizedSign = "Required";
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Required";
       }
     }
 
@@ -305,6 +305,47 @@ export default function MultiFamilyBridgeLoanForm(props) {
       }
     }
 
+    if (step === 2) {
+      if (!formData.homeAddress) {
+        errors.homeAddress = "Address is required";
+      }
+      if (!formData.addressCity) {
+        errors.addressCity = "City is required";
+      }
+      if (!formData.addressZip) {
+        errors.addressZip = "Zipcode is required";
+      }
+      if (!formData.addressState) {
+        errors.addressState = "State is required";
+      }
+      if (!formData.propertyType) {
+        errors.propertyType = "Property type is required";
+      }
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Authorized signatory is required";
+      }
+      if (!formData.purchaseorRefinance) {
+        errors.purchaseorRefinance = "Purchase or Refinance is required";
+      }
+      // if (!formData.propertyPurchasePrice) {
+      //   errors.propertyPurchasePrice = "Property purchase price is required";
+      // }
+      if (!formData.propertySource) {
+        errors.propertySource = "Property source is required";
+      }
+      // if (!formData.renovationBudget) {
+      //   errors.renovationBudget = "Renovation budget is required";
+      // }
+      if (!formData.isCondominium) {
+        errors.isCondominium = "Condominium option is required";
+      }
+      // if (!formData.afterRepairValue) {
+      //   errors.afterRepairValue = "After repair value is required";
+      // }
+      if (!formData.exitStrategry) {
+        errors.exitStrategry = "Exit strategy is required";
+      }
+    }
     // // Step 1: No Validation Needed
 
     // // // Step 2:

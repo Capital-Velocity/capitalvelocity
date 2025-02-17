@@ -19,6 +19,7 @@ const multiFamilySchema = new mongoose.Schema(
     annualUtilitiesExpenses: { type: String },
     asIsValue: { type: String },
     authorizedSign: { type: String },
+    authorizedSignatory: { type: String },
     background: { type: String },
     birthDate: { type: String },
     birthMonth: { type: String },
