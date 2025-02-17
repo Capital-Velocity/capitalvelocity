@@ -48,7 +48,7 @@ const selectionData = [
       "Fixed or Adjustable Rates",
       "Tax-Deductible Interest",
     ],
-    link: "/loan-form-realestate?type=RentalPortfolios",
+    link: "/loan-form-realestate-rentalportfolio",
   },
   {
     title: "Ground Up",

@@ -93,6 +93,16 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-realestate-rentalportfolio"
+          element={
+            firstnameCookie ? (
+              <MultiFamilyBridgeNewLoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -106,7 +116,8 @@ function FooterWrapper() {
   const location = useLocation(); // Now it's inside a descendant of <Router>
 
   return location.pathname !== "/loan-form-realestate-fixandflip" &&
-    location.pathname !== "/loan-form-realestate-multifamily" ? (
+    location.pathname !== "/loan-form-realestate-multifamily" &&
+    location.pathname !== "/loan-form-realestate-rentalportfolio" ? (
     <Footer />
   ) : null;
 }
