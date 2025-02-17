@@ -40,7 +40,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
     setFormData({ ...formData, completedCapex: completedCapex });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       {/* <CheckoutSteps step1 step2 step3 step4 step5></CheckoutSteps> */}
 
       <Container>
@@ -48,14 +48,14 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
           Other Details
         </Typography>
         {/* 
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Purchase information
         </Typography>
         */}
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 What is the As-Is Value?
               </Typography>
               <Grid item sm={12}>
@@ -70,7 +70,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
                   }
                   required
                   error={fieldErrors.asIsValue}
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   helperText={<span>{fieldErrors.asIsValue}</span>}
                   variant="outlined"
                   fullWidth
@@ -82,7 +82,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 What is the After repair value?
               </Typography>
               <Grid item sm={12}>
@@ -97,7 +97,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
                   }
                   required
                   error={fieldErrors.afterRepair}
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   helperText={<span>{fieldErrors.afterRepair}</span>}
                   variant="outlined"
                   fullWidth
@@ -108,14 +108,14 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
-                Exit Strategy *
+              <Typography type="p" color="black">
+                Exit Strategy
               </Typography>
 
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 error={fieldErrors.exitStrat}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.exitStrat || ""}
@@ -131,15 +131,21 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Refinance"}>Refinance</MenuItem>
                 <MenuItem value={"Sale"}>Sale</MenuItem>
               </Select>
+              {/* FormHelperText to display the error message */}
+              {fieldErrors.propertyType && (
+                <FormHelperText error>
+                  {fieldErrors.propertyType}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+          <Grid item sm={12}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               Please outline the background / story for this opportunity (what
               is it about this deal that you like)
             </label>
             <TextField
-              style={{ marginTop: 22, backgroundColor: "white" }}
+              style={{ backgroundColor: "white" }}
               onChange={(e) =>
                 setFormData({
                   ...formData,
@@ -152,8 +158,8 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
               fullWidth
             />
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+          <Grid item sm={12}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               Can you outline all of the red flags or concerns that we should be
               aware of? (What should we know at the beginning of this process
               that may have an impact on how we look at the deal?)
