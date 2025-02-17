@@ -58,10 +58,10 @@ export default function RentalPortfolioLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "RentalLoanPrice",
-    "RentalLoanPrice2",
-    "RentalLoanPrice3",
-    "LoanPricerSummary",
+    "Loan Pricer",
+    // "RentalLoanPrice2",
+    // "RentalLoanPrice3",
+    "Loan Pricer Summary",
     "BorrowerInfromation",
     "Borrower Infromation3",
     "Entity Information",
@@ -80,23 +80,23 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
+      // case 1:
+      //   return (
+      //     <RentalLoanPrice2
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 2:
+      //   return (
+      //     <RentalLoanPrice3
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 1:
-        return (
-          <RentalLoanPrice2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
-        return (
-          <RentalLoanPrice3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 3:
         return (
           <LoanPricerSummary
             formData={formData}
@@ -104,7 +104,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 4:
+      case 2:
         return (
           <BorrowerStep
             formData={formData}
@@ -112,7 +112,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 3:
         return (
           <BorrowerStep3
             formData={formData}
@@ -120,7 +120,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 4:
         return (
           <EntityInformation
             formData={formData}
@@ -128,7 +128,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 5:
         return (
           <LoanTerms2
             formData={formData}
@@ -136,7 +136,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 6:
         return (
           <LoanTerms3
             formData={formData}
@@ -144,7 +144,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 7:
         return (
           <SoftPull
             formData={formData}
@@ -152,7 +152,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 10:
+      case 8:
         return (
           <SBA26
             formData={formData}

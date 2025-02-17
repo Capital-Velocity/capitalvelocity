@@ -179,7 +179,7 @@ function RentalLoanPrice({ formData, setFormData, fieldErrors }) {
         <Grid container spacing={2}>
           <Grid item sm={12}>
             <FormControl style={{ width: "500px" }}>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Select State
               </Typography>
 
@@ -259,7 +259,7 @@ function RentalLoanPrice({ formData, setFormData, fieldErrors }) {
 
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Loan Purpose
               </Typography>
 
@@ -284,7 +284,7 @@ function RentalLoanPrice({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             {" "}
-            <Typography type="p" color="grey">
+            <Typography type="p" color="black">
               Purchase Price
             </Typography>
             <TextField
@@ -310,7 +310,7 @@ function RentalLoanPrice({ formData, setFormData, fieldErrors }) {
           </Grid>
           <Grid item sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Loan Recourse
               </Typography>
 
@@ -330,6 +330,219 @@ function RentalLoanPrice({ formData, setFormData, fieldErrors }) {
               >
                 <MenuItem value={"Full Recourse"}>Full Recourse</MenuItem>
                 <MenuItem value={"Non Recourse"}>Non Recourse</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Target Ltv
+            </Typography>
+            <TextField
+              error={fieldErrors.ltv}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.ltv || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  ltv: e.target.value,
+                })
+              }
+              InputProps={{
+                endAdornment: <InputAdornment position="end">%</InputAdornment>,
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Minimum As Is Value
+            </Typography>
+            <TextField
+              error={fieldErrors.minAsValue}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.minAsValue || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  minAsValue: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Maximum As Is Value
+            </Typography>
+            <TextField
+              error={fieldErrors.maxAsValue}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.maxAsValue || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  maxAsValue: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </Grid>
+
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Property Management
+              </Typography>
+
+              <Select
+                error={fieldErrors.propertyMan}
+                style={{ width: "500px", backgroundColor: "white" }}
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                value={formData.propertyMan || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    propertyMan: e.target.value,
+                  })
+                }
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem value={"Self Managed"}>Self Managed</MenuItem>
+                <MenuItem value={"Third Party Managment"}>
+                  Third Party Managment
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Gross Monthly Rent
+            </Typography>
+            <TextField
+              error={fieldErrors.grossmontly}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.grossmontly || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  grossmontly: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Minimum As Is Value (Cash Flow)
+            </Typography>
+            <TextField
+              error={fieldErrors.cashFlowminAsValue}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.cashFlowminAsValue || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  cashFlowminAsValue: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+          <Grid item sm={6}>
+            {" "}
+            <Typography type="p" color="black">
+              Maximum As Is Value (Cash Flow)
+            </Typography>
+            <TextField
+              error={fieldErrors.cashFlowmaxAsValue}
+              style={{ width: "500px", backgroundColor: "white" }}
+              value={formData.cashFlowmaxAsValue || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  cashFlowmaxAsValue: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+            />
+          </Grid>
+
+          <Grid item sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Property Management (Cash Flow)
+              </Typography>
+
+              <Select
+                error={fieldErrors.cashFlowpropertyMan}
+                style={{ width: "500px", backgroundColor: "white" }}
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                value={formData.cashFlowpropertyMan || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    cashFlowpropertyMan: e.target.value,
+                  })
+                }
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem value={"Self Managed"}>Self Managed</MenuItem>
+                <MenuItem value={"Third Party Managment"}>
+                  Third Party Managment
+                </MenuItem>
               </Select>
             </FormControl>
           </Grid>
