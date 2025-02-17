@@ -392,7 +392,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
         </Grid>
         <Grid container spacing={2}>
           {/* Preferred Closing Date */}
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Purchase Date
@@ -417,7 +417,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
             )} */}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What was the Purchase Price of the Property?
@@ -444,11 +444,11 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 // Add more props as needed
               />
             </FormControl>
-            {/* FormHelperText to display the error message */}
-            {/* {fieldErrors.closingDate && (
+            FormHelperText to display the error message
+            {fieldErrors.closingDate && (
               <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
-            )} */}
-          </Grid>
+            )}
+          </Grid> */}
         </Grid>
       </Container>
     </div>

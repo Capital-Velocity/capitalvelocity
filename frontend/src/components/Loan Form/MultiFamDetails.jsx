@@ -57,7 +57,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What is the As-Is Value?
@@ -84,7 +84,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          {/* <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What is the After repair value?
@@ -110,7 +110,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12}>
             <FormControl fullWidth>
