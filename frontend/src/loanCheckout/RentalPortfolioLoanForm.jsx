@@ -62,13 +62,13 @@ export default function RentalPortfolioLoanForm(props) {
     // "RentalLoanPrice2",
     // "RentalLoanPrice3",
     "Loan Pricer Summary",
-    "BorrowerInfromation",
-    "Borrower Infromation3",
+    "Borrower Information",
+    // "Borrower Infromation3",
     "Entity Information",
-    "Loan Terms2",
-    "Loan Terms3",
-    "SoftPull",
-    "SBA26",
+    "Rental DSCR Calculator",
+    "Vendor and Closing Options",
+    "Soft Credit Pull",
+    "Upload & Submit",
   ];
   function getStepContent(step) {
     switch (step) {
@@ -112,15 +112,15 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
+      // case 3:
+      //   return (
+      //     <BorrowerStep3
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 3:
-        return (
-          <BorrowerStep3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
         return (
           <EntityInformation
             formData={formData}
@@ -128,7 +128,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 4:
         return (
           <LoanTerms2
             formData={formData}
@@ -136,7 +136,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 5:
         return (
           <LoanTerms3
             formData={formData}
@@ -144,7 +144,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 6:
         return (
           <SoftPull
             formData={formData}
@@ -152,7 +152,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 7:
         return (
           <SBA26
             formData={formData}
