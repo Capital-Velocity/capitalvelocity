@@ -170,7 +170,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
         );
       case 6:
         return (
-          <LoanTerms
+          <FixandFlipCalcLoan
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -367,6 +367,48 @@ export default function MultiFamilyBridgeLoanForm(props) {
         errors.completedCapex = "Required";
       }
     }
+
+    if (step === 5) {
+      if (!formData.asIsValue) {
+        errors.asIsValue = "Required";
+      }
+      if (!formData.exitStrat) {
+        errors.exitStrat = "Required";
+      }
+      if (!formData.background) {
+        errors.background = "Required";
+      }
+      if (!formData.redFlags) {
+        errors.redFlags = "Required";
+      }
+    }
+
+    if (step === 6) {
+      if (!formData.propertyPurchasePrice) {
+        errors.propertyPurchasePrice = "Purchase price is required";
+      }
+      if (!formData.afterRepairValue) {
+        errors.afterRepairValue = "After repair value is required";
+      }
+      if (!formData.propertyRehabCost) {
+        errors.propertyRehabCost = "Rehab cost is required";
+      }
+      if (!formData.propertyMonthlyPropertyTaxes) {
+        errors.propertyMonthlyPropertyTaxes =
+          "Monthly property taxes are required";
+      }
+      if (!formData.propertyMonthlyInsurance) {
+        errors.propertyMonthlyInsurance = "Monthly insurance is required";
+      }
+      if (!formData.propertyMonthlyUtilityBills) {
+        errors.propertyMonthlyUtilityBills =
+          "Monthly utility bills are required";
+      }
+      if (!formData.propertyOtherMonthlyExpenses) {
+        errors.propertyOtherMonthlyExpenses =
+          "Other monthly expenses are required";
+      }
+    }
     // // Step 1: No Validation Needed
 
     // // // Step 2:
@@ -428,32 +470,6 @@ export default function MultiFamilyBridgeLoanForm(props) {
     // }
 
     // // Step 4:
-    // if (step === 3) {
-    //   if (!formData.propertyPurchasePrice) {
-    //     errors.propertyPurchasePrice = "Purchase price is required";
-    //   }
-    //   if (!formData.afterRepairValue) {
-    //     errors.afterRepairValue = "After repair value is required";
-    //   }
-    //   if (!formData.propertyRehabCost) {
-    //     errors.propertyRehabCost = "Rehab cost is required";
-    //   }
-    //   if (!formData.propertyMonthlyPropertyTaxes) {
-    //     errors.propertyMonthlyPropertyTaxes =
-    //       "Monthly property taxes are required";
-    //   }
-    //   if (!formData.propertyMonthlyInsurance) {
-    //     errors.propertyMonthlyInsurance = "Monthly insurance is required";
-    //   }
-    //   if (!formData.propertyMonthlyUtilityBills) {
-    //     errors.propertyMonthlyUtilityBills =
-    //       "Monthly utility bills are required";
-    //   }
-    //   if (!formData.propertyOtherMonthlyExpenses) {
-    //     errors.propertyOtherMonthlyExpenses =
-    //       "Other monthly expenses are required";
-    //   }
-    // }
 
     // // // Step 5:
     // // if (step === 3) {
