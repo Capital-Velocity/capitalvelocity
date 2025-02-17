@@ -423,11 +423,11 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 What was the Purchase Price of the Property?
               </Typography>{" "}
               <TextField
-                value={formData.purchasePrice || ""}
+                value={formData.propertyPurchasePrice || ""}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    purchasePrice: e.target.value,
+                    propertyPurchasePrice: e.target.value,
                   })
                 }
                 InputProps={{
@@ -436,7 +436,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                   ),
                 }}
                 style={{ backgroundColor: "white" }}
-                error={fieldErrors.purchasePrice}
+                error={fieldErrors.propertyPurchasePrice}
                 type="number"
                 label=" "
                 fullWidth

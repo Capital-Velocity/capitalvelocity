@@ -79,7 +79,11 @@ function LoanTerms({ formData, setFormData, fieldErrors }) {
         <Grid container spacing={2}>
           <Grid item sm={12}>
             {/* This is for the textFields*/}
-            <FixandFlipCalcLoan />
+            <FixandFlipCalcLoan
+              formData={formData}
+              setFormData={setFormData}
+              fieldErrors={{}}
+            />
           </Grid>
         </Grid>
       </Container>

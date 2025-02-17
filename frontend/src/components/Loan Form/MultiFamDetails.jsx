@@ -92,17 +92,17 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
               <Grid item sm={12}>
                 {" "}
                 <TextField
-                  value={formData.afterRepair || ""}
+                  value={formData.afterRepairValue || ""}
                   onChange={(e) =>
                     setFormData({
                       ...formData,
-                      afterRepair: e.target.value,
+                      afterRepairValue: e.target.value,
                     })
                   }
                   required
-                  error={fieldErrors.afterRepair}
+                  error={fieldErrors.afterRepairValue}
                   style={{ backgroundColor: "white" }}
-                  helperText={<span>{fieldErrors.afterRepair}</span>}
+                  helperText={<span>{fieldErrors.afterRepairValue}</span>}
                   variant="outlined"
                   fullWidth
 
