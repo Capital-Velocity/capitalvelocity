@@ -335,7 +335,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
           gutterBottom
           style={{ color: "#498dd6", fontSize: 24 }}
         >
-          Fix and Flip Calculator (Loan Form)
+          Fix and Flip Calculator
         </Typography>
         <Typography
           variant="body1"
@@ -1243,7 +1243,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                       </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginBottom: 10 }}>
+                    {/* <Grid item xs={12} style={{ marginBottom: 10 }}>
                       <Button
                         variant="contained"
                         onClick={() => {
@@ -1262,7 +1262,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                       >
                         Apply Now
                       </Button>
-                    </Grid>
+                    </Grid> */}
 
                     {/* <Grid item xs={6} style={{ marginBottom: 10 }}>
                       <Button
