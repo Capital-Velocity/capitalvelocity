@@ -51,7 +51,7 @@ function LoanPricerSummary({ formData, setFormData, fieldErrors }) {
   ];
   return (
     <div>
-      <CheckoutSteps2 step1 step2></CheckoutSteps2>
+      {/* <CheckoutSteps2 step1 step2></CheckoutSteps2> */}
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
