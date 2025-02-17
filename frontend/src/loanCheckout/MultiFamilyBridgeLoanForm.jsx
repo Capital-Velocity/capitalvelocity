@@ -298,6 +298,13 @@ export default function MultiFamilyBridgeLoanForm(props) {
       }
     }
 
+    // Step 0: BorrowerStep validation example
+    if (step === 1) {
+      if (!formData.borrowingEntityInformation) {
+        errors.borrowingEntityInformation = "Required ";
+      }
+    }
+
     // // Step 1: No Validation Needed
 
     // // // Step 2:
