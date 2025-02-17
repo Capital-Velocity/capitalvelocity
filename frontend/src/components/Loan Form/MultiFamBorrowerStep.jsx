@@ -226,7 +226,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Liquidity
@@ -251,7 +251,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          {/* <Grid item sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Social Security
@@ -272,7 +272,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
                 // Add more props as needed
               />
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
             <FormControl
