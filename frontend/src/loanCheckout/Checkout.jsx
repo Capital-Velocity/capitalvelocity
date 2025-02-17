@@ -550,16 +550,13 @@ export default function Checkout(props) {
             >
               {/* <Info totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"} /> */}
               <Typography
-                variant="h5" // Larger heading for "Small Business Loan"
-                style={{ color: "grey", fontWeight: "bold" }}
+                variant="h1" // Larger heading for "Small Business Loan"
+                style={{ color: "black", fontWeight: "bold" }}
                 gutterBottom
               >
                 Fix and Flip Loan
               </Typography>
-              <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14 }}
-              >
+              <Typography variant="h6" style={{ color: "black" }}>
                 Fix and flip loans are short-term financing solutions tailored
                 for real estate investors. These loans offer the capital needed
                 to purchase a property and fund necessary renovations. The
@@ -567,8 +564,8 @@ export default function Checkout(props) {
                 and sell it for a profit.
               </Typography>
               <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14, marginTop: "10px" }}
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
               >
                 <Checkbox
                   defaultChecked
