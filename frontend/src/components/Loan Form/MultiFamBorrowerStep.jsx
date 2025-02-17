@@ -13,6 +13,7 @@ import Radio from "@mui/material/Radio";
 import Slider from "@mui/material/Slider";
 import { Divider } from "@mui/material";
 import { Box } from "@mui/material";
+import FormHelperText from "@mui/material/FormHelperText";
 
 function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -125,6 +126,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
                       lastName: e.target.value,
                     })
                   }
+                  required
                   error={fieldErrors.lastName}
                   style={{ backgroundColor: "white" }}
                   helperText={<span>{fieldErrors.lastName}</span>}
@@ -273,81 +275,99 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                display: "block",
-              }}
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.guranteeLoan)}
+              style={{ display: "flex", alignItems: "center" }}
             >
-              Will this borrower be personally guaranteeing this loan?
-            </label>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="guranteeLoan" // Name should match the key in formData
-                value={formData.guranteeLoan || ""} // Ensure the selected value is controlled
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    guranteeLoan: e.target.value, // Correctly update formData
-                  })
-                }
+              <label
+                style={{
+                  fontSize: 15,
+                  fontWeight: 300,
+                  display: "block",
+                }}
               >
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="Yes"
-                  control={<Radio />}
-                  label="Yes"
-                />
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="No"
-                  control={<Radio />}
-                  label="No"
-                />
-              </RadioGroup>
-            </Box>
+                Will this borrower be personally guaranteeing this loan?
+              </label>
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="guranteeLoan"
+                  value={formData.guranteeLoan || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      guranteeLoan: e.target.value,
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.guranteeLoan && (
+                <FormHelperText>{fieldErrors.guranteeLoan}</FormHelperText>
+              )}
+            </FormControl>
           </Grid>
 
-          <Grid item xs={12} sx={{ mt: 2 }}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                display: "block",
-              }}
+          <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.guranteeLoan)}
+              style={{ display: "flex", alignItems: "center" }}
             >
-              Is the borrower authorized signatory?
-            </label>
-            <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="authorizedSign" // Name should match the key in formData
-                value={formData.authorizedSign || ""} // Ensure the selected value is controlled
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    authorizedSign: e.target.value, // Correctly update formData
-                  })
-                }
+              <label
+                style={{
+                  fontSize: 15,
+                  fontWeight: 300,
+                  display: "block",
+                }}
               >
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="Yes"
-                  control={<Radio />}
-                  label="Yes"
-                />
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="No"
-                  control={<Radio />}
-                  label="No"
-                />
-              </RadioGroup>
-            </Box>
+                Is the borrower authorized signatory?{" "}
+              </label>
+              <Box sx={{ display: "flex", justifyContent: "center", mt: 1 }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="authorizedSign" // Name should match the key in formData
+                  value={formData.authorizedSign || ""} // Ensure the selected value is controlled
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      authorizedSign: e.target.value, // Correctly update formData
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.authorizedSign && (
+                <FormHelperText>{fieldErrors.authorizedSign}</FormHelperText>
+              )}
+            </FormControl>
           </Grid>
 
           <Grid item xs={12} sx={{ mt: 2 }}>
