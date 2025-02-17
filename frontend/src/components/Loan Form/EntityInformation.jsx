@@ -13,6 +13,7 @@ import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider, FormHelperText } from "@mui/material";
 import Slider from "@mui/material/Slider";
+import { Box } from "@mui/material";
 
 function EntityInformation({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -42,6 +43,55 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           new borrowing entity.<br></br>
         </Typography>
         <Divider style={{ color: "black", marginBottom: 10 }} />
+
+        <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
+          <FormControl
+            component="fieldset"
+            error={Boolean(fieldErrors?.guranteeLoan)}
+            style={{ display: "flex", alignItems: "center" }}
+          >
+            <label
+              style={{
+                fontSize: 15,
+                fontWeight: 300,
+              }}
+            >
+              Is the borrower authorized signatory?{" "}
+            </label>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <RadioGroup
+                row
+                aria-labelledby="demo-row-radio-buttons-group-label"
+                name="authorizedSignatory" // Name should match the key in formData
+                value={formData.authorizedSignatory || ""} // Ensure the selected value is controlled
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    authorizedSignatory: e.target.value, // Correctly update formData
+                  })
+                }
+              >
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="Yes"
+                  control={<Radio />}
+                  label="Yes"
+                />
+                <FormControlLabel
+                  style={{ color: "black" }}
+                  value="No"
+                  control={<Radio />}
+                  label="No"
+                />
+              </RadioGroup>
+            </Box>
+            {fieldErrors?.authorizedSignatory && (
+              <FormHelperText error>
+                {fieldErrors.authorizedSignatory}
+              </FormHelperText>
+            )}
+          </FormControl>
+        </Grid>
 
         <label
           style={{

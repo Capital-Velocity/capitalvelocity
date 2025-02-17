@@ -212,7 +212,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <Typography type="p" color="black">
               Is the borrower authorized signatory?
             </Typography>
@@ -239,7 +239,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth style={{ minWidth: "", padding: "" }}>

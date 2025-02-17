@@ -293,13 +293,16 @@ export default function MultiFamilyBridgeLoanForm(props) {
       // if (!formData.guranteeLoan) {
       //   errors.guranteeLoan = "Required";
       // }
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Required";
-      }
+      // if (!formData.authorizedSignatory) {
+      //   errors.authorizedSignatory = "Required";
+      // }
     }
 
     // Step 0: BorrowerStep validation example
     if (step === 1) {
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Required ";
+      }
       if (!formData.borrowingEntityInformation) {
         errors.borrowingEntityInformation = "Required ";
       }
