@@ -274,7 +274,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid> */}
 
-          <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
+          {/* <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.guranteeLoan)}
@@ -320,7 +320,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
                 <FormHelperText>{fieldErrors.guranteeLoan}</FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sx={{ mt: 2, textAlign: "center" }}>
             <FormControl
