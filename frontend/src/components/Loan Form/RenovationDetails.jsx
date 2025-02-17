@@ -40,7 +40,7 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
     setFormData({ ...formData, completedCapex: completedCapex });
   };
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps> */}
 
       <Container>
@@ -48,13 +48,13 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
           Renovation details
         </Typography>
         {/* 
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Purchase information
         </Typography>
         */}
         <Grid container spacing={2}>
           <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               What is the renovation budget including renovation capital that
               has already been invested plus the amount required to complete the
               project?
@@ -72,7 +72,7 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
             />
           </Grid>
           <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               How much has been invested in completed capex to date
             </label>
             <TextField
@@ -88,18 +88,18 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
             />
           </Grid>
 
-          <Grid item sm={6}>
-            <Box mt={2}>
-              <Typography variant="subtitle1" style={{ color: "grey" }}>
+          <Grid item xs={12}>
+            <Box>
+              <Typography variant="subtitle1" style={{ color: "black" }}>
                 Total Budget: $
                 {isNaN(totalBudget) ? "0.00" : totalBudget.toFixed(2)}
               </Typography>
             </Box>
           </Grid>
-          <Grid item sm={6}>
-            <Typography type="p" color="grey">
-              Please describe the renovation *
-            </Typography>
+          <Grid item xs={12}>
+            <label style={{ fontWeight: 300 }}>
+              Please describe the renovation
+            </label>
             <Autocomplete
               multiple
               id="checkboxes-tags-demo"
@@ -119,9 +119,13 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
                   {option.title}
                 </li>
               )}
-              style={{ width: 500 }}
+              style={{
+                width: "100%", // Make sure the component takes full width
+                backgroundColor: "white",
+              }}
               renderInput={(params) => (
                 <TextField
+                  multiline
                   style={{ backgroundColor: "white" }}
                   value={formData.renovationDescript || ""}
                   onChange={(e) =>
@@ -132,8 +136,14 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
                   }
                   {...params}
                   error={fieldErrors.renovationDescript}
-                  label="Please describe the renovation *"
-                  placeholder="Please describe the renovation *"
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      minHeight: "56px", // Ensures consistent input height
+                      backgroundColor: "white",
+                    },
+                  }}
                 />
               )}
             />
