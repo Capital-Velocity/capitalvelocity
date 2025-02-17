@@ -11,6 +11,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { Box } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import { Divider } from "@mui/material";
+import FormHelperText from "@mui/material/FormHelperText";
 
 function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -36,77 +37,99 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
 
         <Grid container spacing={2}>
           <Grid item sm={6} sx={{ textAlign: "center" }}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 100,
-                color: "black",
-                display: "block",
-              }}
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.cashOut)}
             >
-              Are you looking for cash-out? *
-            </label>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+              <label
+                style={{
+                  fontSize: 15,
+                  fontWeight: 100,
+                  color: "black",
+                  display: "block",
+                }}
               >
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="Yes"
-                  checked={formData.cashOut === "Yes"}
-                  onChange={() => handleOptionChange("cashOut", "Yes")}
-                  control={<Radio />}
-                  label="Yes"
-                />
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="No"
-                  checked={formData.cashOut === "No"}
-                  onChange={() => handleOptionChange("cashOut", "No")}
-                  control={<Radio />}
-                  label="No"
-                />
-              </RadioGroup>
-            </Box>
+                Are you looking for cash-out? *
+              </label>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="cashOut"
+                  value={formData.cashOut || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      cashOut: e.target.value,
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.cashOut && (
+                <FormHelperText>{fieldErrors.cashOut}</FormHelperText>
+              )}
+            </FormControl>
           </Grid>
 
           <Grid item sm={6} sx={{ textAlign: "center" }}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 100,
-                color: "black",
-                display: "block",
-              }}
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.debt)}
             >
-              Is there any debt? *
-            </label>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="row-radio-buttons-group"
+              <label
+                style={{
+                  fontSize: 15,
+                  fontWeight: 100,
+                  color: "black",
+                  display: "block",
+                }}
               >
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="Yes"
-                  checked={formData.debt === "Yes"}
-                  onChange={() => handleOptionChange("debt", "Yes")}
-                  control={<Radio />}
-                  label="Yes"
-                />
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="No"
-                  checked={formData.debt === "No"}
-                  onChange={() => handleOptionChange("debt", "No")}
-                  control={<Radio />}
-                  label="No"
-                />
-              </RadioGroup>
-            </Box>
+                Is there any debt? *
+              </label>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="debt"
+                  value={formData.debt || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      debt: e.target.value,
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.debt && (
+                <FormHelperText>{fieldErrors.debt}</FormHelperText>
+              )}
+            </FormControl>
           </Grid>
 
           {formData.debt === "Yes" && (
@@ -393,10 +416,10 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
         <Grid container spacing={2}>
           {/* Preferred Closing Date */}
           <Grid item xs={12} sm={12}>
-            <FormControl fullWidth>
+            <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
               <Typography type="p" color="black">
                 Purchase Date
-              </Typography>{" "}
+              </Typography>
               <TextField
                 value={formData.purchaseDate || ""}
                 onChange={(e) =>
@@ -408,15 +431,13 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 style={{ backgroundColor: "white" }}
                 type="date"
                 variant="outlined"
-                error={fieldErrors.purchaseDate}
+                error={Boolean(fieldErrors?.purchaseDate)}
+                helperText={fieldErrors?.purchaseDate || ""}
                 fullWidth
               />
             </FormControl>
-            {/* FormHelperText to display the error message */}
-            {/* {fieldErrors.closingDate && (
-              <FormHelperText error>{fieldErrors.closingDate}</FormHelperText>
-            )} */}
           </Grid>
+
           {/* <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">

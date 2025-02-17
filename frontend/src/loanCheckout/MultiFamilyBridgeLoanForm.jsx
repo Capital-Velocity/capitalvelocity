@@ -346,6 +346,18 @@ export default function MultiFamilyBridgeLoanForm(props) {
         errors.exitStrategry = "Exit strategy is required";
       }
     }
+
+    if (step === 3) {
+      if (!formData.cashOut) {
+        errors.cashOut = "Required";
+      }
+      if (!formData.debt) {
+        errors.debt = "Required";
+      }
+      if (!formData.purchaseDate) {
+        errors.purchaseDate = "Required";
+      }
+    }
     // // Step 1: No Validation Needed
 
     // // // Step 2:
