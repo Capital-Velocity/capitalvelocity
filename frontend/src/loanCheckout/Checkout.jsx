@@ -50,6 +50,7 @@ import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 import { useMediaQuery } from "@mui/material";
 import StepButton from "@mui/material/StepButton";
+import FixandFlipCalcLoan from "../components/Loan Form/FixAndFlipCalcLoan";
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -150,8 +151,15 @@ export default function Checkout(props) {
       //     />
       //   );
       case 3:
+        // return (
+        //   <LoanTerms
+        //     formData={formData}
+        //     setFormData={setFormData}
+        //     fieldErrors={fieldErrors}
+        //   />
+        // );
         return (
-          <LoanTerms
+          <FixandFlipCalcLoan
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -330,6 +338,34 @@ export default function Checkout(props) {
       // }
       if (!formData.exitStrategry) {
         errors.exitStrategry = "Exit strategy is required";
+      }
+    }
+
+    // Step 4:
+    if (step === 3) {
+      if (!formData.propertyPurchasePrice) {
+        errors.propertyPurchasePrice = "Purchase price is required";
+      }
+      if (!formData.afterRepairValue) {
+        errors.afterRepairValue = "After repair value is required";
+      }
+      if (!formData.propertyRehabCost) {
+        errors.propertyRehabCost = "Rehab cost is required";
+      }
+      if (!formData.propertyMonthlyPropertyTaxes) {
+        errors.propertyMonthlyPropertyTaxes =
+          "Monthly property taxes are required";
+      }
+      if (!formData.propertyMonthlyInsurance) {
+        errors.propertyMonthlyInsurance = "Monthly insurance is required";
+      }
+      if (!formData.propertyMonthlyUtilityBills) {
+        errors.propertyMonthlyUtilityBills =
+          "Monthly utility bills are required";
+      }
+      if (!formData.propertyOtherMonthlyExpenses) {
+        errors.propertyOtherMonthlyExpenses =
+          "Other monthly expenses are required";
       }
     }
 

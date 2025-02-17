@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider } from "@mui/material";
-import FixandFlipCalc from "../../Calculators/FixandFlipCalc";
+import FixandFlipCalcLoan from "../Loan Form/FixAndFlipCalcLoan";
 
 function LoanTerms({ formData, setFormData, fieldErrors }) {
   const [sliderValue, setSliderValue] = React.useState(1);
@@ -79,7 +79,7 @@ function LoanTerms({ formData, setFormData, fieldErrors }) {
         <Grid container spacing={2}>
           <Grid item sm={12}>
             {/* This is for the textFields*/}
-            <FixandFlipCalc />
+            <FixandFlipCalcLoan />
           </Grid>
         </Grid>
       </Container>
