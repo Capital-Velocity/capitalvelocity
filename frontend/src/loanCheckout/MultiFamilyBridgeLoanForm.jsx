@@ -358,6 +358,15 @@ export default function MultiFamilyBridgeLoanForm(props) {
         errors.purchaseDate = "Required";
       }
     }
+
+    if (step === 4) {
+      if (!formData.investedCapital) {
+        errors.investedCapital = "Required";
+      }
+      if (!formData.completedCapex) {
+        errors.completedCapex = "Required";
+      }
+    }
     // // Step 1: No Validation Needed
 
     // // // Step 2:

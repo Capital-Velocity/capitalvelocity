@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
 
 function RenovationDetails({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
@@ -58,38 +59,58 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
 
         <Grid container spacing={2}>
           <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
-              What is the renovation budget including renovation capital that
-              has already been invested plus the amount required to complete the
-              project?
-            </label>
-            <TextField
-              variant="outlined"
-              InputProps={{
-                startAdornment: "$",
-              }}
-              style={{ backgroundColor: "white" }}
-              value={investedCapital}
-              error={fieldErrors.investedCapital}
-              onChange={handleInvestedCapitalChange}
+            <FormControl
               fullWidth
-            />
+              error={Boolean(fieldErrors?.investedCapital)}
+            >
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                What is the renovation budget including renovation capital that
+                has already been invested plus the amount required to complete
+                the project?
+              </label>
+              <TextField
+                variant="outlined"
+                InputProps={{
+                  startAdornment: "$",
+                }}
+                style={{ backgroundColor: "white" }}
+                value={formData.investedCapital || ""}
+                error={Boolean(fieldErrors?.investedCapital)}
+                helperText={fieldErrors?.investedCapital || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    investedCapital: e.target.value,
+                  })
+                }
+                fullWidth
+              />
+            </FormControl>
           </Grid>
+
           <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
-              How much has been invested in completed capex to date
-            </label>
-            <TextField
-              variant="outlined"
-              InputProps={{
-                startAdornment: "$",
-              }}
-              style={{ marginTop: 22, backgroundColor: "white" }}
-              value={completedCapex}
-              error={fieldErrors.completedCapex}
-              onChange={handleCompletedCapexChange}
-              fullWidth
-            />
+            <FormControl fullWidth error={Boolean(fieldErrors?.completedCapex)}>
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                How much has been invested in completed capex to date?
+              </label>
+              <TextField
+                variant="outlined"
+                InputProps={{
+                  startAdornment: "$",
+                }}
+                style={{ marginTop: 22, backgroundColor: "white" }}
+                value={formData.completedCapex || ""}
+                error={Boolean(fieldErrors?.completedCapex)}
+                helperText={fieldErrors?.completedCapex || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    completedCapex: e.target.value,
+                  })
+                }
+                fullWidth
+              />
+            </FormControl>
           </Grid>
 
           <Grid item xs={12}>
