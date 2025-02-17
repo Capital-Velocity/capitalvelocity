@@ -10,6 +10,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Box } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
+import { Divider } from "@mui/material";
 
 function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -26,11 +27,13 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          Add new property
+          Add New property
         </Typography>
-        <Typography variant="subtitle1" color="black" gutterBottom>
-          Purchase information
-        </Typography>
+        {/* <Typography variant="subtitle1" color="black" gutterBottom>
+          Purchase Information
+        </Typography> */}
+        <Divider style={{ color: "black", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6} sx={{ textAlign: "center" }}>
             <label
@@ -112,7 +115,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 How much Debt is there?
               </Typography>
               <TextField
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ width: "400px", backgroundColor: "white" }}
                 value={formData.debtValue || ""}
                 size="large"
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -135,7 +138,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
             >
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.grossMonthlyRent || ""}
                   size="large"
                   InputLabelProps={{
@@ -159,7 +162,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
 
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualTaxes || ""}
                   size="large"
                   InputLabelProps={{
@@ -179,7 +182,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualInsurance || ""}
                   size="large"
                   InputLabelProps={{
@@ -202,7 +205,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualHOADues || ""}
                   size="large"
                   InputLabelProps={{
@@ -225,7 +228,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualUtilitiesExpenses || ""}
                   size="large"
                   InputLabelProps={{
@@ -248,7 +251,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualRepairsMaintenanceExpenses || ""}
                   size="large"
                   InputLabelProps={{
@@ -271,7 +274,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualPropertyManagementFees || ""}
                   size="large"
                   InputLabelProps={{
@@ -294,7 +297,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualAdministrativeManagementFees || ""}
                   size="large"
                   InputLabelProps={{
@@ -317,7 +320,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualPayrollExpense || ""}
                   size="large"
                   InputLabelProps={{
@@ -340,7 +343,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualMarketingExpense || ""}
                   size="large"
                   InputLabelProps={{
@@ -363,7 +366,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               </Grid>
               <Grid item sm={4}>
                 <TextField
-                  style={{ width: "300px", backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   value={formData.annualReplacementReserve || ""}
                   size="large"
                   InputLabelProps={{

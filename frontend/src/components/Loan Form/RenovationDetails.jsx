@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
+
 function RenovationDetails({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -45,13 +47,15 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          Renovation details
+          Renovation Details
         </Typography>
         {/* 
         <Typography variant="subtitle1" color="black" gutterBottom>
           Purchase information
         </Typography>
         */}
+        <Divider style={{ color: "black", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>

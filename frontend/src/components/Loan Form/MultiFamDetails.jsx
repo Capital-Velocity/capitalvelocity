@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
+import { Divider } from "@mui/material";
+
 function MultiFamDetails({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -52,6 +54,8 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
           Purchase information
         </Typography>
         */}
+        <Divider style={{ color: "black", marginBottom: 10 }} />
+
         <Grid container spacing={2}>
           <Grid item sm={6}>
             <FormControl fullWidth>
