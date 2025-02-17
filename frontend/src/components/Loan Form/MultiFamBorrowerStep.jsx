@@ -407,23 +407,6 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               />
             </div>
           </Grid> */}
-          <Grid item xs={12} sx={{}}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
-              What percentage of the borrowing entity does this borrower own?
-            </label>
-            <div style={{ width: "100%" }}>
-              <Slider
-                value={formData.borrowingEntityOwned || "0"}
-                onChange={(event) => handleChange2(event)}
-                min={0}
-                max={100}
-                step={1}
-                marks={percentageMarks}
-                valueLabelDisplay="auto"
-                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
-              />
-            </div>
-          </Grid>
         </Grid>
       </Container>
     </div>

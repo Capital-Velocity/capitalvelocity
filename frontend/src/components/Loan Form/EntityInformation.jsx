@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
 import { Divider, FormHelperText } from "@mui/material";
+import Slider from "@mui/material/Slider";
 
 function EntityInformation({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
@@ -21,6 +22,13 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
       [fieldName]: value, // Update the specified field in formData with the selected value
     });
   };
+  const percentageMarks = [
+    { value: 0, label: "0%" },
+    { value: 25, label: "25%" },
+    { value: 50, label: "50%" },
+    { value: 75, label: "75%" },
+    { value: 100, label: "100%" },
+  ];
   return (
     <div style={{ width: "100%" }}>
       {" "}
@@ -171,6 +179,23 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                 id="outlined-basic"
                 variant="outlined"
               />
+            </Grid>
+            <Grid item xs={12} sx={{}}>
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                What percentage of the borrowing entity does this borrower own?
+              </label>
+              <div style={{ width: "100%" }}>
+                <Slider
+                  value={formData.borrowingEntityOwned || "0"}
+                  onChange={(event) => handleChange2(event)}
+                  min={0}
+                  max={100}
+                  step={1}
+                  marks={percentageMarks}
+                  valueLabelDisplay="auto"
+                  style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+                />
+              </div>
             </Grid>
           </Grid>
         )}

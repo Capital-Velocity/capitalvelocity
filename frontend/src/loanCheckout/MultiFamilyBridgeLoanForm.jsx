@@ -290,9 +290,9 @@ export default function MultiFamilyBridgeLoanForm(props) {
       if (!formData.liquidity) {
         errors.liquidity = "Liquidity amount is required";
       }
-      if (!formData.guranteeLoan) {
-        errors.guranteeLoan = "Required";
-      }
+      // if (!formData.guranteeLoan) {
+      //   errors.guranteeLoan = "Required";
+      // }
       if (!formData.authorizedSignatory) {
         errors.authorizedSignatory = "Required";
       }
