@@ -83,7 +83,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
       {/* <CheckoutSteps step1></CheckoutSteps> */}
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          Borrower information
+          Borrower Information
         </Typography>
         <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
