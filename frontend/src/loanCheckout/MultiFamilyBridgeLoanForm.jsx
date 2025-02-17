@@ -409,148 +409,36 @@ export default function MultiFamilyBridgeLoanForm(props) {
           "Other monthly expenses are required";
       }
     }
-    // // Step 1: No Validation Needed
 
-    // // // Step 2:
-    // // if (step === 2) {
-    // //   if (!formData.bestTerms) {
-    // //     errors.bestTerms = "Arms length description is required";
-    // //   }
-    // // }
+    if (step === 7) {
+      if (!formData.preferredClosingAttorney) {
+        errors.preferredClosingAttorney = "Closing attorney is required";
+      }
+      if (!formData.closingDate) {
+        errors.closingDate = "Closing date is required";
+      }
+      if (!formData.insuranceCompany) {
+        errors.insuranceCompany = "Insurance company is required";
+      }
+      if (!formData.titleCompany) {
+        errors.titleCompany = "Title company is required";
+      }
+    }
 
-    // // Step 3:
-    // if (step === 1) {
-    //   if (!formData.borrowingEntityInformation) {
-    //     errors.borrowingEntityInformation =
-    //       "Borrowing entity information is required";
-    //   }
-    // }
-
-    // // Step 4:
-    // if (step === 2) {
-    //   if (!formData.homeAddress) {
-    //     errors.homeAddress = "Address is required";
-    //   }
-    //   if (!formData.addressCity) {
-    //     errors.addressCity = "City is required";
-    //   }
-    //   if (!formData.addressZip) {
-    //     errors.addressZip = "Zipcode is required";
-    //   }
-    //   if (!formData.addressState) {
-    //     errors.addressState = "State is required";
-    //   }
-    //   if (!formData.propertyType) {
-    //     errors.propertyType = "Property type is required";
-    //   }
-    //   if (!formData.authorizedSignatory) {
-    //     errors.authorizedSignatory = "Authorized signatory is required";
-    //   }
-    //   if (!formData.purchaseorRefinance) {
-    //     errors.purchaseorRefinance = "Purchase or Refinance is required";
-    //   }
-    //   // if (!formData.propertyPurchasePrice) {
-    //   //   errors.propertyPurchasePrice = "Property purchase price is required";
-    //   // }
-    //   if (!formData.propertySource) {
-    //     errors.propertySource = "Property source is required";
-    //   }
-    //   // if (!formData.renovationBudget) {
-    //   //   errors.renovationBudget = "Renovation budget is required";
-    //   // }
-    //   if (!formData.isCondominium) {
-    //     errors.isCondominium = "Condominium option is required";
-    //   }
-    //   // if (!formData.afterRepairValue) {
-    //   //   errors.afterRepairValue = "After repair value is required";
-    //   // }
-    //   if (!formData.exitStrategry) {
-    //     errors.exitStrategry = "Exit strategy is required";
-    //   }
-    // }
-
-    // // Step 4:
-
-    // // // Step 5:
-    // // if (step === 3) {
-    // //   if (!formData.authorizedSignatory) {
-    // //     errors.authorizedSignatory = "Authorized signatory is required";
-    // //   }
-    // //   if (!formData.purchaseorRefinance) {
-    // //     errors.purchaseorRefinance = "Purchase or Refinance is required";
-    // //   }
-    // // }
-
-    // // // Step 6:
-    // // if (step === 3) {
-    // //   if (!formData.propertyPurchasePrice) {
-    // //     errors.propertyPurchasePrice = "Property purchase price is required";
-    // //   }
-    // //   if (!formData.propertySource) {
-    // //     errors.propertySource = "Property source is required";
-    // //   }
-    // // }
-
-    // // Step 7:
-    // // if (step === 4) {
-    // //   if (!formData.renovationBudget) {
-    // //     errors.renovationBudget = "Renovation budget is required";
-    // //   }
-    // //   if (!formData.isCondominium) {
-    // //     errors.isCondominium = "Condominium option is required";
-    // //   }
-    // // }
-
-    // // // Step 8:
-    // // if (step === 5) {
-    // //   if (!formData.afterRepairValue) {
-    // //     errors.afterRepairValue = "After repair value is required";
-    // //   }
-    // //   if (!formData.exitStrategry) {
-    // //     errors.exitStrategry = "Exit strategy is required";
-    // //   }
-    // // }
-
-    // // Step 9: Fix and Flip Calculator, nothing required here
-
-    // // Step 10:
-    // if (step === 4) {
-    //   if (!formData.preferredClosingAttorney) {
-    //     errors.preferredClosingAttorney = "Closing attorney is required";
-    //   }
-    //   if (!formData.closingDate) {
-    //     errors.closingDate = "Closing date is required";
-    //   }
-    //   if (!formData.insuranceCompany) {
-    //     errors.insuranceCompany = "Insurance company is required";
-    //   }
-    //   if (!formData.titleCompany) {
-    //     errors.titleCompany = "Title company is required";
-    //   }
-    // }
-
-    // // // Step 11:
-    // // if (step === 5) {
-    // //   if (!formData.creditScore) {
-    // //     errors.creditScore = "Credit score is required";
-    // //   }
-    // // }
-
-    // // Step 12:
-    // if (step === 5) {
-    //   if (!formData.birthMonth) {
-    //     errors.birthMonth = "Birth month is required";
-    //   }
-    //   if (!formData.birthDate) {
-    //     errors.birthDate = "Birth date is required";
-    //   }
-    //   if (!formData.birthYear) {
-    //     errors.birthYear = "Birth year is required";
-    //   }
-    //   if (!formData.socialSecurity) {
-    //     errors.socialSecurity = "SSN number is required";
-    //   }
-    // }
+    if (step === 8) {
+      if (!formData.birthMonth) {
+        errors.birthMonth = "Birth month is required";
+      }
+      if (!formData.birthDate) {
+        errors.birthDate = "Birth date is required";
+      }
+      if (!formData.birthYear) {
+        errors.birthYear = "Birth year is required";
+      }
+      if (!formData.socialSecurity) {
+        errors.socialSecurity = "SSN number is required";
+      }
+    }
 
     // Add more validations for other steps as needed
 
