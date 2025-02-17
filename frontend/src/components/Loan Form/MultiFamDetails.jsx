@@ -41,7 +41,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
   };
   return (
     <div>
-      <CheckoutSteps step1 step2 step3 step4 step5></CheckoutSteps>
+      {/* <CheckoutSteps step1 step2 step3 step4 step5></CheckoutSteps> */}
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>

@@ -19,7 +19,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
   };
   return (
     <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      {/* <CheckoutSteps step1 step2 step3></CheckoutSteps> */}
 
       <Container>
         <Typography variant="h4" color="black" gutterBottom>

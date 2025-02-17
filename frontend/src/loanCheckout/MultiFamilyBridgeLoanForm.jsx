@@ -75,21 +75,16 @@ export default function MultiFamilyBridgeLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "0",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
+    "Borrower Information",
+    "Entity Information",
+    "Property Information",
+    "Add New Property",
+    "Renovation Details",
+    "Other Details",
+    "Fix and Flip Calculator",
+    "Vendor and Closing Options",
+    "Soft Credit Pull",
+    "Upload & Submit",
   ];
   function getStepContent(step) {
     switch (step) {
@@ -101,31 +96,31 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
+      //   case 1:
+      //     return (
+      //       <BorrowerStep2
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
+      //   case 2:
+      //     return (
+      //       <MultiFamBorrowerStep2
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
+      //   case 3:
+      //     return (
+      //       <MultiFamBorrowerStep3
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
       case 1:
-        return (
-          <BorrowerStep2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
-        return (
-          <MultiFamBorrowerStep2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 3:
-        return (
-          <MultiFamBorrowerStep3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
         return (
           <EntityInformation
             formData={formData}
@@ -133,7 +128,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 2:
         return (
           <PropertyInformation
             formData={formData}
@@ -141,15 +136,15 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
-        return (
-          <MultiFamProperty
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 7:
+      //   case 3:
+      //     return (
+      //       <MultiFamProperty
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
+      case 3:
         return (
           <MultiFamProperty2
             formData={formData}
@@ -157,7 +152,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 4:
         return (
           <RenovationDetails
             formData={formData}
@@ -165,7 +160,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 5:
         return (
           <MultiFamDetails
             formData={formData}
@@ -173,7 +168,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 10:
+      case 6:
         return (
           <LoanTerms
             formData={formData}
@@ -181,15 +176,15 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 11:
-        return (
-          <LoanTerms2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 12:
+      //   case 7:
+      //     return (
+      //       <LoanTerms2
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
+      case 7:
         return (
           <LoanTerms3
             formData={formData}
@@ -205,7 +200,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
       //         fieldErrors={fieldErrors}
       //       />
       //     );
-      case 13:
+      case 8:
         return (
           <SoftPull
             formData={formData}
@@ -213,7 +208,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 14:
+      case 9:
         return (
           <SBA26
             formData={formData}
