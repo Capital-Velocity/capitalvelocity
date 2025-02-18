@@ -51,7 +51,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
             style={{ display: "flex", alignItems: "center" }}
           >
             <Typography type="p" color="black">
-              Is the borrower authorized signatory?{" "}
+              Is the Borrower an Authorized Signatory?{" "}
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <RadioGroup
