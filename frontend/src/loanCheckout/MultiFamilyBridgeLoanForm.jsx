@@ -543,16 +543,13 @@ export default function MultiFamilyBridgeLoanForm(props) {
             >
               {/* <Info totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"} /> */}
               <Typography
-                variant="h5" // Larger heading for "Small Business Loan"
-                style={{ color: "grey", fontWeight: "bold" }}
+                variant="h1" // Larger heading for "Small Business Loan"
+                style={{ color: "black", fontWeight: "bold" }}
                 gutterBottom
               >
                 Multifamily Bridge Loan
               </Typography>
-              <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14 }}
-              >
+              <Typography variant="h6" style={{ color: "black" }}>
                 Acquiring a multifamily property often requires quick and
                 flexible financing solutions to secure the deal before long-term
                 funding is arranged. Our interim financing options provide fast
@@ -561,8 +558,8 @@ export default function MultiFamilyBridgeLoanForm(props) {
                 strategy.
               </Typography>
               <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14, marginTop: "10px" }}
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
               >
                 <Checkbox
                   defaultChecked
