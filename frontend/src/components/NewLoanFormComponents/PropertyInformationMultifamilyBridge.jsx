@@ -877,6 +877,11 @@ function PropertyInformationMultiFamilyBridge({
                       </span>
                     )
                   }
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
                   variant="outlined"
                   fullWidth
                 />
