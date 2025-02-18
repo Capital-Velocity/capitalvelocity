@@ -240,7 +240,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Liquidity
