@@ -211,7 +211,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
             <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
-              <Typography type="p" color="black">
+              <Typography variant="body1" color="black">
                 Purchase Date
               </Typography>
               <TextField
@@ -228,6 +228,9 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 error={Boolean(fieldErrors?.purchaseDate)}
                 helperText={fieldErrors?.purchaseDate || ""}
                 fullWidth
+                FormHelperTextProps={{
+                  sx: { textAlign: "center" }, // Centers the helper text
+                }}
               />
             </FormControl>
           </Grid>
