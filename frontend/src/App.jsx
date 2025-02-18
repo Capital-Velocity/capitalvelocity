@@ -129,7 +129,8 @@ function FooterWrapper() {
 
   return location.pathname !== "/loan-form-realestate-fixandflip" &&
     location.pathname !== "/loan-form-realestate-multifamily" &&
-    location.pathname !== "/loan-form-realestate-rentalportfolio" ? (
+    location.pathname !== "/loan-form-realestate-rentalportfolio" &&
+    location.pathname !== "/loan-form-realestate-singlepropertyrental" ? (
     <Footer />
   ) : null;
 }
