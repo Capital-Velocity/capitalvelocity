@@ -84,7 +84,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 First Name
@@ -111,7 +111,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Last Name
@@ -138,7 +138,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Email Address
@@ -164,7 +164,7 @@ function MultiFamBorrowerStep({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Phone
