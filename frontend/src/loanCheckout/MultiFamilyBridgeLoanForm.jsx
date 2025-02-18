@@ -621,7 +621,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             }}
           >
             <React.Fragment>
-              {/* <Stepper
+              <Stepper
                 activeStep={activeStep}
                 orientation={isSmallScreen ? "vertical" : "horizontal"}
                 sx={{
@@ -651,7 +651,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                     </StepLabel>
                   </Step>
                 ))}
-              </Stepper> */}
+              </Stepper>
               {/* <Box
                 sx={{ overflowX: "auto", whiteSpace: "nowrap", width: "100%" }}
               >
@@ -684,7 +684,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                 </Stepper>
               </Box> */}
 
-              <Stepper
+              {/* <Stepper
                 activeStep={activeStep}
                 orientation="horizontal" // Always horizontal
                 sx={{
@@ -720,7 +720,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                     </StepLabel>
                   </Step>
                 ))}
-              </Stepper>
+              </Stepper> */}
 
               {getStepContent(activeStep)}
               <Box
