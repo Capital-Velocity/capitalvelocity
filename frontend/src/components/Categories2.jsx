@@ -39,17 +39,13 @@ const selectionData = [
     link: "/loan-form-realestate-multifamily",
   },
   {
-    title: "Rental Portfolios",
-    icon: <HouseSidingIcon />,
-    value: "RentalPortfolios",
-    tooltip: "Long-term loans for multiple rental properties.",
-    checks: [
-      "Portfolio Financing",
-      "Fixed or Adjustable Rates",
-      "Tax-Deductible Interest",
-    ],
-    // link: "/loan-form-realestate-rentalportfolio",
-    link: "/loan-form-realestate?type=RentalPortfolio",
+    title: "Single Property Rental",
+    icon: <SinglePropertyIcon />,
+    value: "SingleProperty",
+    tooltip: "Loans for individual real estate investments.",
+    checks: ["Individual Financing", "No Portfolio Required", "Quick Approval"],
+    // link: "/loan-form-realestate?type=SingleProperty",
+    link: "/loan-form-realestate-singlepropertyrental",
   },
   {
     title: "Ground Up",
@@ -71,14 +67,18 @@ const selectionData = [
     checks: ["Cash-Out Options", "Equity-Based Loans", "Debt Consolidation"],
     link: "/loan-form-realestate?type=StabilizedBridge",
   },
-
   {
-    title: "Single Property",
-    icon: <SinglePropertyIcon />,
-    value: "SingleProperty",
-    tooltip: "Loans for individual real estate investments.",
-    checks: ["Individual Financing", "No Portfolio Required", "Quick Approval"],
-    link: "/loan-form-realestate?type=SingleProperty",
+    title: "Rental Portfolios",
+    icon: <HouseSidingIcon />,
+    value: "RentalPortfolios",
+    tooltip: "Long-term loans for multiple rental properties.",
+    checks: [
+      "Portfolio Financing",
+      "Fixed or Adjustable Rates",
+      "Tax-Deductible Interest",
+    ],
+    // link: "/loan-form-realestate-rentalportfolio",
+    link: "/loan-form-realestate?type=RentalPortfolio",
   },
 ];
 

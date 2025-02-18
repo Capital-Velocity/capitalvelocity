@@ -30,6 +30,7 @@ import FixAndFlipNewForm from "./pages/FixAndFlipNewForm";
 import LoanForm from "./components/LoanForm";
 import MultiFamilyBridgeNewLoanForm from "./pages/MultiFamilyBridgeNewLoanForm";
 import RentalPortfolioNewLoanForm from "./pages/RentalPortfolioNewLoanForm";
+import SinglePropertyRentalNewForm from "./pages/SinglePropertyRentalNewForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -99,6 +100,16 @@ function App() {
           element={
             firstnameCookie ? (
               <RentalPortfolioNewLoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
+        <Route
+          path="/loan-form-realestate-singlepropertyrental"
+          element={
+            firstnameCookie ? (
+              <SinglePropertyRentalNewForm />
             ) : (
               <Navigate to="/register" />
             )
