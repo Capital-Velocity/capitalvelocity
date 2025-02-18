@@ -625,7 +625,7 @@ export default function Checkout(props) {
             }}
           >
             <React.Fragment>
-              <Stepper
+              {/* <Stepper
                 activeStep={activeStep}
                 orientation={isSmallScreen ? "vertical" : "horizontal"} // Switch to vertical for small screens
                 sx={{
@@ -649,6 +649,44 @@ export default function Checkout(props) {
                         },
                         "& .MuiStepIcon-root": {
                           cursor: "pointer", // Ensures icon also shows a pointer
+                        },
+                      }}
+                    >
+                      {label}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
+
+              <Stepper
+                activeStep={activeStep}
+                orientation="horizontal" // Always horizontal
+                sx={{
+                  flexWrap: "wrap",
+                  justifyContent: "center", // Centered alignment
+                  rowGap: "8px", // Space between rows
+                }}
+              >
+                {steps.map((label, index) => (
+                  <Step
+                    key={label}
+                    onClick={() => handleStepClick(index)}
+                    sx={{
+                      flex: "2 1 30%", // Ensures equal width (adjust 25% as needed)
+                      minWidth: "120px", // Prevents steps from getting too small
+                      textAlign: "center", // Ensures labels stay centered
+                    }}
+                  >
+                    <StepLabel
+                      sx={{
+                        cursor: "pointer",
+                        "& .MuiStepLabel-label": {
+                          fontSize: "0.8rem",
+                          textAlign: "center", // Ensures text alignment
+                          display: "block", // Keeps text from shifting
+                        },
+                        "& .MuiStepIcon-root": {
+                          fontSize: "1.5rem",
                         },
                       }}
                     >
