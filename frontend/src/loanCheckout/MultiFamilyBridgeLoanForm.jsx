@@ -620,30 +620,98 @@ export default function MultiFamilyBridgeLoanForm(props) {
             }}
           >
             <React.Fragment>
-              <Stepper
+              {/* <Stepper
                 activeStep={activeStep}
-                orientation={isSmallScreen ? "vertical" : "horizontal"} // Switch to vertical for small screens
+                orientation={isSmallScreen ? "vertical" : "horizontal"}
                 sx={{
-                  // width: "100%", // Ensures full width
-                  // display: "flex", // Ensures proper alignment
-                  // "& .MuiStep-root": {
-                  //   flex: 1, // Ensures steps take equal space
-                  // },
-                  flexDirection: isSmallScreen ? "column" : "row", // Adjust direction
+                  flexDirection: isSmallScreen ? "column" : "row",
                   alignItems: "center",
+                  gap: isSmallScreen ? "4px" : "8px", // Reduce gap for compactness
                 }}
               >
                 {steps.map((label, index) => (
                   <Step key={label} onClick={() => handleStepClick(index)}>
                     <StepLabel
                       sx={{
-                        cursor: "pointer", // Ensures all steps show a clickable cursor
-                        pointerEvents: "auto", // Enables clicking on all steps (even gray ones)
+                        cursor: "pointer",
+                        pointerEvents: "auto",
                         "& .MuiStepLabel-label": {
-                          cursor: "pointer", // Fixes label text not changing to pointer
+                          cursor: "pointer",
+                          fontSize: "0.8rem", // Reduce font size for compactness
+                          margin: "0px", // Reduce default margin
                         },
                         "& .MuiStepIcon-root": {
-                          cursor: "pointer", // Ensures icon also shows a pointer
+                          cursor: "pointer",
+                          fontSize: "1.5rem", // Adjust icon size
+                        },
+                      }}
+                    >
+                      {label}
+                    </StepLabel>
+                  </Step>
+                ))}
+              </Stepper> */}
+              {/* <Box
+                sx={{ overflowX: "auto", whiteSpace: "nowrap", width: "100%" }}
+              >
+                <Stepper
+                  activeStep={activeStep}
+                  orientation={"horizontal"}
+                  sx={{
+                    flexWrap: "nowrap",
+                    width: "max-content", // Ensures content doesn’t shrink
+                    justifyContent: "center",
+                  }}
+                >
+                  {steps.map((label, index) => (
+                    <Step key={label} onClick={() => handleStepClick(index)}>
+                      <StepLabel
+                        sx={{
+                          cursor: "pointer",
+                          "& .MuiStepLabel-label": {
+                            fontSize: "0.8rem",
+                          },
+                          "& .MuiStepIcon-root": {
+                            fontSize: "1.5rem",
+                          },
+                        }}
+                      >
+                        {label}
+                      </StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
+              </Box> */}
+
+              <Stepper
+                activeStep={activeStep}
+                orientation="horizontal" // Always horizontal
+                sx={{
+                  flexWrap: "wrap",
+                  justifyContent: "center", // Centered alignment
+                  rowGap: "8px", // Space between rows
+                }}
+              >
+                {steps.map((label, index) => (
+                  <Step
+                    key={label}
+                    onClick={() => handleStepClick(index)}
+                    sx={{
+                      flex: "2 1 30%", // Ensures equal width (adjust 25% as needed)
+                      minWidth: "120px", // Prevents steps from getting too small
+                      textAlign: "center", // Ensures labels stay centered
+                    }}
+                  >
+                    <StepLabel
+                      sx={{
+                        cursor: "pointer",
+                        "& .MuiStepLabel-label": {
+                          fontSize: "0.8rem",
+                          textAlign: "center", // Ensures text alignment
+                          display: "block", // Keeps text from shifting
+                        },
+                        "& .MuiStepIcon-root": {
+                          fontSize: "1.5rem",
                         },
                       }}
                     >
