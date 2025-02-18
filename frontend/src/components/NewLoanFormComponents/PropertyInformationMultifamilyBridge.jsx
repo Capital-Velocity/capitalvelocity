@@ -457,8 +457,8 @@ function PropertyInformationMultiFamilyBridge({
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  fullWidth // Ensure TextField takes the full width
-                  multiline // Allows dynamic height adjustment
+                  fullWidth
+                  multiline // Allows TextField to expand with more content
                   error={!!fieldErrors.renovationDescript}
                   helperText={fieldErrors.renovationDescript}
                   value={formData.renovationDescript || ""}
@@ -472,7 +472,9 @@ function PropertyInformationMultiFamilyBridge({
                   InputProps={{
                     ...params.InputProps,
                     style: {
-                      minHeight: "56px", // Ensures consistent input height
+                      minHeight: "56px",
+                      maxHeight: "150px", // Limit height to avoid excessive expansion
+                      overflowY: "auto", // Allows scrolling when height is exceeded
                       backgroundColor: "white",
                     },
                   }}
@@ -844,7 +846,9 @@ function PropertyInformationMultiFamilyBridge({
                   InputProps={{
                     ...params.InputProps,
                     style: {
-                      minHeight: "56px", // Ensures consistent input height
+                      minHeight: "56px",
+                      maxHeight: "150px", // Limit height to avoid excessive expansion
+                      overflowY: "auto", // Allows scrolling when height is exceeded
                       backgroundColor: "white",
                     },
                   }}
