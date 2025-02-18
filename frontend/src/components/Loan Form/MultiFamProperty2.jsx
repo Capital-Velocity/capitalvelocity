@@ -36,21 +36,14 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={12} sx={{}}>
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.cashOut)}
             >
-              <label
-                style={{
-                  fontSize: 15,
-                  fontWeight: 100,
-                  color: "black",
-                  display: "block",
-                }}
-              >
-                Are you looking for cash-out? *
-              </label>
+              <Typography type="p" color="black">
+                Are you looking for cash-out?
+              </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <RadioGroup
                   row
@@ -79,27 +72,22 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 </RadioGroup>
               </Box>
               {fieldErrors?.cashOut && (
-                <FormHelperText>{fieldErrors.cashOut}</FormHelperText>
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.cashOut}
+                </FormHelperText>
               )}
             </FormControl>
           </Grid>
 
-          <Grid item sm={12} sx={{ textAlign: "center" }}>
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.debt)}
             >
-              <label
-                style={{
-                  fontSize: 15,
-                  fontWeight: 100,
-                  color: "black",
-                  display: "block",
-                }}
-              >
-                Is there any debt? *
-              </label>
-              <Box sx={{}}>
+              <Typography type="p" color="black">
+                Is there any debt?
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
@@ -127,7 +115,9 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 </RadioGroup>
               </Box>
               {fieldErrors?.debt && (
-                <FormHelperText>{fieldErrors.debt}</FormHelperText>
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.debt}
+                </FormHelperText>
               )}
             </FormControl>
           </Grid>
