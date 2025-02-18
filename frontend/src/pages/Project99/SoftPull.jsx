@@ -44,7 +44,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
         </Typography>
         <Divider style={{ color: "black", marginBottom: 10 }} />
         <Grid container spacing={2}>
-          <Grid item sm={4}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Date of Birth (Month)
@@ -75,7 +75,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Date of Birth (Date)
@@ -107,7 +107,7 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
               )}
             </FormControl>
           </Grid>
-          <Grid item sm={4}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Date of Birth (Year)
@@ -178,15 +178,6 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item sm={6} style={{ marginTop: 20 }}>
-            <FormControl fullWidth>
-              <Typography type="p" color="black">
-                This is for verifying credit. Your personal information will be
-                protected with bank-level security.
-              </Typography>
-            </FormControl>
-          </Grid>
-
           <Grid item sm={12} style={{ marginTop: 20 }}>
             <label
               style={{
@@ -199,6 +190,11 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
               USER CERTIFICATION
             </label>
             <FormControl fullWidth>
+              <Typography type="p" color="black">
+                This is for verifying credit. Your personal information will be
+                protected with bank-level security.
+              </Typography>
+              <br />
               <Typography type="p" color="black">
                 By clicking the ‘Next’ button below, you acknowledge that you
                 have read and agree to the Credit Gathering Authorization as
