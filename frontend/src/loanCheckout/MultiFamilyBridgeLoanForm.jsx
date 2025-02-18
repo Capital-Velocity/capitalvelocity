@@ -325,9 +325,9 @@ export default function MultiFamilyBridgeLoanForm(props) {
       if (!formData.propertyType) {
         errors.propertyType = "Property type is required";
       }
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Authorized signatory is required";
-      }
+      // if (!formData.authorizedSignatory) {
+      //   errors.authorizedSignatory = "Authorized signatory is required";
+      // }
       if (!formData.purchaseorRefinance) {
         errors.purchaseorRefinance = "Purchase or Refinance is required";
       }
@@ -346,8 +346,8 @@ export default function MultiFamilyBridgeLoanForm(props) {
       // if (!formData.afterRepairValue) {
       //   errors.afterRepairValue = "After repair value is required";
       // }
-      if (!formData.exitStrategry) {
-        errors.exitStrategry = "Exit strategy is required";
+      if (!formData.exitStrat) {
+        errors.exitStrat = "Exit strategy is required";
       }
     }
 
