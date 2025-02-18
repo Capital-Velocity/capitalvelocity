@@ -30,7 +30,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
     { title: "Moderate Rehab" },
     { title: "New Construction" },
     { title: "Condo Conversion" },
-    { title: "No Renovation planned" },
+    { title: "No Renovation Planned" },
   ];
   const fixedOptions = [top100Films[7]];
   const [value, setValue] = React.useState([...fixedOptions, top100Films[7]]);
