@@ -246,7 +246,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                 step={1}
                 marks={marks}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+                style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
@@ -263,7 +263,7 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
                 step={1}
                 marks={percentageMarks}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+                style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
