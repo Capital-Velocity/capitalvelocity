@@ -66,6 +66,7 @@ import LoanPricer2 from "../components/Loan Form/LoanPricer2";
 import LoanPricer3 from "../components/Loan Form/LoanPricer3";
 import LoanPricer4 from "../components/Loan Form/LoanPricer4";
 import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
+import LoanPricerSinglePropertyRentalForm from "../components/NewLoanFormComponents/LoanPricerSinglePropertyRentalForm";
 
 export default function SinglePropertyRentalLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -91,7 +92,6 @@ export default function SinglePropertyRentalLoanForm(props) {
     // "Upload & Submit", // Adds 5 spaces
 
     "LoanPricer", //DONE //
-    "LoanPricer2", //DONW //
     "LoanPricer3", //DONE //
     "LoanPricer4", //DONE //
     "LoanPricerSummary", //DONE //
@@ -108,21 +108,21 @@ export default function SinglePropertyRentalLoanForm(props) {
     switch (step) {
       case 0:
         return (
-          <LoanPricer
+          <LoanPricerSinglePropertyRentalForm
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
+      //   case 1:
+      //     return (
+      //       <LoanPricer2
+      //         formData={formData}
+      //         setFormData={setFormData}
+      //         fieldErrors={fieldErrors}
+      //       />
+      //     );
       case 1:
-        return (
-          <LoanPricer2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
         return (
           <LoanPricer3
             formData={formData}
@@ -130,7 +130,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 3:
+      case 2:
         return (
           <LoanPricer4
             formData={formData}
@@ -138,7 +138,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 4:
+      case 3:
         return (
           <LoanPricerSummary
             formData={formData}
@@ -146,7 +146,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 4:
         return (
           <BorrowerStep
             formData={formData}
@@ -154,7 +154,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 5:
         return (
           <BorrowerStep3
             formData={formData}
@@ -162,7 +162,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 6:
         return (
           <EntityInformation
             formData={formData}
@@ -170,7 +170,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 8:
+      case 7:
         return (
           <LoanTerms2
             formData={formData}
@@ -178,7 +178,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 9:
+      case 8:
         return (
           <LoanTerms3
             formData={formData}
@@ -186,7 +186,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 10:
+      case 9:
         return (
           <SoftPull
             formData={formData}
@@ -194,7 +194,7 @@ export default function SinglePropertyRentalLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 11:
+      case 10:
         return (
           <SBA26
             formData={formData}
