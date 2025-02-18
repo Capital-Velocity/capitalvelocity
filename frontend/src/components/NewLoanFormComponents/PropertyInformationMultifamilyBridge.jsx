@@ -769,14 +769,14 @@ function PropertyInformationMultiFamilyBridge({
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Box>
               <Typography variant="subtitle1" style={{ color: "black" }}>
                 Total Budget: $
                 {isNaN(totalBudget) ? "0.00" : totalBudget.toFixed(2)}
               </Typography>
             </Box>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <label style={{ fontWeight: 300 }}>
               Please describe the renovation
