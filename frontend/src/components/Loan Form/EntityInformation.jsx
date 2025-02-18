@@ -50,14 +50,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
             error={Boolean(fieldErrors?.guranteeLoan)}
             style={{ display: "flex", alignItems: "center" }}
           >
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-              }}
-            >
+            <Typography type="p" color="black">
               Is the borrower authorized signatory?{" "}
-            </label>
+            </Typography>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <RadioGroup
                 row
@@ -93,14 +88,9 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
           </FormControl>
         </Grid>
 
-        <label
-          style={{
-            fontSize: 15,
-            fontWeight: 300,
-          }}
-        >
+        <Typography type="p" color="black">
           Do you have the Borrowing Entity Information?
-        </label>
+        </Typography>
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
