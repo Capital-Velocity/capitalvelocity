@@ -124,7 +124,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
 
           {formData.debt === "Yes" && (
             <>
-              <Grid item sm={6} xs={12} style={{ marginBottom: 10 }}>
+              <Grid item sm={6} xs={12} style={{}}>
                 <Typography type="p" color="black">
                   How much Debt is there?
                 </Typography>
@@ -147,36 +147,36 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
               {[
-                { label: "Gross Monthly Rent *", key: "grossMonthlyRent" },
-                { label: "Annual Taxes *", key: "annualTaxes" },
-                { label: "Annual Insurance *", key: "annualInsurance" },
-                { label: "Annual HOA Dues *", key: "annualHOADues" },
+                { label: "Gross Monthly Rent", key: "grossMonthlyRent" },
+                { label: "Annual Taxes", key: "annualTaxes" },
+                { label: "Annual Insurance", key: "annualInsurance" },
+                { label: "Annual HOA Dues", key: "annualHOADues" },
                 {
-                  label: "Annual Utilities Expenses *",
+                  label: "Annual Utilities Expenses",
                   key: "annualUtilitiesExpenses",
                 },
                 {
-                  label: "Annual Repairs & Maintenance Expenses *",
+                  label: "Annual Repairs & Maintenance Expenses",
                   key: "annualRepairsMaintenanceExpenses",
                 },
                 {
-                  label: "Annual Property Management Fees *",
+                  label: "Annual Property Management Fees",
                   key: "annualPropertyManagementFees",
                 },
                 {
-                  label: "Annual Administrative Management Fees *",
+                  label: "Annual Administrative Management Fees",
                   key: "annualAdministrativeManagementFees",
                 },
                 {
-                  label: "Annual Payroll Expense *",
+                  label: "Annual Payroll Expense",
                   key: "annualPayrollExpense",
                 },
                 {
-                  label: "Annual Marketing Expense *",
+                  label: "Annual Marketing Expense",
                   key: "annualMarketingExpense",
                 },
                 {
-                  label: "Annual Replacement Reserve *",
+                  label: "Annual Replacement Reserve",
                   key: "annualReplacementReserve",
                 },
               ].map((field) => (
