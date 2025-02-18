@@ -36,7 +36,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6} sx={{ textAlign: "center" }}>
+          <Grid item sm={12} sx={{}}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.cashOut)}
@@ -84,7 +84,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item sm={6} sx={{ textAlign: "center" }}>
+          <Grid item sm={12} sx={{ textAlign: "center" }}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.debt)}
@@ -99,7 +99,7 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
               >
                 Is there any debt? *
               </label>
-              <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <Box sx={{}}>
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
@@ -133,289 +133,93 @@ function MultiFamProperty2({ formData, setFormData, fieldErrors }) {
           </Grid>
 
           {formData.debt === "Yes" && (
-            <Grid item sm={6} style={{ marginBottom: 10 }}>
-              <Typography type="p" color="black">
-                How much Debt is there?
-              </Typography>
-              <TextField
-                style={{ width: "400px", backgroundColor: "white" }}
-                value={formData.debtValue || ""}
-                size="large"
-                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
-                onChange={(e) =>
-                  setFormData({ ...formData, debtValue: e.target.value })
-                }
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">$</InputAdornment>
-                  ),
-                }}
-              />
-            </Grid>
-          )}
-          {formData.debt === "Yes" && (
-            <Grid
-              container
-              spacing={2}
-              style={{ marginLeft: 2, marginBottom: 5 }}
-            >
-              <Grid item sm={4}>
+            <>
+              <Grid item sm={6} xs={12} style={{ marginBottom: 10 }}>
+                <Typography type="p" color="black">
+                  How much Debt is there?
+                </Typography>
                 <TextField
                   style={{ backgroundColor: "white" }}
-                  value={formData.grossMonthlyRent || ""}
+                  value={formData.debtValue || ""}
                   size="large"
                   InputLabelProps={{
                     style: { fontSize: 15, fontWeight: 100 },
                   }}
                   onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      grossMonthlyRent: e.target.value,
-                    })
+                    setFormData({ ...formData, debtValue: e.target.value })
                   }
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">$</InputAdornment>
                     ),
                   }}
-                  label="Gross Monthly Rent *"
-                  variant="outlined"
+                  fullWidth
                 />
               </Grid>
-
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualTaxes || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({ ...formData, annualTaxes: e.target.value })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Taxes *"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualInsurance || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualInsurance: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Insurance*"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualHOADues || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualHOADues: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual HOA Dues *"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualUtilitiesExpenses || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualUtilitiesExpenses: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Utilities Expenses *"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualRepairsMaintenanceExpenses || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualRepairsMaintenanceExpenses: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Repairs & Maintenance Expenses*"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualPropertyManagementFees || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualPropertyManagementFees: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Property Management Fees *"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualAdministrativeManagementFees || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualAdministrativeManagementFees: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Administrative Management Fees *"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualPayrollExpense || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualPayrollExpense: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Payroll Expense*"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualMarketingExpense || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualMarketingExpense: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Marketing Expense*"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item sm={4}>
-                <TextField
-                  style={{ backgroundColor: "white" }}
-                  value={formData.annualReplacementReserve || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      annualReplacementReserve: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  label="Annual Replacement Reserve *"
-                  variant="outlined"
-                />
-              </Grid>
-            </Grid>
+              {[
+                { label: "Gross Monthly Rent *", key: "grossMonthlyRent" },
+                { label: "Annual Taxes *", key: "annualTaxes" },
+                { label: "Annual Insurance *", key: "annualInsurance" },
+                { label: "Annual HOA Dues *", key: "annualHOADues" },
+                {
+                  label: "Annual Utilities Expenses *",
+                  key: "annualUtilitiesExpenses",
+                },
+                {
+                  label: "Annual Repairs & Maintenance Expenses *",
+                  key: "annualRepairsMaintenanceExpenses",
+                },
+                {
+                  label: "Annual Property Management Fees *",
+                  key: "annualPropertyManagementFees",
+                },
+                {
+                  label: "Annual Administrative Management Fees *",
+                  key: "annualAdministrativeManagementFees",
+                },
+                {
+                  label: "Annual Payroll Expense *",
+                  key: "annualPayrollExpense",
+                },
+                {
+                  label: "Annual Marketing Expense *",
+                  key: "annualMarketingExpense",
+                },
+                {
+                  label: "Annual Replacement Reserve *",
+                  key: "annualReplacementReserve",
+                },
+              ].map((field) => (
+                <Grid item sm={6} xs={12} key={field.key} sx={{ paddingX: 1 }}>
+                  <FormControl fullWidth>
+                    <Typography type="p" color="black">
+                      {field.label}
+                    </Typography>
+                    <TextField
+                      style={{ backgroundColor: "white" }}
+                      value={formData[field.key] || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [field.key]: e.target.value,
+                        })
+                      }
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                      variant="outlined"
+                      fullWidth
+                    />
+                  </FormControl>
+                </Grid>
+              ))}
+            </>
           )}
         </Grid>
         <Grid container spacing={2}>
-          {/* Preferred Closing Date */}
-          <Grid item xs={12} sm={12}>
+          <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
             <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
               <Typography type="p" color="black">
                 Purchase Date
