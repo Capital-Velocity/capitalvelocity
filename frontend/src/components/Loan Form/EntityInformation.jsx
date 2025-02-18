@@ -17,12 +17,22 @@ import { Box } from "@mui/material";
 
 function EntityInformation({ formData, setFormData, fieldErrors }) {
   const [selectedOption, setSelectedOption] = useState("no");
+  const [sliderValue, setSliderValue] = useState(1);
+
   const handleOptionChange = (fieldName, value) => {
     setFormData({
       ...formData,
       [fieldName]: value, // Update the specified field in formData with the selected value
     });
   };
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue); // Use newValue directly
+    setFormData((prevData) => ({
+      ...prevData,
+      borrowingEntityOwned: newValue, // Update formData properly
+    }));
+  };
+
   const percentageMarks = [
     { value: 0, label: "0%" },
     { value: 25, label: "25%" },
@@ -226,7 +236,26 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                   variant="outlined"
                 />
               </Grid>
-              <Grid item xs={12} sx={{}}>
+              <Grid item xs={12} sx={{ mt: 2 }}>
+                <Typography component="p" color="black">
+                  What percentage of the borrowing entity does this borrower
+                  own?
+                </Typography>
+                <div style={{ width: "100%" }}>
+                  <Slider
+                    value={Number(formData.borrowingEntityOwned) || 0} // Ensure numeric value
+                    onChange={handleSliderChange} // Pass function reference directly
+                    min={0}
+                    max={100}
+                    step={1}
+                    marks={percentageMarks}
+                    valueLabelDisplay="auto"
+                    style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
+                  />
+                </div>
+              </Grid>
+
+              {/* <Grid item xs={12} sx={{}}>
                 <Typography type="p" color="black">
                   What percentage of the borrowing entity does this borrower
                   own?{" "}
@@ -243,7 +272,7 @@ function EntityInformation({ formData, setFormData, fieldErrors }) {
                     style={{ color: "#498dd6", width: "100%" }} // Ensure slider takes full width
                   />
                 </div>
-              </Grid>
+              </Grid> */}
             </Grid>
           )}
         </Grid>
