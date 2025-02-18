@@ -15,7 +15,7 @@ import FormControl from "@mui/material/FormControl";
 function RenovationDetails({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
-  const top100Films = [
+  const top100Films2 = [
     { title: "Cleanout" },
     { title: "Light and cosmetic" },
     { title: "Gut Rehab" },
@@ -23,7 +23,7 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
     { title: "New Construction" },
     { title: "No Renovation planned" },
   ];
-  const fixedOptions = [top100Films[5]];
+  const fixedOptions2 = [top100Films2[5]];
   const [selectedOption, setSelectedOption] = useState("no");
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -128,7 +128,7 @@ function RenovationDetails({ formData, setFormData, fieldErrors }) {
             <Autocomplete
               multiple
               id="checkboxes-tags-demo"
-              options={top100Films}
+              options={top100Films2}
               disableCloseOnSelect
               getOptionLabel={(option) => option.title}
               renderOption={(props, option, { selected }) => (

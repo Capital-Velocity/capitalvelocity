@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider, FormHelperText } from "@mui/material";
+import { Divider, FormHelperText, Box } from "@mui/material";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -15,6 +15,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import Autocomplete from "@mui/material/Autocomplete";
 import Checkbox from "@mui/material/Checkbox";
+import InputAdornment from "@mui/material/InputAdornment";
 
 function PropertyInformationMultiFamilyBridge({
   formData,
@@ -38,6 +39,34 @@ function PropertyInformationMultiFamilyBridge({
   ];
   const fixedOptions = [top100Films[7]];
   const [value, setValue] = React.useState([...fixedOptions, top100Films[7]]);
+
+  const top100Films2 = [
+    { title: "Cleanout" },
+    { title: "Light and cosmetic" },
+    { title: "Gut Rehab" },
+    { title: "Moderate rehab" },
+    { title: "New Construction" },
+    { title: "No Renovation planned" },
+  ];
+  const fixedOptions2 = [top100Films2[5]];
+  const [selectedOption, setSelectedOption] = useState("no");
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  const [investedCapital, setInvestedCapital] = useState("");
+  const [completedCapex, setCompletedCapex] = useState("");
+
+  const totalBudget = parseFloat(investedCapital) + parseFloat(completedCapex);
+
+  const handleInvestedCapitalChange = (event) => {
+    setInvestedCapital(event.target.value);
+    setFormData({ ...formData, investedCapital: investedCapital });
+  };
+
+  const handleCompletedCapexChange = (event) => {
+    setCompletedCapex(event.target.value);
+    setFormData({ ...formData, completedCapex: completedCapex });
+  };
 
   return (
     <div style={{ width: "100%" }}>
@@ -511,6 +540,294 @@ function PropertyInformationMultiFamilyBridge({
                 </FormHelperText>
               )}
             </FormControl>
+          </Grid>
+
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.cashOut)}
+            >
+              <Typography type="p" color="black">
+                Are you looking for cash-out?
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="cashOut"
+                  value={formData.cashOut || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      cashOut: e.target.value,
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.cashOut && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.cashOut}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.debt)}
+            >
+              <Typography type="p" color="black">
+                Is there any debt?
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="debt"
+                  value={formData.debt || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      debt: e.target.value,
+                    })
+                  }
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes"
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No"
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.debt && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.debt}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          {formData.debt === "Yes" && (
+            <>
+              <Grid item sm={6} xs={12} style={{}}>
+                <Typography type="p" color="black">
+                  How much Debt is there?
+                </Typography>
+                <TextField
+                  style={{ backgroundColor: "white" }}
+                  value={formData.debtValue || ""}
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) =>
+                    setFormData({ ...formData, debtValue: e.target.value })
+                  }
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  fullWidth
+                />
+              </Grid>
+              {[
+                { label: "Gross Monthly Rent", key: "grossMonthlyRent" },
+                { label: "Annual Taxes", key: "annualTaxes" },
+                { label: "Annual Insurance", key: "annualInsurance" },
+                { label: "Annual HOA Dues", key: "annualHOADues" },
+                {
+                  label: "Annual Utilities Expenses",
+                  key: "annualUtilitiesExpenses",
+                },
+                {
+                  label: "Annual Repairs & Maintenance Expenses",
+                  key: "annualRepairsMaintenanceExpenses",
+                },
+                {
+                  label: "Annual Property Management Fees",
+                  key: "annualPropertyManagementFees",
+                },
+                {
+                  label: "Annual Administrative Management Fees",
+                  key: "annualAdministrativeManagementFees",
+                },
+                {
+                  label: "Annual Payroll Expense",
+                  key: "annualPayrollExpense",
+                },
+                {
+                  label: "Annual Marketing Expense",
+                  key: "annualMarketingExpense",
+                },
+                {
+                  label: "Annual Replacement Reserve",
+                  key: "annualReplacementReserve",
+                },
+              ].map((field) => (
+                <Grid item sm={6} xs={12} key={field.key} sx={{ paddingX: 1 }}>
+                  <FormControl fullWidth>
+                    <Typography type="p" color="black">
+                      {field.label}
+                    </Typography>
+                    <TextField
+                      style={{ backgroundColor: "white" }}
+                      value={formData[field.key] || ""}
+                      onChange={(e) =>
+                        setFormData({
+                          ...formData,
+                          [field.key]: e.target.value,
+                        })
+                      }
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                      variant="outlined"
+                      fullWidth
+                    />
+                  </FormControl>
+                </Grid>
+              ))}
+            </>
+          )}
+
+          <Grid item sm={6}>
+            <FormControl
+              fullWidth
+              error={Boolean(fieldErrors?.investedCapital)}
+            >
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                What is the renovation budget including renovation capital that
+                has already been invested plus the amount required to complete
+                the project?
+              </label>
+              <TextField
+                variant="outlined"
+                InputProps={{
+                  startAdornment: "$",
+                }}
+                style={{ backgroundColor: "white" }}
+                value={formData.investedCapital || ""}
+                error={Boolean(fieldErrors?.investedCapital)}
+                helperText={fieldErrors?.investedCapital || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    investedCapital: e.target.value,
+                  })
+                }
+                fullWidth
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item sm={6}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.completedCapex)}>
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                How much has been invested in completed capex to date?
+              </label>
+              <TextField
+                variant="outlined"
+                InputProps={{
+                  startAdornment: "$",
+                }}
+                style={{ marginTop: 22, backgroundColor: "white" }}
+                value={formData.completedCapex || ""}
+                error={Boolean(fieldErrors?.completedCapex)}
+                helperText={fieldErrors?.completedCapex || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    completedCapex: e.target.value,
+                  })
+                }
+                fullWidth
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Box>
+              <Typography variant="subtitle1" style={{ color: "black" }}>
+                Total Budget: $
+                {isNaN(totalBudget) ? "0.00" : totalBudget.toFixed(2)}
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12}>
+            <label style={{ fontWeight: 300 }}>
+              Please describe the renovation
+            </label>
+            <Autocomplete
+              multiple
+              id="checkboxes-tags-demo"
+              options={top100Films2}
+              disableCloseOnSelect
+              getOptionLabel={(option) => option.title}
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    style={{
+                      marginRight: 8,
+                    }}
+                    checked={selected}
+                  />
+                  {option.title}
+                </li>
+              )}
+              style={{
+                width: "100%", // Make sure the component takes full width
+                backgroundColor: "white",
+              }}
+              renderInput={(params) => (
+                <TextField
+                  multiline
+                  style={{ backgroundColor: "white" }}
+                  value={formData.renovationDescript || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      renovationDescript: e.target.value,
+                    })
+                  }
+                  {...params}
+                  error={fieldErrors.renovationDescript}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      minHeight: "56px", // Ensures consistent input height
+                      backgroundColor: "white",
+                    },
+                  }}
+                />
+              )}
+            />
           </Grid>
         </Grid>
       </Container>
