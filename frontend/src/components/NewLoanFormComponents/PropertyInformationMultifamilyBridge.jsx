@@ -55,7 +55,7 @@ function PropertyInformationMultiFamilyBridge({
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Property Address
@@ -80,7 +80,7 @@ function PropertyInformationMultiFamilyBridge({
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 City
@@ -106,7 +106,7 @@ function PropertyInformationMultiFamilyBridge({
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Zip Code
@@ -148,7 +148,7 @@ function PropertyInformationMultiFamilyBridge({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 State
