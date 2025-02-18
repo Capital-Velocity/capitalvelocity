@@ -85,8 +85,9 @@ export default function MultiFamilyBridgeLoanForm(props) {
     "Fix and Flip Calculator",
     "Vendor and Closing Options",
     "Soft Credit Pull",
-    "Upload & Submit",
+    "Upload & Submit\u00A0\u00A0\u00A0\u00A0", // Adds 5 spaces
   ];
+
   function getStepContent(step) {
     switch (step) {
       case 0:
