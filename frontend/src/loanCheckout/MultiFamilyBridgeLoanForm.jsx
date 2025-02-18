@@ -16,6 +16,7 @@ import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import AddressForm from "./components/AddressForm";
 import Info from "./components/Info";
 import InfoMobile from "./components/InfoMobile";
+import InfoMobileMultiFamilyBridge from "./components/InfoMobileMultiFamilyBridge";
 import PaymentForm from "./components/PaymentForm";
 import Review from "./components/Review";
 import SitemarkIcon from "./components/SitemarkIcon";
@@ -82,7 +83,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
     "Fix and Flip Calculator",
     "Vendor and Closing Options",
     "Soft Credit Pull",
-    "Upload & Submit\u00A0\u00A0\u00A0\u00A0", // Adds 5 spaces
+    "Upload & Submit", // Adds 5 spaces
   ];
 
   function getStepContent(step) {
@@ -645,7 +646,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             }}
           >
             <React.Fragment>
-              <Stepper
+              {/* <Stepper
                 activeStep={activeStep}
                 orientation={isSmallScreen ? "vertical" : "horizontal"}
                 sx={{
@@ -675,7 +676,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                     </StepLabel>
                   </Step>
                 ))}
-              </Stepper>
+              </Stepper> */}
               {/* <Box
                 sx={{ overflowX: "auto", whiteSpace: "nowrap", width: "100%" }}
               >
@@ -708,7 +709,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                 </Stepper>
               </Box> */}
 
-              {/* <Stepper
+              <Stepper
                 activeStep={activeStep}
                 orientation="horizontal" // Always horizontal
                 sx={{
@@ -744,7 +745,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                     </StepLabel>
                   </Step>
                 ))}
-              </Stepper> */}
+              </Stepper>
 
               {getStepContent(activeStep)}
               <Box
@@ -855,7 +856,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
                     Fix and Flip Loan
                   </Typography>
                 </div> */}
-                <InfoMobile
+                <InfoMobileMultiFamilyBridge
                   totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"}
                 />
               </CardContent>
