@@ -59,6 +59,7 @@ import MultiFamProperty2 from "../components/Loan Form/MultiFamProperty2";
 import RenovationDetails from "../components/Loan Form/RenovationDetails";
 import MultiFamDetails from "../components/Loan Form/MultiFamDetails";
 import MultiFamilyPricing from "../components/Loan Form/MultiFamilyPricing";
+import PropertyInformationMultiFamilyBridge from "../components/NewLoanFormComponents/PropertyInformationMultifamilyBridge";
 
 export default function MultiFamilyBridgeLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -130,7 +131,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
         );
       case 2:
         return (
-          <PropertyInformation
+          <PropertyInformationMultiFamilyBridge
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}

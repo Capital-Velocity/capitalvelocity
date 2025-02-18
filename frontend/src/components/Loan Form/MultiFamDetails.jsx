@@ -115,7 +115,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid> */}
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.exitStrat)}>
               <Typography type="p" color="black">
                 Exit Strategy
@@ -143,7 +143,7 @@ function MultiFamDetails({ formData, setFormData, fieldErrors }) {
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.background)}>
               <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
