@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import SinglePropertyRentalLoanForm from "../loanCheckout/SinglePropertyRentalLoanForm";
 
-function SinglePropertyRentalNewForm() {
+function SinglePropertyRentalNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
 
@@ -41,4 +41,4 @@ function SinglePropertyRentalNewForm() {
   );
 }
 
-export default SinglePropertyRentalNewForm;
+export default SinglePropertyRentalNewLoanForm;
