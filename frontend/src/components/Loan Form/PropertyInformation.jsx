@@ -23,13 +23,13 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
   const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
   const checkedIcon = <CheckBoxIcon fontSize="small" />;
   const top100Films = [
-    { title: "Light and cosmetic" },
+    { title: "Light and Cosmetic" },
     { title: "Gut Rehab" },
-    { title: "Horizontal Enlargment" },
-    { title: "Vertical Enlargment (adding a floor)" },
-    { title: "Moderate rehab" },
+    { title: "Horizontal Enlargement" },
+    { title: "Vertical Enlargement (Adding a Floor)" },
+    { title: "Moderate Rehab" },
     { title: "New Construction" },
-    { title: "Condo conversion" },
+    { title: "Condo Conversion" },
     { title: "No Renovation planned" },
   ];
   const fixedOptions = [top100Films[7]];
