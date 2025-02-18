@@ -51,7 +51,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Property Address
@@ -76,7 +76,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 City
@@ -102,7 +102,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Zip Code
@@ -144,7 +144,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 State
@@ -445,7 +445,9 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
                   InputProps={{
                     ...params.InputProps,
                     style: {
-                      minHeight: "56px", // Ensures consistent input height
+                      minHeight: "56px",
+                      maxHeight: "150px", // Limit height to avoid excessive expansion
+                      overflowY: "auto", // Allows scrolling when height is exceeded
                       backgroundColor: "white",
                     },
                   }}
