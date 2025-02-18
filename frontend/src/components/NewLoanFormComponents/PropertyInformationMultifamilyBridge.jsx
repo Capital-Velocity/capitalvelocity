@@ -397,15 +397,9 @@ function PropertyInformationMultiFamilyBridge({
           </Grid> */}
 
           <Grid item xs={12}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-              }}
-            >
+            <Typography type="p" color="black">
               Is the property being converted to Condominiums? *
-            </label>
-
+            </Typography>
             <FormControl
               component="fieldset"
               fullWidth
@@ -436,9 +430,9 @@ function PropertyInformationMultiFamilyBridge({
           </Grid>
 
           <Grid item xs={12}>
-            <label style={{ fontWeight: 300 }}>
+            <Typography type="p" color="black">
               Please describe the renovation
-            </label>
+            </Typography>
             <Autocomplete
               multiple
               id="checkboxes-tags-demo"
@@ -714,20 +708,47 @@ function PropertyInformationMultiFamilyBridge({
             </>
           )}
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
+              <Typography variant="body1" color="black">
+                Purchase Date
+              </Typography>
+              <TextField
+                value={formData.purchaseDate || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchaseDate: e.target.value,
+                  })
+                }
+                style={{ backgroundColor: "white" }}
+                type="date"
+                variant="outlined"
+                error={Boolean(fieldErrors?.purchaseDate)}
+                helperText={fieldErrors?.purchaseDate || ""}
+                fullWidth
+                FormHelperTextProps={{
+                  sx: { textAlign: "center" }, // Centers the helper text
+                }}
+              />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={12}>
             <FormControl
               fullWidth
               error={Boolean(fieldErrors?.investedCapital)}
             >
-              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              <Typography type="p" color="black">
                 What is the renovation budget including renovation capital that
                 has already been invested plus the amount required to complete
-                the project?
-              </label>
+                the project?{" "}
+              </Typography>
               <TextField
                 variant="outlined"
                 InputProps={{
-                  startAdornment: "$",
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
                 }}
                 style={{ backgroundColor: "white" }}
                 value={formData.investedCapital || ""}
@@ -744,17 +765,19 @@ function PropertyInformationMultiFamilyBridge({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.completedCapex)}>
-              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              <Typography type="p" color="black">
                 How much has been invested in completed capex to date?
-              </label>
+              </Typography>
               <TextField
                 variant="outlined"
                 InputProps={{
-                  startAdornment: "$",
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
                 }}
-                style={{ marginTop: 22, backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 value={formData.completedCapex || ""}
                 error={Boolean(fieldErrors?.completedCapex)}
                 helperText={fieldErrors?.completedCapex || ""}
@@ -778,9 +801,9 @@ function PropertyInformationMultiFamilyBridge({
             </Box>
           </Grid> */}
           <Grid item xs={12}>
-            <label style={{ fontWeight: 300 }}>
+            <Typography type="p" color="black">
               Please describe the renovation
-            </label>
+            </Typography>
             <Autocomplete
               multiple
               id="checkboxes-tags-demo"
@@ -830,7 +853,7 @@ function PropertyInformationMultiFamilyBridge({
             />
           </Grid>
 
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.asIsValue)}>
               <Typography type="p" color="black">
                 What is the As-Is Value?
@@ -918,10 +941,10 @@ function PropertyInformationMultiFamilyBridge({
           </Grid> */}
           <Grid item sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.background)}>
-              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              <Typography type="p" color="black">
                 Please outline the background / story for this opportunity (what
-                is it about this deal that you like)
-              </label>
+                is it about this deal that you like){" "}
+              </Typography>
               <TextField
                 style={{ backgroundColor: "white" }}
                 onChange={(e) =>
@@ -948,11 +971,11 @@ function PropertyInformationMultiFamilyBridge({
 
           <Grid item sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.redFlags)}>
-              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+              <Typography type="p" color="black">
                 Can you outline all of the red flags or concerns that we should
                 be aware of? (What should we know at the beginning of this
                 process that may have an impact on how we look at the deal?)
-              </label>
+              </Typography>
               <TextField
                 onChange={(e) =>
                   setFormData({

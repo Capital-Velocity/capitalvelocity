@@ -365,9 +365,9 @@ export default function MultiFamilyBridgeLoanForm(props) {
       if (!formData.asIsValue) {
         errors.asIsValue = "Required";
       }
-      if (!formData.exitStrat) {
-        errors.exitStrat = "Required";
-      }
+      // if (!formData.exitStrat) {
+      //   errors.exitStrat = "Required";
+      // }
       if (!formData.background) {
         errors.background = "Required";
       }
