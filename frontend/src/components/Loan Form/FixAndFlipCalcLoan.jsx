@@ -422,42 +422,41 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                 </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <Typography
-                  color="black"
-                  component="div"
-                  sx={{ display: "inline-flex", alignItems: "center" }}
-                >
-                  Rehab Cost ($){" "}
-                  <Tooltip
-                    title="Costs associated with renovating the property. Rehab costs should include both cost of materials and labor."
-                    arrow
-                    placement="top"
-                  >
-                    <InfoIcon
-                      className="cursor-pointer"
-                      sx={{
-                        fontSize: 18,
-                        color: "gray",
-                        marginLeft: 1,
-                        verticalAlign: "middle",
-                      }} // Align icon vertically
-                    />
-                  </Tooltip>
-                </Typography>
                 <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Rehab Cost ($){" "}
+                    <Tooltip
+                      title="Costs associated with renovating the property. Rehab costs should include both cost of materials and labor."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
                     value={formData?.propertyRehabCost || rehabCost}
                     error={fieldErrors?.propertyRehabCost}
                     helperText={<span>{fieldErrors?.propertyRehabCost}</span>}
                     onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      let value = e.target.value.replace(/[^0-9]/g, "");
                       if (value) {
-                        // Format the number with commas
                         value = new Intl.NumberFormat().format(value);
                       }
-                      setRehabCost(value); // Set the formatted value with commas
+                      setRehabCost(value);
                       setFormData({
                         ...formData,
                         propertyRehabCost: value,
@@ -486,6 +485,7 @@ const FixandFlipCalcLoan = ({ formData, setFormData, fieldErrors }) => {
                   />
                 </FormControl>
               </Grid>
+
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
