@@ -61,6 +61,11 @@ import RenovationDetails from "../components/Loan Form/RenovationDetails";
 import MultiFamDetails from "../components/Loan Form/MultiFamDetails";
 import MultiFamilyPricing from "../components/Loan Form/MultiFamilyPricing";
 import PropertyInformationMultiFamilyBridge from "../components/NewLoanFormComponents/PropertyInformationMultifamilyBridge";
+import LoanPricer from "../components/Loan Form/LoanPricer";
+import LoanPricer2 from "../components/Loan Form/LoanPricer2";
+import LoanPricer3 from "../components/Loan Form/LoanPricer3";
+import LoanPricer4 from "../components/Loan Form/LoanPricer4";
+import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
 
 export default function SinglePropertyRentalLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -77,26 +82,126 @@ export default function SinglePropertyRentalLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "Borrower Information",
-    "Entity Information",
-    "Property Information",
-    "Fix and Flip Calculator",
-    "Vendor and Closing Options",
-    "Soft Credit Pull",
-    "Upload & Submit", // Adds 5 spaces
+    // "Borrower Information",
+    // "Entity Information",
+    // "Property Information",
+    // "Fix and Flip Calculator",
+    // "Vendor and Closing Options",
+    // "Soft Credit Pull",
+    // "Upload & Submit", // Adds 5 spaces
+
+    "LoanPricer", //DONE //
+    "LoanPricer2", //DONW //
+    "LoanPricer3", //DONE //
+    "LoanPricer4", //DONE //
+    "LoanPricerSummary", //DONE //
+    "BorrowerInfromation", //DOME //
+    "Borrower Infromation3", //DONE //
+    "Entity Information", //DONW //
+    "Loan Terms2 (replace with DSCR calc)", //DONE //
+    "Loan Terms3", //DONE //
+    "SoftPull", //DONE //
+    "SBA26",
   ];
 
   function getStepContent(step) {
     switch (step) {
       case 0:
         return (
-          <MultiFamBorrowerStep
+          <LoanPricer
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-
+      case 1:
+        return (
+          <LoanPricer2
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 2:
+        return (
+          <LoanPricer3
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 3:
+        return (
+          <LoanPricer4
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 4:
+        return (
+          <LoanPricerSummary
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 5:
+        return (
+          <BorrowerStep
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 6:
+        return (
+          <BorrowerStep3
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 7:
+        return (
+          <EntityInformation
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 8:
+        return (
+          <LoanTerms2
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 9:
+        return (
+          <LoanTerms3
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 10:
+        return (
+          <SoftPull
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 11:
+        return (
+          <SBA26
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
       default:
         throw new Error("Unknown step");
     }
