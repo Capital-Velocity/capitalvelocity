@@ -79,7 +79,6 @@ export default function MultiFamilyBridgeLoanForm(props) {
     "Borrower Information",
     "Entity Information",
     "Property Information",
-    "Other Details",
     "Fix and Flip Calculator",
     "Vendor and Closing Options",
     "Soft Credit Pull",
@@ -160,15 +159,15 @@ export default function MultiFamilyBridgeLoanForm(props) {
       //       fieldErrors={fieldErrors}
       //     />
       //   );
+      // case 3:
+      //   return (
+      //     <MultiFamDetails
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 3:
-        return (
-          <MultiFamDetails
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
         return (
           <FixandFlipCalcLoan
             formData={formData}
@@ -184,7 +183,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
       //         fieldErrors={fieldErrors}
       //       />
       //     );
-      case 5:
+      case 4:
         return (
           <LoanTerms3
             formData={formData}
@@ -200,7 +199,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
       //         fieldErrors={fieldErrors}
       //       />
       //     );
-      case 6:
+      case 5:
         return (
           <SoftPull
             formData={formData}
@@ -208,7 +207,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 6:
         return (
           <SBA26
             formData={formData}
@@ -363,6 +362,18 @@ export default function MultiFamilyBridgeLoanForm(props) {
       if (!formData.completedCapex) {
         errors.completedCapex = "Required";
       }
+      if (!formData.asIsValue) {
+        errors.asIsValue = "Required";
+      }
+      if (!formData.exitStrat) {
+        errors.exitStrat = "Required";
+      }
+      if (!formData.background) {
+        errors.background = "Required";
+      }
+      if (!formData.redFlags) {
+        errors.redFlags = "Required";
+      }
     }
 
     // if (step === 3) {
@@ -386,22 +397,22 @@ export default function MultiFamilyBridgeLoanForm(props) {
     //   }
     // }
 
-    if (step === 3) {
-      if (!formData.asIsValue) {
-        errors.asIsValue = "Required";
-      }
-      if (!formData.exitStrat) {
-        errors.exitStrat = "Required";
-      }
-      if (!formData.background) {
-        errors.background = "Required";
-      }
-      if (!formData.redFlags) {
-        errors.redFlags = "Required";
-      }
-    }
+    // if (step === 3) {
+    //   if (!formData.asIsValue) {
+    //     errors.asIsValue = "Required";
+    //   }
+    //   if (!formData.exitStrat) {
+    //     errors.exitStrat = "Required";
+    //   }
+    //   if (!formData.background) {
+    //     errors.background = "Required";
+    //   }
+    //   if (!formData.redFlags) {
+    //     errors.redFlags = "Required";
+    //   }
+    // }
 
-    if (step === 4) {
+    if (step === 3) {
       if (!formData.propertyPurchasePrice) {
         errors.propertyPurchasePrice = "Purchase price is required";
       }
@@ -428,7 +439,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
       }
     }
 
-    if (step === 5) {
+    if (step === 4) {
       if (!formData.preferredClosingAttorney) {
         errors.preferredClosingAttorney = "Closing attorney is required";
       }
@@ -443,7 +454,7 @@ export default function MultiFamilyBridgeLoanForm(props) {
       }
     }
 
-    if (step === 6) {
+    if (step === 5) {
       if (!formData.birthMonth) {
         errors.birthMonth = "Birth month is required";
       }

@@ -829,6 +829,153 @@ function PropertyInformationMultiFamilyBridge({
               )}
             />
           </Grid>
+
+          <Grid item sm={12}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.asIsValue)}>
+              <Typography type="p" color="black">
+                What is the As-Is Value?
+              </Typography>
+              <Grid item sm={12}>
+                <TextField
+                  value={formData.asIsValue || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      asIsValue: e.target.value,
+                    })
+                  }
+                  required
+                  error={Boolean(fieldErrors?.asIsValue)}
+                  style={{ backgroundColor: "white" }}
+                  helperText={
+                    fieldErrors?.asIsValue && (
+                      <span style={{ display: "block", textAlign: "center" }}>
+                        {fieldErrors.asIsValue}
+                      </span>
+                    )
+                  }
+                  variant="outlined"
+                  fullWidth
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+          {/* <Grid item sm={6}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                What is the After repair value?
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.afterRepairValue || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      afterRepairValue: e.target.value,
+                    })
+                  }
+                  required
+                  error={fieldErrors.afterRepairValue}
+                  style={{ backgroundColor: "white" }}
+                  helperText={<span>{fieldErrors.afterRepairValue}</span>}
+                  variant="outlined"
+                  fullWidth
+
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid> */}
+          {/* <Grid item xs={12}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.exitStrat)}>
+              <Typography type="p" color="black">
+                Exit Strategy
+              </Typography>
+              <Select
+                style={{ backgroundColor: "white" }}
+                error={Boolean(fieldErrors?.exitStrat)}
+                InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                value={formData.exitStrat || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    exitStrat: e.target.value,
+                  })
+                }
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem value={"Refinance"}>Refinance</MenuItem>
+                <MenuItem value={"Sale"}>Sale</MenuItem>
+              </Select>
+              {fieldErrors?.exitStrat && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.exitStrat}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid> */}
+          <Grid item sm={12}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.background)}>
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                Please outline the background / story for this opportunity (what
+                is it about this deal that you like)
+              </label>
+              <TextField
+                style={{ backgroundColor: "white" }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    background: e.target.value,
+                  })
+                }
+                error={Boolean(fieldErrors?.background)}
+                helperText={
+                  fieldErrors?.background && (
+                    <span style={{ display: "block", textAlign: "center" }}>
+                      {fieldErrors.background}
+                    </span>
+                  )
+                }
+                value={formData.background || ""}
+                variant="outlined"
+                fullWidth
+                multiline
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item sm={12}>
+            <FormControl fullWidth error={Boolean(fieldErrors?.redFlags)}>
+              <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+                Can you outline all of the red flags or concerns that we should
+                be aware of? (What should we know at the beginning of this
+                process that may have an impact on how we look at the deal?)
+              </label>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    redFlags: e.target.value,
+                  })
+                }
+                style={{ backgroundColor: "white" }}
+                error={Boolean(fieldErrors?.redFlags)}
+                helperText={
+                  fieldErrors?.redFlags && (
+                    <span style={{ display: "block", textAlign: "center" }}>
+                      {fieldErrors.redFlags}
+                    </span>
+                  )
+                }
+                value={formData.redFlags || ""}
+                variant="outlined"
+                fullWidth
+                multiline
+              />
+            </FormControl>
+          </Grid>
         </Grid>
       </Container>
     </div>
