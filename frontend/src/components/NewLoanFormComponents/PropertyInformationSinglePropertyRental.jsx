@@ -462,7 +462,7 @@ function PropertyInformationSinglePropertyRental({
 
           <Grid item xs={12}>
             <Typography type="p" color="black">
-              Is the property being converted to Condominiums? *
+              Is the property being converted to Condominiums?
             </Typography>
             <FormControl
               component="fieldset"
@@ -1373,7 +1373,7 @@ function PropertyInformationSinglePropertyRental({
               error={Boolean(fieldErrors?.previosulyBankrupt)}
             >
               <Typography type="p" color="black">
-                Has The Borrower Previously Filed For Bankruptcy?
+                Has the borrowser previously filed for Bankruptcy?
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <RadioGroup
@@ -1422,7 +1422,7 @@ function PropertyInformationSinglePropertyRental({
             >
               <Typography type="p" color="black">
                 Has The Borrower Previously Had A Foreclosure, Deed-in Lieu or
-                short sale{" "}
+                Short Sale?{" "}
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <RadioGroup
