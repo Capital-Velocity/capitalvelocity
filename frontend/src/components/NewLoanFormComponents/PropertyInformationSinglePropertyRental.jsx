@@ -1661,7 +1661,7 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6} xs={12}>
+          <Grid item sm={12} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Program Type
