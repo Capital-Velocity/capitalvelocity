@@ -1569,6 +1569,25 @@ function PropertyInformationSinglePropertyRental({
             </div>
           </Grid>
 
+          {/* <Grid item sm={12}>
+            <Typography
+              variant="button"
+              display="block"
+              gutterBottom
+              style={{ color: "#498dd6", fontSize: 24 }}
+            >
+              PROGRAM OPTIONS
+            </Typography>
+            <Box sx={{ width: "auto", overflowX: "auto" }}>
+              <Paper>
+                <TableComponent />
+              </Paper>
+            </Box>
+          </Grid> */}
+          <Grid item sm={12}>
+            <CustomAccordion />
+          </Grid>
+
           <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
@@ -1615,24 +1634,6 @@ function PropertyInformationSinglePropertyRental({
                 variant="outlined"
               />
             </FormControl>
-          </Grid> */}
-          {/* <Grid item sm={12}>
-            <Typography
-              variant="button"
-              display="block"
-              gutterBottom
-              style={{ color: "#498dd6", fontSize: 24 }}
-            >
-              PROGRAM OPTIONS
-            </Typography>
-            <Box sx={{ width: "auto", overflowX: "auto" }}>
-              <Paper>
-                <TableComponent />
-              </Paper>
-            </Box>
-          </Grid>
-          <Grid item sm={12}>
-            <CustomAccordion />
           </Grid> */}
           <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
