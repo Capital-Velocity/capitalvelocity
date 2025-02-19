@@ -365,6 +365,36 @@ export default function SinglePropertyRentalLoanForm(props) {
       if (!formData.grossMonthlyRent) {
         errors.grossMonthlyRent = "Required";
       }
+      if (!formData.annualTaxes) {
+        errors.annualTaxes = "Required";
+      }
+      if (!formData.annualInsurance) {
+        errors.annualInsurance = "Required";
+      }
+      if (!formData.hoa) {
+        errors.hoa = "Required";
+      }
+      if (!formData.annualUtilityExpenses) {
+        errors.annualUtilityExpenses = "Required";
+      }
+      if (!formData.annualRepair) {
+        errors.annualRepair = "Required";
+      }
+      if (!formData.propertyFees) {
+        errors.propertyFees = "Required";
+      }
+      if (!formData.totalAnnualIncome) {
+        errors.totalAnnualIncome = "Required";
+      }
+      if (!formData.annualExpenses) {
+        errors.annualExpenses = "Required";
+      }
+      if (!formData.annualNOI) {
+        errors.annualNOI = "Required";
+      }
+      if (!formData.targetLTV) {
+        errors.targetLTV = "Required";
+      }
     }
 
     // // if (step === 3) {
