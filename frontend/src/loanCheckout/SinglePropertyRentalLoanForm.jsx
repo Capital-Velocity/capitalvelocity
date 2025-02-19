@@ -290,14 +290,14 @@ export default function SinglePropertyRentalLoanForm(props) {
     }
 
     // // Step 0: BorrowerStep validation example
-    // if (step === 1) {
-    //   if (!formData.authorizedSignatory) {
-    //     errors.authorizedSignatory = "Required ";
-    //   }
-    //   if (!formData.borrowingEntityInformation) {
-    //     errors.borrowingEntityInformation = "Required ";
-    //   }
-    // }
+    if (step === 1) {
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Required ";
+      }
+      if (!formData.borrowingEntityInformation) {
+        errors.borrowingEntityInformation = "Required ";
+      }
+    }
 
     // if (step === 2) {
     //   if (!formData.homeAddress) {
