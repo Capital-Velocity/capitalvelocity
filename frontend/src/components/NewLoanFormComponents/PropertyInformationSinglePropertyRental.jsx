@@ -866,7 +866,7 @@ function PropertyInformationSinglePropertyRental({
               </Typography>
             </Box>
           </Grid> */}
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Typography type="p" color="black">
               Please describe the renovation
             </Typography>
@@ -919,7 +919,7 @@ function PropertyInformationSinglePropertyRental({
                 />
               )}
             />
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.asIsValue)}>
@@ -1074,13 +1074,14 @@ function PropertyInformationSinglePropertyRental({
           </Grid>
 
           <Grid item xs={12} sm={12}>
-            <FormControl fullWidth>
+            <FormControl fullWidth error={Boolean(fieldErrors?.propertyType)}>
               <Typography type="p" color="black">
                 Select the Property Type{" "}
               </Typography>
 
               <Select
                 style={{ backgroundColor: "white" }}
+                error={Boolean(fieldErrors?.propertyType)}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.propertyType || ""}
                 onChange={(e) =>
@@ -1089,7 +1090,6 @@ function PropertyInformationSinglePropertyRental({
                     propertyType: e.target.value,
                   })
                 }
-                error={fieldErrors.propertyType}
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
               >
@@ -1112,10 +1112,15 @@ function PropertyInformationSinglePropertyRental({
                 </MenuItem>
                 <MenuItem value={"Mixed Use"}>Mixed Use</MenuItem>
               </Select>
+              {fieldErrors?.propertyType && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.propertyType}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
-            <FormControl fullWidth>
+            <FormControl fullWidth error={Boolean(fieldErrors?.loanPurpose)}>
               <Typography type="p" color="black">
                 Loan Purpose
               </Typography>
@@ -1125,7 +1130,7 @@ function PropertyInformationSinglePropertyRental({
                 InputLabelProps={{
                   style: { fontSize: 15, fontWeight: 100 },
                 }}
-                error={fieldErrors.loanPurpose}
+                error={Boolean(fieldErrors?.loanPurpose)}
                 value={formData.loanPurpose || ""}
                 onChange={(e) =>
                   setFormData({
@@ -1140,6 +1145,11 @@ function PropertyInformationSinglePropertyRental({
                 <MenuItem value={"Purchase"}>Purchase</MenuItem>
                 <MenuItem value={"Refinance"}>Refinance</MenuItem>
               </Select>
+              {fieldErrors?.loanPurpose && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.loanPurpose}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -1168,6 +1178,11 @@ function PropertyInformationSinglePropertyRental({
                 }}
                 variant="outlined"
               />
+              {fieldErrors?.purchasePriceProperty && (
+                <FormHelperText error sx={{ textAlign: "center" }}>
+                  {fieldErrors.purchasePriceProperty}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
 
@@ -1262,6 +1277,11 @@ function PropertyInformationSinglePropertyRental({
                     variant="outlined"
                     fullWidth
                   />
+                  {fieldErrors[field.key] && (
+                    <FormHelperText error sx={{ textAlign: "center" }}>
+                      {fieldErrors[field.key]}
+                    </FormHelperText>
+                  )}
                 </FormControl>
               </Grid>
             ))}
