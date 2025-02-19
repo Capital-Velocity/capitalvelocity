@@ -156,18 +156,18 @@ function PropertyInformationSinglePropertyRental({
               <Grid item sm={12}>
                 {" "}
                 <TextField
-                  value={formData.homeAddress || ""}
+                  value={formData.propertyAddress || ""}
                   onChange={(e) =>
                     setFormData({
                       ...formData,
-                      homeAddress: e.target.value,
+                      propertyAddress: e.target.value,
                     })
                   }
                   variant="outlined"
                   fullWidth
-                  error={fieldErrors.homeAddress}
+                  error={fieldErrors.propertyAddress}
                   style={{ backgroundColor: "white" }}
-                  helperText={<span>{fieldErrors.homeAddress}</span>}
+                  helperText={<span>{fieldErrors.propertyAddress}</span>}
                   // Add more props as needed
                 />
               </Grid>
@@ -1073,31 +1073,14 @@ function PropertyInformationSinglePropertyRental({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
-            <Typography type="p" color="black">
-              Enter property address
-            </Typography>
-
-            <TextField
-              error={fieldErrors.propertyAddress}
-              style={{ width: "500px", backgroundColor: "white" }}
-              value={formData.propertyAddress || ""}
-              size="large"
-              InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
-              onChange={(e) =>
-                setFormData({ ...formData, propertyAddress: e.target.value })
-              }
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Select the Property Type{" "}
               </Typography>
 
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.propertyType || ""}
                 onChange={(e) =>
@@ -1131,14 +1114,14 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Loan Purpose
               </Typography>
 
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{
                   style: { fontSize: 15, fontWeight: 100 },
                 }}
@@ -1159,35 +1142,32 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Grid item sm={12}>
-                {" "}
-                <Typography type="p" color="black">
-                  Purchase Price
-                </Typography>
-                <TextField
-                  error={fieldErrors.purchasePriceProperty}
-                  style={{ width: "500px", backgroundColor: "white" }}
-                  value={formData.purchasePriceProperty || ""}
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      purchasePriceProperty: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">$</InputAdornment>
-                    ),
-                  }}
-                  variant="outlined"
-                />
-              </Grid>
+              {" "}
+              <Typography type="p" color="black">
+                Purchase Price
+              </Typography>
+              <TextField
+                error={fieldErrors.purchasePriceProperty}
+                style={{ backgroundColor: "white" }}
+                value={formData.purchasePriceProperty || ""}
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchasePriceProperty: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+              />
             </FormControl>
           </Grid>
 
@@ -1249,6 +1229,7 @@ function PropertyInformationSinglePropertyRental({
               <Grid
                 item
                 sm={4}
+                xs={12}
                 key={field.key}
                 sx={{ marginBottom: 2, paddingX: 1 }}
               >
@@ -1257,7 +1238,7 @@ function PropertyInformationSinglePropertyRental({
                     {field.label}
                   </Typography>
                   <TextField
-                    style={{ backgroundColor: "white", width: "300px" }}
+                    style={{ backgroundColor: "white" }}
                     error={fieldErrors[field.key]}
                     value={formData[field.key] || ""}
                     onChange={(e) =>
@@ -1286,7 +1267,7 @@ function PropertyInformationSinglePropertyRental({
             ))}
           </>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Borrower’s Experience Level
@@ -1294,7 +1275,7 @@ function PropertyInformationSinglePropertyRental({
 
               <Select
                 error={fieldErrors.borrowExperience}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.borrowExperience || ""}
                 onChange={(e) =>
@@ -1315,14 +1296,14 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Borrower's Citizenship Status{" "}
               </Typography>
 
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.borrowerCitizenship || ""}
                 onChange={(e) =>
@@ -1346,31 +1327,33 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <Typography type="p" color="black">
-              Social Security
-            </Typography>
-            <TextField
-              style={{ width: "500px", backgroundColor: "white" }}
-              value={formData.socialSecurity || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              error={fieldErrors.socialSecurity}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  socialSecurity: e.target.value,
-                })
-              }
-            />
+          <Grid item xs={12} sm={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Social Security
+              </Typography>
+              <TextField
+                style={{ backgroundColor: "white" }}
+                value={formData.socialSecurity || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                error={fieldErrors.socialSecurity}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    socialSecurity: e.target.value,
+                  })
+                }
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+          <Grid item xs={12} sm={12}>
+            <Typography type="p" color="black">
               Qualifying FICO Score
-            </label>
-            <div style={{ width: 500 }}>
+            </Typography>
+            <div style={{ width: "100%" }}>
               <Slider
                 value={formData.ficoScore || "0"}
                 onChange={(event) => handleSliderChange(event)}
@@ -1379,98 +1362,109 @@ function PropertyInformationSinglePropertyRental({
                 step={20}
                 marks={marks}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6" }}
+                style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
 
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.previosulyBankrupt ? "red" : "black",
-              }}
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.previosulyBankrupt)}
             >
-              Has The Borrower Previously Filed For Bankruptcy?
-            </label>
-
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.previosulyBankrupt === "Yes"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChangeLoanPricer("previosulyBankrupt", "Yes")
-                }
-                error={fieldErrors.previosulyBankrupt}
-                helperText={<span>{fieldErrors.previosulyBankrupt}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "Yes" when selected
-                checked={formData.previosulyBankrupt === "No"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChangeLoanPricer("previosulyBankrupt", "No")
-                }
-                error={fieldErrors.previosulyBankrupt}
-                helperText={<span>{fieldErrors.previosulyBankrupt}</span>}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
-          </Grid>
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.shortForSale ? "red" : "black",
-              }}
-            >
-              Has The Borrower Previously Had A Foreclosure, Deed-in Lieu or
-              short sale
-            </label>
-
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.shortForSale === "Yes"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChangeLoanPricer("shortForSale", "Yes")
-                }
-                error={fieldErrors.shortForSale}
-                helperText={<span>{fieldErrors.shortForSale}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "Yes" when selected
-                checked={formData.shortForSale === "No"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChangeLoanPricer("shortForSale", "No")
-                }
-                error={fieldErrors.shortForSale}
-                helperText={<span>{fieldErrors.shortForSale}</span>}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
+              <Typography type="p" color="black">
+                Has The Borrower Previously Filed For Bankruptcy?
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes" // Set the value to "Yes" when selected
+                    checked={formData.previosulyBankrupt === "Yes"} // Check if it's "Yes" in formData
+                    onChange={() =>
+                      handleOptionChangeLoanPricer("previosulyBankrupt", "Yes")
+                    }
+                    error={fieldErrors.previosulyBankrupt}
+                    helperText={<span>{fieldErrors.previosulyBankrupt}</span>}
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No" // Set the value to "Yes" when selected
+                    checked={formData.previosulyBankrupt === "No"} // Check if it's "Yes" in formData
+                    onChange={() =>
+                      handleOptionChangeLoanPricer("previosulyBankrupt", "No")
+                    }
+                    error={fieldErrors.previosulyBankrupt}
+                    helperText={<span>{fieldErrors.previosulyBankrupt}</span>}
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.previosulyBankrupt && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.previosulyBankrupt}
+                </FormHelperText>
+              )}
+            </FormControl>
           </Grid>
 
-          <Grid item sm={12}>
+          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
+            <FormControl
+              component="fieldset"
+              error={Boolean(fieldErrors?.shortForSale)}
+            >
+              <Typography type="p" color="black">
+                Has The Borrower Previously Had A Foreclosure, Deed-in Lieu or
+                short sale{" "}
+              </Typography>
+              <Box sx={{ display: "flex", justifyContent: "center" }}>
+                <RadioGroup
+                  row
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="row-radio-buttons-group"
+                >
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="Yes" // Set the value to "Yes" when selected
+                    checked={formData.shortForSale === "Yes"} // Check if it's "Yes" in formData
+                    onChange={() =>
+                      handleOptionChangeLoanPricer("shortForSale", "Yes")
+                    }
+                    error={fieldErrors.shortForSale}
+                    helperText={<span>{fieldErrors.shortForSale}</span>}
+                    control={<Radio />}
+                    label="Yes"
+                  />
+                  <FormControlLabel
+                    style={{ color: "black" }}
+                    value="No" // Set the value to "Yes" when selected
+                    checked={formData.shortForSale === "No"} // Check if it's "Yes" in formData
+                    onChange={() =>
+                      handleOptionChangeLoanPricer("shortForSale", "No")
+                    }
+                    error={fieldErrors.shortForSale}
+                    helperText={<span>{fieldErrors.shortForSale}</span>}
+                    control={<Radio />}
+                    label="No"
+                  />
+                </RadioGroup>
+              </Box>
+              {fieldErrors?.shortForSale && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.shortForSale}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          {/* <Grid item sm={12} xs={12}>
             <Typography
               variant="button"
               display="block"
@@ -1479,9 +1473,9 @@ function PropertyInformationSinglePropertyRental({
             >
               LOAN TERMS
             </Typography>
-          </Grid>
+          </Grid> */}
 
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Amortization Type
@@ -1489,7 +1483,7 @@ function PropertyInformationSinglePropertyRental({
 
               <Select
                 error={fieldErrors.amortizationType}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.amortizationType || ""}
                 onChange={(e) =>
@@ -1508,11 +1502,12 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
-              Loan To Value
-            </label>
-            <div style={{ width: 500 }}>
+
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
+              Loan To Value Percentage
+            </Typography>
+            <div style={{ width: "100%" }}>
               <Slider
                 value={formData.loanToValue}
                 onChange={(event) => handleSliderChangeLoanPricerSummary(event)}
@@ -1520,11 +1515,11 @@ function PropertyInformationSinglePropertyRental({
                 max={65}
                 marks={marksLoanToValue}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6" }}
+                style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Pre-Payment Penalty
@@ -1532,7 +1527,7 @@ function PropertyInformationSinglePropertyRental({
 
               <Select
                 error={fieldErrors.prePayPen}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.prePayPen || ""}
                 onChange={(e) =>
@@ -1555,11 +1550,11 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+          <Grid item sm={6} xs={12}>
+            <Typography type="p" color="black">
               One Time Yield Spread Premium
-            </label>
-            <div style={{ width: 500 }}>
+            </Typography>
+            <div style={{ width: "100%" }}>
               <Slider
                 value={formData.oneTimeYield}
                 onChange={(event) =>
@@ -1569,20 +1564,20 @@ function PropertyInformationSinglePropertyRental({
                 max={1.275}
                 marks={marksOneTimeYieldSpreadPremium}
                 valueLabelDisplay="auto"
-                style={{ color: "#498dd6" }}
+                style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
           </Grid>
 
-          <Grid item sm={6}>
-            <FormControl>
+          <Grid item sm={6} xs={12}>
+            <FormControl fullWidth>
               <Typography type="p" color="black">
                 Rate Buydown
               </Typography>
 
               <Select
                 error={fieldErrors.rateBuyDown}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.rateBuyDown || ""}
                 onChange={(e) =>
@@ -1592,36 +1587,36 @@ function PropertyInformationSinglePropertyRental({
                   })
                 }
                 defaultValue={0}
-                label="Rate Buydown
-
-                "
+                label="Rate Buydown"
               >
                 {menuItems}
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <Typography type="p" color="black">
-              Social Security
-            </Typography>
-            <TextField
-              style={{ width: "500px", backgroundColor: "white" }}
-              error={fieldErrors.socialSecurity}
-              value={formData.socialSecurity || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  socialSecurity: e.target.value,
-                })
-              }
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item sm={12}>
+          {/* <Grid item sm={6} xs={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Social Security
+              </Typography>
+              <TextField
+                style={{ backgroundColor: "white" }}
+                error={fieldErrors.socialSecurity}
+                value={formData.socialSecurity || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    socialSecurity: e.target.value,
+                  })
+                }
+                variant="outlined"
+              />
+            </FormControl>
+          </Grid> */}
+          {/* <Grid item sm={12}>
             <Typography
               variant="button"
               display="block"
@@ -1630,21 +1625,23 @@ function PropertyInformationSinglePropertyRental({
             >
               PROGRAM OPTIONS
             </Typography>
-            <Paper>
-              <TableComponent />
-            </Paper>
+            <Box sx={{ width: "auto", overflowX: "auto" }}>
+              <Paper>
+                <TableComponent />
+              </Paper>
+            </Box>
           </Grid>
           <Grid item sm={12}>
             <CustomAccordion />
-          </Grid>
-          <Grid item sm={6}>
+          </Grid> */}
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Rate Type
               </Typography>
 
               <Select
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 error={fieldErrors.rateType}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.rateType || ""}
@@ -1664,7 +1661,7 @@ function PropertyInformationSinglePropertyRental({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Program Type
@@ -1672,7 +1669,7 @@ function PropertyInformationSinglePropertyRental({
 
               <Select
                 error={fieldErrors.programType}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.programType || ""}
                 onChange={(e) =>
