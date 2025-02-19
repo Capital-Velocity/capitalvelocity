@@ -1287,7 +1287,7 @@ function PropertyInformationSinglePropertyRental({
             ))}
           </>
 
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Borrower’s Experience Level
@@ -1393,7 +1393,7 @@ function PropertyInformationSinglePropertyRental({
               error={Boolean(fieldErrors?.previosulyBankrupt)}
             >
               <Typography type="p" color="black">
-                Has the borrowser previously filed for Bankruptcy?
+                Has the borrower previously filed for Bankruptcy?
               </Typography>
               <Box sx={{ display: "flex", justifyContent: "center" }}>
                 <RadioGroup
@@ -1482,7 +1482,7 @@ function PropertyInformationSinglePropertyRental({
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           {/* <Grid item sm={12} xs={12}>
             <Typography
@@ -1495,7 +1495,7 @@ function PropertyInformationSinglePropertyRental({
             </Typography>
           </Grid> */}
 
-          <Grid item sm={6} xs={12}>
+          {/* <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Amortization Type
@@ -1587,7 +1587,7 @@ function PropertyInformationSinglePropertyRental({
                 style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
             </div>
-          </Grid>
+          </Grid> */}
 
           {/* <Grid item sm={12}>
             <Typography
@@ -1604,7 +1604,7 @@ function PropertyInformationSinglePropertyRental({
               </Paper>
             </Box>
           </Grid> */}
-          <Grid item sm={12}>
+          {/* <Grid item sm={12}>
             <CustomAccordion />
           </Grid>
 
@@ -1631,7 +1631,7 @@ function PropertyInformationSinglePropertyRental({
                 {menuItems}
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
           {/* <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
@@ -1655,7 +1655,7 @@ function PropertyInformationSinglePropertyRental({
               />
             </FormControl>
           </Grid> */}
-          <Grid item sm={6} xs={12}>
+          {/* <Grid item sm={6} xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Rate Type
@@ -1705,7 +1705,7 @@ function PropertyInformationSinglePropertyRental({
                 <MenuItem value={"DSCR Expanded"}>DSCR Expanded</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
         </Grid>
       </Container>
     </div>
