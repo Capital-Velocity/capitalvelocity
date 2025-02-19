@@ -67,6 +67,8 @@ import LoanPricer3 from "../components/Loan Form/LoanPricer3";
 import LoanPricer4 from "../components/Loan Form/LoanPricer4";
 import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
 import LoanPricerSinglePropertyRentalForm from "../components/NewLoanFormComponents/LoanPricerSinglePropertyRentalForm";
+import DsciCalculator from "../Calculators/DsciCalculator";
+import PropertyInformationSinglePropertyRental from "../components/NewLoanFormComponents/PropertyInformationSinglePropertyRental";
 
 export default function SinglePropertyRentalLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -98,10 +100,11 @@ export default function SinglePropertyRentalLoanForm(props) {
     "BorrowerInfromation", //DOME //
     "Borrower Infromation3", //DONE //
     "Entity Information", //DONW //
-    "Loan Terms2 (replace with DSCR calc)", //DONE //
-    "Loan Terms3", //DONE //
-    "SoftPull", //DONE //
-    "SBA26",
+    "Property Information",
+    "Rental DSCR Calculator", //DONE //
+    "Vendor and Closing Options", //DONE //
+    "Soft Credit Pull", //DONE //
+    "Upload & Submit",
   ];
 
   function getStepContent(step) {
@@ -172,7 +175,7 @@ export default function SinglePropertyRentalLoanForm(props) {
         );
       case 7:
         return (
-          <LoanTerms2
+          <PropertyInformationSinglePropertyRental
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -180,7 +183,7 @@ export default function SinglePropertyRentalLoanForm(props) {
         );
       case 8:
         return (
-          <LoanTerms3
+          <DsciCalculator
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -188,13 +191,21 @@ export default function SinglePropertyRentalLoanForm(props) {
         );
       case 9:
         return (
-          <SoftPull
+          <LoanTerms3
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
       case 10:
+        return (
+          <SoftPull
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 11:
         return (
           <SBA26
             formData={formData}

@@ -21,17 +21,19 @@ function LoanPricerSummary({ formData, setFormData, fieldErrors }) {
     );
   }
   const [selectedOption, setSelectedOption] = useState("no");
-  const [sliderValue, setSliderValue] = React.useState(1);
-  const [sliderValue2, setSliderValue2] = React.useState(0);
-  const handleSliderChange = (event, newValue) => {
-    setSliderValue(event.target.value);
+  const [sliderValueLoanPricerSummary, setSliderValueLoanPricerSummary] =
+    React.useState(1);
+  const [sliderValueLoanPricerSummary2, setSliderValueLoanPricerSummary2] =
+    React.useState(0);
+  const handleSliderChangeLoanPricerSummary = (event, newValue) => {
+    setSliderValueLoanPricerSummary(event.target.value);
     setFormData({
       ...formData,
       loanToValue: event.target.value,
     });
   };
-  const handleSliderChange2 = (event, newValue) => {
-    setSliderValue2(event.target.value);
+  const handleSliderChangeLoanPricerSummary2 = (event, newValue) => {
+    setSliderValueLoanPricerSummary2(event.target.value);
     setFormData({
       ...formData,
       oneTimeYield: event.target.value,
@@ -41,11 +43,11 @@ function LoanPricerSummary({ formData, setFormData, fieldErrors }) {
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  const marks = [
+  const marksLoanToValue = [
     { value: 20, label: "20%" },
     { value: 65, label: "65%" },
   ];
-  const marks2 = [
+  const marksOneTimeYieldSpreadPremium = [
     { value: 0, label: "0%" },
     { value: 1.275, label: "1.275%" },
   ];
@@ -103,10 +105,10 @@ function LoanPricerSummary({ formData, setFormData, fieldErrors }) {
             <div style={{ width: 500 }}>
               <Slider
                 value={formData.loanToValue}
-                onChange={(event) => handleSliderChange(event)}
+                onChange={(event) => handleSliderChangeLoanPricerSummary(event)}
                 min={20}
                 max={65}
-                marks={marks}
+                marks={marksLoanToValue}
                 valueLabelDisplay="auto"
                 style={{ color: "#498dd6" }}
               />
@@ -150,10 +152,12 @@ function LoanPricerSummary({ formData, setFormData, fieldErrors }) {
             <div style={{ width: 500 }}>
               <Slider
                 value={formData.oneTimeYield}
-                onChange={(event) => handleSliderChange2(event)}
+                onChange={(event) =>
+                  handleSliderChangeLoanPricerSummary2(event)
+                }
                 min={0}
                 max={1.275}
-                marks={marks2}
+                marks={marksOneTimeYieldSpreadPremium}
                 valueLabelDisplay="auto"
                 style={{ color: "#498dd6" }}
               />
