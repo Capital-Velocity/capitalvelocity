@@ -1073,7 +1073,7 @@ function PropertyInformationSinglePropertyRental({
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.propertyType)}>
               <Typography type="p" color="black">
                 Select the Property Type{" "}
@@ -1118,7 +1118,7 @@ function PropertyInformationSinglePropertyRental({
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.loanPurpose)}>
               <Typography type="p" color="black">
