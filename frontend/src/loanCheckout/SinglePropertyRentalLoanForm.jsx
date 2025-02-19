@@ -267,33 +267,27 @@ export default function SinglePropertyRentalLoanForm(props) {
   const validateStep = (step) => {
     const errors = {};
 
-    // // Step 0: BorrowerStep validation example
-    // if (step === 0) {
-    //   if (!formData.firstName) {
-    //     errors.firstName = "First Name is required";
-    //   }
-    //   if (!formData.lastName) {
-    //     errors.lastName = "Last Name is required";
-    //   }
-    //   if (!formData.borrowerEmail) {
-    //     errors.borrowerEmail = "Email is required";
-    //   }
-    //   if (!formData.phoneNumber) {
-    //     errors.phoneNumber = "Phone Number is required";
-    //   }
-    //   if (!formData.borrowerCitizenshipStatus) {
-    //     errors.borrowerCitizenshipStatus = "Citizenship status is required";
-    //   }
-    //   if (!formData.liquidity) {
-    //     errors.liquidity = "Liquidity amount is required";
-    //   }
-    //   // if (!formData.guranteeLoan) {
-    //   //   errors.guranteeLoan = "Required";
-    //   // }
-    //   // if (!formData.authorizedSignatory) {
-    //   //   errors.authorizedSignatory = "Required";
-    //   // }
-    // }
+    // Step 0: BorrowerStep validation example
+    if (step === 0) {
+      if (!formData.firstName) {
+        errors.firstName = "First Name is required";
+      }
+      if (!formData.borrowerLast) {
+        errors.borrowerLast = "Last Name is required";
+      }
+      if (!formData.borrowerEmail) {
+        errors.borrowerEmail = "Email is required";
+      }
+      if (!formData.borrowerCell) {
+        errors.borrowerCell = "Phone Number is required";
+      }
+      if (!formData.borrowerCitizenship) {
+        errors.borrowerCitizenship = "Citizenship status is required";
+      }
+      if (!formData.bestTerms) {
+        errors.bestTerms = "Arms length description is required";
+      }
+    }
 
     // // Step 0: BorrowerStep validation example
     // if (step === 1) {
