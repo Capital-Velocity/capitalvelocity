@@ -460,35 +460,35 @@ export default function SinglePropertyRentalLoanForm(props) {
     //   }
     // }
 
-    // if (step === 4) {
-    //   if (!formData.preferredClosingAttorney) {
-    //     errors.preferredClosingAttorney = "Closing attorney is required";
-    //   }
-    //   if (!formData.closingDate) {
-    //     errors.closingDate = "Closing date is required";
-    //   }
-    //   if (!formData.insuranceCompany) {
-    //     errors.insuranceCompany = "Insurance company is required";
-    //   }
-    //   if (!formData.titleCompany) {
-    //     errors.titleCompany = "Title company is required";
-    //   }
-    // }
+    if (step === 4) {
+      if (!formData.preferredClosingAttorney) {
+        errors.preferredClosingAttorney = "Closing attorney is required";
+      }
+      if (!formData.closingDate) {
+        errors.closingDate = "Closing date is required";
+      }
+      if (!formData.insuranceCompany) {
+        errors.insuranceCompany = "Insurance company is required";
+      }
+      if (!formData.titleCompany) {
+        errors.titleCompany = "Title company is required";
+      }
+    }
 
-    // if (step === 5) {
-    //   if (!formData.birthMonth) {
-    //     errors.birthMonth = "Birth month is required";
-    //   }
-    //   if (!formData.birthDate) {
-    //     errors.birthDate = "Birth date is required";
-    //   }
-    //   if (!formData.birthYear) {
-    //     errors.birthYear = "Birth year is required";
-    //   }
-    //   if (!formData.socialSecurity) {
-    //     errors.socialSecurity = "SSN number is required";
-    //   }
-    // }
+    if (step === 5) {
+      if (!formData.birthMonth) {
+        errors.birthMonth = "Birth month is required";
+      }
+      if (!formData.birthDate) {
+        errors.birthDate = "Birth date is required";
+      }
+      if (!formData.birthYear) {
+        errors.birthYear = "Birth year is required";
+      }
+      if (!formData.socialSecurity) {
+        errors.socialSecurity = "SSN number is required";
+      }
+    }
 
     // Add more validations for other steps as needed
 
