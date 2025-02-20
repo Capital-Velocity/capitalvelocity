@@ -1082,7 +1082,7 @@ const DsciCalculatorLoan = () => {
                   >
                     Monthly Other Expenses ($){" "}
                     <Tooltip
-                      title="The fees paid for various other expenses required."
+                      title="The fees paid for various other expenses required (such as utility, repair, maintenance, property management and NOI expenses)"
                       arrow
                       placement="top"
                     >
