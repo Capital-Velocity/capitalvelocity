@@ -42,6 +42,7 @@ import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
 import BorrowerStep from "../components/Loan Form/BorrowerStep";
 import BorrowerStep3 from "../components/Loan Form/BorrowerStep3";
 import LoanTerms2 from "../components/Loan Form/LoanTerms2";
+import RentalLoanPricerPortfolioForm from "../components/NewLoanFormComponents/RentalLoanPricerPortfolioForm";
 
 export default function RentalPortfolioLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -58,14 +59,13 @@ export default function RentalPortfolioLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "Loan Pricer",
+    "Property Information",
     // "RentalLoanPrice2",
     // "RentalLoanPrice3",
-    "Loan Pricer Summary",
+    // "Loan Pricer Summary",
     "Borrower Information",
     // "Borrower Infromation3",
     "Entity Information",
-    "Rental DSCR Calculator",
     "Vendor and Closing Options",
     "Soft Credit Pull",
     "Upload & Submit",
@@ -74,7 +74,7 @@ export default function RentalPortfolioLoanForm(props) {
     switch (step) {
       case 0:
         return (
-          <RentalLoanPrice
+          <RentalLoanPricerPortfolioForm
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -96,15 +96,15 @@ export default function RentalPortfolioLoanForm(props) {
       //       fieldErrors={fieldErrors}
       //     />
       //   );
+      // case 1:
+      //   return (
+      //     <LoanPricerSummary
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 1:
-        return (
-          <LoanPricerSummary
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 2:
         return (
           <BorrowerStep
             formData={formData}
@@ -120,7 +120,7 @@ export default function RentalPortfolioLoanForm(props) {
       //       fieldErrors={fieldErrors}
       //     />
       //   );
-      case 3:
+      case 2:
         return (
           <EntityInformation
             formData={formData}
@@ -128,15 +128,15 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 4:
-        return (
-          <LoanTerms2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 5:
+      // case 3:
+      //   return (
+      //     <LoanTerms2
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      case 3:
         return (
           <LoanTerms3
             formData={formData}
@@ -144,7 +144,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 4:
         return (
           <SoftPull
             formData={formData}
@@ -152,7 +152,7 @@ export default function RentalPortfolioLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 7:
+      case 5:
         return (
           <SBA26
             formData={formData}
@@ -565,28 +565,33 @@ export default function RentalPortfolioLoanForm(props) {
             <React.Fragment>
               <Stepper
                 activeStep={activeStep}
-                orientation={isSmallScreen ? "vertical" : "horizontal"} // Switch to vertical for small screens
+                orientation="horizontal" // Always horizontal
                 sx={{
-                  // width: "100%", // Ensures full width
-                  // display: "flex", // Ensures proper alignment
-                  // "& .MuiStep-root": {
-                  //   flex: 1, // Ensures steps take equal space
-                  // },
-                  flexDirection: isSmallScreen ? "column" : "row", // Adjust direction
-                  alignItems: "center",
+                  flexWrap: "wrap",
+                  justifyContent: "center", // Centered alignment
+                  rowGap: "8px", // Space between rows
                 }}
               >
                 {steps.map((label, index) => (
-                  <Step key={label} onClick={() => handleStepClick(index)}>
+                  <Step
+                    key={label}
+                    onClick={() => handleStepClick(index)}
+                    sx={{
+                      flex: "2 1 30%", // Ensures equal width (adjust 25% as needed)
+                      minWidth: "120px", // Prevents steps from getting too small
+                      textAlign: "center", // Ensures labels stay centered
+                    }}
+                  >
                     <StepLabel
                       sx={{
-                        cursor: "pointer", // Ensures all steps show a clickable cursor
-                        pointerEvents: "auto", // Enables clicking on all steps (even gray ones)
+                        cursor: "pointer",
                         "& .MuiStepLabel-label": {
-                          cursor: "pointer", // Fixes label text not changing to pointer
+                          fontSize: "0.8rem",
+                          textAlign: "center", // Ensures text alignment
+                          display: "block", // Keeps text from shifting
                         },
                         "& .MuiStepIcon-root": {
-                          cursor: "pointer", // Ensures icon also shows a pointer
+                          fontSize: "1.5rem",
                         },
                       }}
                     >

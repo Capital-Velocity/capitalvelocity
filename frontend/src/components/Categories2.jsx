@@ -77,8 +77,7 @@ const selectionData = [
       "Fixed or Adjustable Rates",
       "Tax-Deductible Interest",
     ],
-    // link: "/loan-form-realestate-rentalportfolio",
-    link: "/loan-form-realestate?type=RentalPortfolio",
+    link: "/loan-form-realestate-rentalportfolio",
   },
 ];
 
