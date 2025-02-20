@@ -65,7 +65,7 @@ const selectionData = [
     value: "StabilizedBridge",
     tooltip: "Refinancing to pull out cash from existing properties.",
     checks: ["Cash-Out Options", "Equity-Based Loans", "Debt Consolidation"],
-    link: "/loan-form-realestate?type=StabilizedBridge",
+    link: "/loan-form-realestate-cashedoutrefinance",
   },
   {
     title: "Rental Portfolios",

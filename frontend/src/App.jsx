@@ -32,6 +32,7 @@ import MultiFamilyBridgeNewLoanForm from "./pages/MultiFamilyBridgeNewLoanForm";
 import RentalPortfolioNewLoanForm from "./pages/RentalPortfolioNewLoanForm";
 import SinglePropertyRentalNewLoanForm from "./pages/SinglePropertyRentalNewLoanForm";
 import GroundUpNewLoanForm from "./pages/GroundUpNewLoanForm";
+import CashedOutRefinanceNewLoanForm from "./pages/CashedOutRefinanceNewLoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -126,6 +127,16 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-realestate-cashedoutrefinance"
+          element={
+            firstnameCookie ? (
+              <CashedOutRefinanceNewLoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -142,7 +153,8 @@ function FooterWrapper() {
     location.pathname !== "/loan-form-realestate-multifamily" &&
     location.pathname !== "/loan-form-realestate-rentalportfolio" &&
     location.pathname !== "/loan-form-realestate-singlepropertyrental" &&
-    location.pathname !== "/loan-form-realestate-groundup" ? (
+    location.pathname !== "/loan-form-realestate-groundup" &&
+    location.pathname !== "/loan-form-realestate-cashedoutrefinance" ? (
     <Footer />
   ) : null;
 }
