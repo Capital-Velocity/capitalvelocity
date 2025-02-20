@@ -27,7 +27,7 @@ const singlePropertySchema = new mongoose.Schema(
     entityAddress: { type: String },
     entityName: { type: String },
     entityType: { type: String },
-    estimatedAsIsValue: { type: String },
+    asIsValue: { type: String },
     experienceWithRealEstate: { type: String },
     ficoScore: { type: Number },
     firstName: { type: String },
@@ -49,6 +49,12 @@ const singlePropertySchema = new mongoose.Schema(
     propertyAddress: { type: String },
     propertyFees: { type: String },
     propertyType: { type: String },
+
+    propertyMonthlyOtherExpenses: { type: String },
+    propertyMonthlyHOAFee: { type: String },
+    propertyMonthlyInsurance: { type: String },
+    propertyMonthlyTaxes: { type: String },
+
     purchasePriceProperty: { type: String },
     rateBuyDown: { type: Number },
     rateType: { type: String },

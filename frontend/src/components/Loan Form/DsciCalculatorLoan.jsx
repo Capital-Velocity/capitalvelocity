@@ -31,7 +31,7 @@ import Cookies from "js-cookie";
 // Register ChartJS components
 // ChartJS.register(ArcElement, Tooltip, Legend);
 
-const DsciCalculatorLoan = () => {
+const DsciCalculatorLoan = ({ formData, setFormData, fieldErrors }) => {
   const firstnameCookie = Cookies.get("firstName");
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -80,12 +80,12 @@ const DsciCalculatorLoan = () => {
   const [monthlyInsurances, setmonthlyInsurances] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [monthlyHOAFee, setmonthlyHOAFee] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
+  //   const [formData, setFormData] = useState({
+  //     firstName: "",
+  //     lastName: "",
+  //     email: "",
+  //     phone: "",
+  //   });
 
   const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
   const [monthlyInterestPaymentDisplay, setMonthlyInterestPaymentDisplay] =
@@ -642,7 +642,9 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={estimatedValue}
+                    value={formData?.asIsValue || estimatedValue}
+                    error={fieldErrors?.asIsValue}
+                    helperText={<span>{fieldErrors?.asIsValue}</span>}
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -650,6 +652,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setEstimatedValue(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        asIsValue: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (
@@ -914,7 +922,9 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyRent}
+                    value={formData?.grossMonthlyRent || monthlyRent}
+                    error={fieldErrors?.grossMonthlyRent}
+                    helperText={<span>{fieldErrors?.grossMonthlyRent}</span>}
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -922,6 +932,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setMonthlyRent(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        grossMonthlyRent: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (
@@ -968,7 +984,11 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyTaxes}
+                    value={formData?.propertyMonthlyTaxes || monthlyTaxes}
+                    error={fieldErrors?.propertyMonthlyTaxes}
+                    helperText={
+                      <span>{fieldErrors?.propertyMonthlyTaxes}</span>
+                    }
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -976,6 +996,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setmonthlyTaxes(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        propertyMonthlyTaxes: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1012,7 +1038,13 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyInsurances}
+                    value={
+                      formData?.propertyMonthlyInsurance || monthlyInsurances
+                    }
+                    error={fieldErrors?.propertyMonthlyInsurance}
+                    helperText={
+                      <span>{fieldErrors?.propertyMonthlyInsurance}</span>
+                    }
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -1020,6 +1052,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setmonthlyInsurances(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        propertyMonthlyInsurance: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1056,7 +1094,11 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyHOAFee}
+                    value={formData?.propertyMonthlyHOAFee || monthlyHOAFee}
+                    error={fieldErrors?.propertyMonthlyHOAFee}
+                    helperText={
+                      <span>{fieldErrors?.propertyMonthlyHOAFee}</span>
+                    }
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -1064,6 +1106,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setmonthlyHOAFee(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        propertyMonthlyHOAFee: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1100,7 +1148,15 @@ const DsciCalculatorLoan = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyOtherExpenses}
+                    // value={monthlyOtherExpenses}
+                    value={
+                      formData?.propertyMonthlyOtherExpenses ||
+                      monthlyOtherExpenses
+                    }
+                    error={fieldErrors?.propertyMonthlyOtherExpenses}
+                    helperText={
+                      <span>{fieldErrors?.propertyMonthlyOtherExpenses}</span>
+                    }
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
@@ -1108,6 +1164,12 @@ const DsciCalculatorLoan = () => {
                         value = new Intl.NumberFormat().format(value);
                       }
                       setMonthlyOtherExpenses(value); // Set the formatted value with commas
+
+                      // Update formData in SinglePropertyRentalLoanForm
+                      setFormData((prevData) => ({
+                        ...prevData,
+                        propertyMonthlyOtherExpenses: value,
+                      }));
                     }}
                     InputProps={{
                       startAdornment: (

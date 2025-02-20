@@ -35,7 +35,7 @@ singlePropertyRouter.post(
         entityAddress: req.body.entityAddress,
         entityName: req.body.entityName,
         entityType: req.body.entityType,
-        estimatedAsIsValue: req.body.estimatedAsIsValue,
+        asIsValue: req.body.asIsValue,
         experienceWithRealEstate: req.body.experienceWithRealEstate,
         ficoScore: req.body.ficoScore,
         firstName: req.body.firstName,
@@ -57,6 +57,12 @@ singlePropertyRouter.post(
         propertyAddress: req.body.propertyAddress,
         propertyFees: req.body.propertyFees,
         propertyType: req.body.propertyType,
+
+        propertyMonthlyOtherExpenses: req.body.propertyMonthlyOtherExpenses,
+        propertyMonthlyHOAFee: req.body.propertyMonthlyHOAFee,
+        propertyMonthlyInsurance: req.body.propertyMonthlyInsurance,
+        propertyMonthlyTaxes: req.body.propertyMonthlyTaxes,
+
         purchasePriceProperty: req.body.purchasePriceProperty,
         rateBuyDown: req.body.rateBuyDown,
         rateType: req.body.rateType,
