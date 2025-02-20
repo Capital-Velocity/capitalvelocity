@@ -23,6 +23,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Container from "../../screens/Container";
+import FormHelperText from "@mui/material/FormHelperText";
 
 function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
   const [selectedState, setSelectedState] = useState("");
@@ -184,6 +185,8 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               <Select
                 style={{ backgroundColor: "white" }}
                 value={formData.state || selectedState}
+                error={fieldErrors.state}
+                helperText={<span>{fieldErrors.state}</span>}
                 onChange={handleStateChange}
               >
                 {states.map((state) => (
@@ -191,8 +194,10 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                     {state}
                   </MenuItem>
                 ))}
-                error={fieldErrors.state}
               </Select>
+              {fieldErrors.state && (
+                <FormHelperText error>{fieldErrors.state}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -261,10 +266,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               </Typography>
 
               <Select
+                value={formData.loanPurpose || ""}
                 error={fieldErrors.loanPurpose}
+                helperText={<span>{fieldErrors.loanPurpose}</span>}
                 style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
-                value={formData.loanPurpose || ""}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
@@ -277,6 +283,9 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                 <MenuItem value={"Purchase"}>Purchase</MenuItem>
                 <MenuItem value={"Finance"}>Finance</MenuItem>
               </Select>
+              {fieldErrors.loanPurpose && (
+                <FormHelperText error>{fieldErrors.loanPurpose}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -287,6 +296,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               </Typography>
               <TextField
                 error={fieldErrors.purchasePriceProperty}
+                helperText={<span>{fieldErrors.purchasePriceProperty}</span>}
                 style={{ backgroundColor: "white" }}
                 value={formData.purchasePriceProperty || ""}
                 size="large"
@@ -420,6 +430,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 error={fieldErrors.propertyMan}
+                helperText={<span>{fieldErrors.propertyMan}</span>}
                 style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.propertyMan || ""}
@@ -437,6 +448,9 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                   Third Party Managment
                 </MenuItem>
               </Select>
+              {fieldErrors.propertyMan && (
+                <FormHelperText error>{fieldErrors.propertyMan}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -446,9 +460,10 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                 Gross Monthly Rent
               </Typography>
               <TextField
-                error={fieldErrors.grossmontly}
+                error={fieldErrors.grossMonthlyRent}
+                helperText={<span>{fieldErrors.grossMonthlyRent}</span>}
                 style={{ backgroundColor: "white" }}
-                value={formData.grossmontly || ""}
+                value={formData.grossMonthlyRent || ""}
                 size="large"
                 InputLabelProps={{
                   style: { fontSize: 15, fontWeight: 100 },
@@ -456,7 +471,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    grossmontly: e.target.value,
+                    grossMonthlyRent: e.target.value,
                   })
                 }
                 InputProps={{

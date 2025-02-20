@@ -211,81 +211,56 @@ export default function RentalPortfolioLoanForm(props) {
     const errors = {};
 
     // // Step 0: BorrowerStep validation example
-    // if (step === 0) {
-    //   if (!formData.firstName) {
-    //     errors.firstName = "First Name is required";
-    //   }
-    //   if (!formData.lastName) {
-    //     errors.lastName = "Last Name is required";
-    //   }
-    //   if (!formData.borrowerEmail) {
-    //     errors.borrowerEmail = "Email is required";
-    //   }
-    //   if (!formData.phoneNumber) {
-    //     errors.phoneNumber = "Phone Number is required";
-    //   }
-    //   if (!formData.borrowerCitizenshipStatus) {
-    //     errors.borrowerCitizenshipStatus = "Citizenship status is required";
-    //   }
-    //   if (!formData.liquidity) {
-    //     errors.liquidity = "Liquidity amount is required";
-    //   }
-    //   if (!formData.guranteeLoan) {
-    //     errors.guranteeLoan = "Required";
-    //   }
-    //   if (!formData.authorizedSignatory) {
-    //     errors.authorizedSignatory = "Required";
-    //   }
-    // }
+    if (step === 0) {
+      if (!formData.firstName) {
+        errors.firstName = "First Name is required";
+      }
+      if (!formData.borrowerLast) {
+        errors.borrowerLast = "Last Name is required";
+      }
+      if (!formData.borrowerEmail) {
+        errors.borrowerEmail = "Email is required";
+      }
+      if (!formData.borrowerCell) {
+        errors.borrowerCell = "Phone Number is required";
+      }
+      if (!formData.borrowerCitizenship) {
+        errors.borrowerCitizenship = "Citizenship status is required";
+      }
+      if (!formData.bestTerms) {
+        errors.bestTerms = "Arms length description is required";
+      }
+    }
 
-    // // Step 0: BorrowerStep validation example
-    // if (step === 1) {
-    //   if (!formData.borrowingEntityInformation) {
-    //     errors.borrowingEntityInformation = "Required ";
-    //   }
-    // }
+    if (step === 1) {
+      if (!formData.authorizedSignatory) {
+        errors.authorizedSignatory = "Required ";
+      }
+      if (!formData.borrowingEntityInformation) {
+        errors.borrowingEntityInformation = "Required ";
+      }
+    }
 
-    // if (step === 2) {
-    //   if (!formData.homeAddress) {
-    //     errors.homeAddress = "Address is required";
-    //   }
-    //   if (!formData.addressCity) {
-    //     errors.addressCity = "City is required";
-    //   }
-    //   if (!formData.addressZip) {
-    //     errors.addressZip = "Zipcode is required";
-    //   }
-    //   if (!formData.addressState) {
-    //     errors.addressState = "State is required";
-    //   }
-    //   if (!formData.propertyType) {
-    //     errors.propertyType = "Property type is required";
-    //   }
-    //   if (!formData.authorizedSignatory) {
-    //     errors.authorizedSignatory = "Authorized signatory is required";
-    //   }
-    //   if (!formData.purchaseorRefinance) {
-    //     errors.purchaseorRefinance = "Purchase or Refinance is required";
-    //   }
-    //   // if (!formData.propertyPurchasePrice) {
-    //   //   errors.propertyPurchasePrice = "Property purchase price is required";
-    //   // }
-    //   if (!formData.propertySource) {
-    //     errors.propertySource = "Property source is required";
-    //   }
-    //   // if (!formData.renovationBudget) {
-    //   //   errors.renovationBudget = "Renovation budget is required";
-    //   // }
-    //   if (!formData.isCondominium) {
-    //     errors.isCondominium = "Condominium option is required";
-    //   }
-    //   // if (!formData.afterRepairValue) {
-    //   //   errors.afterRepairValue = "After repair value is required";
-    //   // }
-    //   if (!formData.exitStrategry) {
-    //     errors.exitStrategry = "Exit strategy is required";
-    //   }
-    // }
+    if (step === 2) {
+      if (!formData.state) {
+        errors.state = "Required ";
+      }
+      if (!formData.loanPurpose) {
+        errors.loanPurpose = "Required ";
+      }
+      if (!formData.purchasePriceProperty) {
+        errors.purchasePriceProperty = "Required ";
+      }
+      if (!formData.propertyMan) {
+        errors.propertyMan = "Required ";
+      }
+      if (!formData.propertyMan) {
+        errors.propertyMan = "Required ";
+      }
+      if (!formData.grossMonthlyRent) {
+        errors.grossMonthlyRent = "Required ";
+      }
+    }
 
     // if (step === 3) {
     //   if (!formData.cashOut) {
