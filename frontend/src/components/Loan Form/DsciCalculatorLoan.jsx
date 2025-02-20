@@ -540,7 +540,7 @@ const DsciCalculatorLoan = ({ formData, setFormData, fieldErrors }) => {
           gutterBottom
           style={{ color: "#498dd6", fontSize: 24 }}
         >
-          Rental DSCR Calculator (Loan Form)
+          Rental DSCR Calculator
         </Typography>
 
         <Typography
