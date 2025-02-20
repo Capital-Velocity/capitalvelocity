@@ -34,6 +34,7 @@ import AppTheme from "../shared-theme/AppTheme";
 import InfoMobileMultiFamilyBridge from "./components/InfoMobileMultiFamilyBridge";
 import PropertyInformation from "../components/Loan Form/PropertyInformation";
 import PropertyInformationGroundUp from "../components/NewLoanFormComponents/PropertyInformationGroundUp";
+import PropertyInformationCashedOutRefinance from "../components/NewLoanFormComponents/PropertyInformationCashedOutRefinance";
 
 export default function CashedOutRefinanceLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -49,7 +50,15 @@ export default function CashedOutRefinanceLoanForm(props) {
   const { width, height } = useWindowSize();
 
   // Stepper labels
-  const steps = ["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"];
+  const steps = [
+    "Borrower Information",
+    "Entity Information",
+    "Property Information",
+    "Rental DSCR Calculator",
+    "Vendor and Closing Options",
+    "Soft Credit Pull",
+    "Upload & Submit",
+  ];
 
   function getStepContent(step) {
     switch (step) {
@@ -79,7 +88,7 @@ export default function CashedOutRefinanceLoanForm(props) {
         );
       case 2:
         return (
-          <PropertyInformationGroundUp
+          <PropertyInformationCashedOutRefinance
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
