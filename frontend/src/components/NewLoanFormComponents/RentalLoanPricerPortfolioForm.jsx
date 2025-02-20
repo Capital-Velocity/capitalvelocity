@@ -166,7 +166,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
   };
 
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <Container style={{ marginTop: 10 }}>
         <Typography variant="h4" color="black" gutterBottom>
           Property Information
@@ -175,8 +175,8 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
           Portfolio's Properties
         </Typography> */}
         <Grid container spacing={2}>
-          <Grid item sm={12}>
-            <FormControl style={{ width: "500px" }}>
+          <Grid item xs={12} sm={12}>
+            <FormControl fullWidth style={{}}>
               <Typography type="p" color="black">
                 Select State
               </Typography>
@@ -195,12 +195,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <Button
               variant="contained"
               color="primary"
               style={{
-                width: "30%",
                 marginTop: 10,
                 backgroundColor: "#498dd6",
               }}
@@ -255,7 +254,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Paper>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Loan Purpose
@@ -263,7 +262,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 error={fieldErrors.loanPurpose}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.loanPurpose || ""}
                 onChange={(e) =>
@@ -280,31 +279,33 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             {" "}
-            <Typography type="p" color="black">
-              Purchase Price
-            </Typography>
-            <TextField
-              error={fieldErrors.purchasePriceProperty}
-              style={{ width: "500px", backgroundColor: "white" }}
-              value={formData.purchasePriceProperty || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  purchasePriceProperty: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-            />
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Purchase Price
+              </Typography>
+              <TextField
+                error={fieldErrors.purchasePriceProperty}
+                style={{ backgroundColor: "white" }}
+                value={formData.purchasePriceProperty || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchasePriceProperty: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+              />
+            </FormControl>
           </Grid>
           {/* <Grid item sm={6}>
             <FormControl fullWidth>
@@ -314,7 +315,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 error={fieldErrors.loanRecourse}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{  backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.loanRecourse || ""}
                 onChange={(e) =>
@@ -338,7 +339,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Typography>
             <TextField
               error={fieldErrors.ltv}
-              style={{ width: "500px", backgroundColor: "white" }}
+              style={{  backgroundColor: "white" }}
               value={formData.ltv || ""}
               size="large"
               InputLabelProps={{
@@ -363,7 +364,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Typography>
             <TextField
               error={fieldErrors.minAsValue}
-              style={{ width: "500px", backgroundColor: "white" }}
+              style={{  backgroundColor: "white" }}
               value={formData.minAsValue || ""}
               size="large"
               InputLabelProps={{
@@ -390,7 +391,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Typography>
             <TextField
               error={fieldErrors.maxAsValue}
-              style={{ width: "500px", backgroundColor: "white" }}
+              style={{  backgroundColor: "white" }}
               value={formData.maxAsValue || ""}
               size="large"
               InputLabelProps={{
@@ -411,7 +412,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             />
           </Grid> */}
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Property Management
@@ -419,7 +420,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 error={fieldErrors.propertyMan}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.propertyMan || ""}
                 onChange={(e) =>
@@ -438,31 +439,33 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             {" "}
-            <Typography type="p" color="black">
-              Gross Monthly Rent
-            </Typography>
-            <TextField
-              error={fieldErrors.grossmontly}
-              style={{ width: "500px", backgroundColor: "white" }}
-              value={formData.grossmontly || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  grossmontly: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-            />
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Gross Monthly Rent
+              </Typography>
+              <TextField
+                error={fieldErrors.grossmontly}
+                style={{ backgroundColor: "white" }}
+                value={formData.grossmontly || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    grossmontly: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+              />
+            </FormControl>
           </Grid>
           {/* <Grid item sm={6}>
             {" "}
@@ -471,7 +474,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Typography>
             <TextField
               error={fieldErrors.cashFlowminAsValue}
-              style={{ width: "500px", backgroundColor: "white" }}
+              style={{  backgroundColor: "white" }}
               value={formData.cashFlowminAsValue || ""}
               size="large"
               InputLabelProps={{
@@ -497,7 +500,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
             </Typography>
             <TextField
               error={fieldErrors.cashFlowmaxAsValue}
-              style={{ width: "500px", backgroundColor: "white" }}
+              style={{  backgroundColor: "white" }}
               value={formData.cashFlowmaxAsValue || ""}
               size="large"
               InputLabelProps={{
@@ -525,7 +528,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 error={fieldErrors.cashFlowpropertyMan}
-                style={{ width: "500px", backgroundColor: "white" }}
+                style={{  backgroundColor: "white" }}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.cashFlowpropertyMan || ""}
                 onChange={(e) =>
