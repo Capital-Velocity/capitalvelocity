@@ -9,6 +9,7 @@ stabalizedRouter.post(
   expressAsyncHandler(async (req, res) => {
     try {
       const stabalized = new StableBridge({
+        additonalPropertyInfo: req.body.additonalPropertyInfo,
         addressCity: req.body.addressCity,
         addressState: req.body.addressState,
         addressZip: req.body.addressZip,
@@ -25,8 +26,6 @@ stabalizedRouter.post(
         borrowerLast: req.body.borrowerLast,
         borrowingEntityInformation: req.body.borrowingEntityInformation,
         borrowingEntityOwned: req.body.borrowingEntityOwned,
-        background: req.body.background,
-        cashOut: req.body.cashOut,
         closingDate: req.body.closingDate,
         completedCapex: req.body.completedCapex,
         contactLastName: req.body.contactLastName,
@@ -35,16 +34,13 @@ stabalizedRouter.post(
         entityName: req.body.entityName,
         entityType: req.body.entityType,
         experienceWithRealEstate: req.body.experienceWithRealEstate,
-        exitStrat: req.body.exitStrat,
         firstName: req.body.firstName,
         grossMonthlyRent: req.body.grossMonthlyRent,
+        homeAddress: req.body.homeAddress,
         insuranceCompany: req.body.insuranceCompany,
-        investedCapital: req.body.investedCapital,
         isCondominium: req.body.isCondominium,
-        loanPurpose: req.body.loanPurpose,
         personallyGuranteeing: req.body.personallyGuranteeing,
         preferredClosingAttorney: req.body.preferredClosingAttorney,
-        propertyAddress: req.body.propertyAddress,
         propertyMonthlyHOAFee: req.body.propertyMonthlyHOAFee,
         propertyMonthlyInsurance: req.body.propertyMonthlyInsurance,
         propertyMonthlyOtherExpenses: req.body.propertyMonthlyOtherExpenses,
@@ -54,7 +50,6 @@ stabalizedRouter.post(
         purchaseDate: req.body.purchaseDate,
         purchasePriceProperty: req.body.purchasePriceProperty,
         purchaseorRefinance: req.body.purchaseorRefinance,
-        redFlags: req.body.redFlags,
         renovationDescript: req.body.renovationDescript, // Array of strings
         socialSecurity: req.body.socialSecurity,
         titleCompany: req.body.titleCompany,

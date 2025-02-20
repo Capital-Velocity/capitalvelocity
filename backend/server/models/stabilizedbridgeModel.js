@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 
 const stabalizedBridgeSchema = new mongoose.Schema(
   {
+    additonalPropertyInfo: { type: String },
     addressCity: { type: String },
     addressState: { type: String },
     addressZip: { type: String },
@@ -18,8 +19,6 @@ const stabalizedBridgeSchema = new mongoose.Schema(
     borrowerLast: { type: String },
     borrowingEntityInformation: { type: String },
     borrowingEntityOwned: { type: Number },
-    background: { type: String },
-    cashOut: { type: String },
     closingDate: { type: String },
     completedCapex: { type: String },
     contactLastName: { type: String },
@@ -28,16 +27,13 @@ const stabalizedBridgeSchema = new mongoose.Schema(
     entityName: { type: String },
     entityType: { type: String },
     experienceWithRealEstate: { type: Number },
-    exitStrat: { type: String },
     firstName: { type: String },
     grossMonthlyRent: { type: String },
+    homeAddress: { type: String },
     insuranceCompany: { type: String },
-    investedCapital: { type: String },
     isCondominium: { type: String },
-    loanPurpose: { type: String },
     personallyGuranteeing: { type: Number },
     preferredClosingAttorney: { type: String },
-    propertyAddress: { type: String },
     propertyMonthlyHOAFee: { type: String },
     propertyMonthlyInsurance: { type: String },
     propertyMonthlyOtherExpenses: { type: String },
@@ -47,7 +43,6 @@ const stabalizedBridgeSchema = new mongoose.Schema(
     purchaseDate: { type: String },
     purchasePriceProperty: { type: String },
     purchaseorRefinance: { type: String },
-    redFlags: { type: String },
     renovationDescript: { type: [String] }, // Array of strings
     socialSecurity: { type: String },
     titleCompany: { type: String },
