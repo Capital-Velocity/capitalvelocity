@@ -504,7 +504,7 @@ function PropertyInformationCashedOutRefinance({
               />
             </FormControl>
           </Grid> */}
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Exit Strategy
@@ -522,7 +522,7 @@ function PropertyInformationCashedOutRefinance({
                 variant="outlined"
               />
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
