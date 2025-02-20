@@ -69,6 +69,7 @@ import LoanPricerSummary from "../components/Loan Form/LoanPricerSummary";
 import LoanPricerSinglePropertyRentalForm from "../components/NewLoanFormComponents/LoanPricerSinglePropertyRentalForm";
 import DsciCalculator from "../Calculators/DsciCalculator";
 import PropertyInformationSinglePropertyRental from "../components/NewLoanFormComponents/PropertyInformationSinglePropertyRental";
+import DsciCalculatorLoan from "../components/Loan Form/DsciCalculatorLoan";
 
 export default function SinglePropertyRentalLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -183,7 +184,7 @@ export default function SinglePropertyRentalLoanForm(props) {
         );
       case 3:
         return (
-          <DsciCalculator
+          <DsciCalculatorLoan
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
