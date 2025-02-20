@@ -511,13 +511,13 @@ function PropertyInformationCashedOutRefinance({
               </Typography>
               <TextField
                 style={{ marginTop: 8, backgroundColor: "white" }}
-                value={formData.exitStrategry || ""}
+                value={formData.exitStrategy || ""}
                 size="large"
-                error={fieldErrors.exitStrategry}
-                helperText={<span>{fieldErrors.exitStrategry}</span>}
+                error={fieldErrors.exitStrategy}
+                helperText={<span>{fieldErrors.exitStrategy}</span>}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 onChange={(e) =>
-                  setFormData({ ...formData, exitStrategry: e.target.value })
+                  setFormData({ ...formData, exitStrategy: e.target.value })
                 }
                 variant="outlined"
               />
@@ -545,7 +545,7 @@ function PropertyInformationCashedOutRefinance({
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
               Qualifying FICO Score
             </label>
@@ -561,9 +561,9 @@ function PropertyInformationCashedOutRefinance({
                 style={{ color: "#498dd6", width: "80%" }}
               />
             </div>
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Loan Purpose
@@ -589,7 +589,7 @@ function PropertyInformationCashedOutRefinance({
                 <MenuItem value={"Refinance"}>Refinance</MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
             <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
@@ -610,9 +610,6 @@ function PropertyInformationCashedOutRefinance({
                 error={Boolean(fieldErrors?.purchaseDate)}
                 helperText={fieldErrors?.purchaseDate || ""}
                 fullWidth
-                FormHelperTextProps={{
-                  sx: { textAlign: "center" }, // Centers the helper text
-                }}
               />
             </FormControl>
           </Grid>
@@ -643,7 +640,7 @@ function PropertyInformationCashedOutRefinance({
                 variant="outlined"
               />
               {fieldErrors?.purchasePriceProperty && (
-                <FormHelperText error sx={{ textAlign: "center" }}>
+                <FormHelperText error>
                   {fieldErrors.purchasePriceProperty}
                 </FormHelperText>
               )}
