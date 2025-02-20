@@ -98,7 +98,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
   const [selectedCounty, setSelectedCounty] = useState("");
   const [counties, setCounties] = useState([]);
-  const [selectedProperties, setSelectedProperties] = useState([]);
+  const selectedProperties = formData.portfolioProperties || [];
   const [openModal, setOpenModal] = useState(false);
   const [propertyType, setPropertyType] = useState("");
   const [numProperties, setNumProperties] = useState(0);
@@ -130,13 +130,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
   };
 
   const handleDeleteRow = (index) => {
-    const updatedProperties = selectedProperties.filter(
-      (property, i) => i !== index
-    );
-    setSelectedProperties(updatedProperties);
+    const updatedProperties = selectedProperties.filter((_, i) => i !== index);
+
     setFormData({
       ...formData,
-      portfolioProperties: updatedProperties,
+      portfolioProperties: updatedProperties, // Persist updated properties
     });
   };
 
@@ -155,10 +153,10 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
     };
 
     const updatedProperties = [...selectedProperties, newProperty];
-    setSelectedProperties(updatedProperties);
+
     setFormData({
       ...formData,
-      portfolioProperties: updatedProperties,
+      portfolioProperties: updatedProperties, // Store properties in formData
     });
 
     setPropertyType("");
