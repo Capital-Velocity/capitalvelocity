@@ -465,12 +465,11 @@ export default function RentalPortfolioLoanForm(props) {
                 variant="body1"
                 style={{ color: "grey", fontSize: 14 }}
               >
-                Acquiring a multifamily property often requires quick and
-                flexible financing solutions to secure the deal before long-term
-                funding is arranged. Our interim financing options provide fast
-                access to capital, allowing investors to close on properties
-                efficiently while structuring their long-term financial
-                strategy.
+                Unlock the full potential of your rental investments with our
+                tailored Portfolio Financing solutions. Whether you're an
+                experienced investor or expanding your holdings, our long-term
+                loans provide flexible funding for multiple rental properties
+                under a single loan.
               </Typography>
               <Typography
                 variant="body1"
@@ -484,7 +483,7 @@ export default function RentalPortfolioLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Flexible Terms <br />
+                Portfolio Financing <br />
                 <Checkbox
                   defaultChecked
                   icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
@@ -493,7 +492,7 @@ export default function RentalPortfolioLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Low Interest Rates <br />{" "}
+                Fixed or Adjustable Rates <br />{" "}
                 <Checkbox
                   defaultChecked
                   icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
@@ -502,7 +501,7 @@ export default function RentalPortfolioLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Fast Funding
+                Tax-Deductible Interest
               </Typography>
               <div
                 style={{
