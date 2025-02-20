@@ -86,7 +86,7 @@ function EntityInformationNew({ formData, setFormData }) {
                   id="demo-simple-select"
                   label="Entity Type"
                 >
-                  <MenuItem value={"Corperation"}>Corperation</MenuItem>
+                  <MenuItem value={"Corporation"}>Corporation</MenuItem>
                   <MenuItem value={"Limited Liability Company"}>
                     Limited Liability Company
                   </MenuItem>
