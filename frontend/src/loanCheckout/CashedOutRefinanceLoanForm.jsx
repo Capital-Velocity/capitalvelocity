@@ -237,9 +237,9 @@ export default function CashedOutRefinanceLoanForm(props) {
       if (!formData.isCondominium) {
         errors.isCondominium = "Condominium option is required";
       }
-      if (!formData.exitStrategy) {
-        errors.exitStrategy = "Exit strategy is required";
-      }
+      // if (!formData.exitStrategy) {
+      //   errors.exitStrategy = "Exit strategy is required";
+      // }
       if (!formData.purchaseDate) {
         errors.purchaseDate = "Purchase date is required";
       }
