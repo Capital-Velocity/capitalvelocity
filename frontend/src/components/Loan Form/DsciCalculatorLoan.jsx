@@ -1267,7 +1267,7 @@ const DsciCalculatorLoan = ({ formData, setFormData, fieldErrors }) => {
                       </Typography>
                     </Grid>
 
-                    <Grid item xs={12} style={{ marginBottom: 10 }}>
+                    {/* <Grid item xs={12} style={{ marginBottom: 10 }}>
                       <Button
                         variant="contained"
                         onClick={() => {
@@ -1286,7 +1286,7 @@ const DsciCalculatorLoan = ({ formData, setFormData, fieldErrors }) => {
                       >
                         Apply Now
                       </Button>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 </Container>
               </Box>
