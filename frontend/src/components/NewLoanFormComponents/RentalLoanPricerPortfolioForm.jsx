@@ -185,7 +185,7 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
 
               <Select
                 style={{ backgroundColor: "white" }}
-                value={selectedState}
+                value={formData.state || selectedState}
                 onChange={handleStateChange}
               >
                 {states.map((state) => (
