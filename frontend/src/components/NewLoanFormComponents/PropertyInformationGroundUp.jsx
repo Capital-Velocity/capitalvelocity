@@ -15,6 +15,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import Autocomplete from "@mui/material/Autocomplete";
 import Checkbox from "@mui/material/Checkbox";
+import InputAdornment from "@mui/material/InputAdornment";
 
 function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
   const [inputValue, setInputValue] = useState("");
@@ -232,6 +233,11 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
                 style={{ backgroundColor: "white" }}
                 helperText={<span>{fieldErrors.propertyPurchasePrice}</span>}
                 // Add more props as needed
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
                 sx={{
                   "& input[type='number']": {
                     "-webkit-appearance": "none",
@@ -271,8 +277,12 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
                   helperText={<span>{fieldErrors.afterRepairValue}</span>}
                   variant="outlined"
                   fullWidth
-
                   // Add more props as needed
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
                 />
               </Grid>
             </FormControl>
