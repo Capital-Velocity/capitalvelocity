@@ -59,13 +59,9 @@ export default function RentalPortfolioLoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "Property Information",
-    // "RentalLoanPrice2",
-    // "RentalLoanPrice3",
-    // "Loan Pricer Summary",
     "Borrower Information",
-    // "Borrower Infromation3",
     "Entity Information",
+    "Property Information",
     "Vendor and Closing Options",
     "Soft Credit Pull",
     "Upload & Submit",
@@ -74,7 +70,7 @@ export default function RentalPortfolioLoanForm(props) {
     switch (step) {
       case 0:
         return (
-          <RentalLoanPricerPortfolioForm
+          <BorrowerStep
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -106,7 +102,7 @@ export default function RentalPortfolioLoanForm(props) {
       //   );
       case 1:
         return (
-          <BorrowerStep
+          <EntityInformation
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -122,7 +118,7 @@ export default function RentalPortfolioLoanForm(props) {
       //   );
       case 2:
         return (
-          <EntityInformation
+          <RentalLoanPricerPortfolioForm
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}

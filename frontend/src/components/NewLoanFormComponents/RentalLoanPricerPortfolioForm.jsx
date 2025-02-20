@@ -169,11 +169,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
     <div>
       <Container style={{ marginTop: 10 }}>
         <Typography variant="h4" color="black" gutterBottom>
-          Loan Pricer
+          Property Information
         </Typography>
-        <Typography variant="h6" color="black" gutterBottom>
+        {/* <Typography variant="h6" color="black" gutterBottom>
           Portfolio's Properties
-        </Typography>
+        </Typography> */}
         <Grid container spacing={2}>
           <Grid item sm={12}>
             <FormControl style={{ width: "500px" }}>
