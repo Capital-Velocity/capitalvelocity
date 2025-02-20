@@ -336,8 +336,8 @@ export default function Checkout(props) {
       // if (!formData.afterRepairValue) {
       //   errors.afterRepairValue = "After repair value is required";
       // }
-      if (!formData.exitStrategry) {
-        errors.exitStrategry = "Exit strategy is required";
+      if (!formData.exitStrategy) {
+        errors.exitStrategy = "Exit strategy is required";
       }
     }
 

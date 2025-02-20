@@ -403,15 +403,24 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
           </Grid>
 
           <Grid item xs={12}>
-            <label style={{ fontWeight: 300 }}>
+            <Typography type="p" color="black">
               Please describe the renovation
-            </label>
+            </Typography>
             <Autocomplete
               multiple
               id="checkboxes-tags-demo"
               options={top100Films}
               disableCloseOnSelect
-              getOptionLabel={(option) => option.title}
+              getOptionLabel={(option) => option.title} // ✅ No undefined error now
+              value={top100Films.filter((option) =>
+                formData.renovationDescript?.includes(option.title)
+              )} // ✅ Ensures only valid options are shown
+              onChange={(event, newValue) => {
+                setFormData({
+                  ...formData,
+                  renovationDescript: newValue.map((option) => option.title), // ✅ Store only titles
+                });
+              }}
               renderOption={(props, option, { selected }) => (
                 <li {...props}>
                   <Checkbox
@@ -424,30 +433,23 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
                 </li>
               )}
               style={{
-                width: "100%", // Make sure the component takes full width
+                width: "100%",
                 backgroundColor: "white",
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  fullWidth // Ensure TextField takes the full width
-                  multiline // Allows dynamic height adjustment
+                  fullWidth
+                  multiline
                   error={!!fieldErrors.renovationDescript}
                   helperText={fieldErrors.renovationDescript}
-                  value={formData.renovationDescript || ""}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      renovationDescript: e.target.value,
-                    })
-                  }
                   variant="outlined"
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       minHeight: "56px",
-                      maxHeight: "150px", // Limit height to avoid excessive expansion
-                      overflowY: "auto", // Allows scrolling when height is exceeded
+                      maxHeight: "150px",
+                      overflowY: "auto",
                       backgroundColor: "white",
                     },
                   }}
@@ -455,7 +457,7 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
               )}
               sx={{
                 "& .MuiAutocomplete-tag": {
-                  marginBottom: "5px", // Prevents tag overflow issues
+                  marginBottom: "5px",
                 },
               }}
             />
@@ -482,22 +484,32 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid> */}
           <Grid item xs={12}>
-            <FormControl fullWidth>
+            <FormControl fullWidth error={Boolean(fieldErrors?.exitStrategy)}>
               <Typography type="p" color="black">
                 Exit Strategy
               </Typography>
-              <TextField
-                style={{ marginTop: 8, backgroundColor: "white" }}
-                value={formData.exitStrategry || ""}
-                size="large"
-                error={fieldErrors.exitStrategry}
-                helperText={<span>{fieldErrors.exitStrategry}</span>}
+              <Select
+                style={{ backgroundColor: "white" }}
+                error={Boolean(fieldErrors?.exitStrategy)}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
+                value={formData.exitStrategy || ""}
                 onChange={(e) =>
-                  setFormData({ ...formData, exitStrategry: e.target.value })
+                  setFormData({
+                    ...formData,
+                    exitStrategy: e.target.value,
+                  })
                 }
-                variant="outlined"
-              />
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+              >
+                <MenuItem value={"Refinance"}>Refinance</MenuItem>
+                <MenuItem value={"Sale"}>Sale</MenuItem>
+              </Select>
+              {fieldErrors?.exitStrategy && (
+                <FormHelperText sx={{ textAlign: "center" }}>
+                  {fieldErrors.exitStrategy}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12}>
@@ -507,13 +519,13 @@ function PropertyInformation({ formData, setFormData, fieldErrors }) {
               </Typography>
               <TextField
                 style={{ marginTop: 8, backgroundColor: "white" }}
-                value={formData.additonalPropertyInfo || ""}
+                value={formData.additionalPropertyInfo || ""}
                 size="large"
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    additonalPropertyInfo: e.target.value,
+                    additionalPropertyInfo: e.target.value,
                   })
                 }
                 multiline
