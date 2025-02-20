@@ -645,7 +645,7 @@ function PropertyInformationSinglePropertyRental({
             </FormControl>
           </Grid>
 
-          <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
+          {/* <Grid item sm={12} xs={12} sx={{ textAlign: "center" }}>
             <FormControl
               component="fieldset"
               error={Boolean(fieldErrors?.debt)}
@@ -686,9 +686,9 @@ function PropertyInformationSinglePropertyRental({
                 </FormHelperText>
               )}
             </FormControl>
-          </Grid>
+          </Grid> */}
 
-          {formData.debt === "Yes" && (
+          {/* {formData.debt === "Yes" && (
             <>
               <Grid item sm={6} xs={12} style={{}}>
                 <Typography type="p" color="black">
@@ -772,7 +772,7 @@ function PropertyInformationSinglePropertyRental({
                 </Grid>
               ))}
             </>
-          )}
+          )} */}
 
           <Grid item xs={12} sm={12} sx={{ mt: 2 }}>
             <FormControl fullWidth error={Boolean(fieldErrors?.purchaseDate)}>
@@ -797,6 +797,39 @@ function PropertyInformationSinglePropertyRental({
                   sx: { textAlign: "center" }, // Centers the helper text
                 }}
               />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12} sm={12}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Purchase Price
+              </Typography>
+              <TextField
+                error={fieldErrors.purchasePriceProperty}
+                style={{ backgroundColor: "white" }}
+                value={formData.purchasePriceProperty || ""}
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    purchasePriceProperty: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+              />
+              {fieldErrors?.purchasePriceProperty && (
+                <FormHelperText error sx={{ textAlign: "center" }}>
+                  {fieldErrors.purchasePriceProperty}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={12}>
@@ -1152,41 +1185,7 @@ function PropertyInformationSinglePropertyRental({
               )}
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={12}>
-            <FormControl fullWidth>
-              {" "}
-              <Typography type="p" color="black">
-                Purchase Price
-              </Typography>
-              <TextField
-                error={fieldErrors.purchasePriceProperty}
-                style={{ backgroundColor: "white" }}
-                value={formData.purchasePriceProperty || ""}
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    purchasePriceProperty: e.target.value,
-                  })
-                }
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">$</InputAdornment>
-                  ),
-                }}
-                variant="outlined"
-              />
-              {fieldErrors?.purchasePriceProperty && (
-                <FormHelperText error sx={{ textAlign: "center" }}>
-                  {fieldErrors.purchasePriceProperty}
-                </FormHelperText>
-              )}
-            </FormControl>
-          </Grid>
-
-          <>
+          {/* <>
             {[
               {
                 label: "Estimated As Is Value",
@@ -1285,7 +1284,7 @@ function PropertyInformationSinglePropertyRental({
                 </FormControl>
               </Grid>
             ))}
-          </>
+          </> */}
 
           {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
