@@ -502,7 +502,16 @@ function PropertyInformationSinglePropertyRental({
               id="checkboxes-tags-demo"
               options={top100Films}
               disableCloseOnSelect
-              getOptionLabel={(option) => option.title}
+              getOptionLabel={(option) => option.title} // ✅ No undefined error now
+              value={top100Films.filter((option) =>
+                formData.renovationDescript?.includes(option.title)
+              )} // ✅ Ensures only valid options are shown
+              onChange={(event, newValue) => {
+                setFormData({
+                  ...formData,
+                  renovationDescript: newValue.map((option) => option.title), // ✅ Store only titles
+                });
+              }}
               renderOption={(props, option, { selected }) => (
                 <li {...props}>
                   <Checkbox
@@ -515,30 +524,23 @@ function PropertyInformationSinglePropertyRental({
                 </li>
               )}
               style={{
-                width: "100%", // Make sure the component takes full width
+                width: "100%",
                 backgroundColor: "white",
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
                   fullWidth
-                  multiline // Allows TextField to expand with more content
+                  multiline
                   error={!!fieldErrors.renovationDescript}
                   helperText={fieldErrors.renovationDescript}
-                  value={formData.renovationDescript || ""}
-                  onChange={(e) =>
-                    setFormData({
-                      ...formData,
-                      renovationDescript: e.target.value,
-                    })
-                  }
                   variant="outlined"
                   InputProps={{
                     ...params.InputProps,
                     style: {
                       minHeight: "56px",
-                      maxHeight: "150px", // Limit height to avoid excessive expansion
-                      overflowY: "auto", // Allows scrolling when height is exceeded
+                      maxHeight: "150px",
+                      overflowY: "auto",
                       backgroundColor: "white",
                     },
                   }}
@@ -546,7 +548,7 @@ function PropertyInformationSinglePropertyRental({
               )}
               sx={{
                 "& .MuiAutocomplete-tag": {
-                  marginBottom: "5px", // Prevents tag overflow issues
+                  marginBottom: "5px",
                 },
               }}
             />

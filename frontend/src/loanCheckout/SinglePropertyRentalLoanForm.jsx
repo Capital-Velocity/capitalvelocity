@@ -270,132 +270,132 @@ export default function SinglePropertyRentalLoanForm(props) {
 
     // Step 0: BorrowerStep validation example
     if (step === 0) {
-      if (!formData.firstName) {
-        errors.firstName = "First Name is required";
-      }
-      if (!formData.borrowerLast) {
-        errors.borrowerLast = "Last Name is required";
-      }
-      if (!formData.borrowerEmail) {
-        errors.borrowerEmail = "Email is required";
-      }
-      if (!formData.borrowerCell) {
-        errors.borrowerCell = "Phone Number is required";
-      }
-      if (!formData.borrowerCitizenship) {
-        errors.borrowerCitizenship = "Citizenship status is required";
-      }
-      if (!formData.bestTerms) {
-        errors.bestTerms = "Arms length description is required";
-      }
+      // if (!formData.firstName) {
+      //   errors.firstName = "First Name is required";
+      // }
+      // if (!formData.borrowerLast) {
+      //   errors.borrowerLast = "Last Name is required";
+      // }
+      // if (!formData.borrowerEmail) {
+      //   errors.borrowerEmail = "Email is required";
+      // }
+      // if (!formData.borrowerCell) {
+      //   errors.borrowerCell = "Phone Number is required";
+      // }
+      // if (!formData.borrowerCitizenship) {
+      //   errors.borrowerCitizenship = "Citizenship status is required";
+      // }
+      // if (!formData.bestTerms) {
+      //   errors.bestTerms = "Arms length description is required";
+      // }
     }
 
     if (step === 1) {
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Required ";
-      }
-      if (!formData.borrowingEntityInformation) {
-        errors.borrowingEntityInformation = "Required ";
-      }
+      // if (!formData.authorizedSignatory) {
+      //   errors.authorizedSignatory = "Required ";
+      // }
+      // if (!formData.borrowingEntityInformation) {
+      //   errors.borrowingEntityInformation = "Required ";
+      // }
     }
 
     if (step === 2) {
-      if (!formData.propertyAddress) {
-        errors.propertyAddress = "Address is required";
-      }
-      if (!formData.addressCity) {
-        errors.addressCity = "City is required";
-      }
-      if (!formData.addressZip) {
-        errors.addressZip = "Zipcode is required";
-      }
-      if (!formData.addressState) {
-        errors.addressState = "State is required";
-      }
-      if (!formData.propertyType) {
-        errors.propertyType = "Property type is required";
-      }
-      if (!formData.purchaseorRefinance) {
-        errors.purchaseorRefinance = "Purchase or Refinance is required";
-      }
-      if (!formData.propertySource) {
-        errors.propertySource = "Property source is required";
-      }
-      if (!formData.isCondominium) {
-        errors.isCondominium = "Condominium option is required";
-      }
-      if (!formData.exitStrat) {
-        errors.exitStrat = "Exit strategy is required";
-      }
-      if (!formData.cashOut) {
-        errors.cashOut = "Required";
-      }
-      if (!formData.debt) {
-        errors.debt = "Required";
-      }
-      if (!formData.purchaseDate) {
-        errors.purchaseDate = "Required";
-      }
-      if (!formData.investedCapital) {
-        errors.investedCapital = "Required";
-      }
-      if (!formData.completedCapex) {
-        errors.completedCapex = "Required";
-      }
-      if (!formData.asIsValue) {
-        errors.asIsValue = "Required";
-      }
-      // if (!formData.exitStrat) {
-      //   errors.exitStrat = "Required";
+      // if (!formData.propertyAddress) {
+      //   errors.propertyAddress = "Address is required";
       // }
-      if (!formData.background) {
-        errors.background = "Required";
-      }
-      if (!formData.redFlags) {
-        errors.redFlags = "Required";
-      }
-      if (!formData.loanPurpose) {
-        errors.loanPurpose = "Required";
-      }
-      if (!formData.purchasePriceProperty) {
-        errors.purchasePriceProperty = "Required";
-      }
-      if (!formData.estimatedAsIsValue) {
-        errors.estimatedAsIsValue = "Required";
-      }
-      if (!formData.grossMonthlyRent) {
-        errors.grossMonthlyRent = "Required";
-      }
-      if (!formData.annualTaxes) {
-        errors.annualTaxes = "Required";
-      }
-      if (!formData.annualInsurance) {
-        errors.annualInsurance = "Required";
-      }
-      if (!formData.hoa) {
-        errors.hoa = "Required";
-      }
-      if (!formData.annualUtilityExpenses) {
-        errors.annualUtilityExpenses = "Required";
-      }
-      if (!formData.annualRepair) {
-        errors.annualRepair = "Required";
-      }
-      if (!formData.propertyFees) {
-        errors.propertyFees = "Required";
-      }
-      if (!formData.totalAnnualIncome) {
-        errors.totalAnnualIncome = "Required";
-      }
-      if (!formData.annualExpenses) {
-        errors.annualExpenses = "Required";
-      }
-      if (!formData.annualNOI) {
-        errors.annualNOI = "Required";
-      }
-      if (!formData.targetLTV) {
-        errors.targetLTV = "Required";
-      }
+      // if (!formData.addressCity) {
+      //   errors.addressCity = "City is required";
+      // }
+      // if (!formData.addressZip) {
+      //   errors.addressZip = "Zipcode is required";
+      // }
+      // if (!formData.addressState) {
+      //   errors.addressState = "State is required";
+      // }
+      // if (!formData.propertyType) {
+      //   errors.propertyType = "Property type is required";
+      // }
+      // if (!formData.purchaseorRefinance) {
+      //   errors.purchaseorRefinance = "Purchase or Refinance is required";
+      // }
+      // if (!formData.propertySource) {
+      //   errors.propertySource = "Property source is required";
+      // }
+      // if (!formData.isCondominium) {
+      //   errors.isCondominium = "Condominium option is required";
+      // }
+      // if (!formData.exitStrat) {
+      //   errors.exitStrat = "Exit strategy is required";
+      // }
+      // if (!formData.cashOut) {
+      //   errors.cashOut = "Required";
+      // }
+      // if (!formData.debt) {
+      //   errors.debt = "Required";
+      // }
+      // if (!formData.purchaseDate) {
+      //   errors.purchaseDate = "Required";
+      // }
+      // if (!formData.investedCapital) {
+      //   errors.investedCapital = "Required";
+      // }
+      // if (!formData.completedCapex) {
+      //   errors.completedCapex = "Required";
+      // }
+      // if (!formData.asIsValue) {
+      //   errors.asIsValue = "Required";
+      // }
+      // // if (!formData.exitStrat) {
+      // //   errors.exitStrat = "Required";
+      // // }
+      // if (!formData.background) {
+      //   errors.background = "Required";
+      // }
+      // if (!formData.redFlags) {
+      //   errors.redFlags = "Required";
+      // }
+      // if (!formData.loanPurpose) {
+      //   errors.loanPurpose = "Required";
+      // }
+      // if (!formData.purchasePriceProperty) {
+      //   errors.purchasePriceProperty = "Required";
+      // }
+      // if (!formData.estimatedAsIsValue) {
+      //   errors.estimatedAsIsValue = "Required";
+      // }
+      // if (!formData.grossMonthlyRent) {
+      //   errors.grossMonthlyRent = "Required";
+      // }
+      // if (!formData.annualTaxes) {
+      //   errors.annualTaxes = "Required";
+      // }
+      // if (!formData.annualInsurance) {
+      //   errors.annualInsurance = "Required";
+      // }
+      // if (!formData.hoa) {
+      //   errors.hoa = "Required";
+      // }
+      // if (!formData.annualUtilityExpenses) {
+      //   errors.annualUtilityExpenses = "Required";
+      // }
+      // if (!formData.annualRepair) {
+      //   errors.annualRepair = "Required";
+      // }
+      // if (!formData.propertyFees) {
+      //   errors.propertyFees = "Required";
+      // }
+      // if (!formData.totalAnnualIncome) {
+      //   errors.totalAnnualIncome = "Required";
+      // }
+      // if (!formData.annualExpenses) {
+      //   errors.annualExpenses = "Required";
+      // }
+      // if (!formData.annualNOI) {
+      //   errors.annualNOI = "Required";
+      // }
+      // if (!formData.targetLTV) {
+      //   errors.targetLTV = "Required";
+      // }
     }
 
     // // if (step === 3) {
