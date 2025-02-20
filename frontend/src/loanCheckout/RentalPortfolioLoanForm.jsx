@@ -455,16 +455,13 @@ export default function RentalPortfolioLoanForm(props) {
             >
               {/* <Info totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"} /> */}
               <Typography
-                variant="h5" // Larger heading for "Small Business Loan"
-                style={{ color: "grey", fontWeight: "bold" }}
+                variant="h1" // Larger heading for "Small Business Loan"
+                style={{ color: "black", fontWeight: "bold" }}
                 gutterBottom
               >
                 Rental Portfolio Loan
               </Typography>
-              <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14 }}
-              >
+              <Typography variant="h6" style={{ color: "black" }}>
                 Unlock the full potential of your rental investments with our
                 tailored Portfolio Financing solutions. Whether you're an
                 experienced investor or expanding your holdings, our long-term
@@ -472,8 +469,8 @@ export default function RentalPortfolioLoanForm(props) {
                 under a single loan.
               </Typography>
               <Typography
-                variant="body1"
-                style={{ color: "grey", fontSize: 14, marginTop: "10px" }}
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
               >
                 <Checkbox
                   defaultChecked

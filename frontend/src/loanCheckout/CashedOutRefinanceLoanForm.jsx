@@ -409,7 +409,11 @@ export default function CashedOutRefinanceLoanForm(props) {
                 Cashed Out Refinance Loan
               </Typography>
               <Typography variant="h6" style={{ color: "black" }}>
-                Placeholder
+                Leverage the equity in your existing properties to access cash
+                for new investments, property improvements, or financial
+                flexibility. Our Cash-Out Refinance options allow real estate
+                investors and property owners to tap into their built-up equity
+                while maintaining ownership of their assets.{" "}
               </Typography>
               <Typography
                 variant="h7"
@@ -423,7 +427,7 @@ export default function CashedOutRefinanceLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Construction Loans <br />
+                Cash-Out Options <br />
                 <Checkbox
                   defaultChecked
                   icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
@@ -432,7 +436,7 @@ export default function CashedOutRefinanceLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Phased Disbursement <br />{" "}
+                Equity-Based Loans <br />{" "}
                 <Checkbox
                   defaultChecked
                   icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
@@ -441,7 +445,7 @@ export default function CashedOutRefinanceLoanForm(props) {
                     transform: "scale(1.0)", // Keep checkbox size
                   }}
                 />
-                Flexible Repayment Options
+                Debt Consolidation
               </Typography>
               <div
                 style={{
