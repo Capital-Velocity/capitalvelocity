@@ -31,6 +31,7 @@ import LoanForm from "./components/LoanForm";
 import MultiFamilyBridgeNewLoanForm from "./pages/MultiFamilyBridgeNewLoanForm";
 import RentalPortfolioNewLoanForm from "./pages/RentalPortfolioNewLoanForm";
 import SinglePropertyRentalNewLoanForm from "./pages/SinglePropertyRentalNewLoanForm";
+import GroundUpNewLoanForm from "./pages/GroundUpNewLoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -115,6 +116,16 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-realestate-groundup"
+          element={
+            firstnameCookie ? (
+              <GroundUpNewLoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -130,7 +141,8 @@ function FooterWrapper() {
   return location.pathname !== "/loan-form-realestate-fixandflip" &&
     location.pathname !== "/loan-form-realestate-multifamily" &&
     location.pathname !== "/loan-form-realestate-rentalportfolio" &&
-    location.pathname !== "/loan-form-realestate-singlepropertyrental" ? (
+    location.pathname !== "/loan-form-realestate-singlepropertyrental" &&
+    location.pathname !== "/loan-form-realestate-groundup" ? (
     <Footer />
   ) : null;
 }

@@ -57,7 +57,7 @@ const selectionData = [
       "Phased Disbursement",
       "Flexible Repayment Options",
     ],
-    link: "/loan-form-realestate?type=StabilizedBridge",
+    link: "/loan-form-realestate-groundup",
   },
   {
     title: "Cashed Out Refinance",
