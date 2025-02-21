@@ -256,7 +256,7 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
               />
             </FormControl>
           </Grid>
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What is the After Repair Value?
@@ -286,7 +286,7 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
             </FormControl>
-          </Grid>
+          </Grid> */}
           {/* <Grid item xs={12} sm={12}>
             <Typography type="p" color="black">
               Is the borrower authorized signatory?
@@ -477,7 +477,7 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
             <Typography type="p" color="black">
               Please describe the renovation
             </Typography>
@@ -536,7 +536,7 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
                 },
               }}
             />
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.exitStrategy)}>

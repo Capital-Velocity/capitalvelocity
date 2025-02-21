@@ -231,9 +231,9 @@ export default function GroundUpLoanForm(props) {
       if (!formData.propertyPurchasePrice) {
         errors.propertyPurchasePrice = "Purchase price is required";
       }
-      if (!formData.afterRepairValue) {
-        errors.afterRepairValue = "After repair value is required";
-      }
+      // if (!formData.afterRepairValue) {
+      //   errors.afterRepairValue = "After repair value is required";
+      // }
       if (!formData.propertySource) {
         errors.propertySource = "Property source is required";
       }
