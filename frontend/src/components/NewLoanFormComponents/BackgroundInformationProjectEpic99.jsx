@@ -129,7 +129,7 @@ function BackgroundInformationProjectEpic99({
         </Typography>
         <Divider style={{ color: "black", marginBottom: 10 }} />
         <Grid container spacing={2}>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What motivates you?
@@ -156,10 +156,10 @@ function BackgroundInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
-                How much Money you looking make per year?
+                How much money are you looking to make per year?
               </Typography>
               <Grid item sm={12}>
                 {" "}
@@ -184,7 +184,7 @@ function BackgroundInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Business or Industry you have experience in?
@@ -262,47 +262,65 @@ function BackgroundInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
-            <FormControl fullWidth>
-              <Typography type="p" color="black">
-                What positions have you held?
-              </Typography>
-              <Autocomplete
-                multiple
-                id="checkboxes-tags-demo"
-                options={top100Films}
-                disableCloseOnSelect
-                getOptionLabel={(option) => option.title}
-                renderOption={(props, option, { selected }) => (
-                  <li {...props}>
-                    <Checkbox
-                      icon={icon}
-                      checkedIcon={checkedIcon}
-                      style={{
-                        marginRight: 8,
-                      }}
-                      checked={selected}
-                    />
-                    {option.title}
-                  </li>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    value={formData.positionsHeld || ""}
-                    error={fieldErrors.positionsHeld}
-                    style={{ backgroundColor: "white" }}
-                    helperText={<span>{fieldErrors.positionsHeld}</span>}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        positionsHeld: e.target.value,
-                      })
-                    }
-                    {...params}
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Which positions have you held?
+            </Typography>
+            <Autocomplete
+              multiple
+              id="checkboxes-tags-demo"
+              options={top100Films}
+              disableCloseOnSelect
+              getOptionLabel={(option) => option.title} // ✅ No undefined error now
+              value={top100Films.filter((option) =>
+                formData.positionsHeld?.includes(option.title)
+              )} // ✅ Ensures only valid options are shown
+              onChange={(event, newValue) => {
+                setFormData({
+                  ...formData,
+                  positionsHeld: newValue.map((option) => option.title), // ✅ Store only titles
+                });
+              }}
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    style={{ marginRight: 8 }}
+                    checked={selected}
                   />
-                )}
-              />
-            </FormControl>
+                  {option.title}
+                </li>
+              )}
+              style={{
+                width: "100%",
+                backgroundColor: "white",
+              }}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  fullWidth
+                  multiline
+                  error={!!fieldErrors.positionsHeld}
+                  helperText={fieldErrors.positionsHeld}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      minHeight: "56px",
+                      maxHeight: "150px",
+                      overflowY: "auto",
+                      backgroundColor: "white",
+                    },
+                  }}
+                />
+              )}
+              sx={{
+                "& .MuiAutocomplete-tag": {
+                  marginBottom: "5px",
+                },
+              }}
+            />
           </Grid>
 
           <Grid item sm={6}>
@@ -333,7 +351,7 @@ function BackgroundInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 What state do you want to do business in?
@@ -361,10 +379,10 @@ function BackgroundInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
-                Average Monthly Sales you've managed to achieve?*
+                Average Monthly Sales you've managed to achieve?
               </Typography>
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -394,10 +412,10 @@ function BackgroundInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
-                Business Ownership Percentage are you looking for?
+                Business Ownership Percentage you are looking for?
               </Typography>
               <Grid item sm={12}>
                 {" "}
@@ -421,49 +439,58 @@ function BackgroundInformationProjectEpic99({
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <FormControl fullWidth>
-              <Typography type="p" color="black">
-                What of the following apply to you?
-              </Typography>
-              <Autocomplete
-                multiple
-                id="checkboxes-tags-demo"
-                options={top100Films1}
-                disableCloseOnSelect
-                getOptionLabel={(option) => option.title}
-                renderOption={(props, option, { selected }) => (
-                  <li {...props}>
-                    <Checkbox
-                      icon={icon}
-                      checkedIcon={checkedIcon}
-                      style={{
-                        marginRight: 8,
-                      }}
-                      checked={selected}
-                    />
-                    {option.title}
-                  </li>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    value={formData.whichApply || ""}
-                    error={fieldErrors.whichApply}
-                    style={{ backgroundColor: "white" }}
-                    helperText={<span>{fieldErrors.whichApply}</span>}
-                    onChange={(e) =>
-                      setFormData({
-                        ...formData,
-                        whichApply: e.target.value,
-                      })
-                    }
-                    {...params}
+
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Which of the following apply to you?
+            </Typography>
+            <Autocomplete
+              multiple
+              id="checkboxes-tags-demo"
+              options={top100Films1}
+              disableCloseOnSelect
+              getOptionLabel={(option) => option.title}
+              renderOption={(props, option, { selected }) => (
+                <li {...props}>
+                  <Checkbox
+                    icon={icon}
+                    checkedIcon={checkedIcon}
+                    style={{
+                      marginRight: 8,
+                    }}
+                    checked={selected}
                   />
-                )}
-              />
-            </FormControl>
+                  {option.title}
+                </li>
+              )}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  fullWidth
+                  multiline
+                  error={!!fieldErrors.whichApply}
+                  helperText={fieldErrors.whichApply}
+                  variant="outlined"
+                  InputProps={{
+                    ...params.InputProps,
+                    style: {
+                      minHeight: "56px",
+                      maxHeight: "150px",
+                      overflowY: "auto",
+                      backgroundColor: "white",
+                    },
+                  }}
+                />
+              )}
+              sx={{
+                "& .MuiAutocomplete-tag": {
+                  marginBottom: "5px",
+                },
+              }}
+            />
           </Grid>
-          <Grid item sm={6}>
+
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Which is most important to you?

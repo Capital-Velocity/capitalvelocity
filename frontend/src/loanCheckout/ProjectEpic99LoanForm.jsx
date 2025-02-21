@@ -349,6 +349,7 @@ export default function ProjectEpic99LoanForm(props) {
               <Typography
                 variant="h1" // Larger heading for "Small Business Loan"
                 style={{ color: "black", fontWeight: "bold" }}
+                align="center"
                 gutterBottom
               >
                 Project Epic 99
