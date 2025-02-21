@@ -72,10 +72,20 @@ function App() {
         />
         <Route path="/loan-form-realestate" element={<RealEstateLoan />} />
         <Route path="/loan-form-business-loans" element={<BusinessLoan />} />
-        <Route
+        {/* <Route
           path="/project99"
           element={
             firstnameCookie ? <Project99 /> : <Navigate to="/register" />
+          }
+        /> */}
+        <Route
+          path="/project99"
+          element={
+            firstnameCookie ? (
+              <ProjectEpic99LoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
           }
         />
         <Route
@@ -138,16 +148,6 @@ function App() {
             )
           }
         />
-        <Route
-          path="/loan-form-realestate-projectepic99"
-          element={
-            firstnameCookie ? (
-              <ProjectEpic99LoanForm />
-            ) : (
-              <Navigate to="/register" />
-            )
-          }
-        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -166,7 +166,7 @@ function FooterWrapper() {
     location.pathname !== "/loan-form-realestate-singlepropertyrental" &&
     location.pathname !== "/loan-form-realestate-groundup" &&
     location.pathname !== "/loan-form-realestate-cashedoutrefinance" &&
-    location.pathname !== "/loan-form-realestate-projectepic99" ? (
+    location.pathname !== "/project99" ? (
     <Footer />
   ) : null;
 }

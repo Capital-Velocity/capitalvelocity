@@ -353,9 +353,9 @@ export default function ProjectEpic99LoanForm(props) {
               >
                 Project Epic 99
               </Typography>
-              <Typography variant="h6" style={{ color: "black" }}>
+              {/* <Typography variant="h6" style={{ color: "black" }}>
                 Placeholder
-              </Typography>
+              </Typography> */}
               {/* <Typography
                 variant="h7"
                 style={{ color: "black", marginTop: "10px" }}
