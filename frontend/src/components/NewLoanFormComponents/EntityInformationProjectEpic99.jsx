@@ -86,11 +86,14 @@ function EntityInformationProjectEpic99({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 1000,
-    height: 200,
+    width: "90vw", // Responsive width
+    maxWidth: 1000, // Max width for larger screens
+    height: "auto", // Allow height to adjust based on content
+    maxHeight: "90vh", // Prevent modal from overflowing on smaller screens
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
+    overflowY: "auto", // Allows scrolling inside modal if content overflows
   };
 
   const handleDeleteRow = (index) => {
@@ -154,50 +157,6 @@ function EntityInformationProjectEpic99({
         </Typography>
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
-        {/* <Grid item xs={12} sx={{ textAlign: "center" }}>
-          <FormControl
-            component="fieldset"
-            error={Boolean(fieldErrors?.guranteeLoan)}
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <Typography type="p" color="black">
-              Is the Borrower an Authorized Signatory?{" "}
-            </Typography>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <RadioGroup
-                row
-                aria-labelledby="demo-row-radio-buttons-group-label"
-                name="authorizedSignatory" // Name should match the key in formData
-                value={formData.authorizedSignatory || ""} // Ensure the selected value is controlled
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    authorizedSignatory: e.target.value, // Correctly update formData
-                  })
-                }
-              >
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="Yes"
-                  control={<Radio />}
-                  label="Yes"
-                />
-                <FormControlLabel
-                  style={{ color: "black" }}
-                  value="No"
-                  control={<Radio />}
-                  label="No"
-                />
-              </RadioGroup>
-            </Box>
-            {fieldErrors?.authorizedSignatory && (
-              <FormHelperText error>
-                {fieldErrors.authorizedSignatory}
-              </FormHelperText>
-            )}
-          </FormControl>
-        </Grid> */}
-
         <Grid item xs={12} sx={{ textAlign: "center" }}>
           <Typography type="p" color="black">
             Do you have the Borrowing Entity Information?
@@ -241,9 +200,9 @@ function EntityInformationProjectEpic99({
 
           {formData.borrowingEntityInformation === "Yes" && (
             <Grid container spacing={2}>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Operating Business Legal Name
                   </Typography>
                   <Grid item sm={12}>
@@ -256,7 +215,7 @@ function EntityInformationProjectEpic99({
                           operatingBusinessLegalName: e.target.value,
                         })
                       }
-                      style={{ width: 500, backgroundColor: "white" }}
+                      style={{ backgroundColor: "white" }}
                       variant="outlined"
                       fullWidth
 
@@ -265,9 +224,9 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     DBA or Trade name, if applicable:
                   </Typography>
                   <Grid item sm={12}>
@@ -280,7 +239,7 @@ function EntityInformationProjectEpic99({
                           dBATradename: e.target.value,
                         })
                       }
-                      style={{ width: 500, backgroundColor: "white" }}
+                      style={{ backgroundColor: "white" }}
                       variant="outlined"
                       fullWidth
 
@@ -289,19 +248,13 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
-                <label style={{ fontSize: 15, fontWeight: 300, color: "grey" }}>
-                  Is the Applicant a?
-                </label>
+              <Grid item xs={12} sm={6}>
+                <Typography type="p" color="black">
+                  Is the Applicant:
+                </Typography>
                 <FormControl fullWidth>
-                  <InputLabel
-                    style={{ fontSize: 15, fontWeight: 100 }}
-                    id="demo-simple-select-label"
-                  >
-                    Is the Applicant a?:{" "}
-                  </InputLabel>
                   <Select
-                    style={{ width: "500px", backgroundColor: "white" }}
+                    style={{ backgroundColor: "white" }}
                     InputLabelProps={{
                       style: { fontSize: 15, fontWeight: 100 },
                     }}
@@ -323,9 +276,9 @@ function EntityInformationProjectEpic99({
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Business Tax ID
                   </Typography>
                   <Grid item sm={12}>
@@ -339,7 +292,7 @@ function EntityInformationProjectEpic99({
                         })
                       }
                       type="number"
-                      style={{ width: 500, backgroundColor: "white" }}
+                      style={{ backgroundColor: "white" }}
                       variant="outlined"
                       fullWidth
                       error={fieldErrors.businessTaxID}
@@ -350,9 +303,9 @@ function EntityInformationProjectEpic99({
                 </FormControl>
               </Grid>
 
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Primary Business Address
                   </Typography>
                   <Grid item sm={12}>
@@ -374,9 +327,9 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Primary Business Address <strong>(Zip)</strong>
                   </Typography>
                   <Grid item sm={12}>
@@ -399,10 +352,10 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
-                    Primary Business Address<strong>(State)</strong>
+                  <Typography type="p" color="black">
+                    Primary Business Address<strong> (State)</strong>
                   </Typography>
                   <Grid item sm={12}>
                     {" "}
@@ -423,10 +376,10 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
-                    Primary Business Address<strong>(County)</strong>
+                  <Typography type="p" color="black">
+                    Primary Business Address<strong> (County)</strong>
                   </Typography>
                   <Grid item sm={12}>
                     {" "}
@@ -447,9 +400,9 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Project Address (if other than primary business address)
                   </Typography>
                   <Grid item sm={12}>
@@ -471,10 +424,10 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
-                    Project Address <strong>Zip</strong>(if other than primary
+                  <Typography type="p" color="black">
+                    Project Address <strong>Zip</strong> (if other than primary
                     business address)
                   </Typography>
                   <Grid item sm={12}>
@@ -497,11 +450,11 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
-                    Project Address <strong>State</strong>(if other than primary
-                    business address)
+                  <Typography type="p" color="black">
+                    Project Address <strong>State</strong> (if other than
+                    primary business address)
                   </Typography>
                   <Grid item sm={12}>
                     {" "}
@@ -522,10 +475,10 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={3}>
+              <Grid item xs={12} sm={3}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
-                    Project Address <strong>County</strong>(if other than
+                  <Typography type="p" color="black">
+                    Project Address <strong>County</strong> (if other than
                     primary business address)
                   </Typography>
                   <Grid item sm={12}>
@@ -547,9 +500,9 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Primary Business Phone
                   </Typography>
                   <Grid item sm={12}>
@@ -562,7 +515,7 @@ function EntityInformationProjectEpic99({
                           PrimaryBusinessPhone: e.target.value.slice(0, 10),
                         })
                       }
-                      style={{ width: 500, backgroundColor: "white" }}
+                      style={{ backgroundColor: "white" }}
                       variant="outlined"
                       fullWidth
                       error={fieldErrors.PrimaryBusinessPhone}
@@ -574,9 +527,9 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Email Address
                   </Typography>
                   <Grid item sm={12}>
@@ -589,7 +542,7 @@ function EntityInformationProjectEpic99({
                           businessEmail: e.target.value,
                         })
                       }
-                      style={{ width: 500, backgroundColor: "white" }}
+                      style={{ backgroundColor: "white" }}
                       variant="outlined"
                       fullWidth
                       error={fieldErrors.businessEmail}
@@ -600,72 +553,84 @@ function EntityInformationProjectEpic99({
                 </FormControl>
               </Grid>
 
-              <Grid item sm={6}>
-                <label style={{ fontSize: 15, fontWeight: 300, color: "grey" }}>
+              <Grid item xs={12} sm={6}>
+                <Typography type="p" color="black">
                   Do you have or plan to use a 401(K) Plan?
-                </label>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
+                </Typography>
+                <FormControl
+                  fullWidth
+                  error={!!fieldErrors.plantoUse}
+                  style={{ display: "flex", alignItems: "center" }}
                 >
-                  <FormControlLabel
-                    style={{ color: "black" }}
-                    value="Yes" // Set the value to "Yes" when selected
-                    checked={formData.plantoUse === "Yes"} // Check if it's "Yes" in formData
-                    onChange={() => handleOptionChange("plantoUse", "Yes")}
-                    error={fieldErrors.plantoUse}
-                    helperText={<span>{fieldErrors.plantoUse}</span>}
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    style={{ color: "black" }}
-                    value="No" // Set the value to "No" when selected
-                    checked={formData.plantoUse === "No"} // Check if it's "No" in formData
-                    onChange={() => handleOptionChange("plantoUse", "No")}
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      style={{ color: "black" }}
+                      value="Yes" // Set the value to "Yes" when selected
+                      checked={formData.plantoUse === "Yes"} // Check if it's "Yes" in formData
+                      onChange={() => handleOptionChange("plantoUse", "Yes")}
+                      error={fieldErrors.plantoUse}
+                      helperText={<span>{fieldErrors.plantoUse}</span>}
+                      control={<Radio />}
+                      label="Yes"
+                    />
+                    <FormControlLabel
+                      style={{ color: "black" }}
+                      value="No" // Set the value to "No" when selected
+                      checked={formData.plantoUse === "No"} // Check if it's "No" in formData
+                      onChange={() => handleOptionChange("plantoUse", "No")}
+                      control={<Radio />}
+                      label="No"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Grid>
-              <Grid item sm={6}>
-                <label style={{ fontSize: 15, fontWeight: 300, color: "grey" }}>
+              <Grid item xs={12} sm={6}>
+                <Typography type="p" color="black">
                   Do you have or plan to use a Management Company to manage the
                   day-to-day operations?
-                </label>
-                <RadioGroup
-                  row
-                  aria-labelledby="demo-row-radio-buttons-group-label"
-                  name="row-radio-buttons-group"
+                </Typography>
+                <FormControl
+                  fullWidth
+                  error={!!fieldErrors.managmentCompany}
+                  style={{ display: "flex", alignItems: "center" }}
                 >
-                  <FormControlLabel
-                    style={{ color: "black" }}
-                    value="Yes" // Set the value to "Yes" when selected
-                    checked={formData.managmentCompany === "Yes"} // Check if it's "Yes" in formData
-                    onChange={() =>
-                      handleOptionChange("managmentCompany", "Yes")
-                    }
-                    error={fieldErrors.managmentCompany}
-                    helperText={<span>{fieldErrors.managmentCompany}</span>}
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    style={{ color: "black" }}
-                    value="No" // Set the value to "No" when selected
-                    checked={formData.managmentCompany === "No"} // Check if it's "No" in formData
-                    onChange={() =>
-                      handleOptionChange("managmentCompany", "No")
-                    }
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
+                  <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      style={{ color: "black" }}
+                      value="Yes" // Set the value to "Yes" when selected
+                      checked={formData.managmentCompany === "Yes"} // Check if it's "Yes" in formData
+                      onChange={() =>
+                        handleOptionChange("managmentCompany", "Yes")
+                      }
+                      error={fieldErrors.managmentCompany}
+                      helperText={<span>{fieldErrors.managmentCompany}</span>}
+                      control={<Radio />}
+                      label="Yes"
+                    />
+                    <FormControlLabel
+                      style={{ color: "black" }}
+                      value="No" // Set the value to "No" when selected
+                      checked={formData.managmentCompany === "No"} // Check if it's "No" in formData
+                      onChange={() =>
+                        handleOptionChange("managmentCompany", "No")
+                      }
+                      control={<Radio />}
+                      label="No"
+                    />
+                  </RadioGroup>
+                </FormControl>
               </Grid>
-              <Grid item sm={6}>
+              <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
-                  <Typography type="p" color="grey">
+                  <Typography type="p" color="black">
                     Number of existing employees employed by business?
                   </Typography>
                   <Grid item sm={12}>
@@ -679,9 +644,7 @@ function EntityInformationProjectEpic99({
                         })
                       }
                       style={{
-                        width: 500,
                         backgroundColor: "white",
-                        marginTop: 25,
                       }}
                       variant="outlined"
                       fullWidth
@@ -691,12 +654,18 @@ function EntityInformationProjectEpic99({
                   </Grid>
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+              <Grid
+                item
+                sm={12}
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              >
                 <Button
                   variant="contained"
                   color="primary"
                   style={{
-                    width: "30%",
                     marginTop: 10,
                     backgroundColor: "#498dd6",
                   }}
@@ -706,9 +675,10 @@ function EntityInformationProjectEpic99({
                   Add Partner
                 </Button>
               </Grid>
-              <Grid item sm={12} style={{ marginBottom: 10 }}>
-                <Paper style={{ padding: 10 }}>
-                  <TableContainer>
+
+              <Grid item xs={12} sm={12} style={{ marginBottom: 10 }}>
+                <Paper style={{ padding: 10, overflowX: "auto" }}>
+                  <TableContainer sx={{ width: "100%", overflowX: "auto" }}>
                     <Table>
                       <TableHead>
                         <TableRow>
@@ -758,7 +728,7 @@ function EntityInformationProjectEpic99({
         <Modal open={openModal} onClose={() => setOpenModal(false)}>
           <Box sx={style}>
             <Grid container spacing={2}>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   fullWidth
                   size="large"
@@ -770,7 +740,7 @@ function EntityInformationProjectEpic99({
                   variant="outlined"
                 />
               </Grid>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   fullWidth
                   size="large"
@@ -782,7 +752,7 @@ function EntityInformationProjectEpic99({
                   variant="outlined"
                 />
               </Grid>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   variant="outlined"
                   InputProps={{
@@ -793,7 +763,7 @@ function EntityInformationProjectEpic99({
                   label="Estimated As Is Value "
                 />
               </Grid>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   fullWidth
                   size="large"
@@ -805,7 +775,7 @@ function EntityInformationProjectEpic99({
                   variant="outlined"
                 />
               </Grid>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <TextField
                   fullWidth
                   size="large"
@@ -817,7 +787,7 @@ function EntityInformationProjectEpic99({
                   variant="outlined"
                 />
               </Grid>
-              <Grid item sm={4}>
+              <Grid item xs={12} sm={4}>
                 <FormControl fullWidth>
                   <InputLabel
                     style={{ fontSize: 15, fontWeight: 100 }}
