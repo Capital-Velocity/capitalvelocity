@@ -58,6 +58,7 @@ import SBA24 from "../pages/Project99/SBA24";
 import BusinessUpload from "../pages/Project99/BusinessUpload";
 import SBA2 from "../pages/Project99/SBA2";
 import SBA4 from "../pages/Project99/SBA4";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function ProjectEpic99LoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -346,6 +347,7 @@ export default function ProjectEpic99LoanForm(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && <MobileHeaderTitle title="Project Epic 99" />}
         <Grid
           container
           sx={{

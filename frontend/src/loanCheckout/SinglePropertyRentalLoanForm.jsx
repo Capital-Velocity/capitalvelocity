@@ -70,6 +70,7 @@ import LoanPricerSinglePropertyRentalForm from "../components/NewLoanFormCompone
 import DsciCalculator from "../Calculators/DsciCalculator";
 import PropertyInformationSinglePropertyRental from "../components/NewLoanFormComponents/PropertyInformationSinglePropertyRental";
 import DsciCalculatorLoan from "../components/Loan Form/DsciCalculatorLoan";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function SinglePropertyRentalLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -561,6 +562,9 @@ export default function SinglePropertyRentalLoanForm(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && (
+          <MobileHeaderTitle title="Single Property Rental Loan" />
+        )}
         <Grid
           container
           sx={{

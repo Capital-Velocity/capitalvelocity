@@ -35,6 +35,7 @@ import InfoMobileMultiFamilyBridge from "./components/InfoMobileMultiFamilyBridg
 import PropertyInformation from "../components/Loan Form/PropertyInformation";
 import PropertyInformationGroundUp from "../components/NewLoanFormComponents/PropertyInformationGroundUp";
 import PropertyInformationCashedOutRefinance from "../components/NewLoanFormComponents/PropertyInformationCashedOutRefinance";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function CashedOutRefinanceLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -363,6 +364,9 @@ export default function CashedOutRefinanceLoanForm(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && (
+          <MobileHeaderTitle title="Cashed Out Refinance Loan" />
+        )}
         <Grid
           container
           sx={{

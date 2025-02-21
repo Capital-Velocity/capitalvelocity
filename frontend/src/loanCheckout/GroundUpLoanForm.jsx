@@ -34,6 +34,7 @@ import AppTheme from "../shared-theme/AppTheme";
 import InfoMobileMultiFamilyBridge from "./components/InfoMobileMultiFamilyBridge";
 import PropertyInformation from "../components/Loan Form/PropertyInformation";
 import PropertyInformationGroundUp from "../components/NewLoanFormComponents/PropertyInformationGroundUp";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function GroundUpLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -384,6 +385,7 @@ export default function GroundUpLoanForm(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && <MobileHeaderTitle title="Ground Up Loan" />}
         <Grid
           container
           sx={{

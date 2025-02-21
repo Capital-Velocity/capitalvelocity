@@ -51,6 +51,7 @@ import { useWindowSize } from "react-use";
 import { useMediaQuery } from "@mui/material";
 import StepButton from "@mui/material/StepButton";
 import FixandFlipCalcLoan from "../components/Loan Form/FixAndFlipCalcLoan";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -511,6 +512,7 @@ export default function Checkout(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && <MobileHeaderTitle title="Fix and Flip Loan" />}
         <Grid
           container
           sx={{

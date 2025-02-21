@@ -43,6 +43,7 @@ import BorrowerStep from "../components/Loan Form/BorrowerStep";
 import BorrowerStep3 from "../components/Loan Form/BorrowerStep3";
 import LoanTerms2 from "../components/Loan Form/LoanTerms2";
 import RentalLoanPricerPortfolioForm from "../components/NewLoanFormComponents/RentalLoanPricerPortfolioForm";
+import MobileHeaderTitle from "../components/MobileHeaderTitle";
 
 export default function RentalPortfolioLoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -416,6 +417,7 @@ export default function RentalPortfolioLoanForm(props) {
       </Box> */}
 
       <Box>
+        {isSmallScreen && <MobileHeaderTitle title="Rental Portfolio Loan" />}
         <Grid
           container
           sx={{
