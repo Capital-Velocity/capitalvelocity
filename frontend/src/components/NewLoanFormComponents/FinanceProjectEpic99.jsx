@@ -350,294 +350,324 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
         {/* <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
         </Typography> */}
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
         <Typography variant="h4" color="black" gutterBottom>
           PERSONAL FINANCIAL STATEMENT - ASSETS{" "}
         </Typography>
         <Grid container spacing={2}>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Cash on Hand & in banks
-            </Typography>
-            <TextField
-              value={formData.cashonHand || ""}
-              size="large"
-              type="number"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  cashonHand: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              error={fieldErrors.cashonHand}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.cashonHand}</span>}
-              variant="outlined"
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Cash on Hand & in banks
+              </Typography>
+              <TextField
+                value={formData.cashonHand || ""}
+                size="large"
+                type="number"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    cashonHand: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                error={fieldErrors.cashonHand}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.cashonHand}</span>}
+                variant="outlined"
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Savings Accounts
-            </Typography>
-            <TextField
-              value={formData.savingsAccounts || ""}
-              size="large"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  savingsAccounts: e.target.value,
-                })
-              }
-              err
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              error={fieldErrors.savingsAccounts}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.savingsAccounts}</span>}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Savings Accounts
+              </Typography>
+              <TextField
+                value={formData.savingsAccounts || ""}
+                size="large"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    savingsAccounts: e.target.value,
+                  })
+                }
+                err
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                error={fieldErrors.savingsAccounts}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.savingsAccounts}</span>}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              IRA or Other Retirement Account
-            </Typography>
-            <TextField
-              value={formData.retirementAccount || ""}
-              size="large"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  retirementAccount: e.target.value,
-                })
-              }
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              error={fieldErrors.retirementAccount}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.retirementAccount}</span>}
-              variant="outlined"
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                IRA or Other Retirement Account
+              </Typography>
+              <TextField
+                value={formData.retirementAccount || ""}
+                size="large"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    retirementAccount: e.target.value,
+                  })
+                }
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                error={fieldErrors.retirementAccount}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.retirementAccount}</span>}
+                variant="outlined"
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Accounts & Notes Receivable
-            </Typography>
-            <TextField
-              value={formData.notesReceivable || ""}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  notesReceivable: e.target.value,
-                })
-              }
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.notesReceivable}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.notesReceivable}</span>}
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Accounts & Notes Receivable
+              </Typography>
+              <TextField
+                value={formData.notesReceivable || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    notesReceivable: e.target.value,
+                  })
+                }
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.notesReceivable}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.notesReceivable}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Cash Surrender Value Only
-            </Typography>
-            <TextField
-              value={formData.lifeInsurance || ""}
-              size="large"
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  lifeInsurance: e.target.value,
-                })
-              }
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.lifeInsurance}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.lifeInsurance}</span>}
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Cash Surrender Value Only
+              </Typography>
+              <TextField
+                value={formData.lifeInsurance || ""}
+                size="large"
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    lifeInsurance: e.target.value,
+                  })
+                }
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.lifeInsurance}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.lifeInsurance}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Stocks and Bonds
-            </Typography>
-            <TextField
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  stocksBonds: e.target.value,
-                })
-              }
-              value={formData.stocksBonds || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.stocksBonds}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.stocksBonds}</span>}
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Stocks and Bonds
+              </Typography>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    stocksBonds: e.target.value,
+                  })
+                }
+                value={formData.stocksBonds || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.stocksBonds}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.stocksBonds}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Real Estate
-            </Typography>
-            <TextField
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  realEstate: e.target.value,
-                })
-              }
-              value={formData.realEstate || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.realEstate}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.realEstate}</span>}
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Real Estate
+              </Typography>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    realEstate: e.target.value,
+                  })
+                }
+                value={formData.realEstate || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.realEstate}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.realEstate}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Automobiles
-            </Typography>
-            <TextField
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  automobiles: e.target.value,
-                })
-              }
-              value={formData.automobiles || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              error={fieldErrors.automobiles}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.automobiles}</span>}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Automobiles
+              </Typography>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    automobiles: e.target.value,
+                  })
+                }
+                value={formData.automobiles || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                error={fieldErrors.automobiles}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.automobiles}</span>}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Other Personal Property
-            </Typography>
-            <TextField
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  otherPersonalProperty: e.target.value,
-                })
-              }
-              value={formData.otherPersonalProperty || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              error={fieldErrors.otherPersonalProperty}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.otherPersonalProperty}</span>}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Other Personal Property
+              </Typography>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    otherPersonalProperty: e.target.value,
+                  })
+                }
+                value={formData.otherPersonalProperty || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                error={fieldErrors.otherPersonalProperty}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.otherPersonalProperty}</span>}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Other Assets
-            </Typography>
-            <TextField
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  otherAssets: e.target.value,
-                })
-              }
-              value={formData.otherAssets || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.otherAssets}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.otherAssets}</span>}
-            />
+          <Grid item xs={12} sm={4}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Other Assets
+              </Typography>
+              <TextField
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    otherAssets: e.target.value,
+                  })
+                }
+                value={formData.otherAssets || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.otherAssets}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.otherAssets}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
               Total Assets
             </Typography>
-            <TextField
-              value={`$${sum}`} // Display the calculated sum
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              style={{ backgroundColor: "white" }}
-              variant="outlined"
-              disabled // Disable editing
-            />
+            <FormControl fullWidth>
+              <TextField
+                value={`$${sum}`} // Display the calculated sum
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                style={{ backgroundColor: "white" }}
+                variant="outlined"
+                disabled // Disable editing
+              />
+            </FormControl>
           </Grid>
         </Grid>
       </Container>
@@ -645,224 +675,248 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
         <Typography variant="h4" color="black" gutterBottom>
           PERSONAL FINANCIAL STATEMENT - LIABILITIES
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom></Typography>
+        <Typography variant="subtitle1" color="black" gutterBottom></Typography>
         <Grid container spacing={2}>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Accounts Payable
-            </Typography>
-            <TextField
-              value={formData.accountsPayable || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  accountsPayable: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.accountsPayable}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.accountsPayable}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Accounts Payable
+              </Typography>
+              <TextField
+                value={formData.accountsPayable || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    accountsPayable: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.accountsPayable}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.accountsPayable}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Notes Payable to Banks and Others
-            </Typography>
-            <TextField
-              value={formData.StocksBonds || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  StocksBonds: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.StocksBonds}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.StocksBonds}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Notes Payable to Banks and Others
+              </Typography>
+              <TextField
+                value={formData.StocksBonds || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    StocksBonds: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.StocksBonds}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.StocksBonds}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Installment Account
-            </Typography>
-            <TextField
-              value={formData.installmentAccount || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  installmentAccount: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.installmentAccount}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.installmentAccount}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Installment Account
+              </Typography>
+              <TextField
+                value={formData.installmentAccount || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    installmentAccount: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.installmentAccount}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.installmentAccount}</span>}
+              />
+            </FormControl>
           </Grid>
 
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Loan(s) Against Life Insurance
-            </Typography>
-            <TextField
-              value={formData.loanInsurance || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  loanInsurance: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.loanInsurance}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.loanInsurance}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Loan(s) Against Life Insurance
+              </Typography>
+              <TextField
+                value={formData.loanInsurance || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    loanInsurance: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.loanInsurance}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.loanInsurance}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Mortgages on Real Estate
-            </Typography>
-            <TextField
-              value={formData.mortgagesRealEstate || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  mortgagesRealEstate: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.mortgagesRealEstate}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.mortgagesRealEstate}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Mortgages on Real Estate
+              </Typography>
+              <TextField
+                value={formData.mortgagesRealEstate || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    mortgagesRealEstate: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.mortgagesRealEstate}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.mortgagesRealEstate}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Unpaid Taxes
-            </Typography>
-            <TextField
-              value={formData.unpaidTaxes || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  unpaidTaxes: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.unpaidTaxes}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.unpaidTaxes}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Unpaid Taxes
+              </Typography>
+              <TextField
+                value={formData.unpaidTaxes || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    unpaidTaxes: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.unpaidTaxes}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.unpaidTaxes}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Other Liabilities
-            </Typography>
-            <TextField
-              value={formData.otherLiabilities || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  otherLiabilities: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.otherLiabilities}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.otherLiabilities}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Other Liabilities
+              </Typography>
+              <TextField
+                value={formData.otherLiabilities || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    otherLiabilities: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.otherLiabilities}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.otherLiabilities}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Total Liabilities
-            </Typography>
-            <TextField
-              value={formData.totalLiabilities || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  totalLiabilities: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.totalLiabilities}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.totalLiabilities}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Total Liabilities
+              </Typography>
+              <TextField
+                value={formData.totalLiabilities || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    totalLiabilities: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.totalLiabilities}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.totalLiabilities}</span>}
+              />
+            </FormControl>
           </Grid>
         </Grid>
       </Container>
@@ -871,245 +925,275 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
           PERSONAL FINANCIAL STATEMENT - Source of Income and Contingent
           Liabilities
         </Typography>
-        <Typography variant="subtitle1" color="grey" gutterBottom>
-          Source of Income.
+        <Typography variant="subtitle1" color="black" gutterBottom>
+          Source of Income
         </Typography>
-        <Grid container spacing={2} style={{ marginLeft: 2, marginBottom: 5 }}>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Salary
-            </Typography>
-            <TextField
-              value={formData.salary || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  salary: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.salary}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.salary}</span>}
-            />
+        <Grid container spacing={2} style={{}}>
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Salary
+              </Typography>
+              <TextField
+                value={formData.salary || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    salary: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.salary}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.salary}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Net Investment Income
-            </Typography>
-            <TextField
-              value={formData.netInvestmentIncome || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  netInvestmentIncome: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.netInvestmentIncome}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.netInvestmentIncome}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Net Investment Income
+              </Typography>
+              <TextField
+                value={formData.netInvestmentIncome || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    netInvestmentIncome: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.netInvestmentIncome}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.netInvestmentIncome}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Real Estate Income
-            </Typography>
-            <TextField
-              value={formData.realEstateIncomeSource || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  realEstateIncomeSource: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.realEstateIncomeSource}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.realEstateIncomeSource}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Real Estate Income
+              </Typography>
+              <TextField
+                value={formData.realEstateIncomeSource || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    realEstateIncomeSource: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.realEstateIncomeSource}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.realEstateIncomeSource}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Other Income (Describe below)
-            </Typography>
-            <TextField
-              value={formData.otherIncome || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  otherIncome: e.target.value,
-                })
-              }
-              multiline
-              rows={6}
-              error={fieldErrors.otherIncome}
-              style={{ backgroundColor: "white", width: 500 }}
-              helperText={<span>{fieldErrors.otherIncome}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Other Income (Describe below)
+              </Typography>
+              <TextField
+                value={formData.otherIncome || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    otherIncome: e.target.value,
+                  })
+                }
+                multiline
+                rows={6}
+                error={fieldErrors.otherIncome}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.otherIncome}</span>}
+              />
+            </FormControl>
           </Grid>
         </Grid>
 
-        <Typography variant="subtitle1" color="grey" gutterBottom>
+        <Typography variant="h4" color="black" gutterBottom></Typography>
+        <Typography variant="subtitle1" color="black" gutterBottom>
           Contingent Liabilities
         </Typography>
         <Grid container spacing={2}>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              As Endorser or Co-Maker
-            </Typography>
-            <TextField
-              value={formData.coMaker || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  coMaker: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.coMaker}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.coMaker}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                As Endorser or Co-Maker
+              </Typography>
+              <TextField
+                value={formData.coMaker || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    coMaker: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.coMaker}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.coMaker}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Net Investment Income
-            </Typography>
-            <TextField
-              value={formData.netInvestmentIncomeLiab || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  netInvestmentIncomeLiab: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.netInvestmentIncomeLiab}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.netInvestmentIncomeLiab}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Net Investment Income
+              </Typography>
+              <TextField
+                value={formData.netInvestmentIncomeLiab || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    netInvestmentIncomeLiab: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.netInvestmentIncomeLiab}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.netInvestmentIncomeLiab}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Legal Claims & Judgments
-            </Typography>
-            <TextField
-              value={formData.legalClaims || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  legalClaims: e.target.value,
-                })
-              }
-              variant="outlined"
-              error={fieldErrors.legalClaims}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.legalClaims}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Legal Claims & Judgments
+              </Typography>
+              <TextField
+                value={formData.legalClaims || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    legalClaims: e.target.value,
+                  })
+                }
+                variant="outlined"
+                error={fieldErrors.legalClaims}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.legalClaims}</span>}
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Provision for Federal Income Tax
-            </Typography>
-            <TextField
-              value={formData.provisionFederalIncomeTax || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  provisionFederalIncomeTax: e.target.value,
-                })
-              }
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">$</InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              error={fieldErrors.provisionFederalIncomeTax}
-              style={{ backgroundColor: "white" }}
-              helperText={<span>{fieldErrors.provisionFederalIncomeTax}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Provision for Federal Income Tax
+              </Typography>
+              <TextField
+                value={formData.provisionFederalIncomeTax || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    provisionFederalIncomeTax: e.target.value,
+                  })
+                }
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                variant="outlined"
+                error={fieldErrors.provisionFederalIncomeTax}
+                style={{ backgroundColor: "white" }}
+                helperText={
+                  <span>{fieldErrors.provisionFederalIncomeTax}</span>
+                }
+              />
+            </FormControl>
           </Grid>
-          <Grid item sm={4}>
-            <Typography type="p" color="grey">
-              Other Special Debt
-            </Typography>
-            <TextField
-              value={formData.otherSpecialDebt || ""}
-              size="large"
-              InputLabelProps={{
-                style: { fontSize: 15, fontWeight: 100 },
-              }}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  otherSpecialDebt: e.target.value,
-                })
-              }
-              multiline
-              rows={6}
-              error={fieldErrors.otherSpecialDebt}
-              style={{ backgroundColor: "white", width: 500 }}
-              helperText={<span>{fieldErrors.otherSpecialDebt}</span>}
-            />
+          <Grid item xs={12} sm={6}>
+            <FormControl fullWidth>
+              {" "}
+              <Typography type="p" color="black">
+                Other Special Debt
+              </Typography>
+              <TextField
+                value={formData.otherSpecialDebt || ""}
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    otherSpecialDebt: e.target.value,
+                  })
+                }
+                multiline
+                rows={6}
+                error={fieldErrors.otherSpecialDebt}
+                style={{ backgroundColor: "white" }}
+                helperText={<span>{fieldErrors.otherSpecialDebt}</span>}
+              />
+            </FormControl>
           </Grid>
         </Grid>
       </Container>
@@ -1124,8 +1208,6 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               variant="contained"
               color="primary"
               style={{
-                width: "30%",
-                marginTop: 10,
                 backgroundColor: "#498dd6",
               }}
               startIcon={<AddIcon />}
@@ -1134,9 +1216,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               Add Notes Payable
             </Button>
           </Grid>
-          <Grid item sm={12} style={{ marginBottom: 10 }}>
-            <Paper style={{ padding: 10 }}>
-              <TableContainer>
+          <Grid item xs={12} sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10, overflowX: "auto" }}>
+              <TableContainer sx={{ width: "100%", overflowX: "auto" }}>
                 <Table>
                   <TableHead>
                     <TableRow>
@@ -1285,7 +1367,6 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               variant="contained"
               color="primary"
               style={{
-                width: "30%",
                 marginTop: 10,
                 backgroundColor: "#498dd6",
               }}
@@ -1295,9 +1376,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               Add Stocks and Bonds
             </Button>
           </Grid>
-          <Grid item sm={12} style={{ marginBottom: 10 }}>
-            <Paper style={{ padding: 10 }}>
-              <TableContainer>
+          <Grid item xs={12} sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10, overflowX: "auto" }}>
+              <TableContainer sx={{ width: "100%", overflowX: "auto" }}>
                 <Table>
                   <TableHead>
                     <TableRow>
@@ -1447,8 +1528,6 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               variant="contained"
               color="primary"
               style={{
-                width: "30%",
-                marginTop: 10,
                 backgroundColor: "#498dd6",
               }}
               startIcon={<AddIcon />}
@@ -1457,9 +1536,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               Add Property
             </Button>
           </Grid>
-          <Grid item sm={12} style={{ marginBottom: 10 }}>
-            <Paper style={{ padding: 10 }}>
-              <TableContainer>
+          <Grid item xs={12} sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10, overflowX: "auto" }}>
+              <TableContainer sx={{ width: "100%", overflowX: "auto" }}>
                 <Table>
                   <TableHead>
                     <TableRow>
@@ -1651,9 +1730,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Other Personal Property and Other Assets.
               </Typography>
               <Grid item sm={12}>
@@ -1676,9 +1755,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Unpaid Taxes
               </Typography>
               <Grid item sm={12}>
@@ -1701,9 +1780,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Other Liabilities
               </Typography>
               <Grid item sm={12}>
@@ -1726,10 +1805,10 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
-                Life Insurance Held.
+              <Typography type="p" color="black">
+                Life Insurance Held
               </Typography>
               <Grid item sm={12}>
                 {" "}
