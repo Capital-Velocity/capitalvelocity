@@ -33,6 +33,7 @@ import RentalPortfolioNewLoanForm from "./pages/RentalPortfolioNewLoanForm";
 import SinglePropertyRentalNewLoanForm from "./pages/SinglePropertyRentalNewLoanForm";
 import GroundUpNewLoanForm from "./pages/GroundUpNewLoanForm";
 import CashedOutRefinanceNewLoanForm from "./pages/CashedOutRefinanceNewLoanForm";
+import ProjectEpic99LoanForm from "./loanCheckout/ProjectEpic99LoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -137,6 +138,16 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-realestate-projectepic99"
+          element={
+            firstnameCookie ? (
+              <ProjectEpic99LoanForm />
+            ) : (
+              <Navigate to="/register" />
+            )
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -154,7 +165,8 @@ function FooterWrapper() {
     location.pathname !== "/loan-form-realestate-rentalportfolio" &&
     location.pathname !== "/loan-form-realestate-singlepropertyrental" &&
     location.pathname !== "/loan-form-realestate-groundup" &&
-    location.pathname !== "/loan-form-realestate-cashedoutrefinance" ? (
+    location.pathname !== "/loan-form-realestate-cashedoutrefinance" &&
+    location.pathname !== "/loan-form-realestate-projectepic99" ? (
     <Footer />
   ) : null;
 }
