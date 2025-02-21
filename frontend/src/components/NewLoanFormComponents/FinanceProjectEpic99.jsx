@@ -1359,7 +1359,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
       </Modal>
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          PERSONAL FINANCIAL STATEMENT - Stocks and Bonds.
+          PERSONAL FINANCIAL STATEMENT - Stocks and Bonds
         </Typography>
         <Grid container spacing={2}>
           <Grid item sm={12}>
