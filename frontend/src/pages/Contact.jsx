@@ -83,8 +83,8 @@ export default function Contact() {
                 <div className="mt-4 space-y-4 text-sm/6 text-gray-600">
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Create Organization Profile"
-                      id="createOrgProfile"
+                      defaultValue="DSCR Calculator"
+                      id="dscrCalculator"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -94,8 +94,8 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Research Package Payment"
-                      id="researchPackagePayment"
+                      defaultValue="Fix and Flip Calculator"
+                      id="fixAndFlipCalculator"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -107,8 +107,8 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Letter Of Intent"
-                      id="letterOfIntent"
+                      defaultValue="Project Epic 99"
+                      id="projectEpic99"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -118,19 +118,19 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Proposal Development"
-                      id="proposalDevelopment"
+                      defaultValue="Partner"
+                      id="partner"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="proposalDevelopment">Affiliate</label>
+                    <label htmlFor="proposalDevelopment">Partner</label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Grant Expert Payment"
-                      id="grantExpertPayment"
+                      defaultValue="Fix and Flip Loan"
+                      id="fixAndFlipLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -142,8 +142,8 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Grant Expert Tasks"
-                      id="grantExpertTasks"
+                      defaultValue="Ground Up Loan"
+                      id="groundUpLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -153,8 +153,8 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Submission"
-                      id="submission"
+                      defaultValue="Multifamily Bridge Loan"
+                      id="multiFamilyBridgeLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -164,19 +164,21 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Submission"
-                      id="submission"
+                      defaultValue="Cashed Out Refinance Loan"
+                      id="cashedOutRefinanceLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="submission">Stabilized Bridge Loan</label>
+                    <label htmlFor="submission">
+                      Cashed Out Refinance Loan
+                    </label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Submission"
-                      id="submission"
+                      defaultValue="Rental Portfolio Loan"
+                      id="rentalPortfolioLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
@@ -186,19 +188,21 @@ export default function Contact() {
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Submission"
-                      id="submission"
+                      defaultValue="Single Property Rental Loan"
+                      id="singlePropertyRentalLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
                       className="relative mt-1 size-4 appearance-none rounded-full border border-gray-300 before:absolute before:inset-1 before:rounded-full before:bg-white checked:border-indigo-600 checked:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:border-gray-300 disabled:bg-gray-100 disabled:before:bg-gray-400 forced-colors:appearance-auto forced-colors:before:hidden [&:not(:checked)]:before:hidden"
                     />
-                    <label htmlFor="submission">Single Property Loan</label>
+                    <label htmlFor="submission">
+                      Single Property Rental Loan
+                    </label>
                   </div>
                   <div className="flex gap-x-2.5">
                     <input
-                      defaultValue="Submission"
-                      id="submission"
+                      defaultValue="SBA Loan"
+                      id="sbaLoan"
                       name="feature"
                       type="radio"
                       onChange={handleFeatureChange}
