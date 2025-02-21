@@ -1,0 +1,1760 @@
+import React, { useEffect, useState } from "react";
+import "react-phone-number-input/style.css";
+import Container from "../../screens/Container";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  Box,
+  Divider,
+  Button,
+  Grid,
+  FormControl,
+  IconButton,
+  InputAdornment,
+  Modal,
+  TextField,
+  Typography,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+
+function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
+  const [selectedOption, setSelectedOption] = useState("no");
+  const [sliderValue, setSliderValue] = useState(1);
+  const [sliderValue2, setSliderValue2] = useState(1);
+
+  const marks = [
+    { value: 1, label: "Newbie" },
+    { value: 2 },
+    { value: 3 },
+    { value: 4 },
+    { value: 5, label: "Seasoned" },
+  ];
+
+  const handleSliderChange = (event, newValue) => {
+    setSliderValue(newValue);
+    setFormData({
+      ...formData,
+      personallyGuranteeing: newValue,
+    });
+  };
+
+  const handleSliderChange2 = (event, newValue) => {
+    setSliderValue2(newValue);
+    setFormData({
+      ...formData,
+      experienceWithRealEstate: newValue,
+    });
+  };
+
+  const percentageMarks = [
+    { value: 0, label: "0%" },
+    { value: 25, label: "25%" },
+    { value: 50, label: "50%" },
+    { value: 75, label: "75%" },
+    { value: 100, label: "100%" },
+  ];
+
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setFormData({
+      ...formData,
+      borrowingEntityOwned: newValue,
+    });
+  };
+
+  const handleChange2 = (event, newValue) => {
+    setValue(newValue);
+    setFormData({
+      ...formData,
+      borrowingEntityOwned: newValue,
+    });
+  };
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+    setFormData({
+      ...formData,
+      armsLength: event.target.value,
+    });
+  };
+
+  const [sum, setSum] = useState(0); // Step 1: Initialize state for the sum
+
+  // Step 2: Create a function to calculate the sum
+  const calculateSum = () => {
+    const fields = [
+      formData.cashonHand,
+      formData.savingsAccounts,
+      formData.retirementAccount,
+      formData.notesReceivable,
+      formData.lifeInsurance,
+      formData.stocksBonds,
+      formData.realEstate,
+      formData.automobiles,
+      formData.otherPersonalProperty,
+      formData.otherAssets,
+    ];
+
+    const validFields = fields.filter((value) => !isNaN(parseFloat(value)));
+    const total = validFields.reduce(
+      (acc, currentValue) => acc + parseFloat(currentValue),
+      0
+    );
+
+    setSum(total.toFixed(2));
+  };
+  useEffect(() => {
+    calculateSum();
+  }, [
+    formData.cashonHand,
+    formData.savingsAccounts,
+    formData.retirementAccount,
+    formData.notesReceivable,
+    formData.lifeInsurance,
+    formData.stocksBonds,
+    formData.realEstate,
+    formData.automobiles,
+    formData.otherPersonalProperty,
+    formData.otherAssets,
+  ]);
+
+  const [selectedProperties, setSelectedProperties] = useState([]);
+  const [ownersName, setOwnersName] = useState(0);
+  const [balance, setBalance] = useState(0);
+  const [currentBalance, setCurrentBalance] = useState(0);
+  const [paymentAmount, setPaymentAmount] = useState(0);
+  const [frequencey, setFrequencey] = useState(0);
+  const [howSecured, setHowSecured] = useState(0);
+  const [openModal, setOpenModal] = useState(false);
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 1000,
+    height: 200,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+  const handleDeleteRow = (index) => {
+    const updatedProperties = selectedProperties.filter(
+      (property, i) => i !== index
+    );
+    setSelectedProperties(updatedProperties);
+  };
+
+  const handleAddProperty = () => {
+    setSelectedProperties([
+      ...selectedProperties,
+      {
+        ownersName,
+        balance,
+        currentBalance,
+        paymentAmount,
+        frequencey,
+        howSecured,
+      },
+    ]);
+
+    const newProperty = {
+      ownersName,
+      balance,
+      currentBalance,
+      paymentAmount,
+      frequencey,
+      howSecured,
+    };
+
+    const updatedFormData = {
+      ...formData,
+      notesPayable: [...(formData.notesPayable || []), newProperty],
+    };
+
+    setFormData(updatedFormData);
+    setOwnersName(0);
+    setBalance(0);
+    setCurrentBalance(0);
+    setPaymentAmount(0);
+    setFrequencey(0);
+    setHowSecured(0);
+    setOpenModal(false);
+  };
+
+  const [selectedPropertiesStocksBonds, setSelectedPropertiesStocksBonds] =
+    useState([]);
+  const [numbShares, setNumbShares] = useState(0);
+  const [numbofSecurities, setNumbofSecurities] = useState(0);
+  const [cost, setCost] = useState(0);
+  const [marketValue, setMarketValue] = useState(0);
+  const [dateofQuoatation, setDateofQuoatation] = useState("");
+  const [totalValue, setTotalValue] = useState(0);
+  const [openModalStocksBonds, setOpenModalStocksBonds] = useState(false);
+
+  const styleStocksBonds = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 1000,
+    height: 200,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const handleDeleteRowStocksBonds = (index) => {
+    const updatedPropertiesStocksBonds = selectedPropertiesStocksBonds.filter(
+      (property, i) => i !== index
+    );
+    setSelectedPropertiesStocksBonds(updatedPropertiesStocksBonds);
+  };
+
+  const getTotalPropertiesStocksBonds = () => {
+    return selectedPropertiesStocksBonds.reduce(
+      (total, property) => total + Number(property.numProperties),
+      0
+    );
+  };
+
+  const handleAddPropertyStocksBonds = () => {
+    const newPropertyStocksBonds = {
+      numbShares,
+      numbofSecurities,
+      cost,
+      marketValue,
+      dateofQuoatation,
+      totalValue,
+    };
+
+    setSelectedPropertiesStocksBonds([
+      ...selectedPropertiesStocksBonds,
+      newPropertyStocksBonds,
+    ]);
+
+    const updatedFormDataStocksBonds = {
+      ...formData,
+      stocksAndBonds: [
+        ...(formData.stocksAndBonds || []),
+        newPropertyStocksBonds,
+      ],
+    };
+
+    setFormData(updatedFormDataStocksBonds);
+    setNumbShares(0);
+    setNumbofSecurities(0);
+    setCost(0);
+    setMarketValue(0);
+    setDateofQuoatation("");
+    setTotalValue(0);
+    setOpenModalStocksBonds(false);
+  };
+
+  const [selectedPropertiesPersonal, setSelectedPropertiesPersonal] = useState(
+    []
+  );
+  const [realEstateType, setRealEstateType] = useState(0);
+  const [address, setAddress] = useState(0);
+  const [costPersonal, setCostPersonal] = useState(0);
+  const [purchaseDate, setPurchaseDate] = useState(0);
+  const [originalCost, setOriginalCost] = useState(0);
+  const [presentMarketValue, setPresentMarketValue] = useState(0);
+  const [nameAddress, setNameAddress] = useState(0);
+  const [AmountPayment, setAmountPayment] = useState(0);
+  const [statusMortgage, setStatusMortgage] = useState(0);
+  const [openModalPersonal, setOpenModalPersonal] = useState(false);
+  const stylePersonal = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 1000,
+    height: 400,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+  };
+  const handleDeleteRowPersonal = (index) => {
+    const updatedPropertiesPersonal = selectedPropertiesPersonal.filter(
+      (property, i) => i !== index
+    );
+    setSelectedPropertiesPersonal(updatedPropertiesPersonal);
+  };
+  const getTotalPropertiesPersonal = () => {
+    return selectedPropertiesPersonal.reduce(
+      (total, property) => total + Number(property.numProperties),
+      0
+    );
+  };
+  const handleAddPropertyPersonal = () => {
+    setSelectedPropertiesPersonal([
+      ...selectedPropertiesPersonal,
+      {
+        realEstateType,
+        address,
+        cost,
+        purchaseDate,
+        originalCost,
+        presentMarketValue,
+        nameAddress,
+        AmountPayment,
+        statusMortgage,
+      },
+    ]);
+
+    const newPropertyPersonal = {
+      realEstateType,
+      address,
+      cost,
+      purchaseDate,
+      originalCost,
+      presentMarketValue,
+      nameAddress,
+      AmountPayment,
+      statusMortgage,
+    };
+    const updatedFormDataPersonal = {
+      ...formData,
+      realEstate: [...formData.realEstate, newPropertyPersonal], // Assuming you have a property named "realEstate" in your formData object for storing real estate data
+    };
+
+    // Call setFormData to update the state with the new formData
+    setFormData(updatedFormDataPersonal);
+    setRealEstateType(0);
+    setAddress(0);
+    setCostPersonal(0);
+    setPurchaseDate(0);
+    setOriginalCost(0);
+    setPresentMarketValue(0);
+    setNameAddress(0);
+    setStatusMortgage(0);
+    setOpenModalPersonal(false);
+  };
+
+  return (
+    <div style={{ width: "100%" }}>
+      {" "}
+      {/* <CheckoutSteps step1></CheckoutSteps> */}
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          Finance Information
+        </Typography>
+        {/* <Typography variant="subtitle1" color="black" gutterBottom>
+          Please review the borrowers of this loan
+        </Typography> */}
+        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - ASSETS{" "}
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Cash on Hand & in banks
+            </Typography>
+            <TextField
+              value={formData.cashonHand || ""}
+              size="large"
+              type="number"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  cashonHand: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              error={fieldErrors.cashonHand}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.cashonHand}</span>}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Savings Accounts
+            </Typography>
+            <TextField
+              value={formData.savingsAccounts || ""}
+              size="large"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  savingsAccounts: e.target.value,
+                })
+              }
+              err
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              error={fieldErrors.savingsAccounts}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.savingsAccounts}</span>}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              IRA or Other Retirement Account
+            </Typography>
+            <TextField
+              value={formData.retirementAccount || ""}
+              size="large"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  retirementAccount: e.target.value,
+                })
+              }
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              error={fieldErrors.retirementAccount}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.retirementAccount}</span>}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Accounts & Notes Receivable
+            </Typography>
+            <TextField
+              value={formData.notesReceivable || ""}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  notesReceivable: e.target.value,
+                })
+              }
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.notesReceivable}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.notesReceivable}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Cash Surrender Value Only
+            </Typography>
+            <TextField
+              value={formData.lifeInsurance || ""}
+              size="large"
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  lifeInsurance: e.target.value,
+                })
+              }
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.lifeInsurance}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.lifeInsurance}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Stocks and Bonds
+            </Typography>
+            <TextField
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  stocksBonds: e.target.value,
+                })
+              }
+              value={formData.stocksBonds || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.stocksBonds}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.stocksBonds}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Real Estate
+            </Typography>
+            <TextField
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  realEstate: e.target.value,
+                })
+              }
+              value={formData.realEstate || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.realEstate}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.realEstate}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Automobiles
+            </Typography>
+            <TextField
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  automobiles: e.target.value,
+                })
+              }
+              value={formData.automobiles || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              error={fieldErrors.automobiles}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.automobiles}</span>}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Other Personal Property
+            </Typography>
+            <TextField
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  otherPersonalProperty: e.target.value,
+                })
+              }
+              value={formData.otherPersonalProperty || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              error={fieldErrors.otherPersonalProperty}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.otherPersonalProperty}</span>}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Other Assets
+            </Typography>
+            <TextField
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  otherAssets: e.target.value,
+                })
+              }
+              value={formData.otherAssets || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.otherAssets}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.otherAssets}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Total Assets
+            </Typography>
+            <TextField
+              value={`$${sum}`} // Display the calculated sum
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              style={{ backgroundColor: "white" }}
+              variant="outlined"
+              disabled // Disable editing
+            />
+          </Grid>
+        </Grid>
+      </Container>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - LIABILITIES
+        </Typography>
+        <Typography variant="subtitle1" color="grey" gutterBottom></Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Accounts Payable
+            </Typography>
+            <TextField
+              value={formData.accountsPayable || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  accountsPayable: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.accountsPayable}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.accountsPayable}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Notes Payable to Banks and Others
+            </Typography>
+            <TextField
+              value={formData.StocksBonds || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  StocksBonds: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.StocksBonds}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.StocksBonds}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Installment Account
+            </Typography>
+            <TextField
+              value={formData.installmentAccount || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  installmentAccount: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.installmentAccount}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.installmentAccount}</span>}
+            />
+          </Grid>
+
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Loan(s) Against Life Insurance
+            </Typography>
+            <TextField
+              value={formData.loanInsurance || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  loanInsurance: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.loanInsurance}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.loanInsurance}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Mortgages on Real Estate
+            </Typography>
+            <TextField
+              value={formData.mortgagesRealEstate || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  mortgagesRealEstate: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.mortgagesRealEstate}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.mortgagesRealEstate}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Unpaid Taxes
+            </Typography>
+            <TextField
+              value={formData.unpaidTaxes || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  unpaidTaxes: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.unpaidTaxes}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.unpaidTaxes}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Other Liabilities
+            </Typography>
+            <TextField
+              value={formData.otherLiabilities || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  otherLiabilities: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.otherLiabilities}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.otherLiabilities}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Total Liabilities
+            </Typography>
+            <TextField
+              value={formData.totalLiabilities || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  totalLiabilities: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.totalLiabilities}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.totalLiabilities}</span>}
+            />
+          </Grid>
+        </Grid>
+      </Container>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - Source of Income and Contingent
+          Liabilities
+        </Typography>
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Source of Income.
+        </Typography>
+        <Grid container spacing={2} style={{ marginLeft: 2, marginBottom: 5 }}>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Salary
+            </Typography>
+            <TextField
+              value={formData.salary || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  salary: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.salary}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.salary}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Net Investment Income
+            </Typography>
+            <TextField
+              value={formData.netInvestmentIncome || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  netInvestmentIncome: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.netInvestmentIncome}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.netInvestmentIncome}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Real Estate Income
+            </Typography>
+            <TextField
+              value={formData.realEstateIncomeSource || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  realEstateIncomeSource: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.realEstateIncomeSource}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.realEstateIncomeSource}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Other Income (Describe below)
+            </Typography>
+            <TextField
+              value={formData.otherIncome || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  otherIncome: e.target.value,
+                })
+              }
+              multiline
+              rows={6}
+              error={fieldErrors.otherIncome}
+              style={{ backgroundColor: "white", width: 500 }}
+              helperText={<span>{fieldErrors.otherIncome}</span>}
+            />
+          </Grid>
+        </Grid>
+
+        <Typography variant="subtitle1" color="grey" gutterBottom>
+          Contingent Liabilities
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              As Endorser or Co-Maker
+            </Typography>
+            <TextField
+              value={formData.coMaker || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  coMaker: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.coMaker}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.coMaker}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Net Investment Income
+            </Typography>
+            <TextField
+              value={formData.netInvestmentIncomeLiab || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  netInvestmentIncomeLiab: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.netInvestmentIncomeLiab}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.netInvestmentIncomeLiab}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Legal Claims & Judgments
+            </Typography>
+            <TextField
+              value={formData.legalClaims || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  legalClaims: e.target.value,
+                })
+              }
+              variant="outlined"
+              error={fieldErrors.legalClaims}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.legalClaims}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Provision for Federal Income Tax
+            </Typography>
+            <TextField
+              value={formData.provisionFederalIncomeTax || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  provisionFederalIncomeTax: e.target.value,
+                })
+              }
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">$</InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              error={fieldErrors.provisionFederalIncomeTax}
+              style={{ backgroundColor: "white" }}
+              helperText={<span>{fieldErrors.provisionFederalIncomeTax}</span>}
+            />
+          </Grid>
+          <Grid item sm={4}>
+            <Typography type="p" color="grey">
+              Other Special Debt
+            </Typography>
+            <TextField
+              value={formData.otherSpecialDebt || ""}
+              size="large"
+              InputLabelProps={{
+                style: { fontSize: 15, fontWeight: 100 },
+              }}
+              onChange={(e) =>
+                setFormData({
+                  ...formData,
+                  otherSpecialDebt: e.target.value,
+                })
+              }
+              multiline
+              rows={6}
+              error={fieldErrors.otherSpecialDebt}
+              style={{ backgroundColor: "white", width: 500 }}
+              helperText={<span>{fieldErrors.otherSpecialDebt}</span>}
+            />
+          </Grid>
+        </Grid>
+      </Container>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - Notes Payable
+        </Typography>
+
+        <Grid container spacing={2}>
+          <Grid item sm={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                width: "30%",
+                marginTop: 10,
+                backgroundColor: "#498dd6",
+              }}
+              startIcon={<AddIcon />}
+              onClick={() => setOpenModal(true)}
+            >
+              Add Notes Payable
+            </Button>
+          </Grid>
+          <Grid item sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10 }}>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        Names and Addresses of Noteholder(s)
+                      </TableCell>
+                      <TableCell>Original Balance</TableCell>
+                      <TableCell>Current Balance</TableCell>
+                      <TableCell>Payment Amount</TableCell>
+                      <TableCell>Frequency (monthly, etc.)</TableCell>
+                      <TableCell>
+                        How Secured or Endorsed Type of Collateral
+                      </TableCell>
+                      <TableCell>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {selectedProperties.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={7} align="center">
+                          No Rows to Show
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      selectedProperties.map((property, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{property.ownersName}</TableCell>
+                          <TableCell>{property.balance}</TableCell>
+                          <TableCell>{property.currentBalance}</TableCell>
+                          <TableCell>{property.paymentAmount}</TableCell>
+                          <TableCell>{property.frequencey}</TableCell>
+                          <TableCell>{property.howSecured}</TableCell>
+                          <TableCell>
+                            <IconButton onClick={() => handleDeleteRow(index)}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+      <Modal open={openModal} onClose={() => setOpenModal(false)}>
+        <Box sx={style}>
+          <Grid container spacing={2}>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setOwnersName(e.target.value)}
+                label="Names and Addresses of Noteholder(s)"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setBalance(e.target.value)}
+                label="Original Balance"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setCurrentBalance(e.target.value)}
+                label="Current Balance"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setPaymentAmount(e.target.value)}
+                label="Payment Amount"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setFrequencey(e.target.value)}
+                label="Frequency (monthly, etc.)"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setHowSecured(e.target.value)}
+                label="How Secured or Endorsed Type of Collateral"
+                variant="outlined"
+              />
+            </Grid>
+
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#498dd6",
+                paddingBottom: 10,
+                marginTop: 10,
+                marginLeft: 10,
+              }}
+              onClick={handleAddProperty}
+            >
+              Add
+            </Button>
+          </Grid>
+        </Box>
+      </Modal>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - Stocks and Bonds.
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                width: "30%",
+                marginTop: 10,
+                backgroundColor: "#498dd6",
+              }}
+              startIcon={<AddIcon />}
+              onClick={() => setOpenModalStocksBonds(true)}
+            >
+              Add Stocks and Bonds
+            </Button>
+          </Grid>
+          <Grid item sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10 }}>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Number of Shares</TableCell>
+                      <TableCell>Name of Securities</TableCell>
+                      <TableCell>Cost</TableCell>
+                      <TableCell>Market Value Quotation/Exchange</TableCell>
+                      <TableCell>Date of Quotation/Exchange</TableCell>
+                      <TableCell>Total Value</TableCell>
+                      <TableCell>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {selectedPropertiesStocksBonds.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={7} align="center">
+                          No Rows to Show
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      selectedPropertiesStocksBonds.map((property, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{property.numbShares}</TableCell>
+                          <TableCell>{property.numbofSecurities}</TableCell>
+                          <TableCell>{property.cost}</TableCell>
+                          <TableCell>{property.marketValue}</TableCell>
+                          <TableCell>{property.dateofQuoatation}</TableCell>
+                          <TableCell>{property.totalValue}</TableCell>
+                          <TableCell>
+                            <IconButton
+                              onClick={() => handleDeleteRowStocksBonds(index)}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+      <Modal
+        open={openModalStocksBonds}
+        onClose={() => setOpenModalStocksBonds(false)}
+      >
+        <Box sx={styleStocksBonds}>
+          <Grid container spacing={2}>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setNumbShares(e.target.value)}
+                label="Number of Shares"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setNumbofSecurities(e.target.value)}
+                label="Name of Securities"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setCost(e.target.value)}
+                label="Cost"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setMarketValue(e.target.value)}
+                label="Market Value Quotation/Exchange"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setDateofQuoatation(e.target.value)}
+                label="Date of Quotation/Exchange"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setTotalValue(e.target.value)}
+                label="Total Value"
+                variant="outlined"
+              />
+            </Grid>
+
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#498dd6",
+                paddingBottom: 10,
+                marginTop: 10,
+                marginLeft: 10,
+              }}
+              onClick={handleAddPropertyStocksBonds}
+            >
+              Add
+            </Button>
+          </Grid>
+        </Box>
+      </Modal>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT
+        </Typography>
+        <Grid container spacing={2}>
+          <Grid item sm={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                width: "30%",
+                marginTop: 10,
+                backgroundColor: "#498dd6",
+              }}
+              startIcon={<AddIcon />}
+              onClick={() => setOpenModalPersonal(true)}
+            >
+              Add Property
+            </Button>
+          </Grid>
+          <Grid item sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10 }}>
+              <TableContainer>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>
+                        Type of Real Estate (e.g. Primary Residence, Other
+                        Residence, Rental Property, Land, etc.)
+                      </TableCell>
+                      <TableCell>Address</TableCell>
+                      <TableCell>Cost</TableCell>
+                      <TableCell>Date Purchased</TableCell>
+                      <TableCell>Original Cost</TableCell>
+                      <TableCell>Present Market Value</TableCell>
+                      <TableCell>Name & Address of Mortgage Holder</TableCell>
+                      <TableCell>Amount of Payment per Month/Year</TableCell>
+                      <TableCell>Status of Mortgage</TableCell>
+                      <TableCell>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {selectedPropertiesPersonal.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={10} align="center">
+                          No Rows to Show
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      selectedPropertiesPersonal.map((property, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{property.realEstateType}</TableCell>
+                          <TableCell>{property.address}</TableCell>
+                          <TableCell>{property.costPersonal}</TableCell>
+                          <TableCell>{property.purchaseDate}</TableCell>
+                          <TableCell>{property.originalCost}</TableCell>
+                          <TableCell>{property.presentMarketValue}</TableCell>
+                          <TableCell>{property.nameAddress}</TableCell>
+                          <TableCell>{property.AmountPayment}</TableCell>
+                          <TableCell>{property.statusMortgage}</TableCell>
+                          <TableCell>
+                            <IconButton
+                              onClick={() => handleDeleteRowPersonal(index)}
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+      <Modal
+        open={openModalPersonal}
+        onClose={() => setOpenModalPersonal(false)}
+      >
+        <Box sx={stylePersonal}>
+          <Grid container spacing={2}>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setRealEstateType(e.target.value)}
+                label="Type of Real Estate "
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setAddress(e.target.value)}
+                label="Address"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setCostPersonal(e.target.value)}
+                label="Cost"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setPurchaseDate(e.target.value)}
+                label="Date Purchased"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setOriginalCost(e.target.value)}
+                label="Original Cost"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setPresentMarketValue(e.target.value)}
+                label="Present Market Value"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setNameAddress(e.target.value)}
+                label="Name & Address of Mortgage Holder"
+                variant="outlined"
+              />
+            </Grid>
+
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setAmountPayment(e.target.value)}
+                label="Amount of Payment per Month/Year"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item sm={4}>
+              <TextField
+                fullWidth
+                size="large"
+                InputLabelProps={{
+                  style: { fontSize: 15, fontWeight: 100 },
+                }}
+                onChange={(e) => setStatusMortgage(e.target.value)}
+                label="Status of Mortgage"
+                variant="outlined"
+              />
+            </Grid>
+
+            <Button
+              variant="contained"
+              style={{
+                backgroundColor: "#498dd6",
+                paddingBottom: 10,
+                marginTop: 10,
+                marginLeft: 10,
+              }}
+              onClick={handleAddPropertyPersonal}
+            >
+              Add
+            </Button>
+          </Grid>
+        </Box>
+      </Modal>
+      <Container>
+        <Typography variant="h4" color="black" gutterBottom>
+          PERSONAL FINANCIAL STATEMENT - Other Infromation
+        </Typography>
+
+        <Grid container spacing={2}>
+          <Grid item sm={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Other Personal Property and Other Assets.
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.otherAssets || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      otherAssets: e.target.value,
+                    })
+                  }
+                  style={{ backgroundColor: "white" }}
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={3}
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Unpaid Taxes
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.unpaidTaxes || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      unpaidTaxes: e.target.value,
+                    })
+                  }
+                  style={{ backgroundColor: "white" }}
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={3}
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Other Liabilities
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.otherLiabilities || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      otherLiabilities: e.target.value,
+                    })
+                  }
+                  style={{ backgroundColor: "white" }}
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={3}
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+          <Grid item sm={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="grey">
+                Life Insurance Held.
+              </Typography>
+              <Grid item sm={12}>
+                {" "}
+                <TextField
+                  value={formData.lifeInsuranceHeld || ""}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      lifeInsuranceHeld: e.target.value,
+                    })
+                  }
+                  style={{ backgroundColor: "white" }}
+                  variant="outlined"
+                  fullWidth
+                  multiline
+                  rows={3}
+                  // Add more props as needed
+                />
+              </Grid>
+            </FormControl>
+          </Grid>
+        </Grid>
+      </Container>
+    </div>
+  );
+}
+
+export default FinanceProjectEpic99;

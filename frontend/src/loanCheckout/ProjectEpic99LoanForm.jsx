@@ -59,6 +59,10 @@ import BusinessUpload from "../pages/Project99/BusinessUpload";
 import SBA2 from "../pages/Project99/SBA2";
 import SBA4 from "../pages/Project99/SBA4";
 import MobileHeaderTitle from "../components/MobileHeaderTitle";
+import BackgroundInformationProjectEpic99 from "../components/NewLoanFormComponents/BackgroundInformationProjectEpic99";
+import BorrowerInformationProjectEpic99 from "../components/NewLoanFormComponents/BorrowerInformationProjectEpic99";
+import EntityInformationProjectEpic99 from "../components/NewLoanFormComponents/EntityInformationProjectEpic99";
+import FinanceProjectEpic99 from "../components/NewLoanFormComponents/FinanceProjectEpic99";
 
 export default function ProjectEpic99LoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -75,38 +79,18 @@ export default function ProjectEpic99LoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "GetToKnowYou",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
-    "a",
+    "Background Information",
+    "Partner Information (borrower)",
+    "Entity Information",
+    "Finance",
+    "SoftPull",
+    "BusinessUpload",
   ];
   function getStepContent(step) {
     switch (step) {
       case 0:
         return (
-          <GetToKnowYou
+          <BackgroundInformationProjectEpic99
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -114,7 +98,7 @@ export default function ProjectEpic99LoanForm(props) {
         );
       case 1:
         return (
-          <SBA10
+          <BorrowerInformationProjectEpic99
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -122,7 +106,7 @@ export default function ProjectEpic99LoanForm(props) {
         );
       case 2:
         return (
-          <SBA11
+          <EntityInformationProjectEpic99
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
@@ -130,77 +114,69 @@ export default function ProjectEpic99LoanForm(props) {
         );
       case 3:
         return (
-          <SBA12
+          <FinanceProjectEpic99
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
+      // case 4:
+      //   return (
+      //     <SBA18
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 5:
+      //   return (
+      //     <SBA19
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 6:
+      //   return (
+      //     <SBA20
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 7:
+      //   return (
+      //     <SBA21
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 8:
+      //   return (
+      //     <SBA22
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 9:
+      //   return (
+      //     <SBA23
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
+      // case 10:
+      //   return (
+      //     <SBA24
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 4:
-        return (
-          <SBA13
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 5:
-        return (
-          <SBA18
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 6:
-        return (
-          <SBA19
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 7:
-        return (
-          <SBA20
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 8:
-        return (
-          <SBA21
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 9:
-        return (
-          <SBA22
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 10:
-        return (
-          <SBA23
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 11:
-        return (
-          <SBA24
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 12:
         return (
           <SoftPull
             formData={formData}
@@ -208,25 +184,9 @@ export default function ProjectEpic99LoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 13:
+      case 5:
         return (
           <BusinessUpload
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 14:
-        return (
-          <SBA2
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 15:
-        return (
-          <SBA4
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
