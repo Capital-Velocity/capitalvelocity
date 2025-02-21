@@ -104,6 +104,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
   const [propertyType, setPropertyType] = useState("");
   const [numProperties, setNumProperties] = useState(0);
   const [estimatedValue, setEstimatedValue] = useState(0);
+  const [monthlyRent, setMonthlyRent] = useState(0);
+  const [monthlyTaxes, setMonthlyTaxes] = useState(0);
+  const [monthlyInsurance, setMonthlyInsurance] = useState(0);
+  const [monthlyHOA, setHOA] = useState(0);
+  const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState(0);
 
   const handleStateChange = (event) => {
     setFormData({
@@ -151,6 +156,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
       propertyType,
       numProperties,
       estimatedValue,
+      monthlyRent,
+      monthlyTaxes,
+      monthlyInsurance,
+      monthlyHOA,
+      monthlyOtherExpenses,
     };
 
     const updatedProperties = [...selectedProperties, newProperty];
@@ -223,6 +233,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                       <TableCell>Property Type</TableCell>
                       <TableCell>Number of Properties</TableCell>
                       <TableCell>Estimated As Is Value</TableCell>
+                      <TableCell>Monthly Rent</TableCell>
+                      <TableCell>Monthly Taxes</TableCell>
+                      <TableCell>Monthly Insurance</TableCell>
+                      <TableCell>Monthly HOA Fees</TableCell>
+                      <TableCell>Monthly Other Expenses</TableCell>
                       <TableCell>Action</TableCell>
                     </TableRow>
                   </TableHead>
@@ -239,6 +254,11 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                           <TableCell>{property.propertyType}</TableCell>
                           <TableCell>{property.numProperties}</TableCell>
                           <TableCell>{property.estimatedValue}</TableCell>
+                          <TableCell>{property.monthlyRent}</TableCell>
+                          <TableCell>{property.monthlyTaxes}</TableCell>
+                          <TableCell>{property.monthlyInsurance}</TableCell>
+                          <TableCell>{property.monthlyHOA}</TableCell>
+                          <TableCell>{property.monthlyOtherExpenses}</TableCell>
                           <TableCell>
                             <IconButton onClick={() => handleDeleteRow(index)}>
                               <DeleteIcon />
@@ -564,25 +584,42 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
           </Grid> */}
         </Grid>
       </Container>
-      <Modal open={openModal} onClose={() => setOpenModal(false)}>
-        <Box sx={style}>
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Box
+          sx={{
+            width: "90%",
+            maxWidth: "600px", // Prevents the modal from being too wide
+            bgcolor: "white",
+            boxShadow: 24,
+            p: 4,
+            borderRadius: 2, // Adds smooth rounded corners
+            position: "relative",
+            overflowY: "auto", // Allows scrolling inside if needed
+            maxHeight: "90vh", // Prevents it from being too large
+          }}
+        >
           <Grid container spacing={2}>
-            <Grid item sm={4}>
+            {/* Program Type Dropdown */}
+
+            <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-                <InputLabel
-                  style={{ fontSize: 15, fontWeight: 100 }}
-                  id="demo-simple-select-label"
-                >
-                  Program Type
-                </InputLabel>
+                <Typography type="p" color="black">
+                  Property Type
+                </Typography>{" "}
                 <Select
-                  style={{ width: "200px" }}
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
+                  fullWidth
                   onChange={(e) => setPropertyType(e.target.value)}
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
+                  variant="outlined"
                 >
                   {propertyTypes.map((type) => (
                     <MenuItem key={type} value={type}>
@@ -592,37 +629,131 @@ function RentalLoanPricerPortfolioForm({ formData, setFormData, fieldErrors }) {
                 </Select>
               </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                style={{ width: "200px" }}
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setNumProperties(e.target.value)}
-                label="Number of Properties"
-                variant="outlined"
-              />
-            </Grid>
-            <Grid item sm={4}>
-              <TextField
-                variant="outlined"
-                InputProps={{
-                  startAdornment: "$",
-                }}
-                onChange={(e) => setEstimatedValue(e.target.value)}
-                fullWidth
-                label="Estimated As Is Value"
-              />
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Number of Properties
+                </Typography>{" "}
+                <TextField
+                  onChange={(e) => setNumProperties(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
             </Grid>
 
-            <Button
-              variant="contained"
-              style={{ backgroundColor: "#498dd6", marginTop: 10 }}
-              onClick={handleAddProperty}
-            >
-              Add
-            </Button>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Estimated As-Is Value
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setEstimatedValue(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Monthly Rent
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setMonthlyRent(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Monthly Taxes
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setMonthlyTaxes(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Monthly Insurance
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setMonthlyInsurance(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Monthly HOA Fees
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setHOA(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Monthly Other Expenses
+                </Typography>{" "}
+                <TextField
+                  InputProps={{
+                    startAdornment: (
+                      <InputAdornment position="start">$</InputAdornment>
+                    ),
+                  }}
+                  onChange={(e) => setMonthlyOtherExpenses(e.target.value)}
+                  fullWidth
+                />
+              </FormControl>
+            </Grid>
+
+            {/* Button - Centered */}
+            <Grid item xs={12} display="flex" justifyContent="center">
+              <Button
+                variant="contained"
+                sx={{ bgcolor: "#498dd6", mt: 2, width: "100%" }}
+                onClick={handleAddProperty}
+              >
+                Add
+              </Button>
+            </Grid>
           </Grid>
         </Box>
       </Modal>

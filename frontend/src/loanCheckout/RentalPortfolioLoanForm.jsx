@@ -191,7 +191,7 @@ export default function RentalPortfolioLoanForm(props) {
 
       // Send email data to backend via Axios (replace the URL with your backend URL)
       const response = await axios.post(
-        "https://52.165.80.134:4000/api/multifam/addMultiFam",
+        "https://52.165.80.134:4000/api/rental/addRentalGroup",
         formData
       );
 
