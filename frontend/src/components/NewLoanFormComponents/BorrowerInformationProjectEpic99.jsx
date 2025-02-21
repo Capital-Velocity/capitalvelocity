@@ -92,7 +92,7 @@ function BorrowerInformationProjectEpic99({
         {/* <Typography variant="subtitle1" color="black" gutterBottom>
           Please review the borrowers of this loan
         </Typography> */}
-        <Divider style={{ color: "grey", marginBottom: 10 }} />
+        <Divider style={{ color: "black", marginBottom: 10 }} />
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
@@ -237,11 +237,26 @@ function BorrowerInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item xs={12} sx={{ mt: 2 }}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              mt: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography type="p" color="black">
               How experienced with investing is the borrower?
-            </label>
-            <div style={{ width: "100%" }}>
+            </Typography>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <Slider
                 value={sliderValue}
                 onChange={handleSliderChange}
@@ -254,11 +269,27 @@ function BorrowerInformationProjectEpic99({
               />
             </div>
           </Grid>
-          <Grid item xs={12}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "black" }}>
+          <Grid
+            item
+            xs={12}
+            sx={{
+              mt: 2,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            <Typography type="p" color="black">
               Please rank the borrower's experience as a real estate investor
-            </label>
-            <div style={{ width: "100%" }}>
+            </Typography>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+              }}
+            >
               <Slider
                 value={sliderValue2}
                 onChange={handleSliderChange2}
@@ -272,10 +303,10 @@ function BorrowerInformationProjectEpic99({
             </div>
           </Grid>
 
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
-              Veteran?
-            </label>
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
+              Are you a Veteran?{" "}
+            </Typography>
             <FormControl fullWidth>
               <Select
                 InputLabelProps={{
@@ -308,10 +339,10 @@ function BorrowerInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
-              Gender
-            </label>
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
+              Gender{" "}
+            </Typography>
             <FormControl fullWidth>
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -332,10 +363,10 @@ function BorrowerInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
               Race
-            </label>
+            </Typography>
             <FormControl fullWidth>
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -365,10 +396,10 @@ function BorrowerInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label style={{ fontSize: 15, fontWeight: 100, color: "grey" }}>
-              Ethnicity
-            </label>
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
+              Ethnicity{" "}
+            </Typography>
             <FormControl fullWidth>
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -393,134 +424,14 @@ function BorrowerInformationProjectEpic99({
               </Select>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.isIndictment ? "red" : "grey",
-              }}
-            >
-              <strong></strong>Are you presently subject to an indictment,
-              criminal information, arraignment, or other means by which formal
-              criminal charges are brought in any jurisdiction? (If "YES," the
-              loan request is not eligible for SBA assistance.)
-            </label>
-          </Grid>
-          <Grid item sm={6}>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.isIndictment === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isIndictment", "Yes")}
-                error={fieldErrors.isIndictment}
-                helperText={<span>{fieldErrors.isIndictment}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "No" when selected
-                checked={formData.isIndictment === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isIndictment", "No")}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
-          </Grid>
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.isArrested ? "red" : "grey",
-              }}
-            >
-              <strong></strong> Have you been arrested in the last 6 months for
-              any criminal offense?
-            </label>
-          </Grid>
-          <Grid item sm={6}>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.isArrested === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isArrested", "Yes")}
-                error={fieldErrors.isArrested}
-                helperText={<span>{fieldErrors.isArrested}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "No" when selected
-                checked={formData.isArrested === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isArrested", "No")}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
-          </Grid>
-          <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.isCriminalOffense ? "red" : "grey",
-              }}
-            >
-              <strong></strong> For any criminal offense - other than a minor
-              vehicle violation - have you ever: 1) been convicted; 2) pleaded
-              guilty; 3) pleaded nolo contendere; 4) been placed on pretrial
-              diversion; or 5) been placed on any form of parole or probation
-              (including probation before judgment)?
-            </label>
-          </Grid>
-          <Grid item sm={6}>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="row-radio-buttons-group"
-            >
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.isCriminalOffense === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isCriminalOffense", "Yes")}
-                error={fieldErrors.isCriminalOffense}
-                helperText={<span>{fieldErrors.isCriminalOffense}</span>}
-                control={<Radio />}
-                label="Yes"
-              />
-              <FormControlLabel
-                style={{ color: "black" }}
-                value="No" // Set the value to "No" when selected
-                checked={formData.isCriminalOffense === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isCriminalOffense", "No")}
-                control={<Radio />}
-                label="No"
-              />
-            </RadioGroup>
-          </Grid>
-          <Grid item sm={6}>
-            <Typography type="p" color="grey">
+          <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
               Citizenship
             </Typography>
             <FormControl fullWidth>
               <Select
                 error={fieldErrors.citizenshipStatus}
-                style={{ width: 500, backgroundColor: "white" }}
+                style={{ backgroundColor: "white" }}
                 helperText={<span>{fieldErrors.citizenshipStatus}</span>}
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
                 value={formData.citizenshipStatus || ""}
@@ -552,9 +463,9 @@ function BorrowerInformationProjectEpic99({
             </FormControl>
           </Grid>
 
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 USCIS Registration Number
               </Typography>
               <Grid item sm={12}>
@@ -562,7 +473,7 @@ function BorrowerInformationProjectEpic99({
                 <TextField
                   type="number"
                   error={fieldErrors.uscisRegNum}
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   helperText={<span>{fieldErrors.uscisRegNum}</span>}
                   value={formData.uscisRegNum || ""}
                   onChange={(e) =>
@@ -579,9 +490,9 @@ function BorrowerInformationProjectEpic99({
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
-              <Typography type="p" color="grey">
+              <Typography type="p" color="black">
                 Country of Citizenship
               </Typography>
               <Grid item sm={12}>
@@ -595,7 +506,7 @@ function BorrowerInformationProjectEpic99({
                     })
                   }
                   error={fieldErrors.countryofCitizenship}
-                  style={{ width: 500, backgroundColor: "white" }}
+                  style={{ backgroundColor: "white" }}
                   helperText={<span>{fieldErrors.countryofCitizenship}</span>}
                   variant="outlined"
                   fullWidth
@@ -606,18 +517,113 @@ function BorrowerInformationProjectEpic99({
             </FormControl>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.suspendedFederal ? "red" : "grey",
-              }}
+            <Typography type="p" color="black">
+              Are you presently subject to an indictment, criminal information,
+              arraignment, or other means by which formal criminal charges are
+              brought in any jurisdiction? (If "YES," the loan request is not
+              eligible for SBA assistance.)
+            </Typography>
+          </Grid>
+          <Grid item sm={6}>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
             >
-              <strong></strong> Are you presently suspended, debarred, proposed
-              for debarment, declared ineligible, or voluntarily excluded from
-              participation in this transaction by any Federal department or
-              agency?
-            </label>
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="Yes" // Set the value to "Yes" when selected
+                checked={formData.isIndictment === "Yes"} // Check if it's "Yes" in formData
+                onChange={() => handleOptionChange("isIndictment", "Yes")}
+                error={fieldErrors.isIndictment}
+                helperText={<span>{fieldErrors.isIndictment}</span>}
+                control={<Radio />}
+                label="Yes"
+              />
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="No" // Set the value to "No" when selected
+                checked={formData.isIndictment === "No"} // Check if it's "No" in formData
+                onChange={() => handleOptionChange("isIndictment", "No")}
+                control={<Radio />}
+                label="No"
+              />
+            </RadioGroup>
+          </Grid>
+          <Grid item sm={6}>
+            <Typography type="p" color="black">
+              Have you been arrested in the last 6 months for any criminal
+              offense?
+            </Typography>
+          </Grid>
+          <Grid item sm={6}>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="Yes" // Set the value to "Yes" when selected
+                checked={formData.isArrested === "Yes"} // Check if it's "Yes" in formData
+                onChange={() => handleOptionChange("isArrested", "Yes")}
+                error={fieldErrors.isArrested}
+                helperText={<span>{fieldErrors.isArrested}</span>}
+                control={<Radio />}
+                label="Yes"
+              />
+
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="No" // Set the value to "No" when selected
+                checked={formData.isArrested === "No"} // Check if it's "No" in formData
+                onChange={() => handleOptionChange("isArrested", "No")}
+                control={<Radio />}
+                label="No"
+              />
+            </RadioGroup>
+          </Grid>
+          <Grid item sm={6}>
+            <Typography type="p" color="black">
+              For any criminal offense - other than a minor vehicle violation -
+              have you ever: 1) been convicted; 2) pleaded guilty; 3) pleaded
+              nolo contendere; 4) been placed on pretrial diversion; or 5) been
+              placed on any form of parole or probation (including probation
+              before judgment)?
+            </Typography>
+          </Grid>
+          <Grid item sm={6}>
+            <RadioGroup
+              row
+              aria-labelledby="demo-row-radio-buttons-group-label"
+              name="row-radio-buttons-group"
+            >
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="Yes" // Set the value to "Yes" when selected
+                checked={formData.isCriminalOffense === "Yes"} // Check if it's "Yes" in formData
+                onChange={() => handleOptionChange("isCriminalOffense", "Yes")}
+                error={fieldErrors.isCriminalOffense}
+                helperText={<span>{fieldErrors.isCriminalOffense}</span>}
+                control={<Radio />}
+                label="Yes"
+              />
+              <FormControlLabel
+                style={{ color: "black" }}
+                value="No" // Set the value to "No" when selected
+                checked={formData.isCriminalOffense === "No"} // Check if it's "No" in formData
+                onChange={() => handleOptionChange("isCriminalOffense", "No")}
+                control={<Radio />}
+                label="No"
+              />
+            </RadioGroup>
+          </Grid>
+          <Grid item sm={6}>
+            <Typography type="p" color="black">
+              Are you presently suspended, debarred, proposed for debarment,
+              declared ineligible, or voluntarily excluded from participation in
+              this transaction by any Federal department or agency?
+            </Typography>
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -647,20 +653,13 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.daysDelenquet ? "red" : "grey",
-              }}
-            >
-              <strong></strong>
+            <Typography type="p" color="black">
               Are you more than 60 days delinquent on any obligation to pay
               child support arising under an administrative order, court order,
               repayment agreement between the holder and a custodial parent, or
               repayment agreement between the holder and a state agency
               providing child support enforcement services.
-            </label>
+            </Typography>
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -690,16 +689,10 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.smallBusiness ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               Do you have any ownership in other businesses that have small
               businesses loans?
-            </label>
+            </Typography>
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -729,17 +722,11 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.bankruptcyProtection ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               Have you, or any business you controlled, ever filed for
               bankruptcy protection? If yes, provide details.
-            </label>
-            <div style={{ marginTop: 20 }}>
+            </Typography>
+            <div style={{}}>
               {formData.bankruptDetail === "Yes" && (
                 <TextField
                   style={{
@@ -797,17 +784,11 @@ function BorrowerInformationProjectEpic99({
           </Grid>
 
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.legalAction ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               Are you, or any business you control, presently involved in any
               legal action (including divorce)? If yes, provide details.
-            </label>
-            <div style={{ marginTop: 20 }}>
+            </Typography>
+            <div style={{}}>
               {formData.legalAction === "Yes" && (
                 <TextField
                   style={{
@@ -860,19 +841,13 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.loanGuarantor ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               Have you or any business owned or controlled by you ever obtained
               a direct or guaranteed loan from SBA or any other Federal agency
               or been a guarantor on such a loan? (This includes, but is not
               limited to USDA, FHA, EDA, and student loans.)
-            </label>
-            <div style={{ marginTop: 20 }}>
+            </Typography>
+            <div style={{}}>
               {formData.loanGuarantor === "Yes" && (
                 <TextField
                   style={{
@@ -925,16 +900,10 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.financingDelinquent ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               If you answered "Yes" to above question, is any of the financing
               presently considered delinquent?
-            </label>
+            </Typography>
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -966,18 +935,12 @@ function BorrowerInformationProjectEpic99({
             </RadioGroup>
           </Grid>
           <Grid item sm={6}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-                color: fieldErrors.businessDefault ? "red" : "grey",
-              }}
-            >
+            <Typography type="p" color="black">
               If you answered "Yes" to the above, did any loan that was made for
               business purposes ever default and cause a loss to the Government,
               including a compromise, resolution or settlement of a loan's
               principal balance for less than the full amount due?
-            </label>
+            </Typography>
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
