@@ -59,12 +59,32 @@ export default function ProjectEpic99LoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "Borrower Information",
-    "Entity Information",
-    "Property Information",
-    "Vendor and Closing Options",
-    "Soft Credit Pull",
-    "Upload & Submit",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
+    "a",
   ];
   function getStepContent(step) {
     switch (step) {
@@ -76,86 +96,7 @@ export default function ProjectEpic99LoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      // case 1:
-      //   return (
-      //     <RentalLoanPrice2
-      //       formData={formData}
-      //       setFormData={setFormData}
-      //       fieldErrors={fieldErrors}
-      //     />
-      //   );
-      // case 2:
-      //   return (
-      //     <RentalLoanPrice3
-      //       formData={formData}
-      //       setFormData={setFormData}
-      //       fieldErrors={fieldErrors}
-      //     />
-      //   );
-      // case 1:
-      //   return (
-      //     <LoanPricerSummary
-      //       formData={formData}
-      //       setFormData={setFormData}
-      //       fieldErrors={fieldErrors}
-      //     />
-      //   );
-      case 1:
-        return (
-          <EntityInformation
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      // case 3:
-      //   return (
-      //     <BorrowerStep3
-      //       formData={formData}
-      //       setFormData={setFormData}
-      //       fieldErrors={fieldErrors}
-      //     />
-      //   );
-      case 2:
-        return (
-          <RentalLoanPricerPortfolioForm
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      // case 3:
-      //   return (
-      //     <LoanTerms2
-      //       formData={formData}
-      //       setFormData={setFormData}
-      //       fieldErrors={fieldErrors}
-      //     />
-      //   );
-      case 3:
-        return (
-          <LoanTerms3
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
-        return (
-          <SoftPull
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 5:
-        return (
-          <SBA26
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
+
       default:
         throw new Error("Unknown step");
     }
@@ -190,7 +131,7 @@ export default function ProjectEpic99LoanForm(props) {
 
       // Send email data to backend via Axios (replace the URL with your backend URL)
       const response = await axios.post(
-        "https://52.165.80.134:4000/api/multifam/addMultiFam",
+        "https://52.165.80.134:4000/api/project99/addproject99",
         formData
       );
 
@@ -209,151 +150,6 @@ export default function ProjectEpic99LoanForm(props) {
 
   const validateStep = (step) => {
     const errors = {};
-
-    // // Step 0: BorrowerStep validation example
-    if (step === 0) {
-      if (!formData.firstName) {
-        errors.firstName = "First Name is required";
-      }
-      if (!formData.borrowerLast) {
-        errors.borrowerLast = "Last Name is required";
-      }
-      if (!formData.borrowerEmail) {
-        errors.borrowerEmail = "Email is required";
-      }
-      if (!formData.borrowerCell) {
-        errors.borrowerCell = "Phone Number is required";
-      }
-      if (!formData.borrowerCitizenship) {
-        errors.borrowerCitizenship = "Citizenship status is required";
-      }
-      if (!formData.bestTerms) {
-        errors.bestTerms = "Arms length description is required";
-      }
-    }
-
-    if (step === 1) {
-      if (!formData.authorizedSignatory) {
-        errors.authorizedSignatory = "Required ";
-      }
-      if (!formData.borrowingEntityInformation) {
-        errors.borrowingEntityInformation = "Required ";
-      }
-    }
-
-    if (step === 2) {
-      if (!formData.state) {
-        errors.state = "Required ";
-      }
-      if (!formData.loanPurpose) {
-        errors.loanPurpose = "Required ";
-      }
-      if (!formData.purchasePriceProperty) {
-        errors.purchasePriceProperty = "Required ";
-      }
-      if (!formData.propertyMan) {
-        errors.propertyMan = "Required ";
-      }
-      if (!formData.propertyMan) {
-        errors.propertyMan = "Required ";
-      }
-      if (!formData.grossMonthlyRent) {
-        errors.grossMonthlyRent = "Required ";
-      }
-    }
-
-    // if (step === 3) {
-    //   if (!formData.cashOut) {
-    //     errors.cashOut = "Required";
-    //   }
-    //   if (!formData.debt) {
-    //     errors.debt = "Required";
-    //   }
-    //   if (!formData.purchaseDate) {
-    //     errors.purchaseDate = "Required";
-    //   }
-    // }
-
-    // if (step === 4) {
-    //   if (!formData.investedCapital) {
-    //     errors.investedCapital = "Required";
-    //   }
-    //   if (!formData.completedCapex) {
-    //     errors.completedCapex = "Required";
-    //   }
-    // }
-
-    // if (step === 5) {
-    //   if (!formData.asIsValue) {
-    //     errors.asIsValue = "Required";
-    //   }
-    //   if (!formData.exitStrat) {
-    //     errors.exitStrat = "Required";
-    //   }
-    //   if (!formData.background) {
-    //     errors.background = "Required";
-    //   }
-    //   if (!formData.redFlags) {
-    //     errors.redFlags = "Required";
-    //   }
-    // }
-
-    // if (step === 6) {
-    //   if (!formData.propertyPurchasePrice) {
-    //     errors.propertyPurchasePrice = "Purchase price is required";
-    //   }
-    //   if (!formData.afterRepairValue) {
-    //     errors.afterRepairValue = "After repair value is required";
-    //   }
-    //   if (!formData.propertyRehabCost) {
-    //     errors.propertyRehabCost = "Rehab cost is required";
-    //   }
-    //   if (!formData.propertyMonthlyPropertyTaxes) {
-    //     errors.propertyMonthlyPropertyTaxes =
-    //       "Monthly property taxes are required";
-    //   }
-    //   if (!formData.propertyMonthlyInsurance) {
-    //     errors.propertyMonthlyInsurance = "Monthly insurance is required";
-    //   }
-    //   if (!formData.propertyMonthlyUtilityBills) {
-    //     errors.propertyMonthlyUtilityBills =
-    //       "Monthly utility bills are required";
-    //   }
-    //   if (!formData.propertyOtherMonthlyExpenses) {
-    //     errors.propertyOtherMonthlyExpenses =
-    //       "Other monthly expenses are required";
-    //   }
-    // }
-
-    // if (step === 7) {
-    //   if (!formData.preferredClosingAttorney) {
-    //     errors.preferredClosingAttorney = "Closing attorney is required";
-    //   }
-    //   if (!formData.closingDate) {
-    //     errors.closingDate = "Closing date is required";
-    //   }
-    //   if (!formData.insuranceCompany) {
-    //     errors.insuranceCompany = "Insurance company is required";
-    //   }
-    //   if (!formData.titleCompany) {
-    //     errors.titleCompany = "Title company is required";
-    //   }
-    // }
-
-    // if (step === 8) {
-    //   if (!formData.birthMonth) {
-    //     errors.birthMonth = "Birth month is required";
-    //   }
-    //   if (!formData.birthDate) {
-    //     errors.birthDate = "Birth date is required";
-    //   }
-    //   if (!formData.birthYear) {
-    //     errors.birthYear = "Birth year is required";
-    //   }
-    //   if (!formData.socialSecurity) {
-    //     errors.socialSecurity = "SSN number is required";
-    //   }
-    // }
 
     // Add more validations for other steps as needed
 
