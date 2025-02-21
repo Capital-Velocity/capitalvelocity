@@ -53,7 +53,6 @@ export default function GroundUpLoanForm(props) {
     "Borrower Information",
     "Entity Information",
     "Property Information",
-    "Rental DSCR Calculator",
     "Vendor and Closing Options",
     "Soft Credit Pull",
     "Upload & Submit",
@@ -93,15 +92,15 @@ export default function GroundUpLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
+      // case 3:
+      //   return (
+      //     <DsciCalculatorLoan
+      //       formData={formData}
+      //       setFormData={setFormData}
+      //       fieldErrors={fieldErrors}
+      //     />
+      //   );
       case 3:
-        return (
-          <DsciCalculatorLoan
-            formData={formData}
-            setFormData={setFormData}
-            fieldErrors={fieldErrors}
-          />
-        );
-      case 4:
         return (
           <LoanTerms3
             formData={formData}
@@ -109,7 +108,7 @@ export default function GroundUpLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 5:
+      case 4:
         return (
           <SoftPull
             formData={formData}
@@ -117,7 +116,7 @@ export default function GroundUpLoanForm(props) {
             fieldErrors={fieldErrors}
           />
         );
-      case 6:
+      case 5:
         return (
           <SBA26
             formData={formData}
@@ -273,28 +272,28 @@ export default function GroundUpLoanForm(props) {
       // }
     }
 
-    if (step === 3) {
-      if (!formData.asIsValue) {
-        errors.asIsValue = "Required";
-      }
-      if (!formData.grossMonthlyRent) {
-        errors.grossMonthlyRent = "Required";
-      }
-      if (!formData.propertyMonthlyTaxes) {
-        errors.propertyMonthlyTaxes = "Required";
-      }
-      if (!formData.propertyMonthlyInsurance) {
-        errors.propertyMonthlyInsurance = "Required";
-      }
-      if (!formData.propertyMonthlyHOAFee) {
-        errors.propertyMonthlyHOAFee = "Required";
-      }
-      if (!formData.propertyMonthlyOtherExpenses) {
-        errors.propertyMonthlyOtherExpenses = "Required";
-      }
-    }
+    // if (step === 3) {
+    //   if (!formData.asIsValue) {
+    //     errors.asIsValue = "Required";
+    //   }
+    //   if (!formData.grossMonthlyRent) {
+    //     errors.grossMonthlyRent = "Required";
+    //   }
+    //   if (!formData.propertyMonthlyTaxes) {
+    //     errors.propertyMonthlyTaxes = "Required";
+    //   }
+    //   if (!formData.propertyMonthlyInsurance) {
+    //     errors.propertyMonthlyInsurance = "Required";
+    //   }
+    //   if (!formData.propertyMonthlyHOAFee) {
+    //     errors.propertyMonthlyHOAFee = "Required";
+    //   }
+    //   if (!formData.propertyMonthlyOtherExpenses) {
+    //     errors.propertyMonthlyOtherExpenses = "Required";
+    //   }
+    // }
 
-    if (step === 4) {
+    if (step === 3) {
       if (!formData.preferredClosingAttorney) {
         errors.preferredClosingAttorney = "Closing attorney is required";
       }
@@ -309,7 +308,7 @@ export default function GroundUpLoanForm(props) {
       }
     }
 
-    if (step === 5) {
+    if (step === 4) {
       if (!formData.birthMonth) {
         errors.birthMonth = "Birth month is required";
       }
