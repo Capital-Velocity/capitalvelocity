@@ -439,14 +439,9 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
           </Grid> */}
 
           <Grid item xs={12}>
-            <label
-              style={{
-                fontSize: 15,
-                fontWeight: 300,
-              }}
-            >
-              Is the property being converted to Condominiums? *
-            </label>
+            <Typography type="p" color="black">
+              Is the property being converted to condominiums?
+            </Typography>
 
             <FormControl
               component="fieldset"
@@ -477,66 +472,267 @@ function PropertyInformationGroundUp({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
-          {/* <Grid item xs={12}>
+          <Grid item xs={12}>
             <Typography type="p" color="black">
-              Please describe the renovation
+              Is the property owned by the borrower(s)?
             </Typography>
-            <Autocomplete
-              multiple
-              id="checkboxes-tags-demo"
-              options={top100Films}
-              disableCloseOnSelect
-              getOptionLabel={(option) => option.title} // ✅ No undefined error now
-              value={top100Films.filter((option) =>
-                formData.renovationDescript?.includes(option.title)
-              )} // ✅ Ensures only valid options are shown
-              onChange={(event, newValue) => {
-                setFormData({
-                  ...formData,
-                  renovationDescript: newValue.map((option) => option.title), // ✅ Store only titles
-                });
-              }}
-              renderOption={(props, option, { selected }) => (
-                <li {...props}>
-                  <Checkbox
-                    icon={icon}
-                    checkedIcon={checkedIcon}
-                    style={{ marginRight: 8 }}
-                    checked={selected}
-                  />
-                  {option.title}
-                </li>
+
+            <FormControl
+              component="fieldset"
+              fullWidth
+              error={!!fieldErrors.ownedByBorrower}
+            >
+              <RadioGroup
+                row
+                name="ownedByBorrower"
+                value={formData.ownedByBorrower || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    ownedByBorrower: e.target.value, // Correctly updates state
+                  })
+                }
+                style={{ justifyContent: "center" }} // Centers radio buttons horizontally
+              >
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              {fieldErrors.ownedByBorrower && (
+                <FormHelperText style={{ textAlign: "center" }}>
+                  {fieldErrors.ownedByBorrower}
+                </FormHelperText>
               )}
-              style={{
-                width: "100%",
-                backgroundColor: "white",
-              }}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth
-                  multiline
-                  error={!!fieldErrors.renovationDescript}
-                  helperText={fieldErrors.renovationDescript}
-                  variant="outlined"
-                  InputProps={{
-                    ...params.InputProps,
-                    style: {
-                      minHeight: "56px",
-                      maxHeight: "150px",
-                      overflowY: "auto",
-                      backgroundColor: "white",
-                    },
-                  }}
-                />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Does the borrower know the owner of record?
+            </Typography>
+
+            <FormControl
+              component="fieldset"
+              fullWidth
+              error={!!fieldErrors.ownerOfRecord}
+            >
+              <RadioGroup
+                row
+                name="ownerOfRecord"
+                value={formData.ownerOfRecord || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    ownerOfRecord: e.target.value, // Correctly updates state
+                  })
+                }
+                style={{ justifyContent: "center" }} // Centers radio buttons horizontally
+              >
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              {fieldErrors.ownerOfRecord && (
+                <FormHelperText style={{ textAlign: "center" }}>
+                  {fieldErrors.ownerOfRecord}
+                </FormHelperText>
               )}
-              sx={{
-                "& .MuiAutocomplete-tag": {
-                  marginBottom: "5px",
-                },
-              }}
-            />
-          </Grid> */}
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Will the property be subdivided into lots?
+            </Typography>
+
+            <FormControl
+              component="fieldset"
+              fullWidth
+              error={!!fieldErrors.subdividedIntoLots}
+            >
+              <RadioGroup
+                row
+                name="subdividedIntoLots"
+                value={formData.subdividedIntoLots || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    subdividedIntoLots: e.target.value, // Correctly updates state
+                  })
+                }
+                style={{ justifyContent: "center" }} // Centers radio buttons horizontally
+              >
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              {fieldErrors.subdividedIntoLots && (
+                <FormHelperText style={{ textAlign: "center" }}>
+                  {fieldErrors.subdividedIntoLots}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Is there seller credit?
+            </Typography>
+
+            <FormControl
+              component="fieldset"
+              fullWidth
+              error={!!fieldErrors.sellerCredit}
+            >
+              <RadioGroup
+                row
+                name="sellerCredit"
+                value={formData.sellerCredit || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    sellerCredit: e.target.value, // Correctly updates state
+                  })
+                }
+                style={{ justifyContent: "center" }} // Centers radio buttons horizontally
+              >
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              {fieldErrors.sellerCredit && (
+                <FormHelperText style={{ textAlign: "center" }}>
+                  {fieldErrors.sellerCredit}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <Typography type="p" color="black">
+              Are all permits in place?
+            </Typography>
+
+            <FormControl
+              component="fieldset"
+              fullWidth
+              error={!!fieldErrors.permitsInPlace}
+            >
+              <RadioGroup
+                row
+                name="permitsInPlace"
+                value={formData.permitsInPlace || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    permitsInPlace: e.target.value, // Correctly updates state
+                  })
+                }
+                style={{ justifyContent: "center" }} // Centers radio buttons horizontally
+              >
+                <FormControlLabel value="Yes" control={<Radio />} label="Yes" />
+                <FormControlLabel value="No" control={<Radio />} label="No" />
+              </RadioGroup>
+
+              {fieldErrors.permitsInPlace && (
+                <FormHelperText style={{ textAlign: "center" }}>
+                  {fieldErrors.permitsInPlace}
+                </FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Proposed Construction Budget
+              </Typography>
+              <TextField
+                value={formData.proposedConstructionBudget || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    proposedConstructionBudget: e.target.value,
+                  })
+                }
+                variant="outlined"
+                fullWidth
+                type="number"
+                error={fieldErrors.proposedConstructionBudget}
+                style={{ backgroundColor: "white" }}
+                helperText={
+                  <span>{fieldErrors.proposedConstructionBudget}</span>
+                }
+                // Add more props as needed
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                sx={{
+                  "& input[type='number']": {
+                    "-webkit-appearance": "none",
+                    "-moz-appearance": "textfield",
+                    appearance: "none",
+                  },
+                  "& input::-webkit-outer-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
+                  "& input::-webkit-inner-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
+                }}
+              />
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                Market Value After Completion
+              </Typography>
+              <TextField
+                value={formData.marketValueAfterCompletion || ""}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    marketValueAfterCompletion: e.target.value,
+                  })
+                }
+                variant="outlined"
+                fullWidth
+                type="number"
+                error={fieldErrors.marketValueAfterCompletion}
+                style={{ backgroundColor: "white" }}
+                helperText={
+                  <span>{fieldErrors.marketValueAfterCompletion}</span>
+                }
+                // Add more props as needed
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">$</InputAdornment>
+                  ),
+                }}
+                sx={{
+                  "& input[type='number']": {
+                    "-webkit-appearance": "none",
+                    "-moz-appearance": "textfield",
+                    appearance: "none",
+                  },
+                  "& input::-webkit-outer-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
+                  "& input::-webkit-inner-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
+                }}
+              />
+            </FormControl>
+          </Grid>
 
           <Grid item xs={12}>
             <FormControl fullWidth error={Boolean(fieldErrors?.exitStrategy)}>
