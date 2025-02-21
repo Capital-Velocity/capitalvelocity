@@ -338,36 +338,6 @@ function PropertyInformationSinglePropertyRental({
             </FormControl>
           </Grid> */}
 
-          <Grid item xs={12} sm={12}>
-            <FormControl fullWidth style={{ minWidth: "", padding: "" }}>
-              <Typography type="p" color="black">
-                Purchase or Refinance
-              </Typography>
-              <Select
-                style={{
-                  backgroundColor: "white",
-                }}
-                value={formData.purchaseorRefinance || ""}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    purchaseorRefinance: e.target.value,
-                  })
-                }
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-              >
-                <MenuItem value={"Purchase"}>Purchase</MenuItem>
-                <MenuItem value={"Refinance"}>Refinance</MenuItem>
-              </Select>
-              {/* FormHelperText to display the error message */}
-              {fieldErrors.purchaseorRefinance && (
-                <FormHelperText error>
-                  {fieldErrors.purchaseorRefinance}
-                </FormHelperText>
-              )}
-            </FormControl>
-          </Grid>
           {/* <Grid item xs={12} sm={6}>
             <FormControl fullWidth>
               <Typography type="p" color="black">

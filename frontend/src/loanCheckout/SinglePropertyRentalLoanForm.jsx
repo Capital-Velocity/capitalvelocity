@@ -315,9 +315,9 @@ export default function SinglePropertyRentalLoanForm(props) {
       if (!formData.propertyType) {
         errors.propertyType = "Property type is required";
       }
-      if (!formData.purchaseorRefinance) {
-        errors.purchaseorRefinance = "Purchase or Refinance is required";
-      }
+      // if (!formData.purchaseorRefinance) {
+      //   errors.purchaseorRefinance = "Purchase or Refinance is required";
+      // }
       if (!formData.propertySource) {
         errors.propertySource = "Property source is required";
       }
