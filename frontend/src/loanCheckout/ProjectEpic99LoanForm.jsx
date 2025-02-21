@@ -43,6 +43,21 @@ import BorrowerStep from "../components/Loan Form/BorrowerStep";
 import BorrowerStep3 from "../components/Loan Form/BorrowerStep3";
 import LoanTerms2 from "../components/Loan Form/LoanTerms2";
 import RentalLoanPricerPortfolioForm from "../components/NewLoanFormComponents/RentalLoanPricerPortfolioForm";
+import GetToKnowYou from "../pages/Project99/GetToKnowYou";
+import SBA10 from "../pages/Project99/SBA10";
+import SBA11 from "../pages/Project99/SBA11";
+import SBA12 from "../pages/Project99/SBA12";
+import SBA13 from "../pages/Project99/SBA13";
+import SBA18 from "../pages/Project99/SBA18";
+import SBA19 from "../pages/Project99/SBA19";
+import SBA20 from "../pages/Project99/SBA20";
+import SBA21 from "../pages/Project99/SBA21";
+import SBA22 from "../pages/Project99/SBA22";
+import SBA23 from "../pages/Project99/SBA23";
+import SBA24 from "../pages/Project99/SBA24";
+import BusinessUpload from "../pages/Project99/BusinessUpload";
+import SBA2 from "../pages/Project99/SBA2";
+import SBA4 from "../pages/Project99/SBA4";
 
 export default function ProjectEpic99LoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -59,7 +74,7 @@ export default function ProjectEpic99LoanForm(props) {
 
   // Stepper labels
   const steps = [
-    "a",
+    "GetToKnowYou",
     "a",
     "a",
     "a",
@@ -90,13 +105,132 @@ export default function ProjectEpic99LoanForm(props) {
     switch (step) {
       case 0:
         return (
-          <BorrowerStep
+          <GetToKnowYou
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
           />
         );
-
+      case 1:
+        return (
+          <SBA10
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 2:
+        return (
+          <SBA11
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 3:
+        return (
+          <SBA12
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 4:
+        return (
+          <SBA13
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 5:
+        return (
+          <SBA18
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 6:
+        return (
+          <SBA19
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 7:
+        return (
+          <SBA20
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 8:
+        return (
+          <SBA21
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 9:
+        return (
+          <SBA22
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 10:
+        return (
+          <SBA23
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 11:
+        return (
+          <SBA24
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 12:
+        return (
+          <SoftPull
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 13:
+        return (
+          <BusinessUpload
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 14:
+        return (
+          <SBA2
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
+      case 15:
+        return (
+          <SBA4
+            formData={formData}
+            setFormData={setFormData}
+            fieldErrors={fieldErrors}
+          />
+        );
       default:
         throw new Error("Unknown step");
     }
