@@ -610,6 +610,30 @@ const OptimizerCalculator = () => {
   const [monthlyHOAFees, setMonthlyHOAFees] = useState("");
   const [monthlyOtherExpensesCalc, setMonthlyOtherExpensesCalc] = useState("");
 
+  // console.log("downPayment: ", downPayment);
+  // console.log("monthlyTaxesCalc: ", monthlyTaxesCalc);
+  // console.log("monthlyInsurance: ", monthlyInsurance);
+  // console.log("monthlyHOAFees: ", monthlyHOAFees);
+  // console.log("monthlyOtherExpensesCalc: ", monthlyOtherExpensesCalc);
+
+  const cleanDownPayment = Number(String(downPayment).replace(/,/g, ""));
+  const cleanMonthlyTaxesCalc = Number(
+    String(monthlyTaxesCalc).replace(/,/g, "")
+  );
+  const cleanMonthlyInsurance = Number(
+    String(monthlyInsurance).replace(/,/g, "")
+  );
+  const cleanMonthlyHOAFees = Number(String(monthlyHOAFees).replace(/,/g, ""));
+  const cleanMonthlyOtherExpensesCalc = Number(
+    String(monthlyOtherExpensesCalc).replace(/,/g, "")
+  );
+
+  // console.log("cleanDownPayment: ", cleanDownPayment);
+  // console.log("cleanMonthlyTaxesCalc: ", cleanMonthlyTaxesCalc);
+  // console.log("cleanMonthlyInsurance: ", cleanMonthlyInsurance);
+  // console.log("cleanMonthlyHOAFees: ", cleanMonthlyHOAFees);
+  // console.log("cleanMonthlyOtherExpensesCalc: ", cleanMonthlyOtherExpensesCalc);
+
   // Static constants
   const DSCR = 1.1;
   const annualRate = 0.07; // 7% annual interest rate
@@ -641,6 +665,8 @@ const OptimizerCalculator = () => {
     const totalExpenses = taxes + insurance + hoa + other;
     const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
 
+    console.log("totalExpenses: ", totalExpenses);
+
     // Ensure that the down payment is sufficiently high so that the numerator is positive.
     if (DSCR * MPF * DP <= totalExpenses) {
       return {
@@ -658,18 +684,18 @@ const OptimizerCalculator = () => {
 
   let results = null;
   if (
-    downPayment !== "" &&
-    monthlyTaxesCalc !== "" &&
-    monthlyInsurance !== "" &&
-    monthlyHOAFees !== "" &&
-    monthlyOtherExpensesCalc !== ""
+    cleanDownPayment !== "" &&
+    cleanMonthlyTaxesCalc !== "" &&
+    cleanMonthlyInsurance !== "" &&
+    cleanMonthlyHOAFees !== "" &&
+    cleanMonthlyOtherExpensesCalc !== ""
   ) {
     results = calculateValues(
-      parseFloat(downPayment),
-      parseFloat(monthlyTaxesCalc),
-      parseFloat(monthlyInsurance),
-      parseFloat(monthlyHOAFees),
-      parseFloat(monthlyOtherExpensesCalc)
+      parseFloat(cleanDownPayment),
+      parseFloat(cleanMonthlyTaxesCalc),
+      parseFloat(cleanMonthlyInsurance),
+      parseFloat(cleanMonthlyHOAFees),
+      parseFloat(cleanMonthlyOtherExpensesCalc)
     );
   }
 
@@ -729,7 +755,7 @@ const OptimizerCalculator = () => {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
-          <div>
+          {/* <div>
             <h2>DSCR Calculator</h2>
             <h3>DSCR = 1.1 | Interest Rate = 7% | 30-year Loan</h3>
 
@@ -799,7 +825,7 @@ const OptimizerCalculator = () => {
             {results && results.error && (
               <p style={{ color: "red" }}>{results.error}</p>
             )}
-          </div>
+          </div> */}
 
           <Grid item xs={12} sm={6}>
             <Typography
@@ -811,7 +837,7 @@ const OptimizerCalculator = () => {
               Loan Values
             </Typography>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -846,6 +872,50 @@ const OptimizerCalculator = () => {
                     <MenuItem value={"2 to 4 Units"}>2 to 4 Units</MenuItem>
                   </Select>
                 </FormControl>
+              </Grid> */}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Down Payment ($){" "}
+                    <Tooltip
+                      title="The down payment required to make this deal."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={downPayment}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setDownPayment(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Typography
@@ -872,17 +942,14 @@ const OptimizerCalculator = () => {
                 </Typography>{" "}
                 <FormControl fullWidth>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
-                    value={estimatedValue}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setEstimatedValue(value); // Set the formatted value with commas
-                    }}
+                    value={
+                      results && !results.error
+                        ? results.purchasePrice.toFixed(2)
+                        : "0.00"
+                    }
+                    disabled
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>
@@ -891,7 +958,7 @@ const OptimizerCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -927,8 +994,8 @@ const OptimizerCalculator = () => {
                     <MenuItem value={670}> 660 - 679 </MenuItem>
                   </Select>
                 </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
+              </Grid> */}
+              {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -963,7 +1030,7 @@ const OptimizerCalculator = () => {
                     variant="outlined"
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
@@ -1033,7 +1100,7 @@ const OptimizerCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1069,54 +1136,9 @@ const OptimizerCalculator = () => {
                     disabled
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
 
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Down Payment ($){" "}
-                    <Tooltip
-                      title="The down payment required to make this deal."
-                      arrow
-                      placement="top"
-                    >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={requiredDownPayment}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setRequiredDownPayment(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1153,240 +1175,236 @@ const OptimizerCalculator = () => {
                     ${monthlyInterestPaymentDisplay}
                   </Typography>
                 </FormControl>
+              </Grid> */}
+              {/* Income Column */}
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
+                >
+                  Income
+                </Typography>
+                <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly Rent ($)
+                    <Tooltip
+                      title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    type="text"
+                    fullWidth
+                    value={
+                      results && !results.error
+                        ? results.monthlyRentNeeded.toFixed(2)
+                        : "0.00"
+                    }
+                    disabled
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
               </Grid>
-              <Grid container spacing={2}>
-                {/* Income Column */}
-                <Grid item xs={12} sm={6}>
-                  <Typography
-                    variant="button"
-                    display="block"
-                    gutterBottom
-                    style={{ color: "black", fontSize: 16, marginTop: 10 }}
-                  >
-                    Income
-                  </Typography>
-                  <FormControl fullWidth>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                      Monthly Rent ($)
-                      <Tooltip
-                        title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>
-                    <TextField
-                      type="text"
-                      fullWidth
-                      value={monthlyRent}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/[^0-9]/g, "");
-                        if (value) {
-                          value = new Intl.NumberFormat().format(value);
-                        }
-                        setMonthlyRent(value);
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                </Grid>
 
-                {/* Expenses Column */}
-                <Grid item xs={12} sm={6}>
+              {/* Expenses Column */}
+              <Grid item xs={12} sm={6}>
+                <Typography
+                  variant="button"
+                  display="block"
+                  gutterBottom
+                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
+                >
+                  Expenses
+                </Typography>
+                {/* Monthly Taxes */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
                   <Typography
-                    variant="button"
-                    display="block"
-                    gutterBottom
-                    style={{ color: "black", fontSize: 16, marginTop: 10 }}
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Expenses
+                    Monthly Taxes ($)
+                    <Tooltip
+                      title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
                   </Typography>
-                  {/* Monthly Taxes */}
-                  <FormControl fullWidth sx={{ mb: 2 }}>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
+                  <TextField
+                    type="text"
+                    fullWidth
+                    value={monthlyTaxesCalc}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, "");
+                      if (value) {
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyTaxesCalc(value);
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
+                {/* Monthly Insurance */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly Insurance ($)
+                    <Tooltip
+                      title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
+                      arrow
+                      placement="top"
                     >
-                      Monthly Taxes ($)
-                      <Tooltip
-                        title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>
-                    <TextField
-                      type="text"
-                      fullWidth
-                      value={monthlyTaxes}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/[^0-9]/g, "");
-                        if (value) {
-                          value = new Intl.NumberFormat().format(value);
-                        }
-                        setmonthlyTaxes(value);
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                  {/* Monthly Insurance */}
-                  <FormControl fullWidth sx={{ mb: 2 }}>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    type="text"
+                    fullWidth
+                    value={monthlyInsurance}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, "");
+                      if (value) {
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyInsurance(value);
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
+                {/* Monthly HOA Fees */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly HOA Fees ($)
+                    <Tooltip
+                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                      arrow
+                      placement="top"
                     >
-                      Monthly Insurance ($)
-                      <Tooltip
-                        title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>
-                    <TextField
-                      type="text"
-                      fullWidth
-                      value={monthlyInsurances}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/[^0-9]/g, "");
-                        if (value) {
-                          value = new Intl.NumberFormat().format(value);
-                        }
-                        setmonthlyInsurances(value);
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                  {/* Monthly HOA Fees */}
-                  <FormControl fullWidth sx={{ mb: 2 }}>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    type="text"
+                    fullWidth
+                    value={monthlyHOAFees}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, "");
+                      if (value) {
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyHOAFees(value);
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
+                {/* Monthly Other Expenses */}
+                <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Monthly Other Expenses ($)
+                    <Tooltip
+                      title="The fees paid for various other expenses required."
+                      arrow
+                      placement="top"
                     >
-                      Monthly HOA Fees ($)
-                      <Tooltip
-                        title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>
-                    <TextField
-                      type="text"
-                      fullWidth
-                      value={monthlyHOAFee}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/[^0-9]/g, "");
-                        if (value) {
-                          value = new Intl.NumberFormat().format(value);
-                        }
-                        setmonthlyHOAFee(value);
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                  {/* Monthly Other Expenses */}
-                  <FormControl fullWidth>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                      Monthly Other Expenses ($)
-                      <Tooltip
-                        title="The fees paid for various other expenses required."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>
-                    <TextField
-                      type="text"
-                      fullWidth
-                      value={monthlyOtherExpenses}
-                      onChange={(e) => {
-                        let value = e.target.value.replace(/[^0-9]/g, "");
-                        if (value) {
-                          value = new Intl.NumberFormat().format(value);
-                        }
-                        setMonthlyOtherExpenses(value);
-                      }}
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </FormControl>
-                </Grid>
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }}
+                      />
+                    </Tooltip>
+                  </Typography>
+                  <TextField
+                    type="text"
+                    fullWidth
+                    value={monthlyOtherExpensesCalc}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, "");
+                      if (value) {
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setMonthlyOtherExpensesCalc(value);
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
               </Grid>
             </Grid>
           </Grid>
@@ -1397,16 +1415,15 @@ const OptimizerCalculator = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        Monthly Income
+                        Maximum Purchase Price:
                       </Typography>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
                         $
-                        {displayMonthlyIncomePayment.toLocaleString(undefined, {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
+                        {results.purchasePrice
+                          ? results.purchasePrice.toFixed(2)
+                          : "0.00"}
                       </Typography>
                     </Grid>
                   </Grid>
@@ -1414,21 +1431,20 @@ const OptimizerCalculator = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
-                        Monthly Operating Expenses
+                        Monthly Rent Income Needed for DSCR ≥ 1.1:
                       </Typography>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
                         $
-                        {totalOperatingExpenses.toLocaleString(undefined, {
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 2,
-                        })}
+                        {results.monthlyRentNeeded
+                          ? results.monthlyRentNeeded.toFixed(2)
+                          : "0.00"}
                       </Typography>
                     </Grid>
                   </Grid>
 
-                  <Grid container spacing={2}>
+                  {/* <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
                         Net Operating Income
@@ -1443,10 +1459,10 @@ const OptimizerCalculator = () => {
                         })}
                       </Typography>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
                 </Container>
               </Box>
-              <Box style={profitBoxStyle}>
+              {/* <Box style={profitBoxStyle}>
                 <Container>
                   <Grid container spacing={2}>
                     <Grid item xs={12}>
@@ -1498,7 +1514,7 @@ const OptimizerCalculator = () => {
                     </Grid>
                   </Grid>
                 </Container>
-              </Box>
+              </Box> */}
             </Item>
           </Grid>
         </Grid>
