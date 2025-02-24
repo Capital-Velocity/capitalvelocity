@@ -665,8 +665,6 @@ const OptimizerCalculator = () => {
     const totalExpenses = taxes + insurance + hoa + other;
     const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
 
-    console.log("totalExpenses: ", totalExpenses);
-
     // Ensure that the down payment is sufficiently high so that the numerator is positive.
     if (DSCR * MPF * DP <= totalExpenses) {
       return {
@@ -873,7 +871,7 @@ const OptimizerCalculator = () => {
                   </Select>
                 </FormControl>
               </Grid> */}
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -917,7 +915,7 @@ const OptimizerCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <Typography
                   color="black"
                   component="div"
@@ -957,7 +955,7 @@ const OptimizerCalculator = () => {
                     }}
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
               {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
@@ -1177,7 +1175,7 @@ const OptimizerCalculator = () => {
                 </FormControl>
               </Grid> */}
               {/* Income Column */}
-              <Grid item xs={12} sm={6}>
+              {/* <Grid item xs={12} sm={6}>
                 <Typography
                   variant="button"
                   display="block"
@@ -1225,7 +1223,7 @@ const OptimizerCalculator = () => {
                     }}
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
 
               {/* Expenses Column */}
               <Grid item xs={12} sm={6}>
@@ -1443,6 +1441,15 @@ const OptimizerCalculator = () => {
                       </Typography>
                     </Grid>
                   </Grid>
+                  {/* <Grid container spacing={2}>
+                    {results && results.hasCalculated && results.error && (
+                      <Grid item xs={12}>
+                        <Typography variant="body1" style={{ color: "red" }}>
+                          {results.error}
+                        </Typography>
+                      </Grid>
+                    )}
+                  </Grid> */}
 
                   {/* <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
