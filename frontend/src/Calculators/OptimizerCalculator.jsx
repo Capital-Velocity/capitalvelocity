@@ -63,6 +63,7 @@ const OptimizerCalculator = () => {
   const [grossAnualincome, setGrossAnualincome] = useState(0);
   const [totalOperatingExpenses, setTotalOperatingExpenses] = useState(0);
   const [loanAmount, setLoanAmount] = useState("");
+  const [requiredDownPayment, setRequiredDownPayment] = useState("");
   const [loanTerm, setLoanTerm] = useState(30);
   const [monthlyRent, setMonthlyRent] = useState("");
   const [formDone, setformDone] = useState("");
@@ -849,6 +850,51 @@ const OptimizerCalculator = () => {
                   <Typography
                     color="black"
                     component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Down Payment ($){" "}
+                    <Tooltip
+                      title="The down payment required to make this deal."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
+                  <TextField
+                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    fullWidth
+                    value={monthlyRent}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      if (value) {
+                        // Format the number with commas
+                        value = new Intl.NumberFormat().format(value);
+                      }
+                      setRequiredDownPayment(value); // Set the formatted value with commas
+                    }}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                  />
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
                     sx={{
                       display: "flex", // Use flexbox to align the content
                       alignItems: "center", // Vertically align text and icon
@@ -882,245 +928,239 @@ const OptimizerCalculator = () => {
                   </Typography>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
-                >
-                  Income
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+              <Grid container spacing={2}>
+                {/* Income Column */}
+                <Grid item xs={12} sm={6}>
                   <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
+                    variant="button"
+                    display="block"
+                    gutterBottom
+                    style={{ color: "black", fontSize: 16, marginTop: 10 }}
                   >
-                    Monthly Rent ($){" "}
-                    <Tooltip
-                      title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
-                      arrow
-                      placement="top"
+                    Income
+                  </Typography>
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={monthlyRent}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyRent(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item sm={12}>
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
-                >
-                  Expenses
-                </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+                      Monthly Rent ($)
+                      <Tooltip
+                        title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyRent}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyRent(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
+
+                {/* Expenses Column */}
+                <Grid item xs={12} sm={6}>
                   <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
+                    variant="button"
+                    display="block"
+                    gutterBottom
+                    style={{ color: "black", fontSize: 16, marginTop: 10 }}
                   >
-                    Monthly Taxes ($){" "}
-                    <Tooltip
-                      title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
-                      arrow
-                      placement="top"
+                    Expenses
+                  </Typography>
+                  {/* Monthly Taxes */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={monthlyTaxes}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setmonthlyTaxes(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly Insurance ($){" "}
-                    <Tooltip
-                      title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
-                      arrow
-                      placement="top"
+                      Monthly Taxes ($)
+                      <Tooltip
+                        title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyTaxes}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setmonthlyTaxes(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly Insurance */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={monthlyInsurances}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setmonthlyInsurances(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly HOA Fees ($){" "}
-                    <Tooltip
-                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
-                      arrow
-                      placement="top"
+                      Monthly Insurance ($)
+                      <Tooltip
+                        title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyInsurances}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setmonthlyInsurances(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly HOA Fees */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={monthlyHOAFee}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setmonthlyHOAFee(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly Other Expenses ($){" "}
-                    <Tooltip
-                      title="The fees paid for various other expenses required."
-                      arrow
-                      placement="top"
+                      Monthly HOA Fees ($)
+                      <Tooltip
+                        title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyHOAFee}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setmonthlyHOAFee(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly Other Expenses */}
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
-                    fullWidth
-                    value={monthlyOtherExpenses}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
-                      if (value) {
-                        // Format the number with commas
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyOtherExpenses(value); // Set the formatted value with commas
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
+                      Monthly Other Expenses ($)
+                      <Tooltip
+                        title="The fees paid for various other expenses required."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyOtherExpenses}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyOtherExpenses(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
