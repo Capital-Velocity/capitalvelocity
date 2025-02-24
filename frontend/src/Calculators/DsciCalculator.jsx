@@ -96,7 +96,7 @@ const DsciCalculator = () => {
     calculateLoanAmount();
   }, [ltv, estimatedValue]);
 
-  const isDeal = dscrValue >= 1.25;
+  const isDeal = dscrValue >= 1.1;
 
   useEffect(() => {
     if (!prevIsDeal && isDeal) {
@@ -428,22 +428,22 @@ const DsciCalculator = () => {
       return null;
     }
 
-    // Check if required fields are missing
-    if (
-      monthlyRent === undefined ||
-      monthlyTaxes === undefined ||
-      monthlyInsurances === undefined ||
-      monthlyHOAFee === undefined ||
-      monthlyOtherExpenses === undefined ||
-      monthlyRent === "" ||
-      monthlyTaxes === "" ||
-      monthlyInsurances === "" ||
-      monthlyHOAFee === "" ||
-      monthlyOtherExpenses === ""
-    ) {
-      console.warn("Waiting for all required expense fields to be entered.");
-      return "";
-    }
+    // // Check if required fields are missing
+    // if (
+    //   monthlyRent === undefined ||
+    //   monthlyTaxes === undefined ||
+    //   monthlyInsurances === undefined ||
+    //   monthlyHOAFee === undefined ||
+    //   monthlyOtherExpenses === undefined ||
+    //   monthlyRent === "" ||
+    //   monthlyTaxes === "" ||
+    //   monthlyInsurances === "" ||
+    //   monthlyHOAFee === "" ||
+    //   monthlyOtherExpenses === ""
+    // ) {
+    //   console.warn("Waiting for all required expense fields to be entered.");
+    //   return "";
+    // }
 
     // Parse inputs and ensure they are numbers
     const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
@@ -1184,7 +1184,7 @@ const DsciCalculator = () => {
                       </Typography>
 
                       <Typography variant="h2" color="white" gutterBottom>
-                        {dscrValue >= 1.25
+                        {dscrValue >= 1.1
                           ? "It's go time!"
                           : "DSCR is too low."}{" "}
                         <Tooltip
