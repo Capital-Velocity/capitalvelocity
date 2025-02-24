@@ -519,6 +519,128 @@ const OptimizerCalculator = () => {
     marginTop: 10,
   };
 
+  //   const calculateMinimumRent = () => {
+  //     if (!loanAmount || loanAmount <= 0) return 0;
+
+  //     const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0;
+  //     const monthlyRate = interestRate / 100 / 12;
+  //     const numPayments = loanTerm * 12;
+
+  //     const monthlyLoanPayment =
+  //       principal *
+  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
+
+  //     const totalOperatingExpensesMonthly =
+  //       parseFloat(monthlyTaxes || 0) +
+  //       parseFloat(monthlyInsurances || 0) +
+  //       parseFloat(monthlyHOAFee || 0) +
+  //       parseFloat(monthlyOtherExpenses || 0);
+
+  //     const minMonthlyRent =
+  //       1.1 * monthlyLoanPayment + totalOperatingExpensesMonthly;
+
+  //     setMonthlyRent(formatNumber(minMonthlyRent.toFixed(2)));
+
+  //     console.log("minimum monthly rent: ", monthlyRent);
+  //   };
+
+  //   const calculateMinimumEstimatedValue = () => {
+  //     if (!ltv || ltv <= 0) return 0;
+
+  //     const ltvPercentage = parseFloat(ltv) / 100;
+  //     const minEstimatedValue = loanAmount / ltvPercentage;
+
+  //     setEstimatedValue(formatNumber(minEstimatedValue.toFixed(2)));
+
+  //     console.log("minimum estimated value: ", estimatedValue);
+  //   };
+
+  //   const calculateMinimumRent = () => {
+  //     if (!loanAmount || loanAmount <= 0) return 0;
+
+  //     const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0;
+  //     const monthlyRate = interestRate / 100 / 12;
+  //     const numPayments = loanTerm * 12;
+
+  //     const monthlyLoanPayment =
+  //       principal *
+  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
+
+  //     const totalOperatingExpensesMonthly =
+  //       parseFloat(monthlyTaxes || 0) +
+  //       parseFloat(monthlyInsurances || 0) +
+  //       parseFloat(monthlyHOAFee || 0) +
+  //       parseFloat(monthlyOtherExpenses || 0);
+
+  //     const userDownPayment =
+  //       parseFloat(requiredDownPayment.toString().replace(/,/g, "")) || 0;
+  //     const adjustedLoanAmount = principal - userDownPayment;
+
+  //     const adjustedMonthlyLoanPayment =
+  //       adjustedLoanAmount *
+  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
+
+  //     const minMonthlyRent =
+  //       1.1 * adjustedMonthlyLoanPayment + totalOperatingExpensesMonthly;
+
+  //     setMonthlyRent(formatNumber(minMonthlyRent.toFixed(2)));
+
+  //     console.log("minimum monthly rent: ", monthlyRent);
+  //   };
+
+  //   const calculateMinimumEstimatedValue = () => {
+  //     if (!ltv || ltv <= 0) return 0;
+
+  //     const userDownPayment =
+  //       parseFloat(requiredDownPayment.toString().replace(/,/g, "")) || 0;
+  //     const adjustedLoanAmount = loanAmount - userDownPayment;
+
+  //     const ltvPercentage = parseFloat(ltv) / 100;
+  //     const minEstimatedValue = adjustedLoanAmount / ltvPercentage;
+
+  //     setEstimatedValue(formatNumber(minEstimatedValue.toFixed(2)));
+
+  //     console.log("minimum estimated value: ", estimatedValue);
+  //   };
+
+  // Only purchase price is user input.
+  const [purchasePrice, setPurchasePrice] = useState("");
+
+  // Static constants
+  const DSCR = 1.1;
+  const annualRate = 0.07; // e.g., 7% annual interest
+  const termMonths = 360; // e.g., 30-year loan
+  const monthlyRentYield = 0.005; // e.g., 0.5% of purchase price per month (~6% annual)
+
+  // Calculate the monthly mortgage payment factor
+  const calculateMortgagePaymentFactor = (annualRate, termMonths) => {
+    const monthlyRate = annualRate / 12;
+    return (
+      (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) /
+      (Math.pow(1 + monthlyRate, termMonths) - 1)
+    );
+  };
+
+  // Given the purchase price, calculate:
+  // - The maximum achievable monthly rent (based on a fixed rent yield)
+  // - The minimum down payment required to meet DSCR = 1.1
+  const calculateValues = (P) => {
+    const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
+    // Maximum achievable monthly rent based on the property’s market rent yield.
+    const monthlyRentPotential = P * monthlyRentYield;
+    // Rearranged DSCR equation: monthlyRent = 1.1 * (P – Down Payment) * MPF
+    // Solve for Down Payment:
+    // Down Payment = P – (monthlyRentPotential) / (1.1 * MPF)
+    const minDownPayment = P - monthlyRentPotential / (DSCR * MPF);
+    return { minDownPayment, monthlyRentPotential };
+  };
+
+  // Only compute if purchasePrice is provided
+  let results = { minDownPayment: 0, monthlyRentPotential: 0 };
+  if (purchasePrice) {
+    results = calculateValues(parseFloat(purchasePrice));
+  }
+
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
       {showConfetti && (
@@ -575,6 +697,41 @@ const OptimizerCalculator = () => {
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
         <Grid container spacing={2}>
+          <div>
+            <h2>DSCR Calculator</h2>
+            <h2>
+              <br />
+              DSCR = 1.1 <br /> Interest Rate = 7%
+              <br />
+              30 year loan <br />
+            </h2>
+
+            <div>
+              <label>
+                Purchase Price: $
+                <input
+                  type="number"
+                  value={purchasePrice}
+                  onChange={(e) => setPurchasePrice(e.target.value)}
+                />
+              </label>
+            </div>
+            {purchasePrice && (
+              <div>
+                <p>
+                  <strong>Minimum Down Payment</strong>: $
+                  {results.minDownPayment.toFixed(2)}
+                </p>
+                <p>
+                  <strong>
+                    Monthly Rent Income Needed for 1.1 DSCR or greater
+                  </strong>
+                  : ${results.monthlyRentPotential.toFixed(2)}
+                </p>
+              </div>
+            )}
+          </div>
+
           <Grid item xs={12} sm={6}>
             <Typography
               variant="button"
@@ -872,7 +1029,7 @@ const OptimizerCalculator = () => {
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
-                    value={monthlyRent}
+                    value={requiredDownPayment}
                     onChange={(e) => {
                       let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
                       if (value) {
