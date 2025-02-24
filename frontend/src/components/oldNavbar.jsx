@@ -386,6 +386,35 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
+          location.pathname === "/FixandFlipCalc"
+            ? "border-gray-600"
+            : "border-gray-300"
+        } 
+        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            href="/FixandFlipCalc"
+          >
+            <div class="css-0">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M15.0012 9.99914C15.0012 11.3804 12.3138 12.5002 8.99875 12.5002C5.68366 12.5002 2.99625 11.3804 2.99625 9.99914M15.0012 9.99914C15.0012 8.61786 12.3138 7.4981 8.99875 7.4981C5.68366 7.4981 2.99625 8.61786 2.99625 9.99914M15.0012 9.99914V17.5023C15.0012 18.8836 12.3138 20.0033 8.99875 20.0033C5.68366 20.0033 2.99625 18.8836 2.99625 17.5023V9.99914M15.0012 13.5006C15.0012 14.8819 12.3138 16.0016 8.99875 16.0016C5.68366 16.0016 2.99625 14.8819 2.99625 13.5006M21.0037 9.99914C21.0037 11.3804 18.3163 12.5002 15.0012 12.5002M21.0037 6.49768V14.0008C21.0037 15.3821 18.3163 16.5019 15.0012 16.5019M21.0037 6.49768C21.0037 5.11711 18.3126 3.99664 15.0012 3.99664C11.6899 3.99664 8.99875 5.11711 8.99875 6.49768C9.0214 6.88843 9.20196 7.25317 9.49895 7.50811M21.0037 6.49768C21.0037 7.87826 18.3126 8.99873 15.0012 8.99873C14.8312 8.99873 14.6611 8.99873 14.501 8.98872"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </div>
+            <span class="mt-1 leading-none">Fix and Flip Calculator</span>
+          </a>
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
+        ${
           location.pathname === "/DsciCalculator"
             ? "border-gray-600"
             : "border-gray-300"
@@ -415,31 +444,61 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/FixandFlipCalc"
+          location.pathname === "/optimizercalculator"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/FixandFlipCalc"
+            href="/optimizercalculator"
           >
             <div class="css-0">
               <svg
                 width="28"
                 height="28"
-                viewBox="0 0 24 24"
+                viewBox="0 0 44 44"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  d="M15.0012 9.99914C15.0012 11.3804 12.3138 12.5002 8.99875 12.5002C5.68366 12.5002 2.99625 11.3804 2.99625 9.99914M15.0012 9.99914C15.0012 8.61786 12.3138 7.4981 8.99875 7.4981C5.68366 7.4981 2.99625 8.61786 2.99625 9.99914M15.0012 9.99914V17.5023C15.0012 18.8836 12.3138 20.0033 8.99875 20.0033C5.68366 20.0033 2.99625 18.8836 2.99625 17.5023V9.99914M15.0012 13.5006C15.0012 14.8819 12.3138 16.0016 8.99875 16.0016C5.68366 16.0016 2.99625 14.8819 2.99625 13.5006M21.0037 9.99914C21.0037 11.3804 18.3163 12.5002 15.0012 12.5002M21.0037 6.49768V14.0008C21.0037 15.3821 18.3163 16.5019 15.0012 16.5019M21.0037 6.49768C21.0037 5.11711 18.3126 3.99664 15.0012 3.99664C11.6899 3.99664 8.99875 5.11711 8.99875 6.49768C9.0214 6.88843 9.20196 7.25317 9.49895 7.50811M21.0037 6.49768C21.0037 7.87826 18.3126 8.99873 15.0012 8.99873C14.8312 8.99873 14.6611 8.99873 14.501 8.98872"
+                  d="M20.1969 38.2336C11.2308 38.2336 3.96387 30.9666 3.96387 22.0006C3.96387 13.0346 11.2308 5.76758 20.1969 5.76758C29.1629 5.76758 36.4299 13.0346 36.4299 22.0006"
                   stroke="currentColor"
-                  stroke-width="1.5"
+                  stroke-width="2.70438"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M4.88965 16.5893H35.5033"
+                  stroke="currentColor"
+                  stroke-width="2.70438"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M4.8916 27.4116H22.0012"
+                  stroke="currentColor"
+                  stroke-width="2.70438"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M27.4128 21.9987C27.4128 17.0133 26.1088 12.028 23.5043 7.67755C21.9766 5.12897 18.4197 5.12897 16.8938 7.67755C11.6812 16.3802 11.6812 27.6189 16.8938 36.3198C17.6568 37.595 18.9284 38.2335 20.1999 38.2335"
+                  stroke="currentColor"
+                  stroke-width="2.70438"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M34.6405 27.9238L39.8892 36.6806C40.36 37.467 39.6295 38.4194 38.7204 38.2029L33.7243 37.0107L28.7281 38.2011C27.8191 38.4176 27.0886 37.4652 27.5593 36.6788L32.808 27.9238C33.2174 27.2402 34.2311 27.2402 34.6405 27.9238Z"
+                  stroke="currentColor"
+                  stroke-width="2.70438"
                   stroke-linecap="round"
                   stroke-linejoin="round"
                 ></path>
               </svg>
             </div>
-            <span class="mt-1 leading-none">Fix and Flip Calculator</span>
+            <span class="mt-1 leading-none">Rental DSCR Optimizer</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
