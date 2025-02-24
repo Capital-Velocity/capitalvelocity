@@ -603,16 +603,20 @@ const OptimizerCalculator = () => {
   //     console.log("minimum estimated value: ", estimatedValue);
   //   };
 
-  // Only purchase price is user input.
-  const [purchasePrice, setPurchasePrice] = useState("");
+  // User inputs: down payment and monthly operating expenses
+  const [downPayment, setDownPayment] = useState("");
+  const [monthlyTaxesCalc, setMonthlyTaxesCalc] = useState("");
+  const [monthlyInsurance, setMonthlyInsurance] = useState("");
+  const [monthlyHOAFees, setMonthlyHOAFees] = useState("");
+  const [monthlyOtherExpensesCalc, setMonthlyOtherExpensesCalc] = useState("");
 
   // Static constants
   const DSCR = 1.1;
-  const annualRate = 0.07; // e.g., 7% annual interest
-  const termMonths = 360; // e.g., 30-year loan
-  const monthlyRentYield = 0.005; // e.g., 0.5% of purchase price per month (~6% annual)
+  const annualRate = 0.07; // 7% annual interest rate
+  const termMonths = 360; // 30-year loan
+  const monthlyRentYield = 0.005; // 0.5% of purchase price per month
 
-  // Calculate the monthly mortgage payment factor
+  // Calculate the monthly mortgage payment factor (MPF)
   const calculateMortgagePaymentFactor = (annualRate, termMonths) => {
     const monthlyRate = annualRate / 12;
     return (
@@ -621,24 +625,52 @@ const OptimizerCalculator = () => {
     );
   };
 
-  // Given the purchase price, calculate:
-  // - The maximum achievable monthly rent (based on a fixed rent yield)
-  // - The minimum down payment required to meet DSCR = 1.1
-  const calculateValues = (P) => {
+  // Given the down payment and operating expenses, compute:
+  // - The maximum purchase price that meets the DSCR condition
+  // - The gross monthly rent income needed (which includes covering operating expenses)
+  //
+  // DSCR condition with expenses:
+  //   (Purchase Price * monthlyRentYield) - TotalExpenses = DSCR * MPF * (Purchase Price - Down Payment)
+  //
+  // Rearranged, we get:
+  //   Purchase Price = (DSCR * MPF * Down Payment - TotalExpenses) / (DSCR * MPF - monthlyRentYield)
+  //
+  // And the required gross monthly rent income is:
+  //   Gross Rent = DSCR * MPF * (Purchase Price - Down Payment) + TotalExpenses
+  const calculateValues = (DP, taxes, insurance, hoa, other) => {
+    const totalExpenses = taxes + insurance + hoa + other;
     const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
-    // Maximum achievable monthly rent based on the property’s market rent yield.
-    const monthlyRentPotential = P * monthlyRentYield;
-    // Rearranged DSCR equation: monthlyRent = 1.1 * (P – Down Payment) * MPF
-    // Solve for Down Payment:
-    // Down Payment = P – (monthlyRentPotential) / (1.1 * MPF)
-    const minDownPayment = P - monthlyRentPotential / (DSCR * MPF);
-    return { minDownPayment, monthlyRentPotential };
+
+    // Ensure that the down payment is sufficiently high so that the numerator is positive.
+    if (DSCR * MPF * DP <= totalExpenses) {
+      return {
+        error:
+          "Down Payment is too low to cover operating expenses with these parameters.",
+      };
+    }
+
+    const purchasePrice =
+      (DSCR * MPF * DP - totalExpenses) / (DSCR * MPF - monthlyRentYield);
+    const monthlyRentNeeded = DSCR * MPF * (purchasePrice - DP) + totalExpenses;
+
+    return { purchasePrice, monthlyRentNeeded };
   };
 
-  // Only compute if purchasePrice is provided
-  let results = { minDownPayment: 0, monthlyRentPotential: 0 };
-  if (purchasePrice) {
-    results = calculateValues(parseFloat(purchasePrice));
+  let results = null;
+  if (
+    downPayment !== "" &&
+    monthlyTaxesCalc !== "" &&
+    monthlyInsurance !== "" &&
+    monthlyHOAFees !== "" &&
+    monthlyOtherExpensesCalc !== ""
+  ) {
+    results = calculateValues(
+      parseFloat(downPayment),
+      parseFloat(monthlyTaxesCalc),
+      parseFloat(monthlyInsurance),
+      parseFloat(monthlyHOAFees),
+      parseFloat(monthlyOtherExpensesCalc)
+    );
   }
 
   return (
@@ -699,36 +731,73 @@ const OptimizerCalculator = () => {
         <Grid container spacing={2}>
           <div>
             <h2>DSCR Calculator</h2>
-            <h2>
-              <br />
-              DSCR = 1.1 <br /> Interest Rate = 7%
-              <br />
-              30 year loan <br />
-            </h2>
+            <h3>DSCR = 1.1 | Interest Rate = 7% | 30-year Loan</h3>
 
             <div>
               <label>
-                Purchase Price: $
+                Down Payment: $
                 <input
                   type="number"
-                  value={purchasePrice}
-                  onChange={(e) => setPurchasePrice(e.target.value)}
+                  value={downPayment}
+                  onChange={(e) => setDownPayment(e.target.value)}
                 />
               </label>
             </div>
-            {purchasePrice && (
+            <div>
+              <label>
+                Monthly Taxes: $
+                <input
+                  type="number"
+                  value={monthlyTaxesCalc}
+                  onChange={(e) => setMonthlyTaxesCalc(e.target.value)}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Monthly Insurance: $
+                <input
+                  type="number"
+                  value={monthlyInsurance}
+                  onChange={(e) => setMonthlyInsurance(e.target.value)}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Monthly HOA Fees: $
+                <input
+                  type="number"
+                  value={monthlyHOAFees}
+                  onChange={(e) => setMonthlyHOAFees(e.target.value)}
+                />
+              </label>
+            </div>
+            <div>
+              <label>
+                Monthly Other Expenses: $
+                <input
+                  type="number"
+                  value={monthlyOtherExpensesCalc}
+                  onChange={(e) => setMonthlyOtherExpensesCalc(e.target.value)}
+                />
+              </label>
+            </div>
+
+            {results && !results.error && (
               <div>
                 <p>
-                  <strong>Minimum Down Payment</strong>: $
-                  {results.minDownPayment.toFixed(2)}
+                  <strong>Maximum Purchase Price:</strong> $
+                  {results.purchasePrice.toFixed(2)}
                 </p>
                 <p>
-                  <strong>
-                    Monthly Rent Income Needed for 1.1 DSCR or greater
-                  </strong>
-                  : ${results.monthlyRentPotential.toFixed(2)}
+                  <strong>Monthly Rent Income Needed for DSCR ≥ 1.1:</strong> $
+                  {results.monthlyRentNeeded.toFixed(2)}
                 </p>
               </div>
+            )}
+            {results && results.error && (
+              <p style={{ color: "red" }}>{results.error}</p>
             )}
           </div>
 
@@ -784,7 +853,7 @@ const OptimizerCalculator = () => {
                   component="div"
                   sx={{ display: "inline-flex", alignItems: "center" }}
                 >
-                  Estimated As-Is Value ($){" "}
+                  Purchase Price ($){" "}
                   <Tooltip
                     title="The current market value of the property in its existing condition, before any renovations or improvements are made."
                     arrow
