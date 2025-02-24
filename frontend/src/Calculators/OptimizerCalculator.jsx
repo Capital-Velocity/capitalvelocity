@@ -1229,7 +1229,7 @@ const OptimizerCalculator = () => {
                       </Typography>
 
                       <Typography variant="h2" color="white" gutterBottom>
-                        {dscrValue >= 1.25
+                        {dscrValue >= 1.1
                           ? "It's go time!"
                           : "DSCR is too low."}{" "}
                         <Tooltip
