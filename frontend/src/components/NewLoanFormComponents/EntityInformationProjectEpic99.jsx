@@ -120,16 +120,19 @@ function EntityInformationProjectEpic99({
       tin,
     };
 
+    // Ensure ownershipOfApplicant is an array before spreading
     const updatedFormData = {
       ...formData,
-      ownershipOfApplicant: [...formData.ownershipOfApplicant, newProperty],
+      ownershipOfApplicant: [
+        ...(Array.isArray(formData.ownershipOfApplicant)
+          ? formData.ownershipOfApplicant
+          : []),
+        newProperty,
+      ],
     };
 
     setFormData(updatedFormData);
-    setSelectedProperties([
-      ...selectedProperties,
-      { ownersName, title, estimateasvalue, address, programType, tin },
-    ]);
+    setSelectedProperties([...selectedProperties, newProperty]);
 
     setPropertyType("");
     setOwnersName("");
