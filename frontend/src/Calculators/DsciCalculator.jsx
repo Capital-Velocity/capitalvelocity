@@ -886,7 +886,7 @@ const DsciCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -924,6 +924,7 @@ const DsciCalculator = () => {
                   </Typography>
                 </FormControl>
               </Grid>
+
               <Grid item xs={12} sm={6}>
                 <Typography
                   variant="button"
@@ -933,15 +934,13 @@ const DsciCalculator = () => {
                 >
                   Income
                 </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Monthly Rent ($){" "}
+                    Monthly Rent ($)
                     <Tooltip
                       title="The amount of rent received from tenants on a monthly basis. This is used to calculate your property's income for the purpose of evaluating debt service coverage."
                       arrow
@@ -954,10 +953,10 @@ const DsciCalculator = () => {
                           color: "gray",
                           marginLeft: 1,
                           verticalAlign: "middle",
-                        }} // Align icon vertically
+                        }}
                       />
                     </Tooltip>
-                  </Typography>{" "}
+                  </Typography>
                   <TextField
                     type="text" // Change to "text" because we will handle the number formatting ourselves
                     fullWidth
@@ -978,7 +977,9 @@ const DsciCalculator = () => {
                   />
                 </FormControl>
               </Grid>
-              <Grid item sm={12}>
+
+              {/* Expenses Column */}
+              <Grid item xs={12} sm={6}>
                 <Typography
                   variant="button"
                   display="block"
@@ -987,15 +988,14 @@ const DsciCalculator = () => {
                 >
                   Expenses
                 </Typography>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+                {/* Monthly Taxes */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
                   <Typography
                     color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Monthly Taxes ($){" "}
+                    Monthly Taxes ($)
                     <Tooltip
                       title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
                       arrow
@@ -1008,21 +1008,20 @@ const DsciCalculator = () => {
                           color: "gray",
                           marginLeft: 1,
                           verticalAlign: "middle",
-                        }} // Align icon vertically
+                        }}
                       />
                     </Tooltip>
-                  </Typography>{" "}
+                  </Typography>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
                     value={monthlyTaxes}
                     onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      let value = e.target.value.replace(/[^0-9]/g, "");
                       if (value) {
-                        // Format the number with commas
                         value = new Intl.NumberFormat().format(value);
                       }
-                      setmonthlyTaxes(value); // Set the formatted value with commas
+                      setmonthlyTaxes(value);
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1031,15 +1030,14 @@ const DsciCalculator = () => {
                     }}
                   />
                 </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+                {/* Monthly Insurance */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
                   <Typography
                     color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Monthly Insurance ($){" "}
+                    Monthly Insurance ($)
                     <Tooltip
                       title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
                       arrow
@@ -1052,21 +1050,20 @@ const DsciCalculator = () => {
                           color: "gray",
                           marginLeft: 1,
                           verticalAlign: "middle",
-                        }} // Align icon vertically
+                        }}
                       />
                     </Tooltip>
-                  </Typography>{" "}
+                  </Typography>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
                     value={monthlyInsurances}
                     onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      let value = e.target.value.replace(/[^0-9]/g, "");
                       if (value) {
-                        // Format the number with commas
                         value = new Intl.NumberFormat().format(value);
                       }
-                      setmonthlyInsurances(value); // Set the formatted value with commas
+                      setmonthlyInsurances(value);
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1075,15 +1072,14 @@ const DsciCalculator = () => {
                     }}
                   />
                 </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+                {/* Monthly HOA Fees */}
+                <FormControl fullWidth sx={{ mb: 2 }}>
                   <Typography
                     color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Monthly HOA Fees ($){" "}
+                    Monthly HOA Fees ($)
                     <Tooltip
                       title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
                       arrow
@@ -1096,21 +1092,20 @@ const DsciCalculator = () => {
                           color: "gray",
                           marginLeft: 1,
                           verticalAlign: "middle",
-                        }} // Align icon vertically
+                        }}
                       />
                     </Tooltip>
-                  </Typography>{" "}
+                  </Typography>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
                     value={monthlyHOAFee}
                     onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      let value = e.target.value.replace(/[^0-9]/g, "");
                       if (value) {
-                        // Format the number with commas
                         value = new Intl.NumberFormat().format(value);
                       }
-                      setmonthlyHOAFee(value); // Set the formatted value with commas
+                      setmonthlyHOAFee(value);
                     }}
                     InputProps={{
                       startAdornment: (
@@ -1119,15 +1114,14 @@ const DsciCalculator = () => {
                     }}
                   />
                 </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
+                {/* Monthly Other Expenses */}
                 <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Monthly Other Expenses ($){" "}
+                    Monthly Other Expenses ($)
                     <Tooltip
                       title="The fees paid for various other expenses required."
                       arrow
@@ -1140,21 +1134,20 @@ const DsciCalculator = () => {
                           color: "gray",
                           marginLeft: 1,
                           verticalAlign: "middle",
-                        }} // Align icon vertically
+                        }}
                       />
                     </Tooltip>
-                  </Typography>{" "}
+                  </Typography>
                   <TextField
-                    type="text" // Change to "text" because we will handle the number formatting ourselves
+                    type="text"
                     fullWidth
                     value={monthlyOtherExpenses}
                     onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, ""); // Remove non-numeric characters
+                      let value = e.target.value.replace(/[^0-9]/g, "");
                       if (value) {
-                        // Format the number with commas
                         value = new Intl.NumberFormat().format(value);
                       }
-                      setMonthlyOtherExpenses(value); // Set the formatted value with commas
+                      setMonthlyOtherExpenses(value);
                     }}
                     InputProps={{
                       startAdornment: (
