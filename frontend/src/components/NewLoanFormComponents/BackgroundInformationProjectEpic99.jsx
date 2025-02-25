@@ -493,6 +493,15 @@ function BackgroundInformationProjectEpic99({
               id="checkboxes-tags-demo"
               options={top100Films1}
               disableCloseOnSelect
+              value={top100Films1.filter((option) =>
+                formData.whichApply?.includes(option.title)
+              )} // ✅ Ensures only valid options are shown
+              onChange={(event, newValue) => {
+                setFormData({
+                  ...formData,
+                  whichApply: newValue.map((option) => option.title), // ✅ Store only titles
+                });
+              }}
               getOptionLabel={(option) => option.title}
               renderOption={(props, option, { selected }) => (
                 <li {...props}>
