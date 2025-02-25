@@ -300,6 +300,21 @@ function EntityInformationProjectEpic99({
                       fullWidth
                       error={fieldErrors.businessTaxID}
                       helperText={<span>{fieldErrors.businessTaxID}</span>}
+                      sx={{
+                        "& input[type='number']": {
+                          "-webkit-appearance": "none",
+                          "-moz-appearance": "textfield",
+                          appearance: "none",
+                        },
+                        "& input::-webkit-outer-spin-button": {
+                          appearance: "none",
+                          margin: 0,
+                        },
+                        "& input::-webkit-inner-spin-button": {
+                          appearance: "none",
+                          margin: 0,
+                        },
+                      }}
                       // Add more props as needed
                     />
                   </Grid>
@@ -349,7 +364,21 @@ function EntityInformationProjectEpic99({
                       type="number"
                       variant="outlined"
                       fullWidth
-
+                      sx={{
+                        "& input[type='number']": {
+                          "-webkit-appearance": "none",
+                          "-moz-appearance": "textfield",
+                          appearance: "none",
+                        },
+                        "& input::-webkit-outer-spin-button": {
+                          appearance: "none",
+                          margin: 0,
+                        },
+                        "& input::-webkit-inner-spin-button": {
+                          appearance: "none",
+                          margin: 0,
+                        },
+                      }}
                       // Add more props as needed
                     />
                   </Grid>

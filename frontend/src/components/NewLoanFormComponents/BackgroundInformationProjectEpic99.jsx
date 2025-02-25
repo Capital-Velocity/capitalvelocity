@@ -177,7 +177,21 @@ function BackgroundInformationProjectEpic99({
                   helperText={<span>{fieldErrors.moneyperYear}</span>}
                   variant="outlined"
                   fullWidth
-
+                  sx={{
+                    "& input[type='number']": {
+                      "-webkit-appearance": "none",
+                      "-moz-appearance": "textfield",
+                      appearance: "none",
+                    },
+                    "& input::-webkit-outer-spin-button": {
+                      appearance: "none",
+                      margin: 0,
+                    },
+                    "& input::-webkit-inner-spin-button": {
+                      appearance: "none",
+                      margin: 0,
+                    },
+                  }}
                   // Add more props as needed
                 />
               </Grid>
@@ -433,7 +447,21 @@ function BackgroundInformationProjectEpic99({
                   helperText={<span>{fieldErrors.businessPercentage}</span>}
                   variant="outlined"
                   fullWidth
-
+                  sx={{
+                    "& input[type='number']": {
+                      "-webkit-appearance": "none",
+                      "-moz-appearance": "textfield",
+                      appearance: "none",
+                    },
+                    "& input::-webkit-outer-spin-button": {
+                      appearance: "none",
+                      margin: 0,
+                    },
+                    "& input::-webkit-inner-spin-button": {
+                      appearance: "none",
+                      margin: 0,
+                    },
+                  }}
                   // Add more props as needed
                 />
               </Grid>
