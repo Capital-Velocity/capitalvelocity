@@ -69,7 +69,9 @@ function EntityInformationProjectEpic99({
   ];
   const fixedOptions = [top100Films[5]];
 
-  const [selectedProperties, setSelectedProperties] = useState([]);
+  const [selectedProperties, setSelectedProperties] = useState(
+    formData.ownershipOfApplicant || []
+  );
   const [ownersName, setOwnersName] = useState("");
   const [title, setTitle] = useState("");
   const [estimateasvalue, setEstimateasvalue] = useState("");
