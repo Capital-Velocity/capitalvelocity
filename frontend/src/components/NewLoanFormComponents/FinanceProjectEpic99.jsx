@@ -397,7 +397,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
           <Grid item xs={12} sm={4}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
-                Cash on Hand & in banks
+                Cash on Hand & in Banks
               </Typography>
               <TextField
                 value={formData.cashonHand || ""}
@@ -413,6 +413,21 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                   startAdornment: (
                     <InputAdornment position="start">$</InputAdornment>
                   ),
+                }}
+                sx={{
+                  "& input[type='number']": {
+                    "-webkit-appearance": "none",
+                    "-moz-appearance": "textfield",
+                    appearance: "none",
+                  },
+                  "& input::-webkit-outer-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
+                  "& input::-webkit-inner-spin-button": {
+                    appearance: "none",
+                    margin: 0,
+                  },
                 }}
                 error={fieldErrors.cashonHand}
                 style={{ backgroundColor: "white" }}
