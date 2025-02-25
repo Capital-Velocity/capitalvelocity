@@ -237,7 +237,49 @@ function BorrowerInformationProjectEpic99({
               )}
             </FormControl>
           </Grid>
-
+          {/* Conditionally Render USCIS Registration Number Field */}
+          {formData.borrowerCitizenship ===
+            "US Permanent Resident (Green Card Holder)" && (
+            <Grid item xs={12} sm={12}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  USCIS Registration Number
+                </Typography>
+                <Grid item sm={12}>
+                  <TextField
+                    type="number"
+                    error={fieldErrors.uscisRegNum}
+                    style={{ backgroundColor: "white" }}
+                    helperText={<span>{fieldErrors.uscisRegNum}</span>}
+                    value={formData.uscisRegNum || ""}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        uscisRegNum: e.target.value,
+                      })
+                    }
+                    variant="outlined"
+                    fullWidth
+                    sx={{
+                      "& input[type='number']": {
+                        "-webkit-appearance": "none",
+                        "-moz-appearance": "textfield",
+                        appearance: "none",
+                      },
+                      "& input::-webkit-outer-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                      "& input::-webkit-inner-spin-button": {
+                        appearance: "none",
+                        margin: 0,
+                      },
+                    }}
+                  />
+                </Grid>
+              </FormControl>
+            </Grid>
+          )}
           <Grid
             item
             xs={12}
@@ -477,7 +519,7 @@ function BorrowerInformationProjectEpic99({
             </FormControl>
           </Grid> */}
 
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 USCIS Registration Number
@@ -517,7 +559,7 @@ function BorrowerInformationProjectEpic99({
                 />
               </Grid>
             </FormControl>
-          </Grid>
+          </Grid> */}
           {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">

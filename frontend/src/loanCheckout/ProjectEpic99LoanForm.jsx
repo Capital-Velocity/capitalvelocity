@@ -303,9 +303,16 @@ export default function ProjectEpic99LoanForm(props) {
       if (!formData.ethinicity) {
         errors.ethinicity = "Required";
       }
-      if (!formData.uscisRegNum) {
+
+      // USCIS Registration Number is required only if borrowerCitizenship is "US Permanent Resident (Green Card Holder)"
+      if (
+        formData.borrowerCitizenship ===
+          "US Permanent Resident (Green Card Holder)" &&
+        !formData.uscisRegNum
+      ) {
         errors.uscisRegNum = "Required";
       }
+
       if (!formData.isIndictment) {
         errors.isIndictment = "Required";
       }
