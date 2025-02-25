@@ -1,39 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { styled } from "@mui/material/styles";
-import Paper from "@mui/material/Paper";
-import { Chart } from "react-google-charts";
-import InputAdornment from "@mui/material/InputAdornment";
-import { ToastContainer, toast } from "react-toastify";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import axios from "axios";
-import { Chart as ChartJS, ArcElement, Legend } from "chart.js";
-import {
-  Typography,
-  Grid,
-  TextField,
-  Container,
-  Select,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Modal,
-  Button,
-  Box,
-} from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-import Tooltip from "@mui/material/Tooltip";
+import {
+  Box,
+  Container,
+  Grid,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 import Divider from "@mui/material/Divider";
+import FormControl from "@mui/material/FormControl";
+import InputAdornment from "@mui/material/InputAdornment";
+import MenuItem from "@mui/material/MenuItem";
+import Paper from "@mui/material/Paper";
+import { styled } from "@mui/material/styles";
+import Tooltip from "@mui/material/Tooltip";
+import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
+import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "react-use";
-import Cookies from "js-cookie";
-
-// Register ChartJS components
-// ChartJS.register(ArcElement, Tooltip, Legend);
 
 const OptimizerCalculator = () => {
-  const firstnameCookie = Cookies.get("firstName");
-
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
@@ -43,59 +29,14 @@ const OptimizerCalculator = () => {
   }));
 
   // Sample
-  const [displayMonthlyIncomePayment, setdisplayMonthlyIncomePayment] =
-    useState(0);
-  const [totalProfitAnually, setTotalProfitAnnually] = useState(0);
-  const [displayMonthly, setDisplayMonthly] = useState(0);
-  const [displayTotalInterest, setDisplayTotalInterest] = useState(0);
-  const [displayTotalPayment, setDisplayTotalPayment] = useState(0);
-  const [totalProfit, setTotalProfit] = useState(0);
-  const [principalInterestData, setPrincipalInterestData] = useState([]);
-  const [loanSubtype, setLoanSubtype] = useState("");
-  const [estimatedValue, setEstimatedValue] = useState("");
-  const [ltv, setLtv] = useState("");
-  const [totalOperatingYearly, setTotalOepratingYearly] = useState(0);
-  const [totalOperating2Digits, setTotalOperating2Digits] = useState(0);
-  const [monthlyMortagePayment, setMonthlyMortagePayment] = useState("");
+  const [ltv, setLtv] = useState(0);
   const [selectedCreditScore, setSelectedCreditScore] = useState("");
   const [interestRate] = useState(7);
   const [amortizingPeriod] = useState(30);
-  const [grossAnualincome, setGrossAnualincome] = useState(0);
-  const [totalOperatingExpenses, setTotalOperatingExpenses] = useState(0);
   const [loanAmount, setLoanAmount] = useState("");
-  const [requiredDownPayment, setRequiredDownPayment] = useState("");
   const [loanTerm, setLoanTerm] = useState(30);
-  const [monthlyRent, setMonthlyRent] = useState("");
-  const [formDone, setformDone] = useState("");
   const [dscrValue, setDscrValue] = useState(0);
-  const [chartData, setChartData] = useState([]);
-  const [monthlyMarketRent, setMonthlyMarketRent] = useState("");
-  // This is for the graph
-  const [monthlyPayment, setmonthlyPayment] = useState("");
-  const [totalPayment, settotalPayment] = useState("");
-  const [interest, settotalInterest] = useState("");
   const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
-
-  const [annualGrossRent, setAnnualGrossRent] = useState("");
-  const [monthlyTaxes, setmonthlyTaxes] = useState("");
-  const [monthlyInsurances, setmonthlyInsurances] = useState("");
-  const [showModal, setShowModal] = useState(false);
-  const [monthlyHOAFee, setmonthlyHOAFee] = useState("");
-  // const [formData, setFormData] = useState({
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   phone: "",
-  // });
-
-  const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
-  const [monthlyInterestPaymentDisplay, setMonthlyInterestPaymentDisplay] =
-    useState("");
-  const [netOperatingIncome, setNetOperatingIncome] = useState("");
-
-  // useEffect(() => {
-  //   calculateLoanAmount();
-  // }, [ltv, estimatedValue]);
 
   const isDeal = dscrValue >= 1.25;
 
@@ -127,392 +68,9 @@ const OptimizerCalculator = () => {
     }
   }, [selectedCreditScore]);
 
-  // useEffect(() => {
-  //   const cleanMonthlyRentInUseEffect = Number(
-  //     String(monthlyRent).replace(/,/g, "")
-  //   );
-
-  //   setAnnualGrossRent((parseFloat(cleanMonthlyRentInUseEffect) || 0) * 12);
-  // }, [monthlyRent]);
-
-  // // Trigger live calculation when inputs change
-  // useEffect(() => {
-  //   calculateLoan(); // Recalculate when any of the relevant values change
-  //   setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
-  //   // setNetOperatingIncome(calculateNetOperatingIncome());
-  //   setDscrValue(calculateDSCR());
-  // }, [
-  //   loanAmount,
-  //   monthlyRent,
-  //   monthlyTaxes,
-  //   monthlyInsurances,
-  //   monthlyHOAFee,
-  //   monthlyOtherExpenses,
-  //   selectedCreditScore,
-  //   loanSubtype,
-  //   estimatedValue,
-  // ]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Example Axios POST request
-    axios
-      .post(
-        "https://52.165.80.134:4000/api/calculatorContact/contact",
-        formData
-      )
-      .then((response) => {
-        toast.success("Thank you we have received your details");
-        setShowModal(false);
-        // Optionally close modal or show success message
-      })
-      .catch((error) => {
-        toast.error("There was an error in submitting please try again later.");
-        setShowModal(false);
-      });
-  };
-
-  // const calculateLoanAmount = () => {
-  //   const ltvPercentage = parseFloat(ltv) / 100;
-
-  //   const cleanestimatedValue = String(estimatedValue).replace(/,/g, "");
-
-  //   const estimatedValueFloat = parseFloat(cleanestimatedValue);
-  //   if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
-  //     setLoanAmount(ltvPercentage * estimatedValueFloat);
-  //   } else {
-  //     setLoanAmount("");
-  //   }
-  // };
-
-  // const calculateNetOperatingIncome = () => {
-  //   const cleanMonthlyIncomePayment = Number(
-  //     String(displayMonthlyIncomePayment).replace(/,/g, "")
-  //   );
-
-  //   return (
-  //     parseFloat(cleanMonthlyIncomePayment) - parseFloat(totalOperatingExpenses)
-  //   );
-  // };
-
   const handleCreditScoreChange = (e) => {
     setSelectedCreditScore(e.target.value);
   };
-
-  // const calculateGrossAnnualIncome = () => {
-  //   return (parseFloat(monthlyRent) || 0) * 12;
-  // };
-
-  // const calculateAnnualMarketIncome = () => {
-  //   return (parseFloat(monthlyMarketRent) || 0) * 12;
-  // };
-
-  // const calculateTotalOperatingExpenses = () => {
-  //   return (
-  //     (parseFloat(monthlyInsurances * 12) || 0) +
-  //     (parseFloat(monthlyHOAFee * 12) || 0) +
-  //     (parseFloat(monthlyOtherExpenses * 12) || 0) +
-  //     (parseFloat(monthlyTaxes * 12) || 0).toFixed(2)
-  //   );
-  // };
-
-  // const calculateIOPeriodDebtService = () => {
-  //   const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-  //   return parseFloat(loanAmount) * rate || 0;
-  // };
-
-  // const calculateDSCR = () => {
-  //   const income = calculateGrossAnnualIncome();
-  //   const debt = calculateTotalOperatingExpenses();
-
-  //   return income / debt;
-  // };
-  // const calculateAmortizingDebtService = () => {
-  //   const rate = parseFloat(interestRate) / 100 / 12; // Convert interest rate to decimal and monthly rate
-  //   const n = parseFloat(amortizingPeriod) * 12; // Convert years to months
-  //   if (rate === 0) {
-  //     return parseFloat(loanAmount) / n || 0; // Handling case where interest rate is zero
-  //   }
-  //   return (parseFloat(loanAmount) * rate) / (1 - Math.pow(1 + rate, -n)) || 0;
-  // };
-
-  // const calculateIOPITIA = () => {
-  //   const ioDebtService = calculateIOPeriodDebtService();
-  //   const operatingExpenses = calculateTotalOperatingExpenses();
-  //   const grossIncome = calculateGrossAnnualIncome();
-  //   return grossIncome > 0
-  //     ? (ioDebtService + operatingExpenses) / grossIncome
-  //     : 0;
-  // };
-
-  // const formatNumber = (num) => {
-  //   if (isNaN(num)) return "0";
-
-  //   // 1. Round the number to two decimal places
-  //   let roundedNumber = Math.round(num * 100) / 100;
-
-  //   // 2. Convert the number to a string
-  //   let parts = roundedNumber.toString().split(".");
-
-  //   // 3. Add commas to the integer part (thousands separator)
-  //   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-  //   // 4. Ensure there are always two decimal places
-  //   if (parts[1]) {
-  //     parts[1] = parts[1].padEnd(2, "0"); // If decimal part exists, pad it to 2 digits
-  //   } else {
-  //     parts[1] = "00"; // If no decimal part, add ".00"
-  //   }
-
-  //   return parts.join(".");
-  // };
-
-  // const calculateLoan = () => {
-  //   const fields = {
-  //     loanAmount,
-  //     monthlyRent,
-  //     monthlyTaxes,
-  //     monthlyInsurances,
-  //     monthlyHOAFee,
-  //     monthlyOtherExpenses,
-  //     estimatedValue,
-  //   };
-  //   // Check if any fields are empty or zero
-  //   const emptyFields = Object.keys(fields).filter(
-  //     (key) => !fields[key] || fields[key] === 0
-  //   );
-
-  //   if (emptyFields.length > 0) {
-  //     // Show a toast error message if any fields are empty or zero
-  //     // toast.error(
-  //     //   `Please fill in all required fields: ${emptyFields.join(", ")}`
-  //     // );
-  //     // Optional: Set border color to red for empty fields (if needed)
-  //     emptyFields.forEach((field) => {
-  //       // Example: Assuming you have a way to get the input field by its name or id
-  //       // document.getElementById(field).style.borderColor = 'red';
-  //     });
-  //     return; // Exit the function to prevent further execution
-  //   }
-  //   // console.log(loanAmount);
-  //   // console.log(interestRate);
-  //   // console.log(loanTerm);
-  //   // console.log("loanAmount here: ", monthlyRent);
-  //   const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
-  //   const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
-  //   const cleanMonthlyInsurances = Number(
-  //     String(monthlyInsurances).replace(/,/g, "")
-  //   );
-  //   const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
-  //   const cleanMonthlyOtherExpenses = Number(
-  //     String(monthlyOtherExpenses).replace(/,/g, "")
-  //   );
-
-  //   setdisplayMonthlyIncomePayment(formatNumber(cleanMonthlyRent));
-  //   const loanAmountFloat = loanAmount;
-  //   const interestRateFloat = interestRate / 100;
-  //   const termMonths = loanTerm * 12;
-
-  //   const monthlyInterestRate = interestRateFloat / 12;
-  //   // console.log("This is the monthly interest" + monthlyInterestRate);
-  //   // console.log("This is the terms Months" + termMonths);
-  //   // Calculate monthly payment
-  //   const monthlyPayment =
-  //     (loanAmountFloat *
-  //       (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termMonths))) /
-  //     (Math.pow(1 + monthlyInterestRate, termMonths) - 1);
-  //   setDisplayMonthly(formatNumber(monthlyPayment));
-
-  //   const totalPayment = monthlyPayment * termMonths;
-  //   // console.log("This is the total payment" + totalPayment);
-
-  //   const totalInterest = totalPayment - loanAmountFloat;
-  //   // console.log("This is the total interest" + totalInterest);
-
-  //   // Prepare data for the pie chart
-  //   const data = [
-  //     ["Category", "Amount"],
-  //     ["Principal", totalPayment], // Fixed: Use loanAmountFloat for Principal
-  //     ["Interest", totalInterest],
-  //   ];
-
-  //   // console.log(data);
-  //   setChartData(data);
-  //   setmonthlyPayment(monthlyPayment);
-  //   settotalInterest(totalInterest);
-  //   setDisplayTotalInterest(formatNumber(totalInterest));
-  //   settotalPayment(totalPayment);
-  //   setDisplayTotalPayment(formatNumber(totalPayment));
-  //   // console.log(chartData);
-
-  //   // Now we need to calculate the PITTA.
-  //   ///// if converted to monthlyTaxes, take away the / 12.
-  //   const monthlyTax = cleanMonthlyTaxes;
-  //   const monthlyInsurance = cleanMonthlyInsurances;
-  //   const monthlyHOA = cleanMonthlyHOAFee;
-  //   const monthlyExpenses = cleanMonthlyOtherExpenses;
-
-  //   const paymentIntrestTaxesInsurance =
-  //     parseFloat(monthlyPayment) +
-  //     parseFloat(monthlyTax) +
-  //     parseFloat(monthlyInsurance) +
-  //     parseFloat(monthlyExpenses) +
-  //     parseFloat(monthlyHOA);
-
-  //   // // if converted to monthlyTaxes, multiply by 12.
-  //   // const yearlyCost =
-  //   //   parseFloat(monthlyPayment * 12) +
-  //   //   parseFloat(cleanMonthlyTaxes * 12) +
-  //   //   parseFloat(cleanMonthlyInsurances * 12) +
-  //   //   parseFloat(cleanMonthlyOtherExpenses * 12) +
-  //   //   parseFloat(cleanMonthlyHOAFee * 12);
-
-  //   // const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
-
-  //   // dscr = NOI / TDS
-
-  //   // console.log("noi: ", netOperatingIncome);
-  //   // console.log("ip: ", monthlyInterestPaymentDisplay);
-
-  //   // const dscr =
-  //   //   parseFloat(netOperatingIncome) /
-  //   //   parseFloat(monthlyInterestPaymentDisplay);
-
-  //   // setDscrValue(dscr.toFixed(2));
-
-  //   const totalOperatingExpensesMonthly =
-  //     cleanMonthlyTaxes +
-  //     cleanMonthlyInsurances +
-  //     cleanMonthlyOtherExpenses +
-  //     cleanMonthlyHOAFee;
-
-  //   // console.log("final: ", myTest);
-
-  //   setTotalOperatingExpenses(formatNumber(totalOperatingExpensesMonthly));
-  //   setTotalOepratingYearly(formatNumber(totalOperatingExpensesMonthly * 12));
-  //   const monthlyPaymentValue = cleanMonthlyRent * 12;
-  //   // set the gross annual
-  //   setGrossAnualincome(formatNumber(monthlyPaymentValue));
-  //   const totalProfit = cleanMonthlyRent - paymentIntrestTaxesInsurance;
-  //   setTotalProfit(formatNumber(totalProfit));
-  //   const convertYearly = totalProfit * 12;
-  //   setTotalProfitAnnually(formatNumber(convertYearly));
-  // };
-
-  // const calculateDSCR = () => {
-  //   if (!loanAmount || !interestRate || !amortizingPeriod) {
-  //     console.error("Missing required loan parameters.");
-  //     return null;
-  //   }
-
-  //   // Convert interest rate from percentage if needed
-  //   let correctedInterestRate =
-  //     interestRate > 1 ? interestRate / 100 : interestRate;
-  //   let monthlyInterestRate = correctedInterestRate / 12;
-
-  //   let totalPayments = amortizingPeriod * 12;
-
-  //   const cleanLoanAmount = Number(String(loanAmount).replace(/,/g, ""));
-  //   if (isNaN(cleanLoanAmount) || cleanLoanAmount <= 0) {
-  //     console.error("Invalid loan amount:", loanAmount);
-  //     return null;
-  //   }
-
-  //   let monthlyLoanPayment =
-  //     (cleanLoanAmount *
-  //       monthlyInterestRate *
-  //       Math.pow(1 + monthlyInterestRate, totalPayments)) /
-  //     (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
-
-  //   if (isNaN(monthlyLoanPayment) || monthlyLoanPayment <= 0) {
-  //     console.error("Invalid monthly loan payment:", monthlyLoanPayment);
-  //     return null;
-  //   }
-
-  //   // Check if required fields are missing
-  //   if (
-  //     monthlyRent === undefined ||
-  //     monthlyTaxes === undefined ||
-  //     monthlyInsurances === undefined ||
-  //     monthlyHOAFee === undefined ||
-  //     monthlyOtherExpenses === undefined ||
-  //     monthlyRent === "" ||
-  //     monthlyTaxes === "" ||
-  //     monthlyInsurances === "" ||
-  //     monthlyHOAFee === "" ||
-  //     monthlyOtherExpenses === ""
-  //   ) {
-  //     console.warn("Waiting for all required expense fields to be entered.");
-  //     return "";
-  //   }
-
-  //   // Parse inputs and ensure they are numbers
-  //   const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
-  //   const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
-  //   const cleanMonthlyInsurances = Number(
-  //     String(monthlyInsurances).replace(/,/g, "")
-  //   );
-  //   const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
-  //   const cleanMonthlyOtherExpenses = Number(
-  //     String(monthlyOtherExpenses).replace(/,/g, "")
-  //   );
-
-  //   // Ensure all parsed values are valid numbers
-  //   if (
-  //     isNaN(cleanMonthlyRent) ||
-  //     isNaN(cleanMonthlyTaxes) ||
-  //     isNaN(cleanMonthlyInsurances) ||
-  //     isNaN(cleanMonthlyHOAFee) ||
-  //     isNaN(cleanMonthlyOtherExpenses)
-  //   ) {
-  //     console.warn("Invalid input detected. Waiting for valid values.");
-  //     return "";
-  //   }
-
-  //   // Calculate Net Operating Income (NOI)
-  //   let noi =
-  //     cleanMonthlyRent -
-  //     (cleanMonthlyTaxes +
-  //       cleanMonthlyInsurances +
-  //       cleanMonthlyHOAFee +
-  //       cleanMonthlyOtherExpenses);
-
-  //   setNetOperatingIncome(noi);
-
-  //   // Calculate DSCR
-  //   let dscr = noi / monthlyLoanPayment;
-
-  //   // Ensure DSCR is valid
-  //   if (isNaN(dscr) || dscr < 0) {
-  //     console.warn("Invalid DSCR calculation.");
-  //     return "";
-  //   }
-
-  //   return dscr.toFixed(2);
-  // };
-
-  // const calculateMonthlyPayment = () => {
-  //   if (!loanAmount || loanAmount <= 0) return 0; // Ensure a valid loan amount
-
-  //   const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0; // Remove commas if present
-  //   const monthlyRate = interestRate / 100 / 12; // Convert annual rate to monthly decimal
-  //   const numPayments = loanTerm * 12; // Convert years to months
-
-  //   if (monthlyRate === 0) return (principal / numPayments).toFixed(2); // Handle zero-interest cases
-
-  //   // Mortgage formula: P * (r / (1 - (1 + r) ^ -n))
-  //   const monthlyPayment =
-  //     principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments)));
-
-  //   return monthlyPayment.toFixed(2);
-  // };
-
-  // // Example usage:
-  // const loanAmount = 500000; // Example: $500,000 loan
-  // const interestRate = 8; // Example: 8% annual interest rate
-  // const loanTerm = 30; // Example: 30-year loan
-
-  // console.log("Monthly Payment: $", calculateMonthlyPayment(loanAmount, interestRate, loanTerm));
 
   const profitBoxStyle = {
     backgroundColor: isDeal ? "green" : "#f44336",
@@ -528,33 +86,7 @@ const OptimizerCalculator = () => {
   const [monthlyHOAFees, setMonthlyHOAFees] = useState("");
   const [monthlyOtherExpensesCalc, setMonthlyOtherExpensesCalc] = useState("");
 
-  // console.log("downPayment: ", downPayment);
-  // console.log("monthlyTaxesCalc: ", monthlyTaxesCalc);
-  // console.log("monthlyInsurance: ", monthlyInsurance);
-  // console.log("monthlyHOAFees: ", monthlyHOAFees);
-  // console.log("monthlyOtherExpensesCalc: ", monthlyOtherExpensesCalc);
-
-  const cleanDownPayment = Number(String(downPayment).replace(/,/g, ""));
-  const cleanMonthlyTaxesCalc = Number(
-    String(monthlyTaxesCalc).replace(/,/g, "")
-  );
-  const cleanMonthlyInsurance = Number(
-    String(monthlyInsurance).replace(/,/g, "")
-  );
-  const cleanMonthlyHOAFees = Number(String(monthlyHOAFees).replace(/,/g, ""));
-  const cleanMonthlyOtherExpensesCalc = Number(
-    String(monthlyOtherExpensesCalc).replace(/,/g, "")
-  );
-
-  // console.log("cleanDownPayment: ", cleanDownPayment);
-  // console.log("cleanMonthlyTaxesCalc: ", cleanMonthlyTaxesCalc);
-  // console.log("cleanMonthlyInsurance: ", cleanMonthlyInsurance);
-  // console.log("cleanMonthlyHOAFees: ", cleanMonthlyHOAFees);
-  // console.log("cleanMonthlyOtherExpensesCalc: ", cleanMonthlyOtherExpensesCalc);
-
-  // const [downPayment, setDownPayment] = useState(50000);
-  const [operatingExpenses, setOperatingExpenses] = useState(0); // add all monthly expenses up and set them to this
-  // const [interestRate, setInterestRate] = useState(7); // 7% interest rate
+  const [operatingExpenses, setOperatingExpenses] = useState(0);
   const [results, setResults] = useState([]);
 
   const mortgagePayment = (principal, rate, years) => {
@@ -567,127 +99,99 @@ const OptimizerCalculator = () => {
   };
 
   const calculateDSCR = () => {
-    console.log("hit inside of calculate func");
+    // console.log("Calculating DSCR...");
 
-    const loanTerm = 30;
-    const creditScores = [800, 780, 750, 720, 700, 680, 660, 640];
-    const ltvValues = {
-      800: 0.85,
-      780: 0.8,
-      750: 0.78,
-      720: 0.75,
-      700: 0.73,
-      680: 0.7,
-      660: 0.68,
-      640: 0.65,
-    };
+    // Ensure numeric values
+    const cleanDownPayment = parseFloat(downPayment.replace(/,/g, "")) || 0;
+    const cleanMonthlyTaxesCalc =
+      parseFloat(monthlyTaxesCalc.replace(/,/g, "")) || 0;
+    const cleanMonthlyInsurance =
+      parseFloat(monthlyInsurance.replace(/,/g, "")) || 0;
+    const cleanMonthlyHOAFees =
+      parseFloat(monthlyHOAFees.replace(/,/g, "")) || 0;
+    const cleanMonthlyOtherExpensesCalc =
+      parseFloat(monthlyOtherExpensesCalc.replace(/,/g, "")) || 0;
 
-    const calculatedResults = creditScores.map((creditScore) => {
-      let ltv = ltvValues[creditScore] || 0.75;
-      let maxLoanAmount = downPayment / (1 - ltv);
-      let loanAmount = maxLoanAmount * ltv;
-      let purchasePrice = maxLoanAmount;
-      let monthlyMortgage = mortgagePayment(loanAmount, interestRate, loanTerm);
-      let minRequiredRent = (monthlyMortgage + operatingExpenses) * 1.1;
-      let dscr = minRequiredRent / (monthlyMortgage + operatingExpenses);
+    // Calculate total operating expenses
+    const totalOperatingExpenses =
+      cleanMonthlyTaxesCalc +
+      cleanMonthlyInsurance +
+      cleanMonthlyHOAFees +
+      cleanMonthlyOtherExpensesCalc;
 
-      return {
-        creditScore,
-        ltv: (ltv * 100).toFixed(1) + "%",
-        purchasePrice: `$${purchasePrice.toFixed(2)}`,
-        loanAmount: `$${loanAmount.toFixed(2)}`,
-        monthlyMortgage: `$${monthlyMortgage.toFixed(2)}`,
-        operatingExpenses: `$${operatingExpenses.toFixed(2)}`,
-        minRequiredRent: `$${minRequiredRent.toFixed(2)}`,
-        dscr: dscr.toFixed(2),
-      };
+    setOperatingExpenses(totalOperatingExpenses);
+
+    // console.log("cleanDownPayment: ", cleanDownPayment);
+    // console.log("cleanMonthlyTaxesCalc: ", cleanMonthlyTaxesCalc);
+    // console.log("cleanMonthlyInsurance: ", cleanMonthlyInsurance);
+    // console.log("cleanMonthlyHOAFees: ", cleanMonthlyHOAFees);
+    // console.log(
+    //   "cleanMonthlyOtherExpensesCalc: ",
+    //   cleanMonthlyOtherExpensesCalc
+    // );
+
+    // // LTV-based calculations
+    // const ltvValues = {
+    //   800: 0.85,
+    //   780: 0.8,
+    //   750: 0.78,
+    //   720: 0.75,
+    //   700: 0.73,
+    //   680: 0.7,
+    //   660: 0.68,
+    //   640: 0.65,
+    // };
+
+    // console.log("ltv: ", Number(ltv));
+
+    const numericLtv = Number(ltv) / 100; // Convert LTV from a percentage string to a decimal
+
+    // let ltvPercentage = ltvValues[selectedCreditScore] || 0.75;
+
+    // console.log("ltvpercentage: ", ltvPercentage);
+
+    let maxLoanAmount = cleanDownPayment / (1 - numericLtv);
+    let loanAmount = maxLoanAmount * numericLtv;
+    let purchasePrice = maxLoanAmount;
+
+    // Calculate mortgage payment
+    let monthlyMortgage = mortgagePayment(loanAmount, interestRate, loanTerm);
+
+    // Minimum required rent to meet DSCR
+    let minRequiredRent = (monthlyMortgage + totalOperatingExpenses) * 1.1;
+
+    // DSCR calculation
+    let dscr = minRequiredRent / (monthlyMortgage + totalOperatingExpenses);
+
+    // Set results
+    setResults({
+      purchasePrice,
+      loanAmount,
+      monthlyMortgage,
+      minRequiredRent,
+      totalOperatingExpenses,
+      dscr,
     });
 
-    setResults(calculatedResults);
+    // console.log("results: ", results);
+
+    setDscrValue(dscr);
   };
 
-  // Trigger live calculation when inputs change
+  // Trigger DSCR calculation when inputs change
   useEffect(() => {
-    // calculateLoan(); // Recalculate when any of the relevant values change
-    // setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
-    // setNetOperatingIncome(calculateNetOperatingIncome());
-    setDscrValue(calculateDSCR());
+    calculateDSCR();
   }, [
     downPayment,
-    // monthlyRent,
     monthlyTaxesCalc,
     monthlyInsurance,
     monthlyHOAFees,
     monthlyOtherExpensesCalc,
     selectedCreditScore,
-    // loanSubtype,
-    // estimatedValue,
+    ltv,
   ]);
 
   //////////////////////////////////////////////////////////////////////////////// New
-
-  // // Static constants
-  // const DSCR = 1.1;
-  // const annualRate = 0.07; // 7% annual interest rate
-  // const termMonths = 360; // 30-year loan
-  // const monthlyRentYield = 0.005; // 0.5% of purchase price per month
-
-  // // Calculate the monthly mortgage payment factor (MPF)
-  // const calculateMortgagePaymentFactor = (annualRate, termMonths) => {
-  //   const monthlyRate = annualRate / 12;
-  //   return (
-  //     (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) /
-  //     (Math.pow(1 + monthlyRate, termMonths) - 1)
-  //   );
-  // };
-
-  // Given the down payment and operating expenses, compute:
-  // - The maximum purchase price that meets the DSCR condition
-  // - The gross monthly rent income needed (which includes covering operating expenses)
-  //
-  // DSCR condition with expenses:
-  //   (Purchase Price * monthlyRentYield) - TotalExpenses = DSCR * MPF * (Purchase Price - Down Payment)
-  //
-  // Rearranged, we get:
-  //   Purchase Price = (DSCR * MPF * Down Payment - TotalExpenses) / (DSCR * MPF - monthlyRentYield)
-  //
-  // And the required gross monthly rent income is:
-  //   Gross Rent = DSCR * MPF * (Purchase Price - Down Payment) + TotalExpenses
-  // const calculateValues = (DP, taxes, insurance, hoa, other) => {
-  //   const totalExpenses = taxes + insurance + hoa + other;
-  //   const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
-
-  //   // Ensure that the down payment is sufficiently high so that the numerator is positive.
-  //   if (DSCR * MPF * DP <= totalExpenses) {
-  //     return {
-  //       error:
-  //         "Down Payment is too low to cover operating expenses with these parameters.",
-  //     };
-  //   }
-
-  //   const purchasePrice =
-  //     (DSCR * MPF * DP - totalExpenses) / (DSCR * MPF - monthlyRentYield);
-  //   const monthlyRentNeeded = DSCR * MPF * (purchasePrice - DP) + totalExpenses;
-
-  //   return { purchasePrice, monthlyRentNeeded };
-  // };
-
-  // let results = null;
-  // if (
-  //   cleanDownPayment !== "" &&
-  //   cleanMonthlyTaxesCalc !== "" &&
-  //   cleanMonthlyInsurance !== "" &&
-  //   cleanMonthlyHOAFees !== "" &&
-  //   cleanMonthlyOtherExpensesCalc !== ""
-  // ) {
-  //   results = calculateValues(
-  //     parseFloat(cleanDownPayment),
-  //     parseFloat(cleanMonthlyTaxesCalc),
-  //     parseFloat(cleanMonthlyInsurance),
-  //     parseFloat(cleanMonthlyHOAFees),
-  //     parseFloat(cleanMonthlyOtherExpensesCalc)
-  //   );
-  // }
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
@@ -1064,7 +568,7 @@ const OptimizerCalculator = () => {
                     component="div"
                     sx={{ display: "inline-flex", alignItems: "center" }}
                   >
-                    Fully Amortizing Period (Years){" "}
+                    Amortizing Period (Years){" "}
                     <Tooltip
                       title="The time period over which the loan is fully paid off, including both principal and interest, with equal payments made throughout the term."
                       arrow
@@ -1090,7 +594,7 @@ const OptimizerCalculator = () => {
                 </FormControl>
               </Grid>
 
-              <Grid item xs={12} sm={12}>
+              {/* <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1126,7 +630,7 @@ const OptimizerCalculator = () => {
                     disabled
                   />
                 </FormControl>
-              </Grid>
+              </Grid> */}
 
               {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
@@ -1412,7 +916,9 @@ const OptimizerCalculator = () => {
                       <Typography variant="body1" color="white" gutterBottom>
                         $
                         {results.purchasePrice
-                          ? results.purchasePrice.toFixed(2)
+                          ? results.purchasePrice.toLocaleString(undefined, {
+                              maximumFractionDigits: 2,
+                            })
                           : "0.00"}
                       </Typography>
                     </Grid>
@@ -1421,18 +927,94 @@ const OptimizerCalculator = () => {
                   <Grid container spacing={2}>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
+                        Loan Amount:
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        $
+                        {results.loanAmount
+                          ? results.loanAmount.toLocaleString(undefined, {
+                              maximumFractionDigits: 2,
+                            })
+                          : "0.00"}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Monthly Mortgage:
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        $
+                        {results.monthlyMortgage
+                          ? results.monthlyMortgage.toLocaleString(undefined, {
+                              maximumFractionDigits: 2,
+                            })
+                          : "0.00"}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        Operating Expenses:
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
+                        $
+                        {results.totalOperatingExpenses
+                          ? results.totalOperatingExpenses.toLocaleString(
+                              undefined,
+                              {
+                                maximumFractionDigits: 2,
+                              }
+                            )
+                          : "0.00"}{" "}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="h5" color="white" gutterBottom>
+                        Minimum Required Rent for DSCR ≥ 1.1:
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="h5" color="white" gutterBottom>
+                        $
+                        {results.minRequiredRent
+                          ? results.minRequiredRent.toLocaleString(undefined, {
+                              maximumFractionDigits: 2,
+                            })
+                          : "0.00"}
+                      </Typography>
+                    </Grid>
+                  </Grid>
+
+                  {/* <Grid container spacing={2}>
+                    <Grid item xs={6} sm={6}>
+                      <Typography variant="body1" color="white" gutterBottom>
                         Monthly Rent Income Needed for DSCR ≥ 1.1:
                       </Typography>
                     </Grid>
                     <Grid item xs={6} sm={6}>
                       <Typography variant="body1" color="white" gutterBottom>
                         $
-                        {results.monthlyRentNeeded
-                          ? results.monthlyRentNeeded.toFixed(2)
+                        {results.minRequiredRent
+                          ? results.minRequiredRent.toFixed(2)
                           : "0.00"}
                       </Typography>
                     </Grid>
-                  </Grid>
+                  </Grid> */}
+
                   {/* <Grid container spacing={2}>
                     {results && results.hasCalculated && results.error && (
                       <Grid item xs={12}>
