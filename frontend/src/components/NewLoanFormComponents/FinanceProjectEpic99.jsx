@@ -157,7 +157,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     formData.otherLiabilities,
   ]);
 
-  const [selectedProperties, setSelectedProperties] = useState([]);
+  const [selectedProperties, setSelectedProperties] = useState(
+    formData.notesPayable || []
+  );
   const [ownersName, setOwnersName] = useState(0);
   const [balance, setBalance] = useState(0);
   const [currentBalance, setCurrentBalance] = useState(0);
@@ -224,7 +226,8 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
   };
 
   const [selectedPropertiesStocksBonds, setSelectedPropertiesStocksBonds] =
-    useState([]);
+    useState(formData.stocksAndBonds || []);
+
   const [numbShares, setNumbShares] = useState(0);
   const [numbofSecurities, setNumbofSecurities] = useState(0);
   const [cost, setCost] = useState(0);
@@ -293,8 +296,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
   };
 
   const [selectedPropertiesPersonal, setSelectedPropertiesPersonal] = useState(
-    []
+    formData.realEstate || []
   );
+
   const [realEstateType, setRealEstateType] = useState(0);
   const [address, setAddress] = useState(0);
   const [costPersonal, setCostPersonal] = useState(0);
