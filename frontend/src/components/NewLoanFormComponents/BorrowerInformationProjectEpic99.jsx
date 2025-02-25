@@ -74,13 +74,14 @@ function BorrowerInformationProjectEpic99({
     });
   };
 
-  const handleOptionChange = (event) => {
+  const handleOptionChange = (fieldName) => (event) => {
     setSelectedOption(event.target.value);
     setFormData({
       ...formData,
-      armsLength: event.target.value,
+      [fieldName]: event.target.value,
     });
   };
+
   return (
     <div style={{ width: "100%" }}>
       {" "}
@@ -338,6 +339,9 @@ function BorrowerInformationProjectEpic99({
                 </MenuItem>
                 <MenuItem value={"Not"}>Not</MenuItem>
               </Select>
+              {fieldErrors.veteran && (
+                <FormHelperText error>{fieldErrors.veteran}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -362,6 +366,9 @@ function BorrowerInformationProjectEpic99({
                 <MenuItem value={"Female"}>Female</MenuItem>
                 <MenuItem value={"Not Disclosed"}>Not Disclosed</MenuItem>
               </Select>
+              {fieldErrors.gender && (
+                <FormHelperText error>{fieldErrors.gender}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -395,6 +402,9 @@ function BorrowerInformationProjectEpic99({
                   Black or African-American
                 </MenuItem>
               </Select>
+              {fieldErrors.race && (
+                <FormHelperText error>{fieldErrors.race}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -423,9 +433,12 @@ function BorrowerInformationProjectEpic99({
                 </MenuItem>
                 <MenuItem value={"Not Disclosed"}>Not Disclosed</MenuItem>
               </Select>
+              {fieldErrors.ethinicity && (
+                <FormHelperText error>{fieldErrors.ethinicity}</FormHelperText>
+              )}
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <Typography type="p" color="black">
               Citizenship
             </Typography>
@@ -462,9 +475,9 @@ function BorrowerInformationProjectEpic99({
                 </MenuItem>
               </Select>
             </FormControl>
-          </Grid>
+          </Grid> */}
 
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 USCIS Registration Number
@@ -505,7 +518,7 @@ function BorrowerInformationProjectEpic99({
               </Grid>
             </FormControl>
           </Grid>
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Country of Citizenship
@@ -530,7 +543,7 @@ function BorrowerInformationProjectEpic99({
                 />
               </Grid>
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item sm={6}>
             <Typography type="p" color="black">
               Are you presently subject to an indictment, criminal information,
@@ -547,23 +560,24 @@ function BorrowerInformationProjectEpic99({
             >
               <FormControlLabel
                 style={{ color: "black" }}
-                value="Yes" // Set the value to "Yes" when selected
-                checked={formData.isIndictment === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isIndictment", "Yes")}
-                error={fieldErrors.isIndictment}
-                helperText={<span>{fieldErrors.isIndictment}</span>}
+                value="Yes"
+                checked={formData.isIndictment === "Yes"}
+                onChange={handleOptionChange("isIndictment")}
                 control={<Radio />}
                 label="Yes"
               />
               <FormControlLabel
                 style={{ color: "black" }}
-                value="No" // Set the value to "No" when selected
-                checked={formData.isIndictment === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isIndictment", "No")}
+                value="No"
+                checked={formData.isIndictment === "No"}
+                onChange={handleOptionChange("isIndictment")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.isIndictment && (
+              <FormHelperText error>{fieldErrors.isIndictment}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -581,7 +595,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.isArrested === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isArrested", "Yes")}
+                onChange={handleOptionChange("isArrested")}
                 error={fieldErrors.isArrested}
                 helperText={<span>{fieldErrors.isArrested}</span>}
                 control={<Radio />}
@@ -592,11 +606,14 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="No" // Set the value to "No" when selected
                 checked={formData.isArrested === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isArrested", "No")}
+                onChange={handleOptionChange("isArrested", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.isArrested && (
+              <FormHelperText error>{fieldErrors.isArrested}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -617,7 +634,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.isCriminalOffense === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("isCriminalOffense", "Yes")}
+                onChange={handleOptionChange("isCriminalOffense", "Yes")}
                 error={fieldErrors.isCriminalOffense}
                 helperText={<span>{fieldErrors.isCriminalOffense}</span>}
                 control={<Radio />}
@@ -627,11 +644,16 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="No" // Set the value to "No" when selected
                 checked={formData.isCriminalOffense === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("isCriminalOffense", "No")}
+                onChange={handleOptionChange("isCriminalOffense", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.isCriminalOffense && (
+              <FormHelperText error>
+                {fieldErrors.isCriminalOffense}
+              </FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -650,7 +672,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.suspendedFederal === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("suspendedFederal", "Yes")}
+                onChange={handleOptionChange("suspendedFederal", "Yes")}
                 error={fieldErrors.suspendedFederal}
                 helperText={<span>{fieldErrors.suspendedFederal}</span>}
                 control={<Radio />}
@@ -661,11 +683,16 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.suspendedFederal}
                 checked={formData.suspendedFederal === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("suspendedFederal", "No")}
+                onChange={handleOptionChange("suspendedFederal", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.suspendedFederal && (
+              <FormHelperText error>
+                {fieldErrors.suspendedFederal}
+              </FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -686,7 +713,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.daysDelenquet === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("daysDelenquet", "Yes")}
+                onChange={handleOptionChange("daysDelenquet", "Yes")}
                 error={fieldErrors.daysDelenquet}
                 helperText={<span>{fieldErrors.daysDelenquet}</span>}
                 control={<Radio />}
@@ -697,11 +724,14 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.daysDelenquet}
                 checked={formData.daysDelenquet === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("daysDelenquet", "No")}
+                onChange={handleOptionChange("daysDelenquet", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.daysDelenquet && (
+              <FormHelperText error>{fieldErrors.daysDelenquet}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -719,7 +749,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.smallBusiness === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("smallBusiness", "Yes")}
+                onChange={handleOptionChange("smallBusiness", "Yes")}
                 error={fieldErrors.smallBusiness}
                 helperText={<span>{fieldErrors.smallBusiness}</span>}
                 control={<Radio />}
@@ -730,18 +760,21 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.smallBusiness}
                 checked={formData.smallBusiness === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("smallBusiness", "No")}
+                onChange={handleOptionChange("smallBusiness", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.smallBusiness && (
+              <FormHelperText error>{fieldErrors.smallBusiness}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
               Have you, or any business you controlled, ever filed for
-              bankruptcy protection? If yes, provide details.
+              bankruptcy protection?
             </Typography>
-            <div style={{}}>
+            {/* <div style={{}}>
               {formData.bankruptDetail === "Yes" && (
                 <TextField
                   style={{
@@ -764,7 +797,7 @@ function BorrowerInformationProjectEpic99({
                   rows={4}
                 />
               )}
-            </div>
+            </div> */}
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -776,9 +809,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.bankruptcyProtection === "Yes"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChange("bankruptcyProtection", "Yes")
-                }
+                onChange={handleOptionChange("bankruptcyProtection", "Yes")}
                 error={fieldErrors.bankruptcyProtection}
                 helperText={<span>{fieldErrors.bankruptcyProtection}</span>}
                 control={<Radio />}
@@ -789,21 +820,24 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.bankruptcyProtection}
                 checked={formData.bankruptcyProtection === "No"} // Check if it's "No" in formData
-                onChange={() =>
-                  handleOptionChange("bankruptcyProtection", "No")
-                }
+                onChange={handleOptionChange("bankruptcyProtection", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.bankruptcyProtection && (
+              <FormHelperText error>
+                {fieldErrors.bankruptcyProtection}
+              </FormHelperText>
+            )}
           </Grid>
 
           <Grid item sm={6}>
             <Typography type="p" color="black">
               Are you, or any business you control, presently involved in any
-              legal action (including divorce)? If yes, provide details.
+              legal action (including divorce)?
             </Typography>
-            <div style={{}}>
+            {/* <div style={{}}>
               {formData.legalAction === "Yes" && (
                 <TextField
                   style={{
@@ -826,7 +860,7 @@ function BorrowerInformationProjectEpic99({
                   rows={4}
                 />
               )}
-            </div>
+            </div> */}
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -838,7 +872,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.legalAction === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("legalAction", "Yes")}
+                onChange={handleOptionChange("legalAction", "Yes")}
                 error={fieldErrors.legalAction}
                 helperText={<span>{fieldErrors.legalAction}</span>}
                 control={<Radio />}
@@ -849,11 +883,14 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.legalAction}
                 checked={formData.legalAction === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("legalAction", "No")}
+                onChange={handleOptionChange("legalAction", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.legalAction && (
+              <FormHelperText error>{fieldErrors.legalAction}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -862,7 +899,7 @@ function BorrowerInformationProjectEpic99({
               or been a guarantor on such a loan? (This includes, but is not
               limited to USDA, FHA, EDA, and student loans.)
             </Typography>
-            <div style={{}}>
+            {/* <div style={{}}>
               {formData.loanGuarantor === "Yes" && (
                 <TextField
                   style={{
@@ -885,7 +922,7 @@ function BorrowerInformationProjectEpic99({
                   rows={4}
                 />
               )}
-            </div>
+            </div> */}
           </Grid>
           <Grid item sm={6}>
             <RadioGroup
@@ -897,7 +934,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.loanGuarantor === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("loanGuarantor", "Yes")}
+                onChange={handleOptionChange("loanGuarantor", "Yes")}
                 error={fieldErrors.loanGuarantor}
                 helperText={<span>{fieldErrors.loanGuarantor}</span>}
                 control={<Radio />}
@@ -908,11 +945,14 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.loanGuarantor}
                 checked={formData.loanGuarantor === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("loanGuarantor", "No")}
+                onChange={handleOptionChange("loanGuarantor", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.loanGuarantor && (
+              <FormHelperText error>{fieldErrors.loanGuarantor}</FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -930,9 +970,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.financingDelinquent === "Yes"} // Check if it's "Yes" in formData
-                onChange={() =>
-                  handleOptionChange("financingDelinquent", "Yes")
-                }
+                onChange={handleOptionChange("financingDelinquent", "Yes")}
                 error={fieldErrors.financingDelinquent}
                 helperText={<span>{fieldErrors.financingDelinquent}</span>}
                 control={<Radio />}
@@ -943,11 +981,16 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.financingDelinquent}
                 checked={formData.financingDelinquent === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("financingDelinquent", "No")}
+                onChange={handleOptionChange("financingDelinquent", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.financingDelinquent && (
+              <FormHelperText error>
+                {fieldErrors.financingDelinquent}
+              </FormHelperText>
+            )}
           </Grid>
           <Grid item sm={6}>
             <Typography type="p" color="black">
@@ -967,7 +1010,7 @@ function BorrowerInformationProjectEpic99({
                 style={{ color: "black" }}
                 value="Yes" // Set the value to "Yes" when selected
                 checked={formData.businessDefault === "Yes"} // Check if it's "Yes" in formData
-                onChange={() => handleOptionChange("businessDefault", "Yes")}
+                onChange={handleOptionChange("businessDefault", "Yes")}
                 error={fieldErrors.businessDefault}
                 helperText={<span>{fieldErrors.businessDefault}</span>}
                 control={<Radio />}
@@ -978,11 +1021,16 @@ function BorrowerInformationProjectEpic99({
                 value="No" // Set the value to "No" when selected
                 error={fieldErrors.businessDefault}
                 checked={formData.businessDefault === "No"} // Check if it's "No" in formData
-                onChange={() => handleOptionChange("businessDefault", "No")}
+                onChange={handleOptionChange("businessDefault", "No")}
                 control={<Radio />}
                 label="No"
               />
             </RadioGroup>
+            {fieldErrors.businessDefault && (
+              <FormHelperText error>
+                {fieldErrors.businessDefault}
+              </FormHelperText>
+            )}
           </Grid>
         </Grid>
       </Container>

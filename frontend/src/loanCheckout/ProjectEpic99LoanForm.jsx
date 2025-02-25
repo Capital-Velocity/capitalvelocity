@@ -248,30 +248,96 @@ export default function ProjectEpic99LoanForm(props) {
 
     // Add more validations for other steps as needed
     // Step 0: BorrowerStep validation example
-    if (step === 0) {
-      if (!formData.motivation) {
-        errors.motivation = "Required";
+    // if (step === 0) {
+    //   if (!formData.motivation) {
+    //     errors.motivation = "Required";
+    //   }
+    //   if (!formData.moneyperYear) {
+    //     errors.moneyperYear = "Required";
+    //   }
+    //   if (!formData.industryExperience) {
+    //     errors.industryExperience = "Required";
+    //   }
+    //   if (!formData.runningCompany) {
+    //     errors.runningCompany = "Required";
+    //   }
+    //   if (!formData.stateBusiness) {
+    //     errors.stateBusiness = "Required";
+    //   }
+    //   if (!formData.monthlySalesExpected) {
+    //     errors.monthlySalesExpected = "Required";
+    //   }
+    //   if (!formData.businessPercentage) {
+    //     errors.businessPercentage = "Required";
+    //   }
+    //   if (!formData.whichImportant) {
+    //     errors.whichImportant = "Required";
+    //   }
+    // }
+
+    if (step === 1) {
+      if (!formData.firstName) {
+        errors.firstName = "Required";
       }
-      if (!formData.moneyperYear) {
-        errors.moneyperYear = "Required";
+      if (!formData.borrowerLast) {
+        errors.borrowerLast = "Required";
       }
-      if (!formData.industryExperience) {
-        errors.industryExperience = "Required";
+      if (!formData.borrowerEmail) {
+        errors.borrowerEmail = "Required";
       }
-      if (!formData.runningCompany) {
-        errors.runningCompany = "Required";
+      if (!formData.borrowerCell) {
+        errors.borrowerCell = "Required";
       }
-      if (!formData.stateBusiness) {
-        errors.stateBusiness = "Required";
+      if (!formData.borrowerCitizenship) {
+        errors.borrowerCitizenship = "Required";
       }
-      if (!formData.monthlySalesExpected) {
-        errors.monthlySalesExpected = "Required";
+      if (!formData.veteran) {
+        errors.veteran = "Required";
       }
-      if (!formData.businessPercentage) {
-        errors.businessPercentage = "Required";
+      if (!formData.gender) {
+        errors.gender = "Required";
       }
-      if (!formData.whichImportant) {
-        errors.whichImportant = "Required";
+      if (!formData.race) {
+        errors.race = "Required";
+      }
+      if (!formData.ethinicity) {
+        errors.ethinicity = "Required";
+      }
+      if (!formData.uscisRegNum) {
+        errors.uscisRegNum = "Required";
+      }
+      if (!formData.isIndictment) {
+        errors.isIndictment = "Required";
+      }
+      if (!formData.isArrested) {
+        errors.isArrested = "Required";
+      }
+      if (!formData.isCriminalOffense) {
+        errors.isCriminalOffense = "Required";
+      }
+      if (!formData.suspendedFederal) {
+        errors.suspendedFederal = "Required";
+      }
+      if (!formData.daysDelenquet) {
+        errors.daysDelenquet = "Required";
+      }
+      if (!formData.smallBusiness) {
+        errors.smallBusiness = "Required";
+      }
+      if (!formData.bankruptcyProtection) {
+        errors.bankruptcyProtection = "Required";
+      }
+      if (!formData.legalAction) {
+        errors.legalAction = "Required";
+      }
+      if (!formData.loanGuarantor) {
+        errors.loanGuarantor = "Required";
+      }
+      if (!formData.financingDelinquent) {
+        errors.financingDelinquent = "Required";
+      }
+      if (!formData.businessDefault) {
+        errors.businessDefault = "Required";
       }
     }
 
