@@ -171,6 +171,16 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
+                to="/FixandFlipCalc"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: "center" }}>
+                    Fix and Flip Calculator
+                  </Typography>
+                </MenuItem>
+              </Link>
+              <Link
                 to="/DsciCalculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
@@ -181,12 +191,12 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/FixandFlipCalc"
+                to="/optimizercalculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
-                    Fix and Flip Calculator
+                    Rental DSCR Optimizer
                   </Typography>
                 </MenuItem>
               </Link>
