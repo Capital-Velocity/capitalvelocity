@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import { Divider } from "../../../node_modules/@mui/material/index";
 import Container from "../../screens/Container";
 // import CheckoutSteps from "./CheckoutSteps3";
+import FormHelperText from "@mui/material/FormHelperText";
 
 function BackgroundInformationProjectEpic99({
   formData,
@@ -273,6 +274,11 @@ function BackgroundInformationProjectEpic99({
                 <MenuItem value={"Utilities"}>Utilities</MenuItem>
                 <MenuItem value={"All Other"}>All Other</MenuItem>
               </Select>
+              {fieldErrors.industryExperience && (
+                <FormHelperText error>
+                  {fieldErrors.industryExperience}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
 
@@ -391,6 +397,11 @@ function BackgroundInformationProjectEpic99({
                   </MenuItem>
                 ))}
               </Select>
+              {fieldErrors.stateBusiness && (
+                <FormHelperText error>
+                  {fieldErrors.stateBusiness}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -424,6 +435,11 @@ function BackgroundInformationProjectEpic99({
                 <MenuItem value={"$80-199k"}>$80-199k</MenuItem>
                 <MenuItem value={"$200k+"}>$200k+</MenuItem>
               </Select>
+              {fieldErrors.monthlySalesExpected && (
+                <FormHelperText error>
+                  {fieldErrors.monthlySalesExpected}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -542,12 +558,23 @@ function BackgroundInformationProjectEpic99({
                   Quality of Company
                 </MenuItem>
                 <MenuItem value={"Speed of purchase"}>
+                  {" "}
+                  {fieldErrors.whichImportant && (
+                    <FormHelperText error>
+                      {fieldErrors.whichImportant}
+                    </FormHelperText>
+                  )}
                   Speed of purchase
                 </MenuItem>
                 <MenuItem value={"$5-7k"}>
                   Purchasing Business your passionate about
                 </MenuItem>
               </Select>
+              {fieldErrors.whichImportant && (
+                <FormHelperText error>
+                  {fieldErrors.whichImportant}
+                </FormHelperText>
+              )}
             </FormControl>
           </Grid>
         </Grid>
