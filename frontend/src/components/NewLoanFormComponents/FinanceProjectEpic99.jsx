@@ -87,6 +87,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
   };
 
   const [sum, setSum] = useState(0); // Step 1: Initialize state for the sum
+  const [sumLiability, setSumLiability] = useState(0);
 
   // Step 2: Create a function to calculate the sum
   const calculateSum = () => {
@@ -111,8 +112,31 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
 
     setSum(total.toFixed(2));
   };
+
+  // Step 2: Create a function to calculate the sum
+  const calculateLiability = () => {
+    const fields = [
+      formData.accountsPayable,
+      formData.StocksBonds,
+      formData.installmentAccount,
+      formData.loanInsurance,
+      formData.mortgagesRealEstate,
+      formData.unpaidTaxes,
+      formData.otherLiabilities,
+    ];
+
+    const validFields = fields.filter((value) => !isNaN(parseFloat(value)));
+    const total = validFields.reduce(
+      (acc, currentValue) => acc + parseFloat(currentValue),
+      0
+    );
+
+    setSumLiability(total.toFixed(2));
+  };
+
   useEffect(() => {
     calculateSum();
+    calculateLiability();
   }, [
     formData.cashonHand,
     formData.savingsAccounts,
@@ -124,6 +148,13 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     formData.automobiles,
     formData.otherPersonalProperty,
     formData.otherAssets,
+    formData.accountsPayable,
+    formData.StocksBonds,
+    formData.installmentAccount,
+    formData.loanInsurance,
+    formData.mortgagesRealEstate,
+    formData.unpaidTaxes,
+    formData.otherLiabilities,
   ]);
 
   const [selectedProperties, setSelectedProperties] = useState([]);
@@ -550,10 +581,10 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                 onChange={(e) =>
                   setFormData({
                     ...formData,
-                    realEstate: e.target.value,
+                    realEstateAssets: e.target.value,
                   })
                 }
-                value={formData.realEstate || ""}
+                value={formData.realEstateAssets || ""}
                 size="large"
                 InputLabelProps={{
                   style: { fontSize: 15, fontWeight: 100 },
@@ -564,9 +595,9 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                   ),
                 }}
                 variant="outlined"
-                error={fieldErrors.realEstate}
+                error={fieldErrors.realEstateAssets}
                 style={{ backgroundColor: "white" }}
-                helperText={<span>{fieldErrors.realEstate}</span>}
+                helperText={<span>{fieldErrors.realEstateAssets}</span>}
               />
             </FormControl>
           </Grid>
@@ -896,33 +927,21 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
               />
             </FormControl>
           </Grid>
+
           <Grid item xs={12} sm={6}>
+            <Typography type="p" color="black">
+              Total Liabilities
+            </Typography>
             <FormControl fullWidth>
-              {" "}
-              <Typography type="p" color="black">
-                Total Liabilities
-              </Typography>
               <TextField
-                value={formData.totalLiabilities || ""}
+                value={`$${sumLiability}`} // Display the calculated sum
                 size="large"
                 InputLabelProps={{
                   style: { fontSize: 15, fontWeight: 100 },
                 }}
-                onChange={(e) =>
-                  setFormData({
-                    ...formData,
-                    totalLiabilities: e.target.value,
-                  })
-                }
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">$</InputAdornment>
-                  ),
-                }}
-                variant="outlined"
-                error={fieldErrors.totalLiabilities}
                 style={{ backgroundColor: "white" }}
-                helperText={<span>{fieldErrors.totalLiabilities}</span>}
+                variant="outlined"
+                disabled // Disable editing
               />
             </FormControl>
           </Grid>
@@ -1734,11 +1753,11 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
       </Modal>
       <Container>
         <Typography variant="h4" color="black" gutterBottom>
-          PERSONAL FINANCIAL STATEMENT - Other Infromation
+          PERSONAL FINANCIAL STATEMENT - Other Information
         </Typography>
 
         <Grid container spacing={2}>
-          <Grid item xs={12} sm={12}>
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Other Personal Property and Other Assets.
@@ -1762,8 +1781,8 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
             </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={12}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Unpaid Taxes
@@ -1787,8 +1806,8 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
             </FormControl>
-          </Grid>
-          <Grid item xs={12} sm={12}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
                 Other Liabilities
@@ -1812,7 +1831,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                 />
               </Grid>
             </FormControl>
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth>
               <Typography type="p" color="black">
@@ -1831,8 +1850,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
                   style={{ backgroundColor: "white" }}
                   variant="outlined"
                   fullWidth
-                  multiline
-                  rows={3}
+
                   // Add more props as needed
                 />
               </Grid>
