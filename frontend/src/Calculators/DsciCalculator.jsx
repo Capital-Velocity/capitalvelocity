@@ -74,6 +74,7 @@ const DsciCalculator = () => {
   const [totalPayment, settotalPayment] = useState("");
   const [interest, settotalInterest] = useState("");
   const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
+  const [downPaymentRequired, setDownPaymentRequired] = useState("");
 
   const [annualGrossRent, setAnnualGrossRent] = useState("");
   const [monthlyTaxes, setmonthlyTaxes] = useState("");
@@ -173,14 +174,19 @@ const DsciCalculator = () => {
 
   const calculateLoanAmount = () => {
     const ltvPercentage = parseFloat(ltv) / 100;
+    const cleanEstimatedValue = String(estimatedValue).replace(/,/g, "");
+    const estimatedValueFloat = parseFloat(cleanEstimatedValue);
 
-    const cleanestimatedValue = String(estimatedValue).replace(/,/g, "");
-
-    const estimatedValueFloat = parseFloat(cleanestimatedValue);
     if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
-      setLoanAmount(ltvPercentage * estimatedValueFloat);
+      const loanAmount = ltvPercentage * estimatedValueFloat;
+      setLoanAmount(loanAmount);
+
+      // Calculate down payment
+      const downPayment = estimatedValueFloat - loanAmount;
+      setDownPaymentRequired(downPayment);
     } else {
       setLoanAmount("");
+      setDownPaymentRequired("");
     }
   };
 
@@ -829,6 +835,47 @@ const DsciCalculator = () => {
                     type="text" // Change type to "text" to allow formatted string
                     fullWidth
                     value={`${Number(loanAmount).toLocaleString("en-US", {})}`}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">$</InputAdornment>
+                      ),
+                    }}
+                    disabled
+                  />
+                </FormControl>
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography
+                    color="black"
+                    component="div"
+                    sx={{ display: "inline-flex", alignItems: "center" }}
+                  >
+                    Down Payment ($){" "}
+                    <Tooltip
+                      title="The down payment required to make this deal."
+                      arrow
+                      placement="top"
+                    >
+                      <InfoIcon
+                        className="cursor-pointer"
+                        sx={{
+                          fontSize: 18,
+                          color: "gray",
+                          marginLeft: 1,
+                          verticalAlign: "middle",
+                        }} // Align icon vertically
+                      />
+                    </Tooltip>
+                  </Typography>{" "}
+                  <TextField
+                    type="text" // Change type to "text" to allow formatted string
+                    fullWidth
+                    value={`${Number(downPaymentRequired).toLocaleString(
+                      "en-US",
+                      {}
+                    )}`}
                     InputProps={{
                       startAdornment: (
                         <InputAdornment position="start">$</InputAdornment>

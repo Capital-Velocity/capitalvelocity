@@ -25,11 +25,11 @@ function BorrowerInformationProjectEpic99({
   const [sliderValue2, setSliderValue2] = useState(1);
 
   const marks = [
-    { value: 1, label: "Newbie" },
-    { value: 2 },
-    { value: 3 },
-    { value: 4 },
-    { value: 5, label: "Seasoned" },
+    { value: 1, label: "1" },
+    { value: 2, label: "2" },
+    { value: 3, label: "3" },
+    { value: 4, label: "4" },
+    { value: 5, label: "5+" },
   ];
 
   const handleSliderChange = (event, newValue) => {
@@ -206,7 +206,7 @@ function BorrowerInformationProjectEpic99({
           <Grid item xs={12} sm={12}>
             <FormControl fullWidth error={!!fieldErrors.borrowerCitizenship}>
               <Typography type="p" color="black">
-                Borrower's Citizenship Status
+                Partner's Citizenship Status
               </Typography>
               <Select
                 InputLabelProps={{ style: { fontSize: 15, fontWeight: 100 } }}
@@ -248,7 +248,7 @@ function BorrowerInformationProjectEpic99({
             }}
           >
             <Typography type="p" color="black">
-              How experienced with investing is the borrower?
+              How many businesses has this partner owned?
             </Typography>
             <div
               style={{
@@ -281,7 +281,8 @@ function BorrowerInformationProjectEpic99({
           >
             {" "}
             <Typography type="p" color="black">
-              Please rank the borrower's experience as a real estate investor
+              How many businesses has this partner managed with a hands-on
+              approach?
             </Typography>
             <div
               style={{
@@ -293,10 +294,10 @@ function BorrowerInformationProjectEpic99({
               <Slider
                 value={sliderValue2}
                 onChange={handleSliderChange2}
-                min={0}
-                max={100}
+                min={1}
+                max={5}
                 step={1}
-                marks={percentageMarks}
+                marks={marks}
                 valueLabelDisplay="auto"
                 style={{ color: "#498dd6", width: "80%" }} // Ensure slider takes full width
               />
