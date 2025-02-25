@@ -170,11 +170,14 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 1000,
-    height: 200,
+    width: "90vw", // Responsive width
+    maxWidth: 1000, // Max width for larger screens
+    height: "auto", // Allow height to adjust based on content
+    maxHeight: "90vh", // Prevent modal from overflowing on smaller screens
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
+    overflowY: "auto", // Allows scrolling inside modal if content overflows
   };
   const handleDeleteRow = (index) => {
     const updatedProperties = selectedProperties.filter(
@@ -1311,77 +1314,96 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <Box sx={style}>
           <Grid container spacing={2}>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setOwnersName(e.target.value)}
-                label="Names and Addresses of Noteholder(s)"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Names and Addresses of Noteholder(s){" "}
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setOwnersName(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setBalance(e.target.value)}
-                label="Original Balance"
-                variant="outlined"
-              />
+
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Original Balance
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setBalance(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setCurrentBalance(e.target.value)}
-                label="Current Balance"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Current Balance
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setCurrentBalance(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setPaymentAmount(e.target.value)}
-                label="Payment Amount"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Payment Amount
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setPaymentAmount(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setFrequencey(e.target.value)}
-                label="Frequency (monthly, etc.)"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Frequency (monthly, etc.)
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setFrequencey(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setHowSecured(e.target.value)}
-                label="How Secured or Endorsed Type of Collateral"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  How Secured or Endorsed Type of Collateral
+                </Typography>
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setHowSecured(e.target.value)}
+                />
+              </FormControl>
             </Grid>
 
             <Button
@@ -1470,79 +1492,99 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
         open={openModalStocksBonds}
         onClose={() => setOpenModalStocksBonds(false)}
       >
-        <Box sx={styleStocksBonds}>
+        <Box sx={style}>
           <Grid container spacing={2}>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setNumbShares(e.target.value)}
-                label="Number of Shares"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Number of Shares
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setNumbShares(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setNumbofSecurities(e.target.value)}
-                label="Name of Securities"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Name of Securities
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setNumbofSecurities(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setCost(e.target.value)}
-                label="Cost"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Cost
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setCost(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setMarketValue(e.target.value)}
-                label="Market Value Quotation/Exchange"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Market Value Quotation/Exchange
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setMarketValue(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setDateofQuoatation(e.target.value)}
-                label="Date of Quotation/Exchange"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Date of Quotation/Exchange
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setDateofQuoatation(e.target.value)}
+                  label=""
+                  variant="outlined"
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setTotalValue(e.target.value)}
-                label="Total Value"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Total Value
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setTotalValue(e.target.value)}
+                />
+              </FormControl>
             </Grid>
 
             <Button
@@ -1639,116 +1681,142 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
         open={openModalPersonal}
         onClose={() => setOpenModalPersonal(false)}
       >
-        <Box sx={stylePersonal}>
+        <Box sx={style}>
           <Grid container spacing={2}>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setRealEstateType(e.target.value)}
-                label="Type of Real Estate "
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Type of Real Estate
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setRealEstateType(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setAddress(e.target.value)}
-                label="Address"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Address
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setCostPersonal(e.target.value)}
-                label="Cost"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Cost
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setCostPersonal(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setPurchaseDate(e.target.value)}
-                label="Date Purchased"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Date Purchased
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setPurchaseDate(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setOriginalCost(e.target.value)}
-                label="Original Cost"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Original Cost
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setOriginalCost(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setPresentMarketValue(e.target.value)}
-                label="Present Market Value"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Present Market Value
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setPresentMarketValue(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setNameAddress(e.target.value)}
-                label="Name & Address of Mortgage Holder"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Name & Address of Mortgage Holder
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setNameAddress(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setAmountPayment(e.target.value)}
-                label="Amount of Payment per Month/Year"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Amount of Payment per Month/Year
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setAmountPayment(e.target.value)}
+                />
+              </FormControl>
             </Grid>
-            <Grid item sm={4}>
-              <TextField
-                fullWidth
-                size="large"
-                InputLabelProps={{
-                  style: { fontSize: 15, fontWeight: 100 },
-                }}
-                onChange={(e) => setStatusMortgage(e.target.value)}
-                label="Status of Mortgage"
-                variant="outlined"
-              />
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <Typography type="p" color="black">
+                  Status of Mortgage
+                </Typography>{" "}
+                <TextField
+                  fullWidth
+                  size="large"
+                  InputLabelProps={{
+                    style: { fontSize: 15, fontWeight: 100 },
+                  }}
+                  onChange={(e) => setStatusMortgage(e.target.value)}
+                />
+              </FormControl>
             </Grid>
 
             <Button
