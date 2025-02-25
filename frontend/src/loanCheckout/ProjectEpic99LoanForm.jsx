@@ -248,32 +248,32 @@ export default function ProjectEpic99LoanForm(props) {
 
     // Add more validations for other steps as needed
     // Step 0: BorrowerStep validation example
-    // if (step === 0) {
-    //   if (!formData.motivation) {
-    //     errors.motivation = "Required";
-    //   }
-    //   if (!formData.moneyperYear) {
-    //     errors.moneyperYear = "Required";
-    //   }
-    //   if (!formData.industryExperience) {
-    //     errors.industryExperience = "Required";
-    //   }
-    //   if (!formData.runningCompany) {
-    //     errors.runningCompany = "Required";
-    //   }
-    //   if (!formData.stateBusiness) {
-    //     errors.stateBusiness = "Required";
-    //   }
-    //   if (!formData.monthlySalesExpected) {
-    //     errors.monthlySalesExpected = "Required";
-    //   }
-    //   if (!formData.businessPercentage) {
-    //     errors.businessPercentage = "Required";
-    //   }
-    //   if (!formData.whichImportant) {
-    //     errors.whichImportant = "Required";
-    //   }
-    // }
+    if (step === 0) {
+      if (!formData.motivation) {
+        errors.motivation = "Required";
+      }
+      if (!formData.moneyperYear) {
+        errors.moneyperYear = "Required";
+      }
+      if (!formData.industryExperience) {
+        errors.industryExperience = "Required";
+      }
+      if (!formData.runningCompany) {
+        errors.runningCompany = "Required";
+      }
+      if (!formData.stateBusiness) {
+        errors.stateBusiness = "Required";
+      }
+      if (!formData.monthlySalesExpected) {
+        errors.monthlySalesExpected = "Required";
+      }
+      if (!formData.businessPercentage) {
+        errors.businessPercentage = "Required";
+      }
+      if (!formData.whichImportant) {
+        errors.whichImportant = "Required";
+      }
+    }
 
     if (step === 1) {
       if (!formData.firstName) {
@@ -338,6 +338,12 @@ export default function ProjectEpic99LoanForm(props) {
       }
       if (!formData.businessDefault) {
         errors.businessDefault = "Required";
+      }
+    }
+
+    if (step === 2) {
+      if (!formData.borrowingEntityInformation) {
+        errors.borrowingEntityInformation = "Required";
       }
     }
 
