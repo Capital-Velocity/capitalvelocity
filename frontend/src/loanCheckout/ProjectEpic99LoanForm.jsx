@@ -80,11 +80,11 @@ export default function ProjectEpic99LoanForm(props) {
   // Stepper labels
   const steps = [
     "Background Information",
-    "Partner Information (borrower)",
+    "Partner Information",
     "Entity Information",
-    "Finance",
-    "SoftPull",
-    "BusinessUpload",
+    "Finance Information",
+    "Soft Credit Pull",
+    "Upload & Submit",
   ];
   function getStepContent(step) {
     switch (step) {
