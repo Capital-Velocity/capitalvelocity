@@ -300,7 +300,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
       {
         realEstateType,
         address,
-        cost,
+        costPersonal,
         purchaseDate,
         originalCost,
         presentMarketValue,
@@ -313,7 +313,7 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     const newPropertyPersonal = {
       realEstateType,
       address,
-      cost,
+      costPersonal,
       purchaseDate,
       originalCost,
       presentMarketValue,
@@ -321,13 +321,18 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
       AmountPayment,
       statusMortgage,
     };
+
     const updatedFormDataPersonal = {
       ...formData,
-      realEstate: [...formData.realEstate, newPropertyPersonal], // Assuming you have a property named "realEstate" in your formData object for storing real estate data
+      realEstate: [
+        ...(Array.isArray(formData.realEstate) ? formData.realEstate : []),
+        newPropertyPersonal,
+      ],
     };
 
-    // Call setFormData to update the state with the new formData
     setFormData(updatedFormDataPersonal);
+
+    // Reset fields
     setRealEstateType(0);
     setAddress(0);
     setCostPersonal(0);
@@ -335,7 +340,10 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     setOriginalCost(0);
     setPresentMarketValue(0);
     setNameAddress(0);
+    setAmountPayment(0);
     setStatusMortgage(0);
+
+    // Ensure modal closes after updating the state
     setOpenModalPersonal(false);
   };
 
