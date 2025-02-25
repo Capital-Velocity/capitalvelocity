@@ -558,16 +558,10 @@ function BackgroundInformationProjectEpic99({
                   Quality of Company
                 </MenuItem>
                 <MenuItem value={"Speed of purchase"}>
-                  {" "}
-                  {fieldErrors.whichImportant && (
-                    <FormHelperText error>
-                      {fieldErrors.whichImportant}
-                    </FormHelperText>
-                  )}
-                  Speed of purchase
+                  Speed of Purchase
                 </MenuItem>
                 <MenuItem value={"$5-7k"}>
-                  Purchasing Business your passionate about
+                  Purchasing a Business you are Passionate About
                 </MenuItem>
               </Select>
               {fieldErrors.whichImportant && (
