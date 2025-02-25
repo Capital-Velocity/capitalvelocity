@@ -354,41 +354,118 @@ export default function ProjectEpic99LoanForm(props) {
               >
                 Project Epic 99
               </Typography>
-              {/* <Typography variant="h6" style={{ color: "black" }}>
-                Placeholder
-              </Typography> */}
-              {/* <Typography
+              <Typography
+                align="center"
+                variant="h6"
+                style={{ color: "black" }}
+              >
+                Epic 99 – Unlock Business Growth with Up to $5 Million in
+                Funding
+              </Typography>
+              <Typography
                 variant="h7"
                 style={{ color: "black", marginTop: "10px" }}
               >
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
-                  sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
-                  }}
-                />
-                Portfolio Financing <br />
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
-                  sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
-                  }}
-                />
-                Fixed or Adjustable Rates <br />{" "}
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
-                  sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
-                  }}
-                />
-                Tax-Deductible Interest
-              </Typography> */}
+                At <strong>Capital Velocity</strong>, we believe in empowering
+                entrepreneurs, key employees, and aspiring business owners with
+                the financial support they need to succeed.{" "}
+                <strong>Epic 99</strong> is our exclusive funding program,
+                designed to provide businesses with{" "}
+                <strong>$100,000 to $5 million</strong> in capital—without
+                immediate repayment obligations.
+              </Typography>
+
+              <Typography
+                variant="h6"
+                align="center"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                Who Can Benefit from Epic 99?
+              </Typography>
+
+              <Typography
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                Epic 99 is tailored for: <br />•{" "}
+                <strong>Existing Business Owners</strong> looking to expand,
+                scale, or improve operations. <br /> •{" "}
+                <strong>
+                  Key Employees Aspiring to Become Business Owners
+                </strong>
+                , giving them the opportunity to take ownership in their
+                industry.
+                <br /> •{" "}
+                <strong>
+                  Entrepreneurs and Individuals Seeking to Own a Business
+                </strong>
+                , whether starting from scratch or acquiring an existing
+                company.
+              </Typography>
+
+              <Typography
+                variant="h6"
+                align="center"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                Why Choose Epic 99?
+              </Typography>
+
+              <Typography
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                • <strong>Flexible Funding Options</strong> – Receive the
+                capital you need to invest in growth, inventory, equipment,
+                staffing, marketing, and more.
+                <br /> • <strong>No Immediate Repayment</strong> – Unlike
+                traditional loans, Epic 99 allows you to focus on building your
+                business before repaying the funding.
+                <br /> • <strong>Seamless Application Process</strong> – Getting
+                started is simple. Create a free account on our platform to
+                explore your funding opportunities.
+                <br /> • <strong>Strategic Partnerships</strong> – We work
+                closely with business owners and future entrepreneurs to ensure
+                they have the resources, guidance, and financial support needed
+                to succeed.
+              </Typography>
+
+              <Typography
+                variant="h6"
+                align="center"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                How to Apply
+              </Typography>
+              <Typography
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                Accessing Epic 99 funding is easy. Simply: <br />
+                1. <strong>Sign up for a free account</strong> on the{" "}
+                <strong>Capital Velocity</strong> platform. <br />
+                2. <strong>Complete a simple application</strong> to share your
+                business goals and funding needs. <br />
+                3. <strong>Get matched with funding</strong> that aligns with
+                your vision for success.
+              </Typography>
+              <Typography
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                At <strong>Capital Velocity</strong>, we are committed to
+                fueling innovation, growth, and success. Whether you’re an
+                established business owner, a key employee ready to take the
+                leap, or someone with a dream of business ownership—
+                <strong>Epic 99</strong> is here to help you make it happen.
+              </Typography>
+              <Typography
+                variant="h6"
+                style={{ color: "black", marginTop: "10px" }}
+              >
+                Get started today and unlock your business potential with Epic
+                99!
+              </Typography>
               <div
                 style={{
                   display: "flex",
