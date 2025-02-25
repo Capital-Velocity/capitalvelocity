@@ -35,6 +35,7 @@ import GroundUpNewLoanForm from "./pages/GroundUpNewLoanForm";
 import CashedOutRefinanceNewLoanForm from "./pages/CashedOutRefinanceNewLoanForm";
 import ProjectEpic99LoanForm from "./loanCheckout/ProjectEpic99LoanForm";
 import OptimizerCalculator from "./Calculators/OptimizerCalculator";
+import ConceptCalc from "./Calculators/conceptCalc";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -53,6 +54,8 @@ function App() {
         <Route path="/lendio" element={<Lendio />} />
         <Route path="/DsciCalculator" element={<DsciCalculator />} />
         <Route path="/OptimizerCalculator" element={<OptimizerCalculator />} />
+        <Route path="/ConceptCalc" element={<ConceptCalc />} />
+
         <Route path="/FixandFlipCalc" element={<FixandFlipCalc />} />
         <Route path="/termsofUse" element={<TermsofUse />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />

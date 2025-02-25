@@ -81,21 +81,21 @@ const OptimizerCalculator = () => {
   const [monthlyInsurances, setmonthlyInsurances] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [monthlyHOAFee, setmonthlyHOAFee] = useState("");
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   firstName: "",
+  //   lastName: "",
+  //   email: "",
+  //   phone: "",
+  // });
 
   const [monthlyOtherExpenses, setMonthlyOtherExpenses] = useState("");
   const [monthlyInterestPaymentDisplay, setMonthlyInterestPaymentDisplay] =
     useState("");
   const [netOperatingIncome, setNetOperatingIncome] = useState("");
 
-  useEffect(() => {
-    calculateLoanAmount();
-  }, [ltv, estimatedValue]);
+  // useEffect(() => {
+  //   calculateLoanAmount();
+  // }, [ltv, estimatedValue]);
 
   const isDeal = dscrValue >= 1.25;
 
@@ -127,31 +127,31 @@ const OptimizerCalculator = () => {
     }
   }, [selectedCreditScore]);
 
-  useEffect(() => {
-    const cleanMonthlyRentInUseEffect = Number(
-      String(monthlyRent).replace(/,/g, "")
-    );
+  // useEffect(() => {
+  //   const cleanMonthlyRentInUseEffect = Number(
+  //     String(monthlyRent).replace(/,/g, "")
+  //   );
 
-    setAnnualGrossRent((parseFloat(cleanMonthlyRentInUseEffect) || 0) * 12);
-  }, [monthlyRent]);
+  //   setAnnualGrossRent((parseFloat(cleanMonthlyRentInUseEffect) || 0) * 12);
+  // }, [monthlyRent]);
 
-  // Trigger live calculation when inputs change
-  useEffect(() => {
-    calculateLoan(); // Recalculate when any of the relevant values change
-    setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
-    // setNetOperatingIncome(calculateNetOperatingIncome());
-    setDscrValue(calculateDSCR());
-  }, [
-    loanAmount,
-    monthlyRent,
-    monthlyTaxes,
-    monthlyInsurances,
-    monthlyHOAFee,
-    monthlyOtherExpenses,
-    selectedCreditScore,
-    loanSubtype,
-    estimatedValue,
-  ]);
+  // // Trigger live calculation when inputs change
+  // useEffect(() => {
+  //   calculateLoan(); // Recalculate when any of the relevant values change
+  //   setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
+  //   // setNetOperatingIncome(calculateNetOperatingIncome());
+  //   setDscrValue(calculateDSCR());
+  // }, [
+  //   loanAmount,
+  //   monthlyRent,
+  //   monthlyTaxes,
+  //   monthlyInsurances,
+  //   monthlyHOAFee,
+  //   monthlyOtherExpenses,
+  //   selectedCreditScore,
+  //   loanSubtype,
+  //   estimatedValue,
+  // ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -172,28 +172,28 @@ const OptimizerCalculator = () => {
       });
   };
 
-  const calculateLoanAmount = () => {
-    const ltvPercentage = parseFloat(ltv) / 100;
+  // const calculateLoanAmount = () => {
+  //   const ltvPercentage = parseFloat(ltv) / 100;
 
-    const cleanestimatedValue = String(estimatedValue).replace(/,/g, "");
+  //   const cleanestimatedValue = String(estimatedValue).replace(/,/g, "");
 
-    const estimatedValueFloat = parseFloat(cleanestimatedValue);
-    if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
-      setLoanAmount(ltvPercentage * estimatedValueFloat);
-    } else {
-      setLoanAmount("");
-    }
-  };
+  //   const estimatedValueFloat = parseFloat(cleanestimatedValue);
+  //   if (!isNaN(ltvPercentage) && !isNaN(estimatedValueFloat)) {
+  //     setLoanAmount(ltvPercentage * estimatedValueFloat);
+  //   } else {
+  //     setLoanAmount("");
+  //   }
+  // };
 
-  const calculateNetOperatingIncome = () => {
-    const cleanMonthlyIncomePayment = Number(
-      String(displayMonthlyIncomePayment).replace(/,/g, "")
-    );
+  // const calculateNetOperatingIncome = () => {
+  //   const cleanMonthlyIncomePayment = Number(
+  //     String(displayMonthlyIncomePayment).replace(/,/g, "")
+  //   );
 
-    return (
-      parseFloat(cleanMonthlyIncomePayment) - parseFloat(totalOperatingExpenses)
-    );
-  };
+  //   return (
+  //     parseFloat(cleanMonthlyIncomePayment) - parseFloat(totalOperatingExpenses)
+  //   );
+  // };
 
   const handleCreditScoreChange = (e) => {
     setSelectedCreditScore(e.target.value);
@@ -245,267 +245,267 @@ const OptimizerCalculator = () => {
   //     : 0;
   // };
 
-  const formatNumber = (num) => {
-    if (isNaN(num)) return "0";
+  // const formatNumber = (num) => {
+  //   if (isNaN(num)) return "0";
 
-    // 1. Round the number to two decimal places
-    let roundedNumber = Math.round(num * 100) / 100;
+  //   // 1. Round the number to two decimal places
+  //   let roundedNumber = Math.round(num * 100) / 100;
 
-    // 2. Convert the number to a string
-    let parts = roundedNumber.toString().split(".");
+  //   // 2. Convert the number to a string
+  //   let parts = roundedNumber.toString().split(".");
 
-    // 3. Add commas to the integer part (thousands separator)
-    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  //   // 3. Add commas to the integer part (thousands separator)
+  //   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    // 4. Ensure there are always two decimal places
-    if (parts[1]) {
-      parts[1] = parts[1].padEnd(2, "0"); // If decimal part exists, pad it to 2 digits
-    } else {
-      parts[1] = "00"; // If no decimal part, add ".00"
-    }
+  //   // 4. Ensure there are always two decimal places
+  //   if (parts[1]) {
+  //     parts[1] = parts[1].padEnd(2, "0"); // If decimal part exists, pad it to 2 digits
+  //   } else {
+  //     parts[1] = "00"; // If no decimal part, add ".00"
+  //   }
 
-    return parts.join(".");
-  };
+  //   return parts.join(".");
+  // };
 
-  const calculateLoan = () => {
-    const fields = {
-      loanAmount,
-      monthlyRent,
-      monthlyTaxes,
-      monthlyInsurances,
-      monthlyHOAFee,
-      monthlyOtherExpenses,
-      estimatedValue,
-    };
-    // Check if any fields are empty or zero
-    const emptyFields = Object.keys(fields).filter(
-      (key) => !fields[key] || fields[key] === 0
-    );
+  // const calculateLoan = () => {
+  //   const fields = {
+  //     loanAmount,
+  //     monthlyRent,
+  //     monthlyTaxes,
+  //     monthlyInsurances,
+  //     monthlyHOAFee,
+  //     monthlyOtherExpenses,
+  //     estimatedValue,
+  //   };
+  //   // Check if any fields are empty or zero
+  //   const emptyFields = Object.keys(fields).filter(
+  //     (key) => !fields[key] || fields[key] === 0
+  //   );
 
-    if (emptyFields.length > 0) {
-      // Show a toast error message if any fields are empty or zero
-      // toast.error(
-      //   `Please fill in all required fields: ${emptyFields.join(", ")}`
-      // );
-      // Optional: Set border color to red for empty fields (if needed)
-      emptyFields.forEach((field) => {
-        // Example: Assuming you have a way to get the input field by its name or id
-        // document.getElementById(field).style.borderColor = 'red';
-      });
-      return; // Exit the function to prevent further execution
-    }
-    // console.log(loanAmount);
-    // console.log(interestRate);
-    // console.log(loanTerm);
-    // console.log("loanAmount here: ", monthlyRent);
-    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
-    const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
-    const cleanMonthlyInsurances = Number(
-      String(monthlyInsurances).replace(/,/g, "")
-    );
-    const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
-    const cleanMonthlyOtherExpenses = Number(
-      String(monthlyOtherExpenses).replace(/,/g, "")
-    );
+  //   if (emptyFields.length > 0) {
+  //     // Show a toast error message if any fields are empty or zero
+  //     // toast.error(
+  //     //   `Please fill in all required fields: ${emptyFields.join(", ")}`
+  //     // );
+  //     // Optional: Set border color to red for empty fields (if needed)
+  //     emptyFields.forEach((field) => {
+  //       // Example: Assuming you have a way to get the input field by its name or id
+  //       // document.getElementById(field).style.borderColor = 'red';
+  //     });
+  //     return; // Exit the function to prevent further execution
+  //   }
+  //   // console.log(loanAmount);
+  //   // console.log(interestRate);
+  //   // console.log(loanTerm);
+  //   // console.log("loanAmount here: ", monthlyRent);
+  //   const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
+  //   const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
+  //   const cleanMonthlyInsurances = Number(
+  //     String(monthlyInsurances).replace(/,/g, "")
+  //   );
+  //   const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
+  //   const cleanMonthlyOtherExpenses = Number(
+  //     String(monthlyOtherExpenses).replace(/,/g, "")
+  //   );
 
-    setdisplayMonthlyIncomePayment(formatNumber(cleanMonthlyRent));
-    const loanAmountFloat = loanAmount;
-    const interestRateFloat = interestRate / 100;
-    const termMonths = loanTerm * 12;
+  //   setdisplayMonthlyIncomePayment(formatNumber(cleanMonthlyRent));
+  //   const loanAmountFloat = loanAmount;
+  //   const interestRateFloat = interestRate / 100;
+  //   const termMonths = loanTerm * 12;
 
-    const monthlyInterestRate = interestRateFloat / 12;
-    // console.log("This is the monthly interest" + monthlyInterestRate);
-    // console.log("This is the terms Months" + termMonths);
-    // Calculate monthly payment
-    const monthlyPayment =
-      (loanAmountFloat *
-        (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termMonths))) /
-      (Math.pow(1 + monthlyInterestRate, termMonths) - 1);
-    setDisplayMonthly(formatNumber(monthlyPayment));
+  //   const monthlyInterestRate = interestRateFloat / 12;
+  //   // console.log("This is the monthly interest" + monthlyInterestRate);
+  //   // console.log("This is the terms Months" + termMonths);
+  //   // Calculate monthly payment
+  //   const monthlyPayment =
+  //     (loanAmountFloat *
+  //       (monthlyInterestRate * Math.pow(1 + monthlyInterestRate, termMonths))) /
+  //     (Math.pow(1 + monthlyInterestRate, termMonths) - 1);
+  //   setDisplayMonthly(formatNumber(monthlyPayment));
 
-    const totalPayment = monthlyPayment * termMonths;
-    // console.log("This is the total payment" + totalPayment);
+  //   const totalPayment = monthlyPayment * termMonths;
+  //   // console.log("This is the total payment" + totalPayment);
 
-    const totalInterest = totalPayment - loanAmountFloat;
-    // console.log("This is the total interest" + totalInterest);
+  //   const totalInterest = totalPayment - loanAmountFloat;
+  //   // console.log("This is the total interest" + totalInterest);
 
-    // Prepare data for the pie chart
-    const data = [
-      ["Category", "Amount"],
-      ["Principal", totalPayment], // Fixed: Use loanAmountFloat for Principal
-      ["Interest", totalInterest],
-    ];
+  //   // Prepare data for the pie chart
+  //   const data = [
+  //     ["Category", "Amount"],
+  //     ["Principal", totalPayment], // Fixed: Use loanAmountFloat for Principal
+  //     ["Interest", totalInterest],
+  //   ];
 
-    // console.log(data);
-    setChartData(data);
-    setmonthlyPayment(monthlyPayment);
-    settotalInterest(totalInterest);
-    setDisplayTotalInterest(formatNumber(totalInterest));
-    settotalPayment(totalPayment);
-    setDisplayTotalPayment(formatNumber(totalPayment));
-    // console.log(chartData);
+  //   // console.log(data);
+  //   setChartData(data);
+  //   setmonthlyPayment(monthlyPayment);
+  //   settotalInterest(totalInterest);
+  //   setDisplayTotalInterest(formatNumber(totalInterest));
+  //   settotalPayment(totalPayment);
+  //   setDisplayTotalPayment(formatNumber(totalPayment));
+  //   // console.log(chartData);
 
-    // Now we need to calculate the PITTA.
-    ///// if converted to monthlyTaxes, take away the / 12.
-    const monthlyTax = cleanMonthlyTaxes;
-    const monthlyInsurance = cleanMonthlyInsurances;
-    const monthlyHOA = cleanMonthlyHOAFee;
-    const monthlyExpenses = cleanMonthlyOtherExpenses;
+  //   // Now we need to calculate the PITTA.
+  //   ///// if converted to monthlyTaxes, take away the / 12.
+  //   const monthlyTax = cleanMonthlyTaxes;
+  //   const monthlyInsurance = cleanMonthlyInsurances;
+  //   const monthlyHOA = cleanMonthlyHOAFee;
+  //   const monthlyExpenses = cleanMonthlyOtherExpenses;
 
-    const paymentIntrestTaxesInsurance =
-      parseFloat(monthlyPayment) +
-      parseFloat(monthlyTax) +
-      parseFloat(monthlyInsurance) +
-      parseFloat(monthlyExpenses) +
-      parseFloat(monthlyHOA);
+  //   const paymentIntrestTaxesInsurance =
+  //     parseFloat(monthlyPayment) +
+  //     parseFloat(monthlyTax) +
+  //     parseFloat(monthlyInsurance) +
+  //     parseFloat(monthlyExpenses) +
+  //     parseFloat(monthlyHOA);
 
-    // // if converted to monthlyTaxes, multiply by 12.
-    // const yearlyCost =
-    //   parseFloat(monthlyPayment * 12) +
-    //   parseFloat(cleanMonthlyTaxes * 12) +
-    //   parseFloat(cleanMonthlyInsurances * 12) +
-    //   parseFloat(cleanMonthlyOtherExpenses * 12) +
-    //   parseFloat(cleanMonthlyHOAFee * 12);
+  //   // // if converted to monthlyTaxes, multiply by 12.
+  //   // const yearlyCost =
+  //   //   parseFloat(monthlyPayment * 12) +
+  //   //   parseFloat(cleanMonthlyTaxes * 12) +
+  //   //   parseFloat(cleanMonthlyInsurances * 12) +
+  //   //   parseFloat(cleanMonthlyOtherExpenses * 12) +
+  //   //   parseFloat(cleanMonthlyHOAFee * 12);
 
-    // const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
+  //   // const dscr = cleanMonthlyRent / paymentIntrestTaxesInsurance;
 
-    // dscr = NOI / TDS
+  //   // dscr = NOI / TDS
 
-    // console.log("noi: ", netOperatingIncome);
-    // console.log("ip: ", monthlyInterestPaymentDisplay);
+  //   // console.log("noi: ", netOperatingIncome);
+  //   // console.log("ip: ", monthlyInterestPaymentDisplay);
 
-    // const dscr =
-    //   parseFloat(netOperatingIncome) /
-    //   parseFloat(monthlyInterestPaymentDisplay);
+  //   // const dscr =
+  //   //   parseFloat(netOperatingIncome) /
+  //   //   parseFloat(monthlyInterestPaymentDisplay);
 
-    // setDscrValue(dscr.toFixed(2));
+  //   // setDscrValue(dscr.toFixed(2));
 
-    const totalOperatingExpensesMonthly =
-      cleanMonthlyTaxes +
-      cleanMonthlyInsurances +
-      cleanMonthlyOtherExpenses +
-      cleanMonthlyHOAFee;
+  //   const totalOperatingExpensesMonthly =
+  //     cleanMonthlyTaxes +
+  //     cleanMonthlyInsurances +
+  //     cleanMonthlyOtherExpenses +
+  //     cleanMonthlyHOAFee;
 
-    // console.log("final: ", myTest);
+  //   // console.log("final: ", myTest);
 
-    setTotalOperatingExpenses(formatNumber(totalOperatingExpensesMonthly));
-    setTotalOepratingYearly(formatNumber(totalOperatingExpensesMonthly * 12));
-    const monthlyPaymentValue = cleanMonthlyRent * 12;
-    // set the gross annual
-    setGrossAnualincome(formatNumber(monthlyPaymentValue));
-    const totalProfit = cleanMonthlyRent - paymentIntrestTaxesInsurance;
-    setTotalProfit(formatNumber(totalProfit));
-    const convertYearly = totalProfit * 12;
-    setTotalProfitAnnually(formatNumber(convertYearly));
-  };
+  //   setTotalOperatingExpenses(formatNumber(totalOperatingExpensesMonthly));
+  //   setTotalOepratingYearly(formatNumber(totalOperatingExpensesMonthly * 12));
+  //   const monthlyPaymentValue = cleanMonthlyRent * 12;
+  //   // set the gross annual
+  //   setGrossAnualincome(formatNumber(monthlyPaymentValue));
+  //   const totalProfit = cleanMonthlyRent - paymentIntrestTaxesInsurance;
+  //   setTotalProfit(formatNumber(totalProfit));
+  //   const convertYearly = totalProfit * 12;
+  //   setTotalProfitAnnually(formatNumber(convertYearly));
+  // };
 
-  const calculateDSCR = () => {
-    if (!loanAmount || !interestRate || !amortizingPeriod) {
-      console.error("Missing required loan parameters.");
-      return null;
-    }
+  // const calculateDSCR = () => {
+  //   if (!loanAmount || !interestRate || !amortizingPeriod) {
+  //     console.error("Missing required loan parameters.");
+  //     return null;
+  //   }
 
-    // Convert interest rate from percentage if needed
-    let correctedInterestRate =
-      interestRate > 1 ? interestRate / 100 : interestRate;
-    let monthlyInterestRate = correctedInterestRate / 12;
+  //   // Convert interest rate from percentage if needed
+  //   let correctedInterestRate =
+  //     interestRate > 1 ? interestRate / 100 : interestRate;
+  //   let monthlyInterestRate = correctedInterestRate / 12;
 
-    let totalPayments = amortizingPeriod * 12;
+  //   let totalPayments = amortizingPeriod * 12;
 
-    const cleanLoanAmount = Number(String(loanAmount).replace(/,/g, ""));
-    if (isNaN(cleanLoanAmount) || cleanLoanAmount <= 0) {
-      console.error("Invalid loan amount:", loanAmount);
-      return null;
-    }
+  //   const cleanLoanAmount = Number(String(loanAmount).replace(/,/g, ""));
+  //   if (isNaN(cleanLoanAmount) || cleanLoanAmount <= 0) {
+  //     console.error("Invalid loan amount:", loanAmount);
+  //     return null;
+  //   }
 
-    let monthlyLoanPayment =
-      (cleanLoanAmount *
-        monthlyInterestRate *
-        Math.pow(1 + monthlyInterestRate, totalPayments)) /
-      (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
+  //   let monthlyLoanPayment =
+  //     (cleanLoanAmount *
+  //       monthlyInterestRate *
+  //       Math.pow(1 + monthlyInterestRate, totalPayments)) /
+  //     (Math.pow(1 + monthlyInterestRate, totalPayments) - 1);
 
-    if (isNaN(monthlyLoanPayment) || monthlyLoanPayment <= 0) {
-      console.error("Invalid monthly loan payment:", monthlyLoanPayment);
-      return null;
-    }
+  //   if (isNaN(monthlyLoanPayment) || monthlyLoanPayment <= 0) {
+  //     console.error("Invalid monthly loan payment:", monthlyLoanPayment);
+  //     return null;
+  //   }
 
-    // Check if required fields are missing
-    if (
-      monthlyRent === undefined ||
-      monthlyTaxes === undefined ||
-      monthlyInsurances === undefined ||
-      monthlyHOAFee === undefined ||
-      monthlyOtherExpenses === undefined ||
-      monthlyRent === "" ||
-      monthlyTaxes === "" ||
-      monthlyInsurances === "" ||
-      monthlyHOAFee === "" ||
-      monthlyOtherExpenses === ""
-    ) {
-      console.warn("Waiting for all required expense fields to be entered.");
-      return "";
-    }
+  //   // Check if required fields are missing
+  //   if (
+  //     monthlyRent === undefined ||
+  //     monthlyTaxes === undefined ||
+  //     monthlyInsurances === undefined ||
+  //     monthlyHOAFee === undefined ||
+  //     monthlyOtherExpenses === undefined ||
+  //     monthlyRent === "" ||
+  //     monthlyTaxes === "" ||
+  //     monthlyInsurances === "" ||
+  //     monthlyHOAFee === "" ||
+  //     monthlyOtherExpenses === ""
+  //   ) {
+  //     console.warn("Waiting for all required expense fields to be entered.");
+  //     return "";
+  //   }
 
-    // Parse inputs and ensure they are numbers
-    const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
-    const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
-    const cleanMonthlyInsurances = Number(
-      String(monthlyInsurances).replace(/,/g, "")
-    );
-    const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
-    const cleanMonthlyOtherExpenses = Number(
-      String(monthlyOtherExpenses).replace(/,/g, "")
-    );
+  //   // Parse inputs and ensure they are numbers
+  //   const cleanMonthlyRent = Number(String(monthlyRent).replace(/,/g, ""));
+  //   const cleanMonthlyTaxes = Number(String(monthlyTaxes).replace(/,/g, ""));
+  //   const cleanMonthlyInsurances = Number(
+  //     String(monthlyInsurances).replace(/,/g, "")
+  //   );
+  //   const cleanMonthlyHOAFee = Number(String(monthlyHOAFee).replace(/,/g, ""));
+  //   const cleanMonthlyOtherExpenses = Number(
+  //     String(monthlyOtherExpenses).replace(/,/g, "")
+  //   );
 
-    // Ensure all parsed values are valid numbers
-    if (
-      isNaN(cleanMonthlyRent) ||
-      isNaN(cleanMonthlyTaxes) ||
-      isNaN(cleanMonthlyInsurances) ||
-      isNaN(cleanMonthlyHOAFee) ||
-      isNaN(cleanMonthlyOtherExpenses)
-    ) {
-      console.warn("Invalid input detected. Waiting for valid values.");
-      return "";
-    }
+  //   // Ensure all parsed values are valid numbers
+  //   if (
+  //     isNaN(cleanMonthlyRent) ||
+  //     isNaN(cleanMonthlyTaxes) ||
+  //     isNaN(cleanMonthlyInsurances) ||
+  //     isNaN(cleanMonthlyHOAFee) ||
+  //     isNaN(cleanMonthlyOtherExpenses)
+  //   ) {
+  //     console.warn("Invalid input detected. Waiting for valid values.");
+  //     return "";
+  //   }
 
-    // Calculate Net Operating Income (NOI)
-    let noi =
-      cleanMonthlyRent -
-      (cleanMonthlyTaxes +
-        cleanMonthlyInsurances +
-        cleanMonthlyHOAFee +
-        cleanMonthlyOtherExpenses);
+  //   // Calculate Net Operating Income (NOI)
+  //   let noi =
+  //     cleanMonthlyRent -
+  //     (cleanMonthlyTaxes +
+  //       cleanMonthlyInsurances +
+  //       cleanMonthlyHOAFee +
+  //       cleanMonthlyOtherExpenses);
 
-    setNetOperatingIncome(noi);
+  //   setNetOperatingIncome(noi);
 
-    // Calculate DSCR
-    let dscr = noi / monthlyLoanPayment;
+  //   // Calculate DSCR
+  //   let dscr = noi / monthlyLoanPayment;
 
-    // Ensure DSCR is valid
-    if (isNaN(dscr) || dscr < 0) {
-      console.warn("Invalid DSCR calculation.");
-      return "";
-    }
+  //   // Ensure DSCR is valid
+  //   if (isNaN(dscr) || dscr < 0) {
+  //     console.warn("Invalid DSCR calculation.");
+  //     return "";
+  //   }
 
-    return dscr.toFixed(2);
-  };
+  //   return dscr.toFixed(2);
+  // };
 
-  const calculateMonthlyPayment = () => {
-    if (!loanAmount || loanAmount <= 0) return 0; // Ensure a valid loan amount
+  // const calculateMonthlyPayment = () => {
+  //   if (!loanAmount || loanAmount <= 0) return 0; // Ensure a valid loan amount
 
-    const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0; // Remove commas if present
-    const monthlyRate = interestRate / 100 / 12; // Convert annual rate to monthly decimal
-    const numPayments = loanTerm * 12; // Convert years to months
+  //   const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0; // Remove commas if present
+  //   const monthlyRate = interestRate / 100 / 12; // Convert annual rate to monthly decimal
+  //   const numPayments = loanTerm * 12; // Convert years to months
 
-    if (monthlyRate === 0) return (principal / numPayments).toFixed(2); // Handle zero-interest cases
+  //   if (monthlyRate === 0) return (principal / numPayments).toFixed(2); // Handle zero-interest cases
 
-    // Mortgage formula: P * (r / (1 - (1 + r) ^ -n))
-    const monthlyPayment =
-      principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments)));
+  //   // Mortgage formula: P * (r / (1 - (1 + r) ^ -n))
+  //   const monthlyPayment =
+  //     principal * (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments)));
 
-    return monthlyPayment.toFixed(2);
-  };
+  //   return monthlyPayment.toFixed(2);
+  // };
 
   // // Example usage:
   // const loanAmount = 500000; // Example: $500,000 loan
@@ -519,89 +519,7 @@ const OptimizerCalculator = () => {
     marginTop: 10,
   };
 
-  //   const calculateMinimumRent = () => {
-  //     if (!loanAmount || loanAmount <= 0) return 0;
-
-  //     const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0;
-  //     const monthlyRate = interestRate / 100 / 12;
-  //     const numPayments = loanTerm * 12;
-
-  //     const monthlyLoanPayment =
-  //       principal *
-  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
-
-  //     const totalOperatingExpensesMonthly =
-  //       parseFloat(monthlyTaxes || 0) +
-  //       parseFloat(monthlyInsurances || 0) +
-  //       parseFloat(monthlyHOAFee || 0) +
-  //       parseFloat(monthlyOtherExpenses || 0);
-
-  //     const minMonthlyRent =
-  //       1.1 * monthlyLoanPayment + totalOperatingExpensesMonthly;
-
-  //     setMonthlyRent(formatNumber(minMonthlyRent.toFixed(2)));
-
-  //     console.log("minimum monthly rent: ", monthlyRent);
-  //   };
-
-  //   const calculateMinimumEstimatedValue = () => {
-  //     if (!ltv || ltv <= 0) return 0;
-
-  //     const ltvPercentage = parseFloat(ltv) / 100;
-  //     const minEstimatedValue = loanAmount / ltvPercentage;
-
-  //     setEstimatedValue(formatNumber(minEstimatedValue.toFixed(2)));
-
-  //     console.log("minimum estimated value: ", estimatedValue);
-  //   };
-
-  //   const calculateMinimumRent = () => {
-  //     if (!loanAmount || loanAmount <= 0) return 0;
-
-  //     const principal = parseFloat(loanAmount.toString().replace(/,/g, "")) || 0;
-  //     const monthlyRate = interestRate / 100 / 12;
-  //     const numPayments = loanTerm * 12;
-
-  //     const monthlyLoanPayment =
-  //       principal *
-  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
-
-  //     const totalOperatingExpensesMonthly =
-  //       parseFloat(monthlyTaxes || 0) +
-  //       parseFloat(monthlyInsurances || 0) +
-  //       parseFloat(monthlyHOAFee || 0) +
-  //       parseFloat(monthlyOtherExpenses || 0);
-
-  //     const userDownPayment =
-  //       parseFloat(requiredDownPayment.toString().replace(/,/g, "")) || 0;
-  //     const adjustedLoanAmount = principal - userDownPayment;
-
-  //     const adjustedMonthlyLoanPayment =
-  //       adjustedLoanAmount *
-  //         (monthlyRate / (1 - Math.pow(1 + monthlyRate, -numPayments))) || 0;
-
-  //     const minMonthlyRent =
-  //       1.1 * adjustedMonthlyLoanPayment + totalOperatingExpensesMonthly;
-
-  //     setMonthlyRent(formatNumber(minMonthlyRent.toFixed(2)));
-
-  //     console.log("minimum monthly rent: ", monthlyRent);
-  //   };
-
-  //   const calculateMinimumEstimatedValue = () => {
-  //     if (!ltv || ltv <= 0) return 0;
-
-  //     const userDownPayment =
-  //       parseFloat(requiredDownPayment.toString().replace(/,/g, "")) || 0;
-  //     const adjustedLoanAmount = loanAmount - userDownPayment;
-
-  //     const ltvPercentage = parseFloat(ltv) / 100;
-  //     const minEstimatedValue = adjustedLoanAmount / ltvPercentage;
-
-  //     setEstimatedValue(formatNumber(minEstimatedValue.toFixed(2)));
-
-  //     console.log("minimum estimated value: ", estimatedValue);
-  //   };
+  ////////////////////////////////////////////////////////////////////////////////
 
   // User inputs: down payment and monthly operating expenses
   const [downPayment, setDownPayment] = useState("");
@@ -634,20 +552,94 @@ const OptimizerCalculator = () => {
   // console.log("cleanMonthlyHOAFees: ", cleanMonthlyHOAFees);
   // console.log("cleanMonthlyOtherExpensesCalc: ", cleanMonthlyOtherExpensesCalc);
 
-  // Static constants
-  const DSCR = 1.1;
-  const annualRate = 0.07; // 7% annual interest rate
-  const termMonths = 360; // 30-year loan
-  const monthlyRentYield = 0.005; // 0.5% of purchase price per month
+  // const [downPayment, setDownPayment] = useState(50000);
+  const [operatingExpenses, setOperatingExpenses] = useState(0); // add all monthly expenses up and set them to this
+  // const [interestRate, setInterestRate] = useState(7); // 7% interest rate
+  const [results, setResults] = useState([]);
 
-  // Calculate the monthly mortgage payment factor (MPF)
-  const calculateMortgagePaymentFactor = (annualRate, termMonths) => {
-    const monthlyRate = annualRate / 12;
+  const mortgagePayment = (principal, rate, years) => {
+    let monthlyRate = rate / 100 / 12;
+    let numPayments = years * 12;
+    if (rate === 0) return principal / numPayments;
     return (
-      (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) /
-      (Math.pow(1 + monthlyRate, termMonths) - 1)
+      (principal * monthlyRate) / (1 - Math.pow(1 + monthlyRate, -numPayments))
     );
   };
+
+  const calculateDSCR = () => {
+    console.log("hit inside of calculate func");
+
+    const loanTerm = 30;
+    const creditScores = [800, 780, 750, 720, 700, 680, 660, 640];
+    const ltvValues = {
+      800: 0.85,
+      780: 0.8,
+      750: 0.78,
+      720: 0.75,
+      700: 0.73,
+      680: 0.7,
+      660: 0.68,
+      640: 0.65,
+    };
+
+    const calculatedResults = creditScores.map((creditScore) => {
+      let ltv = ltvValues[creditScore] || 0.75;
+      let maxLoanAmount = downPayment / (1 - ltv);
+      let loanAmount = maxLoanAmount * ltv;
+      let purchasePrice = maxLoanAmount;
+      let monthlyMortgage = mortgagePayment(loanAmount, interestRate, loanTerm);
+      let minRequiredRent = (monthlyMortgage + operatingExpenses) * 1.1;
+      let dscr = minRequiredRent / (monthlyMortgage + operatingExpenses);
+
+      return {
+        creditScore,
+        ltv: (ltv * 100).toFixed(1) + "%",
+        purchasePrice: `$${purchasePrice.toFixed(2)}`,
+        loanAmount: `$${loanAmount.toFixed(2)}`,
+        monthlyMortgage: `$${monthlyMortgage.toFixed(2)}`,
+        operatingExpenses: `$${operatingExpenses.toFixed(2)}`,
+        minRequiredRent: `$${minRequiredRent.toFixed(2)}`,
+        dscr: dscr.toFixed(2),
+      };
+    });
+
+    setResults(calculatedResults);
+  };
+
+  // Trigger live calculation when inputs change
+  useEffect(() => {
+    // calculateLoan(); // Recalculate when any of the relevant values change
+    // setMonthlyInterestPaymentDisplay(calculateMonthlyPayment());
+    // setNetOperatingIncome(calculateNetOperatingIncome());
+    setDscrValue(calculateDSCR());
+  }, [
+    downPayment,
+    // monthlyRent,
+    monthlyTaxesCalc,
+    monthlyInsurance,
+    monthlyHOAFees,
+    monthlyOtherExpensesCalc,
+    selectedCreditScore,
+    // loanSubtype,
+    // estimatedValue,
+  ]);
+
+  //////////////////////////////////////////////////////////////////////////////// New
+
+  // // Static constants
+  // const DSCR = 1.1;
+  // const annualRate = 0.07; // 7% annual interest rate
+  // const termMonths = 360; // 30-year loan
+  // const monthlyRentYield = 0.005; // 0.5% of purchase price per month
+
+  // // Calculate the monthly mortgage payment factor (MPF)
+  // const calculateMortgagePaymentFactor = (annualRate, termMonths) => {
+  //   const monthlyRate = annualRate / 12;
+  //   return (
+  //     (monthlyRate * Math.pow(1 + monthlyRate, termMonths)) /
+  //     (Math.pow(1 + monthlyRate, termMonths) - 1)
+  //   );
+  // };
 
   // Given the down payment and operating expenses, compute:
   // - The maximum purchase price that meets the DSCR condition
@@ -661,41 +653,41 @@ const OptimizerCalculator = () => {
   //
   // And the required gross monthly rent income is:
   //   Gross Rent = DSCR * MPF * (Purchase Price - Down Payment) + TotalExpenses
-  const calculateValues = (DP, taxes, insurance, hoa, other) => {
-    const totalExpenses = taxes + insurance + hoa + other;
-    const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
+  // const calculateValues = (DP, taxes, insurance, hoa, other) => {
+  //   const totalExpenses = taxes + insurance + hoa + other;
+  //   const MPF = calculateMortgagePaymentFactor(annualRate, termMonths);
 
-    // Ensure that the down payment is sufficiently high so that the numerator is positive.
-    if (DSCR * MPF * DP <= totalExpenses) {
-      return {
-        error:
-          "Down Payment is too low to cover operating expenses with these parameters.",
-      };
-    }
+  //   // Ensure that the down payment is sufficiently high so that the numerator is positive.
+  //   if (DSCR * MPF * DP <= totalExpenses) {
+  //     return {
+  //       error:
+  //         "Down Payment is too low to cover operating expenses with these parameters.",
+  //     };
+  //   }
 
-    const purchasePrice =
-      (DSCR * MPF * DP - totalExpenses) / (DSCR * MPF - monthlyRentYield);
-    const monthlyRentNeeded = DSCR * MPF * (purchasePrice - DP) + totalExpenses;
+  //   const purchasePrice =
+  //     (DSCR * MPF * DP - totalExpenses) / (DSCR * MPF - monthlyRentYield);
+  //   const monthlyRentNeeded = DSCR * MPF * (purchasePrice - DP) + totalExpenses;
 
-    return { purchasePrice, monthlyRentNeeded };
-  };
+  //   return { purchasePrice, monthlyRentNeeded };
+  // };
 
-  let results = null;
-  if (
-    cleanDownPayment !== "" &&
-    cleanMonthlyTaxesCalc !== "" &&
-    cleanMonthlyInsurance !== "" &&
-    cleanMonthlyHOAFees !== "" &&
-    cleanMonthlyOtherExpensesCalc !== ""
-  ) {
-    results = calculateValues(
-      parseFloat(cleanDownPayment),
-      parseFloat(cleanMonthlyTaxesCalc),
-      parseFloat(cleanMonthlyInsurance),
-      parseFloat(cleanMonthlyHOAFees),
-      parseFloat(cleanMonthlyOtherExpensesCalc)
-    );
-  }
+  // let results = null;
+  // if (
+  //   cleanDownPayment !== "" &&
+  //   cleanMonthlyTaxesCalc !== "" &&
+  //   cleanMonthlyInsurance !== "" &&
+  //   cleanMonthlyHOAFees !== "" &&
+  //   cleanMonthlyOtherExpensesCalc !== ""
+  // ) {
+  //   results = calculateValues(
+  //     parseFloat(cleanDownPayment),
+  //     parseFloat(cleanMonthlyTaxesCalc),
+  //     parseFloat(cleanMonthlyInsurance),
+  //     parseFloat(cleanMonthlyHOAFees),
+  //     parseFloat(cleanMonthlyOtherExpensesCalc)
+  //   );
+  // }
 
   return (
     <div className="pt-12" style={{ marginBottom: 30 }}>
@@ -956,7 +948,7 @@ const OptimizerCalculator = () => {
                   />
                 </FormControl>
               </Grid> */}
-              {/* <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -992,8 +984,8 @@ const OptimizerCalculator = () => {
                     <MenuItem value={670}> 660 - 679 </MenuItem>
                   </Select>
                 </FormControl>
-              </Grid> */}
-              {/* <Grid item xs={12} sm={6}>
+              </Grid>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1028,7 +1020,7 @@ const OptimizerCalculator = () => {
                     variant="outlined"
                   />
                 </FormControl>
-              </Grid> */}
+              </Grid>
               <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
                   <Typography
@@ -1098,7 +1090,7 @@ const OptimizerCalculator = () => {
                 </FormControl>
               </Grid>
 
-              {/* <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={12}>
                 <FormControl fullWidth>
                   <Typography
                     color="black"
@@ -1134,7 +1126,7 @@ const OptimizerCalculator = () => {
                     disabled
                   />
                 </FormControl>
-              </Grid> */}
+              </Grid>
 
               {/* <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
