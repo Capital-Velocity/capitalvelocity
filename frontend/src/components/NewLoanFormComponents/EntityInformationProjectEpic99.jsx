@@ -760,73 +760,88 @@ function EntityInformationProjectEpic99({
         <Modal open={openModal} onClose={() => setOpenModal(false)}>
           <Box sx={style}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) => setOwnersName(e.target.value)}
-                  label="Owner's Legal Name"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) => setTitle(e.target.value)}
-                  label="Title"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  variant="outlined"
-                  InputProps={{
-                    startAdornment: "%",
-                  }}
-                  onChange={(e) => setEstimateasvalue(e.target.value)}
-                  fullWidth
-                  label="Estimated As Is Value "
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) => setTin(e.target.value)}
-                  label="TIN (SSN/EIN)"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                <TextField
-                  fullWidth
-                  size="large"
-                  InputLabelProps={{
-                    style: { fontSize: 15, fontWeight: 100 },
-                  }}
-                  onChange={(e) => setAddress(e.target.value)}
-                  label="Address"
-                  variant="outlined"
-                />
-              </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={6}>
                 <FormControl fullWidth>
-                  <InputLabel
-                    style={{ fontSize: 15, fontWeight: 100 }}
-                    id="demo-simple-select-label"
-                  >
+                  <Typography type="p" color="black">
+                    Owner's Legal Name
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setOwnersName(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Title
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Estimated As-Is Value
+                  </Typography>{" "}
+                  <TextField
+                    variant="outlined"
+                    InputProps={{
+                      startAdornment: "%",
+                    }}
+                    onChange={(e) => setEstimateasvalue(e.target.value)}
+                    fullWidth
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    TIN (SSN/EIN)
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setTin(e.target.value)}
+                    label=""
+                    variant="outlined"
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Address
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
                     Program Type
-                  </InputLabel>
+                  </Typography>{" "}
                   <Select
                     InputLabelProps={{
                       style: { fontSize: 15, fontWeight: 100 },
@@ -842,8 +857,7 @@ function EntityInformationProjectEpic99({
                     ))}
                   </Select>
                 </FormControl>
-              </Grid>
-
+              </Grid>{" "}
               <Button
                 variant="contained"
                 style={{
