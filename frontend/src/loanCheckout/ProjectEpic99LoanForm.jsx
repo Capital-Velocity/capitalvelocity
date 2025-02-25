@@ -186,7 +186,7 @@ export default function ProjectEpic99LoanForm(props) {
         );
       case 5:
         return (
-          <BusinessUpload
+          <SBA26
             formData={formData}
             setFormData={setFormData}
             fieldErrors={fieldErrors}
