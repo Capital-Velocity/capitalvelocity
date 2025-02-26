@@ -182,10 +182,13 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     overflowY: "auto", // Allows scrolling inside modal if content overflows
   };
   const handleDeleteRow = (index) => {
-    const updatedProperties = selectedProperties.filter(
-      (property, i) => i !== index
-    );
+    const updatedProperties = selectedProperties.filter((_, i) => i !== index);
+
     setSelectedProperties(updatedProperties);
+    setFormData({
+      ...formData,
+      notesPayable: updatedProperties,
+    });
   };
 
   const handleAddProperty = () => {
@@ -249,10 +252,13 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
   };
 
   const handleDeleteRowStocksBonds = (index) => {
-    const updatedPropertiesStocksBonds = selectedPropertiesStocksBonds.filter(
-      (property, i) => i !== index
-    );
-    setSelectedPropertiesStocksBonds(updatedPropertiesStocksBonds);
+    const updatedProperties = selectedProperties.filter((_, i) => i !== index);
+
+    setSelectedPropertiesStocksBonds(updatedProperties);
+    setFormData({
+      ...formData,
+      stocksAndBonds: updatedProperties,
+    });
   };
 
   const getTotalPropertiesStocksBonds = () => {
@@ -321,10 +327,13 @@ function FinanceProjectEpic99({ formData, setFormData, fieldErrors }) {
     p: 4,
   };
   const handleDeleteRowPersonal = (index) => {
-    const updatedPropertiesPersonal = selectedPropertiesPersonal.filter(
-      (property, i) => i !== index
-    );
-    setSelectedPropertiesPersonal(updatedPropertiesPersonal);
+    const updatedProperties = selectedProperties.filter((_, i) => i !== index);
+
+    setSelectedPropertiesPersonal(updatedProperties);
+    setFormData({
+      ...formData,
+      realEstate: updatedProperties,
+    });
   };
   const getTotalPropertiesPersonal = () => {
     return selectedPropertiesPersonal.reduce(

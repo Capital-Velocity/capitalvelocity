@@ -126,10 +126,13 @@ function BorrowerInformationProjectEpic99({
   };
 
   const handleDeleteRow = (index) => {
-    const updatedProperties = selectedProperties.filter(
-      (property, i) => i !== index
-    );
+    const updatedProperties = selectedProperties.filter((_, i) => i !== index);
+
     setSelectedProperties(updatedProperties);
+    setFormData({
+      ...formData,
+      ownershipOfApplicant: updatedProperties,
+    });
   };
 
   const getTotalProperties = () => {
