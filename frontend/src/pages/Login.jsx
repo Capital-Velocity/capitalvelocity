@@ -70,7 +70,10 @@ const LoginCover = () => {
         Cookies.set("isAdmin", resAdmin);
         Cookies.set("JWT", lendioJWT);
         Cookies.set("JWT_exp", lendioJwtExpiresIn);
-        window.location.href = "/loan-form-realestate";
+        // window.location.href = "/loan-form-realestate";
+        setTimeout(() => {
+          window.location.href = redirect; // Full reload ensures updated cookies
+        }, 100);
       })
       .catch((error) => {
         // Handle any errors here (e.g., show an error message)
@@ -78,11 +81,11 @@ const LoginCover = () => {
         toast.error("Error Logging In. Try again Later.");
       });
   };
-  useEffect(() => {
-    if (userInfo) {
-      navigate(redirect);
-    }
-  }, [navigate, redirect, userInfo]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //     navigate(redirect);
+  //   }
+  // }, [navigate, redirect, userInfo]);
 
   const theme = useTheme();
   return (

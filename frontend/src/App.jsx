@@ -89,10 +89,11 @@ function App() {
             firstnameCookie ? (
               <ProjectEpic99LoanForm />
             ) : (
-              <Navigate to="/register" />
+              <Navigate to={`/login?redirect=/project99`} replace />
             )
           }
         />
+
         <Route
           path="/loan-form-realestate-fixandflip"
           element={
