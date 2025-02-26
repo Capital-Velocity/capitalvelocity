@@ -355,6 +355,7 @@ project99Router.post(
         motivation: req.body.motivation,
         netInvestmentIncome: req.body.netInvestmentIncome,
         netInvestmentIncomeLiab: req.body.netInvestmentIncomeLiab,
+        notesPayable: req.body.notesPayable,
         notesReceivable: req.body.notesReceivable,
         operatingBusinessLegalName: req.body.operatingBusinessLegalName,
         otherAssets: req.body.otherAssets,

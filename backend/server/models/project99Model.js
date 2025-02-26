@@ -103,6 +103,7 @@ const project99Schema = new mongoose.Schema(
     motivation: { type: String },
     netInvestmentIncome: { type: String },
     netInvestmentIncomeLiab: { type: String },
+    notesPayable: { type: [notesPayableSchema] },
     notesReceivable: { type: String },
     operatingBusinessLegalName: { type: String },
     otherAssets: { type: String },
