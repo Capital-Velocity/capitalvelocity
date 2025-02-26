@@ -8,12 +8,27 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import Container from "../../screens/Container";
 import CheckoutSteps from "../CheckoutSteps";
-import { Divider } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Divider,
+  Modal,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import FormHelperText from "@mui/material/FormHelperText";
 import Slider from "@mui/material/Slider";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
+import AddIcon from "@mui/icons-material/Add";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function BorrowerInformationProjectEpic99({
   formData,
@@ -23,7 +38,20 @@ function BorrowerInformationProjectEpic99({
   const [selectedOption, setSelectedOption] = useState("no");
   const [sliderValue, setSliderValue] = useState(1);
   const [sliderValue2, setSliderValue2] = useState(1);
-
+  const [selectedProperties, setSelectedProperties] = useState(
+    formData.ownershipOfApplicant || []
+  );
+  const [openModal, setOpenModal] = useState(false);
+  const propertyTypes = ["ESOP", "401K", "COOP"];
+  const [ownersName, setOwnersName] = useState("");
+  const [title, setTitle] = useState("");
+  const [estimateasvalue, setEstimateasvalue] = useState("");
+  const [address, setAddress] = useState("");
+  const [tin, setTin] = useState("");
+  const [programType, setProgramType] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [numProperties, setNumProperties] = useState(0);
+  const [estimatedValue, setEstimatedValue] = useState(0);
   const marks = [
     { value: 1, label: "1" },
     { value: 2, label: "2" },
@@ -80,6 +108,71 @@ function BorrowerInformationProjectEpic99({
       ...formData,
       [fieldName]: event.target.value,
     });
+  };
+
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "90vw", // Responsive width
+    maxWidth: 1000, // Max width for larger screens
+    height: "auto", // Allow height to adjust based on content
+    maxHeight: "90vh", // Prevent modal from overflowing on smaller screens
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    p: 4,
+    overflowY: "auto", // Allows scrolling inside modal if content overflows
+  };
+
+  const handleDeleteRow = (index) => {
+    const updatedProperties = selectedProperties.filter(
+      (property, i) => i !== index
+    );
+    setSelectedProperties(updatedProperties);
+  };
+
+  const getTotalProperties = () => {
+    return selectedProperties.reduce(
+      (total, property) => total + Number(property.numProperties),
+      0
+    );
+  };
+
+  const handleAddProperty = () => {
+    const newProperty = {
+      ownersName,
+      title,
+      estimateasvalue,
+      address,
+      programType,
+      tin,
+    };
+
+    // Ensure ownershipOfApplicant is an array before spreading
+    const updatedFormData = {
+      ...formData,
+      ownershipOfApplicant: [
+        ...(Array.isArray(formData.ownershipOfApplicant)
+          ? formData.ownershipOfApplicant
+          : []),
+        newProperty,
+      ],
+    };
+
+    setFormData(updatedFormData);
+    setSelectedProperties([...selectedProperties, newProperty]);
+
+    setPropertyType("");
+    setOwnersName("");
+    setTitle("");
+    setEstimateasvalue("");
+    setAddress("");
+    setTin("");
+    setProgramType("");
+    setNumProperties(0);
+    setEstimatedValue(0);
+    setOpenModal(false);
   };
 
   return (
@@ -1074,7 +1167,190 @@ function BorrowerInformationProjectEpic99({
               </FormHelperText>
             )}
           </Grid>
+
+          <Grid
+            item
+            sm={12}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button
+              variant="contained"
+              color="primary"
+              style={{
+                marginTop: 10,
+                backgroundColor: "#498dd6",
+              }}
+              startIcon={<AddIcon />}
+              onClick={() => setOpenModal(true)}
+            >
+              Add Partner
+            </Button>
+          </Grid>
+
+          <Grid item xs={12} sm={12} style={{ marginBottom: 10 }}>
+            <Paper style={{ padding: 10, overflowX: "auto" }}>
+              <TableContainer sx={{ width: "100%", overflowX: "auto" }}>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Owner's Legal Name</TableCell>
+                      <TableCell>Title</TableCell>
+                      <TableCell>% Owned</TableCell>
+                      <TableCell>TIN (SSN/EIN)</TableCell>
+                      <TableCell>Address</TableCell>
+                      <TableCell>Stock Ownership Plan</TableCell>
+                      <TableCell>Action</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {selectedProperties.length === 0 ? (
+                      <TableRow>
+                        <TableCell colSpan={7} align="center">
+                          No Rows to Show
+                        </TableCell>
+                      </TableRow>
+                    ) : (
+                      selectedProperties.map((property, index) => (
+                        <TableRow key={index}>
+                          <TableCell>{property.ownersName}</TableCell>
+                          <TableCell>{property.title}</TableCell>
+                          <TableCell>{property.estimateasvalue}</TableCell>
+                          <TableCell>{property.tin}</TableCell>
+                          <TableCell>{property.address}</TableCell>
+                          <TableCell>{property.programType}</TableCell>
+                          <TableCell>
+                            <IconButton onClick={() => handleDeleteRow(index)}>
+                              <DeleteIcon />
+                            </IconButton>
+                          </TableCell>
+                        </TableRow>
+                      ))
+                    )}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Paper>
+          </Grid>
         </Grid>
+        <Modal open={openModal} onClose={() => setOpenModal(false)}>
+          <Box sx={style}>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Owner's Legal Name
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setOwnersName(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Title
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Estimated As-Is Value
+                  </Typography>{" "}
+                  <TextField
+                    variant="outlined"
+                    InputProps={{
+                      startAdornment: "%",
+                    }}
+                    onChange={(e) => setEstimateasvalue(e.target.value)}
+                    fullWidth
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    TIN (SSN/EIN)
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setTin(e.target.value)}
+                    label=""
+                    variant="outlined"
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Address
+                  </Typography>{" "}
+                  <TextField
+                    fullWidth
+                    size="large"
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </FormControl>
+              </Grid>{" "}
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+                  <Typography type="p" color="black">
+                    Program Type
+                  </Typography>{" "}
+                  <Select
+                    InputLabelProps={{
+                      style: { fontSize: 15, fontWeight: 100 },
+                    }}
+                    onChange={(e) => setProgramType(e.target.value)}
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                  >
+                    {propertyTypes.map((type) => (
+                      <MenuItem key={type} value={type}>
+                        {type}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>{" "}
+              <Button
+                variant="contained"
+                style={{
+                  backgroundColor: "#498dd6",
+                  paddingBottom: 10,
+                  marginTop: 10,
+                  marginLeft: 10,
+                }}
+                onClick={handleAddProperty}
+              >
+                Add
+              </Button>
+            </Grid>
+          </Box>
+        </Modal>
       </Container>
     </div>
   );
