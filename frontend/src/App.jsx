@@ -45,7 +45,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/test" element={<LoanForm />} />
+        <Route path="/smallbusinessloan" element={<ROKForm />} />
         <Route path="/ROKAffiliateTest" element={<ROKAffiliateForm />} />
         <Route path="/becomePartner" element={<BecomePartner />} />
         <Route path="/contactUs" element={<Contact />} />
