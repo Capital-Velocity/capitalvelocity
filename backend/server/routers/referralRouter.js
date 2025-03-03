@@ -92,6 +92,8 @@ referralRouter.post(
       const createdReferral = await referral.save();
 
       // Now send an email to them showing them their referral code
+      const referralSignupLink = `https://capitalvelocity.com/register?ref=${referralCode}`;
+
       const emailData = {
         from: `info@capitalvelocity.com`,
         to: email, // You can use a default email if none is provided
@@ -137,15 +139,6 @@ referralRouter.post(
                   border-radius: 4px;
                   text-align: center;
                 }
-                .social-icons {
-                  text-align: center;
-                  margin: 20px 0;
-                }
-                .social-icons img {
-                  width: 30px;
-                  margin: 0 10px;
-                  cursor: pointer;
-                }
                 .footer {
                   text-align: center;
                   font-size: 12px;
@@ -154,16 +147,15 @@ referralRouter.post(
               </style>
             </head>
             <body>
-    
               <div class="email-container">
                 <div class="content">
-                  <!-- Address Details Section -->
-                  <h3>Thank you for becoming a Capital Velocity Partner! Listed below is your referral code for your usage.</h3>
+                  <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code and link for signups.</h3>
                   <p><strong>Referral Code:</strong> ${
                     referralCode || "Not Provided"
                   }</p>
-
-    
+                  <p><strong>Link for Referred Signups:</strong> 
+                    <a href="${referralSignupLink}" target="_blank">${referralSignupLink}</a>
+                  </p>
                 </div>
                 <div class="footer">
                   <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" style="width: 200px; display: block; margin: 0 auto;">
