@@ -60,7 +60,9 @@ const BecomePartner = () => {
         );
 
         console.log(response);
-        toast.success("Thank you, we will reach out shortly");
+        toast.success(
+          "Thank you, please check your email for further instructions."
+        );
       } catch (error) {
         if (error.response && error.response.status === 400) {
           toast.error(error.response.data.message); // Display "Email already registered" error
@@ -114,18 +116,18 @@ const BecomePartner = () => {
                       Become a Partner
                     </Typography>
 
-                    <Typography
+                    {/* <Typography
                       variant="h4"
                       sx={{
                         fontWeight: 700,
                       }}
                     >
                       Apply here
-                    </Typography>
-                    <Typography color="text.secondary">
+                    </Typography> */}
+                    {/* <Typography color="text.secondary">
                       We will reach out with more details once we receive your
                       application
-                    </Typography>
+                    </Typography> */}
                   </Box>
                   <form onSubmit={formik.handleSubmit}>
                     <Grid container spacing={4}>
