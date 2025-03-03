@@ -116,18 +116,18 @@ const BecomePartner = () => {
                       Become a Partner
                     </Typography>
 
-                    {/* <Typography
+                    <Typography
                       variant="h4"
                       sx={{
                         fontWeight: 700,
                       }}
                     >
                       Apply here
-                    </Typography> */}
-                    {/* <Typography color="text.secondary">
+                    </Typography>
+                    <Typography color="text.secondary">
                       We will reach out with more details once we receive your
                       application
-                    </Typography> */}
+                    </Typography>
                   </Box>
                   <form onSubmit={formik.handleSubmit}>
                     <Grid container spacing={4}>
@@ -323,8 +323,76 @@ const BecomePartner = () => {
                 </Box>
               </Container>
             </Box>
+            <Box
+              sx={{
+                flex: { xs: "0 0 100%", md: "0 0 50%" },
+                position: "relative",
+                maxWidth: { xs: "100%", md: "50%" },
+                order: { xs: 1, md: 2 },
+                minHeight: { xs: "auto", md: "calc(100vh - 58px)" },
+              }}
+            >
+              <Box
+                sx={{
+                  width: { xs: 1, md: "50vw" },
+                  height: "100%",
+                  position: "relative",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: "100%",
+                    height: "100%",
+                    overflow: "hidden",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      overflow: "hidden",
+                      left: "0%",
+                      width: 1,
+                      height: 1,
+                      position: { xs: "relative", md: "absolute" },
+                      clipPath: {
+                        xs: "none",
+                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
+                      },
+                      shapeOutside: {
+                        xs: "none",
+                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
+                      },
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        height: { xs: "auto", md: 1 },
+                        "& img": {
+                          objectFit: "cover",
+                        },
+                        "& .lazy-load-image-loaded": {
+                          height: 1,
+                          width: 1,
+                        },
+                      }}
+                    >
+                      <Box
+                        component={LazyLoadImage}
+                        src={
+                          "https://images.pexels.com/photos/16282306/pexels-photo-16282306/free-photo-of-a-person-using-a-calculator.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        }
+                        height={{ xs: "auto", md: 1 }}
+                        maxHeight={{ xs: 300, md: 1 }}
+                        width={1}
+                        maxWidth={1}
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
           </Box>
         </Container>
+        {/* <ShortFooter /> */}
       </Box>
     </div>
   );
