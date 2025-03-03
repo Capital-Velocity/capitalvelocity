@@ -218,10 +218,19 @@ const LoginCover = () => {
                       Welcome back
                     </Typography> */}
                     <Typography color="text.secondary">
-                      Create a free account now—your essential first step toward
-                      securing the funding you need. Unlock exclusive features
-                      and take control of your financial future. Next, complete
-                      your loan application in just a few easy steps!
+                      <strong>Create a Free Account Now </strong> — your
+                      essential first step toward securing the funding you need.
+                      Unlock exclusive features and take control of your
+                      financial future. Next, complete your loan application in
+                      just a few easy steps!
+                    </Typography>
+                    <br />
+                    <Typography color="text.secondary">
+                      <strong>Have a Referral Code?</strong> Enter it during
+                      sign-up to take advantage of our referral program. When
+                      you secure a loan through our platform, the person that
+                      referred you will receive exclusive benefits. Start now
+                      and make the most of your connections!
                     </Typography>
                     {/* Other registration form fields */}
                   </Box>
