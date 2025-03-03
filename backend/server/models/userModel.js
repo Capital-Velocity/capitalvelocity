@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema(
     lendioJWT: { type: String },
     referralCode: { type: String },
     lendioJWTExpires: { type: Date },
+    codeOfPersonWhoReferred: { type: String }, // New field to store referral code
   },
   {
     timestamps: true,

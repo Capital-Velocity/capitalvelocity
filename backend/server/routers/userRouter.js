@@ -3,6 +3,7 @@ import expressAsyncHandler from "express-async-handler";
 import bcrypt from "bcryptjs";
 import axios from "axios";
 import User from "../models/userModel.js";
+import Referral from "../models/referralModel.js";
 
 const userRouter = express.Router();
 
@@ -151,12 +152,20 @@ userRouter.post(
   })
 );
 
-// // Register route (without the email check)
 // userRouter.post(
 //   "/register",
 //   expressAsyncHandler(async (req, res) => {
 //     try {
 //       const { firstName, lastName, phone, email, password } = req.body;
+
+//       // Check if the user already exists
+//       const existingUser = await User.findOne({ email });
+//       if (existingUser) {
+//         return res
+//           .status(400)
+//           .json({ message: "Email is already registered." });
+//       }
+
 //       const hashedPassword = bcrypt.hashSync(password, 8);
 
 //       const user = new User({
@@ -203,7 +212,8 @@ userRouter.post(
   "/register",
   expressAsyncHandler(async (req, res) => {
     try {
-      const { firstName, lastName, phone, email, password } = req.body;
+      const { firstName, lastName, phone, email, password, referralCode } =
+        req.body;
 
       // Check if the user already exists
       const existingUser = await User.findOne({ email });
@@ -211,6 +221,17 @@ userRouter.post(
         return res
           .status(400)
           .json({ message: "Email is already registered." });
+      }
+
+      let codeOfPersonWhoReferred = null;
+
+      // If referralCode is provided, check if it exists in the Referral collection
+      if (referralCode) {
+        const referrer = await Referral.findOne({ referralCode });
+        if (!referrer) {
+          return res.status(400).json({ message: "Invalid referral code." });
+        }
+        codeOfPersonWhoReferred = referralCode; // Save valid referral code
       }
 
       const hashedPassword = bcrypt.hashSync(password, 8);
@@ -221,6 +242,7 @@ userRouter.post(
         phone,
         email,
         password: hashedPassword,
+        codeOfPersonWhoReferred, // Save referral code
       });
 
       const createdUser = await user.save();
@@ -239,6 +261,7 @@ userRouter.post(
 
       const responseData = {
         resFirst: createdUser.firstName,
+        resLast: createdUser.lastName,
         resEmail: createdUser.email,
         resID: createdUser._id,
         lendioJWT: user.lendioJWT,

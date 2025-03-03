@@ -25,27 +25,6 @@ const LoginCover = () => {
   const onFailure = (res) => {
     console.log("LOGIN FAILED! res", res);
   };
-  const { referralCode } = useParams();
-  const [isValidReferral, setIsValidReferral] = useState(false);
-  const [validCode, setValidCode] = useState(false);
-
-  useEffect(() => {
-    // Make an API request to check if the referral code exists in the database
-    axios
-      .get(
-        `https://52.165.80.134:4000/api/referrals/check-referral-code/${referralCode}`
-      )
-      .then((response) => {
-        console.log(response);
-        setIsValidReferral(response.data.isValid);
-        if (response.data.isValid == true) {
-          setValidCode(referralCode);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [referralCode]);
 
   const formik = useFormik({
     initialValues: {
@@ -55,6 +34,7 @@ const LoginCover = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      referralCode: "", // Add referral code
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First Name is required"),
@@ -73,6 +53,7 @@ const LoginCover = () => {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password"), null], "Passwords must match")
         .required("Confirm Password is required"),
+      referralCode: Yup.string(), // Optional field
     }),
     onSubmit: async (values, { setSubmitting, setErrors }) => {
       const dataToSend = {
@@ -81,7 +62,7 @@ const LoginCover = () => {
         phone: values.phone,
         email: values.email,
         password: values.password,
-        referralCode: validCode,
+        referralCode: values.referralCode, // Send referral code
       };
 
       try {
@@ -100,7 +81,6 @@ const LoginCover = () => {
           lendioJwtExpiresIn,
         } = response.data;
 
-        // Save the token and user data as cookies
         Cookies.set("firstName", resFirst);
         Cookies.set("lastName", resLast);
         Cookies.set("email", resEmail);
@@ -112,18 +92,8 @@ const LoginCover = () => {
         window.location.href = "/loan-form-realestate";
       } catch (error) {
         if (error.response && error.response.data) {
-          const errorMessage = error.response.data.message;
-
-          // Check for the specific email already registered error message
-          if (errorMessage === "Email is already registered.") {
-            toast.error(
-              "The email address is already registered. Please visit the login page to access your account."
-            );
-          } else {
-            toast.error(errorMessage || "An error occurred.");
-          }
-
-          setErrors({ email: errorMessage });
+          toast.error(error.response.data.message || "An error occurred.");
+          setErrors({ email: error.response.data.message });
         } else {
           toast.error("Something went wrong. Please try again.");
         }
@@ -132,6 +102,7 @@ const LoginCover = () => {
       }
     },
   });
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setshowConfirmPassword] = useState(false);
   const handlePasswordVisibility = () => {
@@ -235,11 +206,6 @@ const LoginCover = () => {
                       and take control of your financial future. Next, complete
                       your loan application in just a few easy steps!
                     </Typography>
-                    {isValidReferral && (
-                      <p style={{ color: "darkgreen" }}>
-                        Referral Code: {referralCode}
-                      </p>
-                    )}
                     {/* Other registration form fields */}
                   </Box>
                   <form onSubmit={formik.handleSubmit}>
@@ -284,7 +250,6 @@ const LoginCover = () => {
                           }
                         />
                       </Grid>
-
                       <Grid item sm={6} xs={12}>
                         <TextField
                           label="Phone"
@@ -316,12 +281,12 @@ const LoginCover = () => {
                           onChange={formik.handleChange}
                           onBlur={formik.handleBlur}
                           value={formik.values.email}
-                          error={
-                            formik.touched.email && Boolean(formik.errors.email)
-                          }
-                          helperText={
-                            formik.touched.email && formik.errors.email
-                          }
+                          // error={
+                          //   formik.touched.email && Boolean(formik.errors.email)
+                          // }
+                          // helperText={
+                          //   formik.touched.email && formik.errors.email
+                          // }
                         />
                       </Grid>
                       <Grid item sm={6} xs={12}>
@@ -364,6 +329,27 @@ const LoginCover = () => {
                           helperText={
                             formik.touched.confirmPassword &&
                             formik.errors.confirmPassword
+                          }
+                        />
+                      </Grid>
+                      <Grid item sm={12} xs={12}>
+                        <TextField
+                          label="Referral Code (Optional)"
+                          variant="outlined"
+                          fullWidth
+                          margin="normal"
+                          id="referralCode"
+                          name="referralCode"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.referralCode}
+                          error={
+                            formik.touched.referralCode &&
+                            Boolean(formik.errors.referralCode)
+                          }
+                          helperText={
+                            formik.touched.referralCode &&
+                            formik.errors.referralCode
                           }
                         />
                       </Grid>
