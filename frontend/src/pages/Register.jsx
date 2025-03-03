@@ -466,7 +466,6 @@ const LoginCover = () => {
                     >
                       <Box
                         component={LazyLoadImage}
-                        effect="blur"
                         src={
                           "https://images.pexels.com/photos/16282306/pexels-photo-16282306/free-photo-of-a-person-using-a-calculator.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                         }
