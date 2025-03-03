@@ -12,6 +12,11 @@ import "react-toastify/dist/ReactToastify.css";
 import * as Yup from "yup";
 import ShortFooter from "../components/Footer2";
 import Container from "../screens/Container";
+const generateReferralCode = (firstName) => {
+  const randomNumbers = Math.floor(10000 + Math.random() * 90000); // Generates 5 random digits
+  return `${firstName.toUpperCase()}${randomNumbers}`;
+};
+
 const BecomePartner = () => {
   const formik = useFormik({
     initialValues: {
@@ -23,15 +28,13 @@ const BecomePartner = () => {
       state: "",
       phone: "",
       email: "",
-      referralCode: "",
       youtubeLink: "",
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First Name is required"),
       lastName: Yup.string().required("Last Name is required"),
-      homeAddress: Yup.string().required("Youtube Link is required"),
+      homeAddress: Yup.string().required("Home Address is required"),
       youtubeLink: Yup.string().required("Youtube Link is required"),
-      referralCode: Yup.string().required("Referral is required"),
       city: Yup.string().required("City is required"),
       zipCode: Yup.string().required("Zip Code is required"),
       state: Yup.string().required("State is required"),
@@ -40,52 +43,35 @@ const BecomePartner = () => {
         .email("Invalid email format")
         .required("Email is required"),
     }),
-    onSubmit: (values) => {
-      // Send a POST request with form data to a server endpoint
+    onSubmit: async (values) => {
+      let referralCode = generateReferralCode(values.firstName);
+
       const dataToSend = {
-        firstName: values.firstName,
-        lastName: values.lastName,
-        homeAddress: values.homeAddress,
-        city: values.city,
-        zipCode: values.zipCode,
-        state: values.state,
-        phone: values.phone,
-        email: values.email,
-        referralCode: values.referralCode,
-        youtubeLink: values.youtubeLink,
-        // Add more fields you want to include here
+        ...values,
+        referralCode,
       };
-      console.log(dataToSend);
-      axios
-        .post(
+
+      console.log("dataToSend: ", dataToSend);
+
+      try {
+        const response = await axios.post(
           "https://52.165.80.134:4000/api/referrals/addReferral",
           dataToSend
-        )
-        .then((response) => {
-          console.log(response);
-          window.location.href = "/partner-success";
-          toast.sucess("Thank you, we will reach out shortly");
-        })
-        .catch((error) => {
-          toast.error("Error in form. Try again Later.");
-          console.error(error);
-        });
+        );
+
+        console.log(response);
+        toast.success("Thank you, we will reach out shortly");
+      } catch (error) {
+        if (error.response && error.response.status === 400) {
+          toast.error(error.response.data.message); // Display "Email already registered" error
+        } else {
+          toast.error("Error in form submission. Try again later.");
+        }
+        console.error(error);
+      }
     },
   });
 
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const clientId =
-    "149609675442-u05v44gi07gl7o9hj3tba534dqaa0mbi.apps.googleusercontent.com";
-  const { search } = useLocation();
-  const redirectInUrl = new URLSearchParams(search).get("redirect");
-
-  const userSignin = useSelector((state) => state.userSignin);
-
-  const dispatch = useDispatch();
-
-  const theme = useTheme();
   return (
     <div>
       <ToastContainer />
@@ -320,130 +306,23 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
-                        <TextField
-                          label="Ideal Referral Code"
-                          variant="outlined"
-                          fullWidth
-                          margin="normal"
-                          id="referralCode"
-                          name="referralCode"
-                          onChange={formik.handleChange}
-                          onBlur={formik.handleBlur}
-                          value={formik.values.referralCode}
-                          error={
-                            formik.touched.referralCode &&
-                            Boolean(formik.errors.referralCode)
-                          }
-                          helperText={
-                            formik.touched.referralCode &&
-                            formik.errors.referralCode
-                          }
-                        />
-                      </Grid>
-                      {/*Another Field  */}
-                      <Grid item container sm={12}>
-                        <Box
-                          display="flex"
-                          flexDirection={{ xs: "column", sm: "row" }}
-                          alignItems={{ xs: "stretched", sm: "center" }}
-                          justifyContent={"space-between"}
-                          width={1}
-                          maxWidth={600}
-                          margin={"0 auto"}
+                      <Grid item sm={12}>
+                        <Button
+                          style={{ backgroundColor: "#498dd6" }}
+                          size={"large"}
+                          variant={"contained"}
+                          type={"submit"}
                         >
-                          <Button
-                            style={{ backgroundColor: "#498dd6" }}
-                            size={"large"}
-                            variant={"contained"}
-                            type={"submit"}
-                          >
-                            Apply
-                          </Button>
-                        </Box>
+                          Apply
+                        </Button>
                       </Grid>
                     </Grid>
                   </form>
                 </Box>
               </Container>
             </Box>
-            <Box
-              sx={{
-                flex: { xs: "0 0 100%", md: "0 0 50%" },
-                position: "relative",
-                maxWidth: { xs: "100%", md: "50%" },
-                order: { xs: 1, md: 2 },
-                minHeight: { xs: "auto", md: "calc(100vh - 58px)" },
-              }}
-            >
-              <Box
-                sx={{
-                  width: { xs: 1, md: "50vw" },
-                  height: "100%",
-                  position: "relative",
-                }}
-              >
-                <Box
-                  sx={{
-                    width: "100%",
-                    height: "100%",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      overflow: "hidden",
-                      left: "0%",
-                      width: 1,
-                      height: 1,
-                      position: { xs: "relative", md: "absolute" },
-                      clipPath: {
-                        xs: "none",
-                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
-                      },
-                      shapeOutside: {
-                        xs: "none",
-                        md: "polygon(10% 0%, 100% 0, 100% 100%, 0% 100%)",
-                      },
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        height: { xs: "auto", md: 1 },
-                        "& img": {
-                          objectFit: "cover",
-                        },
-                        "& .lazy-load-image-loaded": {
-                          height: 1,
-                          width: 1,
-                        },
-                      }}
-                    >
-                      <Box
-                        component={LazyLoadImage}
-                        effect="blur"
-                        src={
-                          "https://images.pexels.com/photos/16282306/pexels-photo-16282306/free-photo-of-a-person-using-a-calculator.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                        }
-                        height={{ xs: "auto", md: 1 }}
-                        maxHeight={{ xs: 300, md: 1 }}
-                        width={1}
-                        maxWidth={1}
-                        sx={{
-                          filter:
-                            theme.palette.mode === "dark"
-                              ? "brightness(0.7)"
-                              : "none",
-                        }}
-                      />
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
           </Box>
         </Container>
-        {/* <ShortFooter /> */}
       </Box>
     </div>
   );
