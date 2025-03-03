@@ -92,80 +92,99 @@ referralRouter.post(
       const createdReferral = await referral.save();
 
       // Now send an email to them showing them their referral code
-      const referralSignupLink = `https://capitalvelocity.com/register?ref=${referralCode}`;
+      const referralSignupLink = `https://www.capitalvelocity.com/register?ref=${referralCode}`;
 
       const emailData = {
         from: `info@capitalvelocity.com`,
         to: email, // You can use a default email if none is provided
         subject: "Capital Velocity Partner Program",
         html: `
-          <!DOCTYPE html>
-          <html lang="en">
-            <head>
-              <meta charset="UTF-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Application Confirmation</title>
-              <style>
-                body {
-                  font-family: Arial, sans-serif;
-                  line-height: 1.6;
-                  margin: 0;
-                  padding: 0;
-                  background-color: #f4f4f4;
-                  color: #333;
-                }
-                .email-container {
-                  max-width: 600px;
-                  margin: 20px auto;
-                  background: #fff;
-                  padding: 20px;
-                  border-radius: 8px;
-                  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                }
-                .header {
-                  text-align: center;
-                  margin-bottom: 20px;
-                }
-                .content {
-                  margin-bottom: 30px;
-                }
-                .button {
-                  display: inline-block;
-                  padding: 12px 20px;
-                  background-color: #04ca31;
-                  color: #fff;
-                  text-decoration: none;
-                  font-weight: bold;
-                  border-radius: 4px;
-                  text-align: center;
-                }
-                .footer {
-                  text-align: center;
-                  font-size: 12px;
-                  color: #666;
-                }
-              </style>
-            </head>
-            <body>
-              <div class="email-container">
-                <div class="content">
-                  <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code and link for signups.</h3>
-                  <p><strong>Referral Code:</strong> ${
-                    referralCode || "Not Provided"
-                  }</p>
-                  <p><strong>Link for Referred Signups:</strong> 
-                    <a href="${referralSignupLink}" target="_blank">${referralSignupLink}</a>
-                  </p>
-                </div>
-                <div class="footer">
-                  <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" style="width: 200px; display: block; margin: 0 auto;">
-                  <p>© 2025 Capital Velocity. All Rights Reserved.</p>
-                </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Confirmation</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td align="center" style="padding: 20px;">
+        <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+          <tr>
+            <td align="center" style="font-size: 18px; color: #333;">
+            <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code and link for signups.</h3>
+            <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0;">
+            <p><strong>Referral Code:</strong> ${
+              referralCode || "Not Provided"
+            }</p>
+            <p><strong>Link for Referred Signups:</strong> 
+              <a href="${referralSignupLink}" target="_blank">${referralSignupLink}</a>
+            </p>
+            </td>
+          </tr>
+                                  <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0;">
+
+          <tr>
+            <td align="center" style="padding-top: 20px;">
+              <div class="social-icons">
+                <a href="https://facebook.com/Andrew-Cartwright-188861491183022" target="_blank"><img src="https://img.icons8.com/color/48/facebook.png" alt="Facebook"></a>
+                <a href="https://www.linkedin.com/company/capitalvelocity/" target="_blank"><img src="https://img.icons8.com/color/48/linkedin.png" alt="LinkedIn"></a>
+                <a href="https://www.youtube.com/@andrewcartwright" target="_blank"><img src="https://img.icons8.com/color/48/youtube-play.png" alt="YouTube"></a>
               </div>
-            </body>
-          </html>
+            </td>
+          </tr>
+
+                    <tr>
+            <td align="center" style="padding-top: 20px;">
+              <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" width="150" style="display: block; margin: 0 auto;">
+              <p style="font-size: 12px; color: #666;">© 2025 Capital Velocity. All Rights Reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+
         `,
       };
+
+      // <!DOCTYPE html>
+      // <html lang="en">
+      // <head>
+      //   <meta charset="UTF-8">
+      //   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      //   <title>Application Confirmation</title>
+      // </head>
+      // <body style="margin: 0; padding: 0; background-color: #f4f4f4; font-family: Arial, sans-serif;">
+      //   <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+      //     <tr>
+      //       <td align="center" style="padding: 20px;">
+      //         <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
+      //           <tr>
+      //             <td align="center" style="font-size: 18px; color: #333;">
+      //       <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code and link for signups.</h3>
+      //       <p><strong>Referral Code:</strong> ${referralCode || "Not Provided"}</p>
+      //       <p><strong>Link for Referred Signups:</strong>
+      //         <a href="${referralSignupLink}" target="_blank">${referralSignupLink}</a>
+      //       </p>
+      //             </td>
+      //           </tr>
+      //           <tr>
+      //             <td align="center" style="padding-top: 20px;">
+      //               <img src="https://i.ibb.co/DSD7bkB/cvlogo.png" alt="Capital Velocity Logo" width="200" style="display: block; margin: 0 auto;">
+      //               <p style="font-size: 12px; color: #666;">© 2025 Capital Velocity. All Rights Reserved.</p>
+      //             </td>
+      //           </tr>
+      //         </table>
+      //       </td>
+      //     </tr>
+      //   </table>
+      // </body>
+      // </html>
 
       mg.messages().send(emailData, (error, body) => {
         if (error) {
