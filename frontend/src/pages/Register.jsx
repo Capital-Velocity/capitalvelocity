@@ -26,6 +26,18 @@ const LoginCover = () => {
     console.log("LOGIN FAILED! res", res);
   };
 
+  const location = useLocation();
+  const [referralCode, setReferralCode] = useState("");
+
+  // Extract referral code from URL
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const refCode = queryParams.get("ref");
+    if (refCode) {
+      setReferralCode(refCode);
+    }
+  }, [location.search]);
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -148,6 +160,11 @@ const LoginCover = () => {
       navigate(redirect);
     }
   }, [navigate, redirect, userInfo]);
+
+  // Update referralCode value when URL updates
+  useEffect(() => {
+    formik.setFieldValue("referralCode", referralCode);
+  }, [referralCode]);
 
   const theme = useTheme();
   return (
