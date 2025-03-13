@@ -1,6 +1,7 @@
 import glacierParkImg from "../assets/glacier-park.jpg";
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import bgVidRealEstate1 from "../assets/bgvidRealEstate1.mp4";
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -50,13 +51,26 @@ export default function Example() {
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 relative h-screen">
-      <img
+      {/* <img
         alt="Glacier Park"
         loading="lazy"
         decoding="async"
         className="-z-10 object-cover absolute inset-0 w-full h-full"
         src={glacierParkImg}
-      />
+      /> */}
+      {/* Video Background */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover -z-10"
+      >
+        <source src={bgVidRealEstate1} type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div className="absolute inset-0 bg-black opacity-50"></div>
+
       <div className="container mx-auto px-4 md:px-6 py-24">
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <div className="space-y-6">
