@@ -36,6 +36,7 @@ import CashedOutRefinanceNewLoanForm from "./pages/CashedOutRefinanceNewLoanForm
 import ProjectEpic99LoanForm from "./loanCheckout/ProjectEpic99LoanForm";
 import OptimizerCalculator from "./Calculators/OptimizerCalculator";
 import ConceptCalc from "./Calculators/conceptCalc";
+import SBALoanForm from "./loanCheckout/SBALoanForm";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -154,6 +155,12 @@ function App() {
             )
           }
         />
+        <Route
+          path="/loan-form-business-loans-sba"
+          element={
+            firstnameCookie ? <SBALoanForm /> : <Navigate to="/register" />
+          }
+        />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}
@@ -172,6 +179,7 @@ function FooterWrapper() {
     location.pathname !== "/loan-form-realestate-singlepropertyrental" &&
     location.pathname !== "/loan-form-realestate-groundup" &&
     location.pathname !== "/loan-form-realestate-cashedoutrefinance" &&
+    location.pathname !== "/loan-form-business-loans-sba" &&
     location.pathname !== "/project99" ? (
     <Footer />
   ) : null;
