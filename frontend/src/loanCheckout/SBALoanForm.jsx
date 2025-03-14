@@ -346,19 +346,46 @@ export default function SBALoanForm(props) {
               <Typography
                 variant="h1" // Larger heading for "Small Business Loan"
                 style={{ color: "black", fontWeight: "bold" }}
-                align="center"
                 gutterBottom
               >
-                SBA
+                SBA Loan
+              </Typography>
+              <Typography variant="h6" style={{ color: "black" }}>
+                Our SBA-backed loan programs provide small businesses with the
+                financial support they need to grow and succeed.
               </Typography>
               <Typography
-                align="center"
-                variant="h6"
-                style={{ color: "black" }}
+                variant="h7"
+                style={{ color: "black", marginTop: "10px" }}
               >
-                Placeholder
+                <Checkbox
+                  defaultChecked
+                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                  sx={{
+                    transform: "scale(1.0)", // Keep checkbox size
+                  }}
+                />
+                Government Backed <br />
+                <Checkbox
+                  defaultChecked
+                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                  sx={{
+                    transform: "scale(1.0)", // Keep checkbox size
+                  }}
+                />
+                Longer Terms Available <br />{" "}
+                <Checkbox
+                  defaultChecked
+                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
+                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                  sx={{
+                    transform: "scale(1.0)", // Keep checkbox size
+                  }}
+                />
+                Lower Interest Rates
               </Typography>
-
               <div
                 style={{
                   display: "flex",
