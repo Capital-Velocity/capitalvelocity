@@ -131,7 +131,7 @@ const BecomePartner = () => {
                   </Box>
                   <form onSubmit={formik.handleSubmit}>
                     <Grid container spacing={4}>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="First Name"
                           variant="outlined"
@@ -151,7 +151,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Last Name"
                           variant="outlined"
@@ -171,7 +171,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Home Address"
                           variant="outlined"
@@ -192,7 +192,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="City"
                           variant="outlined"
@@ -209,7 +209,7 @@ const BecomePartner = () => {
                           helperText={formik.touched.city && formik.errors.city}
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Zip Code"
                           variant="outlined"
@@ -229,7 +229,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="State"
                           variant="outlined"
@@ -248,7 +248,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Phone"
                           variant="outlined"
@@ -267,7 +267,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Email"
                           variant="outlined"
@@ -287,7 +287,7 @@ const BecomePartner = () => {
                           }
                         />
                       </Grid>
-                      <Grid item sm={6}>
+                      <Grid item xs={12} sm={6}>
                         <TextField
                           label="Youtube Link"
                           variant="outlined"
