@@ -6,7 +6,8 @@ import {
   LockClosedIcon,
   ServerIcon,
 } from "@heroicons/react/20/solid";
-import calculatorImg from "../assets/calculators.png";
+import calculatorImg from "../assets/calculators.jpg";
+import calculatorVerticalImg from "../assets/calculatorsvertical.jpg";
 import { useState, useEffect, useRef } from "react";
 
 const features = [
@@ -21,6 +22,13 @@ const features = [
     name: "Fix and Flip",
     description:
       "How much does it cost to flip a house, and what kind of profit can you make? Understanding the full cost breakdown is crucial to a successful project. Our Fix and Flip Calculator helps by estimating your ARV (After Repair Value), potential profit, and hard money loan terms. With this clear insight into costs and projected returns, you can make more informed decisions and reduce risks. Start planning your next fix-and-flip with our easy-to-use calculator!",
+    href: "/FixandFlipCalc",
+    icon: LockClosedIcon,
+  },
+  {
+    name: "Rental DSCR Optimizer",
+    description:
+      "The Rental DSCR Optimizer is designed to help investors fine-tune estimated as-is value and rental income to achieve an acceptable Debt Service Coverage Ratio (DSCR) while maintaining an affordable down payment. This powerful tool enables investors to determine the maximum property value and minimum required rent needed to secure loan approval based on available cash for the down payment.",
     href: "/FixandFlipCalc",
     icon: LockClosedIcon,
   },
@@ -102,12 +110,17 @@ export default function CalculatorHero() {
               : "fade-in-hide"
           }`}
         >
+          {/* Desktop Image */}
           <img
             alt="App screenshot"
             src={calculatorImg}
-            width={2432}
-            height={1442}
-            className=" rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+            className="hidden sm:block rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+          />
+          {/* Mobile Image */}
+          <img
+            alt="App screenshot"
+            src={calculatorVerticalImg}
+            className="block sm:hidden rounded-xl shadow-2xl ring-1 ring-gray-900/10"
           />
           <div aria-hidden="true" className="relative">
             <div className="absolute -inset-x-20 bottom-0 bg-gradient-to-t from-white pt-[7%]" />
