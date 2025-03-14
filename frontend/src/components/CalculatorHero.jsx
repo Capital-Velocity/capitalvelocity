@@ -118,12 +118,8 @@ export default function CalculatorHero() {
                 className="rounded-xl shadow-2xl ring-1 ring-gray-900/10 mx-auto"
               />
 
-              <Divider
-                style={{ color: "black", marginBottom: 10, marginTop: 10 }}
-              />
-
               {/* Feature Description */}
-              <div className="flex flex-col items-center text-center">
+              <div className="flex flex-col items-center text-center mt-10">
                 <dt className="flex items-center gap-x-3 text-xl font-semibold text-gray-900">
                   <feature.icon
                     aria-hidden="true"
@@ -143,6 +139,9 @@ export default function CalculatorHero() {
                   </a>
                 </p>
               </div>
+              <Divider
+                style={{ color: "black", marginBottom: 10, marginTop: 10 }}
+              />
             </div>
           ))}
         </div>
