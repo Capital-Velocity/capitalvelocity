@@ -1,10 +1,12 @@
+import Categories3 from "../components/Categories3";
 import LoanForm2 from "../components/LoanForm2";
 import project99 from "../Images/project99.png";
 
 function BusinessLoan() {
   return (
     <div style={{ backgroundColor: "#c0dced" }}>
-      <LoanForm2 />
+      {/* <LoanForm2 /> */}
+      <Categories3 />
       <div
         style={{
           display: "flex",
