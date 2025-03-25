@@ -116,6 +116,7 @@ function Navbar() {
     <AppBar position="" sx={{ bgcolor: "white" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
+          {/* Logo on Desktop */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -126,6 +127,29 @@ function Navbar() {
             <Link to="/">
               <img src={myImg} className="pt-2 h-[75px] w-[125px] scale-175" />
             </Link>
+          </Box>
+
+          {/* Logo centered on mobile */}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none" },
+              justifyContent: "center",
+              alignItems: "center",
+              position: "absolute",
+              left: 0,
+              right: 45,
+              top: "60%",
+              transform: "translateY(-50%)",
+              pointerEvents: "none", // ensures buttons underneath still clickable
+              zIndex: 0,
+            }}
+          >
+            <img
+              src={myImg}
+              alt="Logo"
+              style={{ height: "100px", objectFit: "contain" }}
+            />
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -329,7 +353,10 @@ function Navbar() {
                     style={{ textDecoration: "none", color: "black" }}
                   >
                     <Avatar
-                      style={{ backgroundColor: "#498dd6", cursor: "pointer" }}
+                      sx={{
+                        bgcolor: "#498dd6",
+                        display: { xs: "none", md: "flex" },
+                      }}
                     >
                       {initial ? initial : <PersonIcon />}
                     </Avatar>
