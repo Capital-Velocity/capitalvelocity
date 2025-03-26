@@ -356,12 +356,12 @@ const NewRealEstateCategories = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  src="https://www.youtube.com/embed/L0_HasTvnso"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
+                  style={{ borderRadius: "12px", maxWidth: "560px" }}
                 />
               </Box>
             </Grid>
@@ -642,7 +642,7 @@ const NewRealEstateCategories = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  src="https://www.youtube.com/embed/uKAGuS8hSmw"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -915,7 +915,7 @@ const NewRealEstateCategories = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  src="https://www.youtube.com/embed/aCYWen4GYLA"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -958,7 +958,7 @@ const NewRealEstateCategories = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                  src="https://www.youtube.com/embed/-J2nYFyfRGk"
                   title="YouTube video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
