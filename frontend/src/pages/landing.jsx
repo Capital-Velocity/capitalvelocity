@@ -30,6 +30,7 @@ import BusinessCategories from "../components/BusinessCategories";
 import LoanForm from "../components/LoanForm";
 import LoanForm2 from "../components/LoanForm2";
 import Categories3 from "../components/Categories3";
+import NewRealEstateCategories from "../components/NewRealEstateCategories";
 
 const mock = [
   {
@@ -153,7 +154,7 @@ function Landing() {
         <WhyUs />
         <CalculatorHero />
         {/* <LoanForm /> */}
-        <Categories2 />
+        <NewRealEstateCategories />
         <Categories3 />
 
         {/* <BusinessCategories /> */}
