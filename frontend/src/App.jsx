@@ -37,6 +37,8 @@ import ProjectEpic99LoanForm from "./loanCheckout/ProjectEpic99LoanForm";
 import OptimizerCalculator from "./Calculators/OptimizerCalculator";
 import ConceptCalc from "./Calculators/conceptCalc";
 import SBALoanForm from "./loanCheckout/SBALoanForm";
+import ForgotPassword from "./pages/forgotPassword";
+import ResetPassword from "./pages/resetPassword";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -161,6 +163,8 @@ function App() {
             firstnameCookie ? <SBALoanForm /> : <Navigate to="/register" />
           }
         />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
 
       {/* Wrap Footer in a component that uses useLocation() */}

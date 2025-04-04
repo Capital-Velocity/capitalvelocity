@@ -4,8 +4,19 @@ import bcrypt from "bcryptjs";
 import axios from "axios";
 import User from "../models/userModel.js";
 import Referral from "../models/referralModel.js";
+import mailgun from "mailgun-js";
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
 
+dotenv.config();
 const userRouter = express.Router();
+
+const apiKey = "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379";
+const mg = mailgun({ apiKey, domain: "capitalvelocity.com" });
+
+const createToken = (_id) => {
+  return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "31d" });
+};
 
 // Function to obtain the access token
 async function getAccessToken() {
@@ -151,6 +162,82 @@ userRouter.post(
     }
   })
 );
+
+userRouter.post("/send-password-reset", async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    // Find user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Generate a JWT token
+    const resetToken = jwt.sign(
+      { email }, // Payload contains the user's email
+      process.env.SECRET, // Secret key for signing
+      { expiresIn: "1h" } // Token valid for 1 hour
+    );
+
+    const resetUrl = `https://www.capitalvelocity.com/reset-password/${resetToken}`;
+
+    // Send the reset email
+    const data = {
+      from: "Capital Velocity <info@capitalvelocity.com>",
+      to: email,
+      subject: "Password Reset Request",
+      html: `
+        <p>You requested a password reset for your account.</p>
+        <p>Click the link below to reset your password:</p>
+        <a href="${resetUrl}">${resetUrl}</a>
+        <p>If you did not request this, please ignore this email.</p>
+      `,
+    };
+
+    mg.messages().send(data, (error, body) => {
+      if (error) {
+        return res.status(500).json({ error: "Error sending email." });
+      }
+      res
+        .status(200)
+        .json({ message: "Password reset email sent successfully!" });
+    });
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).json({ error: "Error processing request." });
+  }
+});
+
+userRouter.post("/reset-password", async (req, res) => {
+  const { token, password } = req.body;
+
+  try {
+    // Verify the JWT token
+    const decoded = jwt.verify(token, process.env.SECRET);
+
+    // Find user by email in the token payload
+    const user = await User.findOne({ email: decoded.email });
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    // Hash the new password and update the user record
+    const hashedPassword = await bcrypt.hash(password, 10);
+    user.password = hashedPassword;
+    await user.save();
+
+    res.status(200).json({ message: "Password reset successful!" });
+  } catch (error) {
+    console.error("Error resetting password:", error);
+
+    if (error.name === "TokenExpiredError") {
+      return res.status(400).json({ error: "Token has expired." });
+    }
+
+    res.status(400).json({ error: "Invalid token." });
+  }
+});
 
 // userRouter.post(
 //   "/register",
