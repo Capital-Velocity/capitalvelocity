@@ -5,6 +5,39 @@ function MultiFamilyBridgeNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
 
+  const hasSentNotification = useRef(false); // ✅ Fix: initialize ref
+
+  const emailCookie = Cookies.get("email");
+
+  const sendNotification = async (userEmail, purpose = "general") => {
+    try {
+      await axios.post(
+        "https://52.165.80.134:4000/api/users/send-notification",
+        {
+          email: userEmail,
+          page: window.location.pathname,
+          purpose,
+        }
+      );
+      console.log(
+        "Notification email sent (or skipped if already recently sent)"
+      );
+    } catch (error) {
+      console.error(
+        "Failed to send notification:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (emailCookie && !hasSentNotification.current) {
+      console.log("Triggering send-notification for", emailCookie);
+      sendNotification(emailCookie, "loanform");
+      hasSentNotification.current = true; // ✅ Prevent future triggers
+    }
+  }, [emailCookie]);
+
   const headingRef = useRef(null);
 
   useEffect(() => {
