@@ -18,7 +18,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 import { ToastContainer, toast } from "react-toastify";
 import { useWindowSize } from "react-use";
@@ -48,6 +48,32 @@ export default function GroundUpLoanForm(props) {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
   const [showConfetti, setShowConfetti] = useState(false);
   const { width, height } = useWindowSize();
+
+  const emailCookie = Cookies.get("email");
+
+  const sendNotification = async (userEmail, purpose = "general") => {
+    try {
+      await axios.post("https://localhost:4000/api/users/send-notification", {
+        email: userEmail,
+        page: window.location.pathname,
+        purpose,
+      });
+      console.log(
+        "Notification email sent (or skipped if already recently sent)"
+      );
+    } catch (error) {
+      console.error(
+        "Failed to send notification:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (emailCookie) {
+      sendNotification(emailCookie, "loanform");
+    }
+  }, [emailCookie]);
 
   // Stepper labels
   const steps = [

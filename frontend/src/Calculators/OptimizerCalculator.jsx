@@ -18,6 +18,7 @@ import React, { useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "react-use";
+import Cookies from "js-cookie";
 
 const OptimizerCalculator = () => {
   const Item = styled(Paper)(({ theme }) => ({
@@ -39,6 +40,32 @@ const OptimizerCalculator = () => {
   const [prevIsDeal, setPrevIsDeal] = useState(false); // Track previous state
 
   const isDeal = dscrValue >= 1.25;
+
+  const emailCookie = Cookies.get("email");
+
+  const sendNotification = async (userEmail, purpose = "general") => {
+    try {
+      await axios.post("https://localhost:4000/api/users/send-notification", {
+        email: userEmail,
+        page: window.location.pathname,
+        purpose,
+      });
+      console.log(
+        "Notification email sent (or skipped if already recently sent)"
+      );
+    } catch (error) {
+      console.error(
+        "Failed to send notification:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (emailCookie) {
+      sendNotification(emailCookie, "dscroptimizer");
+    }
+  }, [emailCookie]);
 
   useEffect(() => {
     if (!prevIsDeal && isDeal) {

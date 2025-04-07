@@ -28,7 +28,7 @@ import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
 import CheckBoxIcon from "@mui/icons-material/CheckBox";
 import { green } from "@mui/material/colors";
 import trustPilotPic from "../assets/trustpilot.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BorrowerStep from "../components/Loan Form/BorrowerStep";
 import BorrowerStep2 from "../components/Loan Form/BorrowerStep2";
 import BorrowerStep3 from "../components/Loan Form/BorrowerStep3";
@@ -84,6 +84,32 @@ export default function SinglePropertyRentalLoanForm(props) {
   const [isSubmitting, setIsSubmitting] = useState(false); // Track submission state
   const [showConfetti, setShowConfetti] = useState(false);
   const { width, height } = useWindowSize();
+
+  const emailCookie = Cookies.get("email");
+
+  const sendNotification = async (userEmail, purpose = "general") => {
+    try {
+      await axios.post("https://localhost:4000/api/users/send-notification", {
+        email: userEmail,
+        page: window.location.pathname,
+        purpose,
+      });
+      console.log(
+        "Notification email sent (or skipped if already recently sent)"
+      );
+    } catch (error) {
+      console.error(
+        "Failed to send notification:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
+  useEffect(() => {
+    if (emailCookie) {
+      sendNotification(emailCookie, "loanform");
+    }
+  }, [emailCookie]);
 
   // Stepper labels
   const steps = [
