@@ -404,4 +404,104 @@ userRouter.post(
   })
 );
 
+userRouter.post(
+  "/send-notification",
+  expressAsyncHandler(async (req, res) => {
+    const { email, page } = req.body;
+
+    if (!email || !page) {
+      return res.status(400).json({ message: "Email and page are required" });
+    }
+
+    //   const emailData = {
+    //     from: "Capital Velocity <no-reply@capitalvelocity.com>",
+    //     to: email,
+    //     subject: "Need help completing your loan application?",
+    //     html: `
+    // <div style="background-color: #f2f2f2; padding: 40px 0;">
+    //   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; color: #333;">
+    //     <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+    //       <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
+    //     </div>
+
+    //     <h2 style="color: #2a2a2a;">Hi there,</h2>
+    //     <p style="font-size: 16px; line-height: 1.6;">
+    //       We noticed that you started a <strong>business loan application</strong> on our website but didn't complete it.
+    //     </p>
+    //     <p style="font-size: 16px; line-height: 1.6;">
+    //       If you have any questions or need assistance, we're here to help! You can schedule a time with one of our loan specialists to get personalized guidance.
+    //     </p>
+
+    //     <div style="text-align: center; margin: 30px 0;">
+    //       <a href="https://calendly.com/your-link" style="background-color: #0d6efd; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+    //         Schedule a Meeting
+    //       </a>
+    //     </div>
+
+    //     <p style="font-size: 14px; color: #777;">
+    //       You visited: <em>${page}</em>
+    //     </p>
+
+    //     <hr style="margin: 30px 0;" />
+
+    //     <p style="font-size: 12px; color: #999; margin-top: 20px; text-align: center;">
+    //       © 2025 Capital Velocity, All rights reserved.
+    //     </p>
+    //   </div>
+    // </div>
+    //     `,
+    //   };
+
+    const emailData = {
+      from: "Capital Velocity <no-reply@capitalvelocity.com>",
+      to: email,
+      subject: "Have a real estate property in mind?",
+      html: `
+      <div style="background-color: #f2f2f2; padding: 40px 0;">
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; color: #333;">
+          <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
+          </div>
+  
+          <h2 style="color: #2a2a2a;">Hi there,</h2>
+          <p style="font-size: 16px; line-height: 1.6;">
+            We noticed you recently used one of our real estate calculators. That's a great first step!
+          </p>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Do you already have a property in mind, or are you actively exploring options? We’d love to hear more and help you evaluate your financing opportunities.
+          </p>
+          <p style="font-size: 16px; line-height: 1.6;">
+            Schedule a free call with our team to talk through your options and get personalized guidance:
+          </p>
+  
+          <div style="text-align: center; margin: 30px 0;">
+            <a href="https://calendly.com/your-link" style="background-color: #0d6efd; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+              Book a Meeting
+            </a>
+          </div>
+  
+        <p style="font-size: 14px; color: #777;">
+          You visited: <em>${page}</em>
+        </p>
+
+          <hr style="margin: 30px 0;" />
+  
+          <p style="font-size: 12px; color: #999; text-align: center;">
+            © 2025 Capital Velocity, All rights reserved.
+          </p>
+        </div>
+      </div>
+    `,
+    };
+
+    try {
+      const body = await mg.messages().send(emailData);
+      res.send({ success: true, id: body.id });
+    } catch (err) {
+      console.error("Mailgun error:", err);
+      res.status(500).json({ message: "Failed to send email" });
+    }
+  })
+);
+
 export default userRouter;

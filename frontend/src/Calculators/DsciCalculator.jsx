@@ -42,6 +42,25 @@ const DsciCalculator = () => {
     color: theme.palette.text.secondary,
   }));
 
+  const emailCookie = Cookies.get("email");
+
+  useEffect(() => {
+    if (emailCookie) {
+      sendVisitNotification(emailCookie);
+    }
+  }, [emailCookie]);
+
+  const sendVisitNotification = async (email) => {
+    try {
+      await axios.post("https://localhost:4000/api/users/send-notification", {
+        email,
+        page: window.location.pathname,
+      });
+    } catch (err) {
+      console.error("Notification error:", err);
+    }
+  };
+
   // Sample
   const [displayMonthlyIncomePayment, setdisplayMonthlyIncomePayment] =
     useState(0);
