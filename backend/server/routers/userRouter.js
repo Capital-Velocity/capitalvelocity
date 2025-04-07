@@ -582,7 +582,6 @@ userRouter.post(
 
     const recentLog = await EmailLog.findOne({
       email,
-      page,
       purpose,
       sentAt: { $gte: cutoffDate },
     });

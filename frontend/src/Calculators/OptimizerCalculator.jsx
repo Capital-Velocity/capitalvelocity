@@ -19,6 +19,7 @@ import Confetti from "react-confetti";
 import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "react-use";
 import Cookies from "js-cookie";
+import axios from "axios";
 
 const OptimizerCalculator = () => {
   const Item = styled(Paper)(({ theme }) => ({

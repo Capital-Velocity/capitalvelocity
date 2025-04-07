@@ -2,12 +2,14 @@ import Checkout from "../loanCheckout/Checkout";
 import React, { useEffect, useState, useRef } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useLocation } from "react-router-dom"; // at the top
 
 function FixAndFlipNewForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
   const headingRef = useRef(null);
   const hasSentNotification = useRef(false); // ✅ Fix: initialize ref
+  const location = useLocation(); // ✅ get current path
 
   const emailCookie = Cookies.get("email");
 
@@ -33,12 +35,13 @@ function FixAndFlipNewForm() {
   };
 
   useEffect(() => {
+    const emailCookie = Cookies.get("email");
+
     if (emailCookie && !hasSentNotification.current) {
-      console.log("Triggering send-notification for", emailCookie);
       sendNotification(emailCookie, "loanform");
-      hasSentNotification.current = true; // ✅ Prevent future triggers
+      hasSentNotification.current = true;
     }
-  }, [emailCookie]);
+  }, [location.pathname]); // ✅ will re-run when path changes
 
   useEffect(() => {
     setIsHeadingVisible(false); // Reset visibility on mount

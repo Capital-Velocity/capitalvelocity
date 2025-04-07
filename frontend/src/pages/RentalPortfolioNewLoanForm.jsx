@@ -1,9 +1,13 @@
 import RentalPortfolioLoanForm from "../loanCheckout/RentalPortfolioLoanForm";
 import React, { useEffect, useState, useRef } from "react";
+import { useLocation } from "react-router-dom"; // at the top
+import Cookies from "js-cookie";
+import axios from "axios";
 
 function RentalPortfolioNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
+  const location = useLocation(); // ✅ get current path
 
   const headingRef = useRef(null);
 
@@ -33,12 +37,13 @@ function RentalPortfolioNewLoanForm() {
   };
 
   useEffect(() => {
+    const emailCookie = Cookies.get("email");
+
     if (emailCookie && !hasSentNotification.current) {
-      console.log("Triggering send-notification for", emailCookie);
       sendNotification(emailCookie, "loanform");
-      hasSentNotification.current = true; // ✅ Prevent future triggers
+      hasSentNotification.current = true;
     }
-  }, [emailCookie]);
+  }, [location.pathname]); // ✅ will re-run when path changes
 
   useEffect(() => {
     setIsHeadingVisible(false); // Reset visibility on mount

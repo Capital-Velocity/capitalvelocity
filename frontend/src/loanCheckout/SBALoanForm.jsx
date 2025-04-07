@@ -18,7 +18,7 @@ import Typography from "@mui/material/Typography";
 import axios from "axios";
 import Cookies from "js-cookie";
 import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Confetti from "react-confetti";
 import { ToastContainer, toast } from "react-toastify";
 import { useWindowSize } from "react-use";
@@ -65,10 +65,12 @@ import EntityInformationProjectEpic99 from "../components/NewLoanFormComponents/
 import FinanceProjectEpic99 from "../components/NewLoanFormComponents/FinanceProjectEpic99";
 import BorrowerInformationSBAForm from "../components/NewLoanFormComponents/BorrowerInformationSBAForm";
 import FinanceInformationSBAForm from "../components/NewLoanFormComponents/FinanceInformationSBAForm";
+import { useLocation } from "react-router-dom"; // at the top
 
 export default function SBALoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const isSmallScreen = useMediaQuery("(max-width:600px)");
+  const location = useLocation(); // ✅ get current path
 
   const hasSentNotification = useRef(false); // ✅ Fix: initialize ref
 
@@ -96,12 +98,13 @@ export default function SBALoanForm(props) {
   };
 
   useEffect(() => {
+    const emailCookie = Cookies.get("email");
+
     if (emailCookie && !hasSentNotification.current) {
-      console.log("Triggering send-notification for", emailCookie);
       sendNotification(emailCookie, "loanform");
-      hasSentNotification.current = true; // ✅ Prevent future triggers
+      hasSentNotification.current = true;
     }
-  }, [emailCookie]);
+  }, [location.pathname]); // ✅ will re-run when path changes
 
   // State to store form data
   const [addressData, setAddressData] = React.useState({});
