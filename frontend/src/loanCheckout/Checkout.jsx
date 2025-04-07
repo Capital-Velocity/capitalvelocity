@@ -491,31 +491,37 @@ export default function Checkout(props) {
   //   }
   // };
 
-  const emailCookie = Cookies.get("email");
+  // const emailCookie = Cookies.get("email");
 
-  const sendNotification = async (userEmail, purpose = "general") => {
-    try {
-      await axios.post("https://localhost:4000/api/users/send-notification", {
-        email: userEmail,
-        page: window.location.pathname,
-        purpose,
-      });
-      console.log(
-        "Notification email sent (or skipped if already recently sent)"
-      );
-    } catch (error) {
-      console.error(
-        "Failed to send notification:",
-        error.response?.data || error.message
-      );
-    }
-  };
+  // const sendNotification = async (userEmail, purpose = "general") => {
+  //   try {
+  //     await axios.post(
+  //       "https://52.165.80.134:4000/api/users/send-notification",
+  //       {
+  //         email: userEmail,
+  //         page: window.location.pathname,
+  //         purpose,
+  //       }
+  //     );
+  //     console.log(
+  //       "Notification email sent (or skipped if already recently sent)"
+  //     );
+  //   } catch (error) {
+  //     console.error(
+  //       "Failed to send notification:",
+  //       error.response?.data || error.message
+  //     );
+  //   }
+  // };
 
-  useEffect(() => {
-    if (emailCookie) {
-      sendNotification(emailCookie, "loanform");
-    }
-  }, [emailCookie]);
+  // const hasSentNotification = React.useRef(false);
+
+  // useEffect(() => {
+  //   if (emailCookie && !hasSentNotification.current) {
+  //     sendNotification(emailCookie, "loanform");
+  //     hasSentNotification.current = true;
+  //   }
+  // }, [emailCookie]);
 
   return (
     <AppTheme {...props}>

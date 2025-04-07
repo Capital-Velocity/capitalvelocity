@@ -45,11 +45,14 @@ const OptimizerCalculator = () => {
 
   const sendNotification = async (userEmail, purpose = "general") => {
     try {
-      await axios.post("https://localhost:4000/api/users/send-notification", {
-        email: userEmail,
-        page: window.location.pathname,
-        purpose,
-      });
+      await axios.post(
+        "https://52.165.80.134:4000/api/users/send-notification",
+        {
+          email: userEmail,
+          page: window.location.pathname,
+          purpose,
+        }
+      );
       console.log(
         "Notification email sent (or skipped if already recently sent)"
       );
