@@ -600,34 +600,50 @@ userRouter.post(
     const emailData = {
       from: "Capital Velocity <no-reply@capitalvelocity.com>",
       to: email,
-      subject,
+      subject: "Let’s move your deal forward — book your free call",
       html: `
-        <div style="background-color: #f2f2f2; padding: 40px 0;">
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; background-color: #ffffff; color: #333;">
-            <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-              <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
-            </div>
-
-            <h2 style="color: #2a2a2a;">${heading}</h2>
-            <p style="font-size: 16px; line-height: 1.6;">This is John from the Capital Velocity team.</p>
-            <p style="font-size: 16px; line-height: 1.6;">${message1}</p>
-            <p style="font-size: 16px; line-height: 1.6;">${message2}</p>
-            <p style="font-size: 16px; line-height: 1.6;">${message3}</p>
-
-            <div style="text-align: center; margin: 30px 0;">
-              <a href="https://calendly.com/your-link" style="background-color: #0d6efd; color: white; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: bold;">
-                Book a Meeting
-              </a>
-            </div>
-
-            <p style="font-size: 14px; color: #777;">You visited: <em>${page}</em></p>
-
-            <hr style="margin: 30px 0;" />
-            <p style="font-size: 12px; color: #999; text-align: center;">
-              © 2025 Capital Velocity, All rights reserved.
-            </p>
-          </div>
+    <div style="background-color: #f2f2f2; padding: 40px 0;">
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 30px; background-color: #ffffff; color: #333;">
+        <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+          <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
         </div>
+
+        <h2 style="color: #2a2a2a;">Hi there,</h2>
+        <p style="font-size: 16px; line-height: 1.6;">
+          This is Nina from the Transaction Room team.
+        </p>
+        <p style="font-size: 16px; line-height: 1.6;">
+          I noticed you started an inquiry on our platform—whether you're looking to buy or sell a business, or secure a real estate or business loan—but didn’t complete the process. I’d love to help you take the next step.
+        </p>
+        <p style="font-size: 16px; line-height: 1.6;">
+          No matter where you are in your journey, I’m here to simplify the process and guide you toward the best possible outcome. In a quick, free call, we can review your goals, explore your options, and map out a clear path forward.
+        </p>
+
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="https://your-scheduling-link.com" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+            👉 Schedule your call with Nina
+          </a>
+        </div>
+
+        <p style="font-size: 16px; line-height: 1.6;">
+          Looking forward to supporting your success!
+        </p>
+
+        <p style="font-size: 16px; line-height: 1.6;">
+          Warmly,<br />
+          Nina<br />
+          Transaction Room Team
+        </p>
+
+        <hr style="margin: 30px 0;" />
+
+    <p style="font-size: 14px; color: #777;">You visited: <em>${page}</em></p>
+
+        <p style="font-size: 12px; color: #999; text-align: center;">
+          © 2025 Capital Velocity, All rights reserved.
+        </p>
+      </div>
+    </div>
       `,
     };
 
