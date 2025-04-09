@@ -620,7 +620,7 @@ userRouter.post(
         </p>
 
         <div style="text-align: center; margin: 30px 0;">
-          <a href="https://your-scheduling-link.com" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ29MXplgsAKVPCTm6xD5ywUfB7IiB37zNiAzH4sH8ACKa13nAetj2OEFpAgkf8PzV9Zpv6To4uw" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
             👉 Schedule your call with Nina
           </a>
         </div>
