@@ -391,6 +391,32 @@ function Navbar() {
         <div class="hidden justify-center space-x-12 bg-white px-12 md:flex">
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
+        ${location.pathname === "/" ? "border-gray-600" : "border-gray-300"} 
+        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            href="/"
+          >
+            <div class="css-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-circle-help-icon lucide-circle-help"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                <path d="M12 17h.01" />
+              </svg>
+            </div>
+            <span class="mt-1 leading-none">About</span>
+          </a>
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
           location.pathname === "/loan-form-realestate"
             ? "border-gray-600"
