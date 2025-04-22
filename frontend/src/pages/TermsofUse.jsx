@@ -12,7 +12,7 @@ function TermsofUse() {
         <Typography variant="body1" color="black">
           <br></br>
           <br></br>
-          These Terms of Use shall become effective as of March 1, 2022.
+          These Terms of Use shall become effective as of March 1, 2025.
           <br></br>
           <br></br>
           <strong>Introduction</strong>

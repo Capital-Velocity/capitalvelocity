@@ -72,7 +72,7 @@ function PrivacyPolicy() {
             Privacy Policy
           </Typography>
           <Typography variant="body1" color="black">
-            This Privacy Policy shall be effective as of March 1, 2022.<br></br>{" "}
+            This Privacy Policy shall be effective as of March 1, 2025.<br></br>{" "}
             <br></br>
             This website is owned and operated by Capital Velocity, Inc.
             (“Capital Velocity”). We at Capital Velocity respect and protect the
