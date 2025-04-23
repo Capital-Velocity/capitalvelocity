@@ -7,58 +7,74 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.capitalvelocity.com/privacy-policy</loc>
-    <priority>0.8</priority>
+    <loc>https://www.capitalvelocity.com/become-partner</loc>
   </url>
   <url>
-    <loc>https://www.capitalvelocity.com/terms</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://www.capitalvelocity.com/fix-and-flip-loan</loc>
-    <priority>0.7</priority>
+    <loc>https://www.capitalvelocity.com/contactUs</loc>
   </url>
   <url>
-    <loc>https://www.capitalvelocity.com/multi-family-bridge-loan</loc>
-    <priority>0.7</priority>
+    <loc>https://www.capitalvelocity.com/register</loc>
   </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/rental-portfolio-loan</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/single-property-rental-loan</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/ground-up-loan</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/cashed-out-refinance-loan</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/sba-loan</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/project-epic-99</loc>
-    <priority>0.7</priority>
-  </url>
-
   <url>
     <loc>https://www.capitalvelocity.com/login</loc>
-    <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/dscr-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/dscr-optimizer-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/fix-and-flip-calculator</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/terms-of-use</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/privacy-policy</loc>
+  </url>
+
+  <url>
+    <loc>https://www.capitalvelocity.com/userDash</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/userDashFile</loc>
+  </url>
+
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-business-loans</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/project99</loc>
+  </url>
+
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-fixandflip</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-multifamily</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-rentalportfolio</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-singlepropertyrental</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-groundup</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-realestate-cashedoutrefinance</loc>
+  </url>
+  <url>
+    <loc>https://www.capitalvelocity.com/loan-form-business-loans-sba</loc>
+  </url>
+
   <url>
     <loc>https://www.capitalvelocity.com/forgot-password</loc>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://www.capitalvelocity.com/reset-password</loc>
-    <priority>0.3</priority>
   </url>
 
 </urlset>
