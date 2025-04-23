@@ -31,7 +31,7 @@ import LoanForm from "../components/LoanForm";
 import LoanForm2 from "../components/LoanForm2";
 import Categories3 from "../components/Categories3";
 import NewRealEstateCategories from "../components/NewRealEstateCategories";
-
+import { Helmet } from "react-helmet";
 const mock = [
   {
     title: "Fix and Flip",
@@ -146,20 +146,52 @@ function Landing() {
   }, []);
 
   return (
-    <div>
-      <div>
-        <Hero />
-        <PromoNumbers />
-        <LoanMatching />
-        <WhyUs />
-        <CalculatorHero />
-        {/* <LoanForm /> */}
-        <NewRealEstateCategories />
-        <Categories3 />
+    <>
+      <Helmet>
+        <title>Commercial Real Estate Loans | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Explore flexible financing options including Fix and Flip, Ground Up, Multifamily Bridge, and more. Capital Velocity helps real estate investors secure the funding they need to scale."
+        />
+        <link rel="canonical" href="https://capitalvelocity.com/" />
+        <meta name="robots" content="index, follow" />
 
-        {/* <BusinessCategories /> */}
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Commercial Real Estate Loans",
+      "url": "https://capitalvelocity.com/",
+      "description": "Flexible real estate loan programs including Fix and Flip, Ground Up Construction, Multifamily Bridge, and Rental Portfolios. Capital Velocity empowers investors with competitive financing solutions.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div>
+        <div>
+          <Hero />
+          <PromoNumbers />
+          <LoanMatching />
+          <WhyUs />
+          <CalculatorHero />
+          {/* <LoanForm /> */}
+          <NewRealEstateCategories />
+          <Categories3 />
+
+          {/* <BusinessCategories /> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

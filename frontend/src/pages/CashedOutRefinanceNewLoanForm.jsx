@@ -3,7 +3,7 @@ import CashedOutRefinanceLoanForm from "../loanCheckout/CashedOutRefinanceLoanFo
 import { useLocation } from "react-router-dom"; // at the top
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { Helmet } from "react-helmet";
 function CashedOutRefinanceNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
@@ -68,14 +68,48 @@ function CashedOutRefinanceNewLoanForm() {
   }, []);
 
   return (
-    <div
-      ref={headingRef}
-      key={componentKey} // 👈 Ensures React re-renders on refresh
-      className={`text-center`}
-    >
-      {/* <RentalPortfolioLoanForm /> */}
-      <CashedOutRefinanceLoanForm />
-    </div>
+    <>
+      <Helmet>
+        <title>Cashed-Out Refinance Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Unlock home or investment equity with a Cashed-Out Refinance Loan from Capital Velocity. Access capital while keeping your real estate."
+        />
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-realestate-cashedoutrefinance"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Cashed-Out Refinance Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-realestate-cashedoutrefinance",
+      "description": "Apply for a Cashed-Out Refinance Loan with Capital Velocity to access equity from your real estate while maintaining ownership. Ideal for renovations, investments, or financial flexibility.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div
+        ref={headingRef}
+        key={componentKey} // 👈 Ensures React re-renders on refresh
+        className={`text-center`}
+      >
+        {/* <RentalPortfolioLoanForm /> */}
+        <CashedOutRefinanceLoanForm />
+      </div>
+    </>
   );
 }
 

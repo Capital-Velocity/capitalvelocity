@@ -20,7 +20,7 @@ import { ToastContainer } from "react-toastify";
 import { useWindowSize } from "react-use";
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { Helmet } from "react-helmet";
 const OptimizerCalculator = () => {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -234,167 +234,204 @@ const OptimizerCalculator = () => {
   ]);
 
   return (
-    <div className="pt-12" style={{ marginBottom: 30 }}>
-      {showConfetti && (
-        <Confetti
-          width={width}
-          height={height}
-          numberOfPieces={250} // Decent amount of confetti
-          tweenDuration={5} // Smooth fall animation
-          decay={0.9} // Ensures confetti falls off-screen
-          run={showConfetti} // Ensures confetti doesn't regenerate
-          recycle={false} // Stops confetti from looping
+    <>
+      <Helmet>
+        <title>Rental DSCR Optimizer | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Use the Rental DSCR Optimizer to calculate your maximum property purchase price or down payment to meet DSCR loan requirements. Customize terms and expenses to meet your investment goals."
         />
-      )}
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/dscr-optimizer-calculator"
+        />
+        <meta name="robots" content="index, follow" />
 
-      <ToastContainer />
-      <Container>
-        <Typography
-          variant="button"
-          display="block"
-          gutterBottom
-          style={{ color: "#498dd6", fontSize: 24 }}
-        >
-          Rental DSCR Optimizer
-        </Typography>
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Rental DSCR Optimizer",
+      "url": "https://www.capitalvelocity.com/dscr-optimizer-calculator",
+      "description": "Quickly estimate the ideal purchase price, down payment, and rental income needed to meet DSCR requirements for real estate loans.",
+      "applicationCategory": "FinancialApplication",
+      "operatingSystem": "All",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div className="pt-12" style={{ marginBottom: 30 }}>
+        {showConfetti && (
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={250} // Decent amount of confetti
+            tweenDuration={5} // Smooth fall animation
+            decay={0.9} // Ensures confetti falls off-screen
+            run={showConfetti} // Ensures confetti doesn't regenerate
+            recycle={false} // Stops confetti from looping
+          />
+        )}
 
-        <Typography
-          variant="body1"
-          display="block"
-          gutterBottom
-          style={{ color: "black", fontSize: 14 }}
-        >
-          Rental DSCR Optimizer – Maximize Your Loan Eligibility <br /> <br />{" "}
-          The Rental DSCR Optimizer is designed to help investors fine-tune
-          estimated as-is value and rental income to achieve an acceptable Debt
-          Service Coverage Ratio (DSCR) while maintaining an affordable down
-          payment. This powerful tool enables investors to determine the maximum
-          property value and minimum required rent needed to secure loan
-          approval based on available cash for the down payment. <br />
-          <br />
-          Key Features:
-          <br />
-          ✅ Target DSCR Optimization – Identify the ideal estimated as-is value
-          and rental income required to meet lender DSCR thresholds. <br />
-          ✅ Expense & Loan Customization – Adjust operating expenses, loan
-          terms, and financing structures to optimize DSCR and improve loan
-          eligibility. <br />
-          ✅ What-If Scenarios – Explore different property valuations, rental
-          pricing models, and down payment strategies to assess their impact on
-          DSCR. <br />
-          <br /> Ensure your investment strategy aligns with lender requirements
-          and maximize your financing potential. Try the Rental DSCR Optimizer
-          today! 🚀
-        </Typography>
-        <Divider style={{ color: "black", marginBottom: 10 }} />
+        <ToastContainer />
+        <Container>
+          <Typography
+            variant="button"
+            display="block"
+            gutterBottom
+            style={{ color: "#498dd6", fontSize: 24 }}
+          >
+            Rental DSCR Optimizer
+          </Typography>
 
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="button"
-              display="block"
-              gutterBottom
-              style={{ color: "black", fontSize: 16 }}
-            >
-              Loan Values
-            </Typography>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={12}>
-                <FormControl fullWidth>
-                  <Typography>Choose Input Type:</Typography>
-                  <Select
-                    value={inputType}
-                    onChange={(e) => setInputType(e.target.value)}
-                    style={{ marginBottom: 10 }}
-                  >
-                    <MenuItem value="downPayment">Down Payment</MenuItem>
-                    <MenuItem value="maxPurchasePrice">
-                      Maximum Purchase Price
-                    </MenuItem>
-                  </Select>
-                </FormControl>
-                <Divider style={{ color: "black", marginBottom: 10 }} />
+          <Typography
+            variant="body1"
+            display="block"
+            gutterBottom
+            style={{ color: "black", fontSize: 14 }}
+          >
+            Rental DSCR Optimizer – Maximize Your Loan Eligibility <br /> <br />{" "}
+            The Rental DSCR Optimizer is designed to help investors fine-tune
+            estimated as-is value and rental income to achieve an acceptable
+            Debt Service Coverage Ratio (DSCR) while maintaining an affordable
+            down payment. This powerful tool enables investors to determine the
+            maximum property value and minimum required rent needed to secure
+            loan approval based on available cash for the down payment. <br />
+            <br />
+            Key Features:
+            <br />
+            ✅ Target DSCR Optimization – Identify the ideal estimated as-is
+            value and rental income required to meet lender DSCR thresholds.{" "}
+            <br />
+            ✅ Expense & Loan Customization – Adjust operating expenses, loan
+            terms, and financing structures to optimize DSCR and improve loan
+            eligibility. <br />
+            ✅ What-If Scenarios – Explore different property valuations, rental
+            pricing models, and down payment strategies to assess their impact
+            on DSCR. <br />
+            <br /> Ensure your investment strategy aligns with lender
+            requirements and maximize your financing potential. Try the Rental
+            DSCR Optimizer today! 🚀
+          </Typography>
+          <Divider style={{ color: "black", marginBottom: 10 }} />
 
-                {/* Conditional Input Fields */}
-                {inputType === "downPayment" ? (
-                  <>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <Typography
+                variant="button"
+                display="block"
+                gutterBottom
+                style={{ color: "black", fontSize: 16 }}
+              >
+                Loan Values
+              </Typography>
+              <Grid container spacing={2}>
+                <Grid item xs={12} sm={12}>
+                  <FormControl fullWidth>
+                    <Typography>Choose Input Type:</Typography>
+                    <Select
+                      value={inputType}
+                      onChange={(e) => setInputType(e.target.value)}
+                      style={{ marginBottom: 10 }}
                     >
-                      Down Payment{" "}
-                      <Tooltip
-                        title="The maximum amount you can pay for the property based on loan and down payment constraints."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>{" "}
-                    <TextField
-                      fullWidth
-                      value={downPayment}
-                      onChange={(e) =>
-                        setDownPayment(e.target.value.replace(/[^0-9]/g, ""))
-                      }
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </>
-                ) : (
-                  <>
-                    <Typography
-                      color="black"
-                      component="div"
-                      sx={{ display: "inline-flex", alignItems: "center" }}
-                    >
-                      Maximum Purchase Price{" "}
-                      <Tooltip
-                        title="The maximum amount you can pay for the property based on loan and down payment constraints."
-                        arrow
-                        placement="top"
-                      >
-                        <InfoIcon
-                          className="cursor-pointer"
-                          sx={{
-                            fontSize: 18,
-                            color: "gray",
-                            marginLeft: 1,
-                            verticalAlign: "middle",
-                          }}
-                        />
-                      </Tooltip>
-                    </Typography>{" "}
-                    <TextField
-                      fullWidth
-                      value={maxPurchasePrice}
-                      onChange={(e) =>
-                        setMaxPurchasePrice(
-                          e.target.value.replace(/[^0-9]/g, "")
-                        )
-                      }
-                      InputProps={{
-                        startAdornment: (
-                          <InputAdornment position="start">$</InputAdornment>
-                        ),
-                      }}
-                    />
-                  </>
-                )}
+                      <MenuItem value="downPayment">Down Payment</MenuItem>
+                      <MenuItem value="maxPurchasePrice">
+                        Maximum Purchase Price
+                      </MenuItem>
+                    </Select>
+                  </FormControl>
+                  <Divider style={{ color: "black", marginBottom: 10 }} />
 
-                {/* <FormControl fullWidth>
+                  {/* Conditional Input Fields */}
+                  {inputType === "downPayment" ? (
+                    <>
+                      <Typography
+                        color="black"
+                        component="div"
+                        sx={{ display: "inline-flex", alignItems: "center" }}
+                      >
+                        Down Payment{" "}
+                        <Tooltip
+                          title="The maximum amount you can pay for the property based on loan and down payment constraints."
+                          arrow
+                          placement="top"
+                        >
+                          <InfoIcon
+                            className="cursor-pointer"
+                            sx={{
+                              fontSize: 18,
+                              color: "gray",
+                              marginLeft: 1,
+                              verticalAlign: "middle",
+                            }}
+                          />
+                        </Tooltip>
+                      </Typography>{" "}
+                      <TextField
+                        fullWidth
+                        value={downPayment}
+                        onChange={(e) =>
+                          setDownPayment(e.target.value.replace(/[^0-9]/g, ""))
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">$</InputAdornment>
+                          ),
+                        }}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Typography
+                        color="black"
+                        component="div"
+                        sx={{ display: "inline-flex", alignItems: "center" }}
+                      >
+                        Maximum Purchase Price{" "}
+                        <Tooltip
+                          title="The maximum amount you can pay for the property based on loan and down payment constraints."
+                          arrow
+                          placement="top"
+                        >
+                          <InfoIcon
+                            className="cursor-pointer"
+                            sx={{
+                              fontSize: 18,
+                              color: "gray",
+                              marginLeft: 1,
+                              verticalAlign: "middle",
+                            }}
+                          />
+                        </Tooltip>
+                      </Typography>{" "}
+                      <TextField
+                        fullWidth
+                        value={maxPurchasePrice}
+                        onChange={(e) =>
+                          setMaxPurchasePrice(
+                            e.target.value.replace(/[^0-9]/g, "")
+                          )
+                        }
+                        InputProps={{
+                          startAdornment: (
+                            <InputAdornment position="start">$</InputAdornment>
+                          ),
+                        }}
+                      />
+                    </>
+                  )}
+
+                  {/* <FormControl fullWidth>
                   <Typography
                     color="black"
                     component="div"
@@ -436,446 +473,453 @@ const OptimizerCalculator = () => {
                     }}
                   />
                 </FormControl> */}
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Credit Score{" "}
-                    <Tooltip
-                      title="A numerical representation of your creditworthiness based on your credit history. It affects the interest rate and terms of your loan."
-                      arrow
-                      placement="top"
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <Select
-                    value={selectedCreditScore}
-                    onChange={handleCreditScoreChange}
-                    variant="outlined"
-                  >
-                    <MenuItem value={750}> 740 and Above </MenuItem>
-                    <MenuItem value={730}> 720 - 739 </MenuItem>
-                    <MenuItem value={710}> 700 - 719 </MenuItem>
-                    <MenuItem value={690}> 680 - 699 </MenuItem>
-                    <MenuItem value={670}> 660 - 679 </MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    LTV Percentage (%){" "}
-                    <Tooltip
-                      title="The ratio of the loan amount to the appraised value of the property, expressed as a percentage. A higher LTV percentage indicates higher risk for lenders."
-                      arrow
-                      placement="top"
+                      Credit Score{" "}
+                      <Tooltip
+                        title="A numerical representation of your creditworthiness based on your credit history. It affects the interest rate and terms of your loan."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }} // Align icon vertically
+                        />
+                      </Tooltip>
+                    </Typography>{" "}
+                    <Select
+                      value={selectedCreditScore}
+                      onChange={handleCreditScoreChange}
+                      variant="outlined"
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    value={ltv}
-                    disabled
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">%</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Interest Rate (%){" "}
-                    <Tooltip
-                      title="The percentage of the loan amount charged by the lender for borrowing money, typically expressed as an annual percentage rate (APR). This rate impacts monthly payments and the total loan cost."
-                      arrow
-                      placement="top"
+                      <MenuItem value={750}> 740 and Above </MenuItem>
+                      <MenuItem value={730}> 720 - 739 </MenuItem>
+                      <MenuItem value={710}> 700 - 719 </MenuItem>
+                      <MenuItem value={690}> 680 - 699 </MenuItem>
+                      <MenuItem value={670}> 660 - 679 </MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    value={7}
-                    disabled
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">%</InputAdornment>
-                      ),
-                    }}
-                    variant="outlined"
-                  />
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Amortizing Period (Years){" "}
-                    <Tooltip
-                      title="The time period over which the loan is fully paid off, including both principal and interest, with equal payments made throughout the term."
-                      arrow
-                      placement="top"
+                      LTV Percentage (%){" "}
+                      <Tooltip
+                        title="The ratio of the loan amount to the appraised value of the property, expressed as a percentage. A higher LTV percentage indicates higher risk for lenders."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }} // Align icon vertically
+                        />
+                      </Tooltip>
+                    </Typography>{" "}
+                    <TextField
+                      value={ltv}
+                      disabled
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">%</InputAdornment>
+                        ),
+                      }}
+                      variant="outlined"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }} // Align icon vertically
-                      />
-                    </Tooltip>
-                  </Typography>{" "}
-                  <TextField
-                    disabled
-                    value={30}
-                    onChange={(e) => setLoanTerm(e.target.value)}
-                    variant="outlined"
-                  />
-                </FormControl>
-              </Grid>
+                      Interest Rate (%){" "}
+                      <Tooltip
+                        title="The percentage of the loan amount charged by the lender for borrowing money, typically expressed as an annual percentage rate (APR). This rate impacts monthly payments and the total loan cost."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }} // Align icon vertically
+                        />
+                      </Tooltip>
+                    </Typography>{" "}
+                    <TextField
+                      value={7}
+                      disabled
+                      InputProps={{
+                        endAdornment: (
+                          <InputAdornment position="end">%</InputAdornment>
+                        ),
+                      }}
+                      variant="outlined"
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
+                    >
+                      Amortizing Period (Years){" "}
+                      <Tooltip
+                        title="The time period over which the loan is fully paid off, including both principal and interest, with equal payments made throughout the term."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }} // Align icon vertically
+                        />
+                      </Tooltip>
+                    </Typography>{" "}
+                    <TextField
+                      disabled
+                      value={30}
+                      onChange={(e) => setLoanTerm(e.target.value)}
+                      variant="outlined"
+                    />
+                  </FormControl>
+                </Grid>
 
-              {/* Expenses Column */}
-              <Grid item xs={12} sm={6}>
-                <Typography
-                  variant="button"
-                  display="block"
-                  gutterBottom
-                  style={{ color: "black", fontSize: 16, marginTop: 10 }}
-                >
-                  Expenses
-                </Typography>
-                {/* Monthly Taxes */}
-                <FormControl fullWidth sx={{ mb: 2 }}>
+                {/* Expenses Column */}
+                <Grid item xs={12} sm={6}>
                   <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
+                    variant="button"
+                    display="block"
+                    gutterBottom
+                    style={{ color: "black", fontSize: 16, marginTop: 10 }}
                   >
-                    Monthly Taxes ($)
-                    <Tooltip
-                      title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
-                      arrow
-                      placement="top"
-                    >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }}
-                      />
-                    </Tooltip>
+                    Expenses
                   </Typography>
-                  <TextField
-                    type="text"
-                    fullWidth
-                    value={monthlyTaxesCalc}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value) {
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyTaxesCalc(value);
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-                {/* Monthly Insurance */}
-                <FormControl fullWidth sx={{ mb: 2 }}>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly Insurance ($)
-                    <Tooltip
-                      title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
-                      arrow
-                      placement="top"
+                  {/* Monthly Taxes */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }}
-                      />
-                    </Tooltip>
-                  </Typography>
-                  <TextField
-                    type="text"
-                    fullWidth
-                    value={monthlyInsurance}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value) {
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyInsurance(value);
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-                {/* Monthly HOA Fees */}
-                <FormControl fullWidth sx={{ mb: 2 }}>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly HOA Fees ($)
-                    <Tooltip
-                      title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
-                      arrow
-                      placement="top"
+                      Monthly Taxes ($)
+                      <Tooltip
+                        title="The total amount of property taxes owed on the property for the year. Property taxes are a recurring expense for property owners."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyTaxesCalc}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyTaxesCalc(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly Insurance */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }}
-                      />
-                    </Tooltip>
-                  </Typography>
-                  <TextField
-                    type="text"
-                    fullWidth
-                    value={monthlyHOAFees}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value) {
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyHOAFees(value);
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
-                {/* Monthly Other Expenses */}
-                <FormControl fullWidth>
-                  <Typography
-                    color="black"
-                    component="div"
-                    sx={{ display: "inline-flex", alignItems: "center" }}
-                  >
-                    Monthly Other Expenses ($)
-                    <Tooltip
-                      title="The fees paid for various other expenses required."
-                      arrow
-                      placement="top"
+                      Monthly Insurance ($)
+                      <Tooltip
+                        title="The yearly cost of insurance coverage for the property, protecting against risks like fire, theft, or natural disasters."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyInsurance}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyInsurance(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly HOA Fees */}
+                  <FormControl fullWidth sx={{ mb: 2 }}>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
                     >
-                      <InfoIcon
-                        className="cursor-pointer"
-                        sx={{
-                          fontSize: 18,
-                          color: "gray",
-                          marginLeft: 1,
-                          verticalAlign: "middle",
-                        }}
-                      />
-                    </Tooltip>
-                  </Typography>
-                  <TextField
-                    type="text"
-                    fullWidth
-                    value={monthlyOtherExpensesCalc}
-                    onChange={(e) => {
-                      let value = e.target.value.replace(/[^0-9]/g, "");
-                      if (value) {
-                        value = new Intl.NumberFormat().format(value);
-                      }
-                      setMonthlyOtherExpensesCalc(value);
-                    }}
-                    InputProps={{
-                      startAdornment: (
-                        <InputAdornment position="start">$</InputAdornment>
-                      ),
-                    }}
-                  />
-                </FormControl>
+                      Monthly HOA Fees ($)
+                      <Tooltip
+                        title="The fees paid to a Homeowners Association (HOA) for property management and maintenance of shared community areas. This is typically applicable in properties within an HOA-governed community."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyHOAFees}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyHOAFees(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                  {/* Monthly Other Expenses */}
+                  <FormControl fullWidth>
+                    <Typography
+                      color="black"
+                      component="div"
+                      sx={{ display: "inline-flex", alignItems: "center" }}
+                    >
+                      Monthly Other Expenses ($)
+                      <Tooltip
+                        title="The fees paid for various other expenses required."
+                        arrow
+                        placement="top"
+                      >
+                        <InfoIcon
+                          className="cursor-pointer"
+                          sx={{
+                            fontSize: 18,
+                            color: "gray",
+                            marginLeft: 1,
+                            verticalAlign: "middle",
+                          }}
+                        />
+                      </Tooltip>
+                    </Typography>
+                    <TextField
+                      type="text"
+                      fullWidth
+                      value={monthlyOtherExpensesCalc}
+                      onChange={(e) => {
+                        let value = e.target.value.replace(/[^0-9]/g, "");
+                        if (value) {
+                          value = new Intl.NumberFormat().format(value);
+                        }
+                        setMonthlyOtherExpensesCalc(value);
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">$</InputAdornment>
+                        ),
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
               </Grid>
             </Grid>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Item>
-              <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
-                <Container>
-                  <Grid container spacing={2}>
-                    {/* Dynamically Change Label Based on Input Type */}
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        {inputType === "maxPurchasePrice"
-                          ? "Required Down Payment"
-                          : "Maximum Purchase Price"}
-                      </Typography>
+            <Grid item xs={12} sm={6}>
+              <Item>
+                <Box style={{ backgroundColor: "#498dd6", marginTop: 10 }}>
+                  <Container>
+                    <Grid container spacing={2}>
+                      {/* Dynamically Change Label Based on Input Type */}
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          {inputType === "maxPurchasePrice"
+                            ? "Required Down Payment"
+                            : "Maximum Purchase Price"}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          $
+                          {inputType === "maxPurchasePrice"
+                            ? results.requiredDownPayment
+                              ? results.requiredDownPayment.toLocaleString(
+                                  undefined,
+                                  {
+                                    maximumFractionDigits: 2,
+                                  }
+                                )
+                              : "0.00"
+                            : results.purchasePrice
+                            ? results.purchasePrice.toLocaleString(undefined, {
+                                maximumFractionDigits: 2,
+                              })
+                            : "0.00"}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        $
-                        {inputType === "maxPurchasePrice"
-                          ? results.requiredDownPayment
-                            ? results.requiredDownPayment.toLocaleString(
+
+                    <Grid container spacing={2}>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          Loan Amount:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          $
+                          {results.loanAmount
+                            ? results.loanAmount.toLocaleString(undefined, {
+                                maximumFractionDigits: 2,
+                              })
+                            : "0.00"}
+                        </Typography>
+                      </Grid>
+                    </Grid>
+
+                    <Grid container spacing={2}>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          Monthly Mortgage:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          $
+                          {results.monthlyMortgage
+                            ? results.monthlyMortgage.toLocaleString(
                                 undefined,
                                 {
                                   maximumFractionDigits: 2,
                                 }
                               )
-                            : "0.00"
-                          : results.purchasePrice
-                          ? results.purchasePrice.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                            })
-                          : "0.00"}
-                      </Typography>
+                            : "0.00"}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                  </Grid>
 
-                  <Grid container spacing={2}>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        Loan Amount:
-                      </Typography>
+                    <Grid container spacing={2}>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          Operating Expenses:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="body1" color="white" gutterBottom>
+                          $
+                          {results.totalOperatingExpenses
+                            ? results.totalOperatingExpenses.toLocaleString(
+                                undefined,
+                                {
+                                  maximumFractionDigits: 2,
+                                }
+                              )
+                            : "0.00"}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        $
-                        {results.loanAmount
-                          ? results.loanAmount.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                            })
-                          : "0.00"}
-                      </Typography>
-                    </Grid>
-                  </Grid>
 
-                  <Grid container spacing={2}>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        Monthly Mortgage:
-                      </Typography>
+                    <Grid container spacing={2}>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="h5" color="white" gutterBottom>
+                          Minimum Required Rent for DSCR ≥ 1.1:
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Typography variant="h5" color="white" gutterBottom>
+                          $
+                          {results.minRequiredRent
+                            ? results.minRequiredRent.toLocaleString(
+                                undefined,
+                                {
+                                  maximumFractionDigits: 2,
+                                }
+                              )
+                            : "0.00"}
+                        </Typography>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        $
-                        {results.monthlyMortgage
-                          ? results.monthlyMortgage.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                            })
-                          : "0.00"}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-
-                  <Grid container spacing={2}>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        Operating Expenses:
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="body1" color="white" gutterBottom>
-                        $
-                        {results.totalOperatingExpenses
-                          ? results.totalOperatingExpenses.toLocaleString(
-                              undefined,
-                              {
-                                maximumFractionDigits: 2,
-                              }
-                            )
-                          : "0.00"}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-
-                  <Grid container spacing={2}>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="h5" color="white" gutterBottom>
-                        Minimum Required Rent for DSCR ≥ 1.1:
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6} sm={6}>
-                      <Typography variant="h5" color="white" gutterBottom>
-                        $
-                        {results.minRequiredRent
-                          ? results.minRequiredRent.toLocaleString(undefined, {
-                              maximumFractionDigits: 2,
-                            })
-                          : "0.00"}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Container>
-              </Box>
-            </Item>
+                  </Container>
+                </Box>
+              </Item>
+            </Grid>
           </Grid>
-        </Grid>
-        <Container></Container>
-      </Container>
-    </div>
+          <Container></Container>
+        </Container>
+      </div>
+    </>
   );
 };
 

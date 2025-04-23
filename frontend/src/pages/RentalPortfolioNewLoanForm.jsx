@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom"; // at the top
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { Helmet } from "react-helmet";
 function RentalPortfolioNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
@@ -68,13 +68,47 @@ function RentalPortfolioNewLoanForm() {
   }, []);
 
   return (
-    <div
-      ref={headingRef}
-      key={componentKey} // 👈 Ensures React re-renders on refresh
-      className={`text-center`}
-    >
-      <RentalPortfolioLoanForm />
-    </div>
+    <>
+      <Helmet>
+        <title>Rental Portfolio Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Explore Capital Velocity’s Rental Portfolio Loan for investors managing multiple rental properties. Flexible terms, streamlined approvals, and scalable financing."
+        />
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-realestate-rentalportfolio"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Rental Portfolio Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-realestate-rentalportfolio",
+      "description": "Capital Velocity offers Rental Portfolio Loans tailored for real estate investors with multiple rental units. Unlock capital with simplified processes and scalable solutions.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div
+        ref={headingRef}
+        key={componentKey} // 👈 Ensures React re-renders on refresh
+        className={`text-center`}
+      >
+        <RentalPortfolioLoanForm />
+      </div>
+    </>
   );
 }
 

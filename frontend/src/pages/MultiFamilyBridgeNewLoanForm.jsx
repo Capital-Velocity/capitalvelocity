@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useLocation } from "react-router-dom"; // at the top
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { Helmet } from "react-helmet";
 function MultiFamilyBridgeNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
@@ -68,13 +68,47 @@ function MultiFamilyBridgeNewLoanForm() {
   }, []);
 
   return (
-    <div
-      ref={headingRef}
-      key={componentKey} // 👈 Ensures React re-renders on refresh
-      className={`text-center`}
-    >
-      <MultiFamilyBridgeLoanForm />
-    </div>
+    <>
+      <Helmet>
+        <title>Multi-Family Bridge Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Apply for Capital Velocity's Multi-Family Bridge Loan. Quick, flexible funding for real estate investors seeking to finance multi-family properties."
+        />
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-realestate-multifamily"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Multi-Family Bridge Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-realestate-multifamily",
+      "description": "Capital Velocity offers Multi-Family Bridge Loans with fast approvals and flexible terms for real estate investors targeting multi-unit properties.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div
+        ref={headingRef}
+        key={componentKey} // 👈 Ensures React re-renders on refresh
+        className={`text-center`}
+      >
+        <MultiFamilyBridgeLoanForm />
+      </div>
+    </>
   );
 }
 

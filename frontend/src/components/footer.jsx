@@ -1,11 +1,12 @@
 const navigation = {
   main: [
     { name: "Real Estate Loans", href: "/loan-form-realestate" },
-    { name: "Rental DSCR Calculator", href: "/DsciCalculator" },
-    { name: "Fix and Flip Calculator", href: "/FixandFlipCalc" },
+    { name: "Rental DSCR Calculator", href: "/dscr-calculator" },
+    { name: "Fix and Flip Calculator", href: "/fix-and-flip-calculator" },
+    { name: "Rental DSCR Optimizer", href: "/dscr-optimizer-calculator" },
     { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Project Epic 99", href: "/project99" },
-    { name: "Partner", href: "/becomePartner" },
+    { name: "Partner", href: "/become-partner" },
     { name: "Contact Us", href: "/contactUs" },
   ],
   social: [
@@ -106,14 +107,14 @@ export default function Footer() {
         <p className="mt-10 text-center text-sm/6 text-gray-600">
           &copy; 2025 Capital Velocity, Inc. All rights reserved.
           <a
-            href="/termsofUse"
+            href="/terms-of-use"
             className="ml-1 text-gray-600 hover:text-gray-900"
           >
             Terms and Conditions
           </a>
           <span className="mx-1">|</span>
           <a
-            href="/privacyPolicy"
+            href="/privacy-policy"
             className="text-gray-600 hover:text-gray-900"
           >
             Privacy Policy

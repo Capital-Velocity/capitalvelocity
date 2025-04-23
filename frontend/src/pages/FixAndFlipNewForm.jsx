@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
 import { useLocation } from "react-router-dom"; // at the top
-
+import { Helmet } from "react-helmet";
 function FixAndFlipNewForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
@@ -65,9 +65,43 @@ function FixAndFlipNewForm() {
   }, []);
 
   return (
-    <div ref={headingRef} key={componentKey} className="text-center">
-      <Checkout />
-    </div>
+    <>
+      <Helmet>
+        <title>Fix and Flip Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Apply for Capital Velocity's Fix and Flip Loan. Get fast funding for real estate investment projects with flexible terms and streamlined approvals."
+        />
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-realestate-fixandflip"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Fix and Flip Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-realestate-fixandflip",
+      "description": "Apply for Capital Velocity's Fix and Flip Loan to finance your next real estate investment project. Enjoy quick funding, simple terms, and expert support.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+      <div ref={headingRef} key={componentKey} className="text-center">
+        <Checkout />
+      </div>
+    </>
   );
 }
 

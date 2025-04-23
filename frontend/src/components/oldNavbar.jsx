@@ -195,7 +195,7 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/FixandFlipCalc"
+                to="/fix-and-flip-calculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -205,7 +205,7 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/DsciCalculator"
+                to="/dscr-calculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -215,7 +215,7 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/optimizercalculator"
+                to="/dscr-optimizer-calculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -245,7 +245,7 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/becomePartner"
+                to="/become-partner"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
@@ -257,9 +257,7 @@ function Navbar() {
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>
-                    Contact Us
-                  </Typography>
+                  <Typography sx={{ textAlign: "center" }}>Contact</Typography>
                 </MenuItem>
               </Link>
             </Menu>
@@ -449,12 +447,12 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/FixandFlipCalc"
+          location.pathname === "/fix-and-flip-calculator"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/FixandFlipCalc"
+            href="/fix-and-flip-calculator"
           >
             <div class="css-0">
               <svg
@@ -478,12 +476,12 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/DsciCalculator"
+          location.pathname === "/dscr-calculator"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/DsciCalculator"
+            href="/dscr-calculator"
           >
             <div class="css-0">
               <svg
@@ -507,12 +505,12 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/optimizercalculator"
+          location.pathname === "/dscr-optimizer-calculator"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/optimizercalculator"
+            href="/dscr-optimizer-calculator"
           >
             <div class="css-0">
               <svg
@@ -719,12 +717,12 @@ function Navbar() {
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
         ${
-          location.pathname === "/becomePartner"
+          location.pathname === "/become-partner"
             ? "border-gray-600"
             : "border-gray-300"
         } 
         hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
-            href="/becomePartner"
+            href="/become-partner"
           >
             <div class="css-0">
               <svg
@@ -979,7 +977,7 @@ function Navbar() {
                 ></rect>
               </svg>
             </div>
-            <span className="mt-1 leading-none">Contact Us</span>
+            <span className="mt-1 leading-none">Contact</span>
           </a>
         </div>
       </Container>

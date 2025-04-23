@@ -3,7 +3,7 @@ import SinglePropertyRentalLoanForm from "../loanCheckout/SinglePropertyRentalLo
 import { useLocation } from "react-router-dom"; // at the top
 import Cookies from "js-cookie";
 import axios from "axios";
-
+import { Helmet } from "react-helmet";
 function SinglePropertyRentalNewLoanForm() {
   const [isHeadingVisible, setIsHeadingVisible] = useState(false);
   const [componentKey, setComponentKey] = useState(0); // 👈 Force re-mount
@@ -68,14 +68,49 @@ function SinglePropertyRentalNewLoanForm() {
   }, []);
 
   return (
-    <div
-      ref={headingRef}
-      key={componentKey} // 👈 Ensures React re-renders on refresh
-      className={`text-center`}
-    >
-      {/* <RentalPortfolioLoanForm /> */}
-      <SinglePropertyRentalLoanForm />
-    </div>
+    <>
+      <Helmet>
+        <title>Single Property Rental Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Apply for a Single Property Rental Loan through Capital Velocity and get funding for your rental investment with ease. Quick approvals and investor-friendly terms."
+        />
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-realestate-singlepropertyrental"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Single Property Rental Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-realestate-singlepropertyrental",
+      "description": "Capital Velocity’s Single Property Rental Loan program helps real estate investors secure financing for individual rental properties with flexible terms and fast processing.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
+
+      <div
+        ref={headingRef}
+        key={componentKey} // 👈 Ensures React re-renders on refresh
+        className={`text-center`}
+      >
+        {/* <RentalPortfolioLoanForm /> */}
+        <SinglePropertyRentalLoanForm />
+      </div>
+    </>
   );
 }
 

@@ -66,7 +66,7 @@ import FinanceProjectEpic99 from "../components/NewLoanFormComponents/FinancePro
 import BorrowerInformationSBAForm from "../components/NewLoanFormComponents/BorrowerInformationSBAForm";
 import FinanceInformationSBAForm from "../components/NewLoanFormComponents/FinanceInformationSBAForm";
 import { useLocation } from "react-router-dom"; // at the top
-
+import { Helmet } from "react-helmet";
 export default function SBALoanForm(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const isSmallScreen = useMediaQuery("(max-width:600px)");
@@ -319,236 +319,279 @@ export default function SBALoanForm(props) {
   //   }
   // };
   return (
-    <AppTheme {...props}>
-      {showConfetti && (
-        <Confetti
-          width={width}
-          height={height}
-          numberOfPieces={250} // Decent amount of confetti
-          tweenDuration={5} // Smooth fall animation
-          decay={0.9} // Ensures confetti falls off-screen
-          run={showConfetti} // Ensures confetti doesn't regenerate
-          recycle={false} // Stops confetti from looping
+    <>
+      <Helmet>
+        <title>SBA Loan | Capital Velocity</title>
+        <meta
+          name="description"
+          content="Apply for SBA-backed loans with Capital Velocity. Secure funding with flexible terms, lower interest rates, and government support to grow your business."
         />
-      )}
+        <link
+          rel="canonical"
+          href="https://www.capitalvelocity.com/loan-form-business-loans-sba"
+        />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {`
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "SBA Loan",
+      "url": "https://www.capitalvelocity.com/loan-form-business-loans-sba",
+      "description": "Get access to Small Business Administration (SBA) loans through Capital Velocity. Our platform makes it easy for small business owners to apply for funding with favorable government-backed terms.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Capital Velocity",
+        "url": "https://www.capitalvelocity.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.capitalvelocity.com/assets/cvlogo-BWrm997-.png"
+        }
+      }
+    }
+    `}
+        </script>
+      </Helmet>
 
-      <ToastContainer />
+      <AppTheme {...props}>
+        {showConfetti && (
+          <Confetti
+            width={width}
+            height={height}
+            numberOfPieces={250} // Decent amount of confetti
+            tweenDuration={5} // Smooth fall animation
+            decay={0.9} // Ensures confetti falls off-screen
+            run={showConfetti} // Ensures confetti doesn't regenerate
+            recycle={false} // Stops confetti from looping
+          />
+        )}
 
-      {/* <CssBaseline enableColorScheme />
+        <ToastContainer />
+
+        {/* <CssBaseline enableColorScheme />
       <Box sx={{ position: "fixed", top: "1rem", right: "1rem" }}>
         <ColorModeIconDropdown />
       </Box> */}
 
-      <Box>
-        {isSmallScreen && <MobileHeaderTitle title="SBA" />}
-        <Grid
-          container
-          sx={{
-            height: {
-              xs: "100%",
-              sm: "calc(100dvh - var(--template-frame-height, 0px))",
-            },
-            mt: {
-              xs: 4,
-              sm: 0,
-            },
-          }}
-        >
+        <Box>
+          {isSmallScreen && <MobileHeaderTitle title="SBA" />}
           <Grid
-            size={{ xs: 12, sm: 5, lg: 4 }}
+            container
             sx={{
-              display: { xs: "none", md: "flex" },
-              flexDirection: "column",
-              backgroundColor: "background.paper",
-              borderRight: { sm: "none", md: "1px solid" },
-              borderColor: { sm: "none", md: "divider" },
-              alignItems: "start",
-              pt: 16,
-              px: 10,
-              gap: 4,
+              height: {
+                xs: "100%",
+                sm: "calc(100dvh - var(--template-frame-height, 0px))",
+              },
+              mt: {
+                xs: 4,
+                sm: 0,
+              },
             }}
           >
-            {/* <SitemarkIcon /> */}
-            <Box
+            <Grid
+              size={{ xs: 12, sm: 5, lg: 4 }}
+              sx={{
+                display: { xs: "none", md: "flex" },
+                flexDirection: "column",
+                backgroundColor: "background.paper",
+                borderRight: { sm: "none", md: "1px solid" },
+                borderColor: { sm: "none", md: "divider" },
+                alignItems: "start",
+                pt: 16,
+                px: 10,
+                gap: 4,
+              }}
+            >
+              {/* <SitemarkIcon /> */}
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexGrow: 1,
+                  width: "100%",
+                  maxWidth: 500,
+                }}
+              >
+                {/* <Info totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"} /> */}
+                <Typography
+                  variant="h1" // Larger heading for "Small Business Loan"
+                  style={{ color: "black", fontWeight: "bold" }}
+                  gutterBottom
+                >
+                  SBA Loan
+                </Typography>
+                <Typography variant="h6" style={{ color: "black" }}>
+                  Our SBA-backed loan programs provide small businesses with the
+                  financial support they need to grow and succeed.
+                </Typography>
+                <Typography
+                  variant="h7"
+                  style={{ color: "black", marginTop: "10px" }}
+                >
+                  <Checkbox
+                    defaultChecked
+                    icon={
+                      <CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />
+                    }
+                    checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                    sx={{
+                      transform: "scale(1.0)", // Keep checkbox size
+                    }}
+                  />
+                  Government Backed <br />
+                  <Checkbox
+                    defaultChecked
+                    icon={
+                      <CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />
+                    }
+                    checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                    sx={{
+                      transform: "scale(1.0)", // Keep checkbox size
+                    }}
+                  />
+                  Longer Terms Available <br />{" "}
+                  <Checkbox
+                    defaultChecked
+                    icon={
+                      <CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />
+                    }
+                    checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+                    sx={{
+                      transform: "scale(1.0)", // Keep checkbox size
+                    }}
+                  />
+                  Lower Interest Rates
+                </Typography>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <img
+                    src={trustPilotPic}
+                    alt="TrustPilot"
+                    style={{ width: "262px", height: "43px" }}
+                  />
+                </div>
+              </Box>
+            </Grid>
+            <Grid
+              size={{ sm: 12, md: 7, lg: 8 }}
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                flexGrow: 1,
+                maxWidth: "100%",
                 width: "100%",
-                maxWidth: 500,
+                backgroundColor: {
+                  xs: "transparent",
+                  sm: "background.default",
+                },
+                alignItems: "center",
+                pt: { xs: 0, sm: 16 },
+                px: { xs: 2, sm: 10 },
+                gap: { xs: 4, md: 8 },
               }}
             >
-              {/* <Info totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"} /> */}
-              <Typography
-                variant="h1" // Larger heading for "Small Business Loan"
-                style={{ color: "black", fontWeight: "bold" }}
-                gutterBottom
-              >
-                SBA Loan
-              </Typography>
-              <Typography variant="h6" style={{ color: "black" }}>
-                Our SBA-backed loan programs provide small businesses with the
-                financial support they need to grow and succeed.
-              </Typography>
-              <Typography
-                variant="h7"
-                style={{ color: "black", marginTop: "10px" }}
-              >
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
+              <React.Fragment>
+                <Stepper
+                  activeStep={activeStep}
+                  orientation="horizontal" // Always horizontal
                   sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
+                    flexWrap: "wrap",
+                    justifyContent: "center", // Centered alignment
+                    rowGap: "8px", // Space between rows
                   }}
-                />
-                Government Backed <br />
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
-                  sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
-                  }}
-                />
-                Longer Terms Available <br />{" "}
-                <Checkbox
-                  defaultChecked
-                  icon={<CheckBoxOutlineBlankIcon sx={{ color: green[400] }} />}
-                  checkedIcon={<CheckBoxIcon sx={{ color: green[400] }} />}
-                  sx={{
-                    transform: "scale(1.0)", // Keep checkbox size
-                  }}
-                />
-                Lower Interest Rates
-              </Typography>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <img
-                  src={trustPilotPic}
-                  alt="TrustPilot"
-                  style={{ width: "262px", height: "43px" }}
-                />
-              </div>
-            </Box>
-          </Grid>
-          <Grid
-            size={{ sm: 12, md: 7, lg: 8 }}
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              maxWidth: "100%",
-              width: "100%",
-              backgroundColor: { xs: "transparent", sm: "background.default" },
-              alignItems: "center",
-              pt: { xs: 0, sm: 16 },
-              px: { xs: 2, sm: 10 },
-              gap: { xs: 4, md: 8 },
-            }}
-          >
-            <React.Fragment>
-              <Stepper
-                activeStep={activeStep}
-                orientation="horizontal" // Always horizontal
-                sx={{
-                  flexWrap: "wrap",
-                  justifyContent: "center", // Centered alignment
-                  rowGap: "8px", // Space between rows
-                }}
-              >
-                {steps.map((label, index) => (
-                  <Step
-                    key={label}
-                    onClick={() => handleStepClick(index)}
-                    sx={{
-                      flex: "2 1 30%", // Ensures equal width (adjust 25% as needed)
-                      minWidth: "120px", // Prevents steps from getting too small
-                      textAlign: "center", // Ensures labels stay centered
-                    }}
-                  >
-                    <StepLabel
+                >
+                  {steps.map((label, index) => (
+                    <Step
+                      key={label}
+                      onClick={() => handleStepClick(index)}
                       sx={{
-                        cursor: "pointer",
-                        "& .MuiStepLabel-label": {
-                          fontSize: "0.8rem",
-                          textAlign: "center", // Ensures text alignment
-                          display: "block", // Keeps text from shifting
-                        },
-                        "& .MuiStepIcon-root": {
-                          fontSize: "1.5rem",
-                        },
+                        flex: "2 1 30%", // Ensures equal width (adjust 25% as needed)
+                        minWidth: "120px", // Prevents steps from getting too small
+                        textAlign: "center", // Ensures labels stay centered
                       }}
                     >
-                      {label}
-                    </StepLabel>
-                  </Step>
-                ))}
-              </Stepper>
+                      <StepLabel
+                        sx={{
+                          cursor: "pointer",
+                          "& .MuiStepLabel-label": {
+                            fontSize: "0.8rem",
+                            textAlign: "center", // Ensures text alignment
+                            display: "block", // Keeps text from shifting
+                          },
+                          "& .MuiStepIcon-root": {
+                            fontSize: "1.5rem",
+                          },
+                        }}
+                      >
+                        {label}
+                      </StepLabel>
+                    </Step>
+                  ))}
+                </Stepper>
 
-              {getStepContent(activeStep)}
-              <Box
-                sx={[
-                  {
-                    display: "flex",
-                    flexDirection: { xs: "column-reverse", sm: "row" },
-                    alignItems: "end",
-                    flexGrow: 1,
-                    gap: 1,
-                    pb: { xs: 12, sm: 0 },
-                    mt: { xs: 2, sm: 0 },
-                    mb: "60px",
-                  },
-                  activeStep !== 0
-                    ? { justifyContent: "space-between" }
-                    : { justifyContent: "flex-end" },
-                ]}
-              >
-                {activeStep !== 0 && (
-                  <Button
-                    startIcon={<ChevronLeftRoundedIcon />}
-                    onClick={handleBack}
-                    variant="text"
-                    sx={{ display: { xs: "none", sm: "flex" } }}
-                  >
-                    Previous
-                  </Button>
-                )}
-                {activeStep !== 0 && (
-                  <Button
-                    startIcon={<ChevronLeftRoundedIcon />}
-                    onClick={handleBack}
-                    variant="outlined"
-                    fullWidth
-                    sx={{ display: { xs: "flex", sm: "none" } }}
-                  >
-                    Previous
-                  </Button>
-                )}
-                <Button
-                  variant="contained"
-                  endIcon={<ChevronRightRoundedIcon />}
-                  onClick={
-                    activeStep === steps.length - 1
-                      ? handleApplyNow
-                      : handleNext
-                  }
-                  sx={{ width: { xs: "100%", sm: "fit-content" } }}
-                  disabled={isSubmitting} // Disable button when submitting
+                {getStepContent(activeStep)}
+                <Box
+                  sx={[
+                    {
+                      display: "flex",
+                      flexDirection: { xs: "column-reverse", sm: "row" },
+                      alignItems: "end",
+                      flexGrow: 1,
+                      gap: 1,
+                      pb: { xs: 12, sm: 0 },
+                      mt: { xs: 2, sm: 0 },
+                      mb: "60px",
+                    },
+                    activeStep !== 0
+                      ? { justifyContent: "space-between" }
+                      : { justifyContent: "flex-end" },
+                  ]}
                 >
-                  {isSubmitting
-                    ? "Submitting..."
-                    : activeStep === steps.length - 1
-                    ? "Apply Now"
-                    : "Next"}
-                </Button>
-              </Box>
-            </React.Fragment>
-            {/* <Box
+                  {activeStep !== 0 && (
+                    <Button
+                      startIcon={<ChevronLeftRoundedIcon />}
+                      onClick={handleBack}
+                      variant="text"
+                      sx={{ display: { xs: "none", sm: "flex" } }}
+                    >
+                      Previous
+                    </Button>
+                  )}
+                  {activeStep !== 0 && (
+                    <Button
+                      startIcon={<ChevronLeftRoundedIcon />}
+                      onClick={handleBack}
+                      variant="outlined"
+                      fullWidth
+                      sx={{ display: { xs: "flex", sm: "none" } }}
+                    >
+                      Previous
+                    </Button>
+                  )}
+                  <Button
+                    variant="contained"
+                    endIcon={<ChevronRightRoundedIcon />}
+                    onClick={
+                      activeStep === steps.length - 1
+                        ? handleApplyNow
+                        : handleNext
+                    }
+                    sx={{ width: { xs: "100%", sm: "fit-content" } }}
+                    disabled={isSubmitting} // Disable button when submitting
+                  >
+                    {isSubmitting
+                      ? "Submitting..."
+                      : activeStep === steps.length - 1
+                      ? "Apply Now"
+                      : "Next"}
+                  </Button>
+                </Box>
+              </React.Fragment>
+              {/* <Box
               sx={{
                 display: "flex",
                 justifyContent: { sm: "space-between", md: "flex-end" },
@@ -585,37 +628,37 @@ export default function SBALoanForm(props) {
                 </Stepper>
               </Box>
             </Box> */}
-            <Card sx={{ display: { xs: "flex", md: "none" }, width: "100%" }}>
-              <CardContent
-                sx={{
-                  display: "flex",
-                  width: "100%",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                }}
-              >
-                {/* <div>
+              <Card sx={{ display: { xs: "flex", md: "none" }, width: "100%" }}>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    width: "100%",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  {/* <div>
                   <Typography variant="subtitle2" gutterBottom>
                     Fix and Flip Loan
                   </Typography>
                 </div> */}
-                <InfoMobile
-                  totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"}
-                />
-              </CardContent>
-            </Card>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexGrow: 1,
-                width: "100%",
-                maxWidth: { sm: "100%", md: 600 },
-                maxHeight: "720px",
-                gap: { xs: 5, md: "none" },
-              }}
-            >
-              {/* <Stepper
+                  <InfoMobile
+                    totalPrice={activeStep >= 2 ? "$144.97" : "$134.98"}
+                  />
+                </CardContent>
+              </Card>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  flexGrow: 1,
+                  width: "100%",
+                  maxWidth: { sm: "100%", md: 600 },
+                  maxHeight: "720px",
+                  gap: { xs: 5, md: "none" },
+                }}
+              >
+                {/* <Stepper
                 id="mobile-stepper"
                 activeStep={activeStep}
                 alternativeLabel
@@ -640,30 +683,33 @@ export default function SBALoanForm(props) {
                   </Step>
                 ))}
               </Stepper> */}
-              {activeStep === steps.length ? (
-                <Stack spacing={2} useFlexGap>
-                  <Typography variant="h1">📦</Typography>
-                  <Typography variant="h5">
-                    Thank you for your order!
-                  </Typography>
-                  <Typography variant="body1" sx={{ color: "text.secondary" }}>
-                    Your order number is
-                    <strong>&nbsp;#140396</strong>. We have emailed your order
-                    confirmation and will update you once its shipped.
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    sx={{
-                      alignSelf: "start",
-                      width: { xs: "100%", sm: "auto" },
-                    }}
-                  >
-                    Go to my orders
-                  </Button>
-                </Stack>
-              ) : (
-                <React.Fragment>
-                  {/* {getStepContent(activeStep)}
+                {activeStep === steps.length ? (
+                  <Stack spacing={2} useFlexGap>
+                    <Typography variant="h1">📦</Typography>
+                    <Typography variant="h5">
+                      Thank you for your order!
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      sx={{ color: "text.secondary" }}
+                    >
+                      Your order number is
+                      <strong>&nbsp;#140396</strong>. We have emailed your order
+                      confirmation and will update you once its shipped.
+                    </Typography>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        alignSelf: "start",
+                        width: { xs: "100%", sm: "auto" },
+                      }}
+                    >
+                      Go to my orders
+                    </Button>
+                  </Stack>
+                ) : (
+                  <React.Fragment>
+                    {/* {getStepContent(activeStep)}
                   <Box
                     sx={[
                       {
@@ -715,12 +761,13 @@ export default function SBALoanForm(props) {
                       {activeStep === steps.length - 1 ? "Apply Now" : "Next"}
                     </Button>
                   </Box> */}
-                </React.Fragment>
-              )}
-            </Box>
+                  </React.Fragment>
+                )}
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-      </Box>
-    </AppTheme>
+        </Box>
+      </AppTheme>
+    </>
   );
 }
