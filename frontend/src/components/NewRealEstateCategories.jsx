@@ -303,7 +303,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -315,7 +315,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[0].tooltip}
                       </Typography>
 
@@ -338,7 +338,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>
@@ -470,7 +470,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -482,7 +482,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[1].tooltip}
                       </Typography>
 
@@ -505,7 +505,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>
@@ -589,7 +589,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -601,7 +601,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[2].tooltip}
                       </Typography>
 
@@ -624,7 +624,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>
@@ -743,7 +743,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -755,7 +755,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[3].tooltip}
                       </Typography>
 
@@ -778,7 +778,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>
@@ -862,7 +862,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -874,7 +874,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[4].tooltip}
                       </Typography>
 
@@ -897,7 +897,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>
@@ -1014,7 +1014,7 @@ const NewRealEstateCategories = () => {
                       mt={2}
                     >
                       <Typography
-                        variant={"subtitle1"}
+                        variant={"h6"}
                         sx={{
                           fontWeight: 500,
                           textDecoration: "none",
@@ -1026,7 +1026,7 @@ const NewRealEstateCategories = () => {
                       {/* Divider between title and tooltip */}
                       <Divider sx={{ width: "100%", my: 1 }} />
 
-                      <Typography variant="body2" sx={{ textAlign: "center" }}>
+                      <Typography variant="body1" sx={{ textAlign: "center" }}>
                         {selectionData[5].tooltip}
                       </Typography>
 
@@ -1049,7 +1049,7 @@ const NewRealEstateCategories = () => {
                                 transform: "scale(0.9)",
                               }}
                             />
-                            <Typography sx={{ fontSize: "0.875rem" }}>
+                            <Typography sx={{ fontSize: "1rem" }}>
                               {check}
                             </Typography>
                           </Box>

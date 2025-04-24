@@ -212,7 +212,7 @@ const Categories3 = () => {
                               mt={2}
                             >
                               <Typography
-                                variant={"subtitle1"}
+                                variant={"h6"}
                                 sx={{
                                   fontWeight: 500,
                                   textDecoration: "none",
@@ -225,7 +225,7 @@ const Categories3 = () => {
                               <Divider sx={{ width: "100%", my: 1 }} />
 
                               <Typography
-                                variant="body2"
+                                variant="body1"
                                 sx={{ textAlign: "center" }}
                               >
                                 {item.tooltip}
@@ -250,7 +250,7 @@ const Categories3 = () => {
                                         transform: "scale(0.9)",
                                       }}
                                     />
-                                    <Typography sx={{ fontSize: "0.875rem" }}>
+                                    <Typography sx={{ fontSize: "1rem" }}>
                                       {check}
                                     </Typography>
                                   </Box>
