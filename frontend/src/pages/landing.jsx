@@ -148,7 +148,7 @@ function Landing() {
   return (
     <>
       <Helmet>
-        <title>Commercial Real Estate Loans | Capital Velocity</title>
+        <title>Multifamily Real Estate Loans | Capital Velocity</title>
         <meta
           name="description"
           content="Explore flexible financing options including Fix and Flip, Ground Up, Multifamily Bridge, and more. Capital Velocity helps real estate investors secure the funding they need to scale."
@@ -161,7 +161,7 @@ function Landing() {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "name": "Commercial Real Estate Loans",
+      "name": "Multifamily Real Estate Loans",
       "url": "https://capitalvelocity.com/",
       "description": "Flexible real estate loan programs including Fix and Flip, Ground Up Construction, Multifamily Bridge, and Rental Portfolios. Capital Velocity empowers investors with competitive financing solutions.",
       "publisher": {
