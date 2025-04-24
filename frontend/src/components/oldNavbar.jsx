@@ -388,23 +388,22 @@ function Navbar() {
         <hr />
         <div class="hidden justify-center space-x-12 bg-white px-12 md:flex">
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${location.pathname === "/" ? "border-gray-600" : "border-gray-300"} 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${location.pathname === "/" ? "border-gray-600" : "border-gray-300"} 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/"
           >
             <div class="css-0">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="1.5"
+                stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="lucide lucide-circle-help-icon lucide-circle-help"
               >
                 <circle cx="12" cy="12" r="10" />
                 <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
@@ -413,251 +412,192 @@ function Navbar() {
             </div>
             <span class="mt-1 leading-none">About</span>
           </a>
+
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/loan-form-realestate"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/loan-form-realestate"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/loan-form-realestate"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 16 23"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M9.07917 1.66675V9.59308L14.517 9.60475L6.43667 21.4826V13.5562L1 13.5446L9.07917 1.66675Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                />
               </svg>
             </div>
             <span class="mt-1 leading-none">Real Estate Loans</span>
           </a>
+
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/fix-and-flip-calculator"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/fix-and-flip-calculator"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/fix-and-flip-calculator"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M15.0012 9.99914C15.0012 11.3804 12.3138 12.5002 8.99875 12.5002C5.68366 12.5002 2.99625 11.3804 2.99625 9.99914M15.0012 9.99914C15.0012 8.61786 12.3138 7.4981 8.99875 7.4981C5.68366 7.4981 2.99625 8.61786 2.99625 9.99914M15.0012 9.99914V17.5023C15.0012 18.8836 12.3138 20.0033 8.99875 20.0033C5.68366 20.0033 2.99625 18.8836 2.99625 17.5023V9.99914M15.0012 13.5006C15.0012 14.8819 12.3138 16.0016 8.99875 16.0016C5.68366 16.0016 2.99625 14.8819 2.99625 13.5006M21.0037 9.99914C21.0037 11.3804 18.3163 12.5002 15.0012 12.5002M21.0037 6.49768V14.0008C21.0037 15.3821 18.3163 16.5019 15.0012 16.5019M21.0037 6.49768C21.0037 5.11711 18.3126 3.99664 15.0012 3.99664C11.6899 3.99664 8.99875 5.11711 8.99875 6.49768C9.0214 6.88843 9.20196 7.25317 9.49895 7.50811M21.0037 6.49768C21.0037 7.87826 18.3126 8.99873 15.0012 8.99873C14.8312 8.99873 14.6611 8.99873 14.501 8.98872"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                <path d="M15.0012 9.99914C15.0012 11.3804 12.3138 12.5002 8.99875 12.5002C5.68366 12.5002 2.99625 11.3804 2.99625 9.99914M15.0012 9.99914C15.0012 8.61786 12.3138 7.4981 8.99875 7.4981C5.68366 7.4981 2.99625 8.61786 2.99625 9.99914M15.0012 9.99914V17.5023C15.0012 18.8836 12.3138 20.0033 8.99875 20.0033C5.68366 20.0033 2.99625 18.8836 2.99625 17.5023V9.99914M15.0012 13.5006C15.0012 14.8819 12.3138 16.0016 8.99875 16.0016C5.68366 16.0016 2.99625 14.8819 2.99625 13.5006" />
+                <path d="M21.0037 9.99914C21.0037 11.3804 18.3163 12.5002 15.0012 12.5002M21.0037 6.49768V14.0008C21.0037 15.3821 18.3163 16.5019 15.0012 16.5019" />
+                <path d="M21.0037 6.49768C21.0037 5.11711 18.3126 3.99664 15.0012 3.99664C11.6899 3.99664 8.99875 5.11711 8.99875 6.49768C9.0214 6.88843 9.20196 7.25317 9.49895 7.50811M21.0037 6.49768C21.0037 7.87826 18.3126 8.99873 15.0012 8.99873C14.8312 8.99873 14.6611 8.99873 14.501 8.98872" />
               </svg>
             </div>
             <span class="mt-1 leading-none">Fix and Flip Calculator</span>
           </a>
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/dscr-calculator"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/dscr-calculator"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/dscr-calculator"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M18 7H17M6 15H7M10.2322 12.7678C9.25592 11.7915 9.25592 10.2085 10.2322 9.23223C11.2085 8.25592 12.7915 8.25592 13.7678 9.23223M19.5 18L21 19.5M10 18H6C4.34315 18 3 16.6569 3 15V7C3 5.34315 4.34315 4 6 4H18C19.6569 4 21 5.34315 21 7V10M19.4749 13.0251C20.5633 14.1239 20.8026 15.8063 20.0638 17.165C19.325 18.5237 17.7829 19.2374 16.2689 18.9212C14.755 18.6049 13.6275 17.3336 13.4943 15.7928C13.3612 14.252 14.2539 12.806 15.6911 12.2348C16.9951 11.6974 18.4951 12.0107 19.4749 13.0251Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                <path d="M18 7H17M6 15H7M10.2322 12.7678C9.25592 11.7915 9.25592 10.2085 10.2322 9.23223C11.2085 8.25592 12.7915 8.25592 13.7678 9.23223M19.5 18L21 19.5M10 18H6C4.34315 18 3 16.6569 3 15V7C3 5.34315 4.34315 4 6 4H18C19.6569 4 21 5.34315 21 7V10M19.4749 13.0251C20.5633 14.1239 20.8026 15.8063 20.0638 17.165C19.325 18.5237 17.7829 19.2374 16.2689 18.9212C14.755 18.6049 13.6275 17.3336 13.4943 15.7928C13.3612 14.252 14.2539 12.806 15.6911 12.2348C16.9951 11.6974 18.4951 12.0107 19.4749 13.0251Z" />
               </svg>
             </div>
             <span class="mt-1 leading-none">Rental DSCR Calculator</span>
           </a>
+
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/dscr-optimizer-calculator"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/dscr-optimizer-calculator"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/dscr-optimizer-calculator"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 44 44"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M20.1969 38.2336C11.2308 38.2336 3.96387 30.9666 3.96387 22.0006C3.96387 13.0346 11.2308 5.76758 20.1969 5.76758C29.1629 5.76758 36.4299 13.0346 36.4299 22.0006"
-                  stroke="currentColor"
-                  stroke-width="2.70438"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M4.88965 16.5893H35.5033"
-                  stroke="currentColor"
-                  stroke-width="2.70438"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M4.8916 27.4116H22.0012"
-                  stroke="currentColor"
-                  stroke-width="2.70438"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M27.4128 21.9987C27.4128 17.0133 26.1088 12.028 23.5043 7.67755C21.9766 5.12897 18.4197 5.12897 16.8938 7.67755C11.6812 16.3802 11.6812 27.6189 16.8938 36.3198C17.6568 37.595 18.9284 38.2335 20.1999 38.2335"
-                  stroke="currentColor"
-                  stroke-width="2.70438"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                <path d="M20.1969 38.2336C11.2308 38.2336 3.96387 30.9666 3.96387 22.0006C3.96387 13.0346 11.2308 5.76758 20.1969 5.76758C29.1629 5.76758 36.4299 13.0346 36.4299 22.0006" />
+                <path d="M4.88965 16.5893H35.5033" />
+                <path d="M4.8916 27.4116H22.0012" />
+                <path d="M27.4128 21.9987C27.4128 17.0133 26.1088 12.028 23.5043 7.67755C21.9766 5.12897 18.4197 5.12897 16.8938 7.67755C11.6812 16.3802 11.6812 27.6189 16.8938 36.3198C17.6568 37.595 18.9284 38.2335 20.1999 38.2335" />
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M34.6405 27.9238L39.8892 36.6806C40.36 37.467 39.6295 38.4194 38.7204 38.2029L33.7243 37.0107L28.7281 38.2011C27.8191 38.4176 27.0886 37.4652 27.5593 36.6788L32.808 27.9238C33.2174 27.2402 34.2311 27.2402 34.6405 27.9238Z"
-                  stroke="currentColor"
-                  stroke-width="2.70438"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                />
               </svg>
             </div>
             <span class="mt-1 leading-none">Rental DSCR Optimizer</span>
           </a>
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/loan-form-business-loans"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/loan-form-business-loans"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/loan-form-business-loans"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M21.0038 9.49893V6.49768C21.0038 5.1164 19.884 3.99664 18.5027 3.99664H5.49731C4.11602 3.99664 2.99627 5.1164 2.99627 6.49768V7.99831M21.0038 9.49893L18.5027 9.49894C17.1214 9.49894 16.0017 10.6187 16.0017 12C16.0017 13.3813 17.1214 14.501 18.5027 14.501H21.0038M21.0038 9.49893C21.5563 9.49893 22.0042 9.94684 22.0042 10.4994V13.5006C22.0042 14.0531 21.5563 14.501 21.0038 14.501M21.0038 14.501V17.5023C21.0038 18.8836 19.884 20.0033 18.5027 20.0033H13.0004M1.99585 12.6002V19.4031C1.99699 20.2869 3.78746 21.0037 5.99752 21.0037C8.20758 21.0037 9.99804 20.2869 9.99918 19.4031V12.6002C9.99804 11.7164 8.20644 10.9996 5.99752 10.9996C3.7886 10.9996 1.99585 11.7153 1.99585 12.6002ZM1.99585 12.6002C1.99585 13.484 3.78632 14.2009 5.99638 14.2009C8.20644 14.2009 9.99804 13.484 9.99804 12.6002M1.99642 16.0016C1.99642 16.8854 3.78689 17.6023 5.99695 17.6023C8.20701 17.6023 9.99861 16.8854 9.99861 16.0016"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                <path d="M21.0038 9.49893V6.49768C21.0038 5.1164 19.884 3.99664 18.5027 3.99664H5.49731C4.11602 3.99664 2.99627 5.1164 2.99627 6.49768V7.99831" />
+                <path d="M21.0038 9.49893L18.5027 9.49894C17.1214 9.49894 16.0017 10.6187 16.0017 12C16.0017 13.3813 17.1214 14.501 18.5027 14.501H21.0038" />
+                <path d="M21.0038 9.49893C21.5563 9.49893 22.0042 9.94684 22.0042 10.4994V13.5006C22.0042 14.0531 21.5563 14.501 21.0038 14.501" />
+                <path d="M21.0038 14.501V17.5023C21.0038 18.8836 19.884 20.0033 18.5027 20.0033H13.0004" />
+                <path d="M1.99585 12.6002V19.4031C1.99699 20.2869 3.78746 21.0037 5.99752 21.0037C8.20758 21.0037 9.99804 20.2869 9.99918 19.4031V12.6002C9.99804 11.7164 8.20644 10.9996 5.99752 10.9996C3.7886 10.9996 1.99585 11.7153 1.99585 12.6002Z" />
+                <path d="M1.99585 12.6002C1.99585 13.484 3.78632 14.2009 5.99638 14.2009C8.20644 14.2009 9.99804 13.484 9.99804 12.6002" />
+                <path d="M1.99642 16.0016C1.99642 16.8854 3.78689 17.6023 5.99695 17.6023C8.20701 17.6023 9.99861 16.8854 9.99861 16.0016" />
               </svg>
             </div>
             <span class="mt-1 leading-none">Business Loans</span>
           </a>
 
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/project99"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/project99" ? "border-gray-600" : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/project99"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <path
-                  d="M5 9H1.5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M5 15H3.5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M5 12H2.5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M5.63599 5.636C8.20997 3.06202 12.081 2.29201 15.4441 3.68504C18.8072 5.07807 20.9999 8.3598 20.9999 12C20.9999 15.6401 18.8072 18.9218 15.4441 20.3149C12.081 21.7079 8.20997 20.9379 5.63599 18.3639"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M12 7.5V8.5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M12 16.5V15.5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M14.1927 9.9211C13.8542 9.01649 12.964 8.43956 12 8.49998C10.8807 8.39379 9.88145 9.20102 9.75 10.3177C9.75 11.0342 10.2558 11.6511 10.9584 11.7917L13.0416 12.2083C13.7442 12.3488 14.25 12.9658 14.25 13.6823C14.1186 14.7989 13.1193 15.6062 12 15.5C11.036 15.5604 10.1458 14.9835 9.80729 14.0789"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                <path d="M5 9H1.5" />
+                <path d="M5 15H3.5" />
+                <path d="M5 12H2.5" />
+                <path d="M5.636 5.636C8.21 3.062 12.081 2.292 15.4441 3.685C18.8072 5.078 20.9999 8.3598 20.9999 12C20.9999 15.6401 18.8072 18.9218 15.4441 20.3149C12.081 21.7079 8.20997 20.9379 5.63599 18.3639" />
+                <path d="M12 7.5V8.5" />
+                <path d="M12 16.5V15.5" />
+                <path d="M14.1927 9.9211C13.8542 9.01649 12.964 8.43956 12 8.49998C10.8807 8.39379 9.88145 9.20102 9.75 10.3177C9.75 11.0342 10.2558 11.6511 10.9584 11.7917L13.0416 12.2083C13.7442 12.3488 14.25 12.9658 14.25 13.6823C14.1186 14.7989 13.1193 15.6062 12 15.5C11.036 15.5604 10.1458 14.9835 9.80729 14.0789" />
               </svg>
             </div>
             <span class="mt-1 leading-none">Project Epic 99</span>
@@ -715,67 +655,37 @@ function Navbar() {
             <span class="mt-1 leading-none">Why Capital Velocity?</span>
           </a> */}
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/become-partner"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/become-partner"
+        ? "border-gray-600"
+        : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/become-partner"
           >
             <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
                 <path
                   fill-rule="evenodd"
                   clip-rule="evenodd"
                   d="M12.6293 3.6535C12.2623 3.95042 11.7377 3.95042 11.3707 3.6535C10.5687 3.01343 9.49518 2.82752 8.52458 3.16058C7.55397 3.49364 6.82081 4.29951 6.58074 5.29719C6.49584 5.68536 6.19192 5.98811 5.80342 6.07151C4.6613 6.30332 3.70937 7.08817 3.26409 8.16515C2.81881 9.24213 2.93854 10.4701 3.58349 11.4407C3.81589 11.781 3.81589 12.229 3.58349 12.5692C2.93854 13.5399 2.81881 14.7678 3.26409 15.8448C3.70937 16.9218 4.6613 17.7066 5.80342 17.9385C6.19192 18.0218 6.49584 18.3246 6.58074 18.7128C6.82212 19.7096 7.55581 20.5141 8.52622 20.8461C9.49662 21.1781 10.5694 20.9915 11.3707 20.3515C11.7377 20.0545 12.2623 20.0545 12.6293 20.3515C13.432 20.9915 14.5063 21.1768 15.4771 20.8427C16.4479 20.5085 17.1805 19.7013 17.4193 18.7028C17.5042 18.3146 17.8081 18.0118 18.1966 17.9284C19.3388 17.6965 20.2908 16.9114 20.7359 15.8341C21.181 14.7569 21.0609 13.5288 20.4155 12.5582C20.184 12.2184 20.184 11.7716 20.4155 11.4317C21.0609 10.4612 21.181 9.23306 20.7359 8.15582C20.2908 7.07858 19.3388 6.29345 18.1966 6.0615C17.8081 5.97811 17.5042 5.67536 17.4193 5.28718C17.1779 4.29037 16.4442 3.48584 15.4738 3.15386C14.5034 2.82188 13.4306 3.00842 12.6293 3.6485V3.6535Z"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M12 3.87463V20.1244"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M15.0012 16.0017C15.0012 14.8967 15.897 14.0009 17.0021 14.0009"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M8.99876 7.99835C8.99876 9.10338 8.10295 9.99919 6.99792 9.99919"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M8.99876 16.0017C8.99876 14.8967 8.10295 14.0009 6.99792 14.0009"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
-                <path
-                  d="M15.0012 7.99835C15.0012 9.10338 15.897 9.99919 17.0021 9.99919"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+                />
+                <path d="M12 3.87463V20.1244" />
+                <path d="M15.0012 16.0017C15.0012 14.8967 15.897 14.0009 17.0021 14.0009" />
+                <path d="M8.99876 7.99835C8.99876 9.10338 8.10295 9.99919 6.99792 9.99919" />
+                <path d="M8.99876 16.0017C8.99876 14.8967 8.10295 14.0009 6.99792 14.0009" />
+                <path d="M15.0012 7.99835C15.0012 9.10338 15.897 9.99919 17.0021 9.99919" />
               </svg>
             </div>
             <span class="mt-1 leading-none">Partner</span>
@@ -893,91 +803,36 @@ function Navbar() {
           </a> */}
 
           <a
-            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out 
-        ${
-          location.pathname === "/contactUs"
-            ? "border-gray-600"
-            : "border-gray-300"
-        } 
-        hover:border-gray-600 hover:bg-transparent hover:text-neutral-900 text-neutral-700`}
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
+    ${
+      location.pathname === "/contactUs" ? "border-gray-600" : "border-gray-300"
+    } 
+    hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
             href="/contactUs"
           >
-            <div className="css-0">
+            <div class="css-0">
               <svg
-                width="28"
-                height="28"
+                width="32"
+                height="32"
                 viewBox="0 0 25 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
               >
-                <rect
-                  x="12.5"
-                  y="17.252"
-                  width="3.00125"
-                  height="3.75156"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></rect>
-                <rect
-                  x="15.5"
-                  y="13.001"
-                  width="3.00125"
-                  height="8.00333"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></rect>
-                <path
-                  d="M20.5032 9.99901V4.99693C20.5032 3.8919 19.6074 2.99609 18.5023 2.99609H5.49693C4.3919 2.99609 3.49609 3.8919 3.49609 4.99693V17.0019C3.49609 18.107 4.3919 19.0028 5.49693 19.0028H9.49859"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M9.74805 10.9992H12.4992"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M9.74805 7.12326H16.5009"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M6.6213 11.1243C6.69037 11.1243 6.74635 11.0683 6.74635 10.9992C6.74635 10.9302 6.69037 10.8742 6.6213 10.8742C6.55224 10.8742 6.49625 10.9302 6.49625 10.9992C6.49625 11.0683 6.55224 11.1243 6.6213 11.1243"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <path
-                  d="M6.6213 7.24831C6.69037 7.24831 6.74635 7.19232 6.74635 7.12326C6.74635 7.05419 6.69037 6.9982 6.6213 6.9982C6.55224 6.9982 6.49625 7.05419 6.49625 7.12326C6.49625 7.19232 6.55224 7.24831 6.6213 7.24831"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></path>
-                <rect
-                  x="18.502"
-                  y="15.252"
-                  width="3.00125"
-                  height="5.7524"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                ></rect>
+                <rect x="12.5" y="17.252" width="3.00125" height="3.75156" />
+                <rect x="15.5" y="13.001" width="3.00125" height="8.00333" />
+                <path d="M20.5032 9.99901V4.99693C20.5032 3.8919 19.6074 2.99609 18.5023 2.99609H5.49693C4.3919 2.99609 3.49609 3.8919 3.49609 4.99693V17.0019C3.49609 18.107 4.3919 19.0028 5.49693 19.0028H9.49859" />
+                <path d="M9.74805 10.9992H12.4992" />
+                <path d="M9.74805 7.12326H16.5009" />
+                <path d="M6.6213 11.1243C6.69037 11.1243 6.74635 11.0683 6.74635 10.9992C6.74635 10.9302 6.69037 10.8742 6.6213 10.8742C6.55224 10.8742 6.49625 10.9302 6.49625 10.9992C6.49625 11.0683 6.55224 11.1243 6.6213 11.1243" />
+                <path d="M6.6213 7.24831C6.69037 7.24831 6.74635 7.19232 6.74635 7.12326C6.74635 7.05419 6.69037 6.9982 6.6213 6.9982C6.55224 6.9982 6.49625 7.05419 6.49625 7.12326C6.49625 7.19232 6.55224 7.24831 6.6213 7.24831" />
+                <rect x="18.502" y="15.252" width="3.00125" height="5.7524" />
               </svg>
             </div>
-            <span className="mt-1 leading-none">Contact</span>
+            <span class="mt-1 leading-none">Contact</span>
           </a>
         </div>
       </Container>
