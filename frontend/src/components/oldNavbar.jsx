@@ -329,6 +329,17 @@ function Navbar() {
                 gap: 1,
               }}
             >
+              <Button
+                href="https://andrewcartwright.com/coaching"
+                target="_blank"
+                variant="contained"
+                style={{
+                  backgroundColor: "#4CAF50",
+                  borderRadius: "30px",
+                }}
+              >
+                Coaching
+              </Button>
               {firstnameCookie ? (
                 <>
                   <Link
