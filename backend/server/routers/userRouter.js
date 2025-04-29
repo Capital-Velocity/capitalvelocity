@@ -8,6 +8,12 @@ import mailgun from "mailgun-js";
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
 import EmailLog from "../models/emailLogModel.js";
+import {
+  CloudAdapter,
+  ConfigurationServiceClientCredentialFactory,
+  createBotFrameworkAuthenticationFromConfiguration,
+} from "botbuilder";
+import ChatBot from "../chatbot/bot.js";
 
 dotenv.config();
 const userRouter = express.Router();
@@ -660,5 +666,57 @@ userRouter.post(
     }
   })
 );
+
+const credentialsFactory = new ConfigurationServiceClientCredentialFactory({
+  MicrosoftAppId: process.env.MicrosoftAppId || "",
+  MicrosoftAppPassword: process.env.MicrosoftAppPassword || "",
+  MicrosoftAppType: process.env.MicrosoftAppType || "",
+  MicrosoftAppTenantId: process.env.MicrosoftAppTenantId || "",
+});
+
+const botFrameworkAuth = createBotFrameworkAuthenticationFromConfiguration(
+  null,
+  credentialsFactory
+);
+const adapter = new CloudAdapter(botFrameworkAuth);
+
+adapter.onTurnError = async (context, error) => {
+  console.error("[Bot Error]", error);
+  await context.sendActivity("Oops! Something went wrong.");
+};
+
+const chatBot = new ChatBot();
+
+userRouter.post("/messages", async (req, res) => {
+  await adapter.process(req, res, async (context) => {
+    await chatBot.run(context);
+  });
+});
+
+userRouter.get("/token", async (req, res) => {
+  try {
+    // console.log("inside of token route");
+    // console.log("Direct Line Secret:", process.env.DIRECT_LINE_SECRET); // Check it
+
+    const response = await axios.post(
+      "https://directline.botframework.com/v3/directline/tokens/generate",
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.DIRECT_LINE_SECRET}`,
+        },
+      }
+    );
+
+    res.send({ token: response.data.token });
+  } catch (err) {
+    console.error("Token generation failed:", err.message);
+    if (err.response) {
+      console.error("Status:", err.response.status);
+      console.error("Response:", err.response.data);
+    }
+    res.status(500).send("Failed to generate Direct Line token");
+  }
+});
 
 export default userRouter;

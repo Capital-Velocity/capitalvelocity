@@ -39,6 +39,7 @@ import ConceptCalc from "./Calculators/conceptCalc";
 import SBALoanForm from "./loanCheckout/SBALoanForm";
 import ForgotPassword from "./pages/forgotPassword";
 import ResetPassword from "./pages/resetPassword";
+import ChatBot from "./components/Chatbot";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -46,6 +47,7 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <ChatBot />
       <Routes>
         <Route path="/" element={<Landing />} />
         {/* <Route path="/smallbusinessloan" element={<ROKForm />} /> */}

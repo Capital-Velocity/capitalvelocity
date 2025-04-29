@@ -35,6 +35,12 @@ import project99Router from "./routers/project99Router.js";
 import jwt from "jsonwebtoken";
 import mailgun from "mailgun-js";
 import sbaRouter from "./routers/sbaRouter.js";
+import {
+  CloudAdapter,
+  ConfigurationServiceClientCredentialFactory,
+  createBotFrameworkAuthenticationFromConfiguration,
+} from "botbuilder";
+import ChatBot from "./chatbot/bot.js";
 dotenv.config();
 
 const app = express();
@@ -90,6 +96,24 @@ const httpServer = https.createServer(cred, app);
 httpServer.listen(4000, () => {
   console.log(`Server is running on port ${4000}`);
 });
+
+// const adapter = new BotFrameworkAdapter({
+//   appId: process.env.MicrosoftAppId || "",
+//   appPassword: process.env.MicrosoftAppPassword || "",
+// });
+
+// adapter.onTurnError = async (context, error) => {
+//   console.error("[Bot Error]", error);
+//   await context.sendActivity("Oops. Something went wrong.");
+// };
+
+// const chatBot = new ChatBot();
+
+// app.post("/api/messages", (req, res) => {
+//   adapter.processActivity(req, res, async (context) => {
+//     await chatBot.run(context);
+//   });
+// });
 
 // SEND THE RESET PASSWORD
 const mg = mailgun({
