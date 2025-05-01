@@ -20,18 +20,23 @@ class ChatBot extends ActivityHandler {
               actions: [
                 {
                   type: "imBack",
-                  title: "Fix & Flip Underwriting Sheet",
-                  value: "fix",
+                  title: "Fix & Flip Product Manual",
+                  value: "fix manual",
                 },
                 {
                   type: "imBack",
-                  title: "Rental Loan Terms",
-                  value: "rental",
+                  title: "Ground Up Product Manual",
+                  value: "ground manual",
                 },
                 {
                   type: "imBack",
-                  title: "Talk to a Person",
-                  value: "contact",
+                  title: "Rental Loan Product Manual",
+                  value: "rental manual",
+                },
+                {
+                  type: "imBack",
+                  title: "Stabilized Bridge Product Manual",
+                  value: "bridge manual",
                 },
               ],
             },
@@ -46,7 +51,79 @@ class ChatBot extends ActivityHandler {
     this.onMessage(async (context, next) => {
       const msg = context.activity.text.toLowerCase();
 
-      if (msg.includes("fix") && msg.includes("apply")) {
+      if (msg.includes("fix manual")) {
+        await context.sendActivity({
+          attachments: [
+            CardFactory.heroCard(
+              "Fix & Flip Product Manual",
+              "Download the full Fix & Flip guide here.",
+              null,
+              [
+                {
+                  type: "openUrl",
+                  title: "Download PDF",
+                  value:
+                    "https://portal.capitalvelocity.com/document-library/3ns4JV7cQrPnXTswjR3SKn",
+                },
+              ]
+            ),
+          ],
+        });
+      } else if (msg.includes("ground manual")) {
+        await context.sendActivity({
+          attachments: [
+            CardFactory.heroCard(
+              "Ground Up Product Manual",
+              "Download the full Ground Up guide here.",
+              null,
+              [
+                {
+                  type: "openUrl",
+                  title: "Download PDF",
+                  value:
+                    "https://portal.capitalvelocity.com/document-library/7EyAQJG8ImYmvOntrJDI7v",
+                },
+              ]
+            ),
+          ],
+        });
+      } else if (msg.includes("rental manual")) {
+        await context.sendActivity({
+          attachments: [
+            CardFactory.heroCard(
+              "Rental Loan Product Manual",
+              "Download the full Rental Loan guide here.",
+              null,
+              [
+                {
+                  type: "openUrl",
+                  title: "Download PDF",
+                  value:
+                    "https://grantvelocityfilestorage.blob.core.windows.net/uploads/file-3dc22823-ea2c-4589-8114-8a481e558b06.pdf",
+                },
+              ]
+            ),
+          ],
+        });
+      } else if (msg.includes("bridge manual")) {
+        await context.sendActivity({
+          attachments: [
+            CardFactory.heroCard(
+              "Stabilized Bridge Product Manual",
+              "Download the full Stabilized Bridge guide here.",
+              null,
+              [
+                {
+                  type: "openUrl",
+                  title: "Download PDF",
+                  value:
+                    "https://portal.capitalvelocity.com/document-library/7yAqLqR5HkkeuWHDeWV1fH",
+                },
+              ]
+            ),
+          ],
+        });
+      } else if (msg.includes("fix") && msg.includes("apply")) {
         await context.sendActivity({
           attachments: [
             CardFactory.heroCard(
@@ -58,41 +135,7 @@ class ChatBot extends ActivityHandler {
                   type: "openUrl",
                   title: "Start Application",
                   value:
-                    "https://www.capitalvelocity.com/loan-form-realestate-fixandflip", // update this with your real URL
-                },
-              ]
-            ),
-          ],
-        });
-      } else if (msg.includes("fix")) {
-        await context.sendActivity({
-          attachments: [
-            CardFactory.heroCard(
-              "Fix & Flip Underwriting Sheet",
-              "Download the full PDF below.",
-              null,
-              [
-                {
-                  type: "openUrl",
-                  title: "Download PDF",
-                  value: "https://your-blob-url/fixandflip.pdf",
-                },
-              ]
-            ),
-          ],
-        });
-      } else if (msg.includes("rental")) {
-        await context.sendActivity({
-          attachments: [
-            CardFactory.heroCard(
-              "Rental Terms Sheet",
-              "Get the full terms document.",
-              null,
-              [
-                {
-                  type: "openUrl",
-                  title: "Download PDF",
-                  value: "https://your-blob-url/rental.pdf",
+                    "https://www.capitalvelocity.com/loan-form-realestate-fixandflip",
                 },
               ]
             ),
@@ -105,18 +148,23 @@ class ChatBot extends ActivityHandler {
             actions: [
               {
                 type: "imBack",
-                title: "Fix & Flip Underwriting Sheet",
-                value: "fix",
+                title: "Fix & Flip Product Manual",
+                value: "fix manual",
               },
               {
                 type: "imBack",
-                title: "Rental Loan Terms",
-                value: "rental",
+                title: "Ground Up Product Manual",
+                value: "ground manual",
               },
               {
                 type: "imBack",
-                title: "Talk to a Person",
-                value: "contact",
+                title: "Rental Loan Product Manual",
+                value: "rental manual",
+              },
+              {
+                type: "imBack",
+                title: "Stabilized Bridge Product Manual",
+                value: "bridge manual",
               },
             ],
           },
