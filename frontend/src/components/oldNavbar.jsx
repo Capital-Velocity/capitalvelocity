@@ -253,6 +253,14 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
+                to="https://andrewcartwright.com/coaching"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: "center" }}>Coaching</Typography>
+                </MenuItem>
+              </Link>
+              <Link
                 to="/contactUs"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
@@ -333,13 +341,15 @@ function Navbar() {
                 href="https://andrewcartwright.com/coaching"
                 target="_blank"
                 variant="contained"
-                style={{
+                sx={{
+                  display: { xs: "none", md: "inline-flex" }, // ❗ Hide on mobile
                   backgroundColor: "#4CAF50",
                   borderRadius: "30px",
                 }}
               >
                 Coaching
               </Button>
+
               {firstnameCookie ? (
                 <>
                   <Link
@@ -364,7 +374,7 @@ function Navbar() {
                     <Avatar
                       sx={{
                         bgcolor: "#498dd6",
-                        display: { xs: "none", md: "flex" },
+                        display: { xs: "none", md: "flex" }, // ❗ Hide on mobile
                       }}
                     >
                       {initial ? initial : <PersonIcon />}
@@ -387,7 +397,12 @@ function Navbar() {
                       Sign In
                     </Button>
                   </Link>
-                  <Avatar style={{ backgroundColor: "#498dd6" }}>
+                  <Avatar
+                    sx={{
+                      bgcolor: "#498dd6",
+                      display: { xs: "none", md: "flex" }, // ❗ Hide on mobile
+                    }}
+                  >
                     {initial ? initial : <PersonIcon />}
                   </Avatar>
                 </>
