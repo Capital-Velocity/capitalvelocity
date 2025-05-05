@@ -616,7 +616,7 @@ userRouter.post(
 
         <h2 style="color: #2a2a2a;">Hi there,</h2>
         <p style="font-size: 16px; line-height: 1.6;">
-          This is Nina from the Transaction Room team.
+          This is Logan from the Transaction Room team.
         </p>
         <p style="font-size: 16px; line-height: 1.6;">
           I noticed you started an inquiry on our platform—whether you're looking to buy or sell a business, or secure a real estate or business loan—but didn’t complete the process. I’d love to help you take the next step.
@@ -626,8 +626,8 @@ userRouter.post(
         </p>
 
         <div style="text-align: center; margin: 30px 0;">
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ29MXplgsAKVPCTm6xD5ywUfB7IiB37zNiAzH4sH8ACKa13nAetj2OEFpAgkf8PzV9Zpv6To4uw" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
-            👉 Schedule your call with Nina
+          <a href="https://api.leadconnectorhq.com/widget/bookings/cv-consultation" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+            👉 Schedule your call with Logan
           </a>
         </div>
 
@@ -637,7 +637,7 @@ userRouter.post(
 
         <p style="font-size: 16px; line-height: 1.6;">
           Warmly,<br />
-          Nina<br />
+          Logan<br />
           Transaction Room Team
         </p>
 
