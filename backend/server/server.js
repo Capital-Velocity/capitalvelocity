@@ -45,7 +45,7 @@ dotenv.config();
 
 const app = express();
 
-const file = fs.readFileSync("./CA998AD09433FF13233BE933E665A870.txt");
+const file = fs.readFileSync("./0B8E977E395B5C9C7A9C27A7B29198B3.txt");
 const key = fs.readFileSync("private.key");
 const cert = fs.readFileSync("certificate.crt");
 
@@ -62,9 +62,9 @@ mongoose.connect(
 );
 
 app.get(
-  "/.well-known/pki-validation/CA998AD09433FF13233BE933E665A870.txt",
+  "/.well-known/pki-validation/0B8E977E395B5C9C7A9C27A7B29198B3.txt",
   (req, res) => {
-    res.sendFile("/home/ubuntu/server/CA998AD09433FF13233BE933E665A870.txt");
+    res.sendFile("/home/ubuntu/server/0B8E977E395B5C9C7A9C27A7B29198B3.txt");
   }
 );
 app.use("/api/users", userRouter);
