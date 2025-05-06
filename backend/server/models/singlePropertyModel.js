@@ -52,6 +52,8 @@ const singlePropertySchema = new mongoose.Schema(
     birthDate: { type: String },
     birthYear: { type: String },
     socialSecurity: { type: String },
+    ficoScore: { type: String },
+    uploadedDocuments: { type: [String] },
   },
   {
     timestamps: true,
