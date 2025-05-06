@@ -45,6 +45,8 @@ const rentalModelSchema = new mongoose.Schema(
     state: { type: String },
     titleCompany: { type: String },
     userEmail: { type: String },
+    ficoScore: { type: String },
+    uploadedDocuments: { type: [String] },
   },
   {
     timestamps: true,
