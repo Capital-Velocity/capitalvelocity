@@ -279,6 +279,9 @@ export default function SBALoanForm(props) {
       if (!formData.socialSecurity) {
         errors.socialSecurity = "SSN number is required";
       }
+      if (!formData.ficoScore) {
+        errors.ficoScore = "FICO score is required";
+      }
     }
 
     // Update the fieldErrors state

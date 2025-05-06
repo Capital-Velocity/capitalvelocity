@@ -47,6 +47,7 @@ const sbaModelSchema = new mongoose.Schema(
     provisionFederalIncomeTax: String,
     race: String,
     realEstate: Array,
+    realEstateAssets: String,
     realEstateIncomeSource: String,
     retirementAccount: String,
     salary: String,
@@ -64,6 +65,8 @@ const sbaModelSchema = new mongoose.Schema(
     bankruptDetail: String,
     legalActionDetails: String,
     loanDetails: String,
+    ficoScore: String,
+    uploadedDocuments: { type: [String] },
   },
   {
     timestamps: true,
