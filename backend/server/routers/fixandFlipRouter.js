@@ -55,6 +55,7 @@ fixandflipRouter.post(
         renovationDescript: req.body.renovationDescript,
         socialSecurity: req.body.socialSecurity,
         titleCompany: req.body.titleCompany,
+        uploadedDocuments: req.body.uploadedDocuments,
         userEmail: req.body.userEmail,
       });
 

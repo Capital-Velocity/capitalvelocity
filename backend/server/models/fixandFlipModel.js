@@ -46,6 +46,7 @@ const fixandFlipSchema = new mongoose.Schema(
     renovationDescript: { type: [String] },
     socialSecurity: { type: String },
     titleCompany: { type: String },
+    uploadedDocuments: { type: [String] },
     userEmail: { type: String },
   },
   {

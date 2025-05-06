@@ -7,9 +7,8 @@ import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import CheckoutSteps from "./CheckoutSteps3";
 
-function SBA26() {
+function SBA26({ formData, setFormData }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -21,6 +20,7 @@ function SBA26() {
   };
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
+
   const dropzoneStyle = {
     border: "2px dashed black",
     padding: "20px",
@@ -30,19 +30,32 @@ function SBA26() {
 
   const handleUpload = async () => {
     try {
-      const formData = new FormData();
+      const formDataUpload = new FormData();
       const email = Cookies.get("email");
       const modifiedFileName = email + "_" + selectedFile.name;
-      formData.append("file", selectedFile, modifiedFileName);
-      console.log(modifiedFileName);
-      await axios.post("https://52.165.80.134:4000/api/s3/upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      formDataUpload.append("file", selectedFile, modifiedFileName);
+
+      const response = await axios.post(
+        "https://52.165.80.134:4000/api/s3/upload",
+        formDataUpload,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      const uploadedUrl = response.data.s3FilePath;
 
       toast.success("File uploaded successfully");
-      setSelectedFile(null); // Clear the selected file
+
+      // Append to uploadedDocuments in formData
+      setFormData((prevData) => ({
+        ...prevData,
+        uploadedDocuments: [...(prevData.uploadedDocuments || []), uploadedUrl],
+      }));
+
+      setSelectedFile(null);
     } catch (error) {
       console.error("Error uploading file:", error);
       toast.error("Error uploading file");
@@ -51,8 +64,6 @@ function SBA26() {
 
   return (
     <div style={{ width: "100%" }}>
-      {" "}
-      {/* <CheckoutSteps step1 step2 step3 step4></CheckoutSteps> */}
       <ToastContainer />
       <Container className="mt-20">
         <Typography variant="h4" color="black" gutterBottom>
@@ -70,19 +81,14 @@ function SBA26() {
 
         <Divider style={{ color: "black", marginBottom: 10 }} />
 
-        {/* Centering the Grid Container */}
-        <Grid
-          container
-          spacing={2}
-          justifyContent="center" // This will center the content horizontally
-        >
+        <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} md={6}>
             <Paper
               elevation={3}
               style={{ padding: "20px", marginBottom: "20px" }}
             >
               <Box component="main">
-                <Typography variant="h4" style={{ color: "black" }}>
+                <Typography variant="h5" style={{ color: "black" }}>
                   Upload Documents
                 </Typography>
 
@@ -102,6 +108,27 @@ function SBA26() {
                     )}
                   </Container>
                 </div>
+
+                {/* Display uploaded documents */}
+                {formData.uploadedDocuments &&
+                  formData.uploadedDocuments.length > 0 && (
+                    <div style={{ marginTop: "20px", color: "black" }}>
+                      <Typography variant="h6">Uploaded Documents:</Typography>
+                      <ul>
+                        {formData.uploadedDocuments.map((url, index) => (
+                          <li key={index}>
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              Document {index + 1}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
               </Box>
             </Paper>
           </Grid>
