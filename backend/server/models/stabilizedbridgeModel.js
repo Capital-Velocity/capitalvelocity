@@ -47,6 +47,8 @@ const stabalizedBridgeSchema = new mongoose.Schema(
     socialSecurity: { type: String },
     titleCompany: { type: String },
     userEmail: { type: String },
+    ficoScore: { type: String },
+    uploadedDocuments: { type: [String] },
   },
   {
     timestamps: true,
