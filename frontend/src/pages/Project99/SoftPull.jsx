@@ -178,6 +178,34 @@ function SoftPull({ formData, setFormData, fieldErrors }) {
             </FormControl>
           </Grid>
 
+          <Grid item sm={6} xs={12}>
+            <FormControl fullWidth>
+              <Typography type="p" color="black">
+                FICO Score
+              </Typography>
+              <Select
+                value={formData.ficoScore || ""}
+                error={fieldErrors.ficoScore}
+                style={{ backgroundColor: "white" }}
+                onChange={(e) =>
+                  setFormData({
+                    ...formData,
+                    ficoScore: e.target.value,
+                  })
+                }
+              >
+                <MenuItem value="300-579">300 to 579</MenuItem>
+                <MenuItem value="580-669">580 to 669</MenuItem>
+                <MenuItem value="670-739">670 to 739</MenuItem>
+                <MenuItem value="740-799">740 to 799</MenuItem>
+                <MenuItem value="800+">800+</MenuItem>
+              </Select>
+              {fieldErrors.ficoScore && (
+                <FormHelperText error>{fieldErrors.ficoScore}</FormHelperText>
+              )}
+            </FormControl>
+          </Grid>
+
           <Grid item sm={12} style={{ marginTop: 20 }}>
             <label
               style={{

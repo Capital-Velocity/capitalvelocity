@@ -36,6 +36,7 @@ fixandflipRouter.post(
         entityType: req.body.entityType,
         experienceWithRealEstate: req.body.experienceWithRealEstate,
         exitStrategy: req.body.exitStrategy,
+        ficoScore: req.body.ficoScore,
         firstName: req.body.firstName,
         homeAddress: req.body.homeAddress,
         insuranceCompany: req.body.insuranceCompany,

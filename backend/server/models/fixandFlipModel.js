@@ -27,6 +27,7 @@ const fixandFlipSchema = new mongoose.Schema(
     entityType: { type: String },
     experienceWithRealEstate: { type: Number },
     exitStrategy: { type: String },
+    ficoScore: { type: String },
     firstName: { type: String },
     homeAddress: { type: String },
     insuranceCompany: { type: String },

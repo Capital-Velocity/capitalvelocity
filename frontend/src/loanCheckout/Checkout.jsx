@@ -449,6 +449,9 @@ export default function Checkout(props) {
       if (!formData.socialSecurity) {
         errors.socialSecurity = "SSN number is required";
       }
+      if (!formData.ficoScore) {
+        errors.ficoScore = "FICO score is required";
+      }
     }
 
     // Add more validations for other steps as needed
