@@ -36,7 +36,7 @@ const groundUpSchema = new mongoose.Schema(
     marketValueAfterCompletion: { type: String },
     ownedByBorrower: { type: String },
     ownerOfRecord: { type: String },
-    personallyGuaranteeing: { type: Number },
+    personallyGuranteeing: { type: Number },
     permitsInPlace: { type: String },
     preferredClosingAttorney: { type: String },
     propertyMonthlyHOAFee: { type: String },
@@ -54,6 +54,8 @@ const groundUpSchema = new mongoose.Schema(
     subdividedIntoLots: { type: String },
     titleCompany: { type: String },
     userEmail: { type: String },
+    ficoScore: { type: String },
+    uploadedDocuments: { type: [String] },
   },
   {
     timestamps: true,
