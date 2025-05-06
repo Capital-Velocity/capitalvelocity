@@ -6,6 +6,7 @@ import { FaComments, FaTimes } from "react-icons/fa";
 const ChatBot = () => {
   const chatRef = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [showArrow, setShowArrow] = useState(true); // Control arrow visibility
 
   useEffect(() => {
     const loadBot = async () => {
@@ -23,7 +24,7 @@ const ChatBot = () => {
               styleOptions: {
                 botAvatarInitials: "🤖",
                 userAvatarInitials: "👤",
-                backgroundColor: "#f9f9f9",
+                backgroundCol: "#f9f9f9",
                 bubbleBackground: "#e0e0e0",
                 bubbleFromUserBackground: "#d1e7dd",
                 rootHeight: "100%",
@@ -39,10 +40,36 @@ const ChatBot = () => {
     };
 
     if (isOpen) loadBot();
+    if (isOpen) setShowArrow(false); // Hide arrow when chat is open
   }, [isOpen]);
 
   return (
     <>
+      {/* Arrow above the chat icon */}
+      {!isOpen && showArrow && (
+        <div
+          className="fixed bottom-[84px] right-7 z-50 text-blue-600"
+          style={{
+            fontSize: "32px", // or "64px" for even larger
+            animation: "floatArrow 2s ease-in-out infinite",
+          }}
+        >
+          ⬇️
+          <style>
+            {`
+      @keyframes floatArrow {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+    `}
+          </style>
+        </div>
+      )}
+
       {/* Toggle Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
