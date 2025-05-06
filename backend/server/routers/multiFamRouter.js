@@ -192,7 +192,7 @@ multiFamRouter.post(
       // 4. Compose the email
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
-        to: ["pyrohamster85@gmail.com", "luijason1221@gmail.com"],
+        to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"],
         subject: "New Multifamily Bridge Loan Submission - Capital Velocity",
         html: `
     <div style="background-color: #f2f2f2; padding: 40px 0;">
