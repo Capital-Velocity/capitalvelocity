@@ -557,7 +557,7 @@ const NewRealEstateCategories = () => {
                       transform: "translateY(-4px)",
                     },
                   }}
-                  onClick={() => handleOptionChange(selectionData[0])}
+                  onClick={() => handleOptionChange(selectionData[2])}
                 >
                   <Box
                     component={Card}
@@ -830,7 +830,7 @@ const NewRealEstateCategories = () => {
                       transform: "translateY(-4px)",
                     },
                   }}
-                  onClick={() => handleOptionChange(selectionData[0])}
+                  onClick={() => handleOptionChange(selectionData[4])}
                 >
                   <Box
                     component={Card}
