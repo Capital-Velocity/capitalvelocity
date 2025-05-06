@@ -37,6 +37,7 @@ const multiFamilySchema = new mongoose.Schema(
     entityName: { type: String },
     entityType: { type: String },
     exitStrat: { type: String },
+    ficoScore: { type: String },
     firstName: { type: String },
     grossMonthlyRent: { type: String },
     homeAddress: { type: String },
@@ -62,6 +63,7 @@ const multiFamilySchema = new mongoose.Schema(
     renovationDescript: { type: [String] }, // Array of strings
     socialSecurity: { type: String },
     titleCompany: { type: String },
+    uploadedDocuments: { type: [String] },
     userEmail: { type: String },
   },
   {
