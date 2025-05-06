@@ -164,7 +164,7 @@ groundUpRouter.post(
       // 4. Compose email
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
-        to: ["pyrohamster85@gmail.com", "luijason1221@gmail.com"], // 👥 multiple recipients
+        to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"], // 👥 multiple recipients
         subject: "New Ground Up Loan Submission - Capital Velocity",
         html: `
   <div style="background-color: #f2f2f2; padding: 40px 0;">
