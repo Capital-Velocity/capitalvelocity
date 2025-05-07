@@ -48,24 +48,30 @@ const ChatBot = () => {
       {/* Arrow above the chat icon */}
       {!isOpen && showArrow && (
         <div
-          className="fixed bottom-[84px] right-7 z-50 text-blue-600"
+          className="fixed bottom-[100px] right-0 z-50 w-[110px] text-center"
           style={{
-            fontSize: "32px", // or "64px" for even larger
+            transform: "translateX(50%)", // centers the tooltip above the icon
             animation: "floatArrow 2s ease-in-out infinite",
           }}
         >
-          ⬇️
+          <div className="bg-white border border-blue-300 rounded-md px-3 py-2 shadow-lg text-sm font-medium text-blue-700">
+            Use the chatbot to learn about our loan programs and terms
+          </div>
+          <div style={{ fontSize: "36px", marginTop: "4px", color: "#2563eb" }}>
+            ⬇️
+          </div>
+
           <style>
             {`
-      @keyframes floatArrow {
-        0%, 100% {
-          transform: translateY(0);
+        @keyframes floatArrow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
         }
-        50% {
-          transform: translateY(-8px);
-        }
-      }
-    `}
+      `}
           </style>
         </div>
       )}
