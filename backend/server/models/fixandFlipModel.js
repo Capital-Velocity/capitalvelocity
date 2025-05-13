@@ -48,6 +48,10 @@ const fixandFlipSchema = new mongoose.Schema(
     titleCompany: { type: String },
     uploadedDocuments: { type: [String] },
     userEmail: { type: String },
+    referralInfo: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+    },
   },
   {
     timestamps: true,

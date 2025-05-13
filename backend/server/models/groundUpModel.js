@@ -56,6 +56,10 @@ const groundUpSchema = new mongoose.Schema(
     userEmail: { type: String },
     ficoScore: { type: String },
     uploadedDocuments: { type: [String] },
+    referralInfo: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null,
+    },
   },
   {
     timestamps: true,

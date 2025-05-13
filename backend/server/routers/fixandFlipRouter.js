@@ -1,8 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
-import axios from "axios";
 import FixForm from "../models/fixandFlipModel.js";
+import Referral from "../models/referralModel.js";
 import mailgun from "mailgun-js";
 
 const apiKey = "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379";
@@ -10,76 +9,42 @@ const mg = mailgun({ apiKey, domain: "capitalvelocity.com" });
 
 const fixandflipRouter = express.Router();
 
-// fixandflipRouter.post(
-//   "/addFixandFlip",
-//   expressAsyncHandler(async (req, res) => {
-//     try {
-//       const fixandFlip = new FixForm({
-//         additionalPropertyInfo: req.body.additionalPropertyInfo,
-//         addressCity: req.body.addressCity,
-//         addressState: req.body.addressState,
-//         addressZip: req.body.addressZip,
-//         afterRepairValue: req.body.afterRepairValue,
-//         armsLengthDescription: req.body.armsLengthDescription,
-//         authorizedSignatory: req.body.authorizedSignatory,
-//         bestTerms: req.body.bestTerms,
-//         birthDate: req.body.birthDate,
-//         birthMonth: req.body.birthMonth,
-//         birthYear: req.body.birthYear,
-//         borrowerCell: req.body.borrowerCell,
-//         borrowerCitizenship: req.body.borrowerCitizenship,
-//         borrowerEmail: req.body.borrowerEmail,
-//         borrowerLast: req.body.borrowerLast,
-//         borrowingEntityInformation: req.body.borrowingEntityInformation,
-//         borrowingEntityOwned: req.body.borrowingEntityOwned,
-//         closingDate: req.body.closingDate,
-//         contactLastName: req.body.contactLastName,
-//         dateofIncorp: req.body.dateofIncorp,
-//         entityAddress: req.body.entityAddress,
-//         entityName: req.body.entityName,
-//         entityType: req.body.entityType,
-//         experienceWithRealEstate: req.body.experienceWithRealEstate,
-//         exitStrategy: req.body.exitStrategy,
-//         ficoScore: req.body.ficoScore,
-//         firstName: req.body.firstName,
-//         homeAddress: req.body.homeAddress,
-//         insuranceCompany: req.body.insuranceCompany,
-//         isCondominium: req.body.isCondominium,
-//         personallyGuranteeing: req.body.personallyGuranteeing,
-//         preferredClosingAttorney: req.body.preferredClosingAttorney,
-//         propertyMonthlyInsurance: req.body.propertyMonthlyInsurance,
-//         propertyMonthlyPropertyTaxes: req.body.propertyMonthlyPropertyTaxes,
-//         propertyMonthlyUtilityBills: req.body.propertyMonthlyUtilityBills,
-//         propertyOtherMonthlyExpenses: req.body.propertyOtherMonthlyExpenses,
-//         propertyPurchasePrice: req.body.propertyPurchasePrice,
-//         propertyRehabCost: req.body.propertyRehabCost,
-//         propertySource: req.body.propertySource,
-//         propertyType: req.body.propertyType,
-//         purchaseorRefinance: req.body.purchaseorRefinance,
-//         renovationDescript: req.body.renovationDescript,
-//         socialSecurity: req.body.socialSecurity,
-//         titleCompany: req.body.titleCompany,
-//         uploadedDocuments: req.body.uploadedDocuments,
-//         userEmail: req.body.userEmail,
-//       });
-
-//       const createdfixandFlip = await fixandFlip.save();
-//       res.json(createdfixandFlip);
-//     } catch (error) {
-//       res.status(401).send({ message: error });
-//     }
-//   })
-// );
-
 fixandflipRouter.post(
   "/addFixandFlip",
   expressAsyncHandler(async (req, res) => {
     try {
-      // 1. Save to database
-      const fixandFlip = new FixForm({ ...req.body });
+      const { referralCode } = req.body;
+      let referralInfo = null;
+
+      // 🔎 Lookup referral code (must be approved)
+      if (referralCode) {
+        const referralRecord = await Referral.findOne({
+          referralCode,
+          isApproved: true,
+        });
+
+        if (referralRecord) {
+          referralInfo = {
+            firstName: referralRecord.firstName,
+            lastName: referralRecord.lastName,
+            email: referralRecord.email,
+            phone: referralRecord.phone,
+            city: referralRecord.city,
+            state: referralRecord.state,
+            youtubeLink: referralRecord.youtubeLink,
+          };
+        }
+      }
+
+      // Save form with referralInfo attached
+      const fixandFlip = new FixForm({
+        ...req.body,
+        referralInfo,
+      });
+
       const createdfixandFlip = await fixandFlip.save();
 
-      // ✅ Define user-friendly field labels
+      // ✅ Field labels for display
       const fieldLabels = {
         firstName: "First Name",
         borrowerLast: "Last Name",
@@ -99,40 +64,40 @@ fixandflipRouter.post(
         dateofIncorp: "Entity Date of Incorporation",
         contactLastName: "Entity Contact Last Name",
         entityAddress: "Entity Address",
-        borrowingEntityOwned:
-          "What percentage of the borrowing entity does the borrower own?",
+        borrowingEntityOwned: "Borrowing Entity Ownership Percentage",
         homeAddress: "Property Address",
         addressCity: "Property City",
         addressZip: "Property Zip Code",
         addressState: "Property State",
         propertyType: "Property Type",
         purchaseorRefinance: "Purchase or Refinance?",
-        propertySource: "How is the property being sourced?",
-        isCondominium: "Is the property being converted to condominiums?",
-        renovationDescript: "Please describe the renovation",
+        propertySource: "Property Source",
+        isCondominium: "Is Property a Condominium?",
+        renovationDescript: "Renovation Description",
         exitStrategy: "Exit Strategy",
-        additionalPropertyInfo: "Additional property comments",
-        propertyPurchasePrice: "Property Purchase Price",
-        propertyRehabCost: "Property Rehab Cost",
-        propertyMonthlyPropertyTaxes: "Property Taxes (Monthly)",
-        propertyMonthlyInsurance: "Property Monthly Insurance",
-        propertyMonthlyUtilityBills: "Property Monthly Utility Bills",
-        propertyOtherMonthlyExpenses: "Property Other Monthly Expenses",
-        afterRepairValue: "Property After Repair Value",
+        additionalPropertyInfo: "Additional Property Info",
+        propertyPurchasePrice: "Purchase Price",
+        propertyRehabCost: "Rehab Cost",
+        propertyMonthlyPropertyTaxes: "Monthly Property Taxes",
+        propertyMonthlyInsurance: "Monthly Insurance",
+        propertyMonthlyUtilityBills: "Monthly Utility Bills",
+        propertyOtherMonthlyExpenses: "Other Monthly Expenses",
+        afterRepairValue: "After Repair Value",
         preferredClosingAttorney: "Preferred Closing Attorney",
         closingDate: "Preferred Closing Date",
         insuranceCompany: "Preferred Insurance Company",
         titleCompany: "Preferred Title Company",
-        birthMonth: "Date of Birth (Month)",
-        birthDate: "Date of Birth (Date)",
-        birthYear: "Date of Birth (Year)",
+        birthMonth: "Birth Month",
+        birthDate: "Birth Date",
+        birthYear: "Birth Year",
         socialSecurity: "Social Security Number",
         ficoScore: "FICO Score",
         uploadedDocuments: "Uploaded Documents",
-        userEmail: "Account of the person who submitted the form",
+        userEmail: "Submitted By (User Email)",
+        referralCode: "Referral Code",
       };
 
-      // 2. Build the HTML table for the fields
+      // ✅ Build form fields table
       const fields = Object.entries(req.body)
         .map(([key, value]) => {
           const label = fieldLabels[key] || key;
@@ -146,39 +111,57 @@ fixandflipRouter.post(
         })
         .join("");
 
-      // 3. Compose email content
+      // ✅ Add Referral Info Table (if exists)
+      const referralFields = referralInfo
+        ? `
+          <h3 style="color: #2a2a2a;">The person who applied for this loan used a referral code. Here is the information of the person that referred them:</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>First Name</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.firstName}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Last Name</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.lastName}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Email</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.email}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Phone</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.phone}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>City</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.city}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>State</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.state}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>YouTube Link</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.youtubeLink}</td></tr>
+          </table>
+        `
+        : "";
+
+      // ✅ Compose email content
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
         to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"],
         subject: "New Fix and Flip Form Submission - Capital Velocity",
         html: `
-    <div style="background-color: #f2f2f2; padding: 40px 0;">
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 30px; background-color: #ffffff; color: #333;">
-        <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-          <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
-        </div>
+          <div style="background-color: #f2f2f2; padding: 40px 0;">
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 30px; background-color: #ffffff; color: #333;">
+              <div style="text-align: center; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+                <img src="https://i.imgur.com/rOpYlNu.png" alt="Capital Velocity" style="height: 160px;" />
+              </div>
 
-        <h2 style="color: #2a2a2a;">Hi there,</h2>
-        <p style="font-size: 16px; line-height: 1.6;">
-          There was a new submission for a Capital Velocity loan.
-        </p>
+              <h2 style="color: #2a2a2a;">Hi there,</h2>
+              <p style="font-size: 16px; line-height: 1.6;">
+                There was a new submission for a Capital Velocity loan.
+              </p>
 
-        <hr style="margin: 30px 0;" />
+              <hr style="margin: 30px 0;" />
 
-        <h3 style="color: #2a2a2a;">Submitted Application Details:</h3>
-        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
-          ${fields}
-        </table>
+              <h3 style="color: #2a2a2a;">Submitted Application Details:</h3>
+              <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                ${fields}
+              </table>
 
-        <p style="font-size: 12px; color: #999; text-align: center; margin-top: 30px;">
-          © 2025 Capital Velocity, All rights reserved.
-        </p>
-      </div>
-    </div>
+              ${referralFields}
+
+              <p style="font-size: 12px; color: #999; text-align: center; margin-top: 30px;">
+                © 2025 Capital Velocity, All rights reserved.
+              </p>
+            </div>
+          </div>
         `,
       };
 
-      // 4. Send the email
+      // ✅ Send the email
       mg.messages().send(emailData, function (error, body) {
         if (error) {
           console.error("Mailgun error:", error);
@@ -189,6 +172,7 @@ fixandflipRouter.post(
 
       res.json(createdfixandFlip);
     } catch (error) {
+      console.error(error);
       res
         .status(500)
         .send({ message: error.message || "Failed to submit application" });
@@ -196,12 +180,12 @@ fixandflipRouter.post(
   })
 );
 
-// Fetch all the fixandFlip applications
+// Fetch all Fix and Flip applications
 fixandflipRouter.get(
   "/getAllFixApplications",
   expressAsyncHandler(async (req, res) => {
     try {
-      const fixandflip = await FixForm.find({}); // Retrieve all records in the FixForm collection
+      const fixandflip = await FixForm.find({});
       res.json(fixandflip);
     } catch (error) {
       res

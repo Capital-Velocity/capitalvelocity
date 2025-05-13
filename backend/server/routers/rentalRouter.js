@@ -1,106 +1,70 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
-import bcrypt from "bcryptjs";
-import axios from "axios";
 import Rental from "../models/rentalModel.js";
+import Referral from "../models/referralModel.js";
 import mailgun from "mailgun-js";
 
 const apiKey = "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379";
 const mg = mailgun({ apiKey, domain: "capitalvelocity.com" });
 const rentalRouter = express.Router();
 
-// rentalRouter.post(
-//   "/addRentalGroup",
-//   expressAsyncHandler(async (req, res) => {
-//     try {
-//       // Create a new Rental document using the request body
-//       const newRental = new Rental({
-//         armsLengthDescription: req.body.armsLengthDescription,
-//         authorizedSignatory: req.body.authorizedSignatory,
-//         bestTerms: req.body.bestTerms,
-//         birthDate: req.body.birthDate,
-//         birthMonth: req.body.birthMonth,
-//         birthYear: req.body.birthYear,
-//         borrowerCell: req.body.borrowerCell,
-//         borrowerCitizenship: req.body.borrowerCitizenship,
-//         borrowerEmail: req.body.borrowerEmail,
-//         borrowerLast: req.body.borrowerLast,
-//         borrowingEntityInformation: req.body.borrowingEntityInformation,
-//         borrowingEntityOwned: req.body.borrowingEntityOwned,
-//         closingDate: req.body.closingDate,
-//         contactLastName: req.body.contactLastName,
-//         dateofIncorp: req.body.dateofIncorp,
-//         entityAddress: req.body.entityAddress,
-//         entityName: req.body.entityName,
-//         entityType: req.body.entityType,
-//         experienceWithRealEstate: req.body.experienceWithRealEstate,
-//         firstName: req.body.firstName,
-//         grossMonthlyRent: req.body.grossMonthlyRent,
-//         insuranceCompany: req.body.insuranceCompany,
-//         loanPurpose: req.body.loanPurpose,
-//         personallyGuranteeing: req.body.personallyGuranteeing,
-//         portfolioProperties: req.body.portfolioProperties, // Array of portfolio properties
-//         preferredClosingAttorney: req.body.preferredClosingAttorney,
-//         propertyMan: req.body.propertyMan,
-//         purchasePriceProperty: req.body.purchasePriceProperty,
-//         socialSecurity: req.body.socialSecurity,
-//         state: req.body.state,
-//         titleCompany: req.body.titleCompany,
-//         userEmail: req.body.userEmail,
-//       });
-
-//       // Save the new rental document to the database
-//       const savedRental = await newRental.save();
-
-//       res.status(201).json(savedRental);
-//     } catch (error) {
-//       res
-//         .status(500)
-//         .json({ message: "Error creating rental group", error: error.message });
-//     }
-//   })
-// );
-
 rentalRouter.post(
   "/addRentalGroup",
   expressAsyncHandler(async (req, res) => {
     try {
-      // 1. Save to database
-      const newRental = new Rental({ ...req.body });
+      const { referralCode } = req.body;
+      let referralInfo = null;
+
+      if (referralCode) {
+        const referralRecord = await Referral.findOne({
+          referralCode,
+          isApproved: true,
+        });
+
+        if (referralRecord) {
+          referralInfo = {
+            firstName: referralRecord.firstName,
+            lastName: referralRecord.lastName,
+            email: referralRecord.email,
+            phone: referralRecord.phone,
+            city: referralRecord.city,
+            state: referralRecord.state,
+            youtubeLink: referralRecord.youtubeLink,
+          };
+        }
+      }
+
+      const newRental = new Rental({
+        ...req.body,
+        referralInfo,
+      });
+
       const savedRental = await newRental.save();
 
-      // 2. Human-readable field labels
       const fieldLabels = {
         firstName: "First Name",
         borrowerLast: "Last Name",
         borrowerEmail: "Email",
         borrowerCell: "Phone Number",
         borrowerCitizenship: "Citizenship",
-        personallyGuranteeing:
-          "How experienced with investing is the borrower?",
-        experienceWithRealEstate:
-          "Borrower's experience as a real estate investor",
-        bestTerms: "Is this an arm's length transaction",
+        personallyGuranteeing: "Borrower's Investment Experience",
+        experienceWithRealEstate: "Real Estate Experience",
+        bestTerms: "Arm's Length Transaction",
         armsLengthDescription: "Arm's Length Description",
-
-        authorizedSignatory: "Is the borrower an authorized signatory?",
-        borrowingEntityInformation:
-          "Do they have the borrowing entity information?",
+        authorizedSignatory: "Authorized Signatory",
+        borrowingEntityInformation: "Entity Information Provided?",
         entityName: "Entity Name",
         entityType: "Entity Type",
-        dateofIncorp: "Entity Date of Incorporation",
+        dateofIncorp: "Date of Incorporation",
         contactLastName: "Entity Contact Last Name",
         entityAddress: "Entity Address",
-        borrowingEntityOwned:
-          "What percentage of the borrowing entity does the borrower own?",
-
+        borrowingEntityOwned: "Entity Ownership Percentage",
         state: "State",
         portfolioProperties: "Portfolio Properties",
         loanPurpose: "Loan Purpose",
         purchasePriceProperty: "Purchase Price",
         propertyMan: "Property Management",
         grossMonthlyRent: "Gross Monthly Rent",
-
         insuranceCompany: "Insurance Company",
         preferredClosingAttorney: "Preferred Closing Attorney",
         closingDate: "Closing Date",
@@ -110,14 +74,13 @@ rentalRouter.post(
         birthYear: "Birth Year",
         socialSecurity: "Social Security Number",
         userEmail: "Applicant Email",
+        referralCode: "Referral Code",
       };
 
-      // 3. Format email fields into a table
       const fields = Object.entries(req.body)
         .map(([key, value]) => {
           const label = fieldLabels[key] || key;
 
-          // Handle array of property objects
           if (key === "portfolioProperties" && Array.isArray(value)) {
             const propertiesTable = value
               .map((property, idx) => {
@@ -150,7 +113,6 @@ rentalRouter.post(
           `;
           }
 
-          // Default handling
           const display = Array.isArray(value) ? value.join(", ") : value;
           return `
           <tr>
@@ -161,7 +123,21 @@ rentalRouter.post(
         })
         .join("");
 
-      // 4. Compose email content
+      const referralFields = referralInfo
+        ? `
+          <h3 style="color: #2a2a2a;">The person who applied for this loan used a referral code. Here is the information of the person that referred them:</h3>
+          <table style="width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 10px;">
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>First Name</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.firstName}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Last Name</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.lastName}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Email</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.email}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>Phone</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.phone}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>City</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.city}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>State</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.state}</td></tr>
+            <tr><td style="padding: 6px 12px; border: 1px solid #ccc;"><strong>YouTube Link</strong></td><td style="padding: 6px 12px; border: 1px solid #ccc;">${referralInfo.youtubeLink}</td></tr>
+          </table>
+        `
+        : "";
+
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
         to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"],
@@ -185,6 +161,8 @@ rentalRouter.post(
         ${fields}
       </table>
 
+      ${referralFields}
+
       <p style="font-size: 12px; color: #999; text-align: center; margin-top: 30px;">
         © 2025 Capital Velocity, All rights reserved.
       </p>
@@ -193,12 +171,11 @@ rentalRouter.post(
         `,
       };
 
-      // 5. Send email
       mg.messages().send(emailData, (error, body) => {
         if (error) {
           console.error("Mailgun error:", error);
         } else {
-          console.log("Mailgun response:", body);
+          console.log("Mailgun sent:", body);
         }
       });
 
@@ -212,12 +189,11 @@ rentalRouter.post(
   })
 );
 
-// Fetch all the rental applications
 rentalRouter.get(
   "/getAllRental",
   expressAsyncHandler(async (req, res) => {
     try {
-      const rental = await Rental.find({}); // Retrieve all records in the Rental collection
+      const rental = await Rental.find({});
       res.json(rental);
     } catch (error) {
       res.status(500).send({ message: "Error fetching rentals" });

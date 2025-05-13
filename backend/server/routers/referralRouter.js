@@ -113,14 +113,12 @@ referralRouter.post(
         <table role="presentation" width="600" cellspacing="0" cellpadding="0" border="0" style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1);">
           <tr>
             <td align="center" style="font-size: 18px; color: #333;">
-            <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code and link for signups.</h3>
+            <h3>Thank you for becoming a Capital Velocity Partner! Below is your referral code.</h3>
             <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0;">
             <p><strong>Referral Code:</strong> ${
               referralCode || "Not Provided"
             }</p>
-            <p><strong>Link for Referred Signups:</strong> 
-              <a href="${referralSignupLink}" target="_blank">${referralSignupLink}</a>
-            </p>
+
             </td>
           </tr>
                                   <hr style="border: 0; height: 1px; background: #ddd; margin: 10px 0;">

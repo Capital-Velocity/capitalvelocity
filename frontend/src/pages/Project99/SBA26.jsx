@@ -130,6 +130,30 @@ function SBA26({ formData, setFormData }) {
                     </div>
                   )}
               </Box>
+
+              <Box mt={4}>
+                <Typography variant="h6" color="black" gutterBottom>
+                  Referral Code
+                </Typography>
+                <input
+                  type="text"
+                  placeholder="Enter referral code"
+                  value={formData.referralCode || ""}
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      referralCode: e.target.value,
+                    }))
+                  }
+                  style={{
+                    width: "100%",
+                    padding: "10px",
+                    fontSize: "16px",
+                    border: "1px solid #ccc",
+                    borderRadius: "4px",
+                  }}
+                />
+              </Box>
             </Paper>
           </Grid>
         </Grid>
