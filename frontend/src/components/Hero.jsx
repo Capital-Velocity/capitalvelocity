@@ -97,36 +97,77 @@ export default function Example() {
             </div>
             <div
               ref={paragraphRef}
-              className={`flex gap-4 fade-in
-                              ${
-                                isParagraphVisible
-                                  ? "fade-in-show paragraph-fade-in-show-extra"
-                                  : "fade-in-hide"
-                              }`}
+              className={`fade-in ${
+                isParagraphVisible
+                  ? "fade-in-show paragraph-fade-in-show-extra"
+                  : "fade-in-hide"
+              }`}
             >
-              <Link to="/loan-form-realestate">
-                <button
-                  className="flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
-    focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
-    shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
-    rounded-md px-6 py-3 text-center text-lg font-semibold"
-                  type="button"
-                >
-                  Explore Real Estate Loans
-                </button>
-              </Link>
+              {/* Top Row - Original Two Buttons */}
+              <div className="flex flex-wrap gap-4 mb-4">
+                <Link to="/loan-form-realestate">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800
+        shadow-md shadow-green-500/50 dark:shadow-md dark:shadow-green-800/80 
+        rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Explore Real Estate Loans
+                  </button>
+                </Link>
 
-              <Link to="/loan-form-business-loans">
-                <button
-                  className="flex items-center justify-center text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br
-    focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
-    shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 
-    rounded-md px-6 py-3 text-center text-lg font-semibold"
-                  type="button"
-                >
-                  Explore Business Loans
-                </button>
-              </Link>
+                <Link to="/loan-form-business-loans">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800
+        shadow-md shadow-blue-500/50 dark:shadow-md dark:shadow-blue-800/80 
+        rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Explore Business Loans
+                  </button>
+                </Link>
+              </div>
+
+              {/* Bottom Row - New Buttons */}
+              <div className="flex flex-wrap gap-4">
+                <Link to="/fix-and-flip-calculator">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800
+        shadow-md shadow-yellow-500/50 dark:shadow-md dark:shadow-yellow-800/80 
+        rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Fix and Flip Calculator
+                  </button>
+                </Link>
+
+                <Link to="/dscr-calculator">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
+        shadow-md shadow-purple-500/50 dark:shadow-md dark:shadow-purple-800/80 
+        rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Rental DSCR Calculator
+                  </button>
+                </Link>
+
+                <Link to="/dscr-optimizer-calculator">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br
+        focus:ring-2 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800
+        shadow-md shadow-pink-500/50 dark:shadow-md dark:shadow-pink-800/80 
+        rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Rental DSCR Optimizer
+                  </button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

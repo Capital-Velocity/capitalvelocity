@@ -1,20 +1,20 @@
+// bot.js
 import { ActivityHandler, CardFactory } from "botbuilder";
 import { OpenAIClient } from "@azure/openai";
 import { AzureKeyCredential } from "@azure/core-auth";
 import dotenv from "dotenv";
 
 // Load environment variables
+dotenv.config();
+
 const openAiEndpoint = "https://capitalvelocityazureopenai.openai.azure.com/";
 const openAiApiKey =
   "2UEjPGbBHmlYwSL5H07cSy55jV78YJdepYmIwzGs6LhCuFwTQpFKJQQJ99BEACHrzpqXJ3w3AAABACOGP5ol";
 const deploymentId = "gpt-35-turbo";
 const searchEndpoint = "https://capitalvelocity-search.search.windows.net";
 const searchKey = "zJp5pbaLHzA0ZnLy6Zh1YuRgaDMp3g3DaCdZ3J9pbGAzSeBxAYPF";
-const searchIndex = "pdf-manuals-index";
+const searchIndex = "fixflip-groundup-rentalloan-stabilizedbridge-index";
 
-dotenv.config();
-
-// Initialize Azure OpenAI client
 const client = new OpenAIClient(
   openAiEndpoint,
   new AzureKeyCredential(openAiApiKey)
@@ -125,15 +125,14 @@ class ChatBot extends ActivityHandler {
         return;
       }
 
-      // RAG response via Azure AI Search
       try {
-        const events = await client.streamChatCompletions(
+        const result = await client.getChatCompletions(
           deploymentId,
           [
             {
               role: "system",
               content:
-                "You are a helpful assistant using Capital Velocity product manuals.",
+                "You are a helpful assistant using Capital Velocity product manuals only.",
             },
             {
               role: "user",
@@ -144,34 +143,30 @@ class ChatBot extends ActivityHandler {
             maxTokens: 800,
             temperature: 0.7,
             topP: 0.95,
-            azureExtensionOptions: {
-              dataSources: [
-                {
-                  type: "AzureCognitiveSearch",
-                  parameters: {
-                    endpoint: searchEndpoint,
-                    key: searchKey,
-                    indexName: searchIndex,
+            dataSources: [
+              {
+                type: "AzureCognitiveSearch",
+                parameters: {
+                  endpoint: searchEndpoint,
+                  key: searchKey,
+                  indexName: searchIndex,
+                  semanticConfiguration: "default",
+                  queryType: "semantic",
+                  fieldsMapping: {
+                    contentField: "content",
+                    titleField: "title",
+                    urlField: "url",
                   },
                 },
-              ],
-            },
+              },
+            ],
           }
         );
 
-        let response = "";
-        for await (const event of events) {
-          for (const choice of event.choices) {
-            if (choice.delta?.content) {
-              response += choice.delta.content;
-            }
-          }
-        }
-
-        await context.sendActivity(
-          response ||
-            "⚠️ I couldn’t find anything in the manuals. Try rephrasing."
-        );
+        const response =
+          result.choices?.[0]?.message?.content ??
+          "⚠️ I couldn’t find anything in the manuals. Try rephrasing.";
+        await context.sendActivity(response);
       } catch (err) {
         console.error("Azure RAG error:", err?.response?.data || err.message);
         await context.sendActivity(
