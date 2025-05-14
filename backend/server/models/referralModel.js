@@ -10,7 +10,6 @@ const referralSchema = new mongoose.Schema(
     state: { type: String, required: true },
     phone: { type: String, required: true },
     email: { type: String, required: true },
-    youtubeLink: { type: String, required: true },
     referralCode: { type: String, required: true },
     isApproved: { type: Boolean, required: true, default: true },
   },

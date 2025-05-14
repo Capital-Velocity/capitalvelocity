@@ -50,7 +50,6 @@ referralRouter.post(
         state,
         phone,
         email,
-        youtubeLink,
       } = req.body;
 
       // Check if email already exists
@@ -85,7 +84,6 @@ referralRouter.post(
         state,
         phone,
         email,
-        youtubeLink,
         referralCode,
       });
 

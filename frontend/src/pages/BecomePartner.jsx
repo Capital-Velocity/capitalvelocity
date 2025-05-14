@@ -29,13 +29,13 @@ const BecomePartner = () => {
       state: "",
       phone: "",
       email: "",
-      youtubeLink: "",
+      // youtubeLink: "",
     },
     validationSchema: Yup.object({
       firstName: Yup.string().required("First Name is required"),
       lastName: Yup.string().required("Last Name is required"),
       homeAddress: Yup.string().required("Home Address is required"),
-      youtubeLink: Yup.string().required("Youtube Link is required"),
+      // youtubeLink: Yup.string().required("Youtube Link is required"),
       city: Yup.string().required("City is required"),
       zipCode: Yup.string().required("Zip Code is required"),
       state: Yup.string().required("State is required"),
@@ -52,7 +52,7 @@ const BecomePartner = () => {
         referralCode,
       };
 
-      console.log("dataToSend: ", dataToSend);
+      // console.log("dataToSend: ", dataToSend);
 
       try {
         const response = await axios.post(
@@ -62,7 +62,7 @@ const BecomePartner = () => {
 
         console.log(response);
         toast.success(
-          "Thank you, please check your email for further instructions."
+          "Thank you, please check your email for your affiliate code."
         );
       } catch (error) {
         if (error.response && error.response.status === 400) {
@@ -148,20 +148,35 @@ const BecomePartner = () => {
                         variant="h4"
                         color={"text.secondary"}
                       >
-                        Become a Partner
+                        Become an Affiliate Partner
                       </Typography>
 
-                      <Typography
+                      {/* <Typography
                         variant="h4"
                         sx={{
                           fontWeight: 700,
                         }}
                       >
                         Apply here
-                      </Typography>
-                      <Typography color="text.secondary">
-                        We will reach out with more details once we receive your
-                        application
+                      </Typography> */}
+                      <Typography color="text.primary">
+                        Looking for an opportunity to work with us and help make
+                        people’s dreams come true? Join our affiliate program
+                        and earn rewards for connecting others to the financing
+                        they need.
+                        <br />
+                        <br /> As an affiliate, you’ll earn $500 for every
+                        funded loan that comes from the leads you refer to us.
+                        Simply send qualified leads our way — once their loan is
+                        successfully funded, you’ll receive your payment.
+                        <br />
+                        <br /> It’s a win-win: you help clients get the
+                        financing they need, and we reward you for your
+                        partnership.
+                        <br />
+                        <br />
+                        Complete the form below to receive your affiliate code;
+                        this will be used by your leads who need financing.
                       </Typography>
                     </Box>
                     <form onSubmit={formik.handleSubmit}>
@@ -328,7 +343,7 @@ const BecomePartner = () => {
                             }
                           />
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        {/* <Grid item xs={12} sm={6}>
                           <TextField
                             label="Youtube Link"
                             variant="outlined"
@@ -348,7 +363,7 @@ const BecomePartner = () => {
                               formik.errors.youtubeLink
                             }
                           />
-                        </Grid>
+                        </Grid> */}
                         <Grid item sm={12}>
                           <Button
                             style={{ backgroundColor: "#498dd6" }}
