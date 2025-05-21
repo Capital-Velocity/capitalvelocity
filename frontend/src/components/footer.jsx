@@ -6,7 +6,7 @@ const navigation = {
     { name: "Rental DSCR Optimizer", href: "/dscr-optimizer-calculator" },
     { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Project Epic 99", href: "/project99" },
-    { name: "Partner", href: "/become-partner" },
+    { name: "Affiliate", href: "/become-partner" },
     { name: "Contact Us", href: "/contactUs" },
   ],
   social: [

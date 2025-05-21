@@ -167,6 +167,17 @@ export default function Example() {
                     Rental DSCR Optimizer
                   </button>
                 </Link>
+                <Link to="/become-partner">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-indigo-400 via-indigo-500 to-indigo-600 hover:bg-gradient-to-br
+      focus:ring-2 focus:outline-none focus:ring-indigo-300 dark:focus:ring-indigo-800
+      shadow-md shadow-indigo-500/50 dark:shadow-md dark:shadow-indigo-800/80 
+      rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Affiliate Program
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

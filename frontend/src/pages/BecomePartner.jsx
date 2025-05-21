@@ -160,23 +160,35 @@ const BecomePartner = () => {
                         Apply here
                       </Typography> */}
                       <Typography color="text.primary">
-                        Looking for an opportunity to work with us and help make
-                        people’s dreams come true? Join our affiliate program
-                        and earn rewards for connecting others to the financing
-                        they need.
+                        Looking for an opportunity to{" "}
+                        <strong>work with us</strong> and help make
+                        <strong> people’s dreams come true</strong>? Join our{" "}
+                        <strong>affiliate program</strong> and
+                        <strong> earn rewards</strong> for connecting others to
+                        the financing they need.
                         <br />
-                        <br /> As an affiliate, you’ll earn $500 for every
-                        funded loan that comes from the leads you refer to us.
-                        Simply send qualified leads our way — once their loan is
-                        successfully funded, you’ll receive your payment.
                         <br />
-                        <br /> It’s a win-win: you help clients get the
-                        financing they need, and we reward you for your
+                        As an affiliate, you’ll earn{" "}
+                        <strong>$500 for every funded loan</strong> that comes
+                        from the leads you refer to us. Simply send{" "}
+                        <strong>qualified leads</strong> our way — once their
+                        loan is successfully funded, you’ll{" "}
+                        <strong>receive your payment</strong>.
+                        <br />
+                        <br />
+                        It’s a <strong>win-win</strong>: you help clients get
+                        the financing they need, and we reward you for your
                         partnership.
                         <br />
                         <br />
-                        Complete the form below to receive your affiliate code;
-                        this will be used by your leads who need financing.
+                        <strong>
+                          Complete the form below to receive your affiliate
+                          code. Make sure to share this code with all of your
+                          leads, and ask them to include it in any Capital
+                          Velocity loan applications. Also, remind them to
+                          mention your code in any communications with Capital
+                          Velocity staff.
+                        </strong>
                       </Typography>
                     </Box>
                     <form onSubmit={formik.handleSubmit}>

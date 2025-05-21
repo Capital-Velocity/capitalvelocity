@@ -249,7 +249,9 @@ function Navbar() {
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>Partner</Typography>
+                  <Typography sx={{ textAlign: "center" }}>
+                    Affiliate
+                  </Typography>
                 </MenuItem>
               </Link>
               <Link
@@ -714,7 +716,7 @@ function Navbar() {
                 <path d="M15.0012 7.99835C15.0012 9.10338 15.897 9.99919 17.0021 9.99919" />
               </svg>
             </div>
-            <span class="mt-1 leading-none">Partner</span>
+            <span class="mt-1 leading-none">Affiliate</span>
           </a>
           {/* <button class="whitespace-nowrap ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-100 disabled:bg-primary-180 py-2 relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-xs font-medium leading-tight transition-colors ease-in-out hover:border-gray-300 hover:bg-transparent hover:text-neutral-900 border-transparent text-neutral-700">
             <span class="absolute right-[-3px] top-[18px] min-w-[17px] items-center justify-center rounded p-1 text-center text-[8px] font-semibold uppercase tracking-wider text-white bg-secondary-700">
