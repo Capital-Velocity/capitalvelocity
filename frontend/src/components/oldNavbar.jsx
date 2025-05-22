@@ -224,6 +224,16 @@ function Navbar() {
                   </Typography>
                 </MenuItem>
               </Link>
+              <a
+                href="https://dragonsandangels.com/invest"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: "center" }}>Invest</Typography>
+                </MenuItem>
+              </a>
               <Link
                 to="/loan-form-business-loans"
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -564,6 +574,32 @@ function Navbar() {
               </svg>
             </div>
             <span class="mt-1 leading-none">Rental DSCR Optimizer</span>
+          </a>
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 border-transparent bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out hover:border-gray-600 hover:text-black text-neutral-900`}
+            href="https://dragonsandangels.com/invest"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="css-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-banknote-icon lucide-banknote"
+              >
+                <rect width="20" height="12" x="2" y="6" rx="2" />
+                <circle cx="12" cy="12" r="2" />
+                <path d="M6 12h.01M18 12h.01" />
+              </svg>
+            </div>
+            <span className="mt-1 leading-none">Invest</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 

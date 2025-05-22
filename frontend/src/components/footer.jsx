@@ -4,6 +4,12 @@ const navigation = {
     { name: "Rental DSCR Calculator", href: "/dscr-calculator" },
     { name: "Fix and Flip Calculator", href: "/fix-and-flip-calculator" },
     { name: "Rental DSCR Optimizer", href: "/dscr-optimizer-calculator" },
+    {
+      name: "Invest",
+      href: "https://dragonsandangels.com/invest",
+      external: true,
+    }, // ✅ new external link
+
     { name: "Business Loans", href: "/loan-form-business-loans" },
     { name: "Project Epic 99", href: "/project99" },
     { name: "Affiliate", href: "/become-partner" },
