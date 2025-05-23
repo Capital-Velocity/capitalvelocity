@@ -730,6 +730,19 @@ function TermsofUse() {
             </ol>
             <br></br>
             <br></br>
+            <strong>9.5 No Refund Policy:</strong>
+            <br></br>
+            <br></br>
+            All payments made to Capital Velocity, including but not limited to
+            fees for services, digital products, coaching sessions, and
+            consultations, are <strong>non-refundable</strong>. By completing a
+            purchase through our platform, you agree and acknowledge that all
+            sales are final. No refunds or credits will be issued for any
+            reason, including dissatisfaction with services, early termination,
+            or failure to utilize the purchased offering. Please review your
+            selections carefully before finalizing any transaction.
+            <br></br>
+            <br></br>
             <strong>10. General Provisions:</strong>
             <br></br>
             <br></br>
