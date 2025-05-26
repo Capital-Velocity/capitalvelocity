@@ -272,6 +272,18 @@ function Navbar() {
                   <Typography sx={{ textAlign: "center" }}>Coaching</Typography>
                 </MenuItem>
               </Link>
+              <a
+                href="https://andrewcartwright.com/community"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                <MenuItem onClick={handleCloseNavMenu}>
+                  <Typography sx={{ textAlign: "center" }}>
+                    Community
+                  </Typography>
+                </MenuItem>
+              </a>
               <Link
                 to="/contactUs"
                 style={{ textDecoration: "none", color: "inherit" }}
@@ -425,7 +437,7 @@ function Navbar() {
 
         <hr />
         <div class="hidden justify-center space-x-12 bg-white px-12 md:flex">
-          <a
+          {/* <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
     ${location.pathname === "/" ? "border-gray-600" : "border-gray-300"} 
     hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
@@ -449,7 +461,7 @@ function Navbar() {
               </svg>
             </div>
             <span class="mt-1 leading-none">About</span>
-          </a>
+          </a> */}
 
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
@@ -865,6 +877,35 @@ function Navbar() {
             </div>
             <span className="mt-1 leading-none">Company</span>
           </a> */}
+
+          <a
+            className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out ${
+              location.pathname === "/community"
+                ? "border-gray-600"
+                : "border-gray-300"
+            } hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
+            href="https://andrewcartwright.com/community"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div className="css-0">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-users"
+              >
+                <path d="M17 21v-2a4 4 0 0 0-3-3.87M7 21v-2a4 4 0 0 1 3-3.87M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm6 8v-2a4 4 0 0 0-3-3.87m-9 0A4 4 0 0 0 3 18v2"></path>
+              </svg>
+            </div>
+            <span className="mt-1 leading-none">Community</span>
+          </a>
 
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
