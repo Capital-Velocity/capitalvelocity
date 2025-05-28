@@ -82,6 +82,32 @@ function BorrowerStep({ formData, setFormData, fieldErrors }) {
       {" "}
       {/* <CheckoutSteps step1></CheckoutSteps> */}
       <Container>
+        <FormControl fullWidth sx={{ mb: 3 }}>
+          <Typography type="p" color="black">
+            Referral Code
+          </Typography>
+          <TextField
+            variant="outlined"
+            fullWidth
+            placeholder="Enter referral code"
+            value={formData.referralCode || ""}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                referralCode: e.target.value,
+              }))
+            }
+            style={{ backgroundColor: "white" }}
+            sx={{
+              mt: 1,
+              input: {
+                padding: "14px", // Customize padding for better visual
+                fontSize: "16px",
+              },
+            }}
+          />
+        </FormControl>
+
         <Typography variant="h4" color="black" gutterBottom>
           Borrower Information
         </Typography>
