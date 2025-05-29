@@ -84,21 +84,19 @@ export default function Contact() {
                 {/* Feature Selection */}
                 <fieldset className="sm:col-span-2">
                   <legend className="block text-sm font-semibold text-gray-900">
-                    Feature you're experiencing issues with:
+                    Features that you would like to explore:
                   </legend>
                   <div className="mt-4 space-y-3 text-sm text-gray-600">
                     {[
-                      "DSCR Calculator",
-                      "Fix and Flip Calculator",
-                      "Project Epic 99",
-                      "Partner",
-                      "Fix and Flip Loan",
-                      "Ground Up Loan",
-                      "Multifamily Bridge Loan",
-                      "Cashed Out Refinance Loan",
-                      "Rental Portfolio Loan",
-                      "Single Property Rental Loan",
-                      "SBA Loan",
+                      "Learn about the Fix and Flip Loan",
+                      "Learn about the Ground Up Loan",
+                      "Learn about the Multifamily Bridge Loan",
+                      "Learn about the Cashed Out Refinance Loan",
+                      "Learn about the Rental Portfolio Loan",
+                      "Learn about the Single Property Rental Loan",
+                      "Learn about the SBA Loan",
+                      "Learn about Project Epic 99",
+                      "Learn about the Affiliate Program",
                     ].map((label) => (
                       <div className="flex gap-x-2.5" key={label}>
                         <input
