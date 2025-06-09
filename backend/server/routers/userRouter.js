@@ -626,7 +626,7 @@ userRouter.post(
         </p>
 
         <div style="text-align: center; margin: 30px 0;">
-          <a href="https://api.leadconnectorhq.com/widget/bookings/cv-consultation" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
+          <a href="https://api.leadconnectorhq.com/widget/booking/QpiX5KlsMziUWvs8PFDJ" style="background-color: #0d6efd; color: white; padding: 14px 24px; text-decoration: none; border-radius: 6px; font-weight: bold;">
             👉 Schedule your call with Logan
           </a>
         </div>

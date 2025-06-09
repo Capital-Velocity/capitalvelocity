@@ -201,7 +201,7 @@ sbaRouter.post(
 
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
-        to: ["brandon@andrewcartwright.com", "info@capitalvelocity.com"],
+        to: ["info@capitalvelocity.com"],
         subject: "New SBA Application Submission - Capital Velocity",
         html: `
           <div style='background-color:#f2f2f2;padding:40px 0'>
