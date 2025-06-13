@@ -54,7 +54,7 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        "https://172.202.105.140:5000/api/users/register",
+        "https://52.165.80.134:4000/api/users/register",
         dataToSend
       );
 

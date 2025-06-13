@@ -211,18 +211,50 @@ export default function Checkout(props) {
     }
   }
 
-  const handleNext = () => {
-    console.log(formData);
-
+  const handleNext = async () => {
     // Validate current step
-    if (validateStep(activeStep)) {
-      if (activeStep < steps.length - 1) {
-        setActiveStep((prevStep) => prevStep + 1);
-      }
-    } else {
+    if (!validateStep(activeStep)) {
       toast.error("Please fill out the required fields before proceeding.");
+      return;
+    }
+
+    // Block rural properties on step 2
+    if (activeStep === 2) {
+      const { homeAddress, addressCity, addressState, addressZip } = formData;
+
+      try {
+        const { data } = await axios.post(
+          "https://52.165.80.134:4000/api/users/check-address-urbanity",
+          {
+            address: homeAddress,
+            city: addressCity,
+            state: addressState,
+            zip: addressZip,
+          }
+        );
+
+        if (data.classification === "Rural") {
+          toast.error(
+            "This address is classified as Rural. We cannot proceed."
+          );
+          return; // ⛔️ Prevent user from advancing
+        } else {
+          toast.success("Address has been classified as Urban.");
+        }
+      } catch (error) {
+        toast.error(
+          "Error verifying address classification. Please try again."
+        );
+        return;
+      }
+    }
+
+    // Move to next step if all validations pass
+    if (activeStep < steps.length - 1) {
+      setActiveStep((prevStep) => prevStep + 1);
     }
   };
+
   const handleBack = () => {
     if (activeStep > 0) {
       setActiveStep((prevStep) => prevStep - 1);

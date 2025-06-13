@@ -75,15 +75,15 @@ export default function Example() {
         <div className="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]">
           <div className="space-y-6">
             <div>
-              <p
+              {/* <p
                 ref={headingRef}
                 className={`text-white tracking-tighter text-6xl fade-in ${
                   isHeadingVisible ? "fade-in-show" : "fade-in-hide"
                 }`}
               >
                 Capital Velocity
-              </p>
-              <p
+              </p> */}
+              {/* <p
                 ref={paragraphRef}
                 className={`max-w-[600px] text-white md:text-2xl pt-6 fade-in ${
                   isParagraphVisible
@@ -93,7 +93,7 @@ export default function Example() {
               >
                 Connecting visionaries with opportunities. <br />
                 Discover, Invest, and Grow.
-              </p>
+              </p> */}
             </div>
             <div
               ref={paragraphRef}

@@ -14,6 +14,7 @@ import {
   createBotFrameworkAuthenticationFromConfiguration,
 } from "botbuilder";
 import ChatBot from "../chatbot/bot.js";
+import { OpenAI } from "openai";
 
 dotenv.config();
 const userRouter = express.Router();
@@ -24,6 +25,10 @@ const mg = mailgun({ apiKey, domain: "capitalvelocity.com" });
 const createToken = (_id) => {
   return jwt.sign({ _id }, process.env.SECRET, { expiresIn: "31d" });
 };
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 // Function to obtain the access token
 async function getAccessToken() {
@@ -716,6 +721,36 @@ userRouter.get("/token", async (req, res) => {
       console.error("Response:", err.response.data);
     }
     res.status(500).send("Failed to generate Direct Line token");
+  }
+});
+
+userRouter.post("/check-address-urbanity", async (req, res) => {
+  const { address, city, state, zip } = req.body;
+  const prompt = `
+You are a real estate analyst. Determine if the following U.S. address is in a rural or urban area. Respond with one of two values only: "Urban" or "Rural".
+
+Address:
+"${address}, ${city}, ${state} ${zip}"
+
+Respond in JSON format:
+{ "classification": "Urban" }
+`;
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "user", content: prompt }],
+      temperature: 0,
+    });
+
+    const raw = response.choices[0].message.content;
+    const jsonStart = raw.indexOf("{");
+    const jsonEnd = raw.lastIndexOf("}") + 1;
+    const json = JSON.parse(raw.slice(jsonStart, jsonEnd));
+    res.json(json);
+  } catch (err) {
+    console.error("Error classifying address:", err.message);
+    res.status(500).json({ error: "Failed to classify address" });
   }
 });
 
