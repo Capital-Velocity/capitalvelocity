@@ -4,8 +4,8 @@ import GroundUp from "../models/groundUpModel.js";
 import Referral from "../models/referralModel.js";
 import mailgun from "mailgun-js";
 
-const apiKey = "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379";
-const mg = mailgun({ apiKey, domain: "capitalvelocity.com" });
+const apiKey = "0294becf0e814cdbdc96235a75093505-f3238714-90618b40";
+const mg = mailgun({ apiKey, domain: "grantvelocity.com" });
 const groundUpRouter = express.Router();
 
 groundUpRouter.post(

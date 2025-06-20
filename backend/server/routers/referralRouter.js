@@ -9,8 +9,8 @@ import mailgun from "mailgun-js";
 const referralRouter = express.Router();
 
 const mg = mailgun({
-  apiKey: "6c4673b8f1605eb7e18a82f6e26e383f-667818f5-b0c6c379",
-  domain: "capitalvelocity.com",
+  apiKey: "0294becf0e814cdbdc96235a75093505-f3238714-90618b40",
+  domain: "grantvelocity.com",
 });
 
 // referralRouter.post(
