@@ -195,16 +195,16 @@ function Navbar() {
                 </MenuItem>
               </Link>
               <Link
-                to="/fix-and-flip-calculator"
+                to="/calculator-hub"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                 <MenuItem onClick={handleCloseNavMenu}>
                   <Typography sx={{ textAlign: "center" }}>
-                    Fix and Flip Calculator
+                    Investment Calculators
                   </Typography>
                 </MenuItem>
               </Link>
-              <Link
+              {/* <Link
                 to="/dscr-calculator"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
@@ -223,7 +223,7 @@ function Navbar() {
                     Rental DSCR Optimizer
                   </Typography>
                 </MenuItem>
-              </Link>
+              </Link> */}
               <a
                 href="https://dragonsandangels.com/invest"
                 target="_blank"
@@ -495,7 +495,7 @@ function Navbar() {
             <span class="mt-1 leading-none">Real Estate Loans</span>
           </a>
 
-          <a
+          {/* <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
     ${
       location.pathname === "/fix-and-flip-calculator"
@@ -523,8 +523,8 @@ function Navbar() {
               </svg>
             </div>
             <span class="mt-1 leading-none">Fix and Flip Calculator</span>
-          </a>
-          <a
+          </a> */}
+          {/* <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
     ${
       location.pathname === "/dscr-calculator"
@@ -550,17 +550,17 @@ function Navbar() {
               </svg>
             </div>
             <span class="mt-1 leading-none">Rental DSCR Calculator</span>
-          </a>
+          </a> */}
 
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out 
     ${
-      location.pathname === "/dscr-optimizer-calculator"
+      location.pathname === "/calculator-hub"
         ? "border-gray-600"
         : "border-gray-300"
     } 
     hover:border-gray-600 hover:bg-transparent hover:text-black text-neutral-900`}
-            href="/dscr-optimizer-calculator"
+            href="/calculator-hub"
           >
             <div class="css-0">
               <svg
@@ -585,7 +585,7 @@ function Navbar() {
                 />
               </svg>
             </div>
-            <span class="mt-1 leading-none">Rental DSCR Optimizer</span>
+            <span class="mt-1 leading-none">Investment Calculators</span>
           </a>
           <a
             className={`relative flex h-20 flex-col items-center justify-center rounded-none border-b-2 border-transparent bg-transparent px-0 pb-3.5 pt-4 text-sm font-semibold leading-tight transition-colors ease-in-out hover:border-gray-600 hover:text-black text-neutral-900`}

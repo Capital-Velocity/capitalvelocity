@@ -10,7 +10,7 @@ const features = [
     name: "Fix and Flip",
     description:
       "How much does it cost to flip a house, and what kind of profit can you make? Understanding the full cost breakdown is crucial to a successful project. Our Fix and Flip Calculator helps by estimating your ARV (After Repair Value), potential profit, and hard money loan terms.",
-    href: "/FixandFlipCalc",
+    href: "/calculator-hub?type=fix-and-flip",
     icon: LockClosedIcon,
     img: fixAndFlipCalcImg, // Linking image with feature
   },
@@ -18,7 +18,7 @@ const features = [
     name: "Rental Debt Service Coverage Ratio (DSCR)",
     description:
       "Do you need to assess the financial health of a rental property quickly and accurately? Our Rental DSCR Calculator provides a fast and reliable way to determine whether a property can cover its debt obligations.",
-    href: "/DsciCalculator",
+    href: "/calculator-hub?type=rental-dscr",
     icon: CloudArrowUpIcon,
     img: rentalDSCRCalcImg,
   },
@@ -26,7 +26,7 @@ const features = [
     name: "Rental DSCR Optimizer",
     description:
       "The Rental DSCR Optimizer helps investors fine-tune estimated as-is value and rental income to achieve an acceptable Debt Service Coverage Ratio (DSCR) while maintaining an affordable down payment.",
-    href: "/FixandFlipCalc",
+    href: "/calculator-hub?type=dscr-optimizer",
     icon: LockClosedIcon,
     img: calculatorOptimizer,
   },

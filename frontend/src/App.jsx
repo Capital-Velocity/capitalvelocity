@@ -40,6 +40,7 @@ import SBALoanForm from "./loanCheckout/SBALoanForm";
 import ForgotPassword from "./pages/forgotPassword";
 import ResetPassword from "./pages/resetPassword";
 import ChatBot from "./components/Chatbot";
+import CalculatorHub from "./pages/CalculatorHub";
 
 function App() {
   const firstnameCookie = Cookies.get("firstName");
@@ -57,14 +58,16 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/lendio" element={<Lendio />} /> */}
-        <Route path="/dscr-calculator" element={<DsciCalculator />} />
+        <Route path="/calculator-hub" element={<CalculatorHub />} />
+
+        {/* <Route path="/dscr-calculator" element={<DsciCalculator />} />
         <Route
           path="/dscr-optimizer-calculator"
           element={<OptimizerCalculator />}
-        />
+        /> */}
         {/* <Route path="/ConceptCalc" element={<ConceptCalc />} /> */}
 
-        <Route path="/fix-and-flip-calculator" element={<FixandFlipCalc />} />
+        {/* <Route path="/fix-and-flip-calculator" element={<FixandFlipCalc />} /> */}
         <Route path="/terms-of-use" element={<TermsofUse />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route

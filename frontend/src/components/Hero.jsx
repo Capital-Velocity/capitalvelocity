@@ -132,7 +132,7 @@ export default function Example() {
 
               {/* Bottom Row - New Buttons */}
               <div className="flex flex-wrap gap-4">
-                <Link to="/fix-and-flip-calculator">
+                <Link to="/calculator-hub?type=fix-and-flip">
                   <button
                     className="flex items-center justify-center text-white bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 hover:bg-gradient-to-br
         focus:ring-2 focus:outline-none focus:ring-yellow-300 dark:focus:ring-yellow-800
@@ -144,7 +144,7 @@ export default function Example() {
                   </button>
                 </Link>
 
-                <Link to="/dscr-calculator">
+                <Link to="/calculator-hub?type=rental-dscr">
                   <button
                     className="flex items-center justify-center text-white bg-gradient-to-r from-purple-400 via-purple-500 to-purple-600 hover:bg-gradient-to-br
         focus:ring-2 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
@@ -156,7 +156,7 @@ export default function Example() {
                   </button>
                 </Link>
 
-                <Link to="/dscr-optimizer-calculator">
+                <Link to="/calculator-hub?type=dscr-optimizer">
                   <button
                     className="flex items-center justify-center text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br
         focus:ring-2 focus:outline-none focus:ring-pink-300 dark:focus:ring-pink-800
@@ -176,6 +176,17 @@ export default function Example() {
                     type="button"
                   >
                     Affiliate Program
+                  </button>
+                </Link>
+                <Link to="https://www.originofopportunity.com/checkout/capital-go-membership">
+                  <button
+                    className="flex items-center justify-center text-white bg-gradient-to-r from-blue-400 via-purple-500 to-purple-600 hover:bg-gradient-to-br
+    focus:ring-2 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800
+    shadow-md shadow-purple-500/50 dark:shadow-md dark:shadow-purple-800/80 
+    rounded-md px-6 py-3 text-center text-lg font-semibold"
+                    type="button"
+                  >
+                    Join the Capital GO Membership Community
                   </button>
                 </Link>
               </div>

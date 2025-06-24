@@ -1,9 +1,18 @@
 const navigation = {
   main: [
     { name: "Real Estate Loans", href: "/loan-form-realestate" },
-    { name: "Rental DSCR Calculator", href: "/dscr-calculator" },
-    { name: "Fix and Flip Calculator", href: "/fix-and-flip-calculator" },
-    { name: "Rental DSCR Optimizer", href: "/dscr-optimizer-calculator" },
+    {
+      name: "Rental DSCR Calculator",
+      href: "/calculator-hub?type=fix-and-flip",
+    },
+    {
+      name: "Fix and Flip Calculator",
+      href: "/calculator-hub?type=rental-dscr",
+    },
+    {
+      name: "Rental DSCR Optimizer",
+      href: "/calculator-hub?type=dscr-optimizer",
+    },
     {
       name: "Invest",
       href: "https://dragonsandangels.com/invest",
