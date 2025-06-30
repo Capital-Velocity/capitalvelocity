@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet";
+import axios from "axios";
 
 export default function Contact() {
   const [isFeatureSelected, setIsFeatureSelected] = useState(false);
@@ -11,37 +12,49 @@ export default function Contact() {
     setIsFeatureSelected(true);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
 
-    const emailParams = {
-      first_name: formData.get("first-name") || "",
-      last_name: formData.get("last-name") || "",
+    const data = {
+      firstName: formData.get("first-name") || "",
+      lastName: formData.get("last-name") || "",
       email: formData.get("email") || "",
       phone: formData.get("phone") || "",
       feature: formData.get("feature") || "Not specified",
       message: formData.get("message") || "No message provided",
+      formType: "Capital Velocity Contact",
     };
 
-    emailjs
-      .send(
+    try {
+      // Send to MongoDB
+      await axios.post(
+        "https://52.165.80.134:4000/api/emailRouter/save-contact-to-db",
+        data
+      );
+
+      // Send email via EmailJS
+      await emailjs.send(
         "service_uo30nsk",
         "template_q1djrcp",
-        emailParams,
-        "wNJAWIsfSPmQHJjzl"
-      )
-      .then(
-        () => {
-          toast.success("Thank you! We will respond to you shortly.");
-          event.target.reset();
-          setIsFeatureSelected(false);
+        {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          feature: data.feature,
+          message: data.message,
         },
-        (error) => {
-          console.error("EmailJS error:", error);
-          toast.error("Error submitting form. Try again later.");
-        }
+        "wNJAWIsfSPmQHJjzl"
       );
+
+      toast.success("Thank you! We will respond to you shortly.");
+      event.target.reset();
+      setIsFeatureSelected(false);
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Error submitting form. Try again later.");
+    }
   };
 
   return (

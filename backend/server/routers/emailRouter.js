@@ -5,6 +5,8 @@ import axios from "axios";
 import mailgun from "mailgun-js";
 import dotenv from "dotenv";
 import User from "../models/userModel.js";
+import CapitalVelocityContact from "../models/CapitalVelocityContact.js";
+
 const emailRouter = express.Router();
 dotenv.config();
 // // SEND THE RESET PASSWORD
@@ -405,6 +407,19 @@ emailRouter.post("/send-rok-affiliate", (req, res) => {
     console.log("Email sent:", body);
     res.status(200).json({ message: "Message sent successfully!" });
   });
+});
+
+emailRouter.post("/save-contact-to-db", async (req, res) => {
+  try {
+    const contact = new CapitalVelocityContact(req.body);
+    await contact.save();
+    res
+      .status(200)
+      .json({ message: "Capital Velocity contact saved successfully" });
+  } catch (err) {
+    console.error("Error saving Capital Velocity contact:", err);
+    res.status(500).json({ error: "Failed to save contact submission" });
+  }
 });
 
 export default emailRouter;
