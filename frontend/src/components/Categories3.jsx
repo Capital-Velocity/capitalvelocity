@@ -106,14 +106,19 @@ const Categories3 = () => {
   }, []); // Empty dependency array means this effect runs once on component mount
 
   const handleOptionChange = (item) => {
+    // If the item is an external link (starts with http) and is specifically the "Small Business Loan"
+    if (item.title === "Small Business Loan") {
+      window.open(item.link, "_blank"); // open in a new tab
+      return;
+    }
+
+    // Otherwise, continue with login check
     if (!firstnameCookie) {
       navigate("/register");
     } else {
       if (item.link.startsWith("http")) {
-        // Open external links properly
         window.location.href = item.link;
       } else {
-        // Internal navigation
         navigate(item.link);
       }
     }
