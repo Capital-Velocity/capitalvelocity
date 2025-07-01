@@ -126,7 +126,7 @@ singlePropertyRouter.post(
 
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
-        to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"],
+        to: ["anthony@andrewcartwright.com", "info@capitalvelocity.com"],
         subject:
           "New Single Property Rental Loan Submission - Capital Velocity",
         html: `

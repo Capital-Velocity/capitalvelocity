@@ -130,7 +130,7 @@ fixandflipRouter.post(
       // ✅ Compose email content
       const emailData = {
         from: "Capital Velocity <no-reply@capitalvelocity.com>",
-        to: ["logan@andrewcartwright.com", "info@capitalvelocity.com"],
+        to: ["anthony@andrewcartwright.com", "info@capitalvelocity.com"],
         subject: "New Fix and Flip Form Submission - Capital Velocity",
         html: `
           <div style="background-color: #f2f2f2; padding: 40px 0;">
