@@ -32,6 +32,7 @@ import LoanForm2 from "../components/LoanForm2";
 import Categories3 from "../components/Categories3";
 import NewRealEstateCategories from "../components/NewRealEstateCategories";
 import { Helmet } from "react-helmet";
+import Newsletter from "../components/Newsletter";
 const mock = [
   {
     title: "Fix and Flip",
@@ -187,7 +188,7 @@ function Landing() {
           {/* <LoanForm /> */}
           <NewRealEstateCategories />
           <Categories3 />
-
+          <Newsletter />
           {/* <BusinessCategories /> */}
         </div>
       </div>

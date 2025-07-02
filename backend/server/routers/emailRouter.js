@@ -422,4 +422,40 @@ emailRouter.post("/save-contact-to-db", async (req, res) => {
   }
 });
 
+emailRouter.post("/newsletter", async (req, res) => {
+  const { email } = req.body;
+
+  // Validate the email
+  if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    return res.status(400).json({ error: "Invalid email address" });
+  }
+
+  try {
+    // Send the contact to GoHighLevel
+    const ghlResponse = await axios.post(
+      "https://rest.gohighlevel.com/v1/contacts/",
+      {
+        email: email,
+        tags: ["Capital Velocity Newsletter"],
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.GOHIGHLEVEL_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    res.status(201).json({
+      message: "You have been successfully subscribed to the newsletter!",
+    });
+  } catch (error) {
+    console.error("GoHighLevel Error:", error.response?.data || error.message);
+    return res.status(500).json({
+      error:
+        error.response?.data?.message || "Failed to subscribe to GoHighLevel.",
+    });
+  }
+});
+
 export default emailRouter;
