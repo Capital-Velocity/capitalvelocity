@@ -29,7 +29,7 @@ const CalculatorHub = () => {
       default:
         return (
           <div className="text-center text-gray-500 mt-10">
-            Please select a document generator using the buttons above.
+            Please select a calculator using the buttons above.
           </div>
         );
     }
@@ -37,13 +37,12 @@ const CalculatorHub = () => {
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
-      <h1 className="text-3xl font-bold text-center mb-4">
-        Document Generator Hub
-      </h1>
+      <h1 className="text-3xl font-bold text-center mb-4">Calculator Hub</h1>
 
       <p className="text-center text-gray-600 mb-6 max-w-3xl mx-auto">
-        Use the buttons below to select which type of document you’d like to
-        generate.
+        Use the buttons below to choose a calculator that fits your needs.
+        Whether you're evaluating loan options, business value, or investment
+        potential, this hub brings all tools into one place.
       </p>
 
       <div className="flex flex-wrap justify-center gap-4 mb-8">
