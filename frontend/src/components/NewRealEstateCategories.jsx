@@ -350,7 +350,7 @@ const NewRealEstateCategories = () => {
               </Grid>
             )}
 
-            {/* Right Side - YouTube Video Embed */}
+            {/* Right Side - Rumble Video Embed - Fix and Flip */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
@@ -408,7 +408,7 @@ const NewRealEstateCategories = () => {
             spacing={2}
             alignItems="center"
           >
-            {/* Left Side - YouTube Video Embed */}
+            {/* Left Side - YouTube Video Embed - Multifamily Bridge (no Rumble replacement provided) */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
@@ -636,14 +636,14 @@ const NewRealEstateCategories = () => {
               </Grid>
             )}
 
-            {/* Right Side - YouTube Video Embed */}
+            {/* Right Side - Rumble Video Embed - Single Family Loans */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/uKAGuS8hSmw"
-                  title="YouTube video player"
+                  src="https://rumble.com/embed/v72yb3k/?pub=4"
+                  title="Rumble video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -681,14 +681,14 @@ const NewRealEstateCategories = () => {
             spacing={2}
             alignItems="center"
           >
-            {/* Left Side - YouTube Video Embed */}
+            {/* Left Side - Rumble Video Embed - Ground Up Construction */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/nGkGdLzN3Xw"
-                  title="YouTube video player"
+                  src="https://rumble.com/embed/v72yaz8/?pub=4"
+                  title="Rumble video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -909,7 +909,7 @@ const NewRealEstateCategories = () => {
               </Grid>
             )}
 
-            {/* Right Side - YouTube Video Embed */}
+            {/* Right Side - YouTube Video Embed - Cashed Out Refinance (no Rumble replacement provided) */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
@@ -952,14 +952,14 @@ const NewRealEstateCategories = () => {
             spacing={2}
             alignItems="center"
           >
-            {/* Left Side - YouTube Video Embed */}
+            {/* Left Side - Rumble Video Embed - Portfolio Loans */}
             <Grid item xs={12} md={6}>
               <Box display="flex" justifyContent="center">
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/-J2nYFyfRGk"
-                  title="YouTube video player"
+                  src="https://rumble.com/embed/v72yb1o/?pub=4"
+                  title="Rumble video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
