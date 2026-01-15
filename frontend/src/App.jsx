@@ -35,7 +35,7 @@ import GroundUpNewLoanForm from "./pages/GroundUpNewLoanForm";
 import CashedOutRefinanceNewLoanForm from "./pages/CashedOutRefinanceNewLoanForm";
 import ProjectEpic99LoanForm from "./loanCheckout/ProjectEpic99LoanForm";
 import OptimizerCalculator from "./Calculators/OptimizerCalculator";
-import ConceptCalc from "./Calculators/conceptCalc";
+import ConceptCalc from "./Calculators/ConceptCalc";
 import SBALoanForm from "./loanCheckout/SBALoanForm";
 import ForgotPassword from "./pages/forgotPassword";
 import ResetPassword from "./pages/resetPassword";
