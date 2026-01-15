@@ -1,6 +1,19 @@
 {
-  "dependencies": {
-    "botbuilder": "^4.23.2",
-    "restify": "^11.1.0"
-  }
+    "name": "capital-velocity-backend",
+    "version": "1.0.0",
+    "type": "module",
+    "main": "server/server.js",
+    "description": "Capital Velocity Backend API",
+    "scripts": {
+          "start": "node server/server.js",
+          "dev": "nodemon server/server.js",
+          "build": "npm install --legacy-peer-deps"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+          "botbuilder": "^4.23.2",
+          "restify": "^11.1.0"
+    }
 }
