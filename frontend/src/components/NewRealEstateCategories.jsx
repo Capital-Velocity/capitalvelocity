@@ -356,8 +356,8 @@ const NewRealEstateCategories = () => {
                 <iframe
                   width="100%"
                   height="315"
-                  src="https://www.youtube.com/embed/L0_HasTvnso"
-                  title="YouTube video player"
+                  src="https://rumble.com/embed/v72ybiy/?pub=4"
+                  title="Rumble video player"
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
