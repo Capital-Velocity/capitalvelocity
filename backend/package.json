@@ -1,24 +1,21 @@
 {
-      "name": "capital-velocity-backend",
-      "version": "1.0.0",
-      "type": "module",
-      "main": "server/server.js",
-      "description": "Capital Velocity Backend API",
-      "scripts": {
-              "start": "node server/server.js",
-              "dev": "nodemon server/server.js",
-              "build": "npm install --legacy-peer-deps"
-      },
-      "keywords": [],
-      "author": "",
-      "license": "ISC",
-      "dependencies": {
-              "botbuilder": "^4.23.2",
-              "restify": "^11.1.0",
-              "bcryptjs": "^2.4.3",
-              "cors": "^2.8.5",
-              "mongoose": "^7.2.0",
-              "nodemailer": "^6.9.1",
-              "dotenv": "^16.0.3"
-      }
+        "name": "capital-velocity-backend",
+        "version": "1.0.0",
+        "type": "module",
+        "main": "server/server.js",
+        "description": "Capital Velocity Backend API",
+        "scripts": {
+                  "start": "node server/server.js",
+                  "dev": "nodemon server/server.js"
+        },
+        "keywords": [],
+        "author": "",
+        "license": "ISC",
+        "dependencies": {
+                  "botbuilder": "^4.23.2",
+                  "restify": "^11.1.0",
+                  "bcryptjs": "^2.4.3",
+                  "cors": "^2.8.5",
+                  "dotenv": "^16.0.3"
+        }
 }
