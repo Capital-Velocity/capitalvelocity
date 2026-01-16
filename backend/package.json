@@ -26,5 +26,4 @@
                             "botbuilder": "^4.20.0",
                             "openai": "^4.0.0",
                             "axios": "^1.6.0",
-    "multer-azure-storage": "^2.4.1"
-}
+    "@azure/storage-blob": "^12.13.0"}
