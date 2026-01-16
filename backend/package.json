@@ -26,5 +26,5 @@
                             "botbuilder": "^4.20.0",
                             "openai": "^4.0.0",
                             "axios": "^1.6.0",
-    "multer-azure-storage": "^2.5.0"            }
+    "multer-azure-storage": "^2.5.0"}
 }
