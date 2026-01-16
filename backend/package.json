@@ -24,6 +24,7 @@
                             "jsonwebtoken": "^9.0.0",
                             "mailgun-js": "^0.22.0",
                             "botbuilder": "^4.20.0",
-                            "openai": "^4.0.0"
+                            "openai": "^4.0.0",
+                            "axios": "^1.6.0"
             }
 }
