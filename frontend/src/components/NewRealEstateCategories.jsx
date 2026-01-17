@@ -330,7 +330,7 @@ const NewRealEstateCategories = () => {
                           >
                             <Checkbox
                               defaultChecked
-                              sx={{allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                              sx={{
                                 color: green[400],
                                 "&.Mui-checked": {
                                   color: green[400],
@@ -359,7 +359,7 @@ const NewRealEstateCategories = () => {
                   src="https://rumble.com/embed/v72ybiy/?pub=4"
                   title="Rumble video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }}
                 />
@@ -417,7 +417,7 @@ const NewRealEstateCategories = () => {
                   src="https://www.youtube.com/embed/H0eBkcRky_k"
                   title="YouTube video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
                 />
@@ -645,7 +645,7 @@ const NewRealEstateCategories = () => {
                   src="https://rumble.com/embed/v72yb3k/?pub=4"
                   title="Rumble video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
                 />
@@ -690,7 +690,7 @@ const NewRealEstateCategories = () => {
                   src="https://rumble.com/embed/v72yaz8/?pub=4"
                   title="Rumble video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
                 />
@@ -918,7 +918,7 @@ const NewRealEstateCategories = () => {
                   src="https://www.youtube.com/embed/aCYWen4GYLA"
                   title="YouTube video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
                 />
@@ -961,7 +961,7 @@ const NewRealEstateCategories = () => {
                   src="https://rumble.com/embed/v72yb1o/?pub=4"
                   title="Rumble video player"
                   frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                  
                   allowFullScreen
                   style={{ borderRadius: "12px", maxWidth: "560px" }} // Responsive styling
                 />
