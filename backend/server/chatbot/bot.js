@@ -1,7 +1,6 @@
 // bot.js
 import { ActivityHandler, CardFactory } from "botbuilder";
-import { AzureOpenAI } from "@azure/openai";import { AzureKeyCredential } from "@azure/core-auth";
-import dotenv from "dotenv";
+import OpenAI from "openai";import dotenv from "dotenv";
 
 // Load environment variables
 dotenv.config();
@@ -14,11 +13,12 @@ const searchEndpoint = "https://capitalvelocity-search.search.windows.net";
 const searchKey = "zJp5pbaLHzA0ZnLy6Zh1YuRgaDMp3g3DaCdZ3J9pbGAzSeBxAYPF";
 const searchIndex = "fixflip-groundup-rentalloan-stabilizedbridge-index";
 
-const client = new AzureOpenAI(
-  openAiEndpoint,
-  new AzureKeyCredential(openAiApiKey)
-);
-
+const client = new OpenAI({
+    apiKey: openAiApiKey,
+    baseURL: openAiEndpoint,
+    defaultQuery: { "api-version": "2024-02-15-preview" },
+    defaultHeaders: { "api-key": openAiApiKey },
+});  
 class ChatBot extends ActivityHandler {
   constructor() {
     super();
@@ -26,8 +26,7 @@ class ChatBot extends ActivityHandler {
     this.onMembersAdded(async (context, next) => {
       const membersAdded = context.activity.membersAdded;
       for (let member of membersAdded) {
-        if (member.id !== context.activity.recipient.id) {
-          await context.sendActivity(
+      });          await context.sendActivity(
             "👋 Hi! I'm the Capital Velocity assistant.\n\nHow can I help you today?"
           );
           await context.sendActivity({
