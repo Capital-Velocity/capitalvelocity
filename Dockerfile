@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-WORKDIR /app/backend
+WORKDIR /app/backend/server
 
 RUN npm install
 
