@@ -51,11 +51,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb+srv://eng:Rohanna01$$@cluster0.4ox0i0i.mongodb.net/?retryWrites=true&w=majority"
+    process.env.MONGODB_URI
   );
 
 app.use("/api/users", userRouter);
-app.use("/api/referrals", referralRouter);
 app.use("/api/sba", sbaRouter);
 app.use("/api/fixandFlip", fixandflipRouter);
 app.use("/api/groundUp", groundupRouter);
