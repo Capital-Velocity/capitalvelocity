@@ -1,7 +1,6 @@
 // bot.js
 import { ActivityHandler, CardFactory } from "botbuilder";
-import { OpenAIClient } from "@azure/openai";
-import { AzureKeyCredential } from "@azure/core-auth";
+import { AzureOpenAI } from "@azure/openai";import { AzureKeyCredential } from "@azure/core-auth";
 import dotenv from "dotenv";
 
 // Load environment variables
@@ -15,7 +14,7 @@ const searchEndpoint = "https://capitalvelocity-search.search.windows.net";
 const searchKey = "zJp5pbaLHzA0ZnLy6Zh1YuRgaDMp3g3DaCdZ3J9pbGAzSeBxAYPF";
 const searchIndex = "fixflip-groundup-rentalloan-stabilizedbridge-index";
 
-const client = new OpenAIClient(
+const client = new AzureOpenAI(
   openAiEndpoint,
   new AzureKeyCredential(openAiApiKey)
 );
